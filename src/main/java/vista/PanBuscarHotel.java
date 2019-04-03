@@ -5,7 +5,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-
+/**
+ * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
+ * @author alba
+ *
+ */
 public class PanBuscarHotel extends JPanel {
 	/**
 	 * Create the panel.

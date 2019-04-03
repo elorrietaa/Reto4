@@ -7,12 +7,14 @@ package modelo;
 public class Ciudad {
     private int codCiudad;
     private String nombreCiudad;
-    
+    /**
+     * Constructor del objeto Ciudad vacio
+     */
     public Ciudad() {
 	
     }
     /**
-     * Constructor ciudades
+     * Constructor del objeto Ciudad
      * @param codCiudad
      * @param nombreCiudad
      */

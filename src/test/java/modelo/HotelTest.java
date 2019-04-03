@@ -14,7 +14,8 @@ public class HotelTest {
     protected float precioAlojamiento=(float) 12.2;
     protected int estrellas=5;
     Hotel hotelPrueba= new Hotel(codAlojamiento, nombre, numHabitaciones, ubicacion, estrellas, precioAlojamiento);
-   
+    Hotel hotel= new Hotel();
+    
     @Test
    	public void testEstrellas() {
 	hotelPrueba.setEstrellas(estrellas);

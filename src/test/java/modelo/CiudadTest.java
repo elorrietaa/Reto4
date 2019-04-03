@@ -8,7 +8,7 @@ public class CiudadTest {
     private int codCiudad=1;
     private String nombreCiudad="BILBAO";
     Ciudad ciudadPrueba = new Ciudad(codCiudad, nombreCiudad);
-    
+    Ciudad ciudad = new Ciudad();
     @Test
 	public void testConstuctor() {
 		assertEquals(codCiudad, ciudadPrueba.getCodCiudad());

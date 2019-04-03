@@ -7,7 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
-
+/**
+ * Clase PanVueltas = contiene los elementos necesarios para formar el Panel en el que se muestran los detalles de las vueltas del pago
+ * @author alba
+ *
+ */
 public class PanVueltas extends JPanel {
 	public JTextField textField, textField_1;
 	public JLabel lblTotalAPagar, lblTotalIntroducido, lblVueltas;

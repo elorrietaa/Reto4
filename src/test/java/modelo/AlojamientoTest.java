@@ -12,9 +12,9 @@ public class AlojamientoTest {
     protected int numHabitaciones=10;
     protected String ubicacion="BILBAO";
     protected float precioAlojamiento=(float) 12.2;
-    
+    Alojamiento alojamiento = new Alojamiento();
     Alojamiento alojamientoPrueba= new Alojamiento(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento);
-    
+  
     @Test
 	public void testConstuctor() {
 		assertEquals(codAlojamiento, alojamientoPrueba.getCodAlojamiento());

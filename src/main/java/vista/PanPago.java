@@ -7,7 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase PanPago = contiene los elementos necesarios para formar el Panel en el que se muestran los detalles para realizar el pago.
+ * @author alba
+ *
+ */
 public class PanPago extends JPanel {
 	public JTextField total, totalIntro, aPagar;
 	public JButton btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn50cen, btn20cen, btn10cen, btn5cen, btn2cen, btn1cen, btnAtras, btnContinuar;

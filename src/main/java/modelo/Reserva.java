@@ -10,7 +10,13 @@ public class Reserva {
     private Alojamiento alojamiento; 
     private float precioReserva;
     /**
-     * Constructor Reserva
+     * Constructor vacio del objeto Reserva
+     */
+    public Reserva() {
+    	
+    }
+    /**
+     * Constructor del objeto Reserva
      * @param codReserva
      * @param alojamiento
      * @param precioReserva

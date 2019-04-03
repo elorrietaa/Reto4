@@ -14,10 +14,10 @@ public class ControladorPanBuscarHotel {
      */
    
     public void mostrarCiudad() {
-	ArrayList listaCiudades=modelo.FuncionesModelo.buscarCiudad();
-	for(int i=0; i<listaCiudades.size();i++) {
-	    vista.PanBuscarHotel.
-	}
+	//ArrayList listaCiudades=modelo.FuncionesModelo.buscarCiudad();
+	//for(int i=0; i<listaCiudades.size();i++) {
+	//    vista.PanBuscarHotel.
+	//}
 	
     }
 }

@@ -1,8 +1,10 @@
-package controlador;
+package modelo;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import modelo.Alojamiento;
 
 public class AlojamientoTest {
     protected int codAlojamiento=1;

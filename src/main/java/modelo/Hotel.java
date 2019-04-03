@@ -1,11 +1,11 @@
-package controlador;
+package modelo;
 
 public class Hotel extends Alojamiento{
     /**
      * Clase Hotel, hereda de Alojamiento todos los atributos de Alojamiento
      */
     protected int estrellas;
-
+ 
     /**
      * constructor Hotel
      * @param codAlojamiento

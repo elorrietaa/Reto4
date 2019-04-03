@@ -1,4 +1,4 @@
-package controlador;
+package modelo;
 
 /**
  * Clase Alojamiento

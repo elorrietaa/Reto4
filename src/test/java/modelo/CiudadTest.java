@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class CiudadesTest {
+public class CiudadTest {
     private int codCiudad=1;
     private String nombreCiudad="BILBAO";
-    Ciudades ciudadPrueba = new Ciudades(codCiudad, nombreCiudad);
+    Ciudad ciudadPrueba = new Ciudad(codCiudad, nombreCiudad);
     
     @Test
 	public void testConstuctor() {

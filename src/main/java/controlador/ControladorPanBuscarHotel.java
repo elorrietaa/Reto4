@@ -14,7 +14,6 @@ public class ControladorPanBuscarHotel {
      */
    
     public void mostrarCiudad() {
-	ArrayList listaCiudades=modelo.FuncionesModelo.buscarCiudad();
-	vista.PanBuscarHotel.setDefaultLocale(labelCiudad);
+	
     }
 }

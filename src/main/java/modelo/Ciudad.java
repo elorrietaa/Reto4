@@ -4,15 +4,19 @@ package modelo;
  * @author IN1DM3B_09
  *
  */
-public class Ciudades {
+public class Ciudad {
     private int codCiudad;
     private String nombreCiudad;
+    
+    public Ciudad() {
+	
+    }
     /**
      * Constructor ciudades
      * @param codCiudad
      * @param nombreCiudad
      */
-    public Ciudades(int codCiudad, String nombreCiudad) {
+    public Ciudad(int codCiudad, String nombreCiudad) {
 	this.codCiudad = codCiudad;
 	this.nombreCiudad = nombreCiudad;
     }
@@ -28,6 +32,7 @@ public class Ciudades {
     public void setNombreCiudad(String nombreCiudad) {
         this.nombreCiudad = nombreCiudad;
     }
+    
     
     
 }

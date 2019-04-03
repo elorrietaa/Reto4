@@ -11,7 +11,9 @@ public class AlojamientoTest {
     protected String nombre="HOTEL MELIA";
     protected int numHabitaciones=10;
     protected String ubicacion="BILBAO";
-    Alojamiento alojamientoPrueba= new Alojamiento(codAlojamiento, nombre, numHabitaciones, ubicacion);
+    protected float precioAlojamiento=(float) 12.2;
+    
+    Alojamiento alojamientoPrueba= new Alojamiento(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento);
     
     @Test
 	public void testConstuctor() {
@@ -29,7 +31,7 @@ public class AlojamientoTest {
    	public void testNombre() {
    		alojamientoPrueba.setNombre(nombre);
    		assertEquals(nombre,alojamientoPrueba.getNombre());
-   	}
+   	} 
     @Test
 	public void testNumHabitaciones() {
 		alojamientoPrueba.setNumHabitaciones(numHabitaciones);
@@ -40,4 +42,9 @@ public class AlojamientoTest {
    		alojamientoPrueba.setUbicacion(ubicacion);
    		assertEquals(ubicacion,alojamientoPrueba.getUbicacion());
    	}
+    @Test
+	public void testPrecioAlojamiento() {
+		alojamientoPrueba.setPrecioAlojamiento(precioAlojamiento);
+		assertEquals(precioAlojamiento,alojamientoPrueba.getPrecioAlojamiento(),0.2);
+	}
 } 

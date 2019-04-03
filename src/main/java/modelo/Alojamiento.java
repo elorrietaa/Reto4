@@ -10,19 +10,21 @@ public class Alojamiento {
     protected String nombre;
     protected int numHabitaciones;
     protected String ubicacion;
+    protected float precioAlojamiento;
  
     /**
-     * Constructor Alojamiento
+     * Constructor Alojamiento 
      * @param codAlojamiento =código del alojamiento
      * @param nombre = nombre del alojamiento
      * @param numHabitaciones =número de Habitaciones
      * @param ubicacion =Ubicación (Ciudad)
      */
-    public Alojamiento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion) {
+    public Alojamiento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento) {
 	this.codAlojamiento = codAlojamiento;
 	this.nombre = nombre;
 	this.numHabitaciones = numHabitaciones;
 	this.ubicacion = ubicacion;
+	this.precioAlojamiento = precioAlojamiento;
     }
 
     //get y set
@@ -57,4 +59,15 @@ public class Alojamiento {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+    public float getPrecioAlojamiento() {
+        return precioAlojamiento;
+    }
+
+    public void setPrecioAlojamiento(float precioAlojamiento) {
+        this.precioAlojamiento = precioAlojamiento;
+    }
+    
+    
+    
 }

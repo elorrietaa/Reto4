@@ -19,18 +19,37 @@ public class ConsultasModelo {
      */
     public ArrayList BuscarCiudad() {
 	ArrayList <Ciudad> listaCiudades = new ArrayList(); 
-	Ciudad ciudad =new Ciudad();
+	Ciudad ciudad;
 	PreparedStatement ps = null;
-	ResultSet rs=null;
-	String query=" SELECT * FROM `ciudad`";
+	ResultSet rs = null;
+	String query = " SELECT * FROM `ciudad`";
+	
 	try {
-	//    connection=conexion.conectar();
-	    ps=connection.prepareStatement(query);
-	    rs=ps.executeQuery();
-	    
-	}catch(SQLException e){
-	    e.printStackTrace();
-	}
+		// Abrimos una conexion
+		connection = conexion.conectar();
+				
+		// preparamos la consulta SQL a la base de datos
+		ps = connection.prepareStatement(query);
+				
+		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+		rs = ps.executeQuery();
+				
+		// crea objetos Linea con los resultados y los añade a un arrayList
+		while (rs.next()) {
+			ciudad = new Ciudad();
+			ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
+			ciudad.setNombreCiudad(rs.getString("Nombre"));
+			listaCiudades.add(ciudad);
+		}
+				
+		} 
+	catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			// cerramos la conexion
+			conexion.desconectar();
+		}
 	return listaCiudades;
     }
 }

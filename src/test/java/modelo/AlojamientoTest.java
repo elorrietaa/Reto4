@@ -24,7 +24,7 @@ public class AlojamientoTest {
 	}
     @Test
 	public void testCodAlojamiento() {
-		alojamientoPrueba.setCodAlojamiento(codAlojamiento);
+		alojamientoPrueba.setCodAlojamiento(codAlojamiento); 
 		assertEquals(codAlojamiento,alojamientoPrueba.getCodAlojamiento());
 	}
     @Test

@@ -12,13 +12,14 @@ public class Alojamiento {
     protected String ubicacion;
     protected float precioAlojamiento;
  
-    /**
-     * Constructor Alojamiento 
-     * @param codAlojamiento =código del alojamiento
-     * @param nombre = nombre del alojamiento
-     * @param numHabitaciones =número de Habitaciones
-     * @param ubicacion =Ubicación (Ciudad)
-     */
+   /**
+    * Constructor Alojamiento: contiene la información referente al alojamiento. 
+    * @param codAlojamiento
+    * @param nombre
+    * @param numHabitaciones
+    * @param ubicacion
+    * @param precioAlojamiento
+    */
     public Alojamiento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento) {
 	this.codAlojamiento = codAlojamiento;
 	this.nombre = nombre;

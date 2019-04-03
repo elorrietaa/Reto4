@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +12,8 @@ import java.util.ArrayList;
  *
  */
 public class ConsultasModelo {
-    
+    private Conexion conexion;
+    private Connection connection;
     /**
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
@@ -22,6 +24,9 @@ public class ConsultasModelo {
 	ResultSet rs=null;
 	String query=" SELECT * FROM `ciudad`";
 	try {
+	//    connection=conexion.conectar();
+	    ps=connection.prepareStatement(query);
+	    rs=ps.executeQuery();
 	    
 	}catch(SQLException e){
 	    e.printStackTrace();

@@ -11,7 +11,7 @@ public class PanBuscarHotel extends JPanel {
 	 * Create the panel.
 	 */
     	public JButton buttonContinuar;
-    	public JComboBox cBHotel, cBCiudad;
+    	public JComboBox cBHotel, cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha, label_5;
 	public PanBuscarHotel() {
 		setLayout(null);

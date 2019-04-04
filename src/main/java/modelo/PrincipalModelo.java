@@ -11,6 +11,6 @@ public class PrincipalModelo {
    Hotel hotel = new Hotel();
    Reserva reserva = new Reserva();
    
-   ConsultasModelo consultaModelo = new ConsultasModelo();
+   ConsultasModelo consultasModelo = new ConsultasModelo();
     
 }

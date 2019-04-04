@@ -38,7 +38,7 @@ public class ConsultasModelo {
 		while (rs.next()) {
 			ciudad = new Ciudad();
 			ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
-			ciudad.setNombreCiudad(rs.getString("Nombre"));
+			ciudad.setNombreCiudad(rs.getString("Nombre_ubicacion"));
 			listaCiudades.add(ciudad);
 		}
 				
@@ -52,13 +52,16 @@ public class ConsultasModelo {
 		}
 	return listaCiudades;
     }
-    /**
-    public ArrayList BuscarAlojamiento() {
-	ArrayList <Alojamiento> listaAlojamientos = new ArrayList(); 
-	Alojamiento alojamiento;
+   
+    public ArrayList BuscarHotel() {
+	ArrayList <Hotel> listaAlojamientos = new ArrayList(); 
+	Hotel hotel;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	String query = " SELECT * FROM `ciudad`";
+	
+	int codCiudadIntroducida=-1;
+	
+	String query = " SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_Ubicacion=" + codCiudadIntroducida;
 	
 	try {
 		// Abrimos una conexion
@@ -72,12 +75,14 @@ public class ConsultasModelo {
 				
 		// crea objetos Linea con los resultados y los añade a un arrayList
 		while (rs.next()) {
-			alojamiento = new Alojamiento();
-			alojamiento.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
-			alojamiento.setNombre(rs.getString("Nombre"));
-			alojamiento.setNumHabitaciones(rs.getInt("N_Habitaciones"));
-			alojamiento.setUbicacion(rs.getInt("N_Habitaciones"));
-			listaAlojamientos.add(alojamiento);
+			hotel = new Hotel();
+			hotel.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
+			hotel.setNombre(rs.getString("Nombre_alojamiento"));
+			hotel.setNumHabitaciones(rs.getInt("N_Habitaciones"));
+			hotel.setUbicacion(rs.getString("Nombre_ubicacion"));
+			hotel.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
+			hotel.setEstrellas(rs.getInt("N_estrellas"));
+			listaAlojamientos.add(hotel);
 		}
 				
 		} 
@@ -88,7 +93,7 @@ public class ConsultasModelo {
 			// cerramos la conexion
 			conexion.desconectar();
 		}
-	return listaCiudades;
+	return listaAlojamientos;
     }
-    */
+  
 }

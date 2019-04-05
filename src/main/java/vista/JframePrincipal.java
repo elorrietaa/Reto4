@@ -14,10 +14,10 @@ public class JframePrincipal extends JFrame{
 	public PanVueltas vueltas;
 
 	public JframePrincipal() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1024, 720);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1024, 720);
+		setLocationRelativeTo(null);
+		setResizable(false);
 		
 		inicializarPaneles();
 		anadirPaneles();

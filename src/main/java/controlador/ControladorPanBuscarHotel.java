@@ -45,23 +45,20 @@ public class ControladorPanBuscarHotel {
 	  vista.buscarHotel.cBCiudad.addItem(ciudad);
 	}
     }
-    /**
-	 * Esta funcion valida los datos en el Panel Busqueda Hotel
-	 * 
-	 * @return Retorna si los datos son correctos o no
-	 */
-	public void seleccionarDatos() {
-		// seleccionar ciudad
-		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
-		
-		// seleccionar hotel
-		this.alojamiento = (Alojamiento) vista.buscarHotel.cBHotel.getSelectedItem();
-		
-	}
+    public void mostrarAlojamiento() {
+  	for(int i=0; i<listaAlojamiento.size();i++) {
+  	  alojamiento=(Alojamiento) listaAlojamiento.get(i);
+  	  vista.buscarHotel.cBHotel.addItem(alojamiento);
+  	}
+    }
 	
-	public void actualizarFrame() {
-	    seleccionarDatos();
+	public void actualizarPanelBuscarHotel() {
+	    this.alojamiento = (Alojamiento) vista.buscarHotel.cBHotel.getSelectedItem();
 	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.alojamiento.getPrecioAlojamiento()));
+	    
+	    //muestra el siguiente panel: PanelDetallesReserva
+	    vista.detallesReserva.setVisible(true);
+	    vista.buscarHotel.setVisible(false);
 	}
 	
     /**
@@ -79,46 +76,22 @@ public class ControladorPanBuscarHotel {
 			switch (botonPulsado) {
 			
 			case "Continuar":				
-				
-				actualizarFrame();
-				
-				
-				
+			    	//pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
+				actualizarPanelBuscarHotel();
+			
 				break;
 			
 			}
 	
 		} else if (sourceObject instanceof JComboBox) {
 		   
-			// guarda la linea seleccionada
-			Linea linea = (Linea) vista.sel_billete.boxLineas.getSelectedItem();
-			
-			if (linea != null) {
-				
-				String codLinea = linea.getCodLinea();
-				
-				// limpia los JList de las paradas
-				vista.sel_billete.modeloOrigen.removeAllElements();
-				vista.sel_billete.modeloDestino.removeAllElements();
-				
-				// carga las paradas de la linea selecciona desde la BBDD
-				paradas = modelo.consultas.getParadasByLinea(codLinea); 			
-				
-				//muestra las paradas en los JList
-				for(int i=0; i<paradas.size(); i++) {
-	
-					// carga las paradas en el jlist origen
-					vista.sel_billete.modeloOrigen.addElement(paradas.get(i));
-					vista.sel_billete.listaOrigen.setModel(vista.sel_billete.modeloOrigen);
-					
-					// carga las paradas en el jlist destino
-					vista.sel_billete.modeloDestino.addElement(paradas.get(i));
-					vista.sel_billete.listaDestino.setModel(vista.sel_billete.modeloDestino);
-					
-				}
-				
-			}
-		  
+		    	// seleccionar ciudad
+			this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
+			this.listaAlojamiento=modelo.consultasModelo.BuscarHotelPorCodigoCiudad(ciudad.getCodCiudad());
+			// seleccionar hotel
+			mostrarAlojamiento();
+		
 		}
 		
 	}

@@ -18,6 +18,7 @@ public class PanBuscarHotel extends JPanel {
     	public JButton buttonContinuar;
     	public JComboBox<Object> cBHotel, cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha, label_5;
+    	
 	public PanBuscarHotel() {
 		setLayout(null);
 		setBounds(0,0,1024,720);
@@ -25,15 +26,6 @@ public class PanBuscarHotel extends JPanel {
 		buttonContinuar = new JButton("Continuar");
 		buttonContinuar.setBounds(708, 663, 89, 23);
 		add(buttonContinuar);
-		
-		cBHotel = new JComboBox();
-		cBHotel.setBounds(373, 388, 179, 20);
-		add(cBHotel);
-		
-		labelHotel = new JLabel("Seleccione Hotel :");
-		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelHotel.setBounds(101, 389, 125, 14);
-		add(labelHotel);
 		
 		labelCiudad = new JLabel("Selecciona la ciudad :");
 		labelCiudad.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -53,7 +45,20 @@ public class PanBuscarHotel extends JPanel {
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		label_5.setBounds(373, 582, 67, 14);
 		add(label_5);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(73, 363, 579, 62);
+		add(panel);
+		panel.setLayout(null);
+		
+		labelHotel = new JLabel("Seleccione Hotel :");
+		labelHotel.setBounds(36, 22, 125, 14);
+		panel.add(labelHotel);
+		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		cBHotel = new JComboBox();
+		cBHotel.setBounds(307, 21, 179, 20);
+		panel.add(cBHotel);
 
 	}
-
 }

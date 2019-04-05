@@ -3,10 +3,6 @@ package vista;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import java.awt.Font;
 import java.io.IOException;
 
 public class JframePrincipal extends JFrame{

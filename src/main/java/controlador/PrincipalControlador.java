@@ -22,5 +22,7 @@ public class PrincipalControlador {
     
     public void inicializarVista() {
 //	vista.setVisible(true);
+	
     }
+    
 }

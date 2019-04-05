@@ -11,7 +11,7 @@ import javax.swing.JButton;
  *
  */
 public class PanDetallesReserva extends JPanel {
-	public JTextField tFReserva, tFHotel, textField_2;
+	public JTextField tFReserva, tFHotel, textFieldPrecioReserva;
 	public JLabel lblSuReserva, lblNewLabel, lblNewLabel_1, lblPrecio;
 	public JButton btnContinuar, btnAtras;
 	/**
@@ -59,10 +59,10 @@ public class PanDetallesReserva extends JPanel {
 		lblPrecio.setBounds(159, 330, 63, 14);
 		add(lblPrecio);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(305, 329, 86, 20);
-		add(textField_2);
-		textField_2.setColumns(10);
+		textFieldPrecioReserva = new JTextField();
+		textFieldPrecioReserva.setBounds(305, 329, 86, 20);
+		add(textFieldPrecioReserva);
+		textFieldPrecioReserva.setColumns(10);
 
 	}
 }

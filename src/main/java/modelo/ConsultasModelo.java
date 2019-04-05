@@ -12,12 +12,12 @@ import java.util.ArrayList;
  *
  */
 public class ConsultasModelo {
-    private Conexion conexion;
-    private Connection connection;
+    private static Conexion conexion;
+    private static Connection connection;
     /**
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
-    public ArrayList BuscarCiudad() {
+    public static ArrayList BuscarCiudad() {
 	ArrayList <Ciudad> listaCiudades = new ArrayList(); 
 	Ciudad ciudad;
 	PreparedStatement ps = null;

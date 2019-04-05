@@ -10,11 +10,13 @@ import vista.JframePrincipal;
 public class PrincipalReto4 {
 
     public static void main(String[] args) {
-	// TODO Auto-generated method stub
 	
-	PrincipalModelo modelo = new PrincipalModelo();
-	JframePrincipal vista = new JframePrincipal();
-	PrincipalControlador controlador = new PrincipalControlador(modelo, vista);
+		PrincipalModelo modelo = new PrincipalModelo();
+		JframePrincipal vista = new JframePrincipal();
+		PrincipalControlador controlador = new PrincipalControlador(modelo, vista);
+		
+		controlador.inicializarVista();
+		controlador.inicializarListeners();
     } 
 
 }

@@ -12,6 +12,7 @@ import vista.JframePrincipal;
 public class PrincipalControlador {
     public PrincipalModelo modelo;
     public JframePrincipal vista;
+    public ControladorPanBuscarHotel controladorBuscarHotel;
     
     private ControladorPanBuscarHotel panelBuscarHotel;
     
@@ -28,4 +29,8 @@ public class PrincipalControlador {
     	vista.vueltas.setVisible(false);
     }
     
+    public void inicializarListeners() {
+    	this.controladorBuscarHotel = new ControladorPanBuscarHotel(vista, modelo);
+    	this.controladorBuscarHotel.addListeners();
+    }
 }

@@ -27,4 +27,5 @@ public class PrincipalControlador {
     	vista.pago.setVisible(false);
     	vista.vueltas.setVisible(false);
     }
+    
 }

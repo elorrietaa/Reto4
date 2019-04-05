@@ -26,10 +26,17 @@ public class Hotel extends Alojamiento{
     }
 
     //get y set 
+    /**
+     * Getter de Estrellas = es un atributo que tiene el objeto Hotel 
+     * @return estrellas
+     */
     public int getEstrellas() {
         return estrellas;
     }
-
+    /**
+     * Setter de Estrelas 
+     * @param estrellas
+     */
     public void setEstrellas(int estrellas) {
         this.estrellas = estrellas;
     }

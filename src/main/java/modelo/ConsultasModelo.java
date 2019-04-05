@@ -12,12 +12,12 @@ import java.util.ArrayList;
  *
  */
 public class ConsultasModelo {
-    private Conexion conexion;
-    private Connection connection;
+    private static Conexion conexion;
+    private static Connection connection;
     /**
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
-    public ArrayList BuscarCiudad() {
+    public static ArrayList BuscarCiudad() {
 	ArrayList <Ciudad> listaCiudades = new ArrayList(); 
 	Ciudad ciudad;
 	PreparedStatement ps = null;
@@ -53,13 +53,11 @@ public class ConsultasModelo {
 	return listaCiudades;
     }
    
-    public ArrayList BuscarHotel() {
+    public ArrayList BuscarHotelPorCodigoCiudad(int codCiudadIntroducida) {
 	ArrayList <Hotel> listaAlojamientos = new ArrayList(); 
 	Hotel hotel;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	
-	int codCiudadIntroducida=-1;
 	
 	String query = " SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_Ubicacion=" + codCiudadIntroducida;
 	

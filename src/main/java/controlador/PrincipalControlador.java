@@ -21,6 +21,10 @@ public class PrincipalControlador {
     }
     
     public void inicializarVista() {
-//	vista.setVisible(true);
+    	vista.setVisible(true);
+    	vista.buscarHotel.setVisible(true);
+    	vista.detallesReserva.setVisible(false);
+    	vista.pago.setVisible(false);
+    	vista.vueltas.setVisible(false);
     }
 }

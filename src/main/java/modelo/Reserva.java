@@ -27,24 +27,50 @@ public class Reserva {
 	this.precioReserva=precioReserva;
     }
     //get y set
+    /**
+     *Getter del CodReserva = es un atributo del objeto Reserva
+     *@return codReserva
+     */
+     
     public int getCodReserva() {
 	return codReserva;
     }
+    /**
+     * @param codReserva
+     * Setter del CodReserva 
+     */
     public void setCodReserva(int codReserva) {
 	this.codReserva = codReserva;
     }
+    /**
+     * Getter de Alojamiento = es un Obejeto de tipo Alojamiento y que es además un atributo del objeto Reserva
+     * @return alojamiento
+     */
     public Alojamiento getAlojamiento() {
 	return alojamiento;
     }
+    /**
+     * Setter de alojamiento
+     * @param alojamiento
+     */
     public void setAlojamiento(Alojamiento alojamiento) {
 	this.alojamiento = alojamiento;
     }
+    /**
+     * Getter del precioReserva = es un atributo del objeto Reserva y es el precio que tiene la Reserva 
+     * @return precioReserva
+     */
     public float getPrecioReserva() {
 	return precioReserva;
     }
+    /**
+     * Setter del precioReserva
+     * @param precioReserva
+     */
     public void setPrecioReserva(float precioReserva) {
 	this.precioReserva = precioReserva;
     } 
 }
+
 
 

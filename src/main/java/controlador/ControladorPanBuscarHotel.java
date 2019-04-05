@@ -17,16 +17,21 @@ import vista.*;
  *
  */
 public class ControladorPanBuscarHotel implements ActionListener{
-	    public JframePrincipal vista;
-	    public PrincipalModelo modelo;
-	    private ArrayList<Ciudad> listaCiudades;
-	    Ciudad ciudad;
-	    private ArrayList<Alojamiento> listaAlojamiento;
-	    Alojamiento alojamiento;
-	    
-	    public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
-		this.vista = vista;
-		this.modelo = modelo;
+	public JframePrincipal vista;
+	public PrincipalModelo modelo;
+	private ArrayList<Ciudad> listaCiudades;
+	private ArrayList<Alojamiento> listaAlojamiento;
+	Ciudad ciudad;
+	Alojamiento alojamiento;
+	
+	/**
+	 * Constructor del controlador del panel de bienvenida
+	* @param vista Instancia de la vista, para poder utilizarla
+	* @param modelo Instancia del modelo, para poder utilizarlo
+	*/
+	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
+	this.vista = vista;
+	this.modelo = modelo;
     }
     /**
 	 * Se crean los listeners del panel
@@ -87,7 +92,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	
 		} else if (sourceObject instanceof JComboBox) {
 		   
-		    	// seleccionar ciudad
+		    // seleccionar ciudad
 			this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
 			this.listaAlojamiento=modelo.consultasModelo.BuscarHotelPorCodigoCiudad(ciudad.getCodCiudad());

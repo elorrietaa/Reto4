@@ -16,40 +16,42 @@ import vista.*;
  * @author IN1DM3B_09
  *
  */
-public class ControladorPanBuscarHotel {
-    public JframePrincipal vista;
-    public PrincipalModelo modelo;
-    private ArrayList<Ciudad> listaCiudades;
-    Ciudad ciudad;
-    private ArrayList<Alojamiento> listaAlojamiento;
-    Alojamiento alojamiento;
-    
-    public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
-	this.vista = vista;
-	this.modelo = modelo;
+public class ControladorPanBuscarHotel implements ActionListener{
+	    public JframePrincipal vista;
+	    public PrincipalModelo modelo;
+	    private ArrayList<Ciudad> listaCiudades;
+	    Ciudad ciudad;
+	    private ArrayList<Alojamiento> listaAlojamiento;
+	    Alojamiento alojamiento;
+	    
+	    public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
+		this.vista = vista;
+		this.modelo = modelo;
     }
     /**
 	 * Se crean los listeners del panel
 	 */
     public void addListeners() {
-	vista.buscarHotel.cBCiudad.addActionListener((ActionListener) this);
+    	vista.buscarHotel.cBCiudad.addActionListener(this);
+    	vista.buscarHotel.cBHotel.addActionListener(this);
+    	vista.buscarHotel.buttonContinuar.addActionListener(this);
     }
     /**
      * Método mostrarCiudad, muestra las ciudades que se han b
      * @param listaCiudades
      */
     public void mostrarCiudad() {
-	ArrayList listaCiudades=ConsultasModelo.BuscarCiudad();
-	for(int i=0; i<listaCiudades.size();i++) {
-	    ciudad=(Ciudad) listaCiudades.get(i);
-	  vista.buscarHotel.cBCiudad.addItem(ciudad);
-	}
+		ArrayList listaCiudades=ConsultasModelo.BuscarCiudad();
+		for(int i=0; i<listaCiudades.size();i++) {
+		    ciudad=(Ciudad) listaCiudades.get(i);
+		  vista.buscarHotel.cBCiudad.addItem(ciudad);
+		}
     }
     public void mostrarAlojamiento() {
-  	for(int i=0; i<listaAlojamiento.size();i++) {
-  	  alojamiento=(Alojamiento) listaAlojamiento.get(i);
-  	  vista.buscarHotel.cBHotel.addItem(alojamiento);
-  	}
+	  	for(int i=0; i<listaAlojamiento.size();i++) {
+	  	  alojamiento=(Alojamiento) listaAlojamiento.get(i);
+	  	  vista.buscarHotel.cBHotel.addItem(alojamiento);
+	  	}
     }
 	
 	public void actualizarPanelBuscarHotel() {

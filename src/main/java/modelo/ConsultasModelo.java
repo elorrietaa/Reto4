@@ -23,7 +23,7 @@ public class ConsultasModelo {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	String query = " SELECT * FROM `ciudad`";
-	
+	System.out.println(query);
 	try {
 		// Abrimos una conexion
 		connection = conexion.conectar();
@@ -33,23 +33,23 @@ public class ConsultasModelo {
 				
 		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 		rs = ps.executeQuery();
-				
+		
 		// crea objetos Linea con los resultados y los añade a un arrayList
 		while (rs.next()) {
 			ciudad = new Ciudad();
 			ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
 			ciudad.setNombreCiudad(rs.getString("Nombre_ubicacion"));
+			
 			listaCiudades.add(ciudad);
 		}
-				
-		} 
+	}
 	catch (SQLException e) {
 			e.printStackTrace();
-		} 
-		finally {
-			// cerramos la conexion
-			conexion.desconectar();
-		}
+	} 
+	finally {
+		// cerramos la conexion
+		//conexion.desconectar();
+	}
 	return listaCiudades;
     }
    

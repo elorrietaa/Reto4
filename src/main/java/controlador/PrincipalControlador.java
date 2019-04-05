@@ -32,6 +32,7 @@ public class PrincipalControlador {
     public void inicializarListeners() {
     	this.controladorBuscarHotel = new ControladorPanBuscarHotel(vista, modelo);
     	this.controladorBuscarHotel.addListeners();
+    	this.controladorBuscarHotel.mostrarCiudad();
     }
 }
 

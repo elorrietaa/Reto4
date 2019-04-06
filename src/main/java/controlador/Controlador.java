@@ -1,6 +1,6 @@
 package controlador;
 
-import modelo.PrincipalModelo;
+import modelo.Modelo;
 import vista.JframePrincipal;
 
 /**
@@ -9,8 +9,8 @@ import vista.JframePrincipal;
  * @author alba
  *
  */
-public class PrincipalControlador {
-    public PrincipalModelo modelo;
+public class Controlador {
+    public Modelo modelo;
     public JframePrincipal vista;
     
     private ControladorPanBuscarHotel controladorPanBuscarHotel;
@@ -22,9 +22,9 @@ public class PrincipalControlador {
      * @param modelo
      * @param vista
      */
-    public PrincipalControlador(PrincipalModelo modelo, JframePrincipal vista) {
-	this.modelo = modelo;
-	this.vista = vista;
+    public Controlador(Modelo modelo, JframePrincipal vista) {
+    	this.modelo = modelo;
+    	this.vista = vista;
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz

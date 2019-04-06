@@ -11,14 +11,32 @@ import java.util.ArrayList;
  * @author IN1DM3B_09
  *
  */
-public class ConsultasModelo {
+public class Consultas {
     private Conexion conexion;
     private  Connection connection;
+    
+    /**
+	 * Contructor de la clase consultas
+	 * 
+	 * @param conexion Clase encargada de la conexion a la base de datos
+	 */
+    public Consultas(Conexion conexion) {
+		this.conexion = conexion;
+		this.connection = null;
+	} 
+    
+    /****************************************************************************************************************
+	 * 
+	 * Metodos para cargar datos de la BBDD (Consultas Select)
+	 * 
+	 ****************************************************************************************************************/
+	
+	/**
     /**
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
-    public ArrayList BuscarCiudad() {
-	ArrayList <Ciudad> listaCiudades = new ArrayList(); 
+    public ArrayList <Ciudad> BuscarCiudad() {
+	ArrayList <Ciudad> listaCiudades = new ArrayList <Ciudad>(); 
 	Ciudad ciudad;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
@@ -53,8 +71,8 @@ public class ConsultasModelo {
 	return listaCiudades;
     }
    
-    public ArrayList BuscarHotelPorCodigoCiudad(int codCiudadIntroducida) {
-	ArrayList <Hotel> listaAlojamientos = new ArrayList(); 
+    public ArrayList <Hotel> BuscarHotelPorCodigoCiudad(int codCiudadIntroducida) {
+	ArrayList <Hotel> listaAlojamientos = new ArrayList <Hotel>(); 
 	Hotel hotel;
 	PreparedStatement ps = null;
 	ResultSet rs = null;

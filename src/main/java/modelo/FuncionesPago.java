@@ -4,13 +4,13 @@ package modelo;
  */
 public class FuncionesPago {
 	
-	PrincipalModelo modelo;
+	Modelo modelo;
 	/**
 	 * Constructor de la clase FuncionesPago
 	 * 
 	 * @param modelo Instancia de la clase modelo para poder utilizarlo
 	 */
-	public FuncionesPago (PrincipalModelo modelo) {
+	public FuncionesPago (Modelo modelo) {
 		this.modelo = modelo;
 	} 
 	

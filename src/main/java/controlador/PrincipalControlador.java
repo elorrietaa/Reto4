@@ -43,7 +43,7 @@ public class PrincipalControlador {
     	// añadimos listeners a los botones del panel 'controladorPanBuscarHotel'
     	this.controladorPanBuscarHotel = new ControladorPanBuscarHotel(vista, modelo);
     	this.controladorPanBuscarHotel.addListeners();
-    	this.controladorPanBuscarHotel.mostrarCiudad();
+    	//this.controladorPanBuscarHotel.mostrarCiudad();
     	
     	// añadimos listeners a los botones del panel 'controladorPanDetallesReserva'
     	// añadimos listeners a los botones del panel 'controladorPanPago'

@@ -19,9 +19,11 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	public JframePrincipal vista;
 	public PrincipalModelo modelo;
 	private ArrayList<Ciudad> listaCiudades;
-	private ArrayList<Hotel> listaAlojamiento;
+	private ArrayList<Hotel> listaHoteles;
+	private ArrayList<Habitacion> listaHabitaciones;
 	Ciudad ciudad;
-	Alojamiento alojamiento;
+	Hotel hotel;
+	Habitacion habitacion;
 	ConsultasModelo consultas;
 	
 	/**
@@ -52,16 +54,16 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		  vista.buscarHotel.cBCiudad.addItem(ciudad);
 		}
     }
-    public void mostrarAlojamiento() {
-	  	for(int i=0; i<listaAlojamiento.size();i++) {
-	  	  alojamiento=listaAlojamiento.get(i);
-	  	  vista.buscarHotel.cBHotel.addItem(alojamiento);
+    public void mostrarHoteles() {
+	  	for(int i=0; i<listaHoteles.size();i++) {
+	  	  hotel=listaHoteles.get(i);
+	  	  vista.buscarHotel.cBHotel.addItem(hotel);
 	  	}
     }
 	
 	public void actualizarPanelBuscarHotel() {
-	    this.alojamiento = (Alojamiento) vista.buscarHotel.cBHotel.getSelectedItem();
-	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.alojamiento.getPrecioAlojamiento()));
+	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
+	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
 	    
 	    //muestra el siguiente panel: PanelDetallesReserva
 	    vista.detallesReserva.setVisible(true);
@@ -95,9 +97,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		    // seleccionar ciudad
 			this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
-			this.listaAlojamiento =consultas.BuscarHotelPorCodigoCiudad(this.ciudad);
+			this.listaHoteles =consultas.BuscarHotelPorCodigoCiudad(this.ciudad);
 			// seleccionar hotel
-			mostrarAlojamiento();
+			mostrarHoteles();
 		
 		}
 		
@@ -108,4 +110,11 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	public void setListaCiudades(ArrayList<Ciudad> listaCiudades) {
 		this.listaCiudades = listaCiudades;
 	}
+	public ArrayList<Habitacion> getListaHabitaciones() {
+		return listaHabitaciones;
+	}
+	public void setListaHabitaciones(ArrayList<Habitacion> listaHabitaciones) {
+		this.listaHabitaciones = listaHabitaciones;
+	}
+	
 }

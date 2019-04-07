@@ -15,42 +15,62 @@ public class ConsultasModelo {
     private Conexion conexion;
     private  Connection connection;
     /**
+	 * Contructor de la clase consultas
+	 * 
+	 * @param conexion Clase encargada de la conexion a la base de datos
+	 */
+	public ConsultasModelo(Conexion conexion) {
+		this.conexion = conexion;
+		this.connection = null;
+	} 
+	
+    /**
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
     public ArrayList <Ciudad> BuscarCiudad() {
-	ArrayList <Ciudad> listaCiudades = new ArrayList <Ciudad>(); 
-	Ciudad ciudad;
-	PreparedStatement ps = null;
-	ResultSet rs = null;
-	String query = " SELECT * FROM `ciudad`";
-	System.out.println(query);
-	try {
-		// Abrimos una conexion
-		connection = conexion.conectar();
-				
-		// preparamos la consulta SQL a la base de datos
-		ps = connection.prepareStatement(query);
-				
-		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
-		rs = ps.executeQuery();
-		
-		// crea objetos Linea con los resultados y los añade a un arrayList
-		while (rs.next()) {
-			ciudad = new Ciudad();
-			ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
-			ciudad.setNombreCiudad(rs.getString("Nombre_ubicacion"));
-			
-			listaCiudades.add(ciudad);
-		}
-	}
-	catch (SQLException e) {
-			e.printStackTrace();
-	} 
-	finally {
-		// cerramos la conexion
-		//conexion.desconectar();
-	}
-	return listaCiudades;
+    	ArrayList <Ciudad> listaCiudades = new ArrayList <Ciudad>(); 
+    	Ciudad ciudad;
+    	// PARA PRUEBAS:
+    			ciudad = new Ciudad();
+    			ciudad.setCodCiudad(1);
+    			ciudad.setNombreCiudad("BILBAO");
+    			listaCiudades.add(ciudad);
+    			//PARA PRUEBAS FIN
+    	/*
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	String query = " SELECT * FROM `ciudad`";
+    	
+    	System.out.println(query);
+    	try {
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    				
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    		
+    		// crea objetos Linea con los resultados y los añade a un arrayList
+    		while (rs.next()) {
+    			ciudad = new Ciudad();
+    			ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
+    			ciudad.setNombreCiudad(rs.getString("Nombre_ubicacion"));
+    			
+    			listaCiudades.add(ciudad);
+    		}
+    	}
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    	} 
+    	finally {
+    		// cerramos la conexion
+    		//conexion.desconectar();
+    	}
+    	  */
+    	return listaCiudades; 
+       
     }
    
     public ArrayList <Hotel> BuscarHotelPorCodigoCiudad(Ciudad ciudad) {
@@ -94,4 +114,45 @@ public class ConsultasModelo {
 	return listaAlojamientos;
     }
   
+
+    public ArrayList <Habitacion> buscarHabitacionPorCodigoHotel(Hotel hotel) {
+    	ArrayList <Habitacion> listaHabitacion = new ArrayList <Habitacion>(); 
+    	Habitacion habitacion;
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	String query = " SELECT * FROM `habitaciones`, `alojamientos` where alojamientos.Cod_alojamiento=" + hotel.codAlojamiento;
+    	
+    	try {
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    				
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    				
+    		// crea objetos Linea con los resultados y los añade a un arrayList
+    		while (rs.next()) {
+    			habitacion = new Habitacion(); 
+    			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
+    			habitacion.setAlojamiento(hotel);
+    			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
+    			habitacion.setTamanio(rs.getFloat("Tamanio"));
+    			habitacion.setNumCamas(rs.getInt("N_Camas"));
+    			habitacion.setEstadoHabitacion(rs.getString("Estado_habitacion"));
+    			listaHabitacion.add(habitacion);
+    		}
+    				
+    		} 
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    		} 
+    		finally {
+    			// cerramos la conexion
+    			conexion.desconectar();
+    		}
+    	return listaHabitacion;
+        }
 }

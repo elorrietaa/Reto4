@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class PagoTest {
 
-	Modelo modelo = new Modelo();
+	PrincipalModelo modelo = new PrincipalModelo();
 	FuncionesPago funcionesPago = new FuncionesPago(modelo);
 	
 	@Test

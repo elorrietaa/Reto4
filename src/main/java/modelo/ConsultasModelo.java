@@ -11,27 +11,9 @@ import java.util.ArrayList;
  * @author IN1DM3B_09
  *
  */
-public class Consultas {
+public class ConsultasModelo {
     private Conexion conexion;
     private  Connection connection;
-    
-    /**
-	 * Contructor de la clase consultas
-	 * 
-	 * @param conexion Clase encargada de la conexion a la base de datos
-	 */
-    public Consultas(Conexion conexion) {
-		this.conexion = conexion;
-		this.connection = null;
-	} 
-    
-    /****************************************************************************************************************
-	 * 
-	 * Metodos para cargar datos de la BBDD (Consultas Select)
-	 * 
-	 ****************************************************************************************************************/
-	
-	/**
     /**
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
@@ -71,13 +53,13 @@ public class Consultas {
 	return listaCiudades;
     }
    
-    public ArrayList <Hotel> BuscarHotelPorCodigoCiudad(int codCiudadIntroducida) {
+    public ArrayList <Hotel> BuscarHotelPorCodigoCiudad(Ciudad ciudad) {
 	ArrayList <Hotel> listaAlojamientos = new ArrayList <Hotel>(); 
 	Hotel hotel;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
-	String query = " SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_Ubicacion=" + codCiudadIntroducida;
+	String query = " SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_Ubicacion=" + ciudad.getCodCiudad();
 	
 	try {
 		// Abrimos una conexion

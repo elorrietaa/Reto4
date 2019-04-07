@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 import modelo.*;
 import vista.*;
@@ -18,19 +17,19 @@ import vista.*;
  */
 public class ControladorPanBuscarHotel implements ActionListener{
 	public JframePrincipal vista;
-	public Modelo modelo;
+	public PrincipalModelo modelo;
 	private ArrayList<Ciudad> listaCiudades;
 	private ArrayList<Hotel> listaAlojamiento;
 	Ciudad ciudad;
 	Alojamiento alojamiento;
-	Consultas consultas;
+	ConsultasModelo consultas;
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
 	* @param vista Instancia de la vista, para poder utilizarla
 	* @param modelo Instancia del modelo, para poder utilizarlo
 	*/
-	public ControladorPanBuscarHotel(JframePrincipal vista, Modelo modelo) {
+	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
 	this.vista = vista;
 	this.modelo = modelo;
     }
@@ -42,21 +41,20 @@ public class ControladorPanBuscarHotel implements ActionListener{
     	vista.buscarHotel.cBHotel.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
     }
-    /*
     /**
      * Método mostrarCiudad, muestra las ciudades que se han b
      * @param listaCiudades
      */
     public void mostrarCiudad() {
-		ArrayList <Ciudad> listaCiudades=consultas.BuscarCiudad();
+		ArrayList <Ciudad>listaCiudades=consultas.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
-		    ciudad=(Ciudad) listaCiudades.get(i);
+		    ciudad=listaCiudades.get(i);
 		  vista.buscarHotel.cBCiudad.addItem(ciudad);
 		}
     }
     public void mostrarAlojamiento() {
 	  	for(int i=0; i<listaAlojamiento.size();i++) {
-	  	  alojamiento=(Alojamiento) listaAlojamiento.get(i);
+	  	  alojamiento=listaAlojamiento.get(i);
 	  	  vista.buscarHotel.cBHotel.addItem(alojamiento);
 	  	}
     }
@@ -69,7 +67,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	    vista.detallesReserva.setVisible(true);
 	    vista.buscarHotel.setVisible(false);
 	}
-
+	
     /**
 	 * Accion de los distintos listeners
 	 */
@@ -97,11 +95,17 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		    // seleccionar ciudad
 			this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
-			this.listaAlojamiento=consultas.BuscarHotelPorCodigoCiudad(ciudad.getCodCiudad());
+			this.listaAlojamiento =consultas.BuscarHotelPorCodigoCiudad(this.ciudad);
 			// seleccionar hotel
 			mostrarAlojamiento();
 		
 		}
 		
+	}
+	public ArrayList<Ciudad> getListaCiudades() {
+		return listaCiudades;
+	}
+	public void setListaCiudades(ArrayList<Ciudad> listaCiudades) {
+		this.listaCiudades = listaCiudades;
 	}
 }

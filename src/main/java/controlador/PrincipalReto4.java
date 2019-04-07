@@ -1,6 +1,6 @@
 package controlador;
 
-import modelo.Modelo;
+import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 /**
  * Clase PrincipalReto4 = clase principal a partir de la que arranca todo el programa.
@@ -10,10 +10,10 @@ import vista.JframePrincipal;
 public class PrincipalReto4 {
 
     public static void main(String[] args) {
-    	
-    	JframePrincipal vista = new JframePrincipal();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(modelo, vista);
+	
+		PrincipalModelo modelo = new PrincipalModelo();
+		JframePrincipal vista = new JframePrincipal();
+		PrincipalControlador controlador = new PrincipalControlador(modelo, vista);
 		
 		controlador.inicializarVista();
 		controlador.inicializarListeners();

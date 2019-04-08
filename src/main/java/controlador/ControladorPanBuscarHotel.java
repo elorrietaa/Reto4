@@ -76,6 +76,15 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	  	}
     }
     
+    public void mostrarHotelesConJList(int codCiudadSeleccionada) {
+    	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
+    	vista.buscarHotel.listHoteles.removeAll();
+	  	for(int i=0; i<listaHoteles.size();i++) {
+	  		vista.buscarHotel.modeloOrigen.addElement(listaHoteles.get(i));
+			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloOrigen);
+	  	}
+    }
+    
    /**
     * Método mostrarHabitacion: muestra las habitacioness que se han encontrado mediante el método buscarHabitacionPorCodigoHotel en base al codHotelSeleccionado por el usuario
     * @param codHabitacionSeleccionada
@@ -135,6 +144,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado y muestra los hoteles
 			mostrarHoteles(codCiudadSeleccionada);
+			mostrarHotelesConJList(codCiudadSeleccionada);
 			}else if (hotel != null) {
 					// guarda el hotel seleccionado
 					this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();

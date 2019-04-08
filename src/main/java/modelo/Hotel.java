@@ -41,6 +41,8 @@ public class Hotel extends Alojamiento{
         this.estrellas = estrellas;
     }
 
-    
+    public String toString() {
+    	return nombre;
+    }
    
 }

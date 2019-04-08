@@ -63,6 +63,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
     }
     
     public void mostrarHoteles() {
+    	vista.buscarHotel.cBHotel.removeAllItems();
 	  	for(int i=0; i<listaHoteles.size();i++) {
 	  	  hotel = listaHoteles.get(i);
 	  	  vista.buscarHotel.cBHotel.addItem(hotel);

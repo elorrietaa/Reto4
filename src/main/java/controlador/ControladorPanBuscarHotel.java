@@ -47,10 +47,11 @@ public class ControladorPanBuscarHotel implements ActionListener{
     public void addListeners() {
     	vista.buscarHotel.cBCiudad.addActionListener(this);
     	vista.buscarHotel.cBHotel.addActionListener(this);
+    	vista.buscarHotel.cBHabitacion.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
     }
     /**
-     * Método mostrarCiudad, muestra las ciudades que se han b
+     * Método mostrarCiudad, muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
      * @param listaCiudades
      */
     public void mostrarCiudad() {
@@ -62,6 +63,10 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		}
     }
     
+    /**
+     * Método mostrarHoteles: muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
+     * @param codCiudadSeleccionada
+     */
     public void mostrarHoteles(int codCiudadSeleccionada) {
     	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
     	vista.buscarHotel.cBHotel.removeAllItems();
@@ -70,7 +75,19 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	  	  vista.buscarHotel.cBHotel.addItem(hotel);
 	  	}
     }
-   
+    
+   /**
+    * Método mostrarHabitacion: muestra las habitacioness que se han encontrado mediante el método buscarHabitacionPorCodigoHotel en base al codHotelSeleccionado por el usuario
+    * @param codHabitacionSeleccionada
+    */
+    public void mostrarHabitaciones(int codHotelSeleccionado) {
+    	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado) ;
+    	vista.buscarHotel.cBCiudad.removeAllItems();
+	  	for(int i=0; i<listaHabitaciones.size();i++) {
+	  	  habitacion = listaHabitaciones.get(i);
+	  	  vista.buscarHotel.cBHotel.addItem(habitacion);
+	  	}
+    }
    
     
 	public void actualizarPanelBuscarHotel() {
@@ -118,10 +135,16 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado y muestra los hoteles
 			mostrarHoteles(codCiudadSeleccionada);
-			
+			}else if (hotel != null) {
+					// guarda el hotel seleccionado
+					this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
+					int codHotelSeleccionado = hotel.getCodAlojamiento();
+					System.out.println(codHotelSeleccionado);
+					vista.buscarHotel.cBCiudad.removeAll();
+					mostrarHabitaciones(codHotelSeleccionado);
+		
 			}
 		}
-		
 	}
 	public ArrayList<Ciudad> getListaCiudades() {
 		return listaCiudades;

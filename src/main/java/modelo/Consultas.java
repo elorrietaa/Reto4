@@ -45,7 +45,7 @@ public class Consultas {
     	*/
     	PreparedStatement ps = null;
     	ResultSet rs = null;
-    	String query = " SELECT * FROM `ciudad`";
+    	String query = "SELECT * FROM `ciudad`";
     	
     	try {
     		// Abrimos una conexion
@@ -84,7 +84,7 @@ public class Consultas {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = " SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_Ubicacion=" + ciudad.getCodCiudad();
+		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_ubicacion=?";
 		
 		try {
 			// Abrimos una conexion
@@ -92,6 +92,7 @@ public class Consultas {
 					
 			// preparamos la consulta SQL a la base de datos
 			ps = connection.prepareStatement(query);
+			ps.setInt(1, ciudad.getCodCiudad());
 					
 			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 			rs = ps.executeQuery();
@@ -126,7 +127,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = " SELECT * FROM `habitaciones`, `alojamientos` where alojamientos.Cod_alojamiento=" + hotel.codAlojamiento;
+    	String query = "SELECT * FROM `habitaciones`, `alojamientos` where alojamientos.Cod_alojamiento=" + hotel.codAlojamiento;
     	
     	try {
     		// Abrimos una conexion

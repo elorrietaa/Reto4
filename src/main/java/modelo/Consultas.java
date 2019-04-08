@@ -4,53 +4,56 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import modelo.Conexion;
 
 /**
  * FuncionesModelo: contiene los métodos del modelo
  * @author IN1DM3B_09
  *
  */
-public class ConsultasModelo {
+public class Consultas {
     private static Conexion conexion;
     private static Connection connection;
     /**
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
     public static ArrayList BuscarCiudad() {
-	ArrayList <Ciudad> listaCiudades = new ArrayList(); 
-	Ciudad ciudad;
-	PreparedStatement ps = null;
-	ResultSet rs = null;
-	String query = " SELECT * FROM `ciudad`";
-	System.out.println(query);
-	try {
-		// Abrimos una conexion
-		connection = conexion.conectar();
-				
-		// preparamos la consulta SQL a la base de datos
-		ps = connection.prepareStatement(query);
-				
-		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
-		rs = ps.executeQuery();
+	    conexion = new Conexion();
+		ArrayList <Ciudad> listaCiudades = new ArrayList();
+		Ciudad ciudad;
+		//PreparedStatement ps = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM `ciudad`";
 		
-		// crea objetos Linea con los resultados y los añade a un arrayList
-		while (rs.next()) {
-			ciudad = new Ciudad();
-			ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
-			ciudad.setNombreCiudad(rs.getString("Nombre_ubicacion"));
+		try {
+			// Abrimos una conexion
+			connection = conexion.conectar();
 			
-			listaCiudades.add(ciudad);
+			// preparamos la consulta SQL a la base de datos
+			Statement statement = connection.createStatement();
+					
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			rs = statement.executeQuery(query);
+			
+			// crea objetos Linea con los resultados y los añade a un arrayList
+			while (rs.next()) {
+				ciudad = new Ciudad();
+				ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
+				ciudad.setNombreCiudad(rs.getString("Nombre_ubicacion"));
+				
+				listaCiudades.add(ciudad);
+			}
 		}
-	}
-	catch (SQLException e) {
-			e.printStackTrace();
-	} 
-	finally {
-		// cerramos la conexion
-		//conexion.desconectar();
-	}
-	return listaCiudades;
+		catch (SQLException e) {
+				e.printStackTrace();
+		} 
+		finally {
+			// cerramos la conexion
+			conexion.desconectar();
+		}
+			return listaCiudades;
     }
    
     public ArrayList BuscarHotelPorCodigoCiudad(int codCiudadIntroducida) {
@@ -59,7 +62,7 @@ public class ConsultasModelo {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
-	String query = " SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_Ubicacion=" + codCiudadIntroducida;
+	String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and Cod_Ubicacion=" + codCiudadIntroducida;
 	
 	try {
 		// Abrimos una conexion

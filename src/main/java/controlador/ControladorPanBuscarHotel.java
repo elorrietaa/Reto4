@@ -117,7 +117,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	 
 	    
 	}
-	
+	/**
+	 * generarReserva se rellena el objeto reserva con los datos seleccionados
+	 */
 	public void generarReserva() {
 		int codReservaQueSeCogeriaDeBBDD = 50;
 		int codReserva = codReservaQueSeCogeriaDeBBDD +1;
@@ -127,6 +129,15 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	}
 	
 	
+	public void mostrarDatosReserva() {
+		
+		//muestra  el precio de la reserva
+	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
+	    
+	  //Pruebas
+	    System.out.println("Codigo reserva:" + reserva.getCodReserva());
+	  
+	}
 	
 	public void actualizarSiguientePanelDetalles() {
 		//muestra en la siguiente pantalla el precio de la reserva
@@ -136,17 +147,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	    vista.detallesReserva.setVisible(true);
 	    vista.buscarHotel.setVisible(false);
 	}
-	public void mostrarDatosReserva() {
-		
-		//muestra  el precio de la reserva
-	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
-	    
-	  //Pruebas
-	    System.out.println("Codigo reserva:" + reserva.getCodReserva());
-	    
-	    
 	
-	}
     /**
 	 * Accion de los distintos listeners
 	 */

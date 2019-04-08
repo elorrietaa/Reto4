@@ -4,7 +4,10 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
 /**
  * Clase PanDetallesReserva = contiene los elementos necesarios para formar el Panel en el que se muestran los detalles de la reserva
  * @author alba
@@ -18,6 +21,7 @@ public class PanDetallesReserva extends JPanel {
 	public JTextField tFReserva, tFHotel, tFPrecioReserva;
 	public JLabel lblSuReserva, lblNewLabel, lblNewLabel_1, lblPrecio;
 	public JButton btnContinuar, btnAtras;
+	public JList<String> listDetalleReserva;
 	/**
 	 * Create the panel.
 	 */
@@ -36,7 +40,7 @@ public class PanDetallesReserva extends JPanel {
 		add(lblNewLabel);
 		
 		tFReserva = new JTextField();
-		tFReserva.setBounds(305, 148, 224, 80);
+		tFReserva.setBounds(305, 129, 224, 80);
 		add(tFReserva);
 		tFReserva.setColumns(10);
 		
@@ -67,6 +71,7 @@ public class PanDetallesReserva extends JPanel {
 		tFPrecioReserva.setBounds(305, 329, 86, 20);
 		add(tFPrecioReserva);
 		tFPrecioReserva.setColumns(10);
+		
 
 	}
 }

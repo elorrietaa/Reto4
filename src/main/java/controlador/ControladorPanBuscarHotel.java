@@ -27,6 +27,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	private ArrayList<Ciudad> listaCiudades;
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
+	private ArrayList<Object> listaDetallesReserva;
 	Ciudad ciudad;
 	Hotel hotel;
 	Habitacion habitacion;
@@ -125,12 +126,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		this.reserva = new Reserva(codReserva, hotel, precioReserva);
 	}
 	
-	public void mostrarDatosReserva() {
-		// 
-		//vista.detallesReserva.tFReserva.setText(this.reserva.toString());
-		//muestra  el precio de la reserva
-	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
-	}
+	
 	
 	public void actualizarSiguientePanelDetalles() {
 		//muestra en la siguiente pantalla el precio de la reserva
@@ -140,7 +136,17 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	    vista.detallesReserva.setVisible(true);
 	    vista.buscarHotel.setVisible(false);
 	}
+	public void mostrarDatosReserva() {
+		
+		//muestra  el precio de la reserva
+	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
+	    
+	  //Pruebas
+	    System.out.println("Codigo reserva:" + reserva.getCodReserva());
+	    
+	    
 	
+	}
     /**
 	 * Accion de los distintos listeners
 	 */
@@ -164,6 +170,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				guardarDatosSeleccionadosCiudadYHotel();
 				
 				//Generar reserva y guardarla en el objeto reserva
+				generarReserva();
 				
 				//(3º)actualiza el siguiente panel:
 				actualizarSiguientePanelDetalles();

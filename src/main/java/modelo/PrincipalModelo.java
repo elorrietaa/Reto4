@@ -1,6 +1,6 @@
 package modelo;
 
-import controlador.Conexion;
+import bbdd.Conexion;
 
 /**
  * Clase PrincipalModelo:

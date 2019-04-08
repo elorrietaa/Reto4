@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
-import modelo.*;
+import bbdd.*;
+import modelo.Ciudad;
+import modelo.Consultas;
+import modelo.Habitacion;
+import modelo.Hotel;
+import modelo.PrincipalModelo;
 import vista.*;
 
 /**
@@ -31,9 +36,10 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	* @param vista Instancia de la vista, para poder utilizarla
 	* @param modelo Instancia del modelo, para poder utilizarlo
 	*/
-	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
-	this.vista = vista;
-	this.modelo = modelo;
+	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion) {
+		this.vista = vista;
+		this.modelo = modelo;
+		this.consultas = new Consultas(conexion);
     }
     /**
 	 * Se crean los listeners del panel
@@ -48,17 +54,17 @@ public class ControladorPanBuscarHotel implements ActionListener{
      * @param listaCiudades
      */
     public void mostrarCiudad() {
-		ArrayList <Ciudad>listaCiudades=consultas.BuscarCiudad();
+		ArrayList<Ciudad> listaCiudades;
+		listaCiudades = consultas.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
 		    ciudad=listaCiudades.get(i);
-		  vista.buscarHotel.cBCiudad.addItem(ciudad);
-
+		    vista.buscarHotel.cBCiudad.addItem(ciudad);
 		}
     }
     
     public void mostrarHoteles() {
 	  	for(int i=0; i<listaHoteles.size();i++) {
-	  	  hotel=listaHoteles.get(i);
+	  	  hotel = listaHoteles.get(i);
 	  	  vista.buscarHotel.cBHotel.addItem(hotel);
 	  	}
     }

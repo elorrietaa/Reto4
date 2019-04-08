@@ -51,6 +51,8 @@ public class Ciudad {
         this.nombreCiudad = nombreCiudad;
     }
     
-    
+    public String toString() {
+    	return this.nombreCiudad;
+    }
     
 }

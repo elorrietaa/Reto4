@@ -1,5 +1,6 @@
 package controlador;
 
+import bbdd.Conexion;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
@@ -12,6 +13,7 @@ import vista.JframePrincipal;
 public class PrincipalControlador {
     public PrincipalModelo modelo;
     public JframePrincipal vista;
+    public Conexion conexion;
     
     private ControladorPanBuscarHotel controladorPanBuscarHotel;
     //private ControladorPanDetallesReserva controladorPanDetallesReserva;
@@ -23,8 +25,9 @@ public class PrincipalControlador {
      * @param vista
      */
     public PrincipalControlador(PrincipalModelo modelo, JframePrincipal vista) {
-	this.modelo = modelo;
-	this.vista = vista;
+		this.modelo = modelo;
+		this.vista = vista;
+		this.conexion = new Conexion();
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz
@@ -41,9 +44,9 @@ public class PrincipalControlador {
 	 */
     public void inicializarListeners() {
     	// añadimos listeners a los botones del panel 'controladorPanBuscarHotel'
-    	this.controladorPanBuscarHotel = new ControladorPanBuscarHotel(vista, modelo);
+    	this.controladorPanBuscarHotel = new ControladorPanBuscarHotel(vista, modelo, conexion);
     	this.controladorPanBuscarHotel.addListeners();
-    	//this.controladorPanBuscarHotel.mostrarCiudad();
+    	this.controladorPanBuscarHotel.mostrarCiudad();
     	
     	// añadimos listeners a los botones del panel 'controladorPanDetallesReserva'
     	// añadimos listeners a los botones del panel 'controladorPanPago'

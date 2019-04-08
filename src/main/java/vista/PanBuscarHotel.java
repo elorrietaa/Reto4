@@ -32,7 +32,7 @@ public class PanBuscarHotel extends JPanel {
 		labelCiudad.setBounds(101, 153, 137, 14);
 		add(labelCiudad);
 		
-		cBCiudad = new JComboBox();
+		cBCiudad = new JComboBox<Object>();
 		cBCiudad.setBounds(373, 152, 179, 20);
 		add(cBCiudad);
 		
@@ -56,7 +56,7 @@ public class PanBuscarHotel extends JPanel {
 		panel.add(labelHotel);
 		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		cBHotel = new JComboBox();
+		cBHotel = new JComboBox<Object>();
 		cBHotel.setBounds(307, 21, 179, 20);
 		panel.add(cBHotel);
 

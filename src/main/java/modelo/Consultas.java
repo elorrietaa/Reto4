@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
-import controlador.Conexion;
+import bbdd.Conexion;
 
 /**
  * FuncionesModelo: contiene los métodos del modelo
@@ -32,21 +31,22 @@ public class Consultas {
      * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
 
-    public ArrayList <Ciudad> BuscarCiudad() {
-    	ArrayList <Ciudad> listaCiudades = new ArrayList <Ciudad>(); 
+    public ArrayList<Ciudad> BuscarCiudad() {
+    	ArrayList<Ciudad> listaCiudades = new ArrayList<Ciudad>(); 
     	Ciudad ciudad;
-    	// PARA PRUEBAS:
+    	/* PARA PRUEBAS:
     			ciudad = new Ciudad();
     			ciudad.setCodCiudad(1);
     			ciudad.setNombreCiudad("BILBAO");
     			listaCiudades.add(ciudad);
+    			System.out.println(ciudad.getCodCiudad());
+    			System.out.println(ciudad.getNombreCiudad());
     			//PARA PRUEBAS FIN
-    	/*
+    	*/
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	String query = " SELECT * FROM `ciudad`";
     	
-    	System.out.println(query);
     	try {
     		// Abrimos una conexion
     		connection = conexion.conectar();
@@ -63,6 +63,7 @@ public class Consultas {
     			ciudad.setCodCiudad(rs.getInt("Cod_ubicacion"));
     			ciudad.setNombreCiudad(rs.getString("Nombre_ubicacion"));
     			
+    			
     			listaCiudades.add(ciudad);
     		}
     	}
@@ -71,14 +72,14 @@ public class Consultas {
     	} 
     	finally {
     		// cerramos la conexion
-    		//conexion.desconectar();
+    		conexion.desconectar();
     	}
-    	  */
+    	
     	return listaCiudades;
     }
    
-    public ArrayList <Hotel> BuscarHotelPorCodigoCiudad(Ciudad ciudad) {
-		ArrayList <Hotel> listaAlojamientos = new ArrayList <Hotel>(); 
+    public ArrayList<Hotel> BuscarHotelPorCodigoCiudad(Ciudad ciudad) {
+		ArrayList<Hotel> listaAlojamientos = new ArrayList<Hotel>(); 
 		Hotel hotel;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -119,8 +120,8 @@ public class Consultas {
     }
   
 
-    public ArrayList <Habitacion> buscarHabitacionPorCodigoHotel(Hotel hotel) {
-    	ArrayList <Habitacion> listaHabitacion = new ArrayList <Habitacion>(); 
+    public ArrayList<Habitacion> buscarHabitacionPorCodigoHotel(Hotel hotel) {
+    	ArrayList<Habitacion> listaHabitacion = new ArrayList<Habitacion>(); 
     	Habitacion habitacion;
     	PreparedStatement ps = null;
     	ResultSet rs = null;

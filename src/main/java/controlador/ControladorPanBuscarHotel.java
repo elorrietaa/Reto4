@@ -32,7 +32,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	Habitacion habitacion;
 	Reserva reserva;
 	Consultas consultas;
-	
+	float precioReserva=-1;
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -96,23 +96,39 @@ public class ControladorPanBuscarHotel implements ActionListener{
     
   
   
-    
-	public void guardarDatosSeleccionados() {
-		//se guarda el hotel seleccionado
+    /**
+     * Método: guardarDatosSeleccionados, guarda los datos seleccionados por el usuario en los obejtos.
+     */
+	public void guardarDatosSeleccionadosCiudadYHotel() {
+		//se guarda la ciudad seleccionada
 		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 		//Pruebas
 		System.out.println("Ciudad:" + ciudad);
+		
+		//se guarda el hotel seleccionado con el COMBOBOX
 	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
 	    //Pruebas
 	    System.out.println("Hotel del combox:" + hotel);
+	    //se guarda el hotel seleccionado con la JLIST
 	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 	    //Pruebas
 	    System.out.println("Hotel de la lista:" + hotel);
+	 
 	    
 	}
 	
+	public void generarReserva() {
+		int codReservaQueSeCogeriaDeBBDD = 50;
+		int codReserva = codReservaQueSeCogeriaDeBBDD +1;
+		
+		//rellenamos el objeto reserva: ¡¡¡ EN EL FUTURO PRECIO
+		this.reserva = new Reserva(codReserva, hotel, precioReserva);
+	}
+	
 	public void mostrarDatosReserva() {
-		//muestra en la siguiente pantalla el precio de la reserva
+		// 
+		//vista.detallesReserva.tFReserva.setText(this.reserva.toString());
+		//muestra  el precio de la reserva
 	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
 	}
 	
@@ -142,10 +158,12 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			case "Continuar":		
 				//Cuando pulsa el boton continuar pasan las siguientes cosas: 
 				// (1º) Calcula el precio de la reserva:
-			    modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
+				precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
 				
 			    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
-				guardarDatosSeleccionados();
+				guardarDatosSeleccionadosCiudadYHotel();
+				
+				//Generar reserva y guardarla en el objeto reserva
 				
 				//(3º)actualiza el siguiente panel:
 				actualizarSiguientePanelDetalles();

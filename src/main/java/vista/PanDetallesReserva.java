@@ -36,7 +36,7 @@ public class PanDetallesReserva extends JPanel {
 		add(lblNewLabel);
 		
 		tFReserva = new JTextField();
-		tFReserva.setBounds(305, 148, 86, 20);
+		tFReserva.setBounds(305, 148, 224, 80);
 		add(tFReserva);
 		tFReserva.setColumns(10);
 		

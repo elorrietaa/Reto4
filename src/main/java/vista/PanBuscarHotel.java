@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -19,6 +20,7 @@ public class PanBuscarHotel extends JPanel {
     	public JButton buttonContinuar;
     	public JComboBox<Object> cBHotel, cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha, label_5;
+    	public JList list;
     	
 	public PanBuscarHotel() {
 		setLayout(null);
@@ -47,20 +49,18 @@ public class PanBuscarHotel extends JPanel {
 		label_5.setBounds(373, 582, 67, 14);
 		add(label_5);
 		
-		panelOcultarHoteles = new JPanel();
-		panelOcultarHoteles.setBounds(73, 363, 579, 62);
-		add(panelOcultarHoteles);
-		panelOcultarHoteles.setLayout(null);
-		panelOcultarHoteles.setVisible(false);
-		
 		labelHotel = new JLabel("Seleccione Hotel :");
-		labelHotel.setBounds(36, 22, 125, 14);
-		panelOcultarHoteles.add(labelHotel);
+		labelHotel.setBounds(101, 311, 125, 14);
 		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		add(labelHotel);
 		
 		cBHotel = new JComboBox<Object>();
-		cBHotel.setBounds(307, 21, 179, 20);
-		panelOcultarHoteles.add(cBHotel);
+		cBHotel.setBounds(372, 310, 179, 20);
+		add(cBHotel);
+		
+		list = new JList();
+		list.setBounds(632, 311, 192, 182);
+		add(list);
 
 	}
 }

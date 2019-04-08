@@ -109,14 +109,17 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	    //Pruebas
 	    System.out.println("Hotel de la lista:" + hotel);
 	    
-	    
-	    
-	    
 	}
+	
+	public void mostrarDatosReserva() {
+		//muestra en la siguiente pantalla el precio de la reserva
+	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
+	}
+	
 	public void actualizarSiguientePanelDetalles() {
 		//muestra en la siguiente pantalla el precio de la reserva
-	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
-	    
+		mostrarDatosReserva();
+		
 	    //muestra el siguiente panel: PanelDetallesReserva
 	    vista.detallesReserva.setVisible(true);
 	    vista.buscarHotel.setVisible(false);

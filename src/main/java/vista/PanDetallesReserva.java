@@ -11,7 +11,11 @@ import javax.swing.JButton;
  *
  */
 public class PanDetallesReserva extends JPanel {
-	public JTextField tFReserva, tFHotel, textFieldPrecioReserva;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public JTextField tFReserva, tFHotel, tFPrecioReserva;
 	public JLabel lblSuReserva, lblNewLabel, lblNewLabel_1, lblPrecio;
 	public JButton btnContinuar, btnAtras;
 	/**
@@ -26,7 +30,7 @@ public class PanDetallesReserva extends JPanel {
 		lblSuReserva.setBounds(288, 32, 84, 14);
 		add(lblSuReserva);
 		
-		lblNewLabel = new JLabel("C\u00F3digo Reserva");
+		lblNewLabel = new JLabel("Datos Reserva:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setBounds(159, 149, 110, 14);
 		add(lblNewLabel);
@@ -36,7 +40,7 @@ public class PanDetallesReserva extends JPanel {
 		add(tFReserva);
 		tFReserva.setColumns(10);
 		
-		lblNewLabel_1 = new JLabel("C\u00F3digo Hotel");
+		lblNewLabel_1 = new JLabel("Datos Alojamiento");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(159, 242, 110, 14);
 		add(lblNewLabel_1);
@@ -59,10 +63,10 @@ public class PanDetallesReserva extends JPanel {
 		lblPrecio.setBounds(159, 330, 63, 14);
 		add(lblPrecio);
 		
-		textFieldPrecioReserva = new JTextField();
-		textFieldPrecioReserva.setBounds(305, 329, 86, 20);
-		add(textFieldPrecioReserva);
-		textFieldPrecioReserva.setColumns(10);
+		tFPrecioReserva = new JTextField();
+		tFPrecioReserva.setBounds(305, 329, 86, 20);
+		add(tFPrecioReserva);
+		tFPrecioReserva.setColumns(10);
 
 	}
 }

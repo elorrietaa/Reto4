@@ -16,7 +16,7 @@ public class PrincipalControlador {
     public Conexion conexion;
     
     private ControladorPanBuscarHotel controladorPanBuscarHotel;
-    //private ControladorPanDetallesReserva controladorPanDetallesReserva;
+    private ControladorPanDetallesReserva controladorPanDetallesReserva;
     //private ControladorPanPago controladorPanPago;
     //private ControladorPanVueltas controladorPanVueltas;
     /**
@@ -49,6 +49,9 @@ public class PrincipalControlador {
     	this.controladorPanBuscarHotel.mostrarCiudad();
     	
     	// añadimos listeners a los botones del panel 'controladorPanDetallesReserva'
+    	this.controladorPanDetallesReserva = new ControladorPanDetallesReserva(vista, modelo);
+    	this.controladorPanDetallesReserva.addListeners();
+    	
     	// añadimos listeners a los botones del panel 'controladorPanPago'
     	// añadimos listeners a los botones del panel 'controladorPanVueltas'
     }

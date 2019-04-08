@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import controlador.Conexion;
+
 /**
  * FuncionesModelo: contiene los métodos del modelo
  * @author IN1DM3B_09
@@ -22,10 +24,10 @@ public class ConsultasModelo {
 	Ciudad ciudad;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	String query = " SELECT * FROM `ciudad`";
-	System.out.println(query);
+	String query = " SELECT * FROM `ciudad`;";
 	try {
 		// Abrimos una conexion
+		
 		connection = conexion.conectar();
 				
 		// preparamos la consulta SQL a la base de datos

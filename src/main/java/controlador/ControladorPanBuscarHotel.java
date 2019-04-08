@@ -43,8 +43,8 @@ public class ControladorPanBuscarHotel implements ActionListener{
     public void mostrarCiudad() {
 		ArrayList listaCiudades=ConsultasModelo.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
-		    ciudad=(Ciudad) listaCiudades.get(i);
-		  vista.buscarHotel.cBCiudad.addItem(ciudad);
+			ciudad=(Ciudad) listaCiudades.get(i);
+			vista.buscarHotel.cBCiudad.addItem(ciudad);
 		}
     }
     public void mostrarAlojamiento() {

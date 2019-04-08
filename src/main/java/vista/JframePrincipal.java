@@ -1,18 +1,22 @@
 package vista;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.io.IOException;
 
 public class JframePrincipal extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	//atributos
 	public JFrame frame;
 	public PanBuscarHotel buscarHotel;
 	public PanDetallesReserva detallesReserva;
 	public PanPago pago;
 	public PanVueltas vueltas;
 
+	//constructor
 	public JframePrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 720);
@@ -34,6 +38,7 @@ public class JframePrincipal extends JFrame{
 		pago = new PanPago();
 		vueltas = new PanVueltas();
 	}
+	
 	private void anadirPaneles() {
 		getContentPane().add(buscarHotel);
 		getContentPane().add(detallesReserva);

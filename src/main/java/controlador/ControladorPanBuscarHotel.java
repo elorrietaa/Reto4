@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 import modelo.*;
 import vista.*;
@@ -17,16 +16,24 @@ import vista.*;
  *
  */
 public class ControladorPanBuscarHotel implements ActionListener{
-	    public JframePrincipal vista;
-	    public PrincipalModelo modelo;
-	    private ArrayList<Ciudad> listaCiudades;
-	    Ciudad ciudad;
-	    private ArrayList<Alojamiento> listaAlojamiento;
-	    Alojamiento alojamiento;
-	    
-	    public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
-		this.vista = vista;
-		this.modelo = modelo;
+	public JframePrincipal vista;
+	public PrincipalModelo modelo;
+	private ArrayList<Ciudad> listaCiudades;
+	private ArrayList<Hotel> listaHoteles;
+	private ArrayList<Habitacion> listaHabitaciones;
+	Ciudad ciudad;
+	Hotel hotel;
+	Habitacion habitacion;
+	ConsultasModelo consultas;
+	
+	/**
+	 * Constructor del controlador del panel de bienvenida
+	* @param vista Instancia de la vista, para poder utilizarla
+	* @param modelo Instancia del modelo, para poder utilizarlo
+	*/
+	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo) {
+	this.vista = vista;
+	this.modelo = modelo;
     }
     /**
 	 * Se crean los listeners del panel
@@ -41,22 +48,23 @@ public class ControladorPanBuscarHotel implements ActionListener{
      * @param listaCiudades
      */
     public void mostrarCiudad() {
-		ArrayList listaCiudades=ConsultasModelo.BuscarCiudad();
+		ArrayList <Ciudad>listaCiudades=consultas.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
-			ciudad=(Ciudad) listaCiudades.get(i);
-			vista.buscarHotel.cBCiudad.addItem(ciudad);
+		    ciudad=listaCiudades.get(i);
+		  vista.buscarHotel.cBCiudad.addItem(ciudad);
+
 		}
     }
-    public void mostrarAlojamiento() {
-	  	for(int i=0; i<listaAlojamiento.size();i++) {
-	  	  alojamiento=(Alojamiento) listaAlojamiento.get(i);
-	  	  vista.buscarHotel.cBHotel.addItem(alojamiento);
+    public void mostrarHoteles() {
+	  	for(int i=0; i<listaHoteles.size();i++) {
+	  	  hotel=listaHoteles.get(i);
+	  	  vista.buscarHotel.cBHotel.addItem(hotel);
 	  	}
     }
 	
 	public void actualizarPanelBuscarHotel() {
-	    this.alojamiento = (Alojamiento) vista.buscarHotel.cBHotel.getSelectedItem();
-	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.alojamiento.getPrecioAlojamiento()));
+	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
+	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
 	    
 	    //muestra el siguiente panel: PanelDetallesReserva
 	    vista.detallesReserva.setVisible(true);
@@ -87,14 +95,27 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	
 		} else if (sourceObject instanceof JComboBox) {
 		   
-		    	// seleccionar ciudad
+		    // seleccionar ciudad
 			this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
-			this.listaAlojamiento=modelo.consultasModelo.BuscarHotelPorCodigoCiudad(ciudad.getCodCiudad());
+			this.listaHoteles =consultas.BuscarHotelPorCodigoCiudad(this.ciudad);
 			// seleccionar hotel
-			mostrarAlojamiento();
+			mostrarHoteles();
 		
 		}
 		
 	}
+	public ArrayList<Ciudad> getListaCiudades() {
+		return listaCiudades;
+	}
+	public void setListaCiudades(ArrayList<Ciudad> listaCiudades) {
+		this.listaCiudades = listaCiudades;
+	}
+	public ArrayList<Habitacion> getListaHabitaciones() {
+		return listaHabitaciones;
+	}
+	public void setListaHabitaciones(ArrayList<Habitacion> listaHabitaciones) {
+		this.listaHabitaciones = listaHabitaciones;
+	}
+	
 }

@@ -12,15 +12,23 @@ import vista.JframePrincipal;
 public class PrincipalControlador {
     public PrincipalModelo modelo;
     public JframePrincipal vista;
-    public ControladorPanBuscarHotel controladorBuscarHotel;
     
-    private ControladorPanBuscarHotel panelBuscarHotel;
-    
+    private ControladorPanBuscarHotel controladorPanBuscarHotel;
+    //private ControladorPanDetallesReserva controladorPanDetallesReserva;
+    //private ControladorPanPago controladorPanPago;
+    //private ControladorPanVueltas controladorPanVueltas;
+    /**
+     * Constructor del PrincipalControlador
+     * @param modelo
+     * @param vista
+     */
     public PrincipalControlador(PrincipalModelo modelo, JframePrincipal vista) {
 	this.modelo = modelo;
 	this.vista = vista;
     }
-    
+    /**
+	 * Esta funcion se encarga de inicializar la interfaz
+	 */
     public void inicializarVista() {
     	vista.setVisible(true);
     	vista.buscarHotel.setVisible(true);
@@ -28,11 +36,18 @@ public class PrincipalControlador {
     	vista.pago.setVisible(false);
     	vista.vueltas.setVisible(false);
     }
-    
+    /**
+	 * Esta funcion de encarga de inicializar los botones
+	 */
     public void inicializarListeners() {
-    	this.controladorBuscarHotel = new ControladorPanBuscarHotel(vista, modelo);
-    	this.controladorBuscarHotel.addListeners();
-    	this.controladorBuscarHotel.mostrarCiudad();
+    	// añadimos listeners a los botones del panel 'controladorPanBuscarHotel'
+    	this.controladorPanBuscarHotel = new ControladorPanBuscarHotel(vista, modelo);
+    	this.controladorPanBuscarHotel.addListeners();
+    	//this.controladorPanBuscarHotel.mostrarCiudad();
+    	
+    	// añadimos listeners a los botones del panel 'controladorPanDetallesReserva'
+    	// añadimos listeners a los botones del panel 'controladorPanPago'
+    	// añadimos listeners a los botones del panel 'controladorPanVueltas'
     }
 }
 

@@ -1,4 +1,7 @@
 package modelo;
+
+import controlador.Conexion;
+
 /**
  * Clase PrincipalModelo:
  * Contiene las instancias de todas las clases del paquete modelo. 
@@ -6,11 +9,52 @@ package modelo;
  *
  */
 public class PrincipalModelo {
-   Ciudad ciudad = new Ciudad(); 
-   Alojamiento alojamiento = new Alojamiento(); 
-   Hotel hotel = new Hotel();
-   Reserva reserva = new Reserva();
-   
-   public ConsultasModelo consultasModelo = new ConsultasModelo();
-    
+	public Conexion conexion;
+	public ConsultasModelo consultas;
+	
+	public Ciudad ciudad;
+	public Alojamiento alojamiento;
+	public Hotel hotel;
+	public Habitacion habitacion;
+	public Reserva reserva;
+	//public Cama cama;
+	//public Cliente cliente;
+	//public PersonaAlojada personaAlojada;
+	
+	public FuncionesPago funcionesPago;
+	
+	//public FuncionesBillete funcionesBillete;
+	//public FuncionesReserva funcionesReserva;
+  
+	public float precioTotal;
+	
+	/**
+	 * Constructor de la clase PrincipalModelo
+	 */
+	public PrincipalModelo() {
+		
+		// creamos un objeto BBDD que se encargara de conectarse a la BBDD
+		conexion = new Conexion();
+				
+		// Creamos un objeto Consultas que se encargara de hacer consultas a la BBDD
+		consultas = new ConsultasModelo(conexion);
+		
+		//inicializamos nuestros objetos a null
+		ciudad = null;
+		alojamiento = null;
+		hotel = null;
+		habitacion = null;
+		reserva = null;
+		
+		// Creamos objetos con las funciones generales del programa
+		
+		funcionesPago = new FuncionesPago(this);
+		//funcionesReserva = new FuncionesReserva(this);
+		//funcionesRegistro = new FuncionesRegistro(this);
+		
+	
+		// guardamos el precio total de la reserva
+		precioTotal = 0;
+		
+	}
 }

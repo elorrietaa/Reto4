@@ -7,12 +7,12 @@ import vista.JframePrincipal;
  * @author alba
  *
  */
-public class PrincipalReto4 {
+public class PrincipalReto4 { 
 
     public static void main(String[] args) {
-	
+    	
+    	JframePrincipal vista = new JframePrincipal();
 		PrincipalModelo modelo = new PrincipalModelo();
-		JframePrincipal vista = new JframePrincipal();
 		PrincipalControlador controlador = new PrincipalControlador(modelo, vista);
 		
 		controlador.inicializarVista();
@@ -20,3 +20,4 @@ public class PrincipalReto4 {
     } 
 
 }
+ 

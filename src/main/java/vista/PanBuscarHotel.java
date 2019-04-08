@@ -14,13 +14,17 @@ import javax.swing.JList;
  */
 public class PanBuscarHotel extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Create the panel.
 	 */
 		public JPanel panelOcultarHoteles;
     	public JButton buttonContinuar;
-    	public JComboBox<Object> cBHotel, cBCiudad; 
-    	public JLabel labelHotel, labelCiudad, labelFecha, label_5;
-    	public JList listHoteles;
+    	public JComboBox<Object> cBHotel, cBCiudad, cBHabitacion; 
+    	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin;
+    	public JList<Object> listHoteles;
     	
 	public PanBuscarHotel() {
 		setLayout(null);
@@ -58,9 +62,18 @@ public class PanBuscarHotel extends JPanel {
 		cBHotel.setBounds(372, 310, 179, 20);
 		add(cBHotel);
 		
-		listHoteles = new JList();
+		listHoteles = new JList<Object>();
 		listHoteles.setBounds(394, 341, 192, 182);
 		add(listHoteles);
+		
+		lblSeleccioneHabitacin = new JLabel("Seleccione Habitaci\u00F3n:");
+		lblSeleccioneHabitacin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSeleccioneHabitacin.setBounds(598, 311, 125, 14);
+		add(lblSeleccioneHabitacin);
+		
+		cBHabitacion = new JComboBox<Object>();
+		cBHabitacion.setBounds(731, 310, 179, 20);
+		add(cBHabitacion);
 
 	}
 }

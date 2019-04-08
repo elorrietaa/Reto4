@@ -62,13 +62,16 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		}
     }
     
-    public void mostrarHoteles() {
+    public void mostrarHoteles(int codCiudadSeleccionada) {
+    	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
     	vista.buscarHotel.cBHotel.removeAllItems();
 	  	for(int i=0; i<listaHoteles.size();i++) {
 	  	  hotel = listaHoteles.get(i);
 	  	  vista.buscarHotel.cBHotel.addItem(hotel);
 	  	}
     }
+   
+   
     
 	public void actualizarPanelBuscarHotel() {
 	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
@@ -110,13 +113,12 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			int codCiudadSeleccionada = ciudad.getCodCiudad();
 			
 			// limpia los JList de los hoteles y las habitaciones
-			vista.buscarHotel.labelHotel.removeAll();
+			vista.buscarHotel.cBHotel.removeAll();
 			//vista.sel_billete.modeloDestino.removeAllElements();
 			
-			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
-			this.listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
-			// seleccionar hotel
-			mostrarHoteles();
+			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado y muestra los hoteles
+			mostrarHoteles(codCiudadSeleccionada);
+			
 			}
 		}
 		

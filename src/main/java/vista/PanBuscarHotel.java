@@ -20,7 +20,7 @@ public class PanBuscarHotel extends JPanel {
     	public JButton buttonContinuar;
     	public JComboBox<Object> cBHotel, cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha, label_5;
-    	public JList list;
+    	public JList listHoteles;
     	
 	public PanBuscarHotel() {
 		setLayout(null);
@@ -58,9 +58,9 @@ public class PanBuscarHotel extends JPanel {
 		cBHotel.setBounds(372, 310, 179, 20);
 		add(cBHotel);
 		
-		list = new JList();
-		list.setBounds(632, 311, 192, 182);
-		add(list);
+		listHoteles = new JList();
+		listHoteles.setBounds(394, 341, 192, 182);
+		add(listHoteles);
 
 	}
 }

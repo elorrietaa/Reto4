@@ -69,7 +69,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	  	  vista.buscarHotel.cBHotel.addItem(hotel);
 	  	}
     }
-	
+    
 	public void actualizarPanelBuscarHotel() {
 	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
 	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
@@ -103,13 +103,21 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	
 		} else if (sourceObject instanceof JComboBox) {
 		   
-		    // seleccionar ciudad
-			this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+			// guarda la ciudad seleccionada
+			Ciudad ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+			if (ciudad != null) {
+				
+			int codCiudadSeleccionada = ciudad.getCodCiudad();
+			
+			// limpia los JList de los hoteles y las habitaciones
+			vista.buscarHotel.labelHotel.removeAll();
+			//vista.sel_billete.modeloDestino.removeAllElements();
+			
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
-			this.listaHoteles = consultas.BuscarHotelPorCodigoCiudad(this.ciudad);
+			this.listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
 			// seleccionar hotel
 			mostrarHoteles();
-		
+			}
 		}
 		
 	}

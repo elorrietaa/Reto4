@@ -97,10 +97,13 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	public void guardarDatosSeleccionados() {
 		//se guarda el hotel seleccionado
 		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+		//Pruebas
 		System.out.println("Ciudad:" + ciudad);
 	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
+	    //Pruebas
 	    System.out.println("Hotel del combox:" + hotel);
 	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+	    //Pruebas
 	    System.out.println("Hotel de la lista:" + hotel);
 	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
 	    

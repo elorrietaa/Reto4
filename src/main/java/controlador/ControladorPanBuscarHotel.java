@@ -13,6 +13,7 @@ import modelo.Consultas;
 import modelo.Habitacion;
 import modelo.Hotel;
 import modelo.PrincipalModelo;
+import modelo.Reserva;
 import vista.*;
 
 /**
@@ -29,7 +30,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	Ciudad ciudad;
 	Hotel hotel;
 	Habitacion habitacion;
+	Reserva reserva;
 	Consultas consultas;
+	
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -92,7 +95,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
     }
     
   
-   
+  
     
 	public void guardarDatosSeleccionados() {
 		//se guarda el hotel seleccionado
@@ -105,6 +108,13 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 	    //Pruebas
 	    System.out.println("Hotel de la lista:" + hotel);
+	    
+	    
+	    
+	    
+	}
+	public void actualizarSiguientePanelDetalles() {
+		//muestra en la siguiente pantalla el precio de la reserva
 	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
 	    
 	    //muestra el siguiente panel: PanelDetallesReserva
@@ -126,10 +136,20 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
 			
-			case "Continuar":				
-			    	//pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
+			case "Continuar":		
+				//Cuando pulsa el boton continuar pasan las siguientes cosas: 
+				// (1º) Calcula el precio de la reserva:
+			    modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
+				
+			    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
 				guardarDatosSeleccionados();
-			
+				
+				//(3º)actualiza el siguiente panel:
+				actualizarSiguientePanelDetalles();
+				
+//crea el fichero pero mal, da errores				
+				//(4º)guarda los datos de la reserva en en un fichero 
+			   // modelo.funcionesReserva.escribeEnFichero(modelo);
 				break;
 			
 			}

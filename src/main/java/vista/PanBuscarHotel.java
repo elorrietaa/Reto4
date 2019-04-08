@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTable;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -69,7 +70,7 @@ public class PanBuscarHotel extends JPanel {
 		
 		listHoteles = new JList<Object>();
 		//FormatoDiseno.formatoList(listHoteles);
-		listHoteles.setBounds(247, 209, 239, 182);
+		listHoteles.setBounds(247, 209, 312, 350);
 		add(listHoteles);
 		
 		lblSeleccioneHabitacin = new JLabel("Seleccione Habitaci\u00F3n:");

@@ -125,7 +125,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT * FROM `habitaciones`, `alojamientos` where alojamientos.Cod_alojamiento= ?";
+    	String query = "SELECT * FROM `habitaciones`, `alojamiento` where alojamiento.Cod_alojamiento=" +codHotelSeleccionado;
     	
     	try {
     		// Abrimos una conexion
@@ -136,7 +136,7 @@ public class Consultas {
     				
     		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
     		rs = ps.executeQuery();
-    		ps.setInt(1, codHotelSeleccionado);
+    
     		// crea objetos Linea con los resultados y los añade a un arrayList
     		while (rs.next()) {
     			habitacion = new Habitacion(); 
@@ -145,7 +145,7 @@ public class Consultas {
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setNumCamas(rs.getInt("N_Camas"));
-    			habitacion.setEstadoHabitacion(rs.getString("Estado_habitacion"));
+    			//habitacion.setEstadoHabitacion(rs.getString("Estado_habitacion"));
     			listaHabitacion.add(habitacion);
     		}
     				

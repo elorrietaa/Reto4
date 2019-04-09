@@ -28,10 +28,10 @@ public class PanBuscarHotel extends JPanel {
 	 * Create the panel.
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();
-		public DefaultListModel<Object> modeloHibitacion = new DefaultListModel<Object>();
+		public DefaultListModel<Object> modeloHabitacion = new DefaultListModel<Object>();
 		public JList<Object> listHoteles,listHabitacion;
 		public JPanel panelOcultarHoteles;
-    	public JButton buttonContinuar, btnMostrarDetalles;
+    	public JButton buttonContinuar, btnMostrarDetalles, btnMostrarHabDisp;
     	public JComboBox<Object> cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin, lblPrecioHabi;
     	public JTextField precioHabitacion;
@@ -107,6 +107,10 @@ public class PanBuscarHotel extends JPanel {
 		textPaneDetHot = new JTextPane();
 		textPaneDetHot.setBounds(486, 124, 515, 106);
 		add(textPaneDetHot);
+		
+		btnMostrarHabDisp = new JButton("Mostrar habitaciones disponibles del hotel seleccionado:");
+		btnMostrarHabDisp.setBounds(486, 261, 515, 23);
+		add(btnMostrarHabDisp);
 
 	}
 }

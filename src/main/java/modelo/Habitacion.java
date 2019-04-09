@@ -82,7 +82,9 @@ public class Habitacion {
 	public void setEstadoHabitacion(String estadoHabitacion) {
 		this.estadoHabitacion = estadoHabitacion;
 	}
-	
+	public String toString() {
+    	return tipoHabitacion;
+    }
 	
 	
 }

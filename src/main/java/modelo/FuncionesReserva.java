@@ -47,9 +47,12 @@ public class FuncionesReserva {
 			
 			writer.println();
 //creo que no coge bien los objetos	
-			writer.println("HOLIIIdrgdrfg: " );
-			writer.println("Código hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
-			writer.println("HOLIII: " );
+			writer.println("DATOS DE LA RESERVA: " );
+		//FALLA//writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
+			writer.println("DATOS DEL ALOJAMIENTO: " );
+			writer.println("Nombre del hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
+			writer.println("DATOS DE LA RESERVA: " );
+			writer.println("Precio Reserva: " + vista.detallesReserva.tFPrecioReserva.getX());
 			writer.flush();
         } catch (Exception e) {
             e.printStackTrace();

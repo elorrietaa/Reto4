@@ -1,6 +1,8 @@
 package modelo;
 import java.io.*;
 
+import vista.JframePrincipal;
+
 public class FuncionesReserva {
 	PrincipalModelo modelo;
 	
@@ -30,13 +32,13 @@ public class FuncionesReserva {
 	 * Método: escribeEnFichero, escribe en el fichero la reserva
 	 * @param modelo
 	 */
-	public void escribeEnFichero(PrincipalModelo modelo) {
+	public void escribeEnFichero(PrincipalModelo modelo, JframePrincipal vista) {
 		
 		FileWriter fichero = null;
         PrintWriter writer = null;
         try 
         {
-            fichero = new FileWriter("C:\\workspaceRETO4/prueba.txt", true); // true es para añadir al final de un fichero ya existente
+            fichero = new FileWriter("C:\\workspaceReto4/prueba.txt", true); // true es para añadir al final de un fichero ya existente
             writer = new PrintWriter(fichero);
 
 			writer.println("****************************");
@@ -44,8 +46,9 @@ public class FuncionesReserva {
 			writer.println("****************************");
 			
 			writer.println();
-//creo que no coge bien los objetos			
-			writer.println("Código hotel: " + modelo.hotel.getCodAlojamiento());
+//creo que no coge bien los objetos	
+			writer.println("HOLIIIdrgdrfg: " );
+			writer.println("Código hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
 			writer.println("HOLIII: " );
 			writer.flush();
         } catch (Exception e) {

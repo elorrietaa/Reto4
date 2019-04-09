@@ -29,11 +29,10 @@ public class PanBuscarHotel extends JPanel {
 		public DefaultListModel<Object> modeloHibitacion = new DefaultListModel<Object>();
 		public JList<Object> listHoteles,listHabitacion;
 		public JPanel panelOcultarHoteles;
-    	public JButton buttonContinuar;
+    	public JButton buttonContinuar, btnMostrarDetalles;
     	public JComboBox<Object> cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin, lblPrecioHabi, lblDetallesDelHotel;
     	public JTextField precioHabitacion;
-    	public JTextPane textPaneDetallesHotel;
     	
     	
 	public PanBuscarHotel() {
@@ -93,14 +92,14 @@ public class PanBuscarHotel extends JPanel {
 		add(precioHabitacion);
 		precioHabitacion.setColumns(10);
 		
-		textPaneDetallesHotel = new JTextPane();
-		textPaneDetallesHotel.setBounds(539, 124, 345, 99);
-		add(textPaneDetallesHotel);
-		
 		lblDetallesDelHotel = new JLabel("Detalles del hotel seleccionado:");
 		lblDetallesDelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDetallesDelHotel.setBounds(538, 92, 269, 14);
 		add(lblDetallesDelHotel);
+		
+		btnMostrarDetalles = new JButton("Mostrar detalles");
+		btnMostrarDetalles.setBounds(752, 90, 89, 23);
+		add(btnMostrarDetalles);
 
 	}
 }

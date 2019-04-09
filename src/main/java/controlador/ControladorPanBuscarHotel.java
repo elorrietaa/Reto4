@@ -52,6 +52,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
     public void addListeners() {
     	vista.buscarHotel.cBCiudad.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
+    	vista.buscarHotel.btnMostrarDetalles.addActionListener(this);
     }
     /**
      * Método mostrarCiudad, muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
@@ -118,6 +119,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	 * generarReserva se rellena el objeto reserva con los datos seleccionados
 	 */
 	public void generarReserva() {
+		 this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 		int codReservaQueSeCogeriaDeBBDD = 50;
 		int codReserva = codReservaQueSeCogeriaDeBBDD +1;
 		
@@ -125,7 +127,14 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		this.reserva = new Reserva(codReserva, hotel, precioReserva);
 	}
 	
-	
+	public void mostrarDatosHotelSeleccionado() {
+		 this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+		vista.buscarHotel.lblDetallesDelHotel.setText("Nombre hotel:" + hotel.getNombre());
+	    
+		System.out.println("***DATOS HOTEL***: Código del hotel:" + hotel.getCodAlojamiento());
+	    System.out.println("Nombre hotel:" + hotel.getNombre());
+	  
+	}
 	
 	public void mostrarDatosReserva() {
 		
@@ -161,7 +170,10 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		   
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
-			
+			case "Mostrar detalles":
+				mostrarDatosHotelSeleccionado();
+				break;
+				
 			case "Continuar":		
 				//Cuando pulsa el boton continuar pasan las siguientes cosas: 
 				// (1º) Calcula el precio de la reserva:

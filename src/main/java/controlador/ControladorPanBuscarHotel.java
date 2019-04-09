@@ -178,7 +178,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				
 //crea el fichero pero mal, da errores				
 				//(4º)guarda los datos de la reserva en en un fichero 
-			   // modelo.funcionesReserva.escribeEnFichero(modelo);
+			   modelo.funcionesReserva.escribeEnFichero(modelo, vista);
 				break;
 			
 			}

@@ -10,6 +10,7 @@ import javax.swing.JList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -28,8 +29,9 @@ public class PanBuscarHotel extends JPanel {
 		public JList<Object> listHoteles,listHabitacion;
 		public JPanel panelOcultarHoteles;
     	public JButton buttonContinuar;
-    	public JComboBox<Object> cBHotel, cBCiudad, cBHabitacion; 
-    	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin;
+    	public JComboBox<Object> cBCiudad, cBHabitacion; 
+    	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin, lblPrecioHabi;
+    	private JTextField precioHabitacion;
     	
     	
 	public PanBuscarHotel() {
@@ -60,17 +62,13 @@ public class PanBuscarHotel extends JPanel {
 		add(label_5);
 		
 		labelHotel = new JLabel("Seleccione Hotel :");
-		labelHotel.setBounds(83, 179, 125, 14);
+		labelHotel.setBounds(83, 208, 125, 14);
 		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(labelHotel);
 		
-		cBHotel = new JComboBox<Object>();
-		cBHotel.setBounds(247, 178, 179, 20);
-		add(cBHotel);
-		
 		listHoteles = new JList<Object>();
 		//FormatoDiseno.formatoList(listHoteles);
-		listHoteles.setBounds(247, 209, 312, 350);
+		listHoteles.setBounds(247, 209, 312, 182);
 		add(listHoteles);
 		
 		lblSeleccioneHabitacin = new JLabel("Seleccione Habitaci\u00F3n:");
@@ -86,6 +84,16 @@ public class PanBuscarHotel extends JPanel {
 		//FormatoDiseno.formatoList(listHabitacion);
 		listHabitacion.setBounds(624, 209, 192, 182);
 		add(listHabitacion);
+		
+		lblPrecioHabi = new JLabel("Precio de la habitaci\u00F3n:");
+		lblPrecioHabi.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblPrecioHabi.setBounds(83, 416, 157, 14);
+		add(lblPrecioHabi);
+		
+		precioHabitacion = new JTextField();
+		precioHabitacion.setBounds(274, 415, 86, 20);
+		add(precioHabitacion);
+		precioHabitacion.setColumns(10);
 
 	}
 }

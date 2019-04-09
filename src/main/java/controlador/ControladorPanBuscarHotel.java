@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 
 import bbdd.*;
 import modelo.Ciudad;
@@ -50,7 +51,6 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	 */
     public void addListeners() {
     	vista.buscarHotel.cBCiudad.addActionListener(this);
-    	vista.buscarHotel.cBHotel.addActionListener(this);
     	vista.buscarHotel.cBHabitacion.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
     }
@@ -72,18 +72,6 @@ public class ControladorPanBuscarHotel implements ActionListener{
      * @param codCiudadSeleccionada
      */
     public void mostrarHoteles(int codCiudadSeleccionada) {
-    	vista.buscarHotel.cBHotel.removeAllItems();
-    	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
-	  	for(int i=0; i<listaHoteles.size();i++) {
-	  	  hotel = listaHoteles.get(i);
-	  	  vista.buscarHotel.cBHotel.addItem(hotel);
-	  	}
-    }
-    /**
-     * Método mostrarHotelesEnElJList
-     * @param codCiudadSeleccionada
-     */
-    public void mostrarHotelesEnElJList(int codCiudadSeleccionada) {
     	//borra todos los elementos del JList
     	vista.buscarHotel.modeloHotel.removeAllElements();
     	//llena el arrayList con la lista de Hoteles
@@ -94,9 +82,6 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloHotel);
 	  	}
     }
-    
-  
-  
     /**
      * Método: guardarDatosSeleccionados, guarda los datos seleccionados por el usuario en los obejtos.
      */
@@ -105,9 +90,6 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 		//Pruebas
 		System.out.println("Ciudad:" + ciudad);
-		
-		//se guarda el hotel seleccionado con el COMBOBOX
-	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
 	    //Pruebas
 	    System.out.println("Hotel del combox:" + hotel);
 	    //se guarda el hotel seleccionado con la JLIST
@@ -178,7 +160,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				//(3º)actualiza el siguiente panel:
 				actualizarSiguientePanelDetalles();
 				
-//crea el fichero pero mal, da errores				
+				//crea el fichero pero mal, da errores				
 				//(4º)guarda los datos de la reserva en en un fichero 
 			   modelo.funcionesReserva.escribeEnFichero(modelo, vista);
 				break;
@@ -195,10 +177,11 @@ public class ControladorPanBuscarHotel implements ActionListener{
 						
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado y muestra los hoteles
 			mostrarHoteles(codCiudadSeleccionada);
-			
-			//muestra los hoteles en el JList
-			mostrarHotelesEnElJList(codCiudadSeleccionada);
 			}
+		}
+		else if(sourceObject instanceof JList) {
+			
+			Hotel hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 		}
 	}
 	public ArrayList<Ciudad> getListaCiudades() {

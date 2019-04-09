@@ -2,6 +2,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
@@ -32,8 +33,32 @@ public class ControladorPanDetallesReserva implements ActionListener {
 	
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
 		
+		Object sourceObject = e.getSource();
+		
+		if (sourceObject instanceof JButton) {
+			
+			String botonPulsado = ((JButton) sourceObject).getActionCommand();
+		   
+			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
+			switch (botonPulsado) {
+				
+			case "Atras":
+				vista.buscarHotel.setVisible(true);
+				vista.detallesReserva.setVisible(false);
+				break;
+			
+			case "Continuar":
+				funcionContinuar();
+			}
+		}
+	}
+	
+	public void funcionContinuar() {
+		vista.pago.total.setText(Float.toString(this.modelo.precioTotal));
+		vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal));
+		vista.pago.setVisible(true);
+		vista.detallesReserva.setVisible(false);
 	}
 }

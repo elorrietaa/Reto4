@@ -108,7 +108,7 @@ public class PanPago extends JPanel {
 		add(aPagar);
 		aPagar.setColumns(10);
 		
-		btnAtras = new JButton("Atras");
+		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.setBounds(36, 630, 89, 23);
 		add(btnAtras);
 		

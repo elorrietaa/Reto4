@@ -51,6 +51,7 @@ public class ControladorPanDetallesReserva implements ActionListener {
 			
 			case "Continuar":
 				funcionContinuar();
+				
 			}
 		}
 	}

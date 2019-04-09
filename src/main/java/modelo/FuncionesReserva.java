@@ -17,6 +17,8 @@ public class FuncionesReserva {
 		this.modelo = modelo;
 	}
 	
+	
+	
 	/**
 	 * Metodo para calcular el precio del billete
 	 * 
@@ -32,7 +34,9 @@ public class FuncionesReserva {
 	}
 	/**
 	 * Método: escribeEnFichero, escribe en el fichero la reserva
+	 * En el caso de que el fichero que se desea guardar no exista, mustra un mensaje por pantalla y cierra la aplicación. 
 	 * @param modelo
+	 * @param vista
 	 */
 	public void escribeEnFichero(PrincipalModelo modelo, JframePrincipal vista) {
 	

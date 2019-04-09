@@ -71,7 +71,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
      * Método mostrarHoteles: muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
      * @param codCiudadSeleccionada
      */
-    public void mostrarHoteles(int codCiudadSeleccionada) {
+    public void mostrarHotelesEnElJList(int codCiudadSeleccionada) {
     	//borra todos los elementos del JList
     	vista.buscarHotel.modeloHotel.removeAllElements();
     	//llena el arrayList con la lista de Hoteles
@@ -82,7 +82,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloHotel);
 	  	}
     }
-<<<<<<< HEAD
+
     public void mostrarHabitacionesEnElJList(int codHotelSeleccionado) {
     	//borra todos los elementos del JList
     	vista.buscarHotel.modeloHotel.removeAllElements();
@@ -95,9 +95,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	  	}
     }
   
-  
-=======
->>>>>>> d2596b169e7dfa01f15432828551583b6c5bd24e
+
     /**
      * Método: guardarDatosSeleccionados, guarda los datos seleccionados por el usuario en los obejtos.
      */
@@ -165,7 +163,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			case "Continuar":		
 				//Cuando pulsa el boton continuar pasan las siguientes cosas: 
 				// (1º) Calcula el precio de la reserva:
-				precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
+				//precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
 				
 			    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
 				guardarDatosSeleccionadosCiudadYHotel();
@@ -176,11 +174,10 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				//(3º)actualiza el siguiente panel:
 				actualizarSiguientePanelDetalles();
 				
-<<<<<<< HEAD
 //falta terminar fichero			
-=======
+
 				//crea el fichero pero mal, da errores				
->>>>>>> d2596b169e7dfa01f15432828551583b6c5bd24e
+
 				//(4º)guarda los datos de la reserva en en un fichero 
 			  modelo.funcionesReserva.escribeEnFichero(modelo, vista);
 				break;
@@ -196,8 +193,8 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			int codCiudadSeleccionada = ciudad.getCodCiudad();
 						
 			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado y muestra los hoteles
-			mostrarHoteles(codCiudadSeleccionada);
-<<<<<<< HEAD
+			//mostrarHoteles(codCiudadSeleccionada);
+
 			
 			//muestra los hoteles en el JList
 			mostrarHotelesEnElJList(codCiudadSeleccionada);
@@ -209,8 +206,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			//System.out.println("codHotelSeleccionado:" +codHotelSeleccionado);
 			//muestra las habitaciones en el JList
 			//mostrarHabitacionesEnElJList(codHotelSeleccionado);
-=======
->>>>>>> d2596b169e7dfa01f15432828551583b6c5bd24e
+
 			}
 		}
 		else if(sourceObject instanceof JList) {

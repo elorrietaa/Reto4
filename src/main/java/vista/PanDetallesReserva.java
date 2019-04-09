@@ -36,7 +36,7 @@ public class PanDetallesReserva extends JPanel {
 		
 		lblDatosAlojamiento = new JLabel("Datos Alojamiento:");
 		lblDatosAlojamiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDatosAlojamiento.setBounds(117, 191, 130, 14);
+		lblDatosAlojamiento.setBounds(165, 185, 130, 14);
 		add(lblDatosAlojamiento);
 		
 		btnContinuar = new JButton("Continuar");
@@ -49,7 +49,7 @@ public class PanDetallesReserva extends JPanel {
 		
 		lblPrecio = new JLabel("Precio :");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPrecio.setBounds(159, 330, 63, 14);
+		lblPrecio.setBounds(232, 330, 63, 14);
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();

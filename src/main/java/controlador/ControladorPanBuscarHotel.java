@@ -131,9 +131,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		
 		//muestra  el precio de la reserva
 		this.modelo.precioTotal = this.hotel.getPrecioAlojamiento();
-	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
-	    vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + this.ciudad.getNombreCiudad() + "\n" + "Hotel: " + hotel.getNombre()+"\n" + "Número de estrellas:" + hotel.getEstrellas());
 	    
+	    vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + this.ciudad.getNombreCiudad() + "\n" + "Hotel: " + hotel.getNombre()+"\n" + "Número de estrellas:" + hotel.getEstrellas());
+	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento())+ " €");
 	  //Pruebas
 	    System.out.println("***DATOS RESERVA***: Codigo reserva:" + reserva.getCodReserva() );
 	  

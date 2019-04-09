@@ -94,7 +94,17 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloHotel);
 	  	}
     }
-    
+    public void mostrarHabitacionesEnElJList(int codHotelSeleccionado) {
+    	//borra todos los elementos del JList
+    	vista.buscarHotel.modeloHotel.removeAllElements();
+    	//llena el arrayList con la lista de Hoteles
+    	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
+    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
+	  	for(int i=0; i<listaHabitaciones.size();i++) {
+	  		vista.buscarHotel.modeloHotel.addElement(listaHabitaciones.get(i));
+			vista.buscarHotel.listHabitacion.setModel(vista.buscarHotel.modeloHotel);
+	  	}
+    }
   
   
     /**
@@ -114,7 +124,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 	    //Pruebas
 	    System.out.println("Hotel de la lista:" + hotel);
-	 
+	    System.out.println("Hotel de la lista codigo:" + hotel.getCodAlojamiento());
 	    
 	}
 	/**
@@ -178,9 +188,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				//(3º)actualiza el siguiente panel:
 				actualizarSiguientePanelDetalles();
 				
-//crea el fichero pero mal, da errores				
+//falta terminar fichero			
 				//(4º)guarda los datos de la reserva en en un fichero 
-			   modelo.funcionesReserva.escribeEnFichero(modelo, vista);
+			  modelo.funcionesReserva.escribeEnFichero(modelo, vista);
 				break;
 			
 			}
@@ -198,6 +208,14 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			
 			//muestra los hoteles en el JList
 			mostrarHotelesEnElJList(codCiudadSeleccionada);
+			
+//habitaciones en el JLIst//mostrar las habitaciones en el JLIst en función del hotel seleccionado: 
+			//this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+			//System.out.println(vista.buscarHotel.listHoteles.getSelectedValue());
+			//int codHotelSeleccionado = hotel.getCodAlojamiento();
+			//System.out.println("codHotelSeleccionado:" +codHotelSeleccionado);
+			//muestra las habitaciones en el JList
+			//mostrarHabitacionesEnElJList(codHotelSeleccionado);
 			}
 		}
 	}

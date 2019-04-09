@@ -38,7 +38,7 @@ public class FuncionesReserva {
         PrintWriter writer = null;
         try 
         {
-            fichero = new FileWriter("C:\\workspaceReto4/prueba.txt", true); // true es para añadir al final de un fichero ya existente
+            fichero = new FileWriter("C:\\workspace\\RETO4/prueba.txt", true); // true es para añadir al final de un fichero ya existente
             writer = new PrintWriter(fichero);
 
 			writer.println("****************************");

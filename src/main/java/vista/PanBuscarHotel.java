@@ -23,8 +23,8 @@ public class PanBuscarHotel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-		public DefaultListModel<Object> modeloOrigen = new DefaultListModel<Object>();
-		public DefaultListModel<Object> modeloDestino = new DefaultListModel<Object>();
+		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();
+		public DefaultListModel<Object> modeloHibitacion = new DefaultListModel<Object>();
 		public JList<Object> listHoteles,listHabitacion;
 		public JPanel panelOcultarHoteles;
     	public JButton buttonContinuar;

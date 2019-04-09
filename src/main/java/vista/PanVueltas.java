@@ -13,7 +13,7 @@ import javax.swing.JButton;
  *
  */
 public class PanVueltas extends JPanel {
-	public JTextField textField, textField_1;
+	public JTextField txtTotal, txtTotalIntro;
 	public JLabel lblTotalAPagar, lblTotalIntroducido, lblVueltas;
 	public JTextPane PanelVueltas;
 	public JButton btnFinalizar;
@@ -34,15 +34,15 @@ public class PanVueltas extends JPanel {
 		lblTotalIntroducido.setBounds(356, 281, 80, 14);
 		add(lblTotalIntroducido);
 		
-		textField = new JTextField();
-		textField.setBounds(483, 239, 86, 20);
-		add(textField);
-		textField.setColumns(10);
+		txtTotal = new JTextField();
+		txtTotal.setBounds(483, 239, 86, 20);
+		add(txtTotal);
+		txtTotal.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(483, 281, 86, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		txtTotalIntro = new JTextField();
+		txtTotalIntro.setBounds(483, 281, 86, 20);
+		add(txtTotalIntro);
+		txtTotalIntro.setColumns(10);
 		
 		lblVueltas = new JLabel("Vueltas");
 		lblVueltas.setBounds(356, 328, 46, 14);

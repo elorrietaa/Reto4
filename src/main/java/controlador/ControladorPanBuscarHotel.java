@@ -179,24 +179,25 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				}
 				break;
 				
-			case "Continuar":		
-				//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-				// (1º) Calcula el precio de la reserva:
-				precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
-				
-			    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
-				guardarDatosSeleccionadosCiudadYHotel();
-				
-				//Generar reserva y guardarla en el objeto reserva
-				generarReserva();
-				
-				//(3º)actualiza el siguiente panel:
-				actualizarSiguientePanelDetalles();
-				
-//falta terminar fichero			
-
-				//crea el fichero pero mal, da errores				
-
+			case "Continuar":	
+				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+				if (hotel != null) {
+					//Cuando pulsa el boton continuar pasan las siguientes cosas: 
+					// (1º) Calcula el precio de la reserva:
+					//precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
+					
+				    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
+					guardarDatosSeleccionadosCiudadYHotel();
+					
+					//(3º)Generar reserva y guardarla en el objeto reserva
+					generarReserva();
+					
+					//(4º)actualiza el siguiente panel:
+					actualizarSiguientePanelDetalles();
+				}
+				else {
+					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
+				}
 				
 				break;
 			
@@ -217,14 +218,21 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		else if(sourceObject instanceof JList) {
 			
 			Hotel hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+			
 			if (hotel != null) {
-			//habitaciones en el JLIst//mostrar las habitaciones en el JLIst en función del hotel seleccionado: 
-			//this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-			//System.out.println(vista.buscarHotel.listHoteles.getSelectedValue());
-			int codHotelSeleccionado = hotel.getCodAlojamiento();
-			System.out.println("codHotelSeleccionado:" +codHotelSeleccionado);
-			//muestra las habitaciones en el JList
-			mostrarHabitacionesEnElJList(codHotelSeleccionado);	
+				//mostrar habitaciones en el JLIst//mostrar las habitaciones en el JLIst en función del hotel seleccionado: 
+				//this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+				//System.out.println(vista.buscarHotel.listHoteles.getSelectedValue());
+				int codHotelSeleccionado = hotel.getCodAlojamiento();
+				System.out.println("codHotelSeleccionado:" +codHotelSeleccionado);
+				//muestra las habitaciones en el JList
+				mostrarHabitacionesEnElJList(codHotelSeleccionado);	
+			}
+			else {
+				 JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
+			}
+			if (hotel != null) {
+			
 			
 			}
 		}

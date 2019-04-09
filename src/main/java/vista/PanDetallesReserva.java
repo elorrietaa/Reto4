@@ -21,7 +21,8 @@ public class PanDetallesReserva extends JPanel {
 	public JLabel lblSuReserva, lblDatosAlojamiento, lblPrecio;
 	public JButton btnContinuar, btnAtras;
 	public JList<String> listDetalleReserva;
-	public JTextPane textPDatosAlo;
+	public JTextPane textPDatosAlo, textPaneDetHot;
+
 	/**
 	 * Create the panel.
 	 */

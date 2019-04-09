@@ -12,6 +12,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -31,8 +33,10 @@ public class PanBuscarHotel extends JPanel {
 		public JPanel panelOcultarHoteles;
     	public JButton buttonContinuar, btnMostrarDetalles;
     	public JComboBox<Object> cBCiudad; 
-    	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin, lblPrecioHabi, lblDetallesDelHotel;
+    	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin, lblPrecioHabi;
     	public JTextField precioHabitacion;
+    	public JTextPane textPaneDetHot;
+  
     	
     	
 	public PanBuscarHotel() {
@@ -69,7 +73,7 @@ public class PanBuscarHotel extends JPanel {
 		
 		listHoteles = new JList<Object>();
 		//FormatoDiseno.formatoList(listHoteles);
-		listHoteles.setBounds(249, 93, 243, 182);
+		listHoteles.setBounds(249, 93, 210, 182);
 		add(listHoteles);
 		
 		lblSeleccioneHabitacin = new JLabel("Seleccione Habitaci\u00F3n:");
@@ -79,7 +83,7 @@ public class PanBuscarHotel extends JPanel {
 		
 		listHabitacion = new JList<Object>();
 		//FormatoDiseno.formatoList(listHabitacion);
-		listHabitacion.setBounds(249, 305, 243, 135);
+		listHabitacion.setBounds(249, 305, 210, 135);
 		add(listHabitacion);
 		
 		lblPrecioHabi = new JLabel("Precio de la habitaci\u00F3n:");
@@ -92,14 +96,17 @@ public class PanBuscarHotel extends JPanel {
 		add(precioHabitacion);
 		precioHabitacion.setColumns(10);
 		
-		lblDetallesDelHotel = new JLabel("Detalles del hotel seleccionado:");
-		lblDetallesDelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDetallesDelHotel.setBounds(538, 92, 269, 14);
-		add(lblDetallesDelHotel);
-		
-		btnMostrarDetalles = new JButton("Mostrar detalles");
-		btnMostrarDetalles.setBounds(752, 90, 89, 23);
+		btnMostrarDetalles = new JButton("Mostrar detalles del hotel seleccionado:");
+		btnMostrarDetalles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnMostrarDetalles.setBounds(486, 90, 515, 23);
 		add(btnMostrarDetalles);
+		
+		textPaneDetHot = new JTextPane();
+		textPaneDetHot.setBounds(486, 124, 515, 106);
+		add(textPaneDetHot);
 
 	}
 }

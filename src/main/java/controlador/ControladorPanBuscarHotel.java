@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import bbdd.*;
 import modelo.Ciudad;
@@ -129,22 +130,17 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	
 	public void mostrarDatosHotelSeleccionado() {
 		 this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-		vista.buscarHotel.lblDetallesDelHotel.setText("Nombre hotel:" + hotel.getNombre());
-	    
+		vista.buscarHotel.textPaneDetHot.setText("Nombre hotel:" + hotel.getNombre()+ "\n" + "Precio hotel:" + hotel.getPrecioAlojamiento() + "€" + "\n" + "Ubicación hotel:" + hotel.getUbicacion()+ "\n" + "Número de estrellas:" + hotel.getEstrellas());
+	    //pruebas
 		System.out.println("***DATOS HOTEL***: Código del hotel:" + hotel.getCodAlojamiento());
 	    System.out.println("Nombre hotel:" + hotel.getNombre());
 	  
 	}
 	
 	public void mostrarDatosReserva() {
-		
 		//muestra  el precio de la reserva
 		this.modelo.precioTotal = this.hotel.getPrecioAlojamiento();
-	    
 	    vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + this.ciudad.getNombreCiudad() + "\n" + "Hotel: " + hotel.getNombre()+"\n" + "Número de estrellas:" + hotel.getEstrellas());
-	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento())+ " €");
-	  //Pruebas
-	    System.out.println("***DATOS RESERVA***: Codigo reserva:" + reserva.getCodReserva() );
 	  
 	}
 	
@@ -170,14 +166,20 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		   
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
-			case "Mostrar detalles":
-				mostrarDatosHotelSeleccionado();
+			case "Mostrar detalles del hotel seleccionado:":
+				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+				if (hotel != null) {
+					mostrarDatosHotelSeleccionado();
+				}
+				else {
+					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el alojamiento del que desea ver más detalles. Gracias. ", null, 0);
+				}
 				break;
 				
 			case "Continuar":		
 				//Cuando pulsa el boton continuar pasan las siguientes cosas: 
 				// (1º) Calcula el precio de la reserva:
-				//precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
+				precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
 				
 			    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
 				guardarDatosSeleccionadosCiudadYHotel();

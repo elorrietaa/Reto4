@@ -28,7 +28,7 @@ public class Consultas {
 	} 
 	
     /**
-     * método BuscarCiudad, se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
+     * Método BuscarCiudad = se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
 
     public ArrayList<Ciudad> BuscarCiudad() {
@@ -77,7 +77,11 @@ public class Consultas {
     	
     	return listaCiudades;
     }
-   
+   /**
+    * Método BuscarHotelPorCodigoCiudad = se buscan los hoteles por código Ciudad. El código de la ciudad dependerá de la selección realizada por el usuario
+    * @param codCiudadSeleccionada
+    * @return
+    */
     public ArrayList<Hotel> BuscarHotelPorCodigoCiudad(int codCiudadSeleccionada) {
 		ArrayList<Hotel> listaAlojamientos = new ArrayList<Hotel>(); 
 		Hotel hotel;
@@ -119,6 +123,12 @@ public class Consultas {
 		return listaAlojamientos;
     }
   
+    /**
+     * Método buscarHabitacionPorCodigoHotel = busca las habitaciones del hotel seleccionado por el usuario.
+     * @param hotel = contiene los datos del hotel seleccionado por el usuario.
+     * @param codHotelSeleccionado = es el código del hotel que el usuario ha seleccionado.
+     * @return
+     */
     public ArrayList<Habitacion> buscarHabitacionPorCodigoHotel(Hotel hotel, int codHotelSeleccionado) {
     	ArrayList<Habitacion> listaHabitacion = new ArrayList<Habitacion>(); 
     	Habitacion habitacion;

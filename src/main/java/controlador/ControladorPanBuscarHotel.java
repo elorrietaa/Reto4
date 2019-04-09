@@ -57,7 +57,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
     	vista.buscarHotel.btnMostrarHabDisp.addActionListener(this);
     }
     /**
-     * Método mostrarCiudad, muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
+     * Método mostrarCiudad = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
      * @param listaCiudades
      */
     public void mostrarCiudad() {
@@ -70,7 +70,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
     }
     
     /**
-     * Método mostrarHoteles: muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
+     * Método mostrarHoteles = muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
      * @param codCiudadSeleccionada
      */
     public void mostrarHotelesEnElJList(int codCiudadSeleccionada) {
@@ -84,7 +84,11 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloHotel);
 	  	}
     }
-
+    
+    /**
+     * Método mostrarHabitacionesEnElJList = muestra las habitaciones que se han encontrado mediante el método: buscarHabitacionPorCodigoHotel pasando hotel, codHotelSeleccionado por parámetro. El codHotelSeleccionado dependerá del hotel seleccionado por el usuario
+     * @param codHotelSeleccionado
+     */
     public void mostrarHabitacionesEnElJList(int codHotelSeleccionado) {
     	//borra todos los elementos del JList
     	vista.buscarHotel.modeloHabitacion.removeAllElements();
@@ -101,7 +105,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
   
 
     /**
-     * Método: guardarDatosSeleccionados, guarda los datos seleccionados por el usuario en los obejtos.
+     * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
      */
 	public void guardarDatosSeleccionadosCiudadYHotel() {
 		//se guarda la ciudad seleccionada
@@ -120,7 +124,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	}
 	
 	/**
-	 * generarReserva se rellena el objeto reserva con los datos seleccionados
+	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
 	 */
 	public void generarReserva() {
 		 this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
@@ -131,6 +135,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		this.reserva = new Reserva(codReserva, hotel, precioReserva);
 	}
 	
+	/**
+	 * Método mostrarDatosHotelSeleccionado = muestra en el textPaneDetHot los datos del hotel seleccionado por el usuario
+	 */
 	public void mostrarDatosHotelSeleccionado() {
 		 this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 		vista.buscarHotel.textPaneDetHot.setText("Nombre hotel:" + hotel.getNombre()+ "\n" + "Precio hotel:" + hotel.getPrecioAlojamiento() + "€" + "\n" + "Ubicación hotel:" + hotel.getUbicacion()+ "\n" + "Número de estrellas:" + hotel.getEstrellas());
@@ -140,6 +147,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	  
 	}
 	
+	/**
+	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
+	 */
 	public void mostrarDatosReserva() {
 		
 		//muestra datos del alojamiento
@@ -150,6 +160,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	  		vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento())+ " €");
 	}
 	
+	/**
+	 * Método actualizarSiguientePanelDetalles = actualiza el Siguiente panel: PanDetallesReserva en el que se muestran los detalles de la reserva
+	 */
 	public void actualizarSiguientePanelDetalles() {
 		//muestra en la siguiente pantalla el precio de la reserva
 		mostrarDatosReserva();
@@ -172,7 +185,9 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		   
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
+			
 			case "Mostrar detalles del hotel seleccionado:":
+				
 				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 				if (hotel != null) {
 					mostrarDatosHotelSeleccionado();
@@ -181,19 +196,23 @@ public class ControladorPanBuscarHotel implements ActionListener{
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el alojamiento del que desea ver más detalles. Gracias. ", null, 0);
 				}
 				break;
+				
 			case "Mostrar habitaciones disponibles del hotel seleccionado:":
+				
 				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 				if (hotel != null) {
 					//muestra las habitaciones en el JList
 					int codHotelSeleccionado = hotel.getCodAlojamiento();
 	//no muestra bien las habitaciones
-	//				mostrarHabitacionesEnElJList(codHotelSeleccionado);	
+	//			mostrarHabitacionesEnElJList(codHotelSeleccionado);	
 				}
 				else {
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el alojamiento del que desea ver más detalles. Gracias. ", null, 0);
 				}
 				break;
+				
 			case "Continuar":	
+				
 				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 				if (hotel != null) {
 					//Cuando pulsa el boton continuar pasan las siguientes cosas: 
@@ -209,6 +228,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 					//(4º)actualiza el siguiente panel:
 					actualizarSiguientePanelDetalles();
 				}
+				
 				else {
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
 				}
@@ -218,35 +238,15 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			}
 	
 		} else if (sourceObject instanceof JComboBox) {
-		   
 			// guarda la ciudad seleccionada
 			Ciudad ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 			if (ciudad != null) {
-				
-			int codCiudadSeleccionada = ciudad.getCodCiudad();
-			
-			//muestra los hoteles en el JList
-			mostrarHotelesEnElJList(codCiudadSeleccionada);
+				int codCiudadSeleccionada = ciudad.getCodCiudad();
+				//muestra los hoteles en el JList
+				mostrarHotelesEnElJList(codCiudadSeleccionada);
 			}
 		}
-		else if(sourceObject instanceof JList) {
-			
-			Hotel hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-			
-			if (hotel != null) {
-				//mostrar habitaciones en el JLIst//mostrar las habitaciones en el JLIst en función del hotel seleccionado: 
-				//this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-				//System.out.println(vista.buscarHotel.listHoteles.getSelectedValue());
-				
-			}
-			else {
-				 JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
-			}
-			if (hotel != null) {
-			
-			
-			}
-		}
+		
 	}
 	
 }

@@ -111,6 +111,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	    //Pruebas
 	    System.out.println("Hotel de la lista:" + hotel);
 	    System.out.println("Hotel de la lista codigo:" + hotel.getCodAlojamiento());
+	    System.out.println("Hotel de la lista estrellas:" + hotel.getEstrellas());
 	    
 	}
 	/**

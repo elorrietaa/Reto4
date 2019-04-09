@@ -1,6 +1,8 @@
 package modelo;
 import java.io.*;
 
+import javax.swing.JOptionPane;
+
 import vista.JframePrincipal;
 
 public class FuncionesReserva {
@@ -33,26 +35,33 @@ public class FuncionesReserva {
 	 * @param modelo
 	 */
 	public void escribeEnFichero(PrincipalModelo modelo, JframePrincipal vista) {
-		
+	
 		FileWriter fichero = null;
         PrintWriter writer = null;
         try 
         {
-            fichero = new FileWriter("C:\\workspace\\RETO4/prueba.txt", true); // true es para añadir al final de un fichero ya existente
+        	File archivo = new File("C:\\workspace\\RETO4/reserva.txt");
+        	if (!archivo.exists()) {
+        	    System.out.println("OJO: ¡¡No existe el archivo de configuración!!");
+        	    JOptionPane.showMessageDialog(vista, "Alerta OJO: ¡¡No es posible guardar la reserva! ¡No existe el archivo en el que quiere guardar la reserva!! LA APLICACIÓN SE CERRARÁ", null, 0);
+        	    System.exit(0);
+        	}
+            fichero = new FileWriter("C:\\workspace\\RETO4/reserva.txt", true); // true es para añadir al final de un fichero ya existente
             writer = new PrintWriter(fichero);
 
 			writer.println("****************************");
-			writer.println("      DATOS DEL HOTEL      ");
+			writer.println("      DATOS DELA RESERVA      ");
 			writer.println("****************************");
-			
 			writer.println();
 //creo que no coge bien los objetos	
-			writer.println("DATOS DE LA RESERVA: " );
-		//FALLA//writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
-			writer.println("DATOS DEL ALOJAMIENTO: " );
-			writer.println("Nombre del hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
-			writer.println("DATOS DE LA RESERVA: " );
-			writer.println("Precio Reserva: " + vista.detallesReserva.tFPrecioReserva.getX());
+			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
+			//FALLA//writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
+			writer.println("Hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
+			writer.println("Ciudad: " + vista.buscarHotel.cBCiudad.getSelectedItem());
+			writer.println();
+			writer.println("===== DATOS DE LA RESERVA: ===== " );
+			writer.println("Precio Reserva: " + vista.detallesReserva.tFPrecioReserva.getX() + "€");
+			writer.println();
 			writer.flush();
         } catch (Exception e) {
             e.printStackTrace();

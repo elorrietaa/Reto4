@@ -44,5 +44,8 @@ public class Hotel extends Alojamiento{
     public String toString() {
     	return nombre;
     }
+    public String toStringDatosHotel() {
+    	return "Código hotel: " + this.codAlojamiento + "Nombre: " + this.nombre ;
+    }
    
 }

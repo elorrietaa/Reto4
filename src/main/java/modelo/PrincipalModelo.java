@@ -18,11 +18,13 @@ public class PrincipalModelo {
 	public Hotel hotel;
 	public Habitacion habitacion;
 	public Reserva reserva;
+
 	//public Cama cama;
 	//public Cliente cliente;
 	//public PersonaAlojada personaAlojada;
 	
 	public FuncionesPago funcionesPago;
+	public FuncionesReserva funcionesReserva;
 	
 	//public FuncionesBillete funcionesBillete;
 	//public FuncionesReserva funcionesReserva;
@@ -50,6 +52,7 @@ public class PrincipalModelo {
 		// Creamos objetos con las funciones generales del programa
 		
 		funcionesPago = new FuncionesPago(this);
+		funcionesReserva = new FuncionesReserva(this);
 		//funcionesReserva = new FuncionesReserva(this);
 		//funcionesRegistro = new FuncionesRegistro(this);
 		
@@ -58,4 +61,5 @@ public class PrincipalModelo {
 		precioTotal = 0;
 		
 	}
+
 }

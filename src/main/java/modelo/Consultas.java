@@ -78,13 +78,13 @@ public class Consultas {
     	return listaCiudades;
     }
    
-    public ArrayList<Hotel> BuscarHotelPorCodigoCiudad(Ciudad ciudad) {
+    public ArrayList<Hotel> BuscarHotelPorCodigoCiudad(int codCiudadSeleccionada) {
 		ArrayList<Hotel> listaAlojamientos = new ArrayList<Hotel>(); 
 		Hotel hotel;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion=?";
+		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ?";
 		
 		try {
 			// Abrimos una conexion
@@ -92,7 +92,7 @@ public class Consultas {
 					
 			// preparamos la consulta SQL a la base de datos
 			ps = connection.prepareStatement(query);
-			ps.setInt(1, ciudad.getCodCiudad());
+			ps.setInt(1, codCiudadSeleccionada);
 					
 			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 			rs = ps.executeQuery();
@@ -119,13 +119,13 @@ public class Consultas {
 		return listaAlojamientos;
     }
   
-    public ArrayList<Habitacion> buscarHabitacionPorCodigoHotel(Hotel hotel) {
+    public ArrayList<Habitacion> buscarHabitacionPorCodigoHotel(Hotel hotel, int codHotelSeleccionado) {
     	ArrayList<Habitacion> listaHabitacion = new ArrayList<Habitacion>(); 
     	Habitacion habitacion;
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT * FROM `habitaciones`, `alojamientos` where alojamientos.Cod_alojamiento=" + hotel.codAlojamiento;
+    	String query = "SELECT * FROM `habitaciones`, `alojamientos` where alojamientos.Cod_alojamiento= ?";
     	
     	try {
     		// Abrimos una conexion
@@ -136,7 +136,7 @@ public class Consultas {
     				
     		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
     		rs = ps.executeQuery();
-    				
+    		ps.setInt(1, codHotelSeleccionado);
     		// crea objetos Linea con los resultados y los añade a un arrayList
     		while (rs.next()) {
     			habitacion = new Habitacion(); 
@@ -159,4 +159,8 @@ public class Consultas {
     		}
     	return listaHabitacion;
         }
+    
+   
+    
+    
 }

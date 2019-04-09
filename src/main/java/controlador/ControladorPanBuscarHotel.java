@@ -13,6 +13,7 @@ import modelo.Consultas;
 import modelo.Habitacion;
 import modelo.Hotel;
 import modelo.PrincipalModelo;
+import modelo.Reserva;
 import vista.*;
 
 /**
@@ -26,10 +27,13 @@ public class ControladorPanBuscarHotel implements ActionListener{
 	private ArrayList<Ciudad> listaCiudades;
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
+	private ArrayList<Object> listaDetallesReserva;
 	Ciudad ciudad;
 	Hotel hotel;
 	Habitacion habitacion;
+	Reserva reserva;
 	Consultas consultas;
+	float precioReserva=-1;
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -47,10 +51,11 @@ public class ControladorPanBuscarHotel implements ActionListener{
     public void addListeners() {
     	vista.buscarHotel.cBCiudad.addActionListener(this);
     	vista.buscarHotel.cBHotel.addActionListener(this);
+    	vista.buscarHotel.cBHabitacion.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
     }
     /**
-     * Método mostrarCiudad, muestra las ciudades que se han b
+     * Método mostrarCiudad, muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
      * @param listaCiudades
      */
     public void mostrarCiudad() {
@@ -62,18 +67,82 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		}
     }
     
-    public void mostrarHoteles() {
+    /**
+     * Método mostrarHoteles: muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
+     * @param codCiudadSeleccionada
+     */
+    public void mostrarHoteles(int codCiudadSeleccionada) {
     	vista.buscarHotel.cBHotel.removeAllItems();
+    	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
 	  	for(int i=0; i<listaHoteles.size();i++) {
 	  	  hotel = listaHoteles.get(i);
 	  	  vista.buscarHotel.cBHotel.addItem(hotel);
 	  	}
     }
-	
-	public void actualizarPanelBuscarHotel() {
+    /**
+     * Método mostrarHotelesEnElJList
+     * @param codCiudadSeleccionada
+     */
+    public void mostrarHotelesEnElJList(int codCiudadSeleccionada) {
+    	//borra todos los elementos del JList
+    	vista.buscarHotel.modeloOrigen.removeAllElements();
+    	//llena el arrayList con la lista de Hoteles
+    	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
+    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
+	  	for(int i=0; i<listaHoteles.size();i++) {
+	  		vista.buscarHotel.modeloOrigen.addElement(listaHoteles.get(i));
+			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloOrigen);
+	  	}
+    }
+    
+  
+  
+    /**
+     * Método: guardarDatosSeleccionados, guarda los datos seleccionados por el usuario en los obejtos.
+     */
+	public void guardarDatosSeleccionadosCiudadYHotel() {
+		//se guarda la ciudad seleccionada
+		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+		//Pruebas
+		System.out.println("Ciudad:" + ciudad);
+		
+		//se guarda el hotel seleccionado con el COMBOBOX
 	    this.hotel = (Hotel) vista.buscarHotel.cBHotel.getSelectedItem();
-	    vista.detallesReserva.textFieldPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
+	    //Pruebas
+	    System.out.println("Hotel del combox:" + hotel);
+	    //se guarda el hotel seleccionado con la JLIST
+	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+	    //Pruebas
+	    System.out.println("Hotel de la lista:" + hotel);
+	 
 	    
+	}
+	/**
+	 * generarReserva se rellena el objeto reserva con los datos seleccionados
+	 */
+	public void generarReserva() {
+		int codReservaQueSeCogeriaDeBBDD = 50;
+		int codReserva = codReservaQueSeCogeriaDeBBDD +1;
+		
+		//rellenamos el objeto reserva: ¡¡¡ EN EL FUTURO PRECIO
+		this.reserva = new Reserva(codReserva, hotel, precioReserva);
+	}
+	
+	
+	public void mostrarDatosReserva() {
+		
+		//muestra  el precio de la reserva
+	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
+	    
+	  //Pruebas
+	    System.out.println("Codigo reserva:" + reserva.getCodReserva());
+	  
+	}
+	
+	public void actualizarSiguientePanelDetalles() {
+		//muestra en la siguiente pantalla el precio de la reserva
+		mostrarDatosReserva();
+		
 	    //muestra el siguiente panel: PanelDetallesReserva
 	    vista.detallesReserva.setVisible(true);
 	    vista.buscarHotel.setVisible(false);
@@ -93,25 +162,42 @@ public class ControladorPanBuscarHotel implements ActionListener{
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
 			
-			case "Continuar":				
-			    	//pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
-				actualizarPanelBuscarHotel();
-			
+			case "Continuar":		
+				//Cuando pulsa el boton continuar pasan las siguientes cosas: 
+				// (1º) Calcula el precio de la reserva:
+				precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
+				
+			    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
+				guardarDatosSeleccionadosCiudadYHotel();
+				
+				//Generar reserva y guardarla en el objeto reserva
+				generarReserva();
+				
+				//(3º)actualiza el siguiente panel:
+				actualizarSiguientePanelDetalles();
+				
+//crea el fichero pero mal, da errores				
+				//(4º)guarda los datos de la reserva en en un fichero 
+			   // modelo.funcionesReserva.escribeEnFichero(modelo);
 				break;
 			
 			}
 	
 		} else if (sourceObject instanceof JComboBox) {
 		   
-		    // seleccionar ciudad
-			this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
-			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado
-			this.listaHoteles = consultas.BuscarHotelPorCodigoCiudad(this.ciudad);
-			// seleccionar hotel
-			mostrarHoteles();
-		
+			// guarda la ciudad seleccionada
+			Ciudad ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+			if (ciudad != null) {
+				
+			int codCiudadSeleccionada = ciudad.getCodCiudad();
+						
+			// rellena listaAlojamiento con los alojamientos en función de la ciudad que se ha seleccionado y muestra los hoteles
+			mostrarHoteles(codCiudadSeleccionada);
+			
+			//muestra los hoteles en el JList
+			mostrarHotelesEnElJList(codCiudadSeleccionada);
+			}
 		}
-		
 	}
 	public ArrayList<Ciudad> getListaCiudades() {
 		return listaCiudades;

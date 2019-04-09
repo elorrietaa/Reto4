@@ -69,7 +69,13 @@ public class Reserva {
      */
     public void setPrecioReserva(float precioReserva) {
 	this.precioReserva = precioReserva;
-    } 
+    }
+	@Override
+	public String toString() {
+		return "Datos de la reserva: Código de Reserva:" + this.codReserva ;
+	} 
+    
+    
 }
 
 

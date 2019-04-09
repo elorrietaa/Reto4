@@ -7,6 +7,9 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -14,13 +17,20 @@ import javax.swing.JList;
  */
 public class PanBuscarHotel extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Create the panel.
 	 */
+		public DefaultListModel<Object> modeloOrigen = new DefaultListModel<Object>();
+		public DefaultListModel<Object> modeloDestino = new DefaultListModel<Object>();
+		public JList<Object> listHoteles,listHabitacion;
 		public JPanel panelOcultarHoteles;
     	public JButton buttonContinuar;
-    	public JComboBox<Object> cBHotel, cBCiudad; 
-    	public JLabel labelHotel, labelCiudad, labelFecha, label_5;
-    	public JList list;
+    	public JComboBox<Object> cBHotel, cBCiudad, cBHabitacion; 
+    	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin;
+    	
     	
 	public PanBuscarHotel() {
 		setLayout(null);
@@ -32,11 +42,11 @@ public class PanBuscarHotel extends JPanel {
 		
 		labelCiudad = new JLabel("Selecciona la ciudad :");
 		labelCiudad.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelCiudad.setBounds(101, 153, 137, 14);
+		labelCiudad.setBounds(83, 132, 137, 14);
 		add(labelCiudad);
 		
 		cBCiudad = new JComboBox<Object>();
-		cBCiudad.setBounds(373, 152, 179, 20);
+		cBCiudad.setBounds(247, 131, 179, 20);
 		add(cBCiudad);
 		
 		labelFecha = new JLabel("Seleccione Fecha :");
@@ -50,17 +60,32 @@ public class PanBuscarHotel extends JPanel {
 		add(label_5);
 		
 		labelHotel = new JLabel("Seleccione Hotel :");
-		labelHotel.setBounds(101, 311, 125, 14);
+		labelHotel.setBounds(83, 179, 125, 14);
 		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(labelHotel);
 		
 		cBHotel = new JComboBox<Object>();
-		cBHotel.setBounds(372, 310, 179, 20);
+		cBHotel.setBounds(247, 178, 179, 20);
 		add(cBHotel);
 		
-		list = new JList();
-		list.setBounds(632, 311, 192, 182);
-		add(list);
+		listHoteles = new JList<Object>();
+		//FormatoDiseno.formatoList(listHoteles);
+		listHoteles.setBounds(247, 209, 312, 350);
+		add(listHoteles);
+		
+		lblSeleccioneHabitacin = new JLabel("Seleccione Habitaci\u00F3n:");
+		lblSeleccioneHabitacin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSeleccioneHabitacin.setBounds(489, 179, 125, 14);
+		add(lblSeleccioneHabitacin);
+		
+		cBHabitacion = new JComboBox<Object>();
+		cBHabitacion.setBounds(624, 178, 179, 20);
+		add(cBHabitacion);
+		
+		listHabitacion = new JList<Object>();
+		//FormatoDiseno.formatoList(listHabitacion);
+		listHabitacion.setBounds(624, 209, 192, 182);
+		add(listHabitacion);
 
 	}
 }

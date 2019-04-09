@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import modelo.*;
@@ -149,6 +150,7 @@ public class ControladorPanPago implements ActionListener{
 			case "Atrás":
 				vista.detallesReserva.setVisible(true);
 				vista.pago.setVisible(false);
+				reset();
 				break;
 				
 			//case "Cancelar":
@@ -162,7 +164,14 @@ public class ControladorPanPago implements ActionListener{
 				//break;
 				
 			case "Continuar":
-				FuncionContinuar();
+				if(dinero >= total) {
+					FuncionContinuar();
+				}
+				else {
+					 JOptionPane.showMessageDialog(vista, "Lo sentimos. No puede continuar su compra hasta que abone el importe completo. Gracias. ", null, 0);
+					System.out.println("Le falta dinero por introducir");
+				}
+				
 				break;
 				
 		}
@@ -292,40 +301,40 @@ public class ControladorPanPago implements ActionListener{
 	/**
 	 * Funcion del boton de cancelar
 	 */
-	/*public void reset() {
-		modelo.cliente = null;
-		modelo.billeteIda = null;
-		modelo.billeteVuelta = null;
-		modelo.linea = null;
-		modelo.paradaOrigen = null;
-		modelo.paradaDestino = null;
-		modelo.autobus = null;
-		modelo.precioTotal = 0;
+	public void reset() {
+		//	modelo.cliente = null;
+		//	modelo.billeteIda = null;
+		//	modelo.billeteVuelta = null;
+		//	modelo.linea = null;
+		//	modelo.paradaOrigen = null;
+		//	modelo.paradaDestino = null;
+		//	modelo.autobus = null;
+		//	modelo.precioTotal = 0;
 		
-		vista.sel_billete.rbtnIda.setSelected(true);
-		vista.sel_billete.rbtnVuelta.setSelected(false);
+		//	vista.sel_billete.rbtnIda.setSelected(true);
+		//	vista.sel_billete.rbtnVuelta.setSelected(false);
 		
-		vista.login.userField.setText("");
-		vista.login.password.setText("");
+		//	vista.login.userField.setText("");
+		//	vista.login.password.setText("");
 		
-		vista.registro.txtNombre.setText("");
-		vista.registro.txtApellidos.setText("");
-		vista.registro.rbtnMasc.setSelected(false);
-		vista.registro.rbtnFem.setSelected(false);
-		vista.registro.txtDni.setText("");
-		vista.registro.passwordField.setText("");
-		vista.registro.passwordField2.setText("");
+		//	vista.registro.txtNombre.setText("");
+		//	vista.registro.txtApellidos.setText("");
+		//	vista.registro.rbtnMasc.setSelected(false);
+		//	vista.registro.rbtnFem.setSelected(false);
+		//	vista.registro.txtDni.setText("");
+		//	vista.registro.passwordField.setText("");
+		//	vista.registro.passwordField2.setText("");
 		
 		this.introducido.setText("0 \u20AC");
 		this.restante.setText("0 \u20AC");
 		this.monedas = new float[0];
 		
-		this.vista.pago.btn001.setEnabled(true); // Habilita todo los botones de dinero
-		this.vista.pago.btn002.setEnabled(true);
-		this.vista.pago.btn005.setEnabled(true);
-		this.vista.pago.btn010.setEnabled(true);
-		this.vista.pago.btn020.setEnabled(true);
-		this.vista.pago.btn050.setEnabled(true);
+		this.vista.pago.btn1.setEnabled(true); // Habilita todo los botones de dinero
+		this.vista.pago.btn2.setEnabled(true);
+		this.vista.pago.btn5.setEnabled(true);
+		this.vista.pago.btn10.setEnabled(true);
+		this.vista.pago.btn20.setEnabled(true);
+		this.vista.pago.btn50.setEnabled(true);
 		this.vista.pago.btn1.setEnabled(true);
 		this.vista.pago.btn2.setEnabled(true);
 		this.vista.pago.btn5.setEnabled(true);
@@ -335,7 +344,15 @@ public class ControladorPanPago implements ActionListener{
 		this.vista.pago.btn100.setEnabled(true);
 		this.vista.pago.btn200.setEnabled(true);
 		
-		this.vista.pago.btnContinuar.setVisible(false);
-		this.vista.pago.btnContinuar.setEnabled(false);
-	}*/
+		if(dinero >= total) {
+			this.vista.pago.btnContinuar.setVisible(true);
+			this.vista.pago.btnContinuar.setEnabled(true);
+			FuncionContinuar();
+		}
+		else {
+			 JOptionPane.showMessageDialog(vista, "Lo sentimos. No puede continuar su compra hasta que abone el importe completo. Gracias. ", null, 0);
+			System.out.println("Le falta dinero por introducir");
+		}
+		
+	}
 }

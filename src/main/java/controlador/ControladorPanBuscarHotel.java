@@ -85,13 +85,13 @@ public class ControladorPanBuscarHotel implements ActionListener{
      */
     public void mostrarHotelesEnElJList(int codCiudadSeleccionada) {
     	//borra todos los elementos del JList
-    	vista.buscarHotel.modeloOrigen.removeAllElements();
+    	vista.buscarHotel.modeloHotel.removeAllElements();
     	//llena el arrayList con la lista de Hoteles
     	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
     	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
 	  	for(int i=0; i<listaHoteles.size();i++) {
-	  		vista.buscarHotel.modeloOrigen.addElement(listaHoteles.get(i));
-			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloOrigen);
+	  		vista.buscarHotel.modeloHotel.addElement(listaHoteles.get(i));
+			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloHotel);
 	  	}
     }
     
@@ -133,6 +133,8 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		
 		//muestra  el precio de la reserva
 	    vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento()));
+	    
+	    vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + this.ciudad.getNombreCiudad() + "\n" + "Hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
 	    
 	  //Pruebas
 	    System.out.println("Codigo reserva:" + reserva.getCodReserva());

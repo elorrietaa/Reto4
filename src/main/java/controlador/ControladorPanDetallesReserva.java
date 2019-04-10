@@ -57,8 +57,8 @@ public class ControladorPanDetallesReserva implements ActionListener {
 	}
 	
 	public void funcionContinuar() {
-		vista.pago.total.setText(Float.toString(this.modelo.precioTotal));
-		vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal));
+		vista.pago.total.setText(Float.toString(this.modelo.precioTotal) + " €");
+		vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal) + " €");
 		vista.pago.setVisible(true);
 		vista.detallesReserva.setVisible(false);
 	}

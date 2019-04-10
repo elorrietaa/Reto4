@@ -18,7 +18,7 @@ public class PrincipalControlador {
     private ControladorPanBuscarHotel controladorPanBuscarHotel;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
     private ControladorPanPago controladorPanPago;
-    //private ControladorPanVueltas controladorPanVueltas;
+    private ControladorPanVueltas controladorPanVueltas;
     /**
      * Constructor del PrincipalControlador
      * @param modelo
@@ -56,6 +56,8 @@ public class PrincipalControlador {
     	this.controladorPanPago = new ControladorPanPago(vista, modelo);
     	this.controladorPanPago.addListeners();
     	// añadimos listeners a los botones del panel 'controladorPanVueltas'
+    	this.controladorPanVueltas = new ControladorPanVueltas(vista, modelo);
+    	this.controladorPanVueltas.addListeners();
     }
 }
 

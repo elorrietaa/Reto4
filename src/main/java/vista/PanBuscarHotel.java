@@ -90,17 +90,15 @@ public class PanBuscarHotel extends JPanel {
 		lblPrecioHabi.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblPrecioHabi.setBounds(83, 492, 157, 14);
 		add(lblPrecioHabi);
+		lblPrecioHabi.setVisible(false);
 		
 		precioHabitacion = new JTextField();
 		precioHabitacion.setBounds(249, 491, 113, 23);
 		add(precioHabitacion);
 		precioHabitacion.setColumns(10);
+		precioHabitacion.setVisible(false);
 		
 		btnMostrarDetalles = new JButton("Mostrar detalles del hotel seleccionado:");
-		btnMostrarDetalles.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnMostrarDetalles.setBounds(486, 90, 515, 23);
 		add(btnMostrarDetalles);
 		

@@ -115,5 +115,7 @@ public class PanPago extends JPanel {
 		btnContinuar = new JButton("Continuar");
 		btnContinuar.setBounds(713, 630, 89, 23);
 		add(btnContinuar);
+		btnContinuar.setEnabled(false);
+		btnContinuar.setVisible(false);
 	}
 }

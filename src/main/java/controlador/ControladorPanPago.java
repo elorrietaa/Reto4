@@ -150,6 +150,7 @@ public class ControladorPanPago implements ActionListener{
 			case "Atrás":
 				vista.detallesReserva.setVisible(true);
 				vista.pago.setVisible(false);
+				vista.vueltas.setVisible(false);
 				reset();
 				break;
 				
@@ -275,7 +276,7 @@ public class ControladorPanPago implements ActionListener{
 		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 		
-		//guarda los datos de la reserva en en un fichero 
+		//guarda los datos de la reserva en en un fichero
 		modelo.funcionesReserva.escribeEnFichero(modelo, vista);
 		
 		/*// rellenar datos del cliente en el billete	

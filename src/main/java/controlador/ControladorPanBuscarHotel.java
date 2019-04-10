@@ -114,12 +114,16 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		System.out.println("***DATOS CIUDAD***:Ciudad:" + ciudad);
 	    //se guarda el hotel seleccionado con la JLIST
 	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+	    //le pasa el hotel al modelo
+	    modelo.hotel = this.hotel;
 	    //Pruebas
 	    System.out.println("***DATOS HOTEL***: Código del hotel:" + hotel.getCodAlojamiento());
 	    System.out.println("Nombre hotel:" + hotel.getNombre());
 	    System.out.println("Precio hotel:" + hotel.getPrecioAlojamiento());
 	    System.out.println("Ubicación hotel:" + hotel.getUbicacion());
 	    System.out.println("Número de estrellas:" + hotel.getEstrellas());
+	    
+	    //en el futuro aqui los datos de la habitacion, guardarlos y pasarlos a modelo
 	    
 	}
 	
@@ -133,6 +137,8 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		
 		//rellenamos el objeto reserva: ¡¡¡ EN EL FUTURO PRECIO
 		this.reserva = new Reserva(codReserva, hotel, precioReserva);
+		//le pasa la reserva al modelo
+		modelo.reserva = this.reserva;
 	}
 	
 	/**

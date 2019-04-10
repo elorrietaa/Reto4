@@ -150,7 +150,6 @@ public class ControladorPanPago implements ActionListener{
 			case "Atrás":
 				vista.detallesReserva.setVisible(true);
 				vista.pago.setVisible(false);
-				vista.vueltas.setVisible(false);
 				reset();
 				break;
 				
@@ -349,10 +348,6 @@ public class ControladorPanPago implements ActionListener{
 			this.vista.pago.btnContinuar.setVisible(true);
 			this.vista.pago.btnContinuar.setEnabled(true);
 			FuncionContinuar();
-		}
-		else {
-			 JOptionPane.showMessageDialog(vista, "Lo sentimos. No puede continuar su compra hasta que abone el importe completo. Gracias. ", null, 0);
-			System.out.println("Le falta dinero por introducir");
 		}
 		
 	}

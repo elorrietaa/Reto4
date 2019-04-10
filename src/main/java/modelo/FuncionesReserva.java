@@ -7,7 +7,6 @@ import vista.JframePrincipal;
 
 public class FuncionesReserva {
 	PrincipalModelo modelo;
-	
 	/**
 	 * Constructor de la clase FuncionesReserva
 	 * 
@@ -56,15 +55,16 @@ public class FuncionesReserva {
 			writer.println("****************************");
 			writer.println("      DATOS DELA RESERVA      ");
 			writer.println("****************************");
+			writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
 			writer.println();
-			//creo que no coge bien los objetos	
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
-			//FALLA//writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
-			writer.println("Hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
-			writer.println("Ciudad: " + vista.buscarHotel.cBCiudad.getSelectedItem());
+			writer.println("Código del hotel: " + modelo.hotel.getCodAlojamiento());
+			writer.println("Ciudad: " + modelo.hotel.getUbicacion());
+			writer.println("Hotel: " + modelo.hotel.getNombre());
+			writer.println("Número de estrellas: " + modelo.hotel.getEstrellas());
 			writer.println();
 			writer.println("===== DATOS DE LA RESERVA: ===== " );
-			writer.println("Precio Reserva: " + modelo.precioTotal + "€");
+			writer.println("Precio de la reserva: " + modelo.precioTotal + "€");
 			writer.println();
 			writer.flush();
         } catch (Exception e) {

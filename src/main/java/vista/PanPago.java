@@ -86,6 +86,7 @@ public class PanPago extends JPanel {
 		add(lblTotal);
 		
 		total = new JTextField();
+		total.setEditable(false);
 		total.setBounds(163, 88, 86, 20);
 		add(total);
 		total.setColumns(10);
@@ -95,6 +96,7 @@ public class PanPago extends JPanel {
 		add(lblTotalIntroducido);
 		
 		totalIntro = new JTextField();
+		totalIntro.setEditable(false);
 		totalIntro.setBounds(339, 88, 86, 20);
 		add(totalIntro);
 		totalIntro.setColumns(10);
@@ -104,6 +106,7 @@ public class PanPago extends JPanel {
 		add(lblAPagar);
 		
 		aPagar = new JTextField();
+		aPagar.setEditable(false);
 		aPagar.setBounds(513, 88, 86, 20);
 		add(aPagar);
 		aPagar.setColumns(10);

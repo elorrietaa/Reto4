@@ -1,0 +1,44 @@
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: Hotel Carlton
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: Hotel Carlton
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: GRAN BILBAO
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: GRAN BILBAO
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+

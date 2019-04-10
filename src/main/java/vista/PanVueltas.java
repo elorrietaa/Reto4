@@ -35,11 +35,13 @@ public class PanVueltas extends JPanel {
 		add(lblTotalIntroducido);
 		
 		txtTotal = new JTextField();
+		txtTotal.setEditable(false);
 		txtTotal.setBounds(483, 239, 86, 20);
 		add(txtTotal);
 		txtTotal.setColumns(10);
 		
 		txtTotalIntro = new JTextField();
+		txtTotalIntro.setEditable(false);
 		txtTotalIntro.setBounds(483, 281, 86, 20);
 		add(txtTotalIntro);
 		txtTotalIntro.setColumns(10);
@@ -49,6 +51,7 @@ public class PanVueltas extends JPanel {
 		add(lblVueltas);
 		
 		PanelVueltas = new JTextPane();
+		PanelVueltas.setEditable(false);
 		PanelVueltas.setBounds(440, 328, 129, 159);
 		add(PanelVueltas);
 		

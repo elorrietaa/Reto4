@@ -135,7 +135,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT * FROM `habitaciones`, `alojamiento` where alojamiento.Cod_alojamiento=" +codHotelSeleccionado;
+    	String query = "SELECT * FROM `habitaciones`, `alojamiento` where habitaciones.Cod_alojamiento=alojamiento.Cod_alojamiento and alojamiento.Cod_alojamiento=?";
     	
     	try {
     		// Abrimos una conexion
@@ -143,7 +143,8 @@ public class Consultas {
     				
     		// preparamos la consulta SQL a la base de datos
     		ps = connection.prepareStatement(query);
-    				
+    		ps.setInt(1, codHotelSeleccionado);
+    		
     		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
     		rs = ps.executeQuery();
     

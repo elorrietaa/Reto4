@@ -203,8 +203,8 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				if (hotel != null) {
 					//muestra las habitaciones en el JList
 					int codHotelSeleccionado = hotel.getCodAlojamiento();
-	//no muestra bien las habitaciones
-	//			mostrarHabitacionesEnElJList(codHotelSeleccionado);	
+					//no muestra bien las habitaciones
+					mostrarHabitacionesEnElJList(codHotelSeleccionado);	
 				}
 				else {
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el alojamiento del que desea ver más detalles. Gracias. ", null, 0);

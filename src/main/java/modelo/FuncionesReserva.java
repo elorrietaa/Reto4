@@ -52,19 +52,19 @@ public class FuncionesReserva {
         	}
             fichero = new FileWriter("C:\\workspace\\RETO4/reserva.txt", true); // true es para añadir al final de un fichero ya existente
             writer = new PrintWriter(fichero);
-
+            //vista.detallesReserva.tFPrecioReserva.getX()
 			writer.println("****************************");
 			writer.println("      DATOS DELA RESERVA      ");
 			writer.println("****************************");
 			writer.println();
-//creo que no coge bien los objetos	
+			//creo que no coge bien los objetos	
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
 			//FALLA//writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
 			writer.println("Hotel: " + vista.buscarHotel.listHoteles.getSelectedValue());
 			writer.println("Ciudad: " + vista.buscarHotel.cBCiudad.getSelectedItem());
 			writer.println();
 			writer.println("===== DATOS DE LA RESERVA: ===== " );
-			writer.println("Precio Reserva: " + vista.detallesReserva.tFPrecioReserva.getX() + "€");
+			writer.println("Precio Reserva: " + modelo.precioTotal + "€");
 			writer.println();
 			writer.flush();
         } catch (Exception e) {

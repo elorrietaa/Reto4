@@ -85,7 +85,4 @@ public class Habitacion {
 	public String toString() {
     	return tipoHabitacion;
     }
-	
-	
 }
-

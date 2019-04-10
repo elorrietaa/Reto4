@@ -328,13 +328,14 @@ public class ControladorPanPago implements ActionListener{
 		this.introducido.setText("0 \u20AC");
 		this.restante.setText("0 \u20AC");
 		this.monedas = new float[0];
+		this.dinero = 0f;
 		
-		this.vista.pago.btn1.setEnabled(true); // Habilita todo los botones de dinero
-		this.vista.pago.btn2.setEnabled(true);
-		this.vista.pago.btn5.setEnabled(true);
-		this.vista.pago.btn10.setEnabled(true);
-		this.vista.pago.btn20.setEnabled(true);
-		this.vista.pago.btn50.setEnabled(true);
+		this.vista.pago.btn1cen.setEnabled(true); // Habilita todo los botones de dinero
+		this.vista.pago.btn2cen.setEnabled(true);
+		this.vista.pago.btn5cen.setEnabled(true);
+		this.vista.pago.btn10cen.setEnabled(true);
+		this.vista.pago.btn20cen.setEnabled(true);
+		this.vista.pago.btn50cen.setEnabled(true);
 		this.vista.pago.btn1.setEnabled(true);
 		this.vista.pago.btn2.setEnabled(true);
 		this.vista.pago.btn5.setEnabled(true);

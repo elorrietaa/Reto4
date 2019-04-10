@@ -8,6 +8,7 @@ package modelo;
 public class Alojamiento {
     protected int codAlojamiento;
     protected String nombre;
+    //protected ArrayList<Habitacion> listaHabitaciones;
     protected int numHabitaciones;
     protected String ubicacion;
     protected float precioAlojamiento;

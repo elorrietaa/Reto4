@@ -6,10 +6,16 @@ package modelo;
  */
 public class Habitacion {
 	protected int codHabitacion;
+	//quitar esto
 	protected Alojamiento alojamiento;
+	
 	protected String tipoHabitacion;
 	protected float tamanio;
 	protected int numCamas;
+	
+	//protected ArrayList<Cama> listaCamas;
+	
+	//esto lo quitamos
 	protected String estadoHabitacion;
 	
 	//constructor vacio 

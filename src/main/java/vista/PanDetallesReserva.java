@@ -54,11 +54,13 @@ public class PanDetallesReserva extends JPanel {
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();
+		tFPrecioReserva.setEditable(false);
 		tFPrecioReserva.setBounds(305, 329, 86, 20);
 		add(tFPrecioReserva);
 		tFPrecioReserva.setColumns(10);
 		
 		textPDatosAlo = new JTextPane();
+		textPDatosAlo.setEditable(false);
 		textPDatosAlo.setBounds(305, 185, 204, 76);
 		add(textPDatosAlo);
 		

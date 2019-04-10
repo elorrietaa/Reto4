@@ -103,6 +103,7 @@ public class PanBuscarHotel extends JPanel {
 		add(btnMostrarDetalles);
 		
 		textPaneDetHot = new JTextPane();
+		textPaneDetHot.setEditable(false);
 		textPaneDetHot.setBounds(486, 124, 515, 106);
 		add(textPaneDetHot);
 		

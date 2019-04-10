@@ -348,7 +348,7 @@ public class ControladorPanPago implements ActionListener{
 		if(dinero >= total) {
 			this.vista.pago.btnContinuar.setVisible(true);
 			this.vista.pago.btnContinuar.setEnabled(true);
-			FuncionContinuar();
+			
 		}
 		
 	}

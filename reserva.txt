@@ -1,0 +1,111 @@
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: Hotel Carlton
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: Hotel Carlton
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: GRAN BILBAO
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: GRAN BILBAO
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Hotel: Hotel Abando 
+Ciudad: BILBAO
+
+===== DATOS DE LA RESERVA: ===== 
+Precio Reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+Código de la reserva: 51
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Código del hotel: 2
+Ciudad: BILBAO
+Hotel: Hotel Tayko
+Número de estrellas: 4
+
+===== DATOS DE LA RESERVA: ===== 
+Precio de la reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+Código de la reserva: 51
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Código del hotel: 2
+Ciudad: BILBAO
+Hotel: Hotel Tayko
+Número de estrellas: 4
+
+===== DATOS DE LA RESERVA: ===== 
+Precio de la reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+Código de la reserva: 51
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Código del hotel: 3
+Ciudad: BILBAO
+Hotel: Hotel Carlton
+Número de estrellas: 5
+
+===== DATOS DE LA RESERVA: ===== 
+Precio de la reserva: 75.0€
+
+****************************
+      DATOS DELA RESERVA      
+****************************
+Código de la reserva: 51
+
+=====DATOS DEL ALOJAMIENTO: ===== 
+Código del hotel: 4
+Ciudad: BILBAO
+Hotel: Hotel Abando 
+Número de estrellas: 4
+
+===== DATOS DE LA RESERVA: ===== 
+Precio de la reserva: 75.0€
+

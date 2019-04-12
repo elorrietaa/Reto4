@@ -1,6 +1,7 @@
 package vista;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 public class JframePrincipal extends JFrame{
 
@@ -21,7 +22,7 @@ public class JframePrincipal extends JFrame{
 
 	//constructor
 	public JframePrincipal() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1024, 720);
 		setLocationRelativeTo(null);
 		setResizable(false);

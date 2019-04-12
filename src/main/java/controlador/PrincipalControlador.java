@@ -15,6 +15,7 @@ public class PrincipalControlador {
     public JframePrincipal vista;
     public Conexion conexion;
     
+    private ControladorJframe controladorJframe;
     private ControladorPanBienvenida controladorPanBienvenida;
     public ControladorPanBuscarHotel controladorPanBuscarHotel;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
@@ -53,6 +54,10 @@ public class PrincipalControlador {
 	 * Esta funcion de encarga de inicializar los botones
 	 */
     public void inicializarListeners() {
+    	// añadimos un listener para comprobar el cierre de la aplicacion en el Jframe principal
+    	this.controladorJframe = new ControladorJframe(vista);
+    	this.controladorJframe.addListeners();
+    	
     	// añadimos listeners a los botones del panel bienvenida
     	this.controladorPanBienvenida = new ControladorPanBienvenida(vista, this);
     	this.controladorPanBienvenida.addListeners();

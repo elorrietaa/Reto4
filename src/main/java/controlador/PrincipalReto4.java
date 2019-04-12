@@ -18,7 +18,7 @@ public class PrincipalReto4 {
 		controlador.inicializarVista();
 		controlador.inicializarListeners();
 		
-    } 
+    }  
 
 }
  

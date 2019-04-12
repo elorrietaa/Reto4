@@ -1,6 +1,7 @@
 package modelo;
 
 import bbdd.Conexion;
+import controlador.FuncionesPago;
 
 /**
  * Clase PrincipalModelo:
@@ -51,7 +52,7 @@ public class PrincipalModelo {
 		
 		// Creamos objetos con las funciones generales del programa
 		
-		funcionesPago = new FuncionesPago(this);
+		funcionesPago = new FuncionesPago(this); 
 		funcionesReserva = new FuncionesReserva(this);
 		//funcionesReserva = new FuncionesReserva(this);
 		//funcionesRegistro = new FuncionesRegistro(this);

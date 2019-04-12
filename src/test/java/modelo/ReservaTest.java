@@ -2,14 +2,20 @@ package modelo;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
+
 import org.junit.Test;
 
 public class ReservaTest {
     private int codReserva=1;
+    private Cliente cliente = new Cliente("22758299X", "Alba", "Rodriguez Salvador", new Date(31-01-2019), 'M', "abracadaver");
     private Alojamiento alojamiento=new Alojamiento(1, "Hotel Melia", 5, "Bilbao", (float) 54.2);
+    private Date fechaIda = new Date(31-01-2019);
+    private Date fechaVuelta;
     private float precioReserva=(float) 88.29;
-    Reserva reservaPrueba = new Reserva(codReserva, alojamiento, precioReserva);
-    Reserva reserva = new Reserva();
+    Reserva reservaPrueba = new Reserva(codReserva, cliente, alojamiento, fechaIda, fechaVuelta, precioReserva);
+    Reserva reserva = new Reserva(); 
+    Cliente clienteNuevo = new Cliente();
     @Test
    	public void testConstuctor() {
    		assertEquals(codReserva, reservaPrueba.getCodReserva());
@@ -36,4 +42,15 @@ public class ReservaTest {
     public void testToString() {
    	assertEquals("Datos de la reserva: Código de Reserva:" + this.codReserva, reservaPrueba.toString());
     }
+   
+    @Test
+	public void testFecha() {
+		reservaPrueba.setFechaIda(fechaIda);
+		assertEquals(fechaIda, reservaPrueba.getFechaIda());
+	}
+    @Test
+	public void testVuelta() {
+		reservaPrueba.setFechaVuelta(fechaVuelta);
+		assertEquals(fechaVuelta, reservaPrueba.getFechaVuelta());
+	}
 }

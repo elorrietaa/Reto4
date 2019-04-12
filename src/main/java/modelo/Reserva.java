@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 /**
  * Clase Reserva: contiene la información referente a la Reserva: codReserva, alojamiento, precioReserva
  * @author IN1DM3B_09
@@ -7,13 +9,17 @@ package modelo;
  */
 public class Reserva {
     private int codReserva;
+    private Cliente cliente;
     private Alojamiento alojamiento; 
+    private Date fechaIda;
+    private Date fechaVuelta;
     private float precioReserva;
+    
     /**
      * Constructor vacio del objeto Reserva
      */
     public Reserva() {
-    	
+    	 
     }
     /**
      * Constructor del objeto Reserva
@@ -21,9 +27,12 @@ public class Reserva {
      * @param alojamiento
      * @param precioReserva
      */
-    public Reserva(int codReserva, Alojamiento alojamiento, float precioReserva) {
+    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Date fechaIda, Date fechaVuelta,  float precioReserva) {
 	this.codReserva=codReserva;
+	this.cliente = cliente;
 	this.alojamiento=alojamiento;
+	this.fechaIda = fechaIda;
+	this.fechaVuelta = fechaVuelta;
 	this.precioReserva=precioReserva;
     }
     //get y set
@@ -73,6 +82,24 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Datos de la reserva: Código de Reserva:" + this.codReserva ;
+	}
+	public Cliente getCliente() {
+	    return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+	    this.cliente = cliente;
+	}
+	public Date getFechaIda() {
+	    return fechaIda;
+	}
+	public void setFechaIda(Date fechaIda) {
+	    this.fechaIda = fechaIda;
+	}
+	public Date getFechaVuelta() {
+	    return fechaVuelta;
+	}
+	public void setFechaVuelta(Date fechaVuelta) {
+	    this.fechaVuelta = fechaVuelta;
 	} 
     
     

@@ -11,7 +11,7 @@ public class ClienteTest {
 
 	private String dni = "22758299X";
 	private String nombre = "Alba";
-	private String apellidos = "Rodriguez";
+	private String apellidos = "Rodriguez Salvador";
 	private Date fechaNacimiento = new Date(31-01-2019);
 	private char sexo = 'M';
 	private String contrasena = "abracadaver";

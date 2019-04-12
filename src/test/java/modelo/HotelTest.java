@@ -21,4 +21,12 @@ public class HotelTest {
 	hotelPrueba.setEstrellas(estrellas);
    		assertEquals(estrellas,hotelPrueba.getEstrellas());
    	}
+    @Test
+   	public void testToString() {
+   		 assertEquals(nombre, hotelPrueba.toString());
+   	}
+    @Test
+	public void testToStringDatosHotel() {
+		 assertEquals("Código hotel: " + this.codAlojamiento + "Nombre: " + this.nombre, hotelPrueba.toStringDatosHotel());
+	}
 }

@@ -1,4 +1,7 @@
 package modelo;
+
+import java.util.ArrayList;
+
 /**
  * Clase habitación, contiene informacion referente a la habitacion
  * @author alba
@@ -11,7 +14,7 @@ public class Habitacion {
 	protected String tipoHabitacion;
 	protected float tamanio;
 	protected int numCamas;
-	//protected ArrayList<Cama> listaCamas;
+	protected ArrayList<Cama> listaCamas;
 	
 	/**
 	 * Constructor vacio:

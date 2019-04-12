@@ -14,14 +14,17 @@ public class HabitacionTest {
 	protected String estadoHabitacion="DISPONIBLE";
 	
 	Habitacion habitacion = new Habitacion();
-	Habitacion habitacionPrueba = new Habitacion(codHabitacion, alojamiento, tipoHabitacion, tamanio, numCamas, estadoHabitacion);
+	Habitacion habitacionPrueba = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas);
+	
+	@Test
+	public void testConstructorVacio() {   	
+	}
 	
 	@Test
 	public void testConstuctor() {
 		assertEquals(codHabitacion, habitacionPrueba.getCodHabitacion());
-		assertEquals(alojamiento, habitacionPrueba.getAlojamiento());
 		assertEquals(tipoHabitacion, habitacionPrueba.getTipoHabitacion());
-		assertEquals(tamanio, habitacionPrueba.getTamanio(), 0.1);
+		assertEquals(tamanio, habitacionPrueba.getTamanio(), 0.1); 
 		assertEquals(numCamas,habitacionPrueba.getNumCamas());
 	}
 	 @Test
@@ -30,11 +33,6 @@ public class HabitacionTest {
 			assertEquals(codHabitacion,habitacionPrueba.getCodHabitacion());
 		}
 
-	 @Test
-		public void testAlojamiento() {
-		 habitacionPrueba.setAlojamiento(alojamiento); 
-			assertEquals(alojamiento, habitacionPrueba.getAlojamiento());
-		}
 	 @Test
 		public void testTipoHabitacion() {
 		 habitacionPrueba.setTipoHabitacion(tipoHabitacion);
@@ -51,8 +49,7 @@ public class HabitacionTest {
 		 	assertEquals(numCamas, habitacionPrueba.getNumCamas());
 		}
 	 @Test
-		public void testEstadoHabitacion() {
-		 habitacionPrueba.setEstadoHabitacion(estadoHabitacion);
-		 	assertEquals(estadoHabitacion, habitacionPrueba.getEstadoHabitacion());
+		public void testToString() {
+		 	assertEquals(tipoHabitacion, habitacionPrueba.toString());
 		}
 }

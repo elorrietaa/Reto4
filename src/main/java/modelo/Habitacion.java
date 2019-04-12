@@ -6,39 +6,32 @@ package modelo;
  */
 public class Habitacion {
 	protected int codHabitacion;
-	//quitar esto
-	protected Alojamiento alojamiento;
+	
 	
 	protected String tipoHabitacion;
 	protected float tamanio;
 	protected int numCamas;
-	
 	//protected ArrayList<Cama> listaCamas;
 	
-	//esto lo quitamos
-	protected String estadoHabitacion;
-	
-	//constructor vacio 
+	/**
+	 * Constructor vacio:
+	 */
 	public Habitacion(){
 		
 	}
 	/**
 	 * Constructor clase habitación
 	 * @param codHabitacion
-	 * @param alojamiento
 	 * @param tipoHabitacion
 	 * @param tamanio
 	 * @param numCamas
 	 * @param estadoHabitacion
 	 */
-	public Habitacion(int codHabitacion, Alojamiento alojamiento, String tipoHabitacion, float tamanio, int numCamas,
-			String estadoHabitacion) {
+	public Habitacion(int codHabitacion, String tipoHabitacion, float tamanio, int numCamas) {
 		this.codHabitacion = codHabitacion;
-		this.alojamiento = alojamiento;
 		this.tipoHabitacion = tipoHabitacion;
 		this.tamanio = tamanio;
 		this.numCamas = numCamas;
-		this.estadoHabitacion = estadoHabitacion;
 	}
 
 	public int getCodHabitacion() {
@@ -47,14 +40,6 @@ public class Habitacion {
 
 	public void setCodHabitacion(int codHabitacion) {
 		this.codHabitacion = codHabitacion;
-	}
-
-	public Alojamiento getAlojamiento() {
-		return alojamiento;
-	}
-
-	public void setAlojamiento(Alojamiento alojamiento) {
-		this.alojamiento = alojamiento;
 	}
 
 	public String getTipoHabitacion() {
@@ -81,13 +66,6 @@ public class Habitacion {
 		this.numCamas = numCamas;
 	}
 
-	public String getEstadoHabitacion() {
-		return estadoHabitacion;
-	}
-
-	public void setEstadoHabitacion(String estadoHabitacion) {
-		this.estadoHabitacion = estadoHabitacion;
-	}
 	public String toString() {
     	return tipoHabitacion;
     }

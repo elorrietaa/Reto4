@@ -15,7 +15,7 @@ import bbdd.Conexion;
  */
 
 public class Consultas {
-    private Conexion conexion;
+    private Conexion conexion; 
     private  Connection connection;
     /**
 	 * Contructor de la clase consultas
@@ -152,7 +152,7 @@ public class Consultas {
     		while (rs.next()) {
     			habitacion = new Habitacion(); 
     			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
-    			habitacion.setAlojamiento(hotel);
+    			//habitacion.setAlojamiento(hotel);
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setNumCamas(rs.getInt("N_Camas"));

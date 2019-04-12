@@ -16,7 +16,7 @@ public class PrincipalReto4 {
 		PrincipalControlador controlador = new PrincipalControlador(modelo, vista);
 		
 		controlador.inicializarVista();
-		controlador.inicializarListeners();
+		controlador.inicializarListeners(); 
 		
     }  
 

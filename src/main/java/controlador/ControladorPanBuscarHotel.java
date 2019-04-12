@@ -1,7 +1,8 @@
 package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -23,7 +24,7 @@ import vista.*;
  * @author IN1DM3B_09
  *
  */
-public class ControladorPanBuscarHotel implements ActionListener{
+public class ControladorPanBuscarHotel implements ActionListener, PropertyChangeListener {
 	public JframePrincipal vista;
 	public PrincipalModelo modelo; 
 	private ArrayList<Ciudad> listaCiudades;
@@ -55,6 +56,8 @@ public class ControladorPanBuscarHotel implements ActionListener{
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
     	vista.buscarHotel.btnMostrarDetalles.addActionListener(this);
     	vista.buscarHotel.btnMostrarHabDisp.addActionListener(this);
+    	vista.buscarHotel.fechaIda.addPropertyChangeListener(this);
+	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
     }
     /**
      * Método mostrarCiudad = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
@@ -254,5 +257,10 @@ public class ControladorPanBuscarHotel implements ActionListener{
 		}
 		
 	}
+    @Override
+    public void propertyChange(PropertyChangeEvent arg0) {
+	// TODO Auto-generated method stub
+	
+    }
 	
 }

@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JCalendar;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -33,10 +36,9 @@ public class PanBuscarHotel extends JPanel {
 		public JPanel panelOcultarHoteles;
     	public JButton buttonContinuar, btnMostrarDetalles, btnMostrarHabDisp;
     	public JComboBox<Object> cBCiudad; 
-    	public JLabel labelHotel, labelCiudad, labelFecha, label_5, lblSeleccioneHabitacin, lblPrecioHabi;
-    	public JTextField precioHabitacion;
+    	public JLabel labelHotel, labelCiudad, labelFecha, lblSeleccioneHabitacin;
     	public JTextPane textPaneDetHot;
-  
+    	public JCalendar fechaIda, fechaVuelta;
     	
     	
 	public PanBuscarHotel() {
@@ -58,13 +60,8 @@ public class PanBuscarHotel extends JPanel {
 		
 		labelFecha = new JLabel("Seleccione Fecha :");
 		labelFecha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelFecha.setBounds(101, 582, 125, 14);
+		labelFecha.setBounds(95, 392, 125, 14);
 		add(labelFecha);
-		
-		label_5 = new JLabel("1 Noche");
-		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_5.setBounds(373, 582, 67, 14);
-		add(label_5);
 		
 		labelHotel = new JLabel("Seleccione Hotel :");
 		labelHotel.setBounds(101, 92, 125, 14);
@@ -83,20 +80,8 @@ public class PanBuscarHotel extends JPanel {
 		
 		listHabitacion = new JList<Object>();
 		//FormatoDiseno.formatoList(listHabitacion);
-		listHabitacion.setBounds(249, 305, 210, 135);
+		listHabitacion.setBounds(249, 305, 210, 48);
 		add(listHabitacion);
-		
-		lblPrecioHabi = new JLabel("Precio de la habitaci\u00F3n:");
-		lblPrecioHabi.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPrecioHabi.setBounds(83, 492, 157, 14);
-		add(lblPrecioHabi);
-		lblPrecioHabi.setVisible(false);
-		
-		precioHabitacion = new JTextField();
-		precioHabitacion.setBounds(249, 491, 113, 23);
-		add(precioHabitacion);
-		precioHabitacion.setColumns(10);
-		precioHabitacion.setVisible(false);
 		
 		btnMostrarDetalles = new JButton("Mostrar detalles del hotel seleccionado:");
 		btnMostrarDetalles.setBounds(486, 90, 515, 23);
@@ -110,6 +95,15 @@ public class PanBuscarHotel extends JPanel {
 		btnMostrarHabDisp = new JButton("Mostrar habitaciones disponibles del hotel seleccionado:");
 		btnMostrarHabDisp.setBounds(486, 261, 515, 23);
 		add(btnMostrarHabDisp);
+		
+		//FECHAS:
+		fechaIda = new JCalendar();
+		fechaIda.setBounds(255, 392, 184, 153);
+		add(fechaIda);
+		
+		fechaVuelta = new JCalendar();
+		fechaVuelta.setBounds(468, 392, 184, 153);
+		add(fechaVuelta);
 
 	}
 }

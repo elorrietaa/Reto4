@@ -5,14 +5,14 @@ import javax.swing.JOptionPane;
 
 import vista.JframePrincipal;
 
-public class FuncionesReserva {
+public class FuncionesFicheroReserva {
 	PrincipalModelo modelo;
 	/**
 	 * Constructor de la clase FuncionesReserva
 	 * 
 	 * @param modelo Instancia de la clase modelo para poder utilizarla
 	 */
-	public FuncionesReserva (PrincipalModelo modelo) {
+	public FuncionesFicheroReserva (PrincipalModelo modelo) {
 		this.modelo = modelo;
 	}
 	

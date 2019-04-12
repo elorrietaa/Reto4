@@ -215,4 +215,35 @@ public class Consultas {
 		return cliente;
 		
 	}
+    
+    public void insertarCliente(Cliente cliente) {
+		
+		PreparedStatement stmt = null;
+		String query = "INSERT INTO cliente (DNI, Nombre, Apellidos, fechaNacimiento, sexo, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
+
+		try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta INSERT
+			stmt = connection.prepareStatement(query);
+			
+			// añadimos los valores a insertar
+			stmt.setString(1, cliente.getDni());
+			stmt.setString(2, cliente.getNombre());
+			stmt.setString(3, cliente.getApellidos());
+			stmt.setDate(4, cliente.getFechaNacimiento());
+			stmt.setString(5, String.valueOf(cliente.getSexo()));
+			stmt.setString(6, cliente.getContrasena());
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+		}                 
+	}
 }

@@ -94,7 +94,7 @@ public class ControladorRegistro implements ActionListener {
 						JOptionPane.showMessageDialog(vista, "Ya existe un usuario con ese DNI " + this.dni, "Aviso", JOptionPane.WARNING_MESSAGE); // Si existe, muestra un mensaje de error
 					} else { // Si no, registra al cliente
 						modelo.cliente = new Cliente(dni, nombre, apellidos, fecha, sexo, contrasena);
-						//modelo.consultas.insertarCliente(modelo.cliente);
+						modelo.consultas.insertarCliente(modelo.cliente);
 					}
 					
 					// actualizar pantalla

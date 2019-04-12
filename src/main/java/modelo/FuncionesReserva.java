@@ -18,26 +18,14 @@ public class FuncionesReserva {
 	
 	
 	
-	/**
-	 * Metodo para calcular el precio del billete
-	 * 
-	 * @param reserva Objeto con la informacion de la reserva
-	 * 
-	 * @return Retorna el precio de la reserva 
-	 */
-	public float calcularPrecioReserva(Hotel hotel, Reserva reserva) {
-		//por ahora el precio de la reserva es solo el precio del alojamiento, en el futuro serán más cálculos
-		float precioReserva = hotel.getPrecioAlojamiento();
-		
-		return precioReserva;
-	}
+	
 	/**
 	 * Método: escribeEnFichero, escribe en el fichero la reserva
 	 * En el caso de que el fichero que se desea guardar no exista, mustra un mensaje por pantalla y cierra la aplicación. 
 	 * @param modelo
 	 * @param vista
 	 */
-	public void escribeEnFichero(PrincipalModelo modelo, JframePrincipal vista) {
+	public void imprimirReservaFichero(PrincipalModelo modelo, JframePrincipal vista) {
 	
 		FileWriter fichero = null;
         PrintWriter writer = null;

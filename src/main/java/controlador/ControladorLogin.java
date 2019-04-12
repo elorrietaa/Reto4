@@ -17,6 +17,7 @@ public class ControladorLogin implements ActionListener {
 	
 	private JframePrincipal vista; // Instancia del MainFrame.
 	private PrincipalModelo modelo; // Instancia del Modelo.
+	private PrincipalControlador controlador;
 	public static JPanel panelOrigen; // Guarda el panel del que se viene al panel de registro.
 	public static Boolean detalles; // Indica si se viene de la ventana de detalles.
 	/**
@@ -25,9 +26,10 @@ public class ControladorLogin implements ActionListener {
 	 * @param vista Guarda el objeto vista para poder utilizar los distintos elementos de la interfaz
  	 * @param modelo Guarda el objeto modelo para poder acceder a los metodos del modelo
 	 */
-	public ControladorLogin(JframePrincipal vista, PrincipalModelo modelo) { // Constructor
+	public ControladorLogin(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) { // Constructor
 		this.vista = vista;
 		this.modelo = modelo;
+		this.controlador = controlador;
 		panelOrigen = null;
 		detalles = false;
 	}
@@ -79,7 +81,7 @@ public class ControladorLogin implements ActionListener {
 				String contString = new String(cont); // Transforma la contraseña que esta en un array de caracteres a String.
 				
 				// comprobamos si el usuario esta registrado
-				modelo.cliente = modelo.funcionesRegistro.comprobarInicio(dni, contString); // Llamada a la funcion comprobarInicio.
+				modelo.cliente = controlador.funcionesRegistro.comprobarInicio(dni, contString); // Llamada a la funcion comprobarInicio.
 			
 				// mostramos la pantalla adecuada
 				if(modelo.cliente != null) { // Comprueba si hay un cliente.

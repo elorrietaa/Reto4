@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import com.toedter.calendar.JDateChooser;
 
 import modelo.Cliente;
-import modelo.Modelo;
-import vista.MainFrame;
+import modelo.PrincipalModelo;
+import vista.JframePrincipal;
 
 /**
  * Esta clase se encarga de controlar las funciones del panel de registro.
@@ -20,8 +20,9 @@ import vista.MainFrame;
 
 public class ControladorRegistro implements ActionListener {
 	
-	private MainFrame vista; // Instancia del MainFrame
-	private Modelo modelo; // Instancia del Modelo
+	private JframePrincipal vista; // Instancia del MainFrame
+	private PrincipalModelo modelo; // Instancia del Modelo
+	private PrincipalControlador controlador; // Instancia del controlador
 	
 	private String nombre; // Guarda el nombre
 	private String apellidos; // Guarda el apellido
@@ -38,9 +39,10 @@ public class ControladorRegistro implements ActionListener {
 	 * @param vista: Guarda el objeto vista para poder utilizar los distintos elementos de la interfaz
 	 * @param modelo: Guarda el objeto modelo para poder acceder a los metodos del modelo
 	 */
-	public ControladorRegistro(MainFrame vista, Modelo modelo) { // Constructor
+	public ControladorRegistro(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) { // Constructor
 		this.vista = vista;
 		this.modelo = modelo;
+		this.controlador = controlador;
 		panelOrigen = null;
 		detalles = false;
 	}
@@ -72,7 +74,7 @@ public class ControladorRegistro implements ActionListener {
 			
 			case "Cancelar":
 				
-				vista.bienvenida.setVisible(true);
+				//vista.bienvenida.setVisible(true);
 				vista.registro.setVisible(false);
 				reset();
 				break;
@@ -88,18 +90,18 @@ public class ControladorRegistro implements ActionListener {
 
 				if(validarDatos()) {
 					
-					if(modelo.consultas.getClienteByDNI(dni) != null) { // Comprueba si existe un usuario con el mismo DNI
+					if(modelo.consultas.buscarClientePorDNI(dni) != null) { // Comprueba si existe un usuario con el mismo DNI
 						JOptionPane.showMessageDialog(vista, "Ya existe un usuario con ese DNI " + this.dni, "Aviso", JOptionPane.WARNING_MESSAGE); // Si existe, muestra un mensaje de error
 					} else { // Si no, registra al cliente
 						modelo.cliente = new Cliente(dni, nombre, apellidos, fecha, sexo, contrasena);
-						modelo.consultas.insertarCliente(modelo.cliente);
+						//modelo.consultas.insertarCliente(modelo.cliente);
 					}
 					
 					// actualizar pantalla
 					if(modelo.cliente != null) {
 					
 						// deshabilitar botones de login y registro en todos los paneles
-						vista.sel_billete.btnLogin.setVisible(false);
+						/*vista.sel_billete.btnLogin.setVisible(false);
 						vista.sel_billete.btnLogin.setEnabled(false);
 						vista.sel_billete.btnRegistro.setVisible(false);
 						vista.sel_billete.btnRegistro.setEnabled(false);
@@ -110,7 +112,7 @@ public class ControladorRegistro implements ActionListener {
 						vista.detalles_compra.btnLogin.setVisible(false);
 						vista.detalles_compra.btnLogin.setEnabled(false);
 						vista.detalles_compra.btnRegistro.setVisible(false);
-						vista.detalles_compra.btnRegistro.setEnabled(false);
+						vista.detalles_compra.btnRegistro.setEnabled(false);*/
 						
 						// mostrar la pantalla adecuada
 						if(detalles == false) {
@@ -183,7 +185,7 @@ public class ControladorRegistro implements ActionListener {
 		}
 		
 		// comprobamos que el dni ha sido introducido correctamente
-		if (modelo.funcionesRegistro.validarDNI(dni) == false) {
+		if (controlador.funcionesRegistro.validarDNI(dni) == false) {
 			JOptionPane.showMessageDialog(vista, "DNI no introducido o el introducido no es valido.", "Aviso", JOptionPane.WARNING_MESSAGE);
 			return false;
 		} 
@@ -208,7 +210,7 @@ public class ControladorRegistro implements ActionListener {
 			return false;
 		} else {
 			this.contrasena = contrasena;
-			this.contrasena = modelo.funcionesRegistro.encriptacion(this.contrasena);
+			this.contrasena = controlador.funcionesRegistro.encriptacion(this.contrasena);
 		}
 		
 		return true;
@@ -219,7 +221,7 @@ public class ControladorRegistro implements ActionListener {
 	 */
 	public void reset() {
 		modelo.cliente = null;
-		modelo.billeteIda = null;
+		/*modelo.billeteIda = null;
 		modelo.billeteVuelta = null;
 		modelo.linea = null;
 		modelo.paradaOrigen = null;
@@ -228,7 +230,7 @@ public class ControladorRegistro implements ActionListener {
 		modelo.precioTotal = 0;
 		
 		vista.sel_billete.rbtnIda.setSelected(true);
-		vista.sel_billete.rbtnVuelta.setSelected(false);
+		vista.sel_billete.rbtnVuelta.setSelected(false);*/
 		
 		vista.login.userField.setText("");
 		vista.login.password.setText("");

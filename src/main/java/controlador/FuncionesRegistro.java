@@ -3,6 +3,9 @@ package controlador;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import modelo.Cliente;
+import modelo.PrincipalModelo;
+
 /**
  * Esta clase se utiliza para validar el DNI del usuario y encriptar su contraseña
  * 
@@ -23,14 +26,16 @@ import java.security.NoSuchAlgorithmException;
  */
 public class FuncionesRegistro {
 	
-	Modelo modelo;
+	PrincipalModelo modelo;
+	PrincipalControlador controlador;
 	/**
 	 * Contructor de la clase FuncionesRegistro
 	 * 
 	 * @param modelo Instancia del modelo para poder utilizarlo
 	 */
-	public FuncionesRegistro (Modelo modelo) {
+	public FuncionesRegistro (PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.modelo = modelo;
+		this.controlador = controlador;
 	}
 	/**
 	 * Metodo que se encarga de validar el DNI
@@ -132,9 +137,9 @@ public class FuncionesRegistro {
 	public Cliente comprobarInicio(String usuario, String contrasena) {
 		
 		Cliente cliente = null;
-		contrasena = modelo.funcionesRegistro.encriptacion(contrasena);
+		contrasena = controlador.funcionesRegistro.encriptacion(contrasena);
 		
-		cliente = modelo.consultas.getClienteByDNI(usuario);
+		cliente = modelo.consultas.buscarClientePorDNI(usuario);
 		
 		if(cliente != null) {
 			if(!contrasena.equals(cliente.getContrasena())) {

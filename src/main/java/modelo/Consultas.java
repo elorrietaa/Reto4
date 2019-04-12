@@ -169,9 +169,50 @@ public class Consultas {
     			conexion.desconectar();
     		}
     	return listaHabitacion;
-        }
-    
-   
-    
-    
+    }
+    public Cliente buscarClientePorDNI(String dni) {
+		
+		Cliente cliente = null;
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		
+		String query = "SELECT * FROM cliente where DNI = ?";
+
+		try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			stmt.setString(1, dni);
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			result = stmt.executeQuery();
+			
+			// crea objetos con los resultados y los añade a un arrayList
+			while (result.next()) {
+				cliente = new Cliente(
+					result.getString("DNI"),
+					result.getString("Nombre"),
+					result.getString("Apellidos"), 
+					result.getDate("Fecha_nac"),
+					result.getString("Sexo").charAt(0),
+					result.getString("Contraseña")
+				);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { 
+				connection.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}                 
+		
+		return cliente;
+		
+	}
 }

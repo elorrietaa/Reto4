@@ -19,7 +19,9 @@ public class PrincipalControlador {
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
     private ControladorPanPago controladorPanPago; 
     private ControladorPanVueltas controladorPanVueltas;
-    private FuncionesPago funcionesPago;
+    private ControladorLogin controladorLogin;
+    public FuncionesPago funcionesPago;
+    public FuncionesRegistro funcionesRegistro;
     
     /**
      * Constructor del PrincipalControlador
@@ -30,6 +32,8 @@ public class PrincipalControlador {
 		this.modelo = modelo;
 		this.vista = vista;
 		this.conexion = new Conexion();
+		this.funcionesPago = new FuncionesPago(modelo);
+		this.funcionesRegistro = new FuncionesRegistro(modelo, this);
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz
@@ -55,17 +59,16 @@ public class PrincipalControlador {
     	this.controladorPanDetallesReserva.addListeners();
     	
     	// añadimos listeners a los botones del panel 'controladorPanPago'
-    	this.controladorPanPago = new ControladorPanPago(vista, modelo);
+    	this.controladorPanPago = new ControladorPanPago(vista, modelo, this);
     	this.controladorPanPago.addListeners();
+    	
     	// añadimos listeners a los botones del panel 'controladorPanVueltas'
     	this.controladorPanVueltas = new ControladorPanVueltas(vista, modelo);
     	this.controladorPanVueltas.addListeners();
-    }
-    public FuncionesPago getFuncionesPago() {
-	return funcionesPago;
-    }
-    public void setFuncionesPago(FuncionesPago funcionesPago) {
-	this.funcionesPago = funcionesPago;
+    	
+    	// añadimos listeners a los botones del panel de log in
+    	this.controladorLogin = new ControladorLogin(vista, modelo, this);
+    	this.controladorLogin.addListeners();
     }
 }
 

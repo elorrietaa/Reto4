@@ -18,7 +18,8 @@ import vista.*;
 public class ControladorPanPago implements ActionListener{ 
 	
 	private JframePrincipal vista; // Declara el objeto vista
-	private PrincipalModelo modelo; // Declara el objeto modelo	
+	private PrincipalModelo modelo; // Declara el objeto modelo
+	private PrincipalControlador controlador;
 	private FuncionesPago funcionesPago;
 	private JTextField introducido, restante; // Instancia los label del dinero para poder cambiarlos en la interfaz
 	public float total = 0; // Total del importe que se debe pagar
@@ -33,9 +34,10 @@ public class ControladorPanPago implements ActionListener{
 	 * @param vista: Guarda el objeto vista para poder utilizar los distintos elementos de la interfaz
 	 * @param modelo: Guarda el objeto modelo para poder acceder a los metodos del modelo
 	 */
-	public ControladorPanPago(JframePrincipal vista, PrincipalModelo modelo) {
+	public ControladorPanPago(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.vista = vista;
 		this.modelo = modelo;
+		this.controlador = controlador;
 		this.introducido = this.vista.pago.totalIntro;
 		this.restante = this.vista.pago.aPagar;
 		this.monedas = new float[0];
@@ -193,7 +195,7 @@ public class ControladorPanPago implements ActionListener{
 		monedas[posicion] = importe; // Guarda el importe en la ultima posicion del array
 		introducido.setText(Float.toString(dinero) + " €"); // Muestra en la interfaz el dinero que se ha introducido hasta el momento
 		if(dinero < total) { // Comprueba si todabia falta dinero para llegar al total
-			falta = modelo.funcionesPago.falta(total, dinero); // En caso de no llegar o sobrepasar el total necesario, se calcula el dinero faltante
+			falta = controlador.funcionesPago.falta(total, dinero); // En caso de no llegar o sobrepasar el total necesario, se calcula el dinero faltante
 			restante.setText(Float.toString(falta) + " €"); // Muestra en la interfaz el dinero que falta para alcanzar el total
 		}
 		else

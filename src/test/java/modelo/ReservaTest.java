@@ -32,4 +32,8 @@ public class ReservaTest {
    		reservaPrueba.setPrecioReserva(precioReserva); 
    		assertEquals(precioReserva,reservaPrueba.getPrecioReserva(),0.2);
    	}
+    @Test
+    public void testToString() {
+   	assertEquals("Datos de la reserva: Código de Reserva:" + this.codReserva, reservaPrueba.toString());
+    }
 }

@@ -28,28 +28,28 @@ public class HabitacionTest {
 		assertEquals(numCamas,habitacionPrueba.getNumCamas());
 	}
 	 @Test
-		public void testCodHabitacion() {
-		 habitacionPrueba.setCodHabitacion(codHabitacion); 
-			assertEquals(codHabitacion,habitacionPrueba.getCodHabitacion());
-		}
+	public void testCodHabitacion() {
+	habitacionPrueba.setCodHabitacion(codHabitacion); 
+		assertEquals(codHabitacion,habitacionPrueba.getCodHabitacion());
+	}
 
 	 @Test
-		public void testTipoHabitacion() {
-		 habitacionPrueba.setTipoHabitacion(tipoHabitacion);
-		 	assertEquals(tipoHabitacion, habitacionPrueba.getTipoHabitacion());
-		}
+	public void testTipoHabitacion() {
+	habitacionPrueba.setTipoHabitacion(tipoHabitacion);
+		assertEquals(tipoHabitacion, habitacionPrueba.getTipoHabitacion());
+	}
 	 @Test
-		public void testTamanio() {
-		 habitacionPrueba.setTamanio(tamanio);
-		 	assertEquals(tamanio, habitacionPrueba.getTamanio(),0.1);
-		}
+	public void testTamanio() {
+	habitacionPrueba.setTamanio(tamanio);
+		assertEquals(tamanio, habitacionPrueba.getTamanio(),0.1);
+	}
 	 @Test
-		public void testNumCamas() {
-		 habitacionPrueba.setNumCamas(numCamas);
-		 	assertEquals(numCamas, habitacionPrueba.getNumCamas());
-		}
+	public void testNumCamas() {
+		habitacionPrueba.setNumCamas(numCamas);
+		assertEquals(numCamas, habitacionPrueba.getNumCamas());
+	}
 	 @Test
-		public void testToString() {
-		 	assertEquals(tipoHabitacion, habitacionPrueba.toString());
-		}
+	public void testToString() {
+		assertEquals(tipoHabitacion, habitacionPrueba.toString());
+	}
 }

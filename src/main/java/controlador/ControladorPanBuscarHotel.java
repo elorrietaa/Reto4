@@ -25,7 +25,7 @@ import vista.*;
  */
 public class ControladorPanBuscarHotel implements ActionListener{
 	public JframePrincipal vista;
-	public PrincipalModelo modelo;
+	public PrincipalModelo modelo; 
 	private ArrayList<Ciudad> listaCiudades;
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
@@ -223,7 +223,7 @@ public class ControladorPanBuscarHotel implements ActionListener{
 				if (hotel != null) {
 					//Cuando pulsa el boton continuar pasan las siguientes cosas: 
 					// (1º) Calcula el precio de la reserva:
-					//precioReserva = modelo.funcionesReserva.calcularPrecioReserva(hotel, reserva);
+					// utilizar metodo de funciones pago calcularPrecioReserva
 					
 				    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
 					guardarDatosSeleccionadosCiudadYHotel();

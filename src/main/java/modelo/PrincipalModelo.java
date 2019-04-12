@@ -25,7 +25,7 @@ public class PrincipalModelo {
 	//public PersonaAlojada personaAlojada;
 	
 	public FuncionesPago funcionesPago;
-	public FuncionesReserva funcionesReserva;
+	public FuncionesFicheroReserva funcionesReserva;
 	
 	//public FuncionesBillete funcionesBillete;
 	//public FuncionesReserva funcionesReserva;
@@ -53,7 +53,7 @@ public class PrincipalModelo {
 		// Creamos objetos con las funciones generales del programa
 		
 		funcionesPago = new FuncionesPago(this); 
-		funcionesReserva = new FuncionesReserva(this);
+		funcionesReserva = new FuncionesFicheroReserva(this);
 		//funcionesReserva = new FuncionesReserva(this);
 		//funcionesRegistro = new FuncionesRegistro(this);
 		

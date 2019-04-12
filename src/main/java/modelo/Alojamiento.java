@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  * Clase Alojamiento
  * @author IN1DM3B_09
@@ -8,7 +10,7 @@ package modelo;
 public class Alojamiento {
     protected int codAlojamiento;
     protected String nombre;
-    //protected ArrayList<Habitacion> listaHabitaciones;
+    protected ArrayList<Habitacion> listaHabitaciones;
     protected int numHabitaciones;
     protected String ubicacion;
     protected float precioAlojamiento;
@@ -16,7 +18,7 @@ public class Alojamiento {
   /**
   * Constructor del objeto Alojamiento vacio.
   */
-   public Alojamiento() {
+   public Alojamiento() { 
 	   
    }
    /**

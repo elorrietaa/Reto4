@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import controlador.FuncionesPago;
+
 public class PagoTest {
 
 	PrincipalModelo modelo = new PrincipalModelo();

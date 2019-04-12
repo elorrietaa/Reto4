@@ -51,15 +51,16 @@ public class ControladorPanDetallesReserva implements ActionListener {
 			
 			case "Continuar":
 				funcionContinuar();
-				
 			}
 		}
 	}
 	
 	public void funcionContinuar() {
+		ControladorLogin.panelOrigen = vista.detallesReserva;
+		ControladorLogin.detalles = true;
 		vista.pago.total.setText(Float.toString(this.modelo.precioTotal) + " €");
 		vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal) + " €");
-		vista.pago.setVisible(true);
+		vista.login.setVisible(true);
 		vista.detallesReserva.setVisible(false);
 	}
 }

@@ -74,7 +74,7 @@ public class ControladorRegistro implements ActionListener {
 			
 			case "Cancelar":
 				
-				//vista.bienvenida.setVisible(true);
+				vista.bienvenida.setVisible(true);
 				vista.registro.setVisible(false);
 				reset();
 				break;

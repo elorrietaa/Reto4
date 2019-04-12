@@ -7,6 +7,8 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanLogin extends JPanel {
 	
@@ -18,7 +20,7 @@ public class PanLogin extends JPanel {
 	public JLabel lblUsuario,lblPassword;
 	public JTextField userField;
 	public JPasswordField password;
-	public JButton btnLogin,btnRegistro,btnCancelar;
+	public JButton btnLogin,btnRegistro,btnCancelar, btnAtras;
 
 	/**
 	 * Create the panel.
@@ -66,6 +68,10 @@ public class PanLogin extends JPanel {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(74, 622, 75, 30);
 		add(btnCancelar);
+		
+		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setBounds(178, 622, 65, 30);
+		add(btnAtras);
 		
 	}
 }

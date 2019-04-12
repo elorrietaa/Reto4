@@ -41,6 +41,7 @@ public class ControladorLogin implements ActionListener {
 		vista.login.btnCancelar.addActionListener(this);
 		vista.login.btnRegistro.addActionListener(this);
 		vista.login.btnLogin.addActionListener(this);
+		vista.login.btnAtras.addActionListener(this);
 	}
 	/**
 	 * Metodo que designa la accion realizada por cada listener
@@ -61,7 +62,7 @@ public class ControladorLogin implements ActionListener {
 			
 			case "Cancelar":
 				
-				//vista.bienvenida.setVisible(true);
+				vista.bienvenida.setVisible(true);
 				vista.login.setVisible(false);
 				reset();
 				break;

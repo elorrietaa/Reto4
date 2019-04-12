@@ -345,7 +345,8 @@ public class ControladorPanPago implements ActionListener{
 		this.vista.pago.btn100.setEnabled(true);
 		this.vista.pago.btn200.setEnabled(true);
 		
-		
+		this.vista.pago.btnContinuar.setVisible(false);
+		this.vista.pago.btnContinuar.setEnabled(false);
 		
 	}
 }

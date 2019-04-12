@@ -15,6 +15,8 @@ public class JframePrincipal extends JFrame{
 	public PanDetallesReserva detallesReserva;
 	public PanPago pago;
 	public PanVueltas vueltas;
+	public PanLogin login;
+	public PanRegistro registro;
 
 	//constructor
 	public JframePrincipal() {
@@ -37,6 +39,8 @@ public class JframePrincipal extends JFrame{
 		detallesReserva = new PanDetallesReserva();
 		pago = new PanPago();
 		vueltas = new PanVueltas();
+		login = new PanLogin();
+		registro = new PanRegistro();
 	}
 	
 	private void anadirPaneles() {
@@ -44,5 +48,7 @@ public class JframePrincipal extends JFrame{
 		getContentPane().add(detallesReserva);
 		getContentPane().add(pago);
 		getContentPane().add(vueltas);
+		getContentPane().add(login);
+		getContentPane().add(registro);
 	}
 }

@@ -1,10 +1,13 @@
-package modelo;
+package controlador;
+
+import modelo.PrincipalModelo;
+
 /**
  * Esta clase se encarga de los calculos del dinero del programa
  */
 public class FuncionesPago {
+	private PrincipalModelo modelo;
 	
-	PrincipalModelo modelo;
 	/**
 	 * Constructor de la clase FuncionesPago
 	 * 
@@ -21,7 +24,7 @@ public class FuncionesPago {
 	 * 
 	 * @return Devuelve el array una vez ha sido redimensionado y se ha copiado el contenido del array que se queria redimensionar
 	 */
-	public float[] redimensionarArrayMayor(float[] arrayRedimensionar) {
+	public static float[] redimensionarArrayMayor(float[] arrayRedimensionar) {
 		int tamano = arrayRedimensionar.length + 1;
 		float[] arrayRedimensionado = new float[tamano];
 		

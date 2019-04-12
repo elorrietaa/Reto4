@@ -15,11 +15,11 @@ import vista.*;
  * Esta clase se encarga de controlar las funciones del panel de pago
  */
 
-public class ControladorPanPago implements ActionListener{
+public class ControladorPanPago implements ActionListener{ 
 	
 	private JframePrincipal vista; // Declara el objeto vista
 	private PrincipalModelo modelo; // Declara el objeto modelo	
-	
+	private FuncionesPago funcionesPago;
 	private JTextField introducido, restante; // Instancia los label del dinero para poder cambiarlos en la interfaz
 	public float total = 0; // Total del importe que se debe pagar
 	public float dinero = 0; // Total del dinero que ha sido introdcido hasta al momento
@@ -187,7 +187,8 @@ public class ControladorPanPago implements ActionListener{
 		dinero = dinero + importe; // Se suma el importe del boton pulsado al dinero que ya se habia introducido
 		dinero = Math.round(dinero*100); // Redondea el resultado
 		dinero = dinero/100;
-		monedas = modelo.funcionesPago.redimensionarArrayMayor(monedas); // Redimensiona el array monedas a un array una posicion mayos para poder guardar el importe del boton pulsado
+		//monedas = controlador.FuncionesPago
+		monedas = FuncionesPago.redimensionarArrayMayor(monedas); // Redimensiona el array monedas a un array una posicion mayos para poder guardar el importe del boton pulsado
 		posicion = monedas.length - 1;
 		monedas[posicion] = importe; // Guarda el importe en la ultima posicion del array
 		introducido.setText(Float.toString(dinero) + " €"); // Muestra en la interfaz el dinero que se ha introducido hasta el momento

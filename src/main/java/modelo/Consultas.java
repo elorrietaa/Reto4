@@ -193,12 +193,12 @@ public class Consultas {
 			// crea objetos con los resultados y los añade a un arrayList
 			while (result.next()) {
 				cliente = new Cliente(
-					result.getString("DNI"),
+					result.getString("Dni"),
 					result.getString("Nombre"),
 					result.getString("Apellidos"), 
-					result.getDate("Fecha_nac"),
-					result.getString("Sexo").charAt(0),
-					result.getString("Contraseña")
+					result.getDate("fechaNacimiento"),
+					result.getString("sexo").charAt(0),
+					result.getString("contrasena")
 				);
 			}
 			
@@ -214,5 +214,5 @@ public class Consultas {
 		
 		return cliente;
 		
-	}
+	} 
 }

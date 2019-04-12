@@ -105,7 +105,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			vista.buscarHotel.listHabitacion.setModel(vista.buscarHotel.modeloHabitacion);
 	  	}
     }
-  
+   
 
     /**
      * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
@@ -139,7 +139,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		int codReserva = codReservaQueSeCogeriaDeBBDD +1;
 		
 		//rellenamos el objeto reserva: ¡¡¡ EN EL FUTURO PRECIO
-		this.reserva = new Reserva(codReserva, hotel, precioReserva);
+		this.reserva = new Reserva(codReserva, null, hotel, null, null, precioReserva);
 		//le pasa la reserva al modelo
 		modelo.reserva = this.reserva;
 	}

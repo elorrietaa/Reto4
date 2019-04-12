@@ -23,7 +23,7 @@ public class FuncionesReserva {
 	 * 
 	 * @param reserva Objeto con la informacion de la reserva
 	 * 
-	 * @return Retorna el precio de la reserva
+	 * @return Retorna el precio de la reserva 
 	 */
 	public float calcularPrecioReserva(Hotel hotel, Reserva reserva) {
 		//por ahora el precio de la reserva es solo el precio del alojamiento, en el futuro serán más cálculos

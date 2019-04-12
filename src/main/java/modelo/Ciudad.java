@@ -51,6 +51,9 @@ public class Ciudad {
         this.nombreCiudad = nombreCiudad;
     }
     
+    /**
+     * toString del nombre de la ciudad
+     */
     public String toString() {
     	return this.nombreCiudad;
     }

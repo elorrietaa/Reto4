@@ -50,12 +50,12 @@ public class PanDetallesReserva extends JPanel {
 		
 		lblPrecio = new JLabel("Precio :");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPrecio.setBounds(228, 499, 63, 14);
+		lblPrecio.setBounds(232, 597, 63, 14);
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();
 		tFPrecioReserva.setEditable(false);
-		tFPrecioReserva.setBounds(301, 498, 86, 20);
+		tFPrecioReserva.setBounds(298, 596, 86, 20);
 		add(tFPrecioReserva);
 		tFPrecioReserva.setColumns(10);
 		

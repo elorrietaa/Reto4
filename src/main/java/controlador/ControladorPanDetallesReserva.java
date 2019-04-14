@@ -46,7 +46,6 @@ public class ControladorPanDetallesReserva implements ActionListener {
 				
 			case "Atras":
 				vista.selHabitacion.setVisible(true);
-				//vista.buscarHotel.setVisible(true);
 				vista.detallesReserva.setVisible(false);
 				break;
 			

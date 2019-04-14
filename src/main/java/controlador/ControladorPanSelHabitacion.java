@@ -61,7 +61,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	public void guardarDatosSeleccionadoshabitacion() {
 	    //se guarda la habitacion seleecionada en el JLIST
 		//en el futuro guardar la o las habitaciones seleccionadas
-	    this.habitacion = (Habitacion) vista.buscarHotel.listHabitacion.getSelectedValue();
+	    this.habitacion = (Habitacion) vista.selHabitacion.listHabitacion.getSelectedValue();
 	    //le pasa la habitacion al modelo
 	    modelo.habitacion = this.habitacion;
 	    //Pruebas
@@ -91,7 +91,6 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 			
 			case "Continuar":
-				
 				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
 				//guardarDatosSeleccionadoshabitacion();
 				// (2º) Calcula el precio de la reserva o reservas realizadas:

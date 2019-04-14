@@ -32,11 +32,11 @@ public class PanBuscarHotel extends JPanel {
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();
 		public DefaultListModel<Object> modeloHabitacion = new DefaultListModel<Object>();
-		public JList<Object> listHoteles,listHabitacion;
+		public JList<Object> listHoteles;
 		public JPanel panelOcultarHoteles;
-    	public JButton buttonContinuar, btnMostrarDetalles, btnMostrarHabDisp;
+    	public JButton buttonContinuar, btnMostrarDetalles;
     	public JComboBox<Object> cBCiudad; 
-    	public JLabel labelHotel, labelCiudad, labelFecha, lblSeleccioneHabitacin;
+    	public JLabel labelHotel, labelCiudad, labelFecha;
     	public JTextPane textPaneDetHot;
     	public JCalendar fechaIda, fechaVuelta;
     	
@@ -73,16 +73,6 @@ public class PanBuscarHotel extends JPanel {
 		listHoteles.setBounds(249, 93, 210, 182);
 		add(listHoteles);
 		
-		lblSeleccioneHabitacin = new JLabel("Seleccione Habitaci\u00F3n:");
-		lblSeleccioneHabitacin.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblSeleccioneHabitacin.setBounds(83, 300, 164, 23);
-		add(lblSeleccioneHabitacin);
-		
-		listHabitacion = new JList<Object>();
-		//FormatoDiseno.formatoList(listHabitacion);
-		listHabitacion.setBounds(249, 305, 210, 48);
-		add(listHabitacion);
-		
 		btnMostrarDetalles = new JButton("Mostrar detalles del hotel seleccionado:");
 		btnMostrarDetalles.setBounds(486, 90, 515, 23);
 		add(btnMostrarDetalles);
@@ -91,10 +81,6 @@ public class PanBuscarHotel extends JPanel {
 		textPaneDetHot.setEditable(false);
 		textPaneDetHot.setBounds(486, 124, 515, 106);
 		add(textPaneDetHot);
-		
-		btnMostrarHabDisp = new JButton("Mostrar habitaciones disponibles del hotel seleccionado:");
-		btnMostrarHabDisp.setBounds(486, 261, 515, 23);
-		add(btnMostrarHabDisp);
 		
 		//FECHAS:
 		fechaIda = new JCalendar();

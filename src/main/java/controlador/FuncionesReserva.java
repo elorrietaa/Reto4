@@ -33,6 +33,7 @@ public class FuncionesReserva {
 		//por ahora el precio de la reserva es solo el precio del alojamiento, en el futuro serán más cálculos
 		float precioReserva = modelo.hotel.getPrecioAlojamiento();
 		
+		
 		return precioReserva;
 	}
 	
@@ -43,9 +44,11 @@ public class FuncionesReserva {
 		//genera un código de reserva en función de las reservas que haya en la BBDD
 		int codReserva = modelo.consultas.mostrarNumReservas() +1;
 		System.out.println("código de la resera: " + codReserva);
+		
 		//Calcula el precio de la reserva: 
 		precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 		System.out.println("Precio reserva calculado: " + precioReserva);
+		
 		//rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
 		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, null, null, this.precioReserva);
 	
@@ -56,15 +59,12 @@ public class FuncionesReserva {
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
 	public void mostrarDatosReserva() {
-		
 		//muestra datos del alojamiento
 		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
-	   // vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.ciudad.getNombreCiudad() + "\n" + "Hotel: " + modelo.hotel.getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas());
-	    //muestra  el precio de la reserva, ahora es el de 1 reserva, en el futuro será la suma de 1 o varias reservas.
-	  	//modelo.precioTotal = controlador.funcionesReserva.calcularPrecioReserva();
-	  	
+		//muestra el PRECIO TOTAL DE LA RESERVA: 
+		//EN EL FUTURO SE CALCULARÁ SUMANDO EL PRECIO DE TODAS LAS RESERVAS REALIZADAS
 	  	vista.detallesReserva.tFPrecioReserva.setText(Float.toString(modelo.reserva.getPrecioReserva())+ " €");
-
+	  	modelo.precioTotal=modelo.reserva.getPrecioReserva();
 	}
 	
 	

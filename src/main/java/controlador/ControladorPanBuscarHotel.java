@@ -63,7 +63,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     	vista.buscarHotel.cBCiudad.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
     	vista.buscarHotel.btnMostrarDetalles.addActionListener(this);
-    	vista.buscarHotel.btnMostrarHabDisp.addActionListener(this);
     	vista.buscarHotel.fechaIda.addPropertyChangeListener(this);
     	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
     }
@@ -95,43 +94,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloHotel);
 	  	}
     }
-    
-    /**
-     * Método mostrarHabitacionesEnElJList = muestra las habitaciones que se han encontrado mediante el método: buscarHabitacionPorCodigoHotel pasando hotel, codHotelSeleccionado por parámetro. El codHotelSeleccionado dependerá del hotel seleccionado por el usuario
-     * @param codHotelSeleccionado
-     */
-    public void mostrarHabitacionesEnElJList(int codHotelSeleccionado) {
-    	//borra todos los elementos del JList
-    	vista.buscarHotel.modeloHabitacion.removeAllElements();
-    	//llena el arrayList con la lista de Hoteles
-    	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
-    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
-	  	for(int i=0; i<listaHabitaciones.size();i++) {
-	  		vista.buscarHotel.modeloHabitacion.addElement(listaHabitaciones.get(i));
-	  		//prueba
-	  		System.out.println("dff:" + listaHabitaciones.get(i));
-			vista.buscarHotel.listHabitacion.setModel(vista.buscarHotel.modeloHabitacion);
-	  	}
-    }
-    
-    /**
-     * Método mostrarHabitacionesEnElJList = muestra las habitaciones que se han encontrado mediante el método: buscarHabitacionPorCodigoHotel pasando hotel, codHotelSeleccionado por parámetro. El codHotelSeleccionado dependerá del hotel seleccionado por el usuario
-     * @param codHotelSeleccionado
-     */
-    public void mostrarHabitacionesEnJList(int codHotelSeleccionado) {
-    	//borra todos los elementos del JList
-    	vista.selHabitacion.modeloHabitacion.removeAllElements();
-    	//llena el arrayList con la lista de Hoteles
-    	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
-    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
-	  	for(int i=0; i<listaHabitaciones.size();i++) {
-	  		vista.selHabitacion.modeloHabitacion.addElement(listaHabitaciones.get(i));
-	  		//prueba
-	  		System.out.println("dff:" + listaHabitaciones.get(i));
-			vista.selHabitacion.listHabitacion.setModel(vista.selHabitacion.modeloHabitacion);
-	  	}
-    }
-   
 
     /**
      * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
@@ -147,6 +109,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		
 	    //se guarda el hotel seleccionado con la JLIST
 	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+	    
 	    //le pasa el hotel al modelo
 	    modelo.hotel = this.hotel;
 	    //Pruebas
@@ -179,6 +142,23 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	  
 	}
 	
+	/**
+     * Método mostrarHabitacionesEnElJList = muestra las habitaciones que se han encontrado mediante el método: buscarHabitacionPorCodigoHotel pasando hotel, codHotelSeleccionado por parámetro. El codHotelSeleccionado dependerá del hotel seleccionado por el usuario
+     * @param codHotelSeleccionado
+     */
+    public void mostrarHabitacionesEnJList(int codHotelSeleccionado) {
+    	//borra todos los elementos del JList de mostrarHabitacionesEnJList
+    	vista.selHabitacion.modeloHabitacion.removeAllElements();
+    	//llena el arrayList con la lista de Hoteles
+    	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
+    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
+	  	for(int i=0; i<listaHabitaciones.size();i++) {
+	  		vista.selHabitacion.modeloHabitacion.addElement(listaHabitaciones.get(i));
+	  		//prueba
+	  		System.out.println("dff:" + listaHabitaciones.get(i));
+			vista.selHabitacion.listHabitacion.setModel(vista.selHabitacion.modeloHabitacion);
+	  	}
+    }
 	
     /**
 	 * Accion de los distintos listeners
@@ -205,20 +185,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				}
 				break;
 				
-			case "Mostrar habitaciones disponibles del hotel seleccionado:":
-				
-				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-				if (hotel != null) {
-					//muestra las habitaciones en el JList
-					int codHotelSeleccionado = hotel.getCodAlojamiento();
-					//no muestra bien las habitaciones
-					mostrarHabitacionesEnElJList(codHotelSeleccionado);	
-					
-				}
-				else {
-					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el alojamiento del que desea ver más detalles. Gracias. ", null, 0);
-				}
-				break;
 				
 			case "Continuar":	
 				

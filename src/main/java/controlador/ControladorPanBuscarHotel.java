@@ -29,6 +29,8 @@ import vista.*;
 public class ControladorPanBuscarHotel implements ActionListener, PropertyChangeListener {
 	public JframePrincipal vista;
 	public PrincipalModelo modelo; 
+	public PrincipalControlador controlador;
+	
 	private ArrayList<Ciudad> listaCiudades;
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
@@ -41,8 +43,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Date fechaIda;
 	Date fechaVuelta;
 	float precioReserva=-1;
-	private FuncionesReserva funcionesReserva;
-	private FuncionesPago funcionesPago;
+	
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -180,7 +181,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		int codReserva = consultas.mostrarNumReservas() +1;
 		System.out.println("código de la resera: " + codReserva);
 		//Calcula el precio de la reserva: MAL, NO LO CALCULA, NO COGE LOS MÉTODOS DE LA CLASE FUNCIONESRESERVA
-		//float precioReserva = funcionesReserva.calcularPrecioReserva(); 
+		//float precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 		//System.out.println("Precio reserva calculado: " + precioReserva);
 		//rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
 		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, null, null, this.precioReserva);
@@ -262,7 +263,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//guardarDatosSeleccionadosFechas();
 					
 					// (2º) Calcula el precio de la reserva:
-					//precioReserva = funcionesReserva.calcularPrecioReserva();
+					//precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 					
 					//(3º)Generar reserva y guardarla en el objeto reserva
 					//funcionesReserva.generarReserva(); //no va

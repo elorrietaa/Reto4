@@ -168,14 +168,14 @@ public class Consultas {
     	return listaHabitacion;
     }
     
-    public ArrayList<Cama> buscarCamaPorCodigoHabitacion(Habitacion habitacion, int codHabitacionSeleccionada) {
+    public ArrayList<Cama> buscarCamaPorCodigoHabitacion(int codHabitacionSeleccionada) {
     	ArrayList<Cama> listaCamas = new ArrayList<Cama>(); 
     	Cama cama;
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
     	String query = "SELECT * FROM `habitaciones`, `camas` where habitaciones.Cod_habitacion=camas.Cod_habitacion and habitaciones.Cod_habitacion=?";
-    	
+    	System.out.println("12345");
     	try {
     		// Abrimos una conexion
     		connection = conexion.conectar();
@@ -192,6 +192,7 @@ public class Consultas {
     			cama = new Cama(); 
     			cama.setCodCama(rs.getInt("Cod_cama"));
     			cama.setTipoCama(rs.getString("Tipo_cama"));
+    			System.out.println(cama.getTipoCama());
     			listaCamas.add(cama);
     		}
     				

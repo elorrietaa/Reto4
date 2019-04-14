@@ -188,18 +188,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	  		vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento())+ " €");
 	}
 	
-	/**
-	 * Método actualizarSiguientePanelDetalles = actualiza el Siguiente panel: PanDetallesReserva en el que se muestran los detalles de la reserva
-	 */
-	public void actualizarSiguientePanelDetalles() {
-		//muestra en la siguiente pantalla el precio de la reserva
-		mostrarDatosReserva();
-		
-	    //muestra el siguiente panel: PanelDetallesReserva
-	    vista.detallesReserva.setVisible(true);
-	    vista.buscarHotel.setVisible(false);
-	}
-	
     /**
 	 * Accion de los distintos listeners
 	 */
@@ -255,11 +243,15 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 					
 					//(3º)Generar reserva y guardarla en el objeto reserva
-					//funcionesReserva.generarReserva(); //no va
 					controlador.funcionesReserva.generarReserva();
 					
 					//(4º)actualiza el siguiente panel:
-					actualizarSiguientePanelDetalles();
+					//muestra en la siguiente pantalla el precio de la reserva
+					mostrarDatosReserva();
+					
+				    //muestra el siguiente panel: PanelDetallesReserva
+				    vista.detallesReserva.setVisible(true);
+				    vista.buscarHotel.setVisible(false);
 				}
 				
 				else {

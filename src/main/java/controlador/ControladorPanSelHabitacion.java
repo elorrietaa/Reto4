@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+import bbdd.Conexion;
+import modelo.Consultas;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
@@ -16,6 +18,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 	public JframePrincipal vista;
 	public PrincipalModelo modelo; 
+	Consultas consultas;
 	public PrincipalControlador controlador;
 	/**
 	 * Constructor del controlador de detalles
@@ -23,9 +26,11 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 * @param vista Instancia del main frame para poder utilizarlo
 	 * @param modelo Instancia del modelo para poder utilizarlo
 	 */
-	public ControladorPanSelHabitacion(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador ) {
+	public ControladorPanSelHabitacion(JframePrincipal vista, PrincipalModelo modelo,Conexion conexion, PrincipalControlador controlador ) {
 		this.vista = vista;
 		this.modelo = modelo;		
+		this.consultas = new Consultas(conexion);
+		this.controlador = controlador;
 	}
 	/**
 	 * Creacion de los listeners para los distintos elementos del panel

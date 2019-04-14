@@ -14,6 +14,7 @@ public class JframePrincipal extends JFrame{
 	public JFrame frame;
 	public PanBienvenida bienvenida;
 	public PanBuscarHotel buscarHotel;
+	public PanSelHabitacion selHabitacion;
 	public PanDetallesReserva detallesReserva;
 	public PanPago pago;
 	public PanVueltas vueltas;
@@ -35,6 +36,7 @@ public class JframePrincipal extends JFrame{
 		//try {
 		bienvenida = new PanBienvenida();
 		buscarHotel = new PanBuscarHotel();
+		selHabitacion = new PanSelHabitacion();
 		//}
 		/*catch(IOException e) {
 			e.printStackTrace();
@@ -49,6 +51,7 @@ public class JframePrincipal extends JFrame{
 	private void anadirPaneles() {
 		getContentPane().add(bienvenida);
 		getContentPane().add(buscarHotel);
+		getContentPane().add(selHabitacion);
 		getContentPane().add(detallesReserva);
 		getContentPane().add(pago);
 		getContentPane().add(vueltas);

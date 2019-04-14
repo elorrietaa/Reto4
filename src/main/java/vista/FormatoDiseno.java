@@ -39,7 +39,7 @@ public class FormatoDiseno {
 //			Rojo: 205, 48, 41
 //			Gris: 127, 128, 123
 //			Negro: 60, 60, 72
-		
+	/*	
 		lblIcono.setIcon(new ImageIcon(PanBienvenida.class.getResource("/img/image2.png")));
 		lblIcono.setOpaque(true);
 		lblIcono.setBorder(null);
@@ -47,7 +47,8 @@ public class FormatoDiseno {
 		lblIcono.setBackground(new Color(255, 255, 255));
 		lblIcono.setHorizontalAlignment(SwingConstants.LEFT);
 		lblIcono.setBounds(120, 0, 1024, 210);
-	}
+	*/
+		}
 	
 	public static void formatoLbl(JLabel lbl) {
 		lbl.setFont(new Font("Agency FB", Font.BOLD, 20));

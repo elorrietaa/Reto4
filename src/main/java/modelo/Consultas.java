@@ -40,15 +40,7 @@ public class Consultas {
     public ArrayList<Ciudad> BuscarCiudad() {
     	ArrayList<Ciudad> listaCiudades = new ArrayList<Ciudad>(); 
     	Ciudad ciudad;
-    	/* PARA PRUEBAS:
-    			ciudad = new Ciudad();
-    			ciudad.setCodCiudad(1);
-    			ciudad.setNombreCiudad("BILBAO");
-    			listaCiudades.add(ciudad);
-    			System.out.println(ciudad.getCodCiudad());
-    			System.out.println(ciudad.getNombreCiudad());
-    			//PARA PRUEBAS FIN
-    	*/
+    	
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	String query = "SELECT * FROM `ciudad`";
@@ -175,6 +167,46 @@ public class Consultas {
     		}
     	return listaHabitacion;
     }
+    
+    public ArrayList<Cama> buscarCamaPorCodigoHabitacion(Habitacion habitacion, int codHabitacionSeleccionada) {
+    	ArrayList<Cama> listaCamas = new ArrayList<Cama>(); 
+    	Cama cama;
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	String query = "SELECT * FROM `habitaciones`, `camas` where habitaciones.Cod_habitacion=camas.Cod_habitacion and habitaciones.Cod_habitacion=?";
+    	
+    	try {
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    		ps.setInt(1, codHabitacionSeleccionada);
+    		
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    
+    		// crea objetos Linea con los resultados y los añade a un arrayList
+    		while (rs.next()) {
+    			cama = new Cama(); 
+    			cama.setCodCama(rs.getInt("Cod_cama"));
+    			cama.setTipoCama(rs.getString("Tipo_cama"));
+    			listaCamas.add(cama);
+    		}
+    				
+    		} 
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    		} 
+    		finally {
+    			// cerramos la conexion
+    			conexion.desconectar();
+    		}
+    	return listaCamas;
+    }
+    
+    
     /****************************************************************************************************************
    	 * 
    	 * Metodos de consultas referentes al cliente

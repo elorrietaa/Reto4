@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 import bbdd.Conexion;
+import modelo.Cama;
 import modelo.Ciudad;
 import modelo.Consultas;
 import modelo.Habitacion;
@@ -34,6 +35,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	Date fechaVuelta;
 	
 	private ArrayList<Habitacion> listaHabitaciones;
+	private ArrayList<Cama> listaCamas;
 	float precioReserva =-1;
 	
 

@@ -175,18 +175,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	  
 	}
 	
-	/**
-	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
-	 */
-	public void mostrarDatosReserva() {
-		
-		//muestra datos del alojamiento
-		this.modelo.precioTotal = this.hotel.getPrecioAlojamiento();
-	    	vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + this.ciudad.getNombreCiudad() + "\n" + "Hotel: " + hotel.getNombre()+"\n" + "Número de estrellas:" + hotel.getEstrellas());
-	  //muestra  el precio de la reserva
-	  	this.modelo.precioTotal = this.hotel.getPrecioAlojamiento();
-	  		vista.detallesReserva.tFPrecioReserva.setText(Float.toString(this.hotel.getPrecioAlojamiento())+ " €");
-	}
 	
     /**
 	 * Accion de los distintos listeners
@@ -247,11 +235,12 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//(4º)actualiza el siguiente panel:
 					//muestra en la siguiente pantalla el precio de la reserva
-					mostrarDatosReserva();
+					//controlador.funcionesReserva.mostrarDatosReserva();
 					
 				    //muestra el siguiente panel: PanelDetallesReserva
-				    vista.detallesReserva.setVisible(true);
 				    vista.buscarHotel.setVisible(false);
+				    vista.selHabitacion.setVisible(true);
+				   // vista.detallesReserva.setVisible(true);
 				}
 				
 				else {

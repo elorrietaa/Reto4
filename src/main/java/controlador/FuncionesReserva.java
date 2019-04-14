@@ -2,11 +2,13 @@ package controlador;
 
 import modelo.PrincipalModelo;
 import modelo.Reserva;
+import vista.JframePrincipal;
 
 public class FuncionesReserva {
 	
 	PrincipalModelo modelo;
 	PrincipalControlador controlador;
+	JframePrincipal vista;
 	public float precioReserva;
 	
 	/**
@@ -14,9 +16,10 @@ public class FuncionesReserva {
 	 * 
 	 * @param modelo Instancia de la clase modelo para poder utilizarlo
 	 */
-	public FuncionesReserva (PrincipalModelo modelo, PrincipalControlador controlador) {
+	public FuncionesReserva (PrincipalModelo modelo,JframePrincipal vista, PrincipalControlador controlador) {
 		this.modelo = modelo;
 		this.controlador = controlador;
+		this.vista = vista;
 	}
 	
 	/**
@@ -45,6 +48,18 @@ public class FuncionesReserva {
 		System.out.println("Precio reserva calculado: " + precioReserva);
 		//rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
 		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, null, null, this.precioReserva);
+	}
+	
+
+	/**
+	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
+	 */
+	public void mostrarDatosReserva() {
+		//muestra datos del alojamiento
+	    	vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.ciudad.getNombreCiudad() + "\n" + "Hotel: " + modelo.hotel.getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas());
+	  //muestra  el precio de la reserva, ahora es el de 1 reserva, en el futuro será la suma de 1 o varias reservas.
+	  	modelo.precioTotal = calcularPrecioReserva();
+	  	vista.detallesReserva.tFPrecioReserva.setText(Float.toString(modelo.reserva.getPrecioReserva())+ " €");
 	}
 	
 }

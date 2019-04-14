@@ -50,10 +50,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	* @param vista Instancia de la vista, para poder utilizarla
 	* @param modelo Instancia del modelo, para poder utilizarlo
 	*/
-	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion) {
+	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion, PrincipalControlador controlador) {
 		this.vista = vista;
 		this.modelo = modelo;
 		this.consultas = new Consultas(conexion);
+		this.controlador = controlador;
     }
     /**
 	 * Se crean los listeners del panel
@@ -173,19 +174,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	    System.out.println("Nombre hotel:" + hotel.getNombre());
 	  
 	}
-	/**
-	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
-	 */
-	public void generarReserva() {
-		//genera un código de reserva en función de las reservas que haya en la BBDD
-		int codReserva = consultas.mostrarNumReservas() +1;
-		System.out.println("código de la resera: " + codReserva);
-		//Calcula el precio de la reserva: MAL, NO LO CALCULA, NO COGE LOS MÉTODOS DE LA CLASE FUNCIONESRESERVA
-		//float precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
-		//System.out.println("Precio reserva calculado: " + precioReserva);
-		//rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
-		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, null, null, this.precioReserva);
-	}
+	
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
@@ -263,11 +252,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//guardarDatosSeleccionadosFechas();
 					
 					// (2º) Calcula el precio de la reserva:
-					//precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
+					precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 					
 					//(3º)Generar reserva y guardarla en el objeto reserva
 					//funcionesReserva.generarReserva(); //no va
-					generarReserva();
+					controlador.funcionesReserva.generarReserva();
 					
 					//(4º)actualiza el siguiente panel:
 					actualizarSiguientePanelDetalles();

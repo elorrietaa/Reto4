@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import bbdd.Conexion;
@@ -26,7 +27,12 @@ public class Consultas {
 		this.conexion = conexion;
 		this.connection = null;
 	} 
-	
+	 /****************************************************************************************************************
+   	 * 
+   	 * Metodos de consultas referentes al alojamiento
+   	 * 
+   	 ****************************************************************************************************************/
+   	
     /**
      * Método BuscarCiudad = se buscan las ciudades existentes. Se introducen en un ArrayList y se Devuelven.
      */
@@ -156,7 +162,6 @@ public class Consultas {
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setNumCamas(rs.getInt("N_Camas"));
-    			//habitacion.setEstadoHabitacion(rs.getString("Estado_habitacion"));
     			listaHabitacion.add(habitacion);
     		}
     				
@@ -170,6 +175,12 @@ public class Consultas {
     		}
     	return listaHabitacion;
     }
+    /****************************************************************************************************************
+   	 * 
+   	 * Metodos de consultas referentes al cliente
+   	 * 
+   	 ****************************************************************************************************************/
+   	
     public Cliente buscarClientePorDNI(String dni) {
 		
 		Cliente cliente = null;
@@ -215,7 +226,62 @@ public class Consultas {
 		return cliente;
 		
 	}
+    /****************************************************************************************************************
+   	 * 
+   	 * Metodos de consultas referentes a la reserva
+   	 * 
+   	 ****************************************************************************************************************/
+   	
+    public int mostrarNumReservas() {
+		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		int codReserva=0;
+		
+		String query = "SELECT count(*) FROM `reservas`";
+
+		try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			result = stmt.executeQuery();
+			
+			// crea objetos con los resultados y los añade a un arrayList
+			while (result.next()) {
+				codReserva = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { 
+				connection.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}                 
+		
+		return codReserva;
+		
+	}
     
+    
+    /****************************************************************************************************************
+	 * 
+	 * Metodos para insertar los datos de los objetos cliente y billete en la BBDD (Consultas Insert)
+	 * 
+	 ****************************************************************************************************************/
+	
+	/**
+	 * Inserta los atributos de un objetos cliente en la base de datos
+	 * 
+	 * @param cliente objeto cliente que se quiere insertar en la base de datos
+	 */
     public void insertarCliente(Cliente cliente) {
 		
 		PreparedStatement stmt = null;
@@ -246,4 +312,56 @@ public class Consultas {
 		    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
 		}                 
 	}
+    
+    /**
+	 * Inserta los atributos de un objeto reserva en la base de datos
+	 * 
+	 * @param reserva Objeto reserva que se quiere introducir en la base de datos
+	 * 
+	 * @return Retorna el codigo de la reserva, generado de manera aleatoria
+	 */
+	public int insertarReserva(Reserva reserva, int i) {
+		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		int codReserva = 0;
+		
+		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta INSERT
+			stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			
+			// añadimos los valores a insertar
+			stmt.setInt(1, reserva.getCodReserva());
+			stmt.setInt(2, reserva.getAlojamiento().getCodAlojamiento());
+			//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
+			//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
+			//stmt.setInt(3,reserva.getAlojamiento().getListaHabSeleccionadas(i));
+			stmt.setFloat(4, reserva.getPrecioReserva());
+			stmt.setString(5, reserva.getCliente().getDni());
+			stmt.setDate(6, reserva.getFechaIda());
+			stmt.setDate(7, reserva.getFechaVuelta());
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			stmt.executeUpdate();
+			
+			result = stmt.getGeneratedKeys();
+			result.next();
+			codReserva = result.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+		}
+		
+		return codReserva;
+		
+	}
+
 }

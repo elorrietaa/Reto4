@@ -281,12 +281,16 @@ public class ControladorPanPago implements ActionListener{
 		//guarda los datos de la reserva en en un fichero
 		modelo.funcionesReserva.imprimirReservaFichero(modelo, vista);
 		
-		/*// rellenar datos del cliente en el billete	
-		modelo.billeteIda.setDni(modelo.cliente.getDni());
+		// rellenar datos del cliente en el billete	
+		//modelo.billeteIda.setDni(modelo.cliente.getDni());
 		
-		// insertar billete en BBDD
-		int codBilleteIda = modelo.consultas.insertarBillete(modelo.billeteIda);
-		modelo.billeteIda.setCodBillete(codBilleteIda);
+		// insertar reserva o reservas en BBDD
+		for(int i=0; modelo.alojamiento.getListaHabSeleccionadas().size()<i; i++) {
+			int codReserva = modelo.consultas.insertarReserva(modelo.reserva, i);
+			modelo.reserva.setCodReserva(codReserva);
+		}
+		/**
+		
 		
 		// comprobar si existe billete de vuelta
 		if (modelo.billeteVuelta != null) {

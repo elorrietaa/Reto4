@@ -11,7 +11,8 @@ public class Alojamiento {
     protected int codAlojamiento;
     protected String nombre;
     protected ArrayList<Habitacion> listaHabitaciones;
-    protected int numHabitaciones;
+    protected ArrayList<Habitacion> listaHabSeleccionadas; 
+	protected int numHabitaciones;
     protected String ubicacion;
     protected float precioAlojamiento;
   
@@ -108,8 +109,33 @@ public class Alojamiento {
     public void setPrecioAlojamiento(float precioAlojamiento) {
         this.precioAlojamiento = precioAlojamiento;
     }
-    
-    
-    
+    /**
+     * Getter del arrayList listaHabitaciones
+     * @return
+     */
+    public ArrayList<Habitacion> getListaHabitaciones() {
+		return listaHabitaciones;
+	}
+    /**
+     * Setter del arrayList listaHabitaciones
+     * @param listaHabitaciones
+     */
+	public void setListaHabitaciones(ArrayList<Habitacion> listaHabitaciones) {
+		this.listaHabitaciones = listaHabitaciones;
+	}
+	/**
+     * Getter del arrayList listaHabSeleccionadas
+     * @return
+     */
+	public ArrayList<Habitacion> getListaHabSeleccionadas() {
+		return listaHabSeleccionadas;
+	}
+	/**
+     * Setter del arrayList listaHabSeleccionadas
+     * @return
+     */
+	public void setListaHabSeleccionadas(ArrayList<Habitacion> listaHabSeleccionadas) {
+		this.listaHabSeleccionadas = listaHabSeleccionadas;
+	}
 }
 

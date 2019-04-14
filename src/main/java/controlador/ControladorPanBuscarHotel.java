@@ -3,12 +3,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
+
+import com.toedter.calendar.JCalendar;
 
 import bbdd.*;
 import modelo.Ciudad;
@@ -36,7 +38,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Habitacion habitacion;
 	Reserva reserva;
 	Consultas consultas;
+	Date fechaIda;
+	Date fechaVuelta;
 	float precioReserva=-1;
+	private FuncionesReserva funcionesReserva;
+	private FuncionesPago funcionesPago;
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -57,7 +63,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     	vista.buscarHotel.btnMostrarDetalles.addActionListener(this);
     	vista.buscarHotel.btnMostrarHabDisp.addActionListener(this);
     	vista.buscarHotel.fechaIda.addPropertyChangeListener(this);
-	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
+    	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
     }
     /**
      * Método mostrarCiudad = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
@@ -110,11 +116,15 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     /**
      * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
      */
-	public void guardarDatosSeleccionadosCiudadYHotel() {
+	public void guardarDatosSeleccionadosCiudad() {
 		//se guarda la ciudad seleccionada
 		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 		//Pruebas
 		System.out.println("***DATOS CIUDAD***:Ciudad:" + ciudad);
+	    
+	}
+	public void guardarDatosSeleccionadosHotel() {
+		
 	    //se guarda el hotel seleccionado con la JLIST
 	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 	    //le pasa el hotel al modelo
@@ -127,22 +137,29 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	    System.out.println("Número de estrellas:" + hotel.getEstrellas());
 	    
 	    //en el futuro aqui los datos de la habitacion, guardarlos y pasarlos a modelo
-	    
 	}
 	
-	/**
-	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
-	 */
-	public void generarReserva() {
-		 this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-		int codReservaQueSeCogeriaDeBBDD = 50;
-		int codReserva = codReservaQueSeCogeriaDeBBDD +1;
-		
-		//rellenamos el objeto reserva: ¡¡¡ EN EL FUTURO PRECIO
-		this.reserva = new Reserva(codReserva, null, hotel, null, null, precioReserva);
-		//le pasa la reserva al modelo
-		modelo.reserva = this.reserva;
+	public void guardarDatosSeleccionadosFechas() {
+		//se guarda la fecha seleecionada en el JCalendar:
+		this.fechaIda= (Date) vista.buscarHotel.fechaIda.getDate();
+		//guardamos fechaIda seleccionada en el modelo
+		modelo.reserva.setFechaIda(fechaIda);
 	}
+	
+	public void guardarDatosSeleccionadoshabitacion() {
+	    //se guarda la habitacion seleecionada en el JLIST
+		//en el futuro guardar la o las habitaciones seleccionadas
+	    this.habitacion = (Habitacion) vista.buscarHotel.listHabitacion.getSelectedValue();
+	    //le pasa la habitacion al modelo
+	    modelo.habitacion = this.habitacion;
+	    //Pruebas
+	    System.out.println("***DATOS HABITACION***: Código HABITACION:" + habitacion.getCodHabitacion());
+	    System.out.println("tipo habitacion :" + habitacion.getTipoHabitacion());
+	    System.out.println("número de camas:" + habitacion.getNumCamas());
+	  
+	}
+	
+	
 	
 	/**
 	 * Método mostrarDatosHotelSeleccionado = muestra en el textPaneDetHot los datos del hotel seleccionado por el usuario
@@ -155,7 +172,19 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	    System.out.println("Nombre hotel:" + hotel.getNombre());
 	  
 	}
-	
+	/**
+	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
+	 */
+	public void generarReserva() {
+		//genera un código de reserva en función de las reservas que haya en la BBDD
+		int codReserva = consultas.mostrarNumReservas() +1;
+		System.out.println("código de la resera: " + codReserva);
+		//Calcula el precio de la reserva: MAL, NO LO CALCULA, NO COGE LOS MÉTODOS DE LA CLASE FUNCIONESRESERVA
+		//float precioReserva = funcionesReserva.calcularPrecioReserva(); 
+		//System.out.println("Precio reserva calculado: " + precioReserva);
+		//rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
+		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, null, null, this.precioReserva);
+	}
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
@@ -225,13 +254,18 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 				if (hotel != null) {
 					//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-					// (1º) Calcula el precio de la reserva:
-					// utilizar metodo de funciones pago calcularPrecioReserva
 					
-				    //(2º)pasa al panel Detalles Reserva los datos seleccionados en el panel SeleccionarAlojamiento
-					guardarDatosSeleccionadosCiudadYHotel();
+				    //(1º)guarda los datos seleecionados en el modelo
+					guardarDatosSeleccionadosCiudad();
+					guardarDatosSeleccionadosHotel();
+					//guardarDatosSeleccionadoshabitacion();
+					//guardarDatosSeleccionadosFechas();
+					
+					// (2º) Calcula el precio de la reserva:
+					//precioReserva = funcionesReserva.calcularPrecioReserva();
 					
 					//(3º)Generar reserva y guardarla en el objeto reserva
+					//funcionesReserva.generarReserva(); //no va
 					generarReserva();
 					
 					//(4º)actualiza el siguiente panel:
@@ -257,10 +291,21 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		}
 		
 	}
-    @Override
-    public void propertyChange(PropertyChangeEvent arg0) {
-	// TODO Auto-generated method stub
+	/**
+	 * Listener de la fecha
+	 */
+	@Override
+	public void propertyChange(PropertyChangeEvent e) {
+		// guardamos el nombre del boton pulsado
+		JCalendar botonPulsado = ((JCalendar) e.getSource());
+		
+		if (botonPulsado == vista.buscarHotel.fechaIda) {	
+			fechaIda = new Date(vista.buscarHotel.fechaIda.getDate().getTime());
 	
-    }
+		} else {	
+			fechaVuelta = new Date(vista.buscarHotel.fechaVuelta.getDate().getTime());
+		}		
 	
+	}
+
 }

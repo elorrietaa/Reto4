@@ -113,6 +113,24 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			vista.buscarHotel.listHabitacion.setModel(vista.buscarHotel.modeloHabitacion);
 	  	}
     }
+    
+    /**
+     * Método mostrarHabitacionesEnElJList = muestra las habitaciones que se han encontrado mediante el método: buscarHabitacionPorCodigoHotel pasando hotel, codHotelSeleccionado por parámetro. El codHotelSeleccionado dependerá del hotel seleccionado por el usuario
+     * @param codHotelSeleccionado
+     */
+    public void mostrarHabitacionesEnJList(int codHotelSeleccionado) {
+    	//borra todos los elementos del JList
+    	vista.selHabitacion.modeloHabitacion.removeAllElements();
+    	//llena el arrayList con la lista de Hoteles
+    	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
+    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
+	  	for(int i=0; i<listaHabitaciones.size();i++) {
+	  		vista.selHabitacion.modeloHabitacion.addElement(listaHabitaciones.get(i));
+	  		//prueba
+	  		System.out.println("dff:" + listaHabitaciones.get(i));
+			vista.selHabitacion.listHabitacion.setModel(vista.selHabitacion.modeloHabitacion);
+	  	}
+    }
    
 
     /**
@@ -209,6 +227,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					int codHotelSeleccionado = hotel.getCodAlojamiento();
 					//no muestra bien las habitaciones
 					mostrarHabitacionesEnElJList(codHotelSeleccionado);	
+					
 				}
 				else {
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el alojamiento del que desea ver más detalles. Gracias. ", null, 0);
@@ -227,6 +246,9 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//guardarDatosSeleccionadoshabitacion();
 					//guardarDatosSeleccionadosFechas();
 					
+					//muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
+					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
+					
 					// (2º) Calcula el precio de la reserva:
 					precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 					
@@ -234,8 +256,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					controlador.funcionesReserva.generarReserva();
 					
 					//(4º)actualiza el siguiente panel:
-					//muestra en la siguiente pantalla el precio de la reserva
-					//controlador.funcionesReserva.mostrarDatosReserva();
+					
 					
 				    //muestra el siguiente panel: PanelDetallesReserva
 				    vista.buscarHotel.setVisible(false);

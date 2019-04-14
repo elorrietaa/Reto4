@@ -2,10 +2,13 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 
 import bbdd.Conexion;
 import modelo.Consultas;
+import modelo.Habitacion;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
@@ -20,6 +23,11 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	public PrincipalModelo modelo; 
 	Consultas consultas;
 	public PrincipalControlador controlador;
+	
+	private ArrayList<Habitacion> listaHabitaciones;
+	float precioReserva =-1;
+	
+
 	/**
 	 * Constructor del controlador de detalles
 	 * 
@@ -32,6 +40,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		this.consultas = new Consultas(conexion);
 		this.controlador = controlador;
 	}
+	
 	/**
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
@@ -39,6 +48,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		vista.selHabitacion.btnAtras.addActionListener(this);
 		vista.selHabitacion.btnContinuar.addActionListener(this);
 	}
+	
 	/**
 	 * Acciones de los distintos componentes del panel
 	 */
@@ -64,6 +74,9 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				//Se calcula el precio de la reserva
 				
 				//se gudardan los datos de la reserva en el objeto reserva, y concretamente en un arrayLista listaReservas
+				
+				//se muestran en la siguiente pantalla los detalles de la reserva y el precio de la reserva
+				//controlador.funcionesReserva.mostrarDatosReserva();
 				
 				// Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 				vista.selHabitacion.setVisible(false);

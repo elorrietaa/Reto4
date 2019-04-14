@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -11,15 +12,17 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
+import javax.swing.JList;
 
 public class PanSelHabitacion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+	public DefaultListModel<Object> modeloHabitacion = new DefaultListModel<Object>();
 	public JButton btnLogin,btnRegistro,btnContinuar,btnAtras,btnCancelar;
 	public JLabel lblIcono, lblTitulo, lblBilleteIda;
 	public JTable detallesIda;
 	public JScrollPane scrollPaneIda;
+	public JList<Object> listHabitacion;
 	
 	public PanSelHabitacion() {
 		
@@ -93,7 +96,7 @@ public class PanSelHabitacion extends JPanel {
 		/*
 		 * Botones
 		 */
-		
+		/*
 		btnLogin = new JButton("Inicio Sesi\u00F3n");
 		FormatoDiseno.formatoBtnLogin(btnLogin);
 		add(btnLogin);
@@ -102,17 +105,27 @@ public class PanSelHabitacion extends JPanel {
 		FormatoDiseno.formatoBtnRegistro(btnRegistro);
 		add(btnRegistro);
 		
+		btnCancelar = new JButton("Cancelar");
+		FormatoDiseno.formatoBtnCancelar(btnCancelar);
+		add(btnCancelar);
+		*/
+		
 		btnAtras = new JButton("Atr\u00E1s");
 		FormatoDiseno.formatoBtnAtras(btnAtras);
 		add(btnAtras);
 		
-		btnCancelar = new JButton("Cancelar");
-		FormatoDiseno.formatoBtnCancelar(btnCancelar);
-		add(btnCancelar);
+		
 		
 		btnContinuar = new JButton("Continuar");
 		FormatoDiseno.formatoBtnContinuar(btnContinuar);
 		add(btnContinuar);
+		
+		listHabitacion = new JList<Object>();
+		listHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		listHabitacion.setBackground(Color.LIGHT_GRAY);
+		FormatoDiseno.formatoList(listHabitacion);
+		listHabitacion.setBounds(45, 357, 212, 239);
+		add(listHabitacion);
 
 	}
 }

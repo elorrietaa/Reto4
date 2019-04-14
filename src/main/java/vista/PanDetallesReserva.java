@@ -18,10 +18,10 @@ public class PanDetallesReserva extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	public JTextField tFPrecioReserva;
-	public JLabel lblSuReserva, lblDatosAlojamiento, lblPrecio;
+	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras;
 	public JList<String> listDetalleReserva;
-	public JTextPane textPDatosAlo, textPaneDetHot;
+	public JTextPane textPDatosAlo, textPaneDetHot, textPDetallesHabi;
 
 	/**
 	 * Create the panel.
@@ -37,7 +37,7 @@ public class PanDetallesReserva extends JPanel {
 		
 		lblDatosAlojamiento = new JLabel("Detalles Alojamiento:");
 		lblDatosAlojamiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDatosAlojamiento.setBounds(165, 185, 130, 14);
+		lblDatosAlojamiento.setBounds(141, 185, 154, 14);
 		add(lblDatosAlojamiento);
 		
 		btnContinuar = new JButton("Continuar");
@@ -50,12 +50,12 @@ public class PanDetallesReserva extends JPanel {
 		
 		lblPrecio = new JLabel("Precio :");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPrecio.setBounds(232, 330, 63, 14);
+		lblPrecio.setBounds(228, 499, 63, 14);
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();
 		tFPrecioReserva.setEditable(false);
-		tFPrecioReserva.setBounds(305, 329, 86, 20);
+		tFPrecioReserva.setBounds(301, 498, 86, 20);
 		add(tFPrecioReserva);
 		tFPrecioReserva.setColumns(10);
 		
@@ -63,6 +63,16 @@ public class PanDetallesReserva extends JPanel {
 		textPDatosAlo.setEditable(false);
 		textPDatosAlo.setBounds(305, 185, 204, 76);
 		add(textPDatosAlo);
+		
+		lblDetallesHabitaciones = new JLabel("Detalles habitaciones:");
+		lblDetallesHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDetallesHabitaciones.setBounds(141, 302, 154, 14);
+		add(lblDetallesHabitaciones);
+		
+		textPDetallesHabi = new JTextPane();
+		textPDetallesHabi.setEditable(false);
+		textPDetallesHabi.setBounds(305, 302, 204, 76);
+		add(textPDetallesHabi);
 		
 
 	}

@@ -48,7 +48,7 @@ public class PanSelHabitacion extends JPanel {
 		lblBilleteIda.setBounds(45, 210, 505, 40);
 		add(lblBilleteIda);
 		
-		// Tabla detalles billete ida
+		// TABLA HABITACIONES
 		detallesIda = new JTable();
 		Object[][] datosIda = {};
 		String[] columnNames = {"Cod_Habitacion", "Detalles:", "Destino", "Autobus",  "Fecha", "Hora", "Precio"};
@@ -79,7 +79,7 @@ public class PanSelHabitacion extends JPanel {
 		detallesIda.setBounds(45, 300, 934, 100);
 		detallesIda.setRowHeight(50);
 		detallesIda.setFocusable(false);
-		detallesIda.setRowSelectionAllowed(false);
+		detallesIda.setRowSelectionAllowed(true);
 		detallesIda.getColumnModel().getColumn(0).setPreferredWidth(180);
 		detallesIda.getColumnModel().getColumn(1).setPreferredWidth(180);
 		detallesIda.getColumnModel().getColumn(2).setPreferredWidth(180);

@@ -61,6 +61,9 @@ public class FuncionesReserva {
 	public void mostrarDatosReserva() {
 		//muestra datos del alojamiento
 		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
+		
+		vista.detallesReserva.textPDetallesHabi.setText("holi");
+		
 		//muestra el PRECIO TOTAL DE LA RESERVA: 
 		//EN EL FUTURO SE CALCULARÁ SUMANDO EL PRECIO DE TODAS LAS RESERVAS REALIZADAS
 	  	vista.detallesReserva.tFPrecioReserva.setText(Float.toString(modelo.reserva.getPrecioReserva())+ " €");

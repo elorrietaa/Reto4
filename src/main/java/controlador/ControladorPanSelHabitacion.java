@@ -92,7 +92,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 			case "Continuar":
 				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
-				//guardarDatosSeleccionadoshabitacion();
+				guardarDatosSeleccionadoshabitacion();
+				System.out.println("Habitacion seleccionada: "+ modelo.habitacion.getCodHabitacion());
 				// (2º) Calcula el precio de la reserva o reservas realizadas:
 				precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 				

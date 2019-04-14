@@ -42,7 +42,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Consultas consultas;
 	Date fechaIda;
 	Date fechaVuelta;
-	float precioReserva=-1;
+	
 	
 	
 	/**
@@ -166,21 +166,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		modelo.reserva.setFechaIda(fechaIda);
 	}
 	
-	public void guardarDatosSeleccionadoshabitacion() {
-	    //se guarda la habitacion seleecionada en el JLIST
-		//en el futuro guardar la o las habitaciones seleccionadas
-	    this.habitacion = (Habitacion) vista.buscarHotel.listHabitacion.getSelectedValue();
-	    //le pasa la habitacion al modelo
-	    modelo.habitacion = this.habitacion;
-	    //Pruebas
-	    System.out.println("***DATOS HABITACION***: Código HABITACION:" + habitacion.getCodHabitacion());
-	    System.out.println("tipo habitacion :" + habitacion.getTipoHabitacion());
-	    System.out.println("número de camas:" + habitacion.getNumCamas());
-	  
-	}
-	
-	
-	
+
 	/**
 	 * Método mostrarDatosHotelSeleccionado = muestra en el textPaneDetHot los datos del hotel seleccionado por el usuario
 	 */
@@ -243,25 +229,16 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				    //(1º)guarda los datos seleecionados en el modelo
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosHotel();
-					//guardarDatosSeleccionadoshabitacion();
 					//guardarDatosSeleccionadosFechas();
 					
 					//muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
 					
-					// (2º) Calcula el precio de la reserva:
-					precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
-					
-					//(3º)Generar reserva y guardarla en el objeto reserva
-					controlador.funcionesReserva.generarReserva();
-					
-					//(4º)actualiza el siguiente panel:
-					
-					
-				    //muestra el siguiente panel: PanelDetallesReserva
+					//3º Actualiza el siguiente panel:
+				    //muestra el siguiente panel: PanelSelHabitacion
 				    vista.buscarHotel.setVisible(false);
 				    vista.selHabitacion.setVisible(true);
-				   // vista.detallesReserva.setVisible(true);
+				   
 				}
 				
 				else {

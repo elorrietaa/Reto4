@@ -35,7 +35,7 @@ public class PanDetallesReserva extends JPanel {
 		lblSuReserva.setBounds(288, 32, 84, 14);
 		add(lblSuReserva);
 		
-		lblDatosAlojamiento = new JLabel("Datos Alojamiento:");
+		lblDatosAlojamiento = new JLabel("Detalles Alojamiento:");
 		lblDatosAlojamiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDatosAlojamiento.setBounds(165, 185, 130, 14);
 		add(lblDatosAlojamiento);

@@ -2,14 +2,18 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 
 import bbdd.Conexion;
+import modelo.Ciudad;
 import modelo.Consultas;
 import modelo.Habitacion;
+import modelo.Hotel;
 import modelo.PrincipalModelo;
+import modelo.Reserva;
 import vista.JframePrincipal;
 
 
@@ -18,11 +22,16 @@ import vista.JframePrincipal;
  * 
  */
 public class ControladorPanSelHabitacion implements ActionListener {
-	
+	public PrincipalControlador controlador;
 	public JframePrincipal vista;
 	public PrincipalModelo modelo; 
 	Consultas consultas;
-	public PrincipalControlador controlador;
+	Ciudad ciudad;
+	Hotel hotel;
+	Habitacion habitacion;
+	Reserva reserva;
+	Date fechaIda;
+	Date fechaVuelta;
 	
 	private ArrayList<Habitacion> listaHabitaciones;
 	float precioReserva =-1;
@@ -49,6 +58,20 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		vista.selHabitacion.btnContinuar.addActionListener(this);
 	}
 	
+	public void guardarDatosSeleccionadoshabitacion() {
+	    //se guarda la habitacion seleecionada en el JLIST
+		//en el futuro guardar la o las habitaciones seleccionadas
+	    this.habitacion = (Habitacion) vista.buscarHotel.listHabitacion.getSelectedValue();
+	    //le pasa la habitacion al modelo
+	    modelo.habitacion = this.habitacion;
+	    //Pruebas
+	    System.out.println("***DATOS HABITACION***: Código HABITACION:" + habitacion.getCodHabitacion());
+	    System.out.println("tipo habitacion :" + habitacion.getTipoHabitacion());
+	    System.out.println("número de camas:" + habitacion.getNumCamas());
+	  
+	}
+	
+	
 	/**
 	 * Acciones de los distintos componentes del panel
 	 */
@@ -69,15 +92,19 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 			case "Continuar":
 				
-				// Se guardan los detalles de la (o las habitaciones seleecionadas)
+				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
+				//guardarDatosSeleccionadoshabitacion();
+				// (2º) Calcula el precio de la reserva o reservas realizadas:
+				precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 				
-				//Se calcula el precio de la reserva
+				//(3º)Generar reserva (o reservas) y guardarla en el objeto reserva (o en el ArrayList<Reserva> listaReservas)
+				controlador.funcionesReserva.generarReserva();
 				
-				//se gudardan los datos de la reserva en el objeto reserva, y concretamente en un arrayLista listaReservas
+				//(4º) se muestran en la siguiente pantalla los detalles de la reserva y el precio de la reserva
+				controlador.funcionesReserva.mostrarDatosReserva();
 				
-				//se muestran en la siguiente pantalla los detalles de la reserva y el precio de la reserva
-				//controlador.funcionesReserva.mostrarDatosReserva();
 				
+				//(4º)actualiza el siguiente panel:
 				// Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 				vista.selHabitacion.setVisible(false);
 				vista.detallesReserva.setVisible(true);

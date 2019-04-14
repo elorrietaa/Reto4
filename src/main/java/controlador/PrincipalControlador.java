@@ -38,7 +38,7 @@ public class PrincipalControlador {
 		this.conexion = new Conexion();
 		this.funcionesPago = new FuncionesPago(modelo);
 		this.funcionesRegistro = new FuncionesRegistro(modelo, this);
-		this.funcionesReserva = new FuncionesReserva(modelo);
+		this.funcionesReserva = new FuncionesReserva(modelo, this);
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz

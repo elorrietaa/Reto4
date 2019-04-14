@@ -4,7 +4,8 @@ import modelo.PrincipalModelo;
 
 public class FuncionesReserva {
 	
-	private PrincipalModelo modelo;
+	PrincipalModelo modelo;
+	PrincipalControlador controlador;
 	public float precioReserva;
 	
 	/**
@@ -12,9 +13,10 @@ public class FuncionesReserva {
 	 * 
 	 * @param modelo Instancia de la clase modelo para poder utilizarlo
 	 */
-	public FuncionesReserva (PrincipalModelo modelo) {
+	public FuncionesReserva (PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.modelo = modelo;
-	} 
+		this.controlador = controlador;
+	}
 	
 	/**
 	 * Metodo para calcular el precio de la reserva

@@ -28,6 +28,7 @@ public class FuncionesValidaciones {
 	
 	/**
 	 * validarFechaEntradaNoNow = valida que las fechas introducidas sean adecuadas.
+	 * Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
 	 * @param fechaIda = fecha de entrada en el alojamiento
 	 * @param fechaVuelta = fecha salida del alojamiento
 	 * @return

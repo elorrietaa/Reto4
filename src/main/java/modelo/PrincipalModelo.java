@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 import bbdd.Conexion;
 import controlador.FuncionesPago;
 
@@ -31,7 +33,8 @@ public class PrincipalModelo {
 	//public FuncionesBillete funcionesBillete;
   
 	public float precioTotal;
-	
+	public Date fechaIda;
+	public Date fechaVuelta;
 	
 	/**
 	 * Constructor de la clase PrincipalModelo

@@ -126,10 +126,20 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	
 	public void guardarDatosSeleccionadosFechas() {
 		//se guarda la fecha seleecionada en el JCalendar:
-		System.out.println("fechaaaaaaaaaaaaaa:"+ fechaIda);
-		modelo.reserva.setFechaIda((Date) fechaIda);
-		modelo.reserva.setFechaVuelta((Date) fechaVuelta);
-		System.out.println("fecha2:"+ fechaIda);
+		
+		//NO SE PORQUE NO GUARDA LA FECHA EN EL modelo.reserva.setFechaIda, asigue la guardo en modelo.fechaIda
+		//modelo.reserva.setFechaIda((Date) fechaIda);
+		//modelo.reserva.setFechaVuelta((Date) fechaVuelta);
+		//System.out.println("La fecha en el modelo.reserva seria: " + modelo.reserva.getFechaIda());
+		
+		//metemos las fechas en el modelo
+		modelo.fechaIda = this.fechaIda;
+		modelo.fechaVuelta = this.fechaVuelta;
+		
+		//pruebas:
+		System.out.println("Fecha ida:" + fechaIda);
+		System.out.println("Fecha vuelta:" + fechaVuelta);
+		System.out.println("Fecha ida guardada en el modelo:" + modelo.fechaIda);
 	}
 	
 
@@ -195,23 +205,19 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				if (hotel != null) {
 					//Cuando pulsa el boton continuar pasan las siguientes cosas: 
 					 
-				    //(1º)guarda los datos seleecionados en el modelo
+				    //(1º) Guarda los datos seleecionados en el modelo
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosHotel();
-					System.out.println("Fecha ida:" + fechaIda);
-					System.out.println("Fecha vuelta:" + fechaVuelta);
-					//NO guarda los datos de la fecha en el modelo
-					//guardarDatosSeleccionadosFechas();
+					guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
 					
-					//(2º)Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
-					
+					//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
 					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
 					
-					//muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
+					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
 					//EN EL FUTURO: MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 					
-					//3º Actualiza el siguiente panel si se cumplen las validaciones.
+					//(4º) Actualiza el siguiente panel si se cumplen las validaciones.
 				    //muestra el siguiente panel: PanelSelHabitacion
 					if(continuar) {
 						vista.buscarHotel.setVisible(false);

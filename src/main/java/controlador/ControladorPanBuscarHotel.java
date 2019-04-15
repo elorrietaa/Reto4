@@ -203,17 +203,15 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//NO guarda los datos de la fecha en el modelo
 					//guardarDatosSeleccionadosFechas();
 					
-					//Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
+					//(2º)Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
 					
 					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
-					
-					
 					
 					//muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
 					//EN EL FUTURO: MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 					
-					//3º Actualiza el siguiente panel:
+					//3º Actualiza el siguiente panel si se cumplen las validaciones.
 				    //muestra el siguiente panel: PanelSelHabitacion
 					if(continuar) {
 						vista.buscarHotel.setVisible(false);

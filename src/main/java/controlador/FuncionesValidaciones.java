@@ -26,17 +26,33 @@ public class FuncionesValidaciones {
 		this.vista = vista;
 	} 
 	
+	/**
+	 * validarFechaEntradaNoNow = valida que las fechas introducidas sean adecuadas.
+	 * @param fechaIda = fecha de entrada en el alojamiento
+	 * @param fechaVuelta = fecha salida del alojamiento
+	 * @return
+	 */
 	public boolean validarFechaEntradaNoNow(Date fechaIda, Date fechaVuelta) {
 		//mostramos fecha actual:
 		fechaActual = modelo.consultas.mostrarFechaActual();
 		System.out.println("*Fecha actual es:" + fechaActual);
-		if(fechaIda==null) {
-			  vista.buscarHotel.setVisible(true);
-		}
-		if(fechaIda.before(fechaActual)) {
-			 JOptionPane.showMessageDialog(vista, "Por favor, La fecha de entrada no puede ser anterior a la fecha actual. Seleccione otra fecha de entrada. Gracias. ", null, 0);
+		
+		if(fechaIda.before(fechaActual)) { //fecha Entrada anterior a fecha actual
+			 JOptionPane.showMessageDialog(vista, "Lo sentimos, la fecha de entrada no puede ser anterior a la fecha actual. Seleccione otra fecha de entrada. Gracias. ", null, 0);
 			 fechaIda=null;
 			 return false;
+		}
+		else if(fechaVuelta.equals(fechaIda)) { //fecha salida igual a fecha de entrada
+			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe seleccionar al menos una noche para realizar una reserva. Gracias. ", null, 0);
+			 return false;
+		}
+		else if(fechaVuelta.before(fechaActual)) {//fecha salida anterior a fecha actual
+			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe introducir un rango de fechas válido para realizar una reserva. Gracias. ", null, 0);
+			return false;
+		}
+		else if(fechaVuelta.before(fechaIda)) { //fecha salida anterior a la fecha de entrada
+			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe introducir un rango de fechas válido para realizar una reserva. Gracias. ", null, 0);
+			return false;
 		}
 		else {
 			return true;

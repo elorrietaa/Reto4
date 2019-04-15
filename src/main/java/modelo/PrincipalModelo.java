@@ -32,6 +32,7 @@ public class PrincipalModelo {
   
 	public float precioTotal;
 	
+	
 	/**
 	 * Constructor de la clase PrincipalModelo
 	 */

@@ -42,6 +42,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Consultas consultas;
 	Date fechaIda;
 	Date fechaVuelta;
+	Date fechaActual = null;
 	
 	
 	
@@ -200,6 +201,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					System.out.println("Fecha vuelta:" + fechaVuelta);
 					//NO guarda los datos de la fecha en el modelo
 					//guardarDatosSeleccionadosFechas();
+					
+					//mostramosFechaActual
+					fechaActual = modelo.consultas.mostrarFechaActual();
+					System.out.println("Fecha actual es:" + fechaActual);
+					
 					
 					//muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());

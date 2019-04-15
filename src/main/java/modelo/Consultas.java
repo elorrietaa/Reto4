@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -337,6 +338,47 @@ public class Consultas {
 		return codReserva;
 	}
     
+    /****************************************************************************************************************
+	 * 
+	 * Metodos consultas fechas
+	 * 
+	 ****************************************************************************************************************/
+    public Date mostrarFechaActual() {
+		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		Date fechaActual = null;
+		
+		String query = "select Date_format(now(),'%Y-%m-%d');";
+
+		try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			result = stmt.executeQuery();
+			
+			// crea objetos con los resultados y los añade a un arrayList
+			while (result.next()) {
+				fechaActual = result.getDate(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { 
+				connection.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}                 
+		
+		return fechaActual;
+	}
     
     /****************************************************************************************************************
 	 * 

@@ -1,5 +1,8 @@
 package controlador;
 
+import java.util.ArrayList;
+
+import modelo.Cama;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
 import vista.JframePrincipal;
@@ -21,6 +24,43 @@ public class FuncionesReserva {
 		this.controlador = controlador;
 		this.vista = vista;
 	} 
+	
+	
+	public String mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
+		System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
+		String tiposCamaHab = "";
+		int numSimple=0;
+		int numMatrimonio=0;
+		int numInfantil=0;
+		
+		//1º forma:
+		for (int i=0; listaCamas.size()>i; i++) {
+			tiposCamaHab = tiposCamaHab + ", " + listaCamas.get(i).getTipoCama().toString();
+			System.out.println(listaCamas.get(i).getTipoCama().toString());
+		}
+	
+		System.out.println("Cadena tipoCama: " + tiposCamaHab );
+		
+		//2º forma:
+		for (int i=0; listaCamas.size()>i; i++) {
+			if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("simple")) {
+				numSimple = numSimple +1;
+			}
+			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("matrimonio")) {
+				numMatrimonio = numMatrimonio + 1;
+			}
+			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("infantil")) {
+				numInfantil = numInfantil + 1;
+			}
+			System.out.println(listaCamas.get(i).getTipoCama().toString());
+		}
+		System.out.println("Cadena tipoCama: " + numSimple + " camas simples, "+ numMatrimonio + " camas de matrimonio,  " + numInfantil + "cuna o cama extra." );
+		return tiposCamaHab;
+	}
+	
+	
+	
+	
 	
 	/**
 	 * Metodo para calcular el precio de la reserva

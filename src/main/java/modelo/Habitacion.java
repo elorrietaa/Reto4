@@ -9,8 +9,6 @@ import java.util.ArrayList;
  */
 public class Habitacion {
 	protected int codHabitacion;
-	
-	
 	protected String tipoHabitacion;
 	protected float tamanio;
 	protected int numCamas;

@@ -20,7 +20,7 @@ public class FuncionesReserva {
 		this.modelo = modelo;
 		this.controlador = controlador;
 		this.vista = vista;
-	}
+	} 
 	
 	/**
 	 * Metodo para calcular el precio de la reserva
@@ -50,10 +50,10 @@ public class FuncionesReserva {
 		System.out.println("Precio reserva calculado: " + precioReserva);
 		
 		//rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
-		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, null, null, this.precioReserva);
+		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, modelo.habitacion, null, null, this.precioReserva);
 	
 	}
-	
+	 
 
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 

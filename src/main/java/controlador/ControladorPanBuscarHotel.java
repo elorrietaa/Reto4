@@ -34,7 +34,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	private ArrayList<Ciudad> listaCiudades;
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
-	private ArrayList<Object> listaDetallesReserva;
+	private ArrayList<Object> listaDetallesReserva; 
 	Ciudad ciudad;
 	Hotel hotel;
 	Habitacion habitacion;
@@ -124,9 +124,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	
 	public void guardarDatosSeleccionadosFechas() {
 		//se guarda la fecha seleecionada en el JCalendar:
-		this.fechaIda= (Date) vista.buscarHotel.fechaIda.getDate();
-		//guardamos fechaIda seleccionada en el modelo
-		modelo.reserva.setFechaIda(fechaIda);
+		//this.fechaIda= (Date) vista.buscarHotel.fechaIda.getDate();
+		
 	}
 	
 
@@ -191,10 +190,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 				if (hotel != null) {
 					//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-					
+					 
 				    //(1º)guarda los datos seleecionados en el modelo
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosHotel();
+					System.out.println(fechaIda);
 					//guardarDatosSeleccionadosFechas();
 					
 					//muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
@@ -237,6 +237,10 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		
 		if (botonPulsado == vista.buscarHotel.fechaIda) {	
 			fechaIda = new Date(vista.buscarHotel.fechaIda.getDate().getTime());
+			//guardamos fechaIda seleccionada en el modelo
+			System.out.println("La fecha idaaaa:" + fechaIda);
+			//no va// modelo.reserva.setFechaIda(fechaIda);
+			
 	
 		} else {	
 			fechaVuelta = new Date(vista.buscarHotel.fechaVuelta.getDate().getTime());

@@ -7,16 +7,14 @@ import modelo.Habitacion;
 
 public class HabitacionTest {
 	protected int codHabitacion=1;
-	protected Alojamiento alojamiento= new Alojamiento(1, "Hotel uno", 14, "BILBAO", (float) 12.2);
 	protected String tipoHabitacion="Dormitorio";
 	protected float tamanio=15;
 	protected int numCamas=2;
 	protected String tiposCamaHab = "simple";
-	protected String estadoHabitacion="DISPONIBLE";
 	
 	Habitacion habitacion = new Habitacion();
 	Habitacion habitacionPrueba = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas, tiposCamaHab);
-	
+	 
 	@Test
 	public void testConstructorVacio() {   	
 	}

@@ -29,7 +29,7 @@ public class PanDetallesReserva extends JPanel {
 	public PanDetallesReserva() {
 		setBounds(0,0,1024,720);
 		setLayout(null);
-		
+		 
 		lblSuReserva = new JLabel("Su Reserva :");
 		lblSuReserva.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblSuReserva.setBounds(288, 32, 84, 14);

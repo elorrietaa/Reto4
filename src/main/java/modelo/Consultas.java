@@ -336,7 +336,7 @@ public class Consultas {
 			
 			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 			stmt.executeUpdate();
-			
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

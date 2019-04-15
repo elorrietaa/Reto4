@@ -30,9 +30,11 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	Ciudad ciudad;
 	Hotel hotel;
 	Habitacion habitacion;
+	Cama cama;
 	Reserva reserva;
 	Date fechaIda;
 	Date fechaVuelta;
+	
 	
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Cama> listaCamas;
@@ -100,9 +102,14 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				//mostrar tipo de cama de la habtacion
 				listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
 				System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
+				String tiposCamaHab = "";
 				for (int i=0; listaCamas.size()>i; i++) {
+					tiposCamaHab = tiposCamaHab + ", " + listaCamas.get(i).getTipoCama().toString();
 					System.out.println(listaCamas.get(i).getTipoCama().toString());
 				}
+				System.out.println("Cadena tipoCama: " + tiposCamaHab );
+				//metemos el tipo Cama en el modelo
+				modelo.habitacion.setTiposCamaHab(tiposCamaHab);
 				
 				
 				

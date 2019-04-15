@@ -18,6 +18,7 @@ public class PrincipalModelo {
 	public Alojamiento alojamiento;
 	public Hotel hotel;
 	public Habitacion habitacion;
+	public Cama cama;
 	public Reserva reserva;
 	public Cliente cliente;
 
@@ -47,6 +48,7 @@ public class PrincipalModelo {
 		alojamiento = null;
 		hotel = null;
 		habitacion = null;
+		cama = null;
 		reserva = null;
 		cliente = null;
 		

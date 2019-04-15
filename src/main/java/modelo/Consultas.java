@@ -175,7 +175,6 @@ public class Consultas {
     	ResultSet rs = null;
     	
     	String query = "SELECT * FROM `habitaciones`, `camas` where habitaciones.Cod_habitacion=camas.Cod_habitacion and habitaciones.Cod_habitacion=?";
-    	System.out.println("12345");
     	try {
     		// Abrimos una conexion
     		connection = conexion.conectar();
@@ -192,7 +191,6 @@ public class Consultas {
     			cama = new Cama(); 
     			cama.setCodCama(rs.getInt("Cod_cama"));
     			cama.setTipoCama(rs.getString("Tipo_cama"));
-    			System.out.println(cama.getTipoCama());
     			listaCamas.add(cama);
     		}
     				

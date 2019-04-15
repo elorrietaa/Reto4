@@ -14,6 +14,7 @@ public class Habitacion {
 	protected String tipoHabitacion;
 	protected float tamanio;
 	protected int numCamas;
+	protected String tiposCamaHab;
 	protected ArrayList<Cama> listaCamas;
 	
 	/**
@@ -30,11 +31,12 @@ public class Habitacion {
 	 * @param numCamas
 	 * @param estadoHabitacion
 	 */
-	public Habitacion(int codHabitacion, String tipoHabitacion, float tamanio, int numCamas) {
+	public Habitacion(int codHabitacion, String tipoHabitacion, float tamanio, int numCamas, String tiposCamaHab) {
 		this.codHabitacion = codHabitacion;
 		this.tipoHabitacion = tipoHabitacion;
 		this.tamanio = tamanio;
 		this.numCamas = numCamas;
+		this.tiposCamaHab = tiposCamaHab;
 	}
 
 	public int getCodHabitacion() {
@@ -69,6 +71,14 @@ public class Habitacion {
 		this.numCamas = numCamas;
 	}
 
+	
+	public String getTiposCamaHab() {
+		return tiposCamaHab;
+	}
+	public void setTiposCamaHab(String tiposCamaHab) {
+		this.tiposCamaHab = tiposCamaHab;
+	}
+	
 	public String toString() {
     	return tipoHabitacion;
     }

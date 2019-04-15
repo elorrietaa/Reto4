@@ -39,21 +39,34 @@ public class FuncionesFicheroReserva {
         	}
             fichero = new FileWriter("C:\\workspace\\RETO4/reserva.txt", true); // true es para añadir al final de un fichero ya existente
             writer = new PrintWriter(fichero);
-            //vista.detallesReserva.tFPrecioReserva.getX()
-			writer.println("****************************");
-			writer.println("      DATOS DELA RESERVA      ");
-			writer.println("****************************");
+            //vista.detallesReserva.tFPrecioReserva.getX() 
+			writer.println("*************************************************************");
+			writer.println("     	 DATOS DELA RESERVA      ");
+			writer.println("*************************************************************");
 			writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
 			writer.println();
+			writer.println("=====DATOS DEL CLIENTE: ===== " );
+			writer.println("Nombre: " + modelo.cliente.getNombre()+ " Apellidos:" + modelo.cliente.getApellidos() + " DNI: " + modelo.cliente.getDni());
+			writer.println();
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
-			writer.println("Código del hotel: " + modelo.hotel.getCodAlojamiento());
 			writer.println("Ciudad: " + modelo.hotel.getUbicacion());
-			writer.println("Hotel: " + modelo.hotel.getNombre());
+			writer.println("Código del hotel: " + modelo.hotel.getCodAlojamiento());
+			writer.println("Nombre del hotel: " + modelo.hotel.getNombre());		
 			writer.println("Número de estrellas: " + modelo.hotel.getEstrellas());
 			writer.println();
 			writer.println("===== DATOS DE LA RESERVA: ===== " );
-			writer.println("Precio de la reserva: " + modelo.precioTotal + "€");
+			writer.println("Código habitación: " + modelo.reserva.getHabitacion().getCodHabitacion());
+			writer.println("Tipo de habitación: " + modelo.reserva.getHabitacion().getTipoHabitacion());
+			writer.println("Número de camas de la habitación: " + modelo.reserva.getHabitacion().getNumCamas());
+			writer.println("Tipo de camas de la habitación: " + modelo.reserva.getHabitacion().getTiposCamaHab());
 			writer.println();
+			writer.println("Precio habitación: " + modelo.reserva.getPrecioReserva() + "€");
+			writer.println();
+			writer.println("*************************************************************");
+			writer.println();
+			writer.println("PRECIO FINAL TOTAL: " + modelo.precioTotal + "€");
+			writer.println();
+			writer.println("*************************************************************");
 			writer.flush();
         } catch (Exception e) {
             e.printStackTrace();

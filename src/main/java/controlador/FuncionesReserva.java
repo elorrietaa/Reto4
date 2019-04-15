@@ -42,7 +42,10 @@ public class FuncionesReserva {
 	 */
 	public void generarReserva() {
 		//genera un código de reserva en función de las reservas que haya en la BBDD
+		int codReservaProc = modelo.consultas.mostrarNumReservasConProcedimiento();
+		System.out.println("num reservas con procedimientooooo" + codReservaProc);
 		int codReserva = modelo.consultas.mostrarNumReservas() +1;
+		
 		System.out.println("código de la resera: " + codReserva);
 		
 		//Calcula el precio de la reserva: 

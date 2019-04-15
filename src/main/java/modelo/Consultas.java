@@ -298,7 +298,43 @@ public class Consultas {
 		}                 
 		
 		return codReserva;
+	}
+    
+    public int mostrarNumReservasConProcedimiento() {
 		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		int codReserva=0;
+		
+		String query = "SELECT count(*) FROM `reservas`";
+
+		try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			result = stmt.executeQuery();
+			
+			// crea objetos con los resultados y los añade a un arrayList
+			while (result.next()) {
+				codReserva = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { 
+				connection.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}                 
+		
+		return codReserva;
 	}
     
     

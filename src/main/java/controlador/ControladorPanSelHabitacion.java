@@ -39,7 +39,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Cama> listaCamas;
 	float precioReserva =-1;
-	
+	 
 
 	/**
 	 * Constructor del controlador de detalles

@@ -27,6 +27,7 @@ public class PrincipalControlador {
     public FuncionesPago funcionesPago;
     public FuncionesRegistro funcionesRegistro;
     public FuncionesReserva funcionesReserva;
+    public FuncionesValidaciones funcionesValidaciones;
     
     /**
      * Constructor del PrincipalControlador
@@ -40,6 +41,7 @@ public class PrincipalControlador {
 		this.funcionesPago = new FuncionesPago(modelo);
 		this.funcionesRegistro = new FuncionesRegistro(modelo, this);
 		this.funcionesReserva = new FuncionesReserva(modelo,vista,this);
+		this.funcionesValidaciones = new FuncionesValidaciones(modelo,vista,this);
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz

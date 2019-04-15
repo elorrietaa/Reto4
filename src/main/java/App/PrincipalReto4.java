@@ -8,7 +8,7 @@ import vista.JframePrincipal;
  * @author alba
  *
  */
-public class PrincipalReto4 { 
+public class PrincipalReto4 {  
 
     public static void main(String[] args) {
     	

@@ -44,6 +44,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Date fechaVuelta;
 	Date fechaActual = null;
 	
+	boolean continuar = false;
 	
 	
 	/**
@@ -202,9 +203,10 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//NO guarda los datos de la fecha en el modelo
 					//guardarDatosSeleccionadosFechas();
 					
-					//mostramosFechaActual
-					fechaActual = modelo.consultas.mostrarFechaActual();
-					System.out.println("Fecha actual es:" + fechaActual);
+					//Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
+					
+					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
+					
 					
 					
 					//muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
@@ -213,8 +215,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//3º Actualiza el siguiente panel:
 				    //muestra el siguiente panel: PanelSelHabitacion
-				    vista.buscarHotel.setVisible(false);
-				    vista.selHabitacion.setVisible(true);
+					if(continuar) {
+						vista.buscarHotel.setVisible(false);
+						vista.selHabitacion.setVisible(true);
+					}
+				    
 				   
 				}
 				
@@ -257,5 +262,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		}		
 	
 	}
+	
+	
 
 }

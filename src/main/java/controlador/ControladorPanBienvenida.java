@@ -24,6 +24,6 @@ public class ControladorPanBienvenida implements ActionListener{
 		vista.buscarHotel.setVisible(true);
 		vista.bienvenida.setVisible(false);
 		
-		this.controlador.controladorPanBuscarHotel.mostrarCiudad();
+		this.controlador.controladorPanBuscarHotel.mostrarCiudad(); 
 	}
 }

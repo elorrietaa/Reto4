@@ -16,7 +16,7 @@ import vista.*;
  */
 
 public class ControladorPanPago implements ActionListener{ 
-	
+	 
 	private JframePrincipal vista; // Declara el objeto vista
 	private PrincipalModelo modelo; // Declara el objeto modelo
 	private PrincipalControlador controlador;
@@ -292,6 +292,13 @@ public class ControladorPanPago implements ActionListener{
 		}
 		/**
 		*/
+		
+		//Generar reserva: introducir reserva en modelo.reserva
+		controlador.funcionesReserva.generarReserva();
+		System.out.println("Datos reserva generada:" + "Código de la reserva: "+ modelo.reserva.getCodReserva() + "Dni cliente:"+ modelo.reserva.getCliente().getDni() + "Fecha entrada: "+ modelo.reserva.getFechaIda() + "Fecha salida: "+ modelo.reserva.getFechaVuelta() + "Precio reserva" + modelo.reserva.getPrecioReserva());
+		
+		//Insertar la reserva en la BBDD:
+		modelo.consultas.insertarReserva(modelo.reserva); 
 		
 	}
 	/**

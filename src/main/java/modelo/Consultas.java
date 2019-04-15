@@ -475,13 +475,13 @@ public class Consultas {
 	 * 
 	 * @return Retorna el codigo de la reserva, generado de manera aleatoria
 	 */
-	public int insertarReserva(Reserva reserva, int i) {
+	public void insertarReserva(Reserva reserva) {
 		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
 		int codReserva = 0;
 		
-		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			
@@ -496,7 +496,7 @@ public class Consultas {
 			stmt.setInt(2, reserva.getAlojamiento().getCodAlojamiento());
 			//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
 			//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
-			//stmt.setInt(3,reserva.getAlojamiento().getListaHabSeleccionadas(i));
+			stmt.setInt(3,reserva.getHabitacion().getCodHabitacion());
 			stmt.setFloat(4, reserva.getPrecioReserva());
 			stmt.setString(5, reserva.getCliente().getDni());
 			stmt.setDate(6, reserva.getFechaIda());
@@ -514,8 +514,6 @@ public class Consultas {
 		} finally {
 		    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
-		
-		return codReserva;
 		
 	}
 

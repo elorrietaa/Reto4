@@ -87,7 +87,7 @@ public class ControladorRegistro implements ActionListener {
 				break;
 				
 			case "Registrarse":
-
+ 
 				if(validarDatos()) {
 					
 					if(modelo.consultas.buscarClientePorDNI(dni) != null) { // Comprueba si existe un usuario con el mismo DNI

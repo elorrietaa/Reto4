@@ -41,20 +41,21 @@ public class FuncionesReserva {
 	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
 	 */
 	public void generarReserva() {
-		//genera un código de reserva en función de las reservas que haya en la BBDD
+		//(1º) genera un código de reserva en función de las reservas que haya en la BBDD
 		int codReservaProc = modelo.consultas.mostrarNumReservasConProcedimiento();
 		System.out.println("num reservas con procedimientooooo" + codReservaProc);
 		int codReserva = modelo.consultas.mostrarNumReservas() +1;
 		
-		System.out.println("código de la resera: " + codReserva);
+		System.out.println("código de la reserva: " + codReserva);
 		
-		//Calcula el precio de la reserva: 
+		//(2º) Calcula el precio de la reserva: 
 		precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
 		System.out.println("Precio reserva calculado: " + precioReserva);
 		
-		//rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
-		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, modelo.habitacion, null, null, this.precioReserva);
+		//(3º) rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
+		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, modelo.habitacion, modelo.fechaIda, modelo.fechaVuelta, this.precioReserva);
 	
+		
 	}
 	  
 
@@ -73,5 +74,6 @@ public class FuncionesReserva {
 	  	modelo.precioTotal=modelo.reserva.getPrecioReserva();
 	}
 	
+
 	
 }

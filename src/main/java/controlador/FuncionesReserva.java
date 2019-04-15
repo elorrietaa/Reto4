@@ -53,7 +53,7 @@ public class FuncionesReserva {
 		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, modelo.habitacion, null, null, this.precioReserva);
 	
 	}
-	 
+	  
 
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 

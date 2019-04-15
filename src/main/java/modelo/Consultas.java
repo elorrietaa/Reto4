@@ -169,6 +169,52 @@ public class Consultas {
     	return listaHabitacion;
     }
     
+    //no funciona
+    public ArrayList<Habitacion> buscarHabitacionDisponiblel(Date fechaIda, Date fechaVuelta, int codHotelSeleccionado) {
+    	ArrayList<Habitacion> listaHabDisp = new ArrayList<Habitacion>(); 
+    	Habitacion habitacion;
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	String query = "SELECT h.Cod_habitacion, h.N_camas FROM `habitaciones` H, `reservas` R where H.Cod_habitacion=R.Cod_habitacion and  h.Cod_habitacion NOT IN( SELECT h.Cod_habitacion FROM `habitaciones` H, `reservas` R where H.Cod_habitacion=R.Cod_habitacion and ((R.Fecha_entrada <= `?` AND Fecha_salida >= `?` ) OR Fecha_salida BETWEEN `?` AND `?` OR Fecha_entrada BETWEEN `?` AND `?` AND H.Cod_alojamiento=?)";
+    	
+    	try { 
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    		ps.setDate(1, fechaIda);
+    		ps.setDate(2, fechaVuelta);
+    		ps.setDate(3, fechaIda);
+    		ps.setDate(4, fechaVuelta);
+    		ps.setDate(5, fechaIda);
+    		ps.setDate(6, fechaVuelta);
+    		ps.setInt(7, codHotelSeleccionado);
+    		
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    
+    		// crea objetos Linea con los resultados y los añade a un arrayList
+    		while (rs.next()) {
+    			habitacion = new Habitacion(); 
+    			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
+    			habitacion.setNumCamas(rs.getInt("N_Camas"));
+    			listaHabDisp.add(habitacion);
+    		}
+    				
+    		} 
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    		} 
+    		finally {
+    			// cerramos la conexion
+    			conexion.desconectar();
+    		}
+    	return listaHabDisp;
+    }
+    
+    
     public ArrayList<Cama> buscarCamaPorCodigoHabitacion(int codHabitacionSeleccionada) {
     	ArrayList<Cama> listaCamas = new ArrayList<Cama>(); 
     	Cama cama;

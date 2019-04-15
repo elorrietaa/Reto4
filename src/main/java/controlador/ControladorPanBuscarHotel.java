@@ -34,6 +34,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	private ArrayList<Ciudad> listaCiudades;
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
+	private ArrayList<Habitacion> listaHabDisp;
 	private ArrayList<Object> listaDetallesReserva; 
 	Ciudad ciudad;
 	Hotel hotel;
@@ -215,10 +216,20 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
+					
+//no funciona
+					/*
+					//mostrar lista habitaciones disponibles:
+					listaHabDisp = modelo.consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
+					System.out.println("--> Lista habitaciones disponibles: ");
+					for(int i=0; listaHabDisp.size()<i; i++) {
+						System.out.println(listaHabDisp.get(i).getCodHabitacion());
+						System.out.println("holi");
+					}
+					*/
 					//EN EL FUTURO: MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 					
-					//(4º) Actualiza el siguiente panel si se cumplen las validaciones.
-				    //muestra el siguiente panel: PanelSelHabitacion
+					//(4º) Actualiza el siguiente panel, si se cumplen las validaciones.
 					if(continuar) {
 						vista.buscarHotel.setVisible(false);
 						vista.selHabitacion.setVisible(true);

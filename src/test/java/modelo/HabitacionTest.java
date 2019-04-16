@@ -10,21 +10,23 @@ public class HabitacionTest {
 	protected String tipoHabitacion="Dormitorio";
 	protected float tamanio=15;
 	protected int numCamas=2;
+	private int numTipCam [] = {2,0,0};
 	protected String tiposCamaHab = "simple";
 	
 	Habitacion habitacion = new Habitacion();
-	Habitacion habitacionPrueba = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas, tiposCamaHab);
+	Habitacion habitacionPrueba = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas,numTipCam, tiposCamaHab);
 	 
 	@Test
 	public void testConstructorVacio() {   	
 	}
 	
-	@Test
+	@Test 
 	public void testConstuctor() {
 		assertEquals(codHabitacion, habitacionPrueba.getCodHabitacion());
 		assertEquals(tipoHabitacion, habitacionPrueba.getTipoHabitacion());
 		assertEquals(tamanio, habitacionPrueba.getTamanio(), 0.1); 
 		assertEquals(numCamas,habitacionPrueba.getNumCamas());
+		assertEquals(numTipCam, habitacionPrueba.getNumTipCam());
 		assertEquals(tiposCamaHab, habitacionPrueba.getTiposCamaHab());
 	}
 	 @Test
@@ -47,6 +49,11 @@ public class HabitacionTest {
 	public void testNumCamas() {
 		habitacionPrueba.setNumCamas(numCamas);
 		assertEquals(numCamas, habitacionPrueba.getNumCamas());
+	}
+	 @Test
+	public void testNumTipCama() {
+		habitacionPrueba.setNumTipCam(numTipCam);
+		assertEquals(numTipCam, habitacionPrueba.getNumTipCam());
 	}
 	@Test
 	public void testTiposCamaHab() {

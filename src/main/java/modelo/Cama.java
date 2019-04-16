@@ -40,4 +40,7 @@ public class Cama {
    public String toString() {
        return tipoCama;
    }
+
+  
+   
 }

@@ -23,12 +23,16 @@ public class CamaTest {
 	 @Test
 	public void testCodCama() {
 	     camaPrueba.setCodCama(codCama);
-	     assertEquals(camaPrueba, camaPrueba.getCodCama());
-	}
+	     assertEquals(codCama, camaPrueba.getCodCama());
+	} 
 	 @Test
 	public void testTipoCama() {
 	     camaPrueba.setTipoCama(tipoCama);
 	     assertEquals(tipoCama, camaPrueba.getTipoCama());
+	}
+	 @Test
+	public void testToString() {
+			assertEquals(tipoCama, camaPrueba.toString());
 	}
 
 }

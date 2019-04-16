@@ -26,12 +26,11 @@ public class FuncionesReserva {
 	} 
 	
 	
-	public String mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
+	public int [] mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
 		System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
 		String tiposCamaHab = "";
-		int numSimple=0;
-		int numMatrimonio=0;
-		int numInfantil=0;
+		int numTipCam [] = new int [3];
+		
 		
 		//1º forma:
 		for (int i=0; listaCamas.size()>i; i++) {
@@ -44,18 +43,18 @@ public class FuncionesReserva {
 		//2º forma:
 		for (int i=0; listaCamas.size()>i; i++) {
 			if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("simple")) {
-				numSimple = numSimple +1;
+				numTipCam[0] = numTipCam[0] +1;
 			}
 			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("matrimonio")) {
-				numMatrimonio = numMatrimonio + 1;
+				numTipCam[1] = numTipCam[1] + 1;
 			}
 			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("infantil")) {
-				numInfantil = numInfantil + 1;
+				numTipCam[2] = numTipCam[2] + 1;
 			}
 			System.out.println(listaCamas.get(i).getTipoCama().toString());
 		}
-		System.out.println("Cadena tipoCama: " + numSimple + " camas simples, "+ numMatrimonio + " camas de matrimonio,  " + numInfantil + "cuna o cama extra." );
-		return tiposCamaHab;
+		
+		return numTipCam;
 	}
 	
 	

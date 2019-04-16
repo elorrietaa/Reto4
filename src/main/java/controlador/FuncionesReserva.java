@@ -93,24 +93,52 @@ public class FuncionesReserva {
 	 * @return Retorna el precio de la reserva 
 	 */
 	public float calcularPrecioReserva(int [] numTipCam) {
-		//El precio inicial de la reserva es el precio del alojamiento
+		//(1º) El precio inicial de la reserva es el precio del alojamiento
 		float precioAlojamiento = modelo.hotel.getPrecioAlojamiento();
 		float precioReserva = precioAlojamiento;
 		
-		//CALCULAR EL PRECIO EN FUNCIÓN DEL TIPO DE CAMA DE LA HABITACIÓN: 
-		for(int i=0; numTipCam.length>i; i++) {
-			if(numTipCam[0]!=0) {
-				precioReserva= (float) (precioReserva + (precioAlojamiento*0.05*numTipCam[0])) ;
-			}
-			if(numTipCam[1]!=0) {
-				precioReserva= (float) (precioReserva + (precioAlojamiento*0.1*numTipCam[1])) ;
-			}
-			if(numTipCam[2]!=0) {
-				precioReserva= (float) (precioReserva + (precioAlojamiento*0.15*numTipCam[2])) ;
-			}
-		}
+		
+		//(2º) Calcular el precio en función del TIPO DE CAMA DE LA HABITACIÓN: 
+		precioReserva = calcularPrecioPorHabitacion(numTipCam, precioAlojamiento);
+		
+		//(3º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
+		int nochesReservadas = calcularNochesReservadas();
+		
+		precioReserva = precioReserva*nochesReservadas;
+		
+		
 		
 		return precioReserva;
+	}
+	
+	public float  calcularPrecioPorHabitacion(int [] numTipCam, float precioAlojamiento) {
+		//El precio inicial de la reserva es el precio del alojamiento
+		float precioReserva = precioAlojamiento;
+		
+		//CALCULAR EL PRECIO EN FUNCIÓN DEL TIPO DE CAMA DE LA HABITACIÓN: 
+				for(int i=0; numTipCam.length>i; i++) {
+					if(numTipCam[0]!=0) {
+						precioReserva= (float) (precioReserva + (precioAlojamiento*0.05*numTipCam[0])) ;
+					}
+					if(numTipCam[1]!=0) {
+						precioReserva= (float) (precioReserva + (precioAlojamiento*0.1*numTipCam[1])) ;
+					}
+					if(numTipCam[2]!=0) {
+						precioReserva= (float) (precioReserva + (precioAlojamiento*0.15*numTipCam[2])) ;
+					}
+				}
+		
+		return precioReserva;
+	}
+	
+	/**
+	 * Método calcularNochesReservadas = calcula el número de noches reservadas por el usuario.
+	 */
+	public int calcularNochesReservadas() {
+		
+		int nochesReservadas=(int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
+		System.out.println("Noches reservadas:  "+nochesReservadas);
+		return nochesReservadas;
 	}
 	
 	/**

@@ -93,20 +93,22 @@ public class FuncionesReserva {
 	 * @return Retorna el precio de la reserva 
 	 */
 	public float calcularPrecioReserva(int [] numTipCam) {
-		//por ahora el precio de la reserva es solo el precio del alojamiento, en el futuro serán más cálculos
-		float precioReserva = modelo.hotel.getPrecioAlojamiento();
+		//El precio inicial de la reserva es el precio del alojamiento
+		float precioAlojamiento = modelo.hotel.getPrecioAlojamiento();
+		float precioReserva = precioAlojamiento;
 		
-		
-		//CALCULAR EL PREICO EN FUNCIÓN DEL TIPO DE CAMA DE LA HABITACIÓN:
+		//CALCULAR EL PRECIO EN FUNCIÓN DEL TIPO DE CAMA DE LA HABITACIÓN: 
 		for(int i=0; numTipCam.length>i; i++) {
 			if(numTipCam[0]!=0) {
-				
+				precioReserva= (float) (precioReserva + (precioAlojamiento*0.05*numTipCam[0])) ;
+			}
+			if(numTipCam[1]!=0) {
+				precioReserva= (float) (precioReserva + (precioAlojamiento*0.1*numTipCam[1])) ;
+			}
+			if(numTipCam[2]!=0) {
+				precioReserva= (float) (precioReserva + (precioAlojamiento*0.15*numTipCam[2])) ;
 			}
 		}
-		
-		
-		
-		
 		
 		return precioReserva;
 	}

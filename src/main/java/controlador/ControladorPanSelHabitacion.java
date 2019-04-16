@@ -99,14 +99,9 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				guardarDatosSeleccionadoshabitacion();
 				System.out.println("Habitacion seleccionada: "+ modelo.habitacion.getCodHabitacion());
 				
-				//mostrar tipo de cama de la habtacion
-				listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
 				
-				//array numTipCam contiene el número que hay de camas de cada tipo 
-				controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
-				
-				
-				
+				//Mostrar detalles de las camas de la habitación seleccionada: array numTipCam contiene el número de camas de cada tipo en 1 habitación
+				controlador.funcionesReserva.mostrarTiposDeCamas();
 				
 				
 				// (2º) Calcula el precio de la reserva o reservas realizadas:

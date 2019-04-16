@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import com.toedter.calendar.JCalendar;
 
 import bbdd.*;
+import modelo.Cama;
 import modelo.Ciudad;
 import modelo.Consultas;
 import modelo.Habitacion;
@@ -35,6 +36,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Habitacion> listaHabDisp;
+	//private ArrayList<Cama> listaCamas;
 	private ArrayList<Object> listaDetallesReserva; 
 	Ciudad ciudad;
 	Hotel hotel;
@@ -217,6 +219,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
 					
+					//(4º) muestra los detalles de las camas de la habitación: array numTipCam contiene el número de camas de cada tipo en 1 habitación
+					//controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 //no funciona
 					/*
 					//mostrar lista habitaciones disponibles:

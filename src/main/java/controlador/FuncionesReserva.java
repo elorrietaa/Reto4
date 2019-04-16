@@ -13,6 +13,7 @@ public class FuncionesReserva {
 	PrincipalControlador controlador;
 	JframePrincipal vista;
 	public float precioReserva;
+	private ArrayList<Cama> listaCamas;
 	
 	/**
 	 * Constructor de la clase FuncionesPago
@@ -34,9 +35,11 @@ public class FuncionesReserva {
 	 * 
 	 * Por último, se añaden el array numTipCam [] y el String tiposCamaHab al modelo.
 	 */
-	public void mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
+	public void mostrarTiposDeCamas() {
 		System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
 
+		listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
+		
 		int numTipCam [] = new int [3];
 		String tiposCamaHab = "";
 		
@@ -100,7 +103,7 @@ public class FuncionesReserva {
 		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, modelo.habitacion, modelo.fechaIda, modelo.fechaVuelta, this.precioReserva);
 	
 		
-	}
+	} 
 	  
 
 	/**

@@ -103,14 +103,9 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
 				
 				//array numTipCam contiene el número que hay de camas de cada tipo 
-				int numTipCam [] = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+				controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 				
-				tiposCamaHab = " " + numTipCam[0] + " camas simples, "+ numTipCam[1] + " camas de matrimonio,  " + numTipCam[2] + " cuna o cama extra.";
-				System.out.println(tiposCamaHab);
 				
-				//metemos el tipo Cama en el modelo
-				modelo.habitacion.setTiposCamaHab(tiposCamaHab); 
-				modelo.habitacion.setNumTipCam(numTipCam);
 				
 				
 				

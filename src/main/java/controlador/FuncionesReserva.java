@@ -25,22 +25,21 @@ public class FuncionesReserva {
 		this.vista = vista;
 	} 
 	
-	
-	public int [] mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
+	/**
+	 * Método mostrarTiposDeCamas = a partir del ArrayList<Cama> listaCamas genera un array numTipCam y un String TiposCamaHab.
+	 * 
+	 * @param listaCamas = contiene una lista con las camas que hay en la habitación
+	 * numTipCam [] = es un array que contiene el número de camas de cada tipo que hay en la habitación.
+	 * tiposCamaHab = string en el que se resumen los detalles de las camas de la habitación. 
+	 * 
+	 * Por último, se añaden el array numTipCam [] y el String tiposCamaHab al modelo.
+	 */
+	public void mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
 		System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
-		String tiposCamaHab = "";
+
 		int numTipCam [] = new int [3];
+		String tiposCamaHab = "";
 		
-		
-		//1º forma:
-		for (int i=0; listaCamas.size()>i; i++) {
-			tiposCamaHab = tiposCamaHab + ", " + listaCamas.get(i).getTipoCama().toString();
-			System.out.println(listaCamas.get(i).getTipoCama().toString());
-		}
-	
-		System.out.println("Cadena tipoCama: " + tiposCamaHab );
-		
-		//2º forma:
 		for (int i=0; listaCamas.size()>i; i++) {
 			if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("simple")) {
 				numTipCam[0] = numTipCam[0] +1;
@@ -54,7 +53,13 @@ public class FuncionesReserva {
 			System.out.println(listaCamas.get(i).getTipoCama().toString());
 		}
 		
-		return numTipCam;
+		//String tiposCamaHab en el que se resumen los detalles de las camas de la habitación
+		tiposCamaHab = " " + numTipCam[0] + " camas simples, "+ numTipCam[1] + " camas de matrimonio,  " + numTipCam[2] + " cuna o cama extra.";
+		System.out.println(tiposCamaHab);
+		
+		//se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
+		modelo.habitacion.setTiposCamaHab(tiposCamaHab); 
+		modelo.habitacion.setNumTipCam(numTipCam);
 	}
 	
 	

@@ -35,6 +35,7 @@ public class PrincipalModelo {
 	public float precioTotal;
 	public Date fechaIda;
 	public Date fechaVuelta;
+	public int numNoches;
 	
 	/**
 	 * Constructor de la clase PrincipalModelo

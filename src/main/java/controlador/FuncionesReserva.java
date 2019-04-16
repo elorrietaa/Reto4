@@ -13,6 +13,7 @@ public class FuncionesReserva {
 	PrincipalModelo modelo;
 	PrincipalControlador controlador;
 	JframePrincipal vista;
+	public float precioHabitacion;
 	public float precioReserva;
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Cama> listaCamas;
@@ -95,50 +96,60 @@ public class FuncionesReserva {
 	public float calcularPrecioReserva(int [] numTipCam) {
 		//(1º) El precio inicial de la reserva es el precio del alojamiento
 		float precioAlojamiento = modelo.hotel.getPrecioAlojamiento();
-		float precioReserva = precioAlojamiento;
+		float precioHabitacion;
+		float precioReserva;
 		
 		
 		//(2º) Calcular el precio en función del TIPO DE CAMA DE LA HABITACIÓN: 
-		precioReserva = calcularPrecioPorHabitacion(numTipCam, precioAlojamiento);
+		precioHabitacion = calcularPrecioPorHabitacion(numTipCam, precioAlojamiento);
+		
+		//En el futuro más de una habitación: precio reserva será la suma de los precios de las habitaciones
+		precioReserva = precioHabitacion;
 		
 		//(3º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
-		int nochesReservadas = calcularNochesReservadas();
+		int numNoches = calcularNochesReservadas();
 		
-		precioReserva = precioReserva*nochesReservadas;
+		precioReserva = precioReserva*numNoches;
 		
-		
+		//metemos el precio total de la reserva en el modelo:
+		modelo.precioTotal = precioReserva;
 		
 		return precioReserva;
 	}
 	
 	public float  calcularPrecioPorHabitacion(int [] numTipCam, float precioAlojamiento) {
 		//El precio inicial de la reserva es el precio del alojamiento
-		float precioReserva = precioAlojamiento;
+		float precioHabitacion = precioAlojamiento;
 		
 		//CALCULAR EL PRECIO EN FUNCIÓN DEL TIPO DE CAMA DE LA HABITACIÓN: 
 				for(int i=0; numTipCam.length>i; i++) {
 					if(numTipCam[0]!=0) {
-						precioReserva= (float) (precioReserva + (precioAlojamiento*0.05*numTipCam[0])) ;
+						precioHabitacion= (float) (precioHabitacion + (precioAlojamiento*0.05*numTipCam[0])) ;
 					}
 					if(numTipCam[1]!=0) {
-						precioReserva= (float) (precioReserva + (precioAlojamiento*0.1*numTipCam[1])) ;
+						precioHabitacion= (float) (precioHabitacion + (precioAlojamiento*0.1*numTipCam[1])) ;
 					}
 					if(numTipCam[2]!=0) {
-						precioReserva= (float) (precioReserva + (precioAlojamiento*0.15*numTipCam[2])) ;
+						precioHabitacion= (float) (precioHabitacion + (precioAlojamiento*0.15*numTipCam[2])) ;
 					}
 				}
+		//metemos el precio de la habitación en la reserva del modelo.
+		//modelo.reserva.setPrecioReserva(precioHabitacion);
 		
-		return precioReserva;
+		return precioHabitacion;
 	}
 	
 	/**
 	 * Método calcularNochesReservadas = calcula el número de noches reservadas por el usuario.
 	 */
 	public int calcularNochesReservadas() {
+		int numNoches=(int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
 		
-		int nochesReservadas=(int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
-		System.out.println("Noches reservadas:  "+nochesReservadas);
-		return nochesReservadas;
+		//metemos el número de noches en el modelo:
+		modelo.numNoches = numNoches;
+		System.out.println("Noches reservadas:  "+modelo.numNoches);
+		
+		return numNoches;
 	}
 	
 	/**

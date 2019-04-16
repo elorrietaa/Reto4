@@ -38,6 +38,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Cama> listaCamas;
+	int numTipCam [] = new int [3];
 	float precioReserva =-1;
 	 
 
@@ -101,14 +102,14 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				
 				
 				//Mostrar detalles de las camas de la habitación seleccionada: array numTipCam contiene el número de camas de cada tipo en 1 habitación
-				controlador.funcionesReserva.mostrarTiposDeCamas();
+				numTipCam = controlador.funcionesReserva.mostrarTiposDeCamas();
 				
 				
 				// (2º) Calcula el precio de la reserva o reservas realizadas:
-				precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
+				precioReserva = controlador.funcionesReserva.calcularPrecioReserva(numTipCam);
 				
 				//(3º)Generar reserva (o reservas) y guardarla en el objeto reserva (o en el ArrayList<Reserva> listaReservas)
-				controlador.funcionesReserva.generarReserva();
+				controlador.funcionesReserva.generarReserva(numTipCam);
 				
 				//(4º) se muestran en la siguiente pantalla los detalles de la reserva y el precio de la reserva
 				controlador.funcionesReserva.mostrarDatosReserva();

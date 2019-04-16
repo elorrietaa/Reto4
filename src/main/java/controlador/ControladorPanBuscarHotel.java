@@ -219,17 +219,21 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
 					
-					//(4º) muestra los detalles de las camas de la habitación: array numTipCam contiene el número de camas de cada tipo en 1 habitación
-					//controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+					
 //no funciona
 					/*
-					//mostrar lista habitaciones disponibles:
+					// (3º) mostrar lista habitaciones disponibles:
 					listaHabDisp = modelo.consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
 					System.out.println("--> Lista habitaciones disponibles: ");
 					for(int i=0; listaHabDisp.size()<i; i++) {
 						System.out.println(listaHabDisp.get(i).getCodHabitacion());
 						System.out.println("holi");
 					}
+					
+					//(4º) muestra los detalles de las camas de las habitaciones: 
+					//controlador.funcionesReserva.mostrarTiposDeCamas();
+					
+					
 					*/
 					//EN EL FUTURO: MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 					

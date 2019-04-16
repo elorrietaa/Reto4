@@ -10,7 +10,8 @@ public class ReservaTest {
     private int codReserva=1;
     private Cliente cliente = new Cliente("22758299X", "Alba", "Rodriguez Salvador", new Date(31-01-2019), 'M', "abracadaver");
     private Alojamiento alojamiento=new Alojamiento(1, "Hotel Melia", 5, "Bilbao", (float) 54.2);
-    private Habitacion habitacion = new Habitacion(1, "Dormitorio", 15, 2,"simple, simple");
+    private int numTipCam [] = {2,0,0};
+    private Habitacion habitacion = new Habitacion(1, "Dormitorio", 15, 2, numTipCam ,"simple, simple");
     private Date fechaIda = new Date(31-01-2019);
     private Date fechaVuelta;
     private float precioReserva=(float) 88.29;

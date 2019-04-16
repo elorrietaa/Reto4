@@ -294,7 +294,7 @@ public class ControladorPanPago implements ActionListener{
 		*/
 		
 		//Generar reserva: introducir reserva en modelo.reserva
-		controlador.funcionesReserva.generarReserva();
+		controlador.funcionesReserva.generarReserva(modelo.habitacion.getNumTipCam());
 		System.out.println("Datos reserva generada:" + "Código de la reserva: "+ modelo.reserva.getCodReserva() + "Dni cliente:"+ modelo.reserva.getCliente().getDni() + "Fecha entrada: "+ modelo.reserva.getFechaIda() + "Fecha salida: "+ modelo.reserva.getFechaVuelta() + "Precio reserva" + modelo.reserva.getPrecioReserva());
 		
 		//Insertar la reserva en la BBDD:

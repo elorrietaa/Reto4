@@ -20,7 +20,7 @@ public class Consultas {
     private Conexion conexion; 
     private  Connection connection;
     /**
-	 * Contructor de la clase consultas
+	 * Contructor de la clase consultas 
 	 * 
 	 * @param conexion Clase encargada de la conexion a la base de datos
 	 */
@@ -220,7 +220,7 @@ public class Consultas {
     	Cama cama;
     	PreparedStatement ps = null;
     	ResultSet rs = null;
-    	
+    	 
     	String query = "SELECT * FROM `habitaciones`, `camas` where habitaciones.Cod_habitacion=camas.Cod_habitacion and habitaciones.Cod_habitacion=?";
     	try {
     		// Abrimos una conexion

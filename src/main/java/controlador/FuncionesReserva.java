@@ -3,6 +3,7 @@ package controlador;
 import java.util.ArrayList;
 
 import modelo.Cama;
+import modelo.Habitacion;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
 import vista.JframePrincipal;
@@ -13,6 +14,7 @@ public class FuncionesReserva {
 	PrincipalControlador controlador;
 	JframePrincipal vista;
 	public float precioReserva;
+	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Cama> listaCamas;
 	
 	/**
@@ -26,6 +28,7 @@ public class FuncionesReserva {
 		this.vista = vista;
 	} 
 	
+	
 	/**
 	 * Método mostrarTiposDeCamas = a partir del ArrayList<Cama> listaCamas genera un array numTipCam y un String TiposCamaHab.
 	 * 
@@ -35,7 +38,7 @@ public class FuncionesReserva {
 	 * 
 	 * Por último, se añaden el array numTipCam [] y el String tiposCamaHab al modelo.
 	 */
-	public void mostrarTiposDeCamas() {
+	public int [] mostrarTiposDeCamas() {
 		System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
 
 		listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
@@ -63,9 +66,22 @@ public class FuncionesReserva {
 		//se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
 		modelo.habitacion.setTiposCamaHab(tiposCamaHab); 
 		modelo.habitacion.setNumTipCam(numTipCam);
+		
+		return numTipCam;
 	}
 	
-	
+
+	/** (NO ESTA PUESTO AUN EN NINGUN SITIO, NO SE SI FUNCIONA)
+	 * mostrarCamasDeLasHabitaciones = muestra los detalles de las camas de las habitaciones disponibles 
+	 */
+	 public void mostrarCamasDeLasHabitaciones() {
+		System.out.println("****TIPOS DE CAMAS DE todas las habitaciones de la listahabitaciones***");
+		
+		for(int i=0; listaHabitaciones.size()>i; i++) {
+			listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
+		}
+		
+	}
 	
 	
 	
@@ -76,9 +92,20 @@ public class FuncionesReserva {
 	 * 
 	 * @return Retorna el precio de la reserva 
 	 */
-	public float calcularPrecioReserva() {
+	public float calcularPrecioReserva(int [] numTipCam) {
 		//por ahora el precio de la reserva es solo el precio del alojamiento, en el futuro serán más cálculos
 		float precioReserva = modelo.hotel.getPrecioAlojamiento();
+		
+		
+		//CALCULAR EL PREICO EN FUNCIÓN DEL TIPO DE CAMA DE LA HABITACIÓN:
+		for(int i=0; numTipCam.length>i; i++) {
+			if(numTipCam[0]!=0) {
+				
+			}
+		}
+		
+		
+		
 		
 		
 		return precioReserva;
@@ -87,7 +114,7 @@ public class FuncionesReserva {
 	/**
 	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
 	 */
-	public void generarReserva() {
+	public void generarReserva(int [] numTipCam) {
 		//(1º) genera un código de reserva en función de las reservas que haya en la BBDD
 		int codReservaProc = modelo.consultas.mostrarNumReservasConProcedimiento();
 		System.out.println("num reservas con procedimientooooo" + codReservaProc);
@@ -96,7 +123,7 @@ public class FuncionesReserva {
 		System.out.println("código de la reserva: " + codReserva);
 		
 		//(2º) Calcula el precio de la reserva: 
-		precioReserva = controlador.funcionesReserva.calcularPrecioReserva();
+		precioReserva = controlador.funcionesReserva.calcularPrecioReserva(numTipCam);
 		System.out.println("Precio reserva calculado: " + precioReserva);
 		
 		//(3º) rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:

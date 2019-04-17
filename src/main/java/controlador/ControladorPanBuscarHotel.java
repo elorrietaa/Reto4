@@ -200,16 +200,17 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		
 		Object[] datos = new Object[5];
 		tabla.setRowCount(0);
-		for(int i=0; i<listaHabitaciones.size();i++) {
-			datos[0] = listaHabitaciones.get(i).getCodHabitacion();
-			datos[1] = listaHabitaciones.get(i).getNumCamas();
+		for(int i=0; i<5;i++) {
+			datos[0] = "faltaa";
+			datos[1] = "faltaa";
 			datos[2] = "faltaaaaaaaaaa";
 			datos[3] = "faltaa";
 			datos[4] =   "€";
+			tabla.addRow(datos);
 		}
+		 
 		
 		
-		tabla.addRow(datos);
 		
 	}
 	

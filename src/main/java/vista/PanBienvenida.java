@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class PanBienvenida extends JPanel {
 	public JButton btnContinuar;
@@ -17,6 +18,7 @@ public class PanBienvenida extends JPanel {
 		setBounds(0, 0, 1024, 720);
 		
 		btnContinuar = new JButton("");
+		btnContinuar.setIcon(new ImageIcon("C:\\Users\\alba\\Google Drive\\1DAM\\RETO4\\ImagenPanBienvenida.png"));
 		btnContinuar.setSelectedIcon(null);
 		btnContinuar.setContentAreaFilled(false);
 		btnContinuar.setBorder(null);

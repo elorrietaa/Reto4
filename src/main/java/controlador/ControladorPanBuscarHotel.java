@@ -185,7 +185,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	 */
 	public void actualizarFrame() {
 		
-		// mostramos los datos del billete en la siguiente pantalla 'detalles_compra'
+		// Mostrar los datos de las habitaciones en la siguiente pantalla: PanSelHabitacion
 		DefaultTableModel tablaHabs = (DefaultTableModel) vista.selHabitacion.tab.getModel();
 		mostrarDetallesHabs(modelo.habitacion, tablaHabs);
 		
@@ -202,8 +202,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		for(int i=0; i<listaHabitaciones.size();i++) {
 			datos[0] = listaHabitaciones.get(i).getCodHabitacion();
 			datos[1] = listaHabitaciones.get(i).getNumCamas();
-			datos[2] = "faltaaaaaaaaaa";
-			datos[3] = "faltaa";
+			datos[2] = "falta";
+			datos[3] = "faltaa"+1+ "camas simples";
 			datos[4] =   "€";
 			tabla.addRow(datos);
 		}
@@ -252,8 +252,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
+					
 					//MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
-					System.out.println("maldito error: " + listaHabitaciones.size());
 					actualizarFrame();
 					
 //no funciona

@@ -71,22 +71,7 @@ public class FuncionesReserva {
 		return numTipCam;
 	}
 	
-	
 
-	/** (NO ESTA PUESTO AUN EN NINGUN SITIO, NO SE SI FUNCIONA)
-	 * mostrarCamasDeLasHabitaciones = muestra los detalles de las camas de las habitaciones disponibles 
-	 */
-	 public void mostrarCamasDeLasHabitaciones() {
-		System.out.println("****TIPOS DE CAMAS DE todas las habitaciones de la listahabitaciones***");
-		
-		for(int i=0; listaHabitaciones.size()>i; i++) {
-			listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
-		}
-		
-	}
-	
-	
-	
 	/**
 	 * Metodo para calcular el precio de la reserva
 	 * 
@@ -136,7 +121,10 @@ public class FuncionesReserva {
 				}
 		//metemos el precio de la habitación en la reserva del modelo.
 		//modelo.reserva.setPrecioReserva(precioHabitacion);
-		
+		modelo.habitacion.setPrecioHabitacion(precioHabitacion);
+		System.out.println("Precio Habitacion: " + precioHabitacion);
+				
+				
 		return precioHabitacion;
 	}
 	

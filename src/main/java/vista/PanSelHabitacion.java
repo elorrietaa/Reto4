@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import javax.swing.JList;
+import javax.swing.ImageIcon;
 
 public class PanSelHabitacion extends JPanel {
 
@@ -90,7 +91,7 @@ public class PanSelHabitacion extends JPanel {
 		tab.getColumnModel().getColumn(4).setPreferredWidth(150);
 		
 		scrollPaneIda = new JScrollPane(tab);
-		scrollPaneIda.setBounds(45,111,934,73);
+		scrollPaneIda.setBounds(45,111,935,221);
 		add(scrollPaneIda);
 		//Object[][] datosVuelta = {};
 		

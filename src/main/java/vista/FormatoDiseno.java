@@ -66,7 +66,7 @@ public class FormatoDiseno {
 	public static void formatoBtn(JButton btn) {
 		btn.setFont(new Font("Agency FB", Font.BOLD, 18));
 		btn.setForeground(new Color(255, 255, 255));
-		btn.setBackground(new Color(205, 48, 41));
+		btn.setBackground(new Color(41, 21, 174));
 		btn.setBorderPainted(false);
 		btn.setBorder(null);
 		btn.setSelectedIcon(null);

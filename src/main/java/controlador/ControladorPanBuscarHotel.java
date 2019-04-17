@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JCalendar;
 
@@ -170,12 +171,44 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
 	  	for(int i=0; i<listaHabitaciones.size();i++) {
 	  		vista.selHabitacion.modelo.addElement(listaHabitaciones.get(i));
+	  		
 	  		//prueba
 	  		System.out.println("dff:" + listaHabitaciones.get(i));
 			vista.selHabitacion.listHabitacion.setModel(vista.selHabitacion.modelo);
-			
 	  	}
+	  	
+
     }
+    
+    /**
+	 * Funcion encargada de actualizar la informacion que se muestra en la interfaz
+	 */
+	public void actualizarFrame() {
+		
+		// mostramos los datos del billete en la siguiente pantalla 'detalles_compra'
+		DefaultTableModel tablaIda = (DefaultTableModel) vista.selHabitacion.tab.getModel();
+		mostrarHab(modelo.habitacion, tablaIda);
+		
+		
+	}
+	/**
+	 * 
+	 * @param billete Objeto con la informacion del billete
+	 * @param tabla Tabla que se rellena con la informacion del billete
+	 */
+	public void mostrarHab(Habitacion habitacion, DefaultTableModel tabla) {
+		
+		Object[] datos = new Object[5];
+		tabla.setRowCount(0);
+		datos[0] = listaHabitaciones.get(1).toString();
+		datos[1] = "hola";
+		datos[2] = "hola";
+		datos[3] = "hola";
+		datos[4] = "hola" + "€";
+		
+		tabla.addRow(datos);
+		
+	}
 	
     /**
 	 * Accion de los distintos listeners
@@ -240,6 +273,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//(4º) Actualiza el siguiente panel, si se cumplen las validaciones.
 					if(continuar) {
+						actualizarFrame();
 						vista.buscarHotel.setVisible(false);
 						vista.selHabitacion.setVisible(true);
 					}

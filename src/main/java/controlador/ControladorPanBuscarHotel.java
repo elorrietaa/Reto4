@@ -164,15 +164,16 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
      */
     public void mostrarHabitacionesEnJList(int codHotelSeleccionado) {
     	//borra todos los elementos del JList de mostrarHabitacionesEnJList
-    	vista.selHabitacion.modeloHabitacion.removeAllElements();
+    	vista.selHabitacion.modelo.removeAllElements();
     	//llena el arrayList con la lista de Hoteles
     	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
     	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
 	  	for(int i=0; i<listaHabitaciones.size();i++) {
-	  		vista.selHabitacion.modeloHabitacion.addElement(listaHabitaciones.get(i));
+	  		vista.selHabitacion.modelo.addElement(listaHabitaciones.get(i));
 	  		//prueba
 	  		System.out.println("dff:" + listaHabitaciones.get(i));
-			vista.selHabitacion.listHabitacion.setModel(vista.selHabitacion.modeloHabitacion);
+			vista.selHabitacion.listHabitacion.setModel(vista.selHabitacion.modelo);
+			
 	  	}
     }
 	

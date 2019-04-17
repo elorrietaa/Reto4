@@ -44,6 +44,8 @@ public class FuncionesFicheroReserva {
 			writer.println("     	 DATOS DELA RESERVA      ");
 			writer.println("*************************************************************");
 			writer.println("Código de la reserva: " + modelo.reserva.getCodReserva());
+			writer.println("Fecha de entrada: " + modelo.reserva.getFechaIda());
+			writer.println("Fecha salida: " +modelo.reserva.getFechaVuelta());
 			writer.println();
 			writer.println("=====DATOS DEL CLIENTE: ===== " );
 			writer.println("Nombre: " + modelo.cliente.getNombre()+ " Apellidos:" + modelo.cliente.getApellidos() + " DNI: " + modelo.cliente.getDni());

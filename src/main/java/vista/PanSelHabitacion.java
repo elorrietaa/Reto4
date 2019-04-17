@@ -17,10 +17,10 @@ import javax.swing.JList;
 public class PanSelHabitacion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public DefaultListModel<Object> modeloHabitacion = new DefaultListModel<Object>();
+	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
 	public JButton btnLogin,btnRegistro,btnContinuar,btnAtras,btnCancelar;
 	public JLabel lblIcono, lblTitulo, lblBilleteIda;
-	public JTable tablaHabitaciones;
+	public JTable tab;
 	public JScrollPane scrollPaneIda;
 	public JList<Object> listHabitacion;
 
@@ -49,10 +49,13 @@ public class PanSelHabitacion extends JPanel {
 		add(lblBilleteIda);
 		
 		// TABLA HABITACIONES
-		tablaHabitaciones = new JTable();
-		Object[][] datos = {};
+		tab = new JTable();
+		Object[][] datos = {
+				{"Juan", new Integer(25), new Boolean(false)},
+				{"Sonia", new Integer(33), new Boolean(true) },
+				{"Pedro", new Integer(42), new Boolean(false)},};
 		String[] columnNames = {"Código de la habitación", "Número de camas ", "Tipo de camas", "Capacidad", "Precio por habitación"};
-		tablaHabitaciones.setModel(new DefaultTableModel(datos,columnNames) {
+		tab.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
@@ -71,22 +74,22 @@ public class PanSelHabitacion extends JPanel {
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		
-		tablaHabitaciones.setDefaultRenderer(String.class, centerRenderer);
-		tablaHabitaciones.setDefaultRenderer(int.class, centerRenderer);
-		tablaHabitaciones.setDefaultRenderer(float.class, centerRenderer);
-		tablaHabitaciones.setFillsViewportHeight(true);
-		tablaHabitaciones.setBackground(Color.WHITE);
-		tablaHabitaciones.setBounds(45, 300, 934, 100);
-		tablaHabitaciones.setRowHeight(50);
-		tablaHabitaciones.setFocusable(false);
-		tablaHabitaciones.setRowSelectionAllowed(true);
-		tablaHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(180);
-		tablaHabitaciones.getColumnModel().getColumn(1).setPreferredWidth(180);
-		tablaHabitaciones.getColumnModel().getColumn(2).setPreferredWidth(180);
-		tablaHabitaciones.getColumnModel().getColumn(3).setPreferredWidth(120);
-		tablaHabitaciones.getColumnModel().getColumn(4).setPreferredWidth(150);
+		tab.setDefaultRenderer(String.class, centerRenderer);
+		tab.setDefaultRenderer(int.class, centerRenderer);
+		tab.setDefaultRenderer(float.class, centerRenderer);
+		tab.setFillsViewportHeight(true);
+		tab.setBackground(Color.WHITE);
+		tab.setBounds(45, 300, 934, 100);
+		tab.setRowHeight(50);
+		tab.setFocusable(false);
+		tab.setRowSelectionAllowed(true);
+		tab.getColumnModel().getColumn(0).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(1).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(2).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(3).setPreferredWidth(120);
+		tab.getColumnModel().getColumn(4).setPreferredWidth(150);
 		
-		scrollPaneIda = new JScrollPane(tablaHabitaciones);
+		scrollPaneIda = new JScrollPane(tab);
 		scrollPaneIda.setBounds(45,111,934,73);
 		add(scrollPaneIda);
 		//Object[][] datosVuelta = {};

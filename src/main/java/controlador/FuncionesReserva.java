@@ -71,6 +71,7 @@ public class FuncionesReserva {
 		return numTipCam;
 	}
 	
+	
 
 	/** (NO ESTA PUESTO AUN EN NINGUN SITIO, NO SE SI FUNCIONA)
 	 * mostrarCamasDeLasHabitaciones = muestra los detalles de las camas de las habitaciones disponibles 

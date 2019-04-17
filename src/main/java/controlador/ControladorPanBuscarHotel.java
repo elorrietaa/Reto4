@@ -47,7 +47,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Date fechaIda;
 	Date fechaVuelta;
 	Date fechaActual = null;
-	
+	int numTipCam [] = new int [3];
 	boolean continuar = false;
 	
 	
@@ -187,7 +187,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		
 		// mostramos los datos del billete en la siguiente pantalla 'detalles_compra'
 		DefaultTableModel tablaIda = (DefaultTableModel) vista.selHabitacion.tab.getModel();
-		mostrarHab(modelo.habitacion, tablaIda);
+		mostrarDetallesHabs(modelo.habitacion, tablaIda);
 		
 		
 	}
@@ -196,15 +196,18 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	 * @param billete Objeto con la informacion del billete
 	 * @param tabla Tabla que se rellena con la informacion del billete
 	 */
-	public void mostrarHab(Habitacion habitacion, DefaultTableModel tabla) {
+	public void mostrarDetallesHabs(Habitacion habitacion, DefaultTableModel tabla) {
 		
 		Object[] datos = new Object[5];
 		tabla.setRowCount(0);
-		datos[0] = listaHabitaciones.get(1).toString();
-		datos[1] = "hola";
-		datos[2] = "hola";
-		datos[3] = "hola";
-		datos[4] = "hola" + "€";
+		for(int i=0; i<listaHabitaciones.size();i++) {
+			datos[0] = listaHabitaciones.get(i).getCodHabitacion();
+			datos[1] = listaHabitaciones.get(i).getNumCamas();
+			datos[2] = "faltaaaaaaaaaa";
+			datos[3] = "faltaa";
+			datos[4] =   "€";
+		}
+		
 		
 		tabla.addRow(datos);
 		
@@ -252,6 +255,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
+					//Mostrar detalles de las camas 
 					
 					
 //no funciona

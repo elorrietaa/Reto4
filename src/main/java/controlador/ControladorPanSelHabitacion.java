@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 import bbdd.Conexion;
 import modelo.Cama;
@@ -121,6 +122,37 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		
 		}
 	
+	   /**
+		 * Funcion encargada de actualizar la informacion que se muestra en la interfaz
+		 */
+		public void actualizarFrame() {
+			// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+			DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReserva.tab.getModel();
+			mostrarDetallesHabsSelec(tablaHabs);
+			
+		}
+		
+		
+		/**
+		 * 
+		 * 
+		 * @param tabla Tabla que se rellena con la informacion de la reserva
+		 */
+		public void mostrarDetallesHabsSelec( DefaultTableModel tabla) {
+			Object[] datos = new Object[5];
+			tabla.setRowCount(0);
+			for(int i=0; i<listaHabSeleccionadas.size();i++) {
+				datos[0] = listaHabSeleccionadas.get(i).getCodHabitacion();
+				datos[1] = listaHabSeleccionadas.get(i).getNumCamas();
+				//Mostrar detalles de las camas de la habitación seleccionada: 
+				ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabSeleccionadas.get(i).getCodHabitacion());
+				datos[2] = listaCamas;
+				
+				datos[3] = "falta";
+				datos[4] =   "€";
+				tabla.addRow(datos);
+			}
+		}
 	/**
 	 * Acciones de los distintos componentes del panel
 	 */
@@ -156,12 +188,15 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				
 				//(4º) se muestran en la siguiente pantalla los detalles de la reserva y el precio de la reserva
 				controlador.funcionesReserva.mostrarDatosReserva();
-				
+				//se actualiza la tabla con las habitaciones seleccionadas
+				actualizarFrame();
 				
 				//(4º)actualiza el siguiente panel:
 				// Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 				vista.selHabitacion.setVisible(false);
 				vista.detallesReserva.setVisible(true);
+				
+				
 				
 				break;
 	

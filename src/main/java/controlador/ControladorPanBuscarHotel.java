@@ -196,7 +196,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	
 	/**
 	 * 
-	 * @param billete Objeto con la informacion de la reserva
+	 * 
 	 * @param tabla Tabla que se rellena con la informacion de la reserva
 	 */
 	public void mostrarDetallesHabs( DefaultTableModel tabla) {

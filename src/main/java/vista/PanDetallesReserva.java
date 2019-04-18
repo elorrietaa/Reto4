@@ -1,12 +1,19 @@
 package vista;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 /**
  * Clase PanDetallesReserva = contiene los elementos necesarios para formar el Panel en el que se muestran los detalles de la reserva
  * @author alba
@@ -22,7 +29,11 @@ public class PanDetallesReserva extends JPanel {
 	public JButton btnContinuar, btnAtras;
 	public JList<String> listDetalleReserva;
 	public JTextPane textPDatosAlo, textPaneDetHot, textPDetallesHabi;
-
+	
+	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
+	public JTable tab;
+	public JScrollPane scrollPaneIda;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -71,8 +82,50 @@ public class PanDetallesReserva extends JPanel {
 		
 		textPDetallesHabi = new JTextPane();
 		textPDetallesHabi.setEditable(false);
-		textPDetallesHabi.setBounds(305, 302, 486, 254);
+		textPDetallesHabi.setBounds(305, 302, 486, 75);
 		add(textPDetallesHabi);
+		
+		// TABLA HABITACIONES SELECCIONADAS
+		tab = new JTable();
+		Object[][] datos = {};
+		String[] columnNames = {"Código de la habitación", "Número de camas ", "Tipo de camas", "Capacidad", "Precio por habitación"};
+		tab.setModel(new DefaultTableModel(datos,columnNames) {
+			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, int.class, String.class, String.class, float.class
+			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			@Override
+		    public boolean isCellEditable(int row, int column) {
+		        return false;
+		    }
+		});
+		
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+		
+		tab.setDefaultRenderer(String.class, centerRenderer);
+		tab.setDefaultRenderer(int.class, centerRenderer);
+		tab.setDefaultRenderer(float.class, centerRenderer);
+		tab.setFillsViewportHeight(true);
+		tab.setBackground(Color.WHITE);
+		tab.setBounds(45, 300, 934, 100);
+		tab.setRowHeight(50);
+		tab.setFocusable(false);
+		tab.setRowSelectionAllowed(true);
+		tab.getColumnModel().getColumn(0).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(1).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(2).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(3).setPreferredWidth(120);
+		tab.getColumnModel().getColumn(4).setPreferredWidth(150);
+		
+		scrollPaneIda = new JScrollPane(tab);
+		scrollPaneIda.setBounds(141,418,839,136);
+		add(scrollPaneIda);
 		
 
 	}

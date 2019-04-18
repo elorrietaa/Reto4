@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import bbdd.Conexion;
 import controlador.FuncionesPago;
@@ -36,6 +37,7 @@ public class PrincipalModelo {
 	public Date fechaIda;
 	public Date fechaVuelta;
 	public int numNoches;
+	public ArrayList<Reserva> listaReservas;
 	
 	/**
 	 * Constructor de la clase PrincipalModelo

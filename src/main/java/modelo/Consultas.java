@@ -478,7 +478,7 @@ public class Consultas {
 	 * 
 	 * @return Retorna el codigo de la reserva, generado de manera aleatoria
 	 */
-	public void insertarReserva(Reserva reserva) {
+	public void insertarReserva(ArrayList<Reserva> listaReservas, int pos, String dni, Date fechaIda, Date fechaVuelta) {
 		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -495,15 +495,15 @@ public class Consultas {
 			stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			
 			// añadimos los valores a insertar
-			stmt.setInt(1, reserva.getCodReserva());
-			stmt.setInt(2, reserva.getAlojamiento().getCodAlojamiento());
+			stmt.setInt(1, listaReservas.get(pos).getCodReserva());
+			stmt.setInt(2, 1);
 			//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
 			//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
-			stmt.setInt(3,reserva.getHabitacion().getCodHabitacion());
-			stmt.setFloat(4, reserva.getPrecioReserva());
-			stmt.setString(5, reserva.getCliente().getDni());
-			stmt.setDate(6, reserva.getFechaIda());
-			stmt.setDate(7, reserva.getFechaVuelta());
+			stmt.setInt(3,listaReservas.get(pos).getHabitacion().getCodHabitacion());
+			stmt.setFloat(4, listaReservas.get(pos).getPrecioReserva());
+			stmt.setString(5, dni);
+			stmt.setDate(6, fechaIda);
+			stmt.setDate(7, fechaVuelta);
 			
 			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 			stmt.executeUpdate();

@@ -41,7 +41,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	public int[] indHabsSel;
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Habitacion> listaHabSeleccionadas;
-	private ArrayList<Reserva> listaReservas;
+	public ArrayList<Reserva> listaReservas;
 	int numTipCam [] = new int [3];
 	float precioReserva =-1;
 	 
@@ -144,6 +144,42 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				tabla.addRow(datos);
 			}
 		}
+		
+		/**
+		 * guardarReservasHab = Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
+		 */
+		public void guardarReservasHab() {
+
+			for(int i=0; i<listaHabSeleccionadas.size();i++) {
+				controlador.funcionesReserva.generarReservaHab(listaHabSeleccionadas, i);
+			}
+			  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
+			listaReservas = new ArrayList<Reserva>(); 
+			int codReserva= modelo.consultas.mostrarNumReservas();
+			    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
+			    for(int i=0; listaHabSeleccionadas.size()>i; i++) {
+			    	
+			    	//metemos las reservas de las habitaciones seleccionadas en un arrayList listaReservas
+			    	reserva = new Reserva(); 
+			    	codReserva = codReserva + 1;
+			    	reserva.setCodReserva(codReserva);
+			    	reserva.setCliente(modelo.cliente);
+			    	reserva.setAlojamiento(modelo.alojamiento);
+			    	reserva.setHabitacion(this.listaHabSeleccionadas.get(i));
+			    	reserva.setFechaIda(modelo.fechaIda);
+			    	reserva.setFechaVuelta(fechaVuelta);
+			    	reserva.setPrecioReserva(listaHabSeleccionadas.get(i).getPrecioHabitacion());
+					listaReservas.add(reserva);
+			    }
+			    
+			    //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
+			    for(int i=0; listaReservas.size()>i; i++) {
+			    	System.out.println("------->La lista de reservaaaas: " +"Código reserva: " +listaReservas.get(i).getCodReserva() + "cod alojamiento reservado " + listaReservas.get(i).getAlojamiento()+ "codigo habitacion reservada: "+ listaReservas.get(i).getHabitacion().getCodHabitacion() +"precio reserva 1 hab: "+ listaReservas.get(i).getPrecioReserva());
+			    }
+			    //guardamos el ArrayList listaReservas en el modelo
+			    modelo.listaReservas = this.listaReservas;
+			
+		}
 	/**
 	 * Acciones de los distintos componentes del panel
 	 */
@@ -168,40 +204,11 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				guardarDatosSeleccionadoshabitacion();
 				guardarDatosSeleccionadosJTable();
 				
-				
-				
 				// (2º) Calcula el precio de la reserva o reservas realizadas:
 				//precio de cada reserva = precioHabitacion
 				
-				//(3º)Generar reserva (o reservas) y guardarla en el objeto reserva (o en el ArrayList<Reserva> listaReservas)
-				
-				for(int i=0; i<listaHabSeleccionadas.size();i++) {
-					controlador.funcionesReserva.generarReservaHab(listaHabSeleccionadas, i);
-				}
-				  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
-				listaReservas = new ArrayList<Reserva>(); 
-				int codReserva= modelo.consultas.mostrarNumReservas();
-				    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
-				    for(int i=0; listaHabSeleccionadas.size()>i; i++) {
-				    	
-				    	//metemos las reservas de las habitaciones seleccionadas en un arrayList listaReservas
-				    	reserva = new Reserva(); 
-				    	codReserva = codReserva + 1;
-				    	reserva.setCodReserva(codReserva);
-				    	reserva.setCliente(modelo.cliente);
-				    	reserva.setAlojamiento(modelo.alojamiento);
-				    	reserva.setHabitacion(this.listaHabSeleccionadas.get(i));
-				    	reserva.setFechaIda(modelo.fechaIda);
-				    	reserva.setFechaVuelta(fechaVuelta);
-				    	reserva.setPrecioReserva(listaHabitaciones.get(i).getPrecioHabitacion());
-						listaReservas.add(reserva);
-				    }
-				    
-				    //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
-				    for(int i=0; listaReservas.size()>i; i++) {
-				    	System.out.println("------->La lista de reservaaaas: " +"Código reserva: " +listaReservas.get(i).getCodReserva() + "cod alojamiento reservado " + listaReservas.get(i).getAlojamiento()+ "codigo habitacion reservada: "+ listaReservas.get(i).getHabitacion().getCodHabitacion());
-				    }
-				
+				//(3º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
+				guardarReservasHab();
 				
 				
 				// (2º) Calcula el precio TOTAL de la reserva o reservas realizadas:

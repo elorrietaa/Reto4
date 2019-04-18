@@ -278,28 +278,22 @@ public class ControladorPanPago implements ActionListener{
 		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 		
-		
+		 //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
+	    for(int i=0; modelo.listaReservas.size()>i; i++) {
+	    	System.out.println("------->La lista de reservaaaas: " +"Código reserva: " +modelo.listaReservas.get(i).getCodReserva() + "cod alojamiento reservado " + modelo.listaReservas.get(i).getAlojamiento()+ "codigo habitacion reservada: "+ modelo.listaReservas.get(i).getHabitacion().getCodHabitacion() +"precio reserva 1 hab: "+ modelo.listaReservas.get(i).getPrecioReserva());
+	    }
 		// rellenar datos del cliente en la reserva
-		//modelo.reserva.setDni(modelo.cliente.getDni());
+	    modelo.reserva.setCliente(modelo.cliente);
 		
-		// insertar reserva o reservas en BBDD
-		/*
-		for(int i=0; modelo.alojamiento.getListaHabSeleccionadas().size()<i; i++) {
-			int codReserva = modelo.consultas.insertarReserva(modelo.reserva, i);
-			modelo.reserva.setCodReserva(codReserva);
-		}
-		/**
-		*/
-		/*
-		//Generar reserva: introducir reserva en modelo.reserva
-		for(int i=0; i<listaHabSeleccionadas.size();i++) {
-		controlador.funcionesReserva.generarReservaHab(listaHabSeleccionadas, i);
-		System.out.println("Datos reserva generada:" + "Código de la reserva: "+ modelo.reserva.getCodReserva() + "Dni cliente:"+ modelo.reserva.getCliente().getDni() + "Fecha entrada: "+ modelo.reserva.getFechaIda() + "Fecha salida: "+ modelo.reserva.getFechaVuelta() + "Precio reserva" + modelo.reserva.getPrecioReserva());
-			//Insertar la reserva en la BBDD:
-		modelo.consultas.insertarReserva(modelo.reserva); 
-		}
-		*/
+	
+	    //no vaaaaaa
+	    // insertar la reserva o reservas en BBDD //no vaaaaaa
 		
+		for(int i=0; modelo.listaReservas.size()<i; i++) {
+			modelo.consultas.insertarReserva(modelo.listaReservas, i, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+			
+		}
+		//no vaaaaaa
 		//guarda los datos de la reserva en en un fichero
 		modelo.funcionesReserva.imprimirReservaFichero(modelo, vista);
 	}

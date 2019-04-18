@@ -192,10 +192,12 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		mostrarDetallesHabs(tablaHabs);
 		
 	}
+	
+	
 	/**
 	 * 
-	 * @param billete Objeto con la informacion del billete
-	 * @param tabla Tabla que se rellena con la informacion del billete
+	 * @param billete Objeto con la informacion de la reserva
+	 * @param tabla Tabla que se rellena con la informacion de la reserva
 	 */
 	public void mostrarDetallesHabs( DefaultTableModel tabla) {
 		Object[] datos = new Object[5];
@@ -206,11 +208,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
 			datos[2] = listaCamas;
+			
 			datos[3] = "falta";
-			datos[4] =  "€";
+			datos[4] =   "€";
 			tabla.addRow(datos);
 		}
-		
 	}
 	
     /**

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.swing.JButton;
 
@@ -36,7 +37,9 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	Date fechaVuelta;
 	String tiposCamaHab;
 	
-	public int[] listaHabSel;
+	public int[] indHabsSel;
+	private ArrayList<Habitacion> listaHabitaciones;
+	private ArrayList<Habitacion> listaHabSeleccionadas;
 	private ArrayList<Cama> listaCamas;
 	int numTipCam [] = new int [3];
 	float precioReserva =-1;
@@ -65,11 +68,43 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 	public void guardarDatosSeleccionadoshabitacion() {
 	    //se guarda la habitacion seleecionada en el JLIST
-		//en el futuro guardar la o las habitaciones seleccionadas
 	    this.habitacion = (Habitacion) vista.selHabitacion.listHabitacion.getSelectedValue();
-	    listaHabSel = vista.selHabitacion.tab.getSelectedRows();
-	    for(int i=0; listaHabSel.length>i; i++) {
-	    	System.out.println("------->índice de las habitaciones selec en el JTable: " + listaHabSel[i]);
+	    
+	  //indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
+	    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
+	    
+	    //probar  aver si imprime lista habs
+	  listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, modelo.hotel.getCodAlojamiento());
+    	
+    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
+	  	for(int i=0; i<listaHabitaciones.size();i++) {
+	  	
+	  		//prueba
+	  		System.out.println("dddddddd:" + listaHabitaciones.get(i));
+			
+	  	}
+	  	
+	  listaHabSeleccionadas = new ArrayList<Habitacion>(); 
+	    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
+	    for(int i=0; indHabsSel.length>i; i++) {
+	    	System.out.println("------->índice de las habitaciones selec en el JTable: " + indHabsSel[i]);
+	    	System.out.println("Código de las habitaciones seleecionadas: " + listaHabitaciones.get(indHabsSel[i]).getCodHabitacion());
+	    	
+	    	//metemos las habitaciones seleccionadas en un arrayList listaHabSeleccionadas
+	    	habitacion = new Habitacion(); 
+			habitacion.setCodHabitacion(listaHabitaciones.get(indHabsSel[i]).getCodHabitacion());
+			//habitacion.setAlojamiento(hotel);
+			habitacion.setTipoHabitacion(listaHabitaciones.get(indHabsSel[i]).getTipoHabitacion());
+			habitacion.setTamanio(listaHabitaciones.get(indHabsSel[i]).getTamanio());
+			habitacion.setNumCamas(listaHabitaciones.get(indHabsSel[i]).getNumCamas());
+			listaHabSeleccionadas.add(habitacion);
+	    	
+	    	
+	    	//listaHabSeleccionadas.add(listaHabitaciones.get(indHabsSel[i]));
+	    }
+	    
+	    for(int i=0; listaHabSeleccionadas.size()>i; i++) {
+	    	System.out.println("------->Habitaciones seleccionadas: " +listaHabSeleccionadas.get(i).getCodHabitacion() );
 	    }
 	    
 	    //le pasa la habitacion al modelo

@@ -39,7 +39,7 @@ public class FuncionesReserva {
 	 * 
 	 * Por último, se añaden el array numTipCam [] y el String tiposCamaHab al modelo.
 	 */
-	public int [] mostrarTiposDeCamas() {
+	public int [] mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
 		System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
 
 		listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
@@ -121,8 +121,8 @@ public class FuncionesReserva {
 				}
 		//metemos el precio de la habitación en la reserva del modelo.
 		//modelo.reserva.setPrecioReserva(precioHabitacion);
-		modelo.habitacion.setPrecioHabitacion(precioHabitacion);
-		System.out.println("Precio Habitacion: " + precioHabitacion);
+		//modelo.habitacion.setPrecioHabitacion(precioHabitacion);
+		//System.out.println("Precio Habitacion: " + precioHabitacion);
 				
 				
 		return precioHabitacion;

@@ -168,6 +168,9 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     	vista.selHabitacion.modelo.removeAllElements();
     	//llena el arrayList con la lista de Hoteles
     	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
+    	
+    	
+    	
     	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
 	  	for(int i=0; i<listaHabitaciones.size();i++) {
 	  		vista.selHabitacion.modelo.addElement(listaHabitaciones.get(i));
@@ -184,11 +187,9 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	 * Funcion encargada de actualizar la informacion que se muestra en la interfaz
 	 */
 	public void actualizarFrame() {
-		
-		// Mostrar los datos de las habitaciones en la siguiente pantalla: PanSelHabitacion
+		// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
 		DefaultTableModel tablaHabs = (DefaultTableModel) vista.selHabitacion.tab.getModel();
-		mostrarDetallesHabs(modelo.habitacion, tablaHabs);
-		
+		mostrarDetallesHabs(tablaHabs);
 		
 	}
 	/**
@@ -196,15 +197,17 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	 * @param billete Objeto con la informacion del billete
 	 * @param tabla Tabla que se rellena con la informacion del billete
 	 */
-	public void mostrarDetallesHabs(Habitacion habitacion, DefaultTableModel tabla) {
+	public void mostrarDetallesHabs( DefaultTableModel tabla) {
 		Object[] datos = new Object[5];
 		tabla.setRowCount(0);
 		for(int i=0; i<listaHabitaciones.size();i++) {
 			datos[0] = listaHabitaciones.get(i).getCodHabitacion();
 			datos[1] = listaHabitaciones.get(i).getNumCamas();
-			datos[2] = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
-			datos[3] = "faltaa"+1+ "camas simples";
-			datos[4] =   "€";
+			//Mostrar detalles de las camas de la habitación seleccionada: 
+			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
+			datos[2] = listaCamas;
+			datos[3] = "falta";
+			datos[4] =  "€";
 			tabla.addRow(datos);
 		}
 		

@@ -36,7 +36,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	Date fechaVuelta;
 	String tiposCamaHab;
 	
-	private ArrayList<Habitacion> listaHabitaciones;
+	public int[] listaHabSel;
 	private ArrayList<Cama> listaCamas;
 	int numTipCam [] = new int [3];
 	float precioReserva =-1;
@@ -67,6 +67,11 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	    //se guarda la habitacion seleecionada en el JLIST
 		//en el futuro guardar la o las habitaciones seleccionadas
 	    this.habitacion = (Habitacion) vista.selHabitacion.listHabitacion.getSelectedValue();
+	    listaHabSel = vista.selHabitacion.tab.getSelectedRows();
+	    for(int i=0; listaHabSel.length>i; i++) {
+	    	System.out.println("------->índice de las habitaciones selec en el JTable: " + listaHabSel[i]);
+	    }
+	    
 	    //le pasa la habitacion al modelo
 	    modelo.habitacion = this.habitacion;
 	    //Pruebas
@@ -102,7 +107,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				
 				
 				//Mostrar detalles de las camas de la habitación seleccionada: array numTipCam contiene el número de camas de cada tipo en 1 habitación
-				numTipCam = controlador.funcionesReserva.mostrarTiposDeCamas();
+				numTipCam = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 				
 				
 				// (2º) Calcula el precio de la reserva o reservas realizadas:

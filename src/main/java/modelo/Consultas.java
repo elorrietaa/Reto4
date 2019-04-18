@@ -157,6 +157,7 @@ public class Consultas {
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setNumCamas(rs.getInt("N_Camas"));
+    			habitacion.setPrecioHabitacion(rs.getFloat("Precio_hab"));;
     			listaHabitacion.add(habitacion);
     		}
     				

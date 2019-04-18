@@ -112,6 +112,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				habitacion.setTipoHabitacion(listaHabitaciones.get(indHabsSel[i]).getTipoHabitacion());
 				habitacion.setTamanio(listaHabitaciones.get(indHabsSel[i]).getTamanio());
 				habitacion.setNumCamas(listaHabitaciones.get(indHabsSel[i]).getNumCamas());
+				habitacion.setPrecioHabitacion(listaHabitaciones.get(indHabsSel[i]).getPrecioHabitacion());
 				listaHabSeleccionadas.add(habitacion);
 		    }
 		    
@@ -147,8 +148,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				//Mostrar detalles de las camas de la habitación seleccionada: 
 				ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabSeleccionadas.get(i).getCodHabitacion());
 				datos[2] = listaCamas;
-				
-				datos[3] =   "€";
+				datos[3] =  listaHabSeleccionadas.get(i).getPrecioHabitacion() + "€";
 				tabla.addRow(datos);
 			}
 		}

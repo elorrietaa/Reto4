@@ -278,8 +278,6 @@ public class ControladorPanPago implements ActionListener{
 		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 		
-		//guarda los datos de la reserva en en un fichero
-		modelo.funcionesReserva.imprimirReservaFichero(modelo, vista);
 		
 		// rellenar datos del cliente en la reserva
 		//modelo.reserva.setDni(modelo.cliente.getDni());
@@ -302,7 +300,8 @@ public class ControladorPanPago implements ActionListener{
 		}
 		*/
 		
-		
+		//guarda los datos de la reserva en en un fichero
+		modelo.funcionesReserva.imprimirReservaFichero(modelo, vista);
 	}
 	/**
 	 * Funcion del boton de cancelar

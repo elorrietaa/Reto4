@@ -41,7 +41,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	public int[] indHabsSel;
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Habitacion> listaHabSeleccionadas;
-	private ArrayList<Cama> listaCamas;
+	private ArrayList<Reserva> listaReservas;
 	int numTipCam [] = new int [3];
 	float precioReserva =-1;
 	 
@@ -88,14 +88,6 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		    
 		    //probar  aver si imprime lista habs
 		  listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, modelo.hotel.getCodAlojamiento());
-	    	
-	    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
-		  	for(int i=0; i<listaHabitaciones.size();i++) {
-		  	
-		  		//prueba
-		  		System.out.println("dddddddd:" + listaHabitaciones.get(i));
-				
-		  	}
 		  
 		  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
 		  listaHabSeleccionadas = new ArrayList<Habitacion>(); 
@@ -186,6 +178,29 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				for(int i=0; i<listaHabSeleccionadas.size();i++) {
 					controlador.funcionesReserva.generarReservaHab(listaHabSeleccionadas, i);
 				}
+				  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
+				listaReservas = new ArrayList<Reserva>(); 
+				int codReserva= modelo.consultas.mostrarNumReservas();
+				    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
+				    for(int i=0; listaHabSeleccionadas.size()>i; i++) {
+				    	
+				    	//metemos las reservas de las habitaciones seleccionadas en un arrayList listaReservas
+				    	reserva = new Reserva(); 
+				    	codReserva = codReserva + 1;
+				    	reserva.setCodReserva(codReserva);
+				    	reserva.setCliente(modelo.cliente);
+				    	reserva.setAlojamiento(modelo.alojamiento);
+				    	reserva.setHabitacion(this.listaHabSeleccionadas.get(i));
+				    	reserva.setFechaIda(modelo.fechaIda);
+				    	reserva.setFechaVuelta(fechaVuelta);
+				    	reserva.setPrecioReserva(listaHabitaciones.get(i).getPrecioHabitacion());
+						listaReservas.add(reserva);
+				    }
+				    
+				    //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
+				    for(int i=0; listaReservas.size()>i; i++) {
+				    	System.out.println("------->La lista de reservaaaas: " +"Código reserva: " +listaReservas.get(i).getCodReserva() + "cod alojamiento reservado " + listaReservas.get(i).getAlojamiento()+ "codigo habitacion reservada: "+ listaReservas.get(i).getHabitacion().getCodHabitacion());
+				    }
 				
 				
 				

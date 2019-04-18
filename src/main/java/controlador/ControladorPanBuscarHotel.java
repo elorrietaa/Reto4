@@ -202,7 +202,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		for(int i=0; i<listaHabitaciones.size();i++) {
 			datos[0] = listaHabitaciones.get(i).getCodHabitacion();
 			datos[1] = listaHabitaciones.get(i).getNumCamas();
-			datos[2] = "falta";
+			datos[2] = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
 			datos[3] = "faltaa"+1+ "camas simples";
 			datos[4] =   "€";
 			tabla.addRow(datos);

@@ -139,7 +139,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		 * @param tabla Tabla que se rellena con la informacion de la reserva
 		 */
 		public void mostrarDetallesHabsSelec( DefaultTableModel tabla) {
-			Object[] datos = new Object[5];
+			Object[] datos = new Object[4];
 			tabla.setRowCount(0);
 			for(int i=0; i<listaHabSeleccionadas.size();i++) {
 				datos[0] = listaHabSeleccionadas.get(i).getCodHabitacion();
@@ -148,8 +148,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabSeleccionadas.get(i).getCodHabitacion());
 				datos[2] = listaCamas;
 				
-				datos[3] = "falta";
-				datos[4] =   "€";
+				datos[3] =   "€";
 				tabla.addRow(datos);
 			}
 		}

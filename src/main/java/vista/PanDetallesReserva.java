@@ -24,7 +24,7 @@ public class PanDetallesReserva extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public JTextField tFPrecioReserva;
+	public JTextField tFPrecioReserva, textFieldNumNoches;
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras;
 	public JList<String> listDetalleReserva;
@@ -33,6 +33,7 @@ public class PanDetallesReserva extends JPanel {
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
 	public JTable tab;
 	public JScrollPane scrollPaneIda;
+
 	
 	/**
 	 * Create the panel.
@@ -59,9 +60,9 @@ public class PanDetallesReserva extends JPanel {
 		btnAtras.setBounds(41, 651, 89, 23);
 		add(btnAtras);
 		
-		lblPrecio = new JLabel("Precio :");
+		lblPrecio = new JLabel("Precio TOTAL :");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPrecio.setBounds(232, 597, 63, 14);
+		lblPrecio.setBounds(141, 597, 154, 19);
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();
@@ -125,6 +126,17 @@ public class PanDetallesReserva extends JPanel {
 		scrollPaneIda = new JScrollPane(tab);
 		scrollPaneIda.setBounds(141,418,839,136);
 		add(scrollPaneIda);
+		
+		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
+		lblNmeroDeNoches.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNmeroDeNoches.setBounds(141, 567, 154, 19);
+		add(lblNmeroDeNoches);
+		
+		textFieldNumNoches = new JTextField();
+		textFieldNumNoches.setEditable(false);
+		textFieldNumNoches.setColumns(10);
+		textFieldNumNoches.setBounds(298, 565, 86, 20);
+		add(textFieldNumNoches);
 		
 
 	}

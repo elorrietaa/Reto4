@@ -292,13 +292,16 @@ public class ControladorPanPago implements ActionListener{
 		}
 		/**
 		*/
-		
+		/*
 		//Generar reserva: introducir reserva en modelo.reserva
-		controlador.funcionesReserva.generarReserva(modelo.habitacion.getNumTipCam());
+		for(int i=0; i<listaHabSeleccionadas.size();i++) {
+		controlador.funcionesReserva.generarReservaHab(listaHabSeleccionadas, i);
 		System.out.println("Datos reserva generada:" + "Código de la reserva: "+ modelo.reserva.getCodReserva() + "Dni cliente:"+ modelo.reserva.getCliente().getDni() + "Fecha entrada: "+ modelo.reserva.getFechaIda() + "Fecha salida: "+ modelo.reserva.getFechaVuelta() + "Precio reserva" + modelo.reserva.getPrecioReserva());
-		
-		//Insertar la reserva en la BBDD:
+			//Insertar la reserva en la BBDD:
 		modelo.consultas.insertarReserva(modelo.reserva); 
+		}
+		*/
+		
 		
 	}
 	/**

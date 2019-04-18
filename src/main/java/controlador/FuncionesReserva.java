@@ -79,18 +79,20 @@ public class FuncionesReserva {
 	 * 
 	 * @return Retorna el precio de la reserva 
 	 */
-	public float calcularPrecioReserva(int [] numTipCam) {
+	public float calcularPrecioReservaHotel( ArrayList<Habitacion> listaHabSeleccionadas) {
+		
 		//(1º) El precio inicial de la reserva es el precio del alojamiento
 		float precioAlojamiento = modelo.hotel.getPrecioAlojamiento();
-		float precioHabitacion;
-		float precioReserva;
+		
+		float precioReserva=0;
 		
 		
 		//(2º) Calcular el precio en función del TIPO DE CAMA DE LA HABITACIÓN: 
-		precioHabitacion = calcularPrecioPorHabitacion(numTipCam, precioAlojamiento);
 		
 		//En el futuro más de una habitación: precio reserva será la suma de los precios de las habitaciones
-		precioReserva = precioHabitacion;
+		for(int i=0; i<listaHabSeleccionadas.size();i++) {
+			precioReserva = precioReserva + listaHabSeleccionadas.get(i).getPrecioHabitacion();
+		}
 		
 		//(3º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();
@@ -99,30 +101,14 @@ public class FuncionesReserva {
 		
 		//metemos el precio total de la reserva en el modelo:
 		modelo.precioTotal = precioReserva;
-		
+		System.out.println("EL PRECIO TOTAL DE LA RESERVA DE TODAS LAS HABS DEL HOTEL ES calcularPrecioReservaHotel "+modelo.precioTotal);
 		return precioReserva;
 	}
 	
-	public float  calcularPrecioPorHabitacion(int [] numTipCam, float precioAlojamiento) {
-		//El precio inicial de la reserva es el precio del alojamiento
-		float precioHabitacion = precioAlojamiento;
-		
-		//CALCULAR EL PRECIO EN FUNCIÓN DEL TIPO DE CAMA DE LA HABITACIÓN: 
-				for(int i=0; numTipCam.length>i; i++) {
-					if(numTipCam[0]!=0) {
-						precioHabitacion= (float) (precioHabitacion + (precioAlojamiento*0.05*numTipCam[0])) ;
-					}
-					if(numTipCam[1]!=0) {
-						precioHabitacion= (float) (precioHabitacion + (precioAlojamiento*0.1*numTipCam[1])) ;
-					}
-					if(numTipCam[2]!=0) {
-						precioHabitacion= (float) (precioHabitacion + (precioAlojamiento*0.15*numTipCam[2])) ;
-					}
-				}
-		//metemos el precio de la habitación en la reserva del modelo.
-		//modelo.reserva.setPrecioReserva(precioHabitacion);
-		//modelo.habitacion.setPrecioHabitacion(precioHabitacion);
-		//System.out.println("Precio Habitacion: " + precioHabitacion);
+	public float  mostrarPrecioHab(ArrayList<Habitacion> listaHabSeleccionadas) {
+		for(int i=0; i<listaHabSeleccionadas.size();i++) {
+			precioReserva = precioReserva + listaHabSeleccionadas.get(i).getPrecioHabitacion();
+		}
 				
 				
 		return precioHabitacion;
@@ -138,13 +124,16 @@ public class FuncionesReserva {
 		modelo.numNoches = numNoches;
 		System.out.println("Noches reservadas:  "+modelo.numNoches);
 		
+		//mostramos num de noches en la vista 
+		vista.detallesReserva.textFieldNumNoches.setText(Integer.toString(modelo.numNoches));
+		
 		return numNoches;
 	}
 	
 	/**
 	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
 	 */
-	public void generarReserva(int [] numTipCam) {
+	public void generarReservaHab(ArrayList<Habitacion> listaHabSeleccionadas, int pos) {
 		//(1º) genera un código de reserva en función de las reservas que haya en la BBDD
 		int codReservaProc = modelo.consultas.mostrarNumReservasConProcedimiento();
 		System.out.println("num reservas con procedimientooooo" + codReservaProc);
@@ -152,8 +141,8 @@ public class FuncionesReserva {
 		
 		System.out.println("código de la reserva: " + codReserva);
 		
-		//(2º) Calcula el precio de la reserva: 
-		precioReserva = controlador.funcionesReserva.calcularPrecioReserva(numTipCam);
+		//(2º) Calcula el precio de la reserva de la habitacion
+		precioReserva = listaHabSeleccionadas.get(pos).getPrecioHabitacion();
 		System.out.println("Precio reserva calculado: " + precioReserva);
 		
 		//(3º) rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
@@ -166,7 +155,7 @@ public class FuncionesReserva {
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
-	public void mostrarDatosReserva() {
+	public void mostrarDatosReserva(ArrayList<Habitacion> listaHabSeleccionadas) {
 		//muestra datos del alojamiento
 		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
 		
@@ -174,7 +163,12 @@ public class FuncionesReserva {
 		
 		//muestra el PRECIO TOTAL DE LA RESERVA: 
 		//EN EL FUTURO SE CALCULARÁ SUMANDO EL PRECIO DE TODAS LAS RESERVAS REALIZADAS
-	  	vista.detallesReserva.tFPrecioReserva.setText(Float.toString(modelo.reserva.getPrecioReserva())+ " €");
+		
+		calcularPrecioReservaHotel(listaHabSeleccionadas);
+		
+		
+		//SE MUESTRA EL PRECIO TOTAL:
+	  	vista.detallesReserva.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
 	  	modelo.precioTotal=modelo.reserva.getPrecioReserva();
 	}
 	

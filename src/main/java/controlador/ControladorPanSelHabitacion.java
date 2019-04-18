@@ -176,17 +176,24 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				guardarDatosSeleccionadoshabitacion();
 				guardarDatosSeleccionadosJTable();
 				
-				//Mostrar detalles de las camas de la habitación seleccionada: array numTipCam contiene el número de camas de cada tipo en 1 habitación
-				numTipCam = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+				
 				
 				// (2º) Calcula el precio de la reserva o reservas realizadas:
-				precioReserva = controlador.funcionesReserva.calcularPrecioReserva(numTipCam);
+				//precio de cada reserva = precioHabitacion
 				
 				//(3º)Generar reserva (o reservas) y guardarla en el objeto reserva (o en el ArrayList<Reserva> listaReservas)
-				controlador.funcionesReserva.generarReserva(numTipCam);
+				
+				for(int i=0; i<listaHabSeleccionadas.size();i++) {
+					controlador.funcionesReserva.generarReservaHab(listaHabSeleccionadas, i);
+				}
+				
+				
+				
+				// (2º) Calcula el precio TOTAL de la reserva o reservas realizadas:
+				precioReserva = controlador.funcionesReserva.calcularPrecioReservaHotel(listaHabSeleccionadas);
 				
 				//(4º) se muestran en la siguiente pantalla los detalles de la reserva y el precio de la reserva
-				controlador.funcionesReserva.mostrarDatosReserva();
+				controlador.funcionesReserva.mostrarDatosReserva(listaHabSeleccionadas);
 				//se actualiza la tabla con las habitaciones seleccionadas
 				actualizarFrame();
 				

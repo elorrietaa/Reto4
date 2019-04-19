@@ -43,16 +43,16 @@ public class FuncionesValidaciones {
 			 fechaIda=null;
 			 return false;
 		}
-		else if(fechaVuelta.equals(fechaIda)) { //fecha salida igual a fecha de entrada
-			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe seleccionar al menos una noche para realizar una reserva. Gracias. ", null, 0);
-			 return false;
-		}
 		else if(fechaVuelta.before(fechaActual)) {//fecha salida anterior a fecha actual
 			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe introducir un rango de fechas válido para realizar una reserva. Gracias. ", null, 0);
 			return false;
 		}
 		else if(fechaVuelta.before(fechaIda)) { //fecha salida anterior a la fecha de entrada
 			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe introducir un rango de fechas válido para realizar una reserva. Gracias. ", null, 0);
+			return false;
+		}
+		else if(((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000) ==0 ) { //fecha entrada = fecha salida, noches reservas =0
+			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe seleccionar al menos una noche para realizar una reserva. Gracias. ", null, 0);
 			return false;
 		}
 		else {

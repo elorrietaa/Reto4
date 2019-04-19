@@ -49,7 +49,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Date fechaActual = null;
 	int numTipCam [] = new int [3];
 	boolean continuar = false;
-	
+	int filaHotelsel = -1;
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -68,7 +68,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     public void addListeners() {
     	vista.buscarHotel.cBCiudad.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
-    	vista.buscarHotel.btnMostrarDetalles.addActionListener(this);
     	vista.buscarHotel.fechaIda.addPropertyChangeListener(this);
     	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
     }
@@ -85,21 +84,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		}
     }
     
-    /**
-     * Método mostrarHoteles = muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
-     * @param codCiudadSeleccionada
-     */
-    public void mostrarHotelesEnElJList(int codCiudadSeleccionada) {
-    	//borra todos los elementos del JList
-    	vista.buscarHotel.modeloHotel.removeAllElements();
-    	//llena el arrayList con la lista de Hoteles
-    	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
-    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
-	  	for(int i=0; i<listaHoteles.size();i++) {
-	  		vista.buscarHotel.modeloHotel.addElement(listaHoteles.get(i));
-			vista.buscarHotel.listHoteles.setModel(vista.buscarHotel.modeloHotel);
-	  	}
-    }
+  
 
     /**
      * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
@@ -111,22 +96,46 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		System.out.println("***DATOS CIUDAD***:Ciudad:" + ciudad);
 	    
 	}
+	/**
+     * Método mostrarHoteles = muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
+     * @param codCiudadSeleccionada
+     */
+    public void mostrarDatosHotelJTable(int codCiudadSeleccionada) {
+    
+	  	///MOSTRAR HOTELES EN EL JTABLE
+	  	// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarHotel.tab.getModel();
+			
+			
+	  	//llena el arrayList con la lista de Hoteles
+	   	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
+		Object[] datos = new Object[2];
+		tablaHotel.setRowCount(0);
+		for(int i=0; i<listaHoteles.size();i++) {
+			datos[0] = listaHoteles.get(i).getNombre();
+			datos[1] = listaHoteles.get(i).getEstrellas();
+			tablaHotel.addRow(datos);
+		}
+	  	
+    }
+	
+	
+	 /**
+     * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
+     */
 	public void guardarDatosSeleccionadosHotel() {
-		
-	    //se guarda el hotel seleccionado con la JLIST
-	    this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
+	    //se guarda en filaHotelsel la posición seleccionada en la tabla
+	    int filaHotelsel = vista.buscarHotel.tab.getSelectedRow(); 	 
+	    
+	    //se guarda el hotel seleccionado en la tabla
+	    this.hotel = (Hotel) listaHoteles.get(filaHotelsel);
 	    
 	    //le pasa el hotel al modelo
 	    modelo.hotel = this.hotel;
-	    //Pruebas
-	    System.out.println("***DATOS HOTEL***: Código del hotel:" + hotel.getCodAlojamiento());
-	    System.out.println("Nombre hotel:" + hotel.getNombre());
-	    System.out.println("Precio hotel:" + hotel.getPrecioAlojamiento());
-	    System.out.println("Ubicación hotel:" + hotel.getUbicacion());
-	    System.out.println("Número de estrellas:" + hotel.getEstrellas());
-	    
-	    //en el futuro aqui los datos de la habitacion, guardarlos y pasarlos a modelo
+	
 	}
+	
+
 	
 	public void guardarDatosSeleccionadosFechas() {
 		//se guarda la fecha seleecionada en el JCalendar:
@@ -147,17 +156,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	}
 	
 
-	/**
-	 * Método mostrarDatosHotelSeleccionado = muestra en el textPaneDetHot los datos del hotel seleccionado por el usuario
-	 */
-	public void mostrarDatosHotelSeleccionado() {
-		 this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-		vista.buscarHotel.textPaneDetHot.setText("Nombre hotel:" + hotel.getNombre()+ "\n" + "Precio hotel:" + hotel.getPrecioAlojamiento() + "€" + "\n" + "Ubicación hotel:" + hotel.getUbicacion()+ "\n" + "Número de estrellas:" + hotel.getEstrellas());
-	    //pruebas
-		System.out.println("***DATOS HOTEL***: Código del hotel:" + hotel.getCodAlojamiento());
-	    System.out.println("Nombre hotel:" + hotel.getNombre());
-	  
-	}
+
 	
     
     /**
@@ -204,21 +203,12 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
 			
-			case "Mostrar detalles del hotel seleccionado:":
-				
-				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-				if (hotel != null) {
-					mostrarDatosHotelSeleccionado();
-				}
-				else {
-					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el alojamiento del que desea ver más detalles. Gracias. ", null, 0);
-				}
-				break;
-				
-				
+		
 			case "Continuar":	//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
-				if (hotel != null) {
+				 //se comprueba que se haya seleccionado algún hotel:
+			    filaHotelsel = vista.buscarHotel.tab.getSelectedRow(); 	 
+			    
+				if (filaHotelsel != -1) {
 
 				    //(1º) Guarda los datos seleecionados en el modelo
 					guardarDatosSeleccionadosCiudad();
@@ -260,7 +250,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			if (ciudad != null) {
 				int codCiudadSeleccionada = ciudad.getCodCiudad();
 				//muestra los hoteles en el JList
-				mostrarHotelesEnElJList(codCiudadSeleccionada);
+				mostrarDatosHotelJTable(codCiudadSeleccionada);
 			}
 		}
 		

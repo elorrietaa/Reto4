@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import bbdd.Conexion;
@@ -38,7 +39,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	Date fechaVuelta;
 	String tiposCamaHab;
 	
-	public int[] indHabsSel;
+	public int[] indHabsSel = null;
 	private ArrayList<Habitacion> listaHabitaciones;
 	private ArrayList<Habitacion> listaHabSeleccionadas;
 	public ArrayList<Reserva> listaReservas;
@@ -68,11 +69,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	}
 	
 	public void guardarDatosSeleccionadoshabitacion() {
-	    //////ESTO ES DEL JLIST CUANDO VAYA JTABLE BIEN LO BORRAMOS
-	    //se guarda la habitacion seleecionada en el JLIST
-	    this.habitacion = (Habitacion) vista.selHabitacion.listHabitacion.getSelectedValue();
-	    
-	    
+	   
 	    //le pasa la habitacion al modelo
 	    modelo.habitacion = this.habitacion;
 	    //Pruebas
@@ -198,24 +195,32 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 			
 			case "Continuar":
-				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
-				guardarDatosSeleccionadosJTable();
+			    //probamos que se haya seleccionado al menos una habitación
+				if(vista.selHabitacion.tab.getSelectedRowCount()!=0) {
 				
-				//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
-				guardarReservasHab();
+					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
+					guardarDatosSeleccionadosJTable();
+					
+					//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
+					guardarReservasHab();
+					
+					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
+					controlador.funcionesReserva.mostrarDatosReserva(listaHabSeleccionadas);
+					
+					//(4º) se actualiza la tabla con las habitaciones seleccionadas
+					actualizarFrame();
+					
+					//(5º) actualiza el siguiente panel:
+					// Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
+					vista.selHabitacion.setVisible(false);
+					vista.detallesReserva.setVisible(true);
+			
+				}
+				else {//si no ha seleccionado al menos una habitación aparecerá un aviso
+					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione al menos una habitación para continuar. Gracias. ", null, 0);
+				}
 				
-				//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
-				controlador.funcionesReserva.mostrarDatosReserva(listaHabSeleccionadas);
-				
-				//(4º) se actualiza la tabla con las habitaciones seleccionadas
-				actualizarFrame();
-				
-				//(5º) actualiza el siguiente panel:
-				// Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
-				vista.selHabitacion.setVisible(false);
-				vista.detallesReserva.setVisible(true);
-				
-				break;
+			break;
 	
 		}
 		

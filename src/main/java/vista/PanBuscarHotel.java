@@ -1,7 +1,11 @@
+
 package vista;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
@@ -12,6 +16,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JCalendar;
@@ -30,16 +37,16 @@ public class PanBuscarHotel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();
-		public DefaultListModel<Object> modeloHabitacion = new DefaultListModel<Object>();
-		public JList<Object> listHoteles;
+		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles;
-    	public JButton buttonContinuar, btnMostrarDetalles;
+    	public JButton buttonContinuar;
     	public JComboBox<Object> cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha;
-    	public JTextPane textPaneDetHot;
     	public JCalendar fechaIda, fechaVuelta;
     	
+    	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
+    	public JTable tab;
+    	public JScrollPane scrollPaneIda;
     	
 	public PanBuscarHotel() {
 		setLayout(null);
@@ -68,19 +75,44 @@ public class PanBuscarHotel extends JPanel {
 		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(labelHotel);
 		
-		listHoteles = new JList<Object>();
-		//FormatoDiseno.formatoList(listHoteles);
-		listHoteles.setBounds(249, 93, 210, 182);
-		add(listHoteles);
-		
-		btnMostrarDetalles = new JButton("Mostrar detalles del hotel seleccionado:");
-		btnMostrarDetalles.setBounds(486, 90, 515, 23);
-		add(btnMostrarDetalles);
-		
-		textPaneDetHot = new JTextPane();
-		textPaneDetHot.setEditable(false);
-		textPaneDetHot.setBounds(486, 124, 515, 106);
-		add(textPaneDetHot);
+		// TABLA HOTELES
+				tab = new JTable();
+				Object[][] datos = {};
+				String[] columnNames = {"Nombre", "Estrellas"};
+				tab.setModel(new DefaultTableModel(datos,columnNames) {
+					private static final long serialVersionUID = 1L;
+					@SuppressWarnings("rawtypes")
+					Class[] columnTypes = new Class[] {
+						String.class, String.class, String.class, int.class, String.class, String.class, float.class
+					};
+					@SuppressWarnings({ "unchecked", "rawtypes" })
+					public Class getColumnClass(int columnIndex) {
+						return columnTypes[columnIndex];
+					}
+					@Override
+				    public boolean isCellEditable(int row, int column) {
+				        return false;
+				    }
+				});
+				
+				DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+				centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+				
+				tab.setDefaultRenderer(String.class, centerRenderer);
+				tab.setDefaultRenderer(int.class, centerRenderer);
+				tab.setDefaultRenderer(float.class, centerRenderer);
+				tab.setFillsViewportHeight(true);
+				tab.setBackground(Color.WHITE);
+				tab.setBounds(45, 200, 834, 100);
+				tab.setRowHeight(50);
+				tab.setFocusable(false);
+				tab.setRowSelectionAllowed(true);
+				tab.getColumnModel().getColumn(0).setPreferredWidth(80);
+				tab.getColumnModel().getColumn(1).setPreferredWidth(80);
+				
+				scrollPaneIda = new JScrollPane(tab);
+				scrollPaneIda.setBounds(249,103,399,216);
+				add(scrollPaneIda);
 		
 		//FECHAS:
 		fechaIda = new JCalendar();
@@ -93,3 +125,4 @@ public class PanBuscarHotel extends JPanel {
 
 	}
 }
+

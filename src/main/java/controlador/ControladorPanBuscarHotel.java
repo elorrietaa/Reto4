@@ -208,7 +208,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
 			datos[2] = listaCamas;
-			datos[3] =  listaHabitaciones.get(i).getPrecioHabitacion() + "€";
+			datos[3] = (String.format("%.2f", listaHabitaciones.get(i).getPrecioHabitacion())  + "€");
 			tabla.addRow(datos);
 		}
 	}

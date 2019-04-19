@@ -89,7 +89,7 @@ public class PanDetallesReserva extends JPanel {
 		// TABLA HABITACIONES SELECCIONADAS
 		tab = new JTable();
 		Object[][] datos = {};
-		String[] columnNames = {"Código de la habitación", "Número de camas ", "Tipo de camas", "Precio por habitación"};
+		String[] columnNames = {"Código de la habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche ","Precio total por habitación" };
 		tab.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
@@ -118,10 +118,11 @@ public class PanDetallesReserva extends JPanel {
 		tab.setRowHeight(50);
 		tab.setFocusable(false);
 		tab.setRowSelectionAllowed(true);
-		tab.getColumnModel().getColumn(0).setPreferredWidth(180);
-		tab.getColumnModel().getColumn(1).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(0).setPreferredWidth(120);
+		tab.getColumnModel().getColumn(1).setPreferredWidth(120);
 		tab.getColumnModel().getColumn(2).setPreferredWidth(180);
-		tab.getColumnModel().getColumn(3).setPreferredWidth(120);
+		tab.getColumnModel().getColumn(3).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(4).setPreferredWidth(180);
 		
 		scrollPaneIda = new JScrollPane(tab);
 		scrollPaneIda.setBounds(141,418,839,136);

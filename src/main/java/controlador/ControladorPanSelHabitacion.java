@@ -132,7 +132,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		 * @param tabla Tabla que se rellena con la informacion de la reserva
 		 */
 		public void mostrarDetallesHabsSelec( DefaultTableModel tabla) {
-			Object[] datos = new Object[4];
+			Object[] datos = new Object[5];
 			tabla.setRowCount(0);
 			for(int i=0; i<listaHabSeleccionadas.size();i++) {
 				datos[0] = listaHabSeleccionadas.get(i).getCodHabitacion();
@@ -140,7 +140,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				//Mostrar detalles de las camas de la habitación seleccionada: 
 				ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabSeleccionadas.get(i).getCodHabitacion());
 				datos[2] = listaCamas;
-				datos[3] =  listaHabSeleccionadas.get(i).getPrecioHabitacion() + "€";
+				datos[3] =  (String.format("%.2f", listaHabSeleccionadas.get(i).getPrecioHabitacion()) + "€");
+				datos[4] =  (String.format("%.2f",modelo.listaReservas.get(i).getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches");
 				tabla.addRow(datos);
 			}
 		}

@@ -28,7 +28,7 @@ public class PanDetallesReserva extends JPanel {
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras;
 	public JList<String> listDetalleReserva;
-	public JTextPane textPDatosAlo, textPaneDetHot, textPDetallesHabi;
+	public JTextPane textPDatosAlo, textPaneDetHot;
 	
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
 	public JTable tab;
@@ -62,12 +62,12 @@ public class PanDetallesReserva extends JPanel {
 		
 		lblPrecio = new JLabel("Precio TOTAL :");
 		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPrecio.setBounds(141, 597, 154, 19);
+		lblPrecio.setBounds(640, 509, 122, 19);
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();
 		tFPrecioReserva.setEditable(false);
-		tFPrecioReserva.setBounds(298, 596, 86, 20);
+		tFPrecioReserva.setBounds(789, 510, 86, 20);
 		add(tFPrecioReserva);
 		tFPrecioReserva.setColumns(10);
 		
@@ -80,11 +80,6 @@ public class PanDetallesReserva extends JPanel {
 		lblDetallesHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDetallesHabitaciones.setBounds(141, 302, 154, 14);
 		add(lblDetallesHabitaciones);
-		
-		textPDetallesHabi = new JTextPane();
-		textPDetallesHabi.setEditable(false);
-		textPDetallesHabi.setBounds(305, 302, 486, 75);
-		add(textPDetallesHabi);
 		
 		// TABLA HABITACIONES SELECCIONADAS
 		tab = new JTable();
@@ -118,25 +113,25 @@ public class PanDetallesReserva extends JPanel {
 		tab.setRowHeight(50);
 		tab.setFocusable(false);
 		tab.setRowSelectionAllowed(true);
-		tab.getColumnModel().getColumn(0).setPreferredWidth(120);
+		tab.getColumnModel().getColumn(0).setPreferredWidth(150);
 		tab.getColumnModel().getColumn(1).setPreferredWidth(120);
 		tab.getColumnModel().getColumn(2).setPreferredWidth(180);
 		tab.getColumnModel().getColumn(3).setPreferredWidth(180);
 		tab.getColumnModel().getColumn(4).setPreferredWidth(180);
 		
 		scrollPaneIda = new JScrollPane(tab);
-		scrollPaneIda.setBounds(141,418,839,136);
+		scrollPaneIda.setBounds(141,327,839,136);
 		add(scrollPaneIda);
 		
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
 		lblNmeroDeNoches.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNmeroDeNoches.setBounds(141, 567, 154, 19);
+		lblNmeroDeNoches.setBounds(141, 509, 154, 19);
 		add(lblNmeroDeNoches);
 		
 		textFieldNumNoches = new JTextField();
 		textFieldNumNoches.setEditable(false);
 		textFieldNumNoches.setColumns(10);
-		textFieldNumNoches.setBounds(298, 565, 86, 20);
+		textFieldNumNoches.setBounds(298, 510, 86, 20);
 		add(textFieldNumNoches);
 		
 

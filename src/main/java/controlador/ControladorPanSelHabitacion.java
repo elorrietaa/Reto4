@@ -199,16 +199,10 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 			case "Continuar":
 				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
-				//datos JList (borrar en el futuro)
-				guardarDatosSeleccionadoshabitacion();
 				guardarDatosSeleccionadosJTable();
-				
-			
-				
 				
 				//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
 				guardarReservasHab();
-				
 				
 				//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
 				controlador.funcionesReserva.mostrarDatosReserva(listaHabSeleccionadas);

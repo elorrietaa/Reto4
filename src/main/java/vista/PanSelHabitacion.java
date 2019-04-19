@@ -23,7 +23,6 @@ public class PanSelHabitacion extends JPanel {
 	public JLabel lblIcono, lblTitulo, lblBilleteIda;
 	public JTable tab;
 	public JScrollPane scrollPaneIda;
-	public JList<Object> listHabitacion;
 
 	public PanSelHabitacion() {
 		
@@ -52,7 +51,7 @@ public class PanSelHabitacion extends JPanel {
 		// TABLA HABITACIONES
 		tab = new JTable();
 		Object[][] datos = {};
-		String[] columnNames = {"Código de la habitación", "Número de camas ", "Tipo de camas", "Precio por habitación"};
+		String[] columnNames = {"Código de la habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche"};
 		tab.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
@@ -84,7 +83,7 @@ public class PanSelHabitacion extends JPanel {
 		tab.getColumnModel().getColumn(0).setPreferredWidth(180);
 		tab.getColumnModel().getColumn(1).setPreferredWidth(180);
 		tab.getColumnModel().getColumn(2).setPreferredWidth(180);
-		tab.getColumnModel().getColumn(3).setPreferredWidth(120);
+		tab.getColumnModel().getColumn(3).setPreferredWidth(180);
 		
 		scrollPaneIda = new JScrollPane(tab);
 		scrollPaneIda.setBounds(45,111,935,221);
@@ -117,13 +116,6 @@ public class PanSelHabitacion extends JPanel {
 		btnContinuar = new JButton("Continuar");
 		FormatoDiseno.formatoBtnContinuar(btnContinuar);
 		add(btnContinuar);
-		
-		listHabitacion = new JList<Object>();
-		listHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		listHabitacion.setBackground(Color.LIGHT_GRAY);
-		FormatoDiseno.formatoList(listHabitacion);
-		listHabitacion.setBounds(45, 357, 212, 239);
-		add(listHabitacion);
 	
 	}
 }

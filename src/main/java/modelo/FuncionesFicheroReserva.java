@@ -62,7 +62,7 @@ public class FuncionesFicheroReserva {
 			writer.println("Tipo de camas de la habitación: " + modelo.listaReservas.get(pos).getHabitacion().getTiposCamaHab());
 			writer.println();
 			writer.println("Precio habitación: " + (String.format("%.2f",modelo.listaReservas.get(pos).getHabitacion().getPrecioHabitacion()) + "€/ 1 noche"));
-			writer.println("Precio habitación: " + (String.format("%.2f",modelo.listaReservas.get(pos).getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches"));
+			writer.println("Precio habitación: " + (String.format("%.2f",modelo.listaReservas.get(pos).getPrecioReserva()) + "€/ "+ modelo.numNoches+" noches"));
 			writer.println();
 			writer.println("*************************************************************************************");
 			writer.println();

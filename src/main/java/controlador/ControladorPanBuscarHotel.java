@@ -159,29 +159,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	  
 	}
 	
-	/**
-     * Método mostrarHabitacionesEnElJList = muestra las habitaciones que se han encontrado mediante el método: buscarHabitacionPorCodigoHotel pasando hotel, codHotelSeleccionado por parámetro. El codHotelSeleccionado dependerá del hotel seleccionado por el usuario
-     * @param codHotelSeleccionado
-     */
-    public void mostrarHabitacionesEnJList(int codHotelSeleccionado) {
-    	//borra todos los elementos del JList de mostrarHabitacionesEnJList
-    	vista.selHabitacion.modelo.removeAllElements();
-    	//llena el arrayList con la lista de Hoteles
-    	listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, codHotelSeleccionado);
-    	
-    	
-    	
-    	//muestra en elJlist listHoteles la lista de hoteles de la ciudad seleccionada
-	  	for(int i=0; i<listaHabitaciones.size();i++) {
-	  		vista.selHabitacion.modelo.addElement(listaHabitaciones.get(i));
-	  		
-	  		//prueba
-	  		System.out.println("dff:" + listaHabitaciones.get(i));
-			vista.selHabitacion.listHabitacion.setModel(vista.selHabitacion.modelo);
-	  	}
-	  	
-
-    }
     
     /**
 	 * Funcion encargada de actualizar la informacion que se muestra en la interfaz
@@ -239,12 +216,10 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				break;
 				
 				
-			case "Continuar":	
-				
+			case "Continuar":	//Cuando pulsa el boton continuar pasan las siguientes cosas: 
 				this.hotel = (Hotel) vista.buscarHotel.listHoteles.getSelectedValue();
 				if (hotel != null) {
-					//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-					 
+
 				    //(1º) Guarda los datos seleecionados en el modelo
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosHotel();
@@ -254,28 +229,14 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
 					
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
-					mostrarHabitacionesEnJList(hotel.getCodAlojamiento());
+					listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, hotel.getCodAlojamiento());
+				
 					
-					//MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
+					//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 					actualizarFrame();
-					
-//no funciona
-					/*
-					// (3º) mostrar lista habitaciones disponibles:
-					listaHabDisp = modelo.consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
-					System.out.println("--> Lista habitaciones disponibles: ");
-					for(int i=0; listaHabDisp.size()<i; i++) {
-						System.out.println(listaHabDisp.get(i).getCodHabitacion());
-						System.out.println("holi");
-					}
-					
-					//(4º) muestra los detalles de las camas de las habitaciones: 
-					//controlador.funcionesReserva.mostrarTiposDeCamas();
-					*/
-					
-					
-					
-					//(4º) Actualiza el siguiente panel, si se cumplen las validaciones.
+
+				
+					//(5º) Actualiza el siguiente panel, si se cumplen las validaciones.
 					if(continuar) {
 						
 						vista.buscarHotel.setVisible(false);

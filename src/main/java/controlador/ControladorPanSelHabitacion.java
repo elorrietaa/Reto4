@@ -149,32 +149,30 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		 * guardarReservasHab = Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
 		 */
 		public void guardarReservasHab() {
-
-			for(int i=0; i<listaHabSeleccionadas.size();i++) {
-				controlador.funcionesReserva.generarReservaHab(listaHabSeleccionadas, i);
-			}
-			  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
 			listaReservas = new ArrayList<Reserva>(); 
+			
+			  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
+			
 			int codReserva= modelo.consultas.mostrarNumReservas();
 			    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
 			    for(int i=0; listaHabSeleccionadas.size()>i; i++) {
 			    	
 			    	//metemos las reservas de las habitaciones seleccionadas en un arrayList listaReservas
-			    	reserva = new Reserva(); 
+			    	modelo.reserva = new Reserva(); 
 			    	codReserva = codReserva + 1;
-			    	reserva.setCodReserva(codReserva);
-			    	reserva.setCliente(modelo.cliente);
-			    	reserva.setAlojamiento(modelo.alojamiento);
-			    	reserva.setHabitacion(this.listaHabSeleccionadas.get(i));
-			    	reserva.setFechaIda(modelo.fechaIda);
-			    	reserva.setFechaVuelta(fechaVuelta);
-			    	reserva.setPrecioReserva(listaHabSeleccionadas.get(i).getPrecioHabitacion());
-					listaReservas.add(reserva);
+			    	modelo.reserva.setCodReserva(codReserva);
+			    	modelo.reserva.setCliente(modelo.cliente);
+			    	modelo.reserva.setAlojamiento(modelo.hotel);
+			    	modelo.reserva.setHabitacion(this.listaHabSeleccionadas.get(i));
+			    	modelo.reserva.setFechaIda(modelo.fechaIda);
+			    	modelo.reserva.setFechaVuelta(modelo.fechaVuelta);
+			    	modelo.reserva.setPrecioReserva(listaHabSeleccionadas.get(i).getPrecioHabitacion());
+					listaReservas.add(modelo.reserva);
 			    }
 			    
 			    //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
 			    for(int i=0; listaReservas.size()>i; i++) {
-			    	System.out.println("------->La lista de reservaaaas: " +"Código reserva: " +listaReservas.get(i).getCodReserva() + "cod alojamiento reservado " + listaReservas.get(i).getAlojamiento()+ "codigo habitacion reservada: "+ listaReservas.get(i).getHabitacion().getCodHabitacion() +"precio reserva 1 hab: "+ listaReservas.get(i).getPrecioReserva());
+			    	System.out.println("------->La lista de reservaaaas: " +"Código reserva: " +listaReservas.get(i).getCodReserva() + "cod alojamiento reservado " + listaReservas.get(i).getAlojamiento().getCodAlojamiento() + "codigo habitacion reservada: "+ listaReservas.get(i).getHabitacion().getCodHabitacion() +"precio reserva 1 hab: "+ listaReservas.get(i).getPrecioReserva());
 			    }
 			    //guardamos el ArrayList listaReservas en el modelo
 			    modelo.listaReservas = this.listaReservas;

@@ -71,25 +71,7 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
-	/**
-	 * Método generarReserva = se rellena el objeto reserva con los datos seleccionados
-	 */
-	public void generarReservaHab(ArrayList<Habitacion> listaHabSeleccionadas, int pos) {
-		//(1º) genera un código de reserva en función de las reservas que haya en la BBDD
-		int codReservaProc = modelo.consultas.mostrarNumReservasConProcedimiento();
-		System.out.println("num reservas con procedimientooooo" + codReservaProc);
-		int codReserva = modelo.consultas.mostrarNumReservas() +1;
-		
-		System.out.println("código de la reserva: " + codReserva);
-		
-		//(2º) Calcula el precio de la reserva de la habitacion
-		precioReserva = listaHabSeleccionadas.get(pos).getPrecioHabitacion();
-		System.out.println("Precio reserva calculado: " + precioReserva);
-		
-		//(3º) rellenamos el objeto reserva y se pasa la reserva al modelo //el precio Reserva es el precio calculado en el método:
-		modelo.reserva = new Reserva(codReserva, modelo.cliente , modelo.hotel, modelo.habitacion, modelo.fechaIda, modelo.fechaVuelta, this.precioReserva);
-	} 
-	  
+	
 
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 

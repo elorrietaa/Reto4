@@ -166,7 +166,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			    	modelo.reserva.setHabitacion(this.listaHabSeleccionadas.get(i));
 			    	modelo.reserva.setFechaIda(modelo.fechaIda);
 			    	modelo.reserva.setFechaVuelta(modelo.fechaVuelta);
-			    	modelo.reserva.setPrecioReserva(listaHabSeleccionadas.get(i).getPrecioHabitacion());
+			    	modelo.reserva.setPrecioReserva(controlador.funcionesReserva.calcularPrecioHabXNoches(listaHabSeleccionadas, i));
 					listaReservas.add(modelo.reserva);
 			    }
 			    
@@ -201,6 +201,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				//datos JList (borrar en el futuro)
 				guardarDatosSeleccionadoshabitacion();
 				guardarDatosSeleccionadosJTable();
+				
+			
 				
 				
 				//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas

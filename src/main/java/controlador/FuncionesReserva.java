@@ -55,6 +55,19 @@ public class FuncionesReserva {
 		return precioReserva;
 	}
 	
+	public float calcularPrecioHabXNoches( ArrayList<Habitacion> listaHabSeleccionadas, int pos) {
+		float precioHabXnoches=0;
+		//(1º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
+		int numNoches = calcularNochesReservadas();
+		
+		//calcular el precio de la habitacion x noches.
+		precioHabXnoches = listaHabSeleccionadas.get(pos).getPrecioHabitacion() * numNoches;
+		
+		
+		return precioHabXnoches;
+	}
+	
+	
 	/**
 	 * Método calcularNochesReservadas = calcula el número de noches reservadas por el usuario.
 	 */

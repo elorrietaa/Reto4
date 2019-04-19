@@ -285,26 +285,16 @@ public class ControladorPanPago implements ActionListener{
 			 
 		}
 	   
-		
-		 //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
-	    for(int i=0; modelo.listaReservas.size()>i; i++) {
-	    	System.out.println("-^-^-^--->La lista de reservaaaas: " +" Código reserva: " +modelo.listaReservas.get(i).getCodReserva() +" cod alojamiento reservado: " + modelo.listaReservas.get(i).getAlojamiento()+ " codigo habitacion reservada: "+ modelo.listaReservas.get(i).getHabitacion().getCodHabitacion() +" precio reserva 1 hab: "+ modelo.listaReservas.get(i).getPrecioReserva());
-	    }
-	    for(int i=0; modelo.listaReservas.size()>i; i++) {
-	    	 System.out.println(" dni cliente: " + modelo.cliente.getDni() );
-		}
-	   
-	
-	    //no vaaaaaa
-	    // insertar la reserva o reservas en BBDD //no vaaaaaa
-		
+	    // insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
 		for(int i=0; modelo.listaReservas.size()>i; i++) {
 			modelo.consultas.insertarReserva(modelo.listaReservas, i, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
-			
 		}
 		//no vaaaaaa
-		//guarda los datos de la reserva en en un fichero
-		modelo.funcionesReserva.imprimirReservaFichero(modelo, vista);
+		//guarda los datos de la reserva en en un fichero, 1 reserva por cada habitación. 
+		for(int i=0; modelo.listaReservas.size()>i; i++) {
+			modelo.funcionesReserva.imprimirReservaHabitacionesHotel(modelo, vista, i);
+		}
+		
 	}
 	/**
 	 * Funcion del boton de cancelar

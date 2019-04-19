@@ -1,8 +1,6 @@
 package controlador;
 
-import modelo.Hotel;
 import modelo.PrincipalModelo;
-import modelo.Reserva;
 
 /**
  * Esta clase se encarga de los calculos del dinero del programa

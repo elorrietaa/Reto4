@@ -98,8 +98,28 @@ public class FuncionesReserva {
 		
 		//SE MUESTRA EL PRECIO TOTAL:
 	  	vista.detallesReserva.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
-	  
 	}
+	
+	/**
+	 * Método insertarReservasHabitacionesSel = inserta en la base de datos las reservas de las habitaciones seleccionadas del hotel (inserta una reserva por cada habitación de hotel seleccionada)
+	 */
+	public void insertarReservasHabitacionesSel() {
+		
+		for(int i=0; modelo.listaReservas.size()>i; i++) {
+			modelo.consultas.insertarReserva(modelo.listaReservas, i, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+		}
+	}
+	
+	/**
+	 * Método generarFicherosReservasHabitacionesSel = genera un fichero por cada habitación de hotel reservada.
+	 */
+	public void generarFicherosReservasHabitacionesSel() {
+		//guarda los datos de la reserva en en un fichero, 1 reserva por cada habitación. 
+		for(int i=0; modelo.listaReservas.size()>i; i++) {
+			modelo.funcionesReserva.imprimirReservaHabitacionesHotel(modelo, vista, i);
+		}
+	}
+	
 	
 
 	

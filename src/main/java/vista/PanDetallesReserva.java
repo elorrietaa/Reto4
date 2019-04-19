@@ -30,8 +30,9 @@ public class PanDetallesReserva extends JPanel {
 	public JList<String> listDetalleReserva;
 	public JTextPane textPDatosAlo, textPaneDetHot;
 	
+	
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
-	public JTable tab;
+	public JTable tab, tabHot;
 	public JScrollPane scrollPaneIda;
 
 	
@@ -44,12 +45,12 @@ public class PanDetallesReserva extends JPanel {
 		 
 		lblSuReserva = new JLabel("Su Reserva :");
 		lblSuReserva.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblSuReserva.setBounds(288, 32, 84, 14);
+		lblSuReserva.setBounds(128, 23, 84, 14);
 		add(lblSuReserva);
 		
 		lblDatosAlojamiento = new JLabel("Detalles Alojamiento:");
 		lblDatosAlojamiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDatosAlojamiento.setBounds(141, 132, 154, 14);
+		lblDatosAlojamiento.setBounds(128, 48, 154, 14);
 		add(lblDatosAlojamiento);
 		
 		btnContinuar = new JButton("Continuar");
@@ -73,13 +74,54 @@ public class PanDetallesReserva extends JPanel {
 		
 		textPDatosAlo = new JTextPane();
 		textPDatosAlo.setEditable(false);
-		textPDatosAlo.setBounds(305, 132, 486, 159);
+		textPDatosAlo.setBounds(279, 48, 486, 107);
 		add(textPDatosAlo);
 		
 		lblDetallesHabitaciones = new JLabel("Detalles habitaciones:");
 		lblDetallesHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDetallesHabitaciones.setBounds(141, 302, 154, 14);
+		lblDetallesHabitaciones.setBounds(128, 287, 154, 14);
 		add(lblDetallesHabitaciones);
+		
+		
+		// TABLA HOTELES
+		tabHot = new JTable();
+		Object[][] datosHot = {};
+		String[] columnNamesHot = {"Nombre", "Estrellas"};
+		tabHot.setModel(new DefaultTableModel(datosHot,columnNamesHot) {
+			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, int.class, String.class, String.class, float.class
+			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			@Override
+		    public boolean isCellEditable(int row, int column) {
+		        return false;
+		    }
+		});
+		
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+		
+		tabHot.setDefaultRenderer(String.class, centerRenderer);
+		tabHot.setDefaultRenderer(int.class, centerRenderer);
+		tabHot.setDefaultRenderer(float.class, centerRenderer);
+		tabHot.setFillsViewportHeight(true);
+		tabHot.setBackground(Color.WHITE);
+		tabHot.setBounds(45, 200, 834, 100);
+		tabHot.setRowHeight(50);
+		tabHot.setFocusable(false);
+		tabHot.setRowSelectionAllowed(true);
+		tabHot.getColumnModel().getColumn(0).setPreferredWidth(80);
+		tabHot.getColumnModel().getColumn(1).setPreferredWidth(80);
+		
+		scrollPaneIda = new JScrollPane(tabHot);
+		scrollPaneIda.setBounds(279,166,399,94);
+		add(scrollPaneIda);
+		
 		
 		// TABLA HABITACIONES SELECCIONADAS
 		tab = new JTable();
@@ -101,8 +143,8 @@ public class PanDetallesReserva extends JPanel {
 		    }
 		});
 		
-		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
+		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
 		
 		tab.setDefaultRenderer(String.class, centerRenderer);
 		tab.setDefaultRenderer(int.class, centerRenderer);
@@ -120,12 +162,12 @@ public class PanDetallesReserva extends JPanel {
 		tab.getColumnModel().getColumn(4).setPreferredWidth(180);
 		
 		scrollPaneIda = new JScrollPane(tab);
-		scrollPaneIda.setBounds(141,327,839,136);
+		scrollPaneIda.setBounds(128,312,839,136);
 		add(scrollPaneIda);
 		
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
 		lblNmeroDeNoches.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNmeroDeNoches.setBounds(141, 509, 154, 19);
+		lblNmeroDeNoches.setBounds(147, 509, 154, 19);
 		add(lblNmeroDeNoches);
 		
 		textFieldNumNoches = new JTextField();

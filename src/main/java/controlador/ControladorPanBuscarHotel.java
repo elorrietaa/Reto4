@@ -32,18 +32,16 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	public JframePrincipal vista;
 	public PrincipalModelo modelo; 
 	public PrincipalControlador controlador;
-	
-	private ArrayList<Ciudad> listaCiudades;
+
 	private ArrayList<Hotel> listaHoteles;
 	private ArrayList<Habitacion> listaHabitaciones;
-	private ArrayList<Habitacion> listaHabDisp;
-	//private ArrayList<Cama> listaCamas;
-	private ArrayList<Object> listaDetallesReserva; 
+
 	Ciudad ciudad;
 	Hotel hotel;
 	Habitacion habitacion;
 	Reserva reserva;
 	Consultas consultas;
+	
 	Date fechaIda;
 	Date fechaVuelta;
 	Date fechaActual = null;
@@ -71,8 +69,9 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     	vista.buscarHotel.fechaIda.addPropertyChangeListener(this);
     	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
     }
+    
     /**
-     * Método mostrarCiudad = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
+     * Método: mostrarCiudad = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
      * @param listaCiudades
      */
     public void mostrarCiudad() {
@@ -84,8 +83,6 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		}
     }
     
-  
-
     /**
      * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
      */
@@ -96,16 +93,14 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		System.out.println("***DATOS CIUDAD***:Ciudad:" + ciudad);
 	    
 	}
+	
 	/**
-     * Método mostrarHoteles = muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
+     * Método: mostrarHotelesEnJTable = muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
      * @param codCiudadSeleccionada
      */
-    public void mostrarDatosHotelJTable(int codCiudadSeleccionada) {
-    
-	  	///MOSTRAR HOTELES EN EL JTABLE
+    public void mostrarHotelesEnJTable(int codCiudadSeleccionada) {
 	  	// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
 			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarHotel.tab.getModel();
-			
 			
 	  	//llena el arrayList con la lista de Hoteles
 	   	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
@@ -132,52 +127,32 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	    
 	    //le pasa el hotel al modelo
 	    modelo.hotel = this.hotel;
-	
 	}
 	
 
-	
+	/**
+	 * Método: guardarDatosSeleccionadosFechas = guarda las fechas seleccionadas en el JCalendar en el modelo.
+	 */
 	public void guardarDatosSeleccionadosFechas() {
-		//se guarda la fecha seleecionada en el JCalendar:
-		
-		//NO SE PORQUE NO GUARDA LA FECHA EN EL modelo.reserva.setFechaIda, asigue la guardo en modelo.fechaIda
-		//modelo.reserva.setFechaIda((Date) fechaIda);
-		//modelo.reserva.setFechaVuelta((Date) fechaVuelta);
-		//System.out.println("La fecha en el modelo.reserva seria: " + modelo.reserva.getFechaIda());
-		
 		//metemos las fechas en el modelo
 		modelo.fechaIda = this.fechaIda;
 		modelo.fechaVuelta = this.fechaVuelta;
 		
 		//pruebas:
-		System.out.println("Fecha ida:" + fechaIda);
-		System.out.println("Fecha vuelta:" + fechaVuelta);
-		System.out.println("Fecha ida guardada en el modelo:" + modelo.fechaIda);
-	}
-	
-
-
-	
-    
-    /**
-	 * Funcion encargada de actualizar la informacion que se muestra en la interfaz
-	 */
-	public void actualizarFrame() {
-		// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
-		DefaultTableModel tablaHabs = (DefaultTableModel) vista.selHabitacion.tab.getModel();
-		mostrarDetallesHabs(tablaHabs);
+		System.out.println("Fecha ida:" + fechaIda + "Fecha vuelta:" + fechaVuelta);
 		
 	}
 	
-	
 	/**
-	 * 
-	 * 
-	 * @param tabla Tabla que se rellena con la informacion de la reserva
+	 * Método: mostrarDetallesHabs = se muestran los detalles de las habitaciones
+	 * @param tabla Tabla que se rellena con la informacion de las habitaciones
 	 */
-	public void mostrarDetallesHabs( DefaultTableModel tabla) {
+	public void mostrarDetallesHabs() {
+		// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+		DefaultTableModel tablaHabs = (DefaultTableModel) vista.selHabitacion.tab.getModel();
+		
 		Object[] datos = new Object[4];
-		tabla.setRowCount(0);
+		tablaHabs.setRowCount(0);
 		for(int i=0; i<listaHabitaciones.size();i++) {
 			datos[0] = listaHabitaciones.get(i).getCodHabitacion();
 			datos[1] = listaHabitaciones.get(i).getNumCamas();
@@ -185,7 +160,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
 			datos[2] = listaCamas;
 			datos[3] = (String.format("%.2f", listaHabitaciones.get(i).getPrecioHabitacion())  + "€");
-			tabla.addRow(datos);
+			tablaHabs.addRow(datos);
 		}
 	}
 	
@@ -205,7 +180,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			
 		
 			case "Continuar":	//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-				 //se comprueba que se haya seleccionado algún hotel:
+				 //se guarda en filaHotelsel la posición seleccionada en la tabla
 			    filaHotelsel = vista.buscarHotel.tab.getSelectedRow(); 	 
 			    
 				if (filaHotelsel != -1) {
@@ -223,7 +198,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				
 					
 					//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
-					actualizarFrame();
+					mostrarDetallesHabs();
 
 				
 					//(5º) Actualiza el siguiente panel, si se cumplen las validaciones.
@@ -232,10 +207,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 						vista.buscarHotel.setVisible(false);
 						vista.selHabitacion.setVisible(true);
 					}
-				    
-				   
 				}
-				
+
 				else {
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
 				}
@@ -250,7 +223,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			if (ciudad != null) {
 				int codCiudadSeleccionada = ciudad.getCodCiudad();
 				//muestra los hoteles en el JList
-				mostrarDatosHotelJTable(codCiudadSeleccionada);
+				mostrarHotelesEnJTable(codCiudadSeleccionada);
 			}
 		}
 		
@@ -265,11 +238,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		
 		if (botonPulsado == vista.buscarHotel.fechaIda) {	
 			fechaIda = new Date(vista.buscarHotel.fechaIda.getDate().getTime());
-			//guardamos fechaIda seleccionada en el modelo
-			System.out.println("La fecha idaaaa:" + fechaIda);
-			//no va// modelo.reserva.setFechaIda(fechaIda);
 			
-	
 		} else {	
 			fechaVuelta = new Date(vista.buscarHotel.fechaVuelta.getDate().getTime());
 		}		

@@ -270,31 +270,23 @@ public class ControladorPanPago implements ActionListener{
 	 * Funcion del boton continuar
 	 */
 	public void FuncionContinuar() {
-		sobra = modelo.funcionesPago.sobra(total, dinero); // Calcula el dinero que sobra para devolverselo al usuario
-		vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
-		vista.pago.setVisible(false); // Pone el panel de pago en invisible
 		
+		//(1º) muestra detalles de las vueltas
+		sobra = modelo.funcionesPago.sobra(total, dinero); // Calcula el dinero que sobra para devolverselo al usuario
 		vista.vueltas.txtTotal.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el dinero total
 		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 		
-		
-		// rellenar datos del cliente en la reserva //FALTA
-		for(int i=0; modelo.listaReservas.size()>i; i++) {
-			 modelo.reserva.setCliente(modelo.cliente);
-			 
-		}
 	   
-	    // insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
-		for(int i=0; modelo.listaReservas.size()>i; i++) {
-			modelo.consultas.insertarReserva(modelo.listaReservas, i, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
-		}
-		//no vaaaaaa
-		//guarda los datos de la reserva en en un fichero, 1 reserva por cada habitación. 
-		for(int i=0; modelo.listaReservas.size()>i; i++) {
-			modelo.funcionesReserva.imprimirReservaHabitacionesHotel(modelo, vista, i);
-		}
+	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
+		controlador.funcionesReserva.insertarReservasHabitacionesSel();
 		
+		//(3º)Genera un fichero con datos de la reserva, 1 fichero por cada reserva de cada habitación
+		controlador.funcionesReserva.generarFicherosReservasHabitacionesSel();
+		
+		//(4º) actualiza los paneles
+		vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
+		vista.pago.setVisible(false); // Pone el panel de pago en invisible
 	}
 	/**
 	 * Funcion del boton de cancelar

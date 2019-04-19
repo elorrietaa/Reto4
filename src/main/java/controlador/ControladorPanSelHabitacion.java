@@ -202,32 +202,24 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				guardarDatosSeleccionadoshabitacion();
 				guardarDatosSeleccionadosJTable();
 				
-				// (2º) Calcula el precio de la reserva o reservas realizadas:
-				//precio de cada reserva = precioHabitacion
 				
-				//(3º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
+				//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
 				guardarReservasHab();
 				
 				
-				// (2º) Calcula el precio TOTAL de la reserva o reservas realizadas:
-				precioReserva = controlador.funcionesReserva.calcularPrecioReservaHotel(listaHabSeleccionadas);
-				
-				//(4º) se muestran en la siguiente pantalla los detalles de la reserva y el precio de la reserva
+				//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
 				controlador.funcionesReserva.mostrarDatosReserva(listaHabSeleccionadas);
-				//se actualiza la tabla con las habitaciones seleccionadas
+				
+				//(4º) se actualiza la tabla con las habitaciones seleccionadas
 				actualizarFrame();
 				
-				//(4º)actualiza el siguiente panel:
+				//(5º) actualiza el siguiente panel:
 				// Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 				vista.selHabitacion.setVisible(false);
 				vista.detallesReserva.setVisible(true);
 				
-				
-				
 				break;
 	
-				 
-				
 		}
 		
 	}

@@ -274,22 +274,31 @@ public class ControladorPanPago implements ActionListener{
 		vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
 		vista.pago.setVisible(false); // Pone el panel de pago en invisible
 		
-		vista.vueltas.txtTotal.setText(Float.toString(total) + " €"); // Muesta el dinero total
+		vista.vueltas.txtTotal.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el dinero total
 		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 		
+		
+		// rellenar datos del cliente en la reserva //FALTA
+		for(int i=0; modelo.listaReservas.size()>i; i++) {
+			 modelo.reserva.setCliente(modelo.cliente);
+			 
+		}
+	   
+		
 		 //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
 	    for(int i=0; modelo.listaReservas.size()>i; i++) {
-	    	System.out.println("------->La lista de reservaaaas: " +"Código reserva: " +modelo.listaReservas.get(i).getCodReserva() + "cod alojamiento reservado " + modelo.listaReservas.get(i).getAlojamiento()+ "codigo habitacion reservada: "+ modelo.listaReservas.get(i).getHabitacion().getCodHabitacion() +"precio reserva 1 hab: "+ modelo.listaReservas.get(i).getPrecioReserva());
+	    	System.out.println("-^-^-^--->La lista de reservaaaas: " +" Código reserva: " +modelo.listaReservas.get(i).getCodReserva() +" cod alojamiento reservado: " + modelo.listaReservas.get(i).getAlojamiento()+ " codigo habitacion reservada: "+ modelo.listaReservas.get(i).getHabitacion().getCodHabitacion() +" precio reserva 1 hab: "+ modelo.listaReservas.get(i).getPrecioReserva());
 	    }
-		// rellenar datos del cliente en la reserva
-	    modelo.reserva.setCliente(modelo.cliente);
-		
+	    for(int i=0; modelo.listaReservas.size()>i; i++) {
+	    	 System.out.println(" dni cliente: " + modelo.cliente.getDni() );
+		}
+	   
 	
 	    //no vaaaaaa
 	    // insertar la reserva o reservas en BBDD //no vaaaaaa
 		
-		for(int i=0; modelo.listaReservas.size()<i; i++) {
+		for(int i=0; modelo.listaReservas.size()>i; i++) {
 			modelo.consultas.insertarReserva(modelo.listaReservas, i, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
 			
 		}

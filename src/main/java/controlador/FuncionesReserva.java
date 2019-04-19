@@ -87,7 +87,7 @@ public class FuncionesReserva {
 		
 		//SE MUESTRA EL PRECIO TOTAL:
 	  	vista.detallesReserva.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
-	  	modelo.precioTotal=modelo.reserva.getPrecioReserva();
+	  
 	}
 	
 

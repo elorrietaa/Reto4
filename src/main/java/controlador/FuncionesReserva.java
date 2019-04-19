@@ -2,10 +2,8 @@ package controlador;
 
 import java.util.ArrayList;
 
-import modelo.Cama;
 import modelo.Habitacion;
 import modelo.PrincipalModelo;
-import modelo.Reserva;
 import vista.JframePrincipal;
 
 public class FuncionesReserva {
@@ -15,8 +13,7 @@ public class FuncionesReserva {
 	JframePrincipal vista;
 	public float precioHabitacion;
 	public float precioReserva;
-	private ArrayList<Habitacion> listaHabitaciones;
-	private ArrayList<Cama> listaCamas;
+
 	
 	/**
 	 * Constructor de la clase FuncionesPago
@@ -44,17 +41,24 @@ public class FuncionesReserva {
 			precioReserva = precioReserva + listaHabSeleccionadas.get(i).getPrecioHabitacion();
 		}
 		
-		//(2º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
+		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();
 		
 		precioReserva = precioReserva*numNoches;
 		
-		//metemos el precio total de la reserva en el modelo:
+		//(3º) metemos el precio total de la reserva en el modelo:
 		modelo.precioTotal = precioReserva;
 		System.out.println("EL PRECIO TOTAL DE LA RESERVA DE TODAS LAS HABS DEL HOTEL ES calcularPrecioReservaHotel "+modelo.precioTotal);
+		
 		return precioReserva;
 	}
 	
+	/** 
+	 * Método calcularPrecioHabXNoches = calcula el precio de una habitación por el número de noches que se desea reservar
+	 * @param listaHabSeleccionadas = se le pasa la lista con la shabitaciones seleccionadas
+	 * @param pos = la posición que está recorriendo un for.
+	 * @return
+	 */
 	public float calcularPrecioHabXNoches( ArrayList<Habitacion> listaHabSeleccionadas, int pos) {
 		float precioHabXnoches=0;
 		//(1º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.

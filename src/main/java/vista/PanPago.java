@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 /**
  * Clase PanPago = contiene los elementos necesarios para formar el Panel en el que se muestran los detalles para realizar el pago.
  * @author alba
@@ -21,7 +22,7 @@ public class PanPago extends JPanel {
 	 * Create the panel.
 	 */
 	public PanPago() {
-		setBackground(Color.LIGHT_GRAY); 
+		setBackground(Color.WHITE); 
 		setBounds(0, 0, 1024, 720);
 		setLayout(null);
 		
@@ -81,8 +82,9 @@ public class PanPago extends JPanel {
 		btn1cen.setBounds(513, 441, 89, 23);
 		add(btn1cen);
 		
-		lblTotal = new JLabel("Total");
-		lblTotal.setBounds(187, 63, 46, 14);
+		lblTotal = new JLabel("Total:");
+		lblTotal.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblTotal.setBounds(175, 53, 65, 26);
 		add(lblTotal);
 		
 		total = new JTextField();
@@ -91,8 +93,9 @@ public class PanPago extends JPanel {
 		add(total);
 		total.setColumns(10);
 		
-		lblTotalIntroducido = new JLabel("Total introducido");
-		lblTotalIntroducido.setBounds(339, 63, 89, 14);
+		lblTotalIntroducido = new JLabel("Total introducido:");
+		lblTotalIntroducido.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblTotalIntroducido.setBounds(307, 58, 172, 16);
 		add(lblTotalIntroducido);
 		
 		totalIntro = new JTextField();
@@ -101,8 +104,9 @@ public class PanPago extends JPanel {
 		add(totalIntro);
 		totalIntro.setColumns(10);
 		
-		lblAPagar = new JLabel("A pagar");
-		lblAPagar.setBounds(533, 63, 46, 14);
+		lblAPagar = new JLabel("A pagar:");
+		lblAPagar.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblAPagar.setBounds(513, 50, 111, 33);
 		add(lblAPagar);
 		
 		aPagar = new JTextField();

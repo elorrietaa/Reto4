@@ -26,6 +26,7 @@ public class PanLogin extends JPanel {
 	 * Create the panel.
 	 */
 	public PanLogin() {
+		setBackground(Color.WHITE);
 		
 		// configuracion del panel
 		setLayout(null);

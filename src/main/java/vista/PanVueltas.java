@@ -22,11 +22,12 @@ public class PanVueltas extends JPanel {
 	 * Create the panel.
 	 */
 	public PanVueltas() {
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(Color.WHITE);
 		setBounds(0, 0, 1024, 720);
 		setLayout(null);
 		
 		lblTotalAPagar = new JLabel("Total a pagar");
+		lblTotalAPagar.setBackground(new Color(240, 240, 240));
 		lblTotalAPagar.setBounds(356, 239, 80, 14);
 		add(lblTotalAPagar);
 		
@@ -51,6 +52,7 @@ public class PanVueltas extends JPanel {
 		add(lblVueltas);
 		
 		PanelVueltas = new JTextPane();
+		PanelVueltas.setBackground(new Color(245, 245, 245));
 		PanelVueltas.setEditable(false);
 		PanelVueltas.setBounds(440, 328, 129, 159);
 		add(PanelVueltas);

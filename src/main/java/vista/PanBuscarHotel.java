@@ -49,6 +49,7 @@ public class PanBuscarHotel extends JPanel {
     	public JScrollPane scrollPaneIda;
     	
 	public PanBuscarHotel() {
+		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(0,0,1024,720);
 		
@@ -56,23 +57,23 @@ public class PanBuscarHotel extends JPanel {
 		buttonContinuar.setBounds(708, 663, 89, 23);
 		add(buttonContinuar);
 		
-		labelCiudad = new JLabel("Selecciona la ciudad :");
-		labelCiudad.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelCiudad.setBounds(83, 53, 137, 14);
+		labelCiudad = new JLabel("Seleccione una ciudad :");
+		labelCiudad.setFont(new Font("Dialog", Font.BOLD, 20));
+		labelCiudad.setBounds(44, 37, 245, 25);
 		add(labelCiudad);
 		
 		cBCiudad = new JComboBox<Object>();
-		cBCiudad.setBounds(249, 52, 179, 20);
+		cBCiudad.setBounds(294, 42, 179, 20);
 		add(cBCiudad);
 		
-		labelFecha = new JLabel("Seleccione Fecha :");
-		labelFecha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelFecha.setBounds(95, 392, 125, 14);
+		labelFecha = new JLabel("Seleccione su fecha de llegada y su fecha de salida:");
+		labelFecha.setFont(new Font("Dialog", Font.BOLD, 20));
+		labelFecha.setBounds(44, 365, 645, 43);
 		add(labelFecha);
 		
-		labelHotel = new JLabel("Seleccione Hotel :");
-		labelHotel.setBounds(101, 92, 125, 14);
-		labelHotel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelHotel = new JLabel("Seleccione un hotel :");
+		labelHotel.setBounds(72, 92, 208, 23);
+		labelHotel.setFont(new Font("Dialog", Font.BOLD, 19));
 		add(labelHotel);
 		
 		// TABLA HOTELES
@@ -111,16 +112,16 @@ public class PanBuscarHotel extends JPanel {
 				tab.getColumnModel().getColumn(1).setPreferredWidth(80);
 				
 				scrollPaneIda = new JScrollPane(tab);
-				scrollPaneIda.setBounds(249,103,399,216);
+				scrollPaneIda.setBounds(290,92,399,216);
 				add(scrollPaneIda);
 		
 		//FECHAS:
 		fechaIda = new JCalendar();
-		fechaIda.setBounds(255, 392, 184, 153);
+		fechaIda.setBounds(289, 419, 184, 153);
 		add(fechaIda);
 		
 		fechaVuelta = new JCalendar();
-		fechaVuelta.setBounds(468, 392, 184, 153);
+		fechaVuelta.setBounds(505, 419, 184, 153);
 		add(fechaVuelta);
 
 	}

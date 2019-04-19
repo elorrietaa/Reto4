@@ -43,7 +43,7 @@ public class PanSelHabitacion extends JPanel {
 		
 		// label billete ida
 		lblBilleteIda = new JLabel("Seleccione una o varias habitaciones");
-		lblBilleteIda.setFont(new Font("Agency FB", Font.BOLD, 22));
+		lblBilleteIda.setFont(new Font("Dialog", Font.BOLD, 22));
 		lblBilleteIda.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBilleteIda.setBounds(45, 60, 505, 40);
 		add(lblBilleteIda);

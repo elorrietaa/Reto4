@@ -14,7 +14,7 @@ public class FuncionesReserva {
 	public float precioHabitacion;
 	public float precioReserva;
 
-	
+	 
 	/**
 	 * Constructor de la clase FuncionesPago
 	 * 
@@ -75,9 +75,9 @@ public class FuncionesReserva {
 	/**
 	 * Método calcularNochesReservadas = calcula el número de noches reservadas por el usuario.
 	 */
-	public int calcularNochesReservadas() {
+	public int calcularNochesReservadas() { 
 		int numNoches=(int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
-		
+		 
 		//metemos el número de noches en el modelo:
 		modelo.numNoches = numNoches;
 		System.out.println("Noches reservadas:  "+modelo.numNoches);

@@ -1,5 +1,9 @@
 package App;
 
+import java.awt.EventQueue;
+
+import javax.swing.UIManager;
+
 import controlador.PrincipalControlador;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
@@ -12,13 +16,14 @@ public class PrincipalReto4 {
 
     public static void main(String[] args) {
     	
+    	//Declaración a inicialización de vista, modelo y controlador
     	JframePrincipal vista = new JframePrincipal();
 		PrincipalModelo modelo = new PrincipalModelo();
 		PrincipalControlador controlador = new PrincipalControlador(modelo, vista);
 		
 		controlador.inicializarVista();
 		controlador.inicializarListeners(); 
-		
+  
     }  
 
 } 

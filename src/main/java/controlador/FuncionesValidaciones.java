@@ -14,7 +14,7 @@ public class FuncionesValidaciones {
 	public float precioReserva;
 	
 	Date fechaActual;
-	
+	 
 	/**
 	 * Constructor de la clase FuncionesPago
 	 * 

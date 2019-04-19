@@ -1,10 +1,11 @@
-package modelo;
+package controlador;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import controlador.FuncionesPago;
+import modelo.PrincipalModelo;
 
 public class PagoTest {
 

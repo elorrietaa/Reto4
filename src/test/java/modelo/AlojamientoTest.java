@@ -47,4 +47,37 @@ public class AlojamientoTest {
 		alojamientoPrueba.setPrecioAlojamiento(precioAlojamiento);
 		assertEquals(precioAlojamiento,alojamientoPrueba.getPrecioAlojamiento(),0.2);
 	}
+    
+    @Test
+	public void testConstuctorMal() {
+		assertNotEquals(4, alojamientoPrueba.getCodAlojamiento());
+		assertNotEquals("k", alojamientoPrueba.getNombre());
+		assertNotEquals(9, alojamientoPrueba.getNumHabitaciones());
+		assertNotEquals("k", alojamientoPrueba.getUbicacion());
+	}
+    @Test
+	public void testCodAlojamientoMal() {
+		alojamientoPrueba.setCodAlojamiento(codAlojamiento); 
+		assertNotEquals(5,alojamientoPrueba.getCodAlojamiento());
+	}
+    @Test
+   	public void testNombreMal() {
+   		alojamientoPrueba.setNombre(nombre);
+   		assertNotEquals("k",alojamientoPrueba.getNombre());
+   	} 
+    @Test
+	public void testNumHabitacionesMal() {
+		alojamientoPrueba.setNumHabitaciones(numHabitaciones);
+		assertNotEquals(8,alojamientoPrueba.getNumHabitaciones());
+	}
+    @Test
+   	public void testUbicacionMal() {
+   		alojamientoPrueba.setUbicacion(ubicacion);
+   		assertNotEquals("k",alojamientoPrueba.getUbicacion());
+   	}
+    @Test
+	public void testPrecioAlojamientoMal() {
+		alojamientoPrueba.setPrecioAlojamiento(precioAlojamiento);
+		assertNotEquals(0,alojamientoPrueba.getPrecioAlojamiento(),0.2);
+	}
 } 

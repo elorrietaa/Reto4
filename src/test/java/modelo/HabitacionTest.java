@@ -72,4 +72,56 @@ public class HabitacionTest {
 	public void testToString() {
 		assertEquals(tipoHabitacion, habitacionPrueba.toString());
 	}
+	
+	 @Test 
+		public void testConstuctorMal() {
+			assertNotEquals(7, habitacionPrueba.getCodHabitacion());
+			assertNotEquals("k", habitacionPrueba.getTipoHabitacion());
+			assertNotEquals(0, habitacionPrueba.getTamanio(), 0.1); 
+			assertNotEquals(0,habitacionPrueba.getNumCamas());
+			assertNotEquals(0, habitacionPrueba.getPrecioHabitacion(),0.1);
+			assertNotEquals(0, habitacionPrueba.getNumTipCam());
+			assertNotEquals("k", habitacionPrueba.getTiposCamaHab());
+		}
+		 @Test
+		public void testCodHabitacionMal() {
+		habitacionPrueba.setCodHabitacion(codHabitacion); 
+		assertNotEquals(0,habitacionPrueba.getCodHabitacion());
+		}
+
+		 @Test
+		public void testTipoHabitacionMal() {
+		habitacionPrueba.setTipoHabitacion(tipoHabitacion);
+		assertNotEquals("k", habitacionPrueba.getTipoHabitacion());
+		}
+		 @Test
+		public void testTamanioMal() {
+		habitacionPrueba.setTamanio(tamanio);
+		assertNotEquals(0, habitacionPrueba.getTamanio(),0.1);
+		}
+		 @Test
+		public void testNumCamasMal() {
+			habitacionPrueba.setNumCamas(numCamas);
+			assertNotEquals(0, habitacionPrueba.getNumCamas());
+		}
+		 @Test
+		public void testPrecioHabitacionMal() {
+			habitacionPrueba.setPrecioHabitacion(precioHabitacion);
+			assertNotEquals(0, habitacionPrueba.getPrecioHabitacion(),0.1);
+		}
+		 @Test
+		public void testNumTipCamaMal() {
+			habitacionPrueba.setNumTipCam(numTipCam);
+			assertNotEquals(0, habitacionPrueba.getNumTipCam());
+		}
+		@Test
+		public void testTiposCamaHabMal() {
+			habitacionPrueba.setTiposCamaHab(tiposCamaHab);
+			assertNotEquals("k", habitacionPrueba.getTiposCamaHab());
+		}	
+		
+		 @Test
+		public void testToStringMal() {
+			 assertNotEquals("k", habitacionPrueba.toString());
+		}
 }

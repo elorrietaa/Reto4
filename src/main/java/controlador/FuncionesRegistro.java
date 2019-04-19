@@ -140,7 +140,7 @@ public class FuncionesRegistro {
 		contrasena = controlador.funcionesRegistro.encriptacion(contrasena);
 		
 		cliente = modelo.consultas.buscarClientePorDNI(usuario);
-		
+		 
 		if(cliente != null) {
 			if(!contrasena.equals(cliente.getContrasena())) {
 				cliente = null;

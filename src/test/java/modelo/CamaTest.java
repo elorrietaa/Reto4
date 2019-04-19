@@ -20,19 +20,45 @@ public class CamaTest {
 		assertEquals(codCama, camaPrueba.getCodCama());
 		assertEquals(tipoCama, camaPrueba.getTipoCama());
 	}
+	
+	@Test
+	public void testConstuctorMal() {
+		assertNotEquals(5, camaPrueba.getCodCama());
+		assertNotEquals("d", camaPrueba.getTipoCama());
+	}
+	
 	 @Test
 	public void testCodCama() {
 	     camaPrueba.setCodCama(codCama);
 	     assertEquals(codCama, camaPrueba.getCodCama());
 	} 
+	
+	@Test
+	public void testCodCamaMal() {
+		camaPrueba.setCodCama(codCama);
+		assertNotEquals(6, camaPrueba.getCodCama());
+	} 
+	 
 	 @Test
 	public void testTipoCama() {
 	     camaPrueba.setTipoCama(tipoCama);
 	     assertEquals(tipoCama, camaPrueba.getTipoCama());
 	}
+	 
+	@Test
+	public void testTipoCamaMal() {
+		  camaPrueba.setTipoCama(tipoCama);
+		  assertNotEquals("f", camaPrueba.getTipoCama());
+	}
+	 
 	 @Test
 	public void testToString() {
-			assertEquals(tipoCama, camaPrueba.toString());
+		assertEquals(tipoCama, camaPrueba.toString());
+	}
+	 
+	 @Test
+	public void testToStringMal() {
+		assertNotEquals("f", camaPrueba.toString());
 	}
 
 }

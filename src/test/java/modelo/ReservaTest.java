@@ -65,4 +65,52 @@ public class ReservaTest {
 		reservaPrueba.setFechaVuelta(fechaVuelta);
 		assertEquals(fechaVuelta, reservaPrueba.getFechaVuelta());
 	}
+    
+    @Test 
+   	public void testConstuctorMal() {
+   		assertNotEquals(0, reservaPrueba.getCodReserva());
+   		assertNotEquals(null, reservaPrueba.getAlojamiento());
+   		assertNotEquals(0, reservaPrueba.getPrecioReserva(),0.2);
+ 
+   	}
+    @Test
+   	public void testCodReservaMal() {
+		reservaPrueba.setCodReserva(codReserva); 
+		assertNotEquals(0,reservaPrueba.getCodReserva());
+   	}
+    @Test
+	public void testAlojamientoMal() {
+		reservaPrueba.setAlojamiento(alojamiento); 
+		assertNotEquals(null,reservaPrueba.getAlojamiento());
+	}
+    @Test
+	public void testHabitacionMal() {
+		reservaPrueba.setHabitacion(habitacion); 
+		assertNotEquals(null, reservaPrueba.getHabitacion());
+	}
+    @Test
+   	public void testPrecioReservaMal() {
+   		reservaPrueba.setPrecioReserva(precioReserva); 
+   		assertNotEquals(0,reservaPrueba.getPrecioReserva(),0.2);
+   	}
+    @Test
+    public void testToStringMal() {
+    	assertNotEquals("Dattgyos de la reserva: Código de Reserva:" + this.codReserva, reservaPrueba.toString());
+    }
+    @Test
+	public void testClienteMal() {
+		reservaPrueba.setCliente(cliente);
+		assertNotEquals(null, reservaPrueba.getCliente());
+	}
+   
+    @Test
+	public void testFechaMal() {
+		reservaPrueba.setFechaIda(fechaIda);
+		assertNotEquals(0, reservaPrueba.getFechaIda());
+	}
+    @Test
+	public void testVueltaMal() {
+		reservaPrueba.setFechaVuelta(fechaVuelta);
+		assertNotEquals(0, reservaPrueba.getFechaVuelta());
+	}
 }

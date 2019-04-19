@@ -29,4 +29,18 @@ public class HotelTest {
 	public void testToStringDatosHotel() {
 		 assertEquals("Código hotel: " + this.codAlojamiento + "Nombre: " + this.nombre, hotelPrueba.toStringDatosHotel());
 	}
+    
+    @Test
+   	public void testEstrellasMal() {
+	hotelPrueba.setEstrellas(estrellas);
+   		assertNotEquals(0,hotelPrueba.getEstrellas());
+   	}
+    @Test
+   	public void testToStringMal() {
+    	assertNotEquals("k", hotelPrueba.toString());
+   	}
+    @Test
+	public void testToStringDatosHotelMal() {
+    	assertNotEquals("Código hotesrgtl: " + this.codAlojamiento + "Nombre: " + this.nombre, hotelPrueba.toStringDatosHotel());
+	}
 }

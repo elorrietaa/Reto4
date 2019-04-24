@@ -12,6 +12,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -177,9 +178,11 @@ public class PanDetallesReserva extends JPanel {
 		add(lblNmeroDeNoches);
 		
 		textFieldNumNoches = new JTextField();
+		textFieldNumNoches.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		textFieldNumNoches.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldNumNoches.setEditable(false);
 		textFieldNumNoches.setColumns(10);
-		textFieldNumNoches.setBounds(327, 247, 86, 20);
+		textFieldNumNoches.setBounds(327, 247, 46, 20);
 		add(textFieldNumNoches);
 		
 

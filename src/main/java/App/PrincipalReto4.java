@@ -1,9 +1,5 @@
 package App;
 
-import java.awt.EventQueue;
-
-import javax.swing.UIManager;
-
 import controlador.PrincipalControlador;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;

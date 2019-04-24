@@ -1,7 +1,9 @@
 package controlador;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import modelo.Cama;
 import modelo.Habitacion;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
@@ -46,7 +48,11 @@ public class FuncionesReserva {
 		
 		precioReserva = precioReserva*numNoches;
 		
-		//(3º) metemos el precio total de la reserva en el modelo:
+		//(3º)Redondeamos a 2 decimales
+		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
+		precioReserva = precioReserva/100;//redondear a dos decimales
+		
+		//(4º) metemos el precio total de la reserva en el modelo:
 		modelo.precioTotal = precioReserva;
 		System.out.println("EL PRECIO TOTAL DE LA RESERVA DE TODAS LAS HABS DEL HOTEL ES calcularPrecioReservaHotel "+modelo.precioTotal);
 		
@@ -61,12 +67,15 @@ public class FuncionesReserva {
 	 */
 	public float calcularPrecioHabXNoches( ArrayList<Habitacion> listaHabSeleccionadas, int pos) {
 		float precioHabXnoches=0;
+		 DecimalFormat f = new DecimalFormat("##.00");
 		//(1º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();
 		
 		//calcular el precio de la habitacion x noches.
 		precioHabXnoches = listaHabSeleccionadas.get(pos).getPrecioHabitacion() * numNoches;
 		
+		precioHabXnoches = Math.round(precioHabXnoches*100); //redondear a dos decimales
+		precioHabXnoches = precioHabXnoches/100;//redondear a dos decimales
 		
 		return precioHabXnoches;
 	}
@@ -124,7 +133,47 @@ public class FuncionesReserva {
 		}
 	}
 	
+	/**
+	 * Método: mostrarTiposDeCamas = devuelve un String que contiene el número de camas de cada tipo que hay.
+	 * @param listaCamas
+	 * @return
+	 */
+	public String mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
+		System.out.println("****TIPOS DE CAMAS DE LA HABITACIÓN SELECCIONADA***");
+		String tiposCamaHab = "";
+		int numTipCam [] = new int [3];
+		
+		for (int i=0; listaCamas.size()>i; i++) {
+			if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("simple")) {
+				numTipCam[0] = numTipCam[0] +1;
+			}
+			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("matrimonio")) {
+				numTipCam[1] = numTipCam[1] + 1;
+			}
+			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("infantil")) {
+				numTipCam[2] = numTipCam[2] + 1;
+			}
+			System.out.println(listaCamas.get(i).getTipoCama().toString());
+		
+		}
+		//se rellena el String con los tipos de cama 
+		tiposCamaHab = numTipCam[0] + " simple, " + numTipCam[1] + " matrimonio y " + numTipCam[2] + " infantil.";
+		System.out.println(tiposCamaHab);
+		
 	
-
+		
+		return tiposCamaHab;
+	}
 	
+	/*
+	public String mostrarStringTiposCama(int [] numTipCam) {
+		String tiposCamaHab = "";
+		for (int i=0; numTipCam.length>i; i++) {
+			tiposCamaHab = numTipCam[0] + " camas simples, " + numTipCam[1] + " camas de matrimonio y " + numTipCam[2] + " cunas o camas infantiles.";
+		}
+		System.out.println(tiposCamaHab);
+		
+		return tiposCamaHab;
+	}
+	*/
 }

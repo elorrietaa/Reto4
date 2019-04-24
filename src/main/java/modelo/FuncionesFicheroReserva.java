@@ -1,5 +1,6 @@
 package modelo;
 import java.io.*;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -59,7 +60,11 @@ public class FuncionesFicheroReserva {
 			writer.println("Código habitación: " + modelo.listaReservas.get(pos).getHabitacion().getCodHabitacion());
 			writer.println("Tipo de habitación: " + modelo.listaReservas.get(pos).getHabitacion().getTipoHabitacion());
 			writer.println("Número de camas de la habitación: " + modelo.listaReservas.get(pos).getHabitacion().getNumCamas());
-			writer.println("Tipo de camas de la habitación: " + modelo.listaReservas.get(pos).getHabitacion().getTiposCamaHab());
+			
+			//Mostrar detalles de las camas de la habitación seleccionada: 
+			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.listaReservas.get(pos).getHabitacion().getCodHabitacion());
+		
+			writer.println("Tipo de camas de la habitación: " + listaCamas.toString());
 			writer.println();
 			writer.println("Precio habitación: " + (String.format("%.2f",modelo.listaReservas.get(pos).getHabitacion().getPrecioHabitacion()) + "€/ 1 noche"));
 			writer.println("Precio habitación: " + (String.format("%.2f",modelo.listaReservas.get(pos).getPrecioReserva()) + "€/ "+ modelo.numNoches+" noches"));

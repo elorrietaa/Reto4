@@ -34,8 +34,9 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	public PrincipalControlador controlador;
 
 	private ArrayList<Hotel> listaHoteles;
-	private ArrayList<Habitacion> listaHabitaciones;
+	public ArrayList<Habitacion> listaHabitaciones;
 
+	
 	Ciudad ciudad;
 	Hotel hotel;
 	Habitacion habitacion;

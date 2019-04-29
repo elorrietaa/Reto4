@@ -18,13 +18,6 @@ public class FuncionesReservaTest {
 	
 	FuncionesReserva funcionesReserva = new FuncionesReserva(modelo, vista, controlador);
 	
-	
-	
-	
-	
-	//no me deja meterlo en el arraylist
-	//listaHabitacionPrueba.add(habitacion1);
-	
 	ArrayList<Habitacion> listaHabitacionPrueba;
 	     
 	  @Before
@@ -52,13 +45,17 @@ public class FuncionesReservaTest {
 	public void testCalcularPrecioReservaHotel() {
 		float precioReservaEsperado = 41;
 		//int numNoches = 1;
+		
 		float precioObservado = funcionesReserva.calcularPrecioReservaHotel(listaHabitacionPrueba);
 		assertEquals(precioReservaEsperado, precioObservado ,0.5);
 	}
 	
 	@Test
 	public void testCalcularNochesReservadas() {
+		int numNochesEsperadas = 1;
+		int numNochesObservadas = 1;
 		
+		assertEquals(numNochesEsperadas, numNochesObservadas);
 	}
 
 }

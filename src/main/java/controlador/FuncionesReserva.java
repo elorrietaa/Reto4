@@ -44,7 +44,7 @@ public class FuncionesReserva {
 		}
 		
 		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
-		int numNoches = calcularNochesReservadas(); 
+		int numNoches = calcularNochesReservadas();  
 		
 		precioReserva = precioReserva*numNoches;
 		

@@ -192,7 +192,7 @@ public class Consultas {
     		ps.setDate(3, fechaVuelta);
     		ps.setDate(4, fechaIda);
     		ps.setDate(5, fechaVuelta);
-    		ps.setDate(6, fechaIda);
+    		ps.setDate(6, fechaIda);  
     		ps.setDate(7, fechaVuelta);
     		
     		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   

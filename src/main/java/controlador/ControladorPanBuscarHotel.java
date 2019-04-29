@@ -205,7 +205,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 					listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, hotel.getCodAlojamiento());
-				
+					
 					
 					//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 					mostrarDetallesHabs();

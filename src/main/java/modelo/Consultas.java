@@ -179,7 +179,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT habitaciones.Cod_habitacion, habitaciones.N_camas FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion and habitaciones.Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
+    	String query = "SELECT habitaciones.Cod_habitacion, habitaciones.Tipo_Habitacion, habitaciones.Tamanio, habitaciones.N_camas, habitaciones.Precio_hab FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion and habitaciones.Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
     	
     	try { 
     		// Abrimos una conexion
@@ -202,7 +202,10 @@ public class Consultas {
     		while (rs.next()) {
     			habitacion = new Habitacion(); 
     			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
+    			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
+    			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setNumCamas(rs.getInt("N_Camas"));
+    			habitacion.setPrecioHabitacion(rs.getFloat("Precio_hab"));
     			listaHabDisp.add(habitacion);
     		}
     				

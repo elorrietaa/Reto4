@@ -210,7 +210,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
 					
 					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
-					listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, hotel.getCodAlojamiento());
+					listaHabitaciones = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
 					
 					
 					//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS

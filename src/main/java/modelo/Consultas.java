@@ -179,7 +179,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT habitaciones.Cod_habitacion, habitaciones.N_camas FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion and habitaciones.Cod_habitacion NOT IN( SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND (Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN(? AND ?) OR Fecha_entrada BETWEEN(? AND ?)";
+    	String query = "SELECT habitaciones.Cod_habitacion, habitaciones.N_camas FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion and habitaciones.Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
     	
     	try { 
     		// Abrimos una conexion

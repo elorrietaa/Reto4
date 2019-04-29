@@ -135,6 +135,12 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	 * Método: guardarDatosSeleccionadosFechas = guarda las fechas seleccionadas en el JCalendar en el modelo.
 	 */
 	public void guardarDatosSeleccionadosFechas() {
+	    	if (fechaIda == null) {
+	    	    fechaIda = consultas.mostrarFechaActual();
+	    	}
+	    	if (fechaVuelta == null) {
+	    	    fechaVuelta = consultas.mostrarFechaActual();
+	    	}
 		//metemos las fechas en el modelo
 		modelo.fechaIda = this.fechaIda;
 		modelo.fechaVuelta = this.fechaVuelta;
@@ -194,7 +200,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			    filaHotelsel = vista.buscarHotel.tab.getSelectedRow(); 	 
 			    
 				if (filaHotelsel != -1) {
-
+ 
 				    //(1º) Guarda los datos seleecionados en el modelo
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosHotel();

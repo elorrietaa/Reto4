@@ -18,7 +18,7 @@ public class PanBienvenida extends JPanel {
 		setBounds(0, 0, 1024, 720);
 		
 		btnContinuar = new JButton("");
-		btnContinuar.setIcon(new ImageIcon("C:\\Users\\alba\\Google Drive\\1DAM\\RETO4\\ImagenPanBienvenida.png"));
+		btnContinuar.setIcon(new ImageIcon("C:\\workspace\\RETO4\\Reto4\\img\\ImagenPanBienvenida.png"));
 		btnContinuar.setSelectedIcon(null);
 		btnContinuar.setContentAreaFilled(false);
 		btnContinuar.setBorder(null);

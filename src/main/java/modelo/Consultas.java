@@ -179,7 +179,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT habitaciones.Cod_habitacion, habitaciones.Tipo_Habitacion, habitaciones.Tamanio, habitaciones.N_camas, habitaciones.Precio_hab FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion and habitaciones.Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
+    	String query = "SELECT Cod_habitacion, Tipo_Habitacion, Tamanio, N_camas, Precio_hab FROM `habitaciones` WHERE Cod_alojamiento=? AND Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
     	
     	try { 
     		// Abrimos una conexion
@@ -188,12 +188,13 @@ public class Consultas {
     		// preparamos la consulta SQL a la base de datos
     		ps = connection.prepareStatement(query);
     		ps.setInt(1, codHotelSeleccionado);
-    		ps.setDate(2, fechaIda);
-    		ps.setDate(3, fechaVuelta);
-    		ps.setDate(4, fechaIda);
-    		ps.setDate(5, fechaVuelta);
-    		ps.setDate(6, fechaIda);  
-    		ps.setDate(7, fechaVuelta);
+    		ps.setInt(2, codHotelSeleccionado);
+    		ps.setDate(3, fechaIda);
+    		ps.setDate(4, fechaVuelta);
+    		ps.setDate(5, fechaIda);
+    		ps.setDate(6, fechaVuelta);
+    		ps.setDate(7, fechaIda);  
+    		ps.setDate(8, fechaVuelta);
     		
     		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
     		rs = ps.executeQuery();

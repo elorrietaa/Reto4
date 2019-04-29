@@ -179,7 +179,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT h.Cod_habitacion, h.N_camas FROM `habitaciones` H, `reservas` R where H.Cod_habitacion=R.Cod_habitacion and  h.Cod_habitacion NOT IN( SELECT h.Cod_habitacion FROM `habitaciones` H, `reservas` R where H.Cod_habitacion=R.Cod_habitacion and ((R.Fecha_entrada <= `?` AND Fecha_salida >= `?` ) OR Fecha_salida BETWEEN `?` AND `?` OR Fecha_entrada BETWEEN `?` AND `?` AND H.Cod_alojamiento=?)";
+    	String query = "SELECT habitaciones.Cod_habitacion, habitaciones.N_camas FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion and habitaciones.Cod_habitacion NOT IN( SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND (Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN(? AND ?) OR Fecha_entrada BETWEEN(? AND ?)";
     	
     	try { 
     		// Abrimos una conexion
@@ -187,13 +187,13 @@ public class Consultas {
     				
     		// preparamos la consulta SQL a la base de datos
     		ps = connection.prepareStatement(query);
-    		ps.setDate(1, fechaIda);
-    		ps.setDate(2, fechaVuelta);
-    		ps.setDate(3, fechaIda);
-    		ps.setDate(4, fechaVuelta);
-    		ps.setDate(5, fechaIda);
-    		ps.setDate(6, fechaVuelta);
-    		ps.setInt(7, codHotelSeleccionado);
+    		ps.setInt(1, codHotelSeleccionado);
+    		ps.setDate(2, fechaIda);
+    		ps.setDate(3, fechaVuelta);
+    		ps.setDate(4, fechaIda);
+    		ps.setDate(5, fechaVuelta);
+    		ps.setDate(6, fechaIda);
+    		ps.setDate(7, fechaVuelta);
     		
     		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
     		rs = ps.executeQuery();
@@ -508,9 +508,9 @@ public class Consultas {
 			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 			stmt.executeUpdate();
 			
-			result = stmt.getGeneratedKeys();
+			/*result = stmt.getGeneratedKeys();
 			result.next();
-			codReserva = result.getInt(1);
+			codReserva = result.getInt(1);*/
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

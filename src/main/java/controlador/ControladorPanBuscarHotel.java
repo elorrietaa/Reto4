@@ -34,7 +34,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	public PrincipalControlador controlador;
 
 	private ArrayList<Hotel> listaHoteles;
-	public ArrayList<Dormitorio> listaHabitaciones;
+	public ArrayList<Dormitorio> listaDormitorios;
 
 	
 	Ciudad ciudad;
@@ -162,12 +162,12 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		
 		Object[] datos = new Object[4];
 		tablaHabs.setRowCount(0);
-		for(int i=0; i<listaHabitaciones.size();i++) {
-			datos[0] = listaHabitaciones.get(i).getCodHabitacion();
-			datos[1] = listaHabitaciones.get(i).getNumCamas();
+		for(int i=0; i<listaDormitorios.size();i++) {
+			datos[0] = listaDormitorios.get(i).getCodHabitacion();
+			datos[1] = listaDormitorios.get(i).getNumCamas();
 			
 			//Mostrar detalles de las camas de la habitación seleccionada: 
-			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
+			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 			//se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
 			//modelo.habitacion.setTiposCamaHab(tiposCamaHab); 
@@ -177,7 +177,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			
 			datos[2] = tiposCamaHab;
 			
-			datos[3] = (String.format("%.2f", listaHabitaciones.get(i).getPrecioHabitacion())  + "€");
+			datos[3] = (String.format("%.2f", listaDormitorios.get(i).getPrecioHabitacion())  + "€");
 			tablaHabs.addRow(datos);
 		}
 	}
@@ -210,9 +210,9 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 						continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
 						
 						//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
-						listaHabitaciones = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
-						for(int i = 0; i < listaHabitaciones.size(); i++) {
-							System.out.println(listaHabitaciones.get(i).getCodHabitacion());
+						listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
+						for(int i = 0; i < listaDormitorios.size(); i++) {
+							System.out.println(listaDormitorios.get(i).getCodHabitacion());
 						}
 						
 						//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS

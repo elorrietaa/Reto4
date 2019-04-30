@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Alojamiento {
     protected int codAlojamiento;
     protected String nombre;
-    protected ArrayList<Dormitorio> listaHabitaciones;
+    protected ArrayList<Habitacion> listaHabitaciones;
     protected ArrayList<Dormitorio> listaHabSeleccionadas; 
 	protected int numHabitaciones;
     protected String ubicacion;
@@ -113,27 +113,7 @@ public class Alojamiento {
      * Getter del arrayList listaHabitaciones
      * @return
      */
-    public ArrayList<Dormitorio> getListaHabitaciones() {
-		return listaHabitaciones;
-	}
-    /**
-     * Setter del arrayList listaHabitaciones
-     * @param listaHabitaciones
-     */
-	public void setListaHabitaciones(ArrayList<Dormitorio> listaHabitaciones) {
-		this.listaHabitaciones = listaHabitaciones;
-	}
-	/**
-     * Getter del arrayList listaHabSeleccionadas
-     * @return
-     */
-	public ArrayList<Dormitorio> getListaHabSeleccionadas() {
-		return listaHabSeleccionadas;
-	}
-	/**
-     * Setter del arrayList listaHabSeleccionadas
-     * @return
-     */
+   
 	public void setListaHabSeleccionadas(ArrayList<Dormitorio> listaHabSeleccionadas) {
 		this.listaHabSeleccionadas = listaHabSeleccionadas;
 	}

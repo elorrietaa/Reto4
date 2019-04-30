@@ -42,7 +42,7 @@ public class ControladorPanDetallesReserva implements ActionListener {
 			String botonPulsado = ((JButton) sourceObject).getActionCommand();
 		   
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
-			switch (botonPulsado) {
+			switch (botonPulsado) { 
 				
 			case "Atras":
 				vista.selHabitacion.setVisible(true);

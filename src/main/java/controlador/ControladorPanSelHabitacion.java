@@ -39,8 +39,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	String tiposCamaHab;
 	
 	public int[] indHabsSel = null;
-	private ArrayList<Dormitorio> listaHabitaciones;
-	private ArrayList<Dormitorio> listaHabSeleccionadas;
+	private ArrayList<Dormitorio> listaDormitorios;
+	private ArrayList<Dormitorio> listaDormSeleccionados;
 	public ArrayList<Reserva> listaReservas;
 	int numTipCam [] = new int [3];
 	float precioReserva =-1;
@@ -76,30 +76,30 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
 		    
 		    //probar  aver si imprime lista habs
-		  listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, modelo.hotel.getCodAlojamiento());
+		  listaDormitorios = consultas.buscarHabitacionPorCodigoHotel(hotel, modelo.hotel.getCodAlojamiento());
 		  
 		  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
-		  listaHabSeleccionadas = new ArrayList<Dormitorio>(); 
+		  listaDormSeleccionados = new ArrayList<Dormitorio>(); 
 		    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
 		    for(int i=0; indHabsSel.length>i; i++) {
 		    	System.out.println("------->índice de las habitaciones selec en el JTable: " + indHabsSel[i]);
 		    	//prueba
-		    	System.out.println("Código de las habitaciones seleecionadas: " + listaHabitaciones.get(indHabsSel[i]).getCodHabitacion());
+		    	System.out.println("Código de las habitaciones seleecionadas: " + listaDormitorios.get(indHabsSel[i]).getCodHabitacion());
 		    	
 		    	//metemos las habitaciones seleccionadas en un arrayList listaHabSeleccionadas
 		    	habitacion = new Dormitorio(); 
-				habitacion.setCodHabitacion(listaHabitaciones.get(indHabsSel[i]).getCodHabitacion());
+				habitacion.setCodHabitacion(listaDormitorios.get(indHabsSel[i]).getCodHabitacion());
 				//habitacion.setAlojamiento(hotel);
-				habitacion.setTipoHabitacion(listaHabitaciones.get(indHabsSel[i]).getTipoHabitacion());
-				habitacion.setTamanio(listaHabitaciones.get(indHabsSel[i]).getTamanio());
-				habitacion.setNumCamas(listaHabitaciones.get(indHabsSel[i]).getNumCamas());
-				habitacion.setPrecioHabitacion(listaHabitaciones.get(indHabsSel[i]).getPrecioHabitacion());
-				listaHabSeleccionadas.add(habitacion);
+				habitacion.setTipoHabitacion(listaDormitorios.get(indHabsSel[i]).getTipoHabitacion());
+				habitacion.setTamanio(listaDormitorios.get(indHabsSel[i]).getTamanio());
+				habitacion.setNumCamas(listaDormitorios.get(indHabsSel[i]).getNumCamas());
+				habitacion.setPrecioHabitacion(listaDormitorios.get(indHabsSel[i]).getPrecioHabitacion());
+				listaDormSeleccionados.add(habitacion);
 		    }
 		    
 		    //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
-		    for(int i=0; listaHabSeleccionadas.size()>i; i++) {
-		    	System.out.println("------->Habitaciones seleccionadas: " +listaHabSeleccionadas.get(i).getCodHabitacion() );
+		    for(int i=0; listaDormSeleccionados.size()>i; i++) {
+		    	System.out.println("------->Habitaciones seleccionadas: " +listaDormSeleccionados.get(i).getCodHabitacion() );
 		    }
 		
 		}
@@ -151,14 +151,14 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 		tabla.setRowCount(0);
 		
-		for(int i=0; i<listaHabSeleccionadas.size();i++) {
-			datos[0] = listaHabSeleccionadas.get(i).getCodHabitacion();
-			datos[1] = listaHabSeleccionadas.get(i).getNumCamas();
+		for(int i=0; i<listaDormSeleccionados.size();i++) {
+			datos[0] = listaDormSeleccionados.get(i).getCodHabitacion();
+			datos[1] = listaDormSeleccionados.get(i).getNumCamas();
 			//Mostrar detalles de las camas de la habitación seleccionada: 
-			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabSeleccionadas.get(i).getCodHabitacion());
+			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormSeleccionados.get(i).getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 			datos[2] = tiposCamaHab;
-			datos[3] =  (String.format("%.2f", listaHabSeleccionadas.get(i).getPrecioHabitacion()) + "€");
+			datos[3] =  (String.format("%.2f", listaDormSeleccionados.get(i).getPrecioHabitacion()) + "€");
 			datos[4] =  (String.format("%.2f",modelo.listaReservas.get(i).getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches");
 			tabla.addRow(datos);
 		}
@@ -175,7 +175,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 		int codReserva= modelo.consultas.mostrarNumReservas();
 		
-			for(int i=0; listaHabSeleccionadas.size()>i; i++) {
+			for(int i=0; listaDormSeleccionados.size()>i; i++) {
 			    	
 				//metemos las reservas de las habitaciones seleccionadas en un arrayList listaReservas
 			    modelo.reserva = new Reserva(); 
@@ -183,10 +183,10 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			    modelo.reserva.setCodReserva(codReserva);
 			    modelo.reserva.setCliente(modelo.cliente);
 			    modelo.reserva.setAlojamiento(modelo.hotel);
-			    modelo.reserva.setHabitacion(this.listaHabSeleccionadas.get(i));
+			    modelo.reserva.setHabitacion(this.listaDormSeleccionados.get(i));
 			    modelo.reserva.setFechaIda(modelo.fechaIda);
 			    modelo.reserva.setFechaVuelta(modelo.fechaVuelta);
-			    modelo.reserva.setPrecioReserva(controlador.funcionesReserva.calcularPrecioHabXNoches(listaHabSeleccionadas, i));
+			    modelo.reserva.setPrecioReserva(controlador.funcionesReserva.calcularPrecioHabXNoches(listaDormSeleccionados, i));
 				listaReservas.add(modelo.reserva);
 			 }
 			    
@@ -229,7 +229,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					guardarReservasHab();
 					
 					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
-					controlador.funcionesReserva.mostrarDatosReserva(listaHabSeleccionadas);
+					controlador.funcionesReserva.mostrarDatosReserva(listaDormSeleccionados);
 					
 					//(4º) se actualiza la información del siguiente panel: PanDetallesReserva con la info del hotel seleccionado, las habitaciones seleccionadas y el precio Total de la reserva
 					actualizarPanDetallesReserva();

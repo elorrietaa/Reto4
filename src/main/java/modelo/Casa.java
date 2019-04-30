@@ -1,6 +1,8 @@
 package modelo;
 
 public class Casa extends Alojamiento{
+	protected int numBanos;
+	protected float metrosCuadrados;
     /**
      * Constructor vacio del objeto Casa.
      */
@@ -9,13 +11,33 @@ public class Casa extends Alojamiento{
     }
     /**
      * constructor del objeto Casa
-     * @param codAlojamiento =código del Casa
-     * @param nombre = nombre del Casa
-     * @param numHabitaciones = número de habitaciones del Casa
-     * @param ubicacion = ciudad en la que se encuentra el Casa
+     * @param codAlojamiento =código de la Casa
+     * @param nombre = nombre de la Casa
+     * @param numHabitaciones = número de habitaciones de la Casa
+     * @param ubicacion = ciudad en la que se encuentra la Casa
+     * @param numBanos = número de baños de la Casa
+     * @param metrosCuadrados = metrosCuadrados de la Casa
      * 
      */
-    public Casa(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento) {
+    public Casa(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento, int numBanos, float metrosCuadrados) {
 	super(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento);
+	this.numBanos = numBanos;
+	this.metrosCuadrados = metrosCuadrados;
     }
+    
+  //get y set 
+	public int getNumBanos() {
+		return numBanos;
+	}
+	public void setNumBanos(int numBanos) {
+		this.numBanos = numBanos;
+	}
+	public float getMetrosCuadrados() {
+		return metrosCuadrados;
+	}
+	public void setMetrosCuadrados(float metrosCuadrados) {
+		this.metrosCuadrados = metrosCuadrados;
+	}
+    
+    
 }

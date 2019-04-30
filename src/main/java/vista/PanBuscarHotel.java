@@ -40,8 +40,8 @@ public class PanBuscarHotel extends JPanel {
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles;
     	public JButton buttonContinuar, btnRegistro, btnInicioSesion;
-    	public JComboBox<Object> cBCiudad; 
-    	public JLabel labelHotel, labelCiudad, labelFecha;
+    	public JComboBox<Object> cBCiudad, cBTipoAloj; 
+    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha;
     	public JCalendar fechaIda, fechaVuelta;
     	
     	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
@@ -66,13 +66,22 @@ public class PanBuscarHotel extends JPanel {
 		cBCiudad.setBounds(294, 42, 179, 20);
 		add(cBCiudad);
 		
+		lblTipoAloj = new JLabel("Seleccione un tipo de alojamiento:");
+		lblTipoAloj.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblTipoAloj.setBounds(44, 83, 348, 25);
+		add(lblTipoAloj);
+		
+		cBTipoAloj = new JComboBox<Object>();
+		cBTipoAloj.setBounds(380, 89, 179, 20);
+		add(cBTipoAloj);
+		
 		labelFecha = new JLabel("Seleccione su fecha de llegada y su fecha de salida:");
 		labelFecha.setFont(new Font("Dialog", Font.BOLD, 20));
 		labelFecha.setBounds(44, 365, 645, 43);
 		add(labelFecha);
 		
 		labelHotel = new JLabel("Seleccione un hotel :");
-		labelHotel.setBounds(72, 92, 208, 23);
+		labelHotel.setBounds(81, 132, 208, 23);
 		labelHotel.setFont(new Font("Dialog", Font.BOLD, 19));
 		add(labelHotel);
 		
@@ -112,7 +121,7 @@ public class PanBuscarHotel extends JPanel {
 				tab.getColumnModel().getColumn(1).setPreferredWidth(80);
 				
 				scrollPaneIda = new JScrollPane(tab);
-				scrollPaneIda.setBounds(290,92,399,216);
+				scrollPaneIda.setBounds(290,138,399,216);
 				add(scrollPaneIda);
 		
 		//FECHAS:
@@ -133,6 +142,8 @@ public class PanBuscarHotel extends JPanel {
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
+		
+		
 
 	}
 }

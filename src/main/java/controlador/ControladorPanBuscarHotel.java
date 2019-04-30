@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JCalendar;
 
 import bbdd.*;
+import modelo.Alojamiento;
 import modelo.Cama;
 import modelo.Ciudad;
 import modelo.Consultas;
@@ -21,6 +22,7 @@ import modelo.Dormitorio;
 import modelo.Hotel;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
+import modelo.TipoAlojamiento;
 import vista.*;
 
 /**
@@ -38,6 +40,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 
 	
 	Ciudad ciudad;
+	TipoAlojamiento tiposAloj;
 	Hotel hotel;
 	Dormitorio habitacion;
 	Reserva reserva;
@@ -83,6 +86,19 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		for(int i=0; i<listaCiudades.size();i++) {
 		    ciudad=listaCiudades.get(i);
 		    vista.buscarHotel.cBCiudad.addItem(ciudad); 
+		}
+    }
+    
+    /**
+     * Método: mostrarTiposAloj = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
+     * @param listaCiudades
+     */
+    public void mostrarTiposAloj() {
+    	ArrayList<TipoAlojamiento> listaTiposAlojamiento;
+    	listaTiposAlojamiento = consultas.BuscarTiposAlojamiento();
+		for(int i=0; i<listaTiposAlojamiento.size();i++) {
+		    tiposAloj=listaTiposAlojamiento.get(i);
+		    vista.buscarHotel.cBTipoAloj.addItem(tiposAloj); 
 		}
     }
     

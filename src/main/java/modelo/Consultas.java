@@ -76,6 +76,49 @@ public class Consultas {
     	
     	return listaCiudades;
     }
+    
+    /**
+     * Método BuscarTiposAlojamiento = se buscan las los tipos de alojamientos existentes. Se introducen en un ArrayList y se Devuelven.
+     */
+
+    public ArrayList<TipoAlojamiento> BuscarTiposAlojamiento() {
+    	ArrayList<TipoAlojamiento> listaTiposAlojamiento = new ArrayList<TipoAlojamiento>(); 
+    	TipoAlojamiento tipoAlojamiento;
+    	
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	String query = "SELECT * FROM `tipos`";
+    	
+    	try {
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    				
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    		
+    		// crea objetos Linea con los resultados y los añade a un arrayList
+    		while (rs.next()) {
+    			tipoAlojamiento = new TipoAlojamiento();
+    			tipoAlojamiento.setCodTipoAlojamiento(rs.getInt("Cod_tipo"));
+    			tipoAlojamiento.setTipoAlojamiento(rs.getString("Nombre_tipo"));
+    			
+    			
+    			listaTiposAlojamiento.add(tipoAlojamiento);
+    		}
+    	}
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    	} 
+    	finally {
+    		// cerramos la conexion
+    		conexion.desconectar();
+    	}
+    	
+    	return listaTiposAlojamiento;
+    }
    /**
     * Método BuscarHotelPorCodigoCiudad = se buscan los hoteles por código Ciudad. El código de la ciudad dependerá de la selección realizada por el usuario
     * @param codCiudadSeleccionada

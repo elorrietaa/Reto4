@@ -16,10 +16,18 @@ public class ReservaTest {
     private Date fechaVuelta;
     private float precioReserva=(float) 88.29;
     Reserva reservaPrueba = new Reserva(codReserva, cliente, alojamiento,habitacion, fechaIda, fechaVuelta, precioReserva);
+    Reserva reservaPrueba1 = new Reserva(codReserva, cliente, alojamiento, fechaIda, fechaVuelta, precioReserva);
     Reserva reserva = new Reserva(); 
     Cliente clienteNuevo = new Cliente();
     @Test 
-   	public void testConstuctor() {
+   	public void testConstuctor1() {
+   		assertEquals(codReserva, reservaPrueba.getCodReserva());
+   		assertEquals(alojamiento, reservaPrueba.getAlojamiento());
+   		assertEquals(precioReserva, reservaPrueba.getPrecioReserva(),0.2);
+ 
+   	}
+    @Test 
+   	public void testConstuctor2() {
    		assertEquals(codReserva, reservaPrueba.getCodReserva());
    		assertEquals(alojamiento, reservaPrueba.getAlojamiento());
    		assertEquals(precioReserva, reservaPrueba.getPrecioReserva(),0.2);

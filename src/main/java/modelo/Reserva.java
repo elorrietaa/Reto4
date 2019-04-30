@@ -23,7 +23,7 @@ public class Reserva {
     	 
     }
     /**
-     * Constructor del objeto Reserva
+     * Constructor del objeto Reserva para los HOTELES (con el atributo habitación)
      * @param codReserva
      * @param alojamiento
      * @param precioReserva
@@ -33,6 +33,21 @@ public class Reserva {
 	this.cliente = cliente;
 	this.alojamiento =alojamiento;
 	this.habitacion = habitacion;
+	this.fechaIda = fechaIda;
+	this.fechaVuelta = fechaVuelta;
+	this.precioReserva = precioReserva;
+    }
+    
+    /**
+     * Constructor del objeto Reserva
+     * @param codReserva
+     * @param alojamiento
+     * @param precioReserva
+     */
+    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Date fechaIda, Date fechaVuelta,  float precioReserva) {
+	this.codReserva = codReserva;
+	this.cliente = cliente;
+	this.alojamiento =alojamiento;
 	this.fechaIda = fechaIda;
 	this.fechaVuelta = fechaVuelta;
 	this.precioReserva = precioReserva;

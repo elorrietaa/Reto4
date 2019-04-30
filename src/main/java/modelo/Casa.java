@@ -2,18 +2,18 @@ package modelo;
 
 public class Casa extends Alojamiento{
     /**
-     * Constructor vacio del objeto Hotel.
+     * Constructor vacio del objeto Casa.
      */
     public Casa() {
     	
     }
     /**
-     * constructor del objeto Hotel
-     * @param codAlojamiento =código del hotel
-     * @param nombre = nombre del hotel
-     * @param numHabitaciones = número de habitaciones del hotel
-     * @param ubicacion = ciudad en la que se encuentra el hotel
-     * @param estrellas = número de estrellas que tiene el hotel
+     * constructor del objeto Casa
+     * @param codAlojamiento =código del Casa
+     * @param nombre = nombre del Casa
+     * @param numHabitaciones = número de habitaciones del Casa
+     * @param ubicacion = ciudad en la que se encuentra el Casa
+     * 
      */
     public Casa(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento) {
 	super(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento);

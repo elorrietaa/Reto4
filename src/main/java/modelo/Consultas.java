@@ -130,9 +130,9 @@ public class Consultas {
      * @param codHotelSeleccionado = es el código del hotel que el usuario ha seleccionado.
      * @return
      */
-    public ArrayList<Habitacion> buscarHabitacionPorCodigoHotel(Hotel hotel, int codHotelSeleccionado) {
-    	ArrayList<Habitacion> listaHabitacion = new ArrayList<Habitacion>(); 
-    	Habitacion habitacion;
+    public ArrayList<Dormitorio> buscarHabitacionPorCodigoHotel(Hotel hotel, int codHotelSeleccionado) {
+    	ArrayList<Dormitorio> listaHabitacion = new ArrayList<Dormitorio>(); 
+    	Dormitorio habitacion;
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
@@ -151,7 +151,7 @@ public class Consultas {
     
     		// crea objetos Linea con los resultados y los añade a un arrayList
     		while (rs.next()) {
-    			habitacion = new Habitacion(); 
+    			habitacion = new Dormitorio(); 
     			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
     			//habitacion.setAlojamiento(hotel);
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
@@ -173,9 +173,9 @@ public class Consultas {
     }
     
     //no funciona
-    public ArrayList<Habitacion> buscarHabitacionDisponiblel(Date fechaIda, Date fechaVuelta, int codHotelSeleccionado) {
-    	ArrayList<Habitacion> listaHabDisp = new ArrayList<Habitacion>(); 
-    	Habitacion habitacion;
+    public ArrayList<Dormitorio> buscarHabitacionDisponiblel(Date fechaIda, Date fechaVuelta, int codHotelSeleccionado) {
+    	ArrayList<Dormitorio> listaHabDisp = new ArrayList<Dormitorio>(); 
+    	Dormitorio habitacion;
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
@@ -201,7 +201,7 @@ public class Consultas {
     
     		// crea objetos Linea con los resultados y los añade a un arrayList
     		while (rs.next()) {
-    			habitacion = new Habitacion(); 
+    			habitacion = new Dormitorio(); 
     			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));

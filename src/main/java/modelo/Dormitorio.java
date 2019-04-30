@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author alba
  *
  */
-public class Habitacion {
+public class Dormitorio {
 	protected int codHabitacion;
 	protected String nombreHabitacion;
 	protected String tipoHabitacion;
@@ -22,7 +22,7 @@ public class Habitacion {
 	/**
 	 * Constructor vacio:
 	 */
-	public Habitacion(){
+	public Dormitorio(){
 		
 	}
 	
@@ -38,7 +38,7 @@ public class Habitacion {
 	 * @param precioHabitacion
 	 * @param tiposCamaHab
 	 */
-	public Habitacion(int codHabitacion, String nombreHabitacion, String tipoHabitacion, float tamanio, int numCamas, int ocupacion, int numTipCam [],float precioHabitacion, String tiposCamaHab) {
+	public Dormitorio(int codHabitacion, String nombreHabitacion, String tipoHabitacion, float tamanio, int numCamas, int ocupacion, int numTipCam [],float precioHabitacion, String tiposCamaHab) {
 		this.codHabitacion = codHabitacion;
 		this.nombreHabitacion = nombreHabitacion;
 		this.tipoHabitacion = tipoHabitacion;

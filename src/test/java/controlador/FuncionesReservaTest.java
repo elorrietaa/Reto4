@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import modelo.Habitacion;
+import modelo.Dormitorio;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
@@ -18,11 +18,11 @@ public class FuncionesReservaTest {
 	
 	FuncionesReserva funcionesReserva = new FuncionesReserva(modelo, vista, controlador);
 	
-	ArrayList<Habitacion> listaHabitacionPrueba;
+	ArrayList<Dormitorio> listaHabitacionPrueba;
 	     
 	  @Before
 	  public void setUp() throws Exception {
-	    listaHabitacionPrueba = new ArrayList<Habitacion>(); 
+	    listaHabitacionPrueba = new ArrayList<Dormitorio>(); 
 	    
 	    int codHabitacion=1;
 		String tipoHabitacion="Dormitorio";
@@ -34,9 +34,9 @@ public class FuncionesReservaTest {
 		int numTipCam [] = {2,0,0};
 		String tiposCamaHab = "simple";
 		
-	    Habitacion habitacion1 = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 10.5, tiposCamaHab);
-	    Habitacion habitacion2 = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 10.5, tiposCamaHab);
-	    Habitacion habitacion3 = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 20, tiposCamaHab);
+	    Dormitorio habitacion1 = new Dormitorio(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 10.5, tiposCamaHab);
+	    Dormitorio habitacion2 = new Dormitorio(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 10.5, tiposCamaHab);
+	    Dormitorio habitacion3 = new Dormitorio(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 20, tiposCamaHab);
 		  
 	    listaHabitacionPrueba.add(habitacion1);
 	    listaHabitacionPrueba.add(habitacion2);

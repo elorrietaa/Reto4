@@ -3,9 +3,9 @@ package modelo;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import modelo.Alojamiento;
-import modelo.Habitacion;
+import modelo.Dormitorio;
 
-public class HabitacionTest {
+public class DormitorioTest {
 	protected int codHabitacion=1;
 	protected String tipoHabitacion="Dormitorio";
 	protected String nombreHabitacion = "Doble";
@@ -16,8 +16,8 @@ public class HabitacionTest {
 	private int numTipCam [] = {2,0,0};
 	protected String tiposCamaHab = "simple";
 	
-	Habitacion habitacion = new Habitacion();
-	Habitacion habitacionPrueba = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas, ocupacion, numTipCam,precioHabitacion, tiposCamaHab);
+	Dormitorio habitacion = new Dormitorio();
+	Dormitorio habitacionPrueba = new Dormitorio(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas, ocupacion, numTipCam,precioHabitacion, tiposCamaHab);
 	 
 	@Test
 	public void testConstructorVacio() {   	

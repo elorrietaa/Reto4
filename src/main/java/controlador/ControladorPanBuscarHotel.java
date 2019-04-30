@@ -17,7 +17,7 @@ import bbdd.*;
 import modelo.Cama;
 import modelo.Ciudad;
 import modelo.Consultas;
-import modelo.Habitacion;
+import modelo.Dormitorio;
 import modelo.Hotel;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
@@ -34,12 +34,12 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	public PrincipalControlador controlador;
 
 	private ArrayList<Hotel> listaHoteles;
-	public ArrayList<Habitacion> listaHabitaciones;
+	public ArrayList<Dormitorio> listaHabitaciones;
 
 	
 	Ciudad ciudad;
 	Hotel hotel;
-	Habitacion habitacion;
+	Dormitorio habitacion;
 	Reserva reserva;
 	Consultas consultas;
 	

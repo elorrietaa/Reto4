@@ -12,7 +12,7 @@ import bbdd.Conexion;
 import modelo.Cama;
 import modelo.Ciudad;
 import modelo.Consultas;
-import modelo.Habitacion;
+import modelo.Dormitorio;
 import modelo.Hotel;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
@@ -31,7 +31,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	Consultas consultas;
 	Ciudad ciudad;
 	Hotel hotel;
-	Habitacion habitacion;
+	Dormitorio habitacion;
 	Cama cama;
 	Reserva reserva;
 	Date fechaIda;
@@ -39,8 +39,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	String tiposCamaHab;
 	
 	public int[] indHabsSel = null;
-	private ArrayList<Habitacion> listaHabitaciones;
-	private ArrayList<Habitacion> listaHabSeleccionadas;
+	private ArrayList<Dormitorio> listaHabitaciones;
+	private ArrayList<Dormitorio> listaHabSeleccionadas;
 	public ArrayList<Reserva> listaReservas;
 	int numTipCam [] = new int [3];
 	float precioReserva =-1;
@@ -79,7 +79,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		  listaHabitaciones = consultas.buscarHabitacionPorCodigoHotel(hotel, modelo.hotel.getCodAlojamiento());
 		  
 		  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
-		  listaHabSeleccionadas = new ArrayList<Habitacion>(); 
+		  listaHabSeleccionadas = new ArrayList<Dormitorio>(); 
 		    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
 		    for(int i=0; indHabsSel.length>i; i++) {
 		    	System.out.println("------->índice de las habitaciones selec en el JTable: " + indHabsSel[i]);
@@ -87,7 +87,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		    	System.out.println("Código de las habitaciones seleecionadas: " + listaHabitaciones.get(indHabsSel[i]).getCodHabitacion());
 		    	
 		    	//metemos las habitaciones seleccionadas en un arrayList listaHabSeleccionadas
-		    	habitacion = new Habitacion(); 
+		    	habitacion = new Dormitorio(); 
 				habitacion.setCodHabitacion(listaHabitaciones.get(indHabsSel[i]).getCodHabitacion());
 				//habitacion.setAlojamiento(hotel);
 				habitacion.setTipoHabitacion(listaHabitaciones.get(indHabsSel[i]).getTipoHabitacion());

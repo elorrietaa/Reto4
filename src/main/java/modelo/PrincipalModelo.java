@@ -20,7 +20,7 @@ public class PrincipalModelo {
 	public Ciudad ciudad;
 	public Alojamiento alojamiento;
 	public Hotel hotel;
-	public Habitacion habitacion;
+	public Dormitorio habitacion;
 	public Cama cama;
 	public Reserva reserva;
 	public Cliente cliente;

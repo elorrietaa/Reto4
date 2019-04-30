@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Alojamiento {
     protected int codAlojamiento;
     protected String nombre;
-    protected ArrayList<Habitacion> listaHabitaciones;
-    protected ArrayList<Habitacion> listaHabSeleccionadas; 
+    protected ArrayList<Dormitorio> listaHabitaciones;
+    protected ArrayList<Dormitorio> listaHabSeleccionadas; 
 	protected int numHabitaciones;
     protected String ubicacion;
     protected float precioAlojamiento;
@@ -113,28 +113,28 @@ public class Alojamiento {
      * Getter del arrayList listaHabitaciones
      * @return
      */
-    public ArrayList<Habitacion> getListaHabitaciones() {
+    public ArrayList<Dormitorio> getListaHabitaciones() {
 		return listaHabitaciones;
 	}
     /**
      * Setter del arrayList listaHabitaciones
      * @param listaHabitaciones
      */
-	public void setListaHabitaciones(ArrayList<Habitacion> listaHabitaciones) {
+	public void setListaHabitaciones(ArrayList<Dormitorio> listaHabitaciones) {
 		this.listaHabitaciones = listaHabitaciones;
 	}
 	/**
      * Getter del arrayList listaHabSeleccionadas
      * @return
      */
-	public ArrayList<Habitacion> getListaHabSeleccionadas() {
+	public ArrayList<Dormitorio> getListaHabSeleccionadas() {
 		return listaHabSeleccionadas;
 	}
 	/**
      * Setter del arrayList listaHabSeleccionadas
      * @return
      */
-	public void setListaHabSeleccionadas(ArrayList<Habitacion> listaHabSeleccionadas) {
+	public void setListaHabSeleccionadas(ArrayList<Dormitorio> listaHabSeleccionadas) {
 		this.listaHabSeleccionadas = listaHabSeleccionadas;
 	}
 }

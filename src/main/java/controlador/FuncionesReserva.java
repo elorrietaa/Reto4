@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import modelo.Cama;
-import modelo.Habitacion;
+import modelo.Dormitorio;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
@@ -35,7 +35,7 @@ public class FuncionesReserva {
 	 * 
 	 * @return Retorna el precio de la reserva 
 	 */
-	public float calcularPrecioReservaHotel( ArrayList<Habitacion> listaHabSeleccionadas) {
+	public float calcularPrecioReservaHotel( ArrayList<Dormitorio> listaHabSeleccionadas) {
 		float precioReserva=0;
 		
 		//(1º) el precio total de la reserva será la suma de los precios de las habitaciones seleccionadas
@@ -65,7 +65,7 @@ public class FuncionesReserva {
 	 * @param pos = la posición que está recorriendo un for.
 	 * @return
 	 */
-	public float calcularPrecioHabXNoches( ArrayList<Habitacion> listaHabSeleccionadas, int pos) {
+	public float calcularPrecioHabXNoches( ArrayList<Dormitorio> listaHabSeleccionadas, int pos) {
 		float precioHabXnoches=0;
 		 DecimalFormat f = new DecimalFormat("##.00");
 		//(1º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
@@ -102,7 +102,7 @@ public class FuncionesReserva {
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
-	public void mostrarDatosReserva(ArrayList<Habitacion> listaHabSeleccionadas) {
+	public void mostrarDatosReserva(ArrayList<Dormitorio> listaHabSeleccionadas) {
 		//muestra datos del alojamiento
 		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
 		

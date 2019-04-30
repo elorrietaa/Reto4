@@ -11,7 +11,7 @@ public class Reserva {
     private int codReserva;
     private Cliente cliente;
     private Alojamiento alojamiento; 
-    private Habitacion habitacion;
+    private Dormitorio habitacion;
     private Date fechaIda;
     private Date fechaVuelta;
     private float precioReserva;
@@ -28,7 +28,7 @@ public class Reserva {
      * @param alojamiento
      * @param precioReserva
      */
-    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Habitacion habitacion, Date fechaIda, Date fechaVuelta,  float precioReserva) {
+    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Dormitorio habitacion, Date fechaIda, Date fechaVuelta,  float precioReserva) {
 	this.codReserva = codReserva;
 	this.cliente = cliente;
 	this.alojamiento =alojamiento;
@@ -71,14 +71,14 @@ public class Reserva {
      * Getter de habitacion = es un Obejeto de tipo habitacion y que es además un atributo del objeto Reserva
      * @return alojamiento
      */
-    public Habitacion getHabitacion() {
+    public Dormitorio getHabitacion() {
 		return habitacion;
 	}
     /**
      * Setter de habitacion
      * @param alojamiento
      */
-	public void setHabitacion(Habitacion habitacion) {
+	public void setHabitacion(Dormitorio habitacion) {
 		this.habitacion = habitacion;
 	}
 	/**

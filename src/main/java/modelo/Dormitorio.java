@@ -3,15 +3,12 @@ package modelo;
 import java.util.ArrayList;
 
 /**
- * Clase habitación, contiene informacion referente a la habitacion
+ * Clase Dormitorio = contiene información del dormitorio. Exciende de la clase Habitación
  * @author alba
  *
  */
-public class Dormitorio {
-	protected int codHabitacion;
+public class Dormitorio extends Habitacion{
 	protected String nombreHabitacion;
-	protected String tipoHabitacion;
-	protected float tamanio;
 	protected int numCamas;
 	protected float precioHabitacion;
 	protected int ocupacion;
@@ -27,7 +24,30 @@ public class Dormitorio {
 	}
 	
 	/**
-	 * Clase habitación, contiene informacion referente a la habitacion
+	 * Constructor1 Clase habitación, contiene informacion referente a la habitacion 
+	 * para los dormitorio de las CASAS O APARTAMENTOS (no tiene nombreHabitacion y precio)
+	 * @param codHabitacion
+	 * @param nombreHabitacion
+	 * @param tipoHabitacion
+	 * @param tamanio
+	 * @param numCamas
+	 * @param ocupacion = contiene el número de personas que pueden ocupar la habitación.
+	 * @param numTipCam
+	 * @param precioHabitacion
+	 * @param tiposCamaHab
+	 */
+	public Dormitorio(int codHabitacion, String tipoHabitacion, float tamanio, int numCamas, int ocupacion, int numTipCam [], String tiposCamaHab) {
+		super(codHabitacion, tipoHabitacion, tamanio);
+		this.numCamas = numCamas;
+		this.ocupacion = ocupacion;
+		this.numTipCam = numTipCam;
+		this.tiposCamaHab = tiposCamaHab;
+		
+	}
+
+	/**
+	 * Constructor2 Clase habitación, contiene informacion referente a la habitacion 
+	 * (para los dormitorios del HOTEL, nombreHabitacion y precio)
 	 * @param codHabitacion
 	 * @param nombreHabitacion
 	 * @param tipoHabitacion
@@ -39,10 +59,8 @@ public class Dormitorio {
 	 * @param tiposCamaHab
 	 */
 	public Dormitorio(int codHabitacion, String nombreHabitacion, String tipoHabitacion, float tamanio, int numCamas, int ocupacion, int numTipCam [],float precioHabitacion, String tiposCamaHab) {
-		this.codHabitacion = codHabitacion;
+		super(codHabitacion, tipoHabitacion, tamanio);
 		this.nombreHabitacion = nombreHabitacion;
-		this.tipoHabitacion = tipoHabitacion;
-		this.tamanio = tamanio;
 		this.numCamas = numCamas;
 		this.ocupacion = ocupacion;
 		this.numTipCam = numTipCam;
@@ -63,30 +81,7 @@ public class Dormitorio {
 	public void setNombreHabitacion(String nombreHabitacion) {
 		this.nombreHabitacion = nombreHabitacion;
 	}
-	public int getCodHabitacion() {
-		return codHabitacion;
-	}
-
-	public void setCodHabitacion(int codHabitacion) {
-		this.codHabitacion = codHabitacion;
-	}
-
-	public String getTipoHabitacion() {
-		return tipoHabitacion;
-	}
-
-	public void setTipoHabitacion(String tipoHabitacion) {
-		this.tipoHabitacion = tipoHabitacion;
-	}
-
-	public float getTamanio() {
-		return tamanio;
-	}
-
-	public void setTamanio(float tamanio) {
-		this.tamanio = tamanio;
-	}
-
+	
 	public int getNumCamas() {
 		return numCamas;
 	}

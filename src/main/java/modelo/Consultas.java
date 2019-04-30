@@ -486,7 +486,7 @@ public class Consultas {
 		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
-		int codReserva = 0;
+		int codReserva = 0; 
 		
 		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
 

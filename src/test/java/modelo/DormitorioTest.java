@@ -2,7 +2,6 @@ package modelo;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import modelo.Alojamiento;
 import modelo.Dormitorio;
 
 public class DormitorioTest {

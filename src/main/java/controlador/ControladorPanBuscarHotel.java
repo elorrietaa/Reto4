@@ -67,6 +67,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     public void addListeners() {
     	vista.buscarHotel.cBCiudad.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
+    	vista.buscarHotel.btnInicioSesion.addActionListener(this);
+    	vista.buscarHotel.btnRegistro.addActionListener(this);
     	vista.buscarHotel.fechaIda.addPropertyChangeListener(this);
     	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
     }
@@ -193,49 +195,51 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		   
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
-			
-		
-			case "Continuar":	//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-				 //se guarda en filaHotelsel la posición seleccionada en la tabla
-			    filaHotelsel = vista.buscarHotel.tab.getSelectedRow(); 	 
-			    
-				if (filaHotelsel != -1) {
- 
-				    //(1º) Guarda los datos seleecionados en el modelo
-					guardarDatosSeleccionadosCiudad();
-					guardarDatosSeleccionadosHotel();
-					guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
-					
-					//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
-					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
-					
-					//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
-					listaHabitaciones = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
-					for(int i = 0; i < listaHabitaciones.size(); i++) {
-						System.out.println(listaHabitaciones.get(i).getCodHabitacion());
-					}
-					
-					
-					//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
-					mostrarDetallesHabs();
-
-				
-					//(5º) Actualiza el siguiente panel, si se cumplen las validaciones.
-					if(continuar) {
+				case "Continuar":	//Cuando pulsa el boton continuar pasan las siguientes cosas: 
+					 //se guarda en filaHotelsel la posición seleccionada en la tabla
+				    filaHotelsel = vista.buscarHotel.tab.getSelectedRow(); 	 
+				    
+					if (filaHotelsel != -1) {
+	 
+					    //(1º) Guarda los datos seleecionados en el modelo
+						guardarDatosSeleccionadosCiudad();
+						guardarDatosSeleccionadosHotel();
+						guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
 						
-						vista.buscarHotel.setVisible(false);
-						vista.selHabitacion.setVisible(true);
+						//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
+						continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
+						
+						//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
+						listaHabitaciones = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
+						for(int i = 0; i < listaHabitaciones.size(); i++) {
+							System.out.println(listaHabitaciones.get(i).getCodHabitacion());
+						}
+						
+						//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
+						mostrarDetallesHabs();
+						
+						//(5º) Actualiza el siguiente panel, si se cumplen las validaciones.
+						if(continuar) {
+							vista.buscarHotel.setVisible(false);
+							vista.selHabitacion.setVisible(true);
+						}
 					}
-				}
-
-				else {
-					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
-				}
+					else
+						JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
+					break;
 				
-				break;
-			
+				case "Inicio Sesión":
+					ControladorLogin.panelOrigen = vista.buscarHotel;
+					vista.login.setVisible(true);
+					vista.buscarHotel.setVisible(false);
+					break;
+				
+				case "Registro":
+					ControladorRegistro.panelOrigen = vista.buscarHotel;
+					vista.registro.setVisible(true);
+					vista.buscarHotel.setVisible(false);
+					break;
 			}
-	
 		} else if (sourceObject instanceof JComboBox) {
 			// guarda la ciudad seleccionada
 			Ciudad ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();

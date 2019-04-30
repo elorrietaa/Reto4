@@ -19,7 +19,7 @@ public class PanSelHabitacion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
-	public JButton btnLogin,btnRegistro,btnContinuar,btnAtras,btnCancelar;
+	public JButton btnLogin,btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion;
 	public JLabel lblIcono, lblTitulo, lblBilleteIda;
 	public JTable tab;
 	public JScrollPane scrollPaneIda;
@@ -111,11 +111,17 @@ public class PanSelHabitacion extends JPanel {
 		FormatoDiseno.formatoBtnAtras(btnAtras);
 		add(btnAtras);
 		
-		
-		
 		btnContinuar = new JButton("Continuar");
 		FormatoDiseno.formatoBtnContinuar(btnContinuar);
 		add(btnContinuar);
+		
+		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
+		btnInicioSesion.setBounds(869, 42, 105, 23);
+		add(btnInicioSesion);
+		
+		btnRegistro = new JButton("Registro");
+		btnRegistro.setBounds(869, 8, 105, 23);
+		add(btnRegistro);
 	
 	}
 }

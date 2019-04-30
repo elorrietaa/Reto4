@@ -39,7 +39,7 @@ public class PanBuscarHotel extends JPanel {
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles;
-    	public JButton buttonContinuar;
+    	public JButton buttonContinuar, btnRegistro, btnInicioSesion;
     	public JComboBox<Object> cBCiudad; 
     	public JLabel labelHotel, labelCiudad, labelFecha;
     	public JCalendar fechaIda, fechaVuelta;
@@ -125,6 +125,14 @@ public class PanBuscarHotel extends JPanel {
 		fechaVuelta.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
 		fechaVuelta.setBounds(505, 419, 184, 153);
 		add(fechaVuelta);
+		
+		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
+		btnInicioSesion.setBounds(869, 42, 105, 23);
+		add(btnInicioSesion);
+		
+		btnRegistro = new JButton("Registro");
+		btnRegistro.setBounds(869, 8, 105, 23);
+		add(btnRegistro);
 
 	}
 }

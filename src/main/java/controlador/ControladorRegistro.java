@@ -67,7 +67,6 @@ public class ControladorRegistro implements ActionListener {
 		switch (botonPulsado) {
 		
 			case "Atrás":
-				
 				panelOrigen.setVisible(true);
 				vista.registro.setVisible(false);
 				break;

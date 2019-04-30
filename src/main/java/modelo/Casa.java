@@ -25,7 +25,7 @@ public class Casa extends Alojamiento{
 	this.metrosCuadrados = metrosCuadrados;
     }
     
-  //get y set 
+  //get y set  
 	public int getNumBanos() {
 		return numBanos;
 	}

@@ -53,7 +53,7 @@ public class JframePrincipal extends JFrame{
 		getContentPane().add(buscarHotel);
 		getContentPane().add(selHabitacion);
 		getContentPane().add(detallesReserva);
-		getContentPane().add(pago);
+		getContentPane().add(pago); 
 		getContentPane().add(vueltas);
 		getContentPane().add(login);
 		getContentPane().add(registro);

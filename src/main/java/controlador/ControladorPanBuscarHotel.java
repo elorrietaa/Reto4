@@ -93,7 +93,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
      * Método: mostrarTiposAloj = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
      * @param listaCiudades
      */
-    public void mostrarTiposAloj() {
+    public void mostrarTiposAloj() { 
     	ArrayList<TipoAlojamiento> listaTiposAlojamiento;
     	listaTiposAlojamiento = consultas.BuscarTiposAlojamiento();
 		for(int i=0; i<listaTiposAlojamiento.size();i++) {
@@ -110,6 +110,17 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 		//Pruebas
 		System.out.println("***DATOS CIUDAD***:Ciudad:" + ciudad);
+	    
+	}
+	
+	/**
+     * Método: guardarDatosSeleccionadosTipoAloj = guarda los datos seleccionados por el usuario en los objetos.
+     */
+	public void guardarDatosSeleccionadosTipoAloj() {
+		//se guarda la ciudad seleccionada
+		this.tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
+		//Pruebas
+		System.out.println("***DATOS Tipo Alojamiento***:" + tiposAloj);
 	    
 	}
 	
@@ -219,6 +230,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	 
 					    //(1º) Guarda los datos seleecionados en el modelo
 						guardarDatosSeleccionadosCiudad();
+						guardarDatosSeleccionadosTipoAloj();
 						guardarDatosSeleccionadosHotel();
 						guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
 						
@@ -269,10 +281,14 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			Ciudad ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
 			if (ciudad != null) {
 				int codCiudadSeleccionada = ciudad.getCodCiudad();
-				//muestra los hoteles en el JList
+				
+				//muestra los hoteles de la ciudad seleccionada en el JList
 				mostrarHotelesEnJTable(codCiudadSeleccionada);
+			
+				
 			}
 		}
+		
 		
 	}
 	/**

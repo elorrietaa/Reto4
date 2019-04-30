@@ -8,14 +8,16 @@ import modelo.Habitacion;
 public class HabitacionTest {
 	protected int codHabitacion=1;
 	protected String tipoHabitacion="Dormitorio";
+	protected String nombreHabitacion = "Doble";
 	protected float tamanio=15;
 	protected int numCamas=2;
+	protected int ocupacion = 2;
 	protected float precioHabitacion=(float) 172.5;
 	private int numTipCam [] = {2,0,0};
 	protected String tiposCamaHab = "simple";
 	
 	Habitacion habitacion = new Habitacion();
-	Habitacion habitacionPrueba = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas,numTipCam,precioHabitacion, tiposCamaHab);
+	Habitacion habitacionPrueba = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas, ocupacion, numTipCam,precioHabitacion, tiposCamaHab);
 	 
 	@Test
 	public void testConstructorVacio() {   	
@@ -25,8 +27,10 @@ public class HabitacionTest {
 	public void testConstuctor() {
 		assertEquals(codHabitacion, habitacionPrueba.getCodHabitacion());
 		assertEquals(tipoHabitacion, habitacionPrueba.getTipoHabitacion());
+		assertEquals(nombreHabitacion, habitacionPrueba.getNombreHabitacion());
 		assertEquals(tamanio, habitacionPrueba.getTamanio(), 0.1); 
 		assertEquals(numCamas,habitacionPrueba.getNumCamas());
+		assertEquals(ocupacion, habitacionPrueba.getOcupacion());
 		assertEquals(precioHabitacion, habitacionPrueba.getPrecioHabitacion(),0.1);
 		assertEquals(numTipCam, habitacionPrueba.getNumTipCam());
 		assertEquals(tiposCamaHab, habitacionPrueba.getTiposCamaHab());
@@ -36,7 +40,12 @@ public class HabitacionTest {
 	habitacionPrueba.setCodHabitacion(codHabitacion); 
 		assertEquals(codHabitacion,habitacionPrueba.getCodHabitacion());
 	}
-
+	 @Test
+	public void testNombreHabitacion() {
+	habitacionPrueba.setNombreHabitacion(nombreHabitacion);
+		assertEquals(nombreHabitacion, habitacionPrueba.getNombreHabitacion());
+	}
+	 
 	 @Test
 	public void testTipoHabitacion() {
 	habitacionPrueba.setTipoHabitacion(tipoHabitacion);
@@ -47,6 +56,11 @@ public class HabitacionTest {
 	habitacionPrueba.setTamanio(tamanio);
 		assertEquals(tamanio, habitacionPrueba.getTamanio(),0.1);
 	}
+	 @Test
+		public void testOcupacion() {
+			habitacionPrueba.setOcupacion(ocupacion);
+			assertEquals(ocupacion, habitacionPrueba.getOcupacion());
+		}
 	 @Test
 	public void testNumCamas() {
 		habitacionPrueba.setNumCamas(numCamas);

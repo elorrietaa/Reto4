@@ -26,15 +26,17 @@ public class FuncionesReservaTest {
 	    
 	    int codHabitacion=1;
 		String tipoHabitacion="Dormitorio";
+		String nombreHabitacion = "Doble";
+		int ocupacion = 2;
 		float tamanio=15;
 		int numCamas=2;
 		float precioHabitacion=(float) 172.5;
 		int numTipCam [] = {2,0,0};
 		String tiposCamaHab = "simple";
 		
-	    Habitacion habitacion1 = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas,numTipCam,(float) 10.5, tiposCamaHab);
-	    Habitacion habitacion2 = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas,numTipCam,(float) 10.5, tiposCamaHab);
-	    Habitacion habitacion3 = new Habitacion(codHabitacion, tipoHabitacion, tamanio, numCamas,numTipCam,(float) 20, tiposCamaHab);
+	    Habitacion habitacion1 = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 10.5, tiposCamaHab);
+	    Habitacion habitacion2 = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 10.5, tiposCamaHab);
+	    Habitacion habitacion3 = new Habitacion(codHabitacion,nombreHabitacion, tipoHabitacion, tamanio, numCamas,ocupacion,numTipCam,(float) 20, tiposCamaHab);
 		  
 	    listaHabitacionPrueba.add(habitacion1);
 	    listaHabitacionPrueba.add(habitacion2);

@@ -9,10 +9,12 @@ import java.util.ArrayList;
  */
 public class Habitacion {
 	protected int codHabitacion;
+	protected String nombreHabitacion;
 	protected String tipoHabitacion;
 	protected float tamanio;
 	protected int numCamas;
 	protected float precioHabitacion;
+	protected int ocupacion;
 	private int numTipCam [] = new int [3];
 	protected String tiposCamaHab;
 	protected ArrayList<Cama> listaCamas;
@@ -23,25 +25,44 @@ public class Habitacion {
 	public Habitacion(){
 		
 	}
+	
 	/**
-	 * Constructor clase habitación
+	 * Clase habitación, contiene informacion referente a la habitacion
 	 * @param codHabitacion
+	 * @param nombreHabitacion
 	 * @param tipoHabitacion
 	 * @param tamanio
 	 * @param numCamas
+	 * @param ocupacion = contiene el número de personas que pueden ocupar la habitación.
 	 * @param numTipCam
-	 * @param estadoHabitacion
+	 * @param precioHabitacion
+	 * @param tiposCamaHab
 	 */
-	public Habitacion(int codHabitacion, String tipoHabitacion, float tamanio, int numCamas,int numTipCam [],float precioHabitacion, String tiposCamaHab) {
+	public Habitacion(int codHabitacion, String nombreHabitacion, String tipoHabitacion, float tamanio, int numCamas, int ocupacion, int numTipCam [],float precioHabitacion, String tiposCamaHab) {
 		this.codHabitacion = codHabitacion;
+		this.nombreHabitacion = nombreHabitacion;
 		this.tipoHabitacion = tipoHabitacion;
 		this.tamanio = tamanio;
 		this.numCamas = numCamas;
+		this.ocupacion = ocupacion;
 		this.numTipCam = numTipCam;
 		this.precioHabitacion = precioHabitacion;
 		this.tiposCamaHab = tiposCamaHab;
 	}
 
+	
+	public int getOcupacion() {
+		return ocupacion;
+	}
+	public void setOcupacion(int ocupacion) {
+		this.ocupacion = ocupacion;
+	}
+	public String getNombreHabitacion() {
+		return nombreHabitacion;
+	}
+	public void setNombreHabitacion(String nombreHabitacion) {
+		this.nombreHabitacion = nombreHabitacion;
+	}
 	public int getCodHabitacion() {
 		return codHabitacion;
 	}

@@ -19,10 +19,10 @@ public class Apartamento extends Casa{
      * @param piso = piso en la que se encuentra el Apartamento
      * 
      */
-    public Apartamento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento, int numBanos, float metrosCuadrados, int piso) {
-	super(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento, numBanos, metrosCuadrados);
+    public Apartamento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad, int numBanos, float metrosCuadrados, int piso) {
+	super(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento,popularidad, numBanos, metrosCuadrados);
     this.piso = piso;
-    }
+    } 
     
     //get y set 
 	public int getPiso() {

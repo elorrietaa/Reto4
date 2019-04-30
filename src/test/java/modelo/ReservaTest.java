@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ReservaTest {
     private int codReserva=1;
     private Cliente cliente = new Cliente("22758299X", "Alba", "Rodriguez Salvador", new Date(31-01-2019), 'M', "abracadaver");
-    private Alojamiento alojamiento=new Alojamiento(1, "Hotel Melia", 5, "Bilbao", (float) 54.2);
+    private Alojamiento alojamiento=new Alojamiento(1, "Hotel Melia", 5, "Bilbao", (float) 54.2, 10);
     private int numTipCam [] = {2,0,0};
     private Dormitorio habitacion = new Dormitorio(1, "Dormitorio","Doble", 15, 2,2, numTipCam ,(float) 172.5, "simple, simple");
     private Date fechaIda = new Date(31-01-2019);

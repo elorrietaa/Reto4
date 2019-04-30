@@ -12,8 +12,9 @@ public class HotelTest {
     protected int numHabitaciones=10;
     protected String ubicacion="BILBAO";
     protected float precioAlojamiento=(float) 12.2;
+    protected int popularidad = 10;
     protected int estrellas=5;
-    Hotel hotelPrueba= new Hotel(codAlojamiento, nombre, numHabitaciones, ubicacion, estrellas, precioAlojamiento);
+    Hotel hotelPrueba= new Hotel(codAlojamiento, nombre, numHabitaciones, ubicacion, estrellas, precioAlojamiento, popularidad);
     Hotel hotel= new Hotel();
     
     @Test

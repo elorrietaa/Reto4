@@ -12,8 +12,9 @@ public class AlojamientoTest {
     protected int numHabitaciones=10;
     protected String ubicacion="BILBAO";
     protected float precioAlojamiento=(float) 12.2;
+    protected int popularidad = 10;
     Alojamiento alojamiento = new Alojamiento();
-    Alojamiento alojamientoPrueba= new Alojamiento(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento);
+    Alojamiento alojamientoPrueba= new Alojamiento(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento, popularidad);
   
     @Test
 	public void testConstuctor() {
@@ -21,6 +22,7 @@ public class AlojamientoTest {
 		assertEquals(nombre, alojamientoPrueba.getNombre());
 		assertEquals(numHabitaciones, alojamientoPrueba.getNumHabitaciones());
 		assertEquals(ubicacion, alojamientoPrueba.getUbicacion());
+		assertEquals(popularidad, alojamientoPrueba.getPopularidad());
 	}
     @Test
 	public void testCodAlojamiento() {

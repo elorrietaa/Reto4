@@ -15,7 +15,8 @@ public class Alojamiento {
 	protected int numHabitaciones;
     protected String ubicacion;
     protected float precioAlojamiento;
-  
+    protected int popularidad;
+   
   /**
   * Constructor del objeto Alojamiento vacio.
   */
@@ -30,15 +31,17 @@ public class Alojamiento {
     * @param ubicacion = Ciudad en la que se encuentra el alojamiento
     * @param precioAlojamiento = precio del alojamiento
     */
-    public Alojamiento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento) {
+    public Alojamiento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad) {
 	this.codAlojamiento = codAlojamiento;
 	this.nombre = nombre;
 	this.numHabitaciones = numHabitaciones;
 	this.ubicacion = ubicacion;
 	this.precioAlojamiento = precioAlojamiento;
+	this.popularidad = popularidad;
     }
 
     //get y set
+    
     /**
      * Getter del códigoAlojamiento = es un atributo de la clase Alojamiento
      * @return codAlojamiento
@@ -109,7 +112,15 @@ public class Alojamiento {
     public void setPrecioAlojamiento(float precioAlojamiento) {
         this.precioAlojamiento = precioAlojamiento;
     }
-    /**
+    
+    
+	public int getPopularidad() {
+		return popularidad;
+	}
+	public void setPopularidad(int popularidad) {
+		this.popularidad = popularidad;
+	}
+	/**
      * Getter del arrayList listaHabitaciones
      * @return
      */

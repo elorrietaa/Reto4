@@ -82,7 +82,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		listaCiudades = consultas.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
 		    ciudad=listaCiudades.get(i);
-		    vista.buscarHotel.cBCiudad.addItem(ciudad);
+		    vista.buscarHotel.cBCiudad.addItem(ciudad); 
 		}
     }
     
@@ -215,8 +215,16 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 							System.out.println(listaDormitorios.get(i).getCodHabitacion());
 						}
 						
+						//si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
+						if(listaDormitorios.size()==0) {
+							JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
+							continuar = false;
+						}
+						
 						//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 						mostrarDetallesHabs();
+						
+					
 						
 						//(5º) Actualiza el siguiente panel, si se cumplen las validaciones.
 						if(continuar) {

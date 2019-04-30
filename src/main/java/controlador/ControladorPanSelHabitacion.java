@@ -107,7 +107,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 	
 	/**
-	  * Método: mostrarHoteles = muestra los detalles del hotel seleccionado por el usuario en la pantalla PandetallesReserva
+	  * Método: mostrarHoteles = muestra los detalles del hotel seleccionado por el usuario en la pantalla PandetallesReserva 
 	  * @param codCiudadSeleccionada
 	  */
 	public void mostrarDatosHotelesJTable() {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import modelo.Cama;
 import modelo.Dormitorio;
 import modelo.PrincipalModelo;
+import modelo.Reserva;
 import vista.JframePrincipal;
 
 public class FuncionesReserva {
@@ -29,7 +30,37 @@ public class FuncionesReserva {
 	} 
 	
 	/**
-	 * Metodo para calcular el precio de la reserva
+	 * Metodo para calcular el precio de la reserva del hotel
+	 * 
+	 * @param reserva Objeto con la informacion de la reserva
+	 * 
+	 * @return Retorna el precio de la reserva 
+	 */
+	public float calcularPrecioReservaCasApart() {
+		float precioReserva=0;
+		
+		//(1º) el precio de la casa/apartamento
+		
+		precioReserva = precioReserva + modelo.alojamiento.getPrecioAlojamiento();
+		
+		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
+		int numNoches = calcularNochesReservadas();  
+		
+		precioReserva = precioReserva*numNoches;
+		
+		//(3º)Redondeamos a 2 decimales
+		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
+		precioReserva = precioReserva/100;//redondear a dos decimales
+		
+		//(4º) metemos el precio total de la reserva en el modelo:
+		modelo.precioTotal = precioReserva;
+		System.out.println("EL PRECIO TOTAL DE LA RESERVA de la CASA/APARTAMENTO ES "+modelo.precioTotal);
+		
+		return precioReserva;
+	}
+	
+	/**
+	 * Metodo para calcular el precio de la reserva del hotel
 	 * 
 	 * @param reserva Objeto con la informacion de la reserva
 	 * 
@@ -97,8 +128,47 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
-	
+	/**
+	 * Método: guardarReservaAlojamiento = Genera la reserva de la casa/alojamiento y la guarda en modelo.reserva
+	 */
+	public void guardarReservaAlojamiento() {
+		
+		//se calcula el codigo de reserva que corresponde a esta reserva
+		int codReserva= modelo.consultas.mostrarNumReservas();
+		
+		//metemos los datos en la reserva 
+		modelo.reserva = new Reserva(); 
+		codReserva = codReserva + 1;
+		modelo.reserva.setCodReserva(codReserva);
+		modelo.reserva.setCliente(modelo.cliente);
+		
+//DUDA???? modelo.alojamiento o modelo.casa modelo.apartamento??
+		modelo.reserva.setAlojamiento(modelo.alojamiento);
+		
+		modelo.reserva.setFechaIda(modelo.fechaIda);
+		modelo.reserva.setFechaVuelta(modelo.fechaVuelta);
+		modelo.reserva.setPrecioReserva(controlador.funcionesReserva.calcularPrecioReservaCasApart());
+			    
+		//probamos que la reserva se haya creado y rellenado correctamente
+		 System.out.println("------->La reserva de la casa o apartamento es: " +"Código reserva: " + modelo.reserva.getCodReserva() + "cod alojamiento reservado " +  modelo.reserva.getAlojamiento().getCodAlojamiento() + "precio reserva alojamiento: "+  modelo.reserva.getPrecioReserva());
+		
+		}
 
+	/**
+	 * Método mostrarDatosReservacasaApart = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
+	 */
+	public void mostrarDatosReservaCasaApart() {
+		//muestra datos del alojamiento
+		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
+		
+		//muestra el PRECIO TOTAL DE LA RESERVA: 
+		calcularPrecioReservaCasApart();
+		
+		//SE MUESTRA EL PRECIO TOTAL:
+	 // 	vista.detallesReservaCasaApart.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
+	}
+	
+	
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */

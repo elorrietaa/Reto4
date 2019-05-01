@@ -58,8 +58,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Date fechaActual = null;
 	int numTipCam [] = new int [3];
 	boolean continuar = false;
-	int filaHotelsel = -1;
-	int filaCasApartSel = -1;
+
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -140,7 +139,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	  	
     	//***TABLA HOTELES es .tab
     	if(codTipoAlojSeleccionado == 10) {
-	    	// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+	    	// Mostrar los datos del alojamiento en tabla tab
 			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarHotel.tab.getModel();
 				
 		  	//llena el arrayList con la lista de Hoteles
@@ -159,10 +158,10 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     	
     	//***TABLA CASA O APARTAMENTO es .table
     	else if (codTipoAlojSeleccionado == 20 || codTipoAlojSeleccionado == 30) {
-		// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+		// Mostrar los datos del alojamiento en tabla table
 				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarHotel.table.getModel();
 					
-			  	//llena el arrayList con la lista de Hoteles
+			  	//llena el arrayList con la lista de alojamiento
 			   	listaAlojamientos = consultas.buscarAlojamientoPorCodigoCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
 			   	
 			   	Object[] datos1 = new Object[2];
@@ -183,6 +182,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
      */
 	public void guardarDatosSeleccionadosAlojamiento() {
 		int filaAlojSeleccionado; 
+		
+		//primero miramos que tipo de alojamiento ha seleccionado el usuario:
 		TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
 		int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 		
@@ -196,30 +197,42 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	    
 			//le pasa el hotel al modelo
 			modelo.hotel = this.hotel;
+			
+			//prueba:
+			System.out.println("Hotel seleccionado: " + modelo.hotel.getNombre());
 		}
 		
+		
+//???????????????
+//guardar modelo.casa modelo.apartamento o modelo.alojamiento y ya esta?????????????
 		//SI SE SELECCIONA UNA CASA:
 		if(codTipoAlojSeleccionado == 20) {
-			//se guarda en filaHotelsel la posición seleccionada en la tabla
+			//se guarda en filaAlojSeleccionado la posición seleccionada en la tabla
 			filaAlojSeleccionado = vista.buscarHotel.table.getSelectedRow(); 	 
 	    
-			//se guarda el hotel seleccionado en la tabla
+			//se guarda la casa seleccionado en la tabla
 			this.casa = (Casa) listaAlojamientos.get(filaAlojSeleccionado);
 	    
-			//le pasa el hotel al modelo
+			//le pasa la casa al modelo
 			modelo.casa = this.casa;
+			
+			//prueba:
+			System.out.println("Casa seleccionado: " + modelo.casa.getNombre());
 		}
 		
-		//SI SE SELECCIONA UN apartamento:
+		//SI SE SELECCIONA UN APARTAMENTO:
 		if(codTipoAlojSeleccionado == 30) {
-			//se guarda en filaHotelsel la posición seleccionada en la tabla
+			//se guarda en filaAlojSeleccionado la posición seleccionada en la tabla
 			filaAlojSeleccionado = vista.buscarHotel.table.getSelectedRow(); 	 
 			    
-			//se guarda el hotel seleccionado en la tabla
+			//se guarda el apartamento seleccionado en la tabla
 			this.apartamento = (Apartamento) listaAlojamientos.get(filaAlojSeleccionado);
 			    
-			//le pasa el hotel al modelo
+			//le pasa el apartamento al modelo
 			modelo.apartamento = this.apartamento;
+			
+			//prueba:
+			System.out.println("Apartamento seleccionado: " + modelo.apartamento.getNombre());
 		}
 	}
 	
@@ -287,46 +300,75 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) {
 				case "Continuar":	//Cuando pulsa el boton continuar pasan las siguientes cosas: 
-					 //se guarda en filaHotelsel la posición seleccionada en la tabla
-				    filaHotelsel = vista.buscarHotel.tab.getSelectedRow(); 	 
-				    filaCasApartSel = vista.buscarHotel.table.getSelectedRow(); 	 
+					 
+				    //(1º) Guarda los datos seleecionados en el modelo
+					guardarDatosSeleccionadosCiudad();
+					guardarDatosSeleccionadosTipoAloj();
+					guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
+					
+					//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
+					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
 				    
-					if (filaHotelsel != -1 || filaCasApartSel != -1) {
+					////probamos que se haya seleccionado al menos una habitación un HOTEL:
+					if (vista.buscarHotel.tab.getSelectedRowCount()!=0) {
 	 
-					    //(1º) Guarda los datos seleecionados en el modelo
-						guardarDatosSeleccionadosCiudad();
-						guardarDatosSeleccionadosTipoAloj();
+						//(3º) Guarda los datos seleecionados en el modelo
 						guardarDatosSeleccionadosAlojamiento();
-						guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
-						
-						//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
-						continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
-						
-						//(3º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
+					
+						//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 						listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
 						for(int i = 0; i < listaDormitorios.size(); i++) {
 							System.out.println(listaDormitorios.get(i).getCodHabitacion());
 						}
 						
-						//si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
+						//(4.1.) si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
 						if(listaDormitorios.size()==0) {
 							JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
 							continuar = false;
 						}
 						
-						//(4º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
+						//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 						mostrarDetallesHabs();
 						
-					
-						
-						//(5º) Actualiza el siguiente panel, si se cumplen las validaciones.
+						//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
 						if(continuar) {
 							vista.buscarHotel.setVisible(false);
 							vista.selHabitacion.setVisible(true);
 						}
 					}
-					else
+					
+					//Si ha seleccionado una CASA O APARTAMENTO:
+			/*		
+					 
+			    //probamos que se haya seleccionado al menos una casa o apartamento
+				else if(vista.buscarHotel.table.getSelectedRowCount()!=0) {
+				
+					//(1º)Se guardan los datos seleccionados en el modelo
+					guardarDatosSeleccionadosTipoAloj();
+					
+					//(2º)Genera 1 reserva y la guarda en modelo.reserva
+					controlador.funcionesReserva.guardarReservaAlojamiento();
+					
+					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
+					controlador.funcionesReserva.mostrarDatosReservaCasaApart();
+					
+					//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
+					actualizarPanDetallesReservaCasaAloj();
+					
+					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
+					vista.selHabitacion.setVisible(false);
+					vista.detallesReserva.setVisible(true);
+			
+				}
+				else {//si no ha seleccionado al menos una habitación aparecerá un aviso
+					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione al menos una habitación para continuar. Gracias. ", null, 0);
+				}
+					
+			*/	
+					else {
 						JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
+					}
+						
 					break;
 				
 				case "Inicio Sesión":
@@ -350,7 +392,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
 				if (tiposAloj != null) {
 				int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
-				//muestra los hoteles de la ciudad seleccionada en el JList
+				//muestra los hoteles de la ciudad seleccionada en el JTable
 				mostrarHotelesEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado);
 				}
 				
@@ -377,5 +419,43 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	}
 	
 	
+	
+	/**
+	  * Método: actualizarPanDetallesReserva = se actualiza la información de la reserva en el siguiente panel: PanDetallesReserva 
+	  * Aparece en PanDetallesReserva la informaicón del hotel seleccionado, las habitaciones seleccionadas, el número de noches de la reserva y el precio Total de la reserva 
+	  * 
+	 */
+/*	public void actualizarPanDetallesReservaCasaAloj() {
+			
+		DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.tab.getModel();
+			
+		// Muestra los datos del Alojamiento seleccionado en un JTable
+		mostrarDatosAlojamientoJTable();
+			
+		// EN EL FUTURO. Muestra los datos de la o las habitaciones que tiene el alojamiento seleccinado 
+		//mostrarDetallesHabsSelec(tablaHabs);
+			
+	}
+	
+	/**
+	  * Método: mostrarDatosAlojamientoJTable = muestra los detalles del alojamiento seleccionado por el usuario en la pantalla PandetallesReserva 
+	  * 
+	  */
+/*	public void mostrarDatosAlojamientoJTable() {
+	
+	    DefaultTableModel tablaDetCasApart = (DefaultTableModel) vista.detallesReservaCasaApart.table.getModel();
 
+//DUDA: alojamiento o casa o apartamento???
+ 				
+		//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
+		Object[] datos1 = new Object[2];
+		
+		tablaHotel.setRowCount(0);
+			datos1[0] = modelo.alojamiento.getNombre();
+			datos1[1] = modelo.alojamiento.getPrecioAlojamiento();
+			
+			tablaDetCasApart.addRow(datos1);
+	
+	}
+*/
 }

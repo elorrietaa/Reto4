@@ -136,15 +136,18 @@ public class PanBuscarHotel extends JPanel {
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
-		Object[][] datos1 = {};
-		String[] columnNames1 = {"Nombre", "desde"};
 		
-		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
-		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
+		
+		
+		
 	
 		
 		// TABLA CASAS o APARTAMENTOS
 		table = new JTable();
+		Object[][] datos1 = {};
+		String[] columnNames1 = {"Nombre", "desde"};
+		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
+		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
 		add(table);
 		table.setModel(new DefaultTableModel(datos1,columnNames1) {
 			private static final long serialVersionUID = 1L;

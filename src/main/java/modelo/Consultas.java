@@ -233,7 +233,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT Cod_habitacion, Tipo_Habitacion, Tamanio, N_camas, Precio_hab FROM `habitaciones` WHERE Cod_alojamiento=? AND Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
+    	String query = "SELECT Cod_habitacion, Tipo_Habitacion, Tamanio, Precio_hab FROM `habitaciones` WHERE Cod_alojamiento=? AND Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
     	
     	try { 
     		// Abrimos una conexion
@@ -257,9 +257,9 @@ public class Consultas {
     		while (rs.next()) {
     			habitacion = new Dormitorio(); 
     			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
+    			//habitacion.setNombreHabitacion(rs.getInt("Nombre_habitacion"));
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
-    			habitacion.setNumCamas(rs.getInt("N_Camas"));
     			habitacion.setPrecioHabitacion(rs.getFloat("Precio_hab"));
     			listaHabDisp.add(habitacion);
     		}
@@ -273,6 +273,45 @@ public class Consultas {
     			conexion.desconectar();
     		}
     	return listaHabDisp;
+    }
+    
+    /**
+     * Método buscarNumCamasPorCodHab = busca el número de camas que tiene la habitación
+     * @param codHabitacion
+     * @return
+     */
+    public int buscarNumCamasPorCodHab(int codHabitacion) {
+    	int numCamas = -1;
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	String query = "SELECT count(Cod_Cama) FROM `camas` WHERE Cod_habitacion=?;";
+    	
+    	try { 
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    		ps.setInt(1, codHabitacion);
+    		
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    
+    		// mete en la variable el resultado obtenido en la select
+    		while (rs.next()) {
+    			numCamas = rs.getInt(1);
+    		}
+    				
+    		} 
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    		} 
+    		finally {
+    			// cerramos la conexion
+    			conexion.desconectar();
+    		}
+    	return numCamas;
     }
     
     public boolean buscarSiAlojDisponible(Date fechaIda, Date fechaVuelta, int codAlojSeleccionado) {
@@ -434,7 +473,7 @@ public class Consultas {
 			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 			result = stmt.executeQuery();
 			
-			// crea objetos con los resultados y los añade a un arrayList
+			// mete en la variable el resultado obtenido en la select
 			while (result.next()) {
 				codReserva = result.getInt(1);
 			}

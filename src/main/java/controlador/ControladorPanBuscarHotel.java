@@ -268,7 +268,10 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		tablaHabs.setRowCount(0);
 		for(int i=0; i<listaDormitorios.size();i++) {
 			datos[0] = listaDormitorios.get(i).getCodHabitacion();
-			datos[1] = listaDormitorios.get(i).getNumCamas();
+			
+			//se calcula el numero de camas por codigo habitación:
+			datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaDormitorios.get(i).getCodHabitacion());
+			//datos[1] = listaDormitorios.get(i).getNumCamas();
 			
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());

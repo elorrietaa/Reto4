@@ -309,6 +309,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
 					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
 				    
+			//***SI SE SELECCIONA UN HOTEL:***
 					////probamos que se haya seleccionado al menos una habitación un HOTEL:
 					if (vista.buscarHotel.tab.getSelectedRowCount()!=0) {
 	 
@@ -337,11 +338,20 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 						}
 					}
 					
-					//Si ha seleccionado una CASA O APARTAMENTO:
+			//***Si ha seleccionado una CASA O APARTAMENTO:***
 			/*		
 					 
 			    //probamos que se haya seleccionado al menos una casa o apartamento
 				else if(vista.buscarHotel.table.getSelectedRowCount()!=0) {
+				
+					//(0º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
+					boolean disponible = modelo.consultas.buscarSiAlojDisponible();
+					
+					//sin acabar
+						//Aviso al usuario si el alojamiento no esta disponible
+						//if (disponible == false){
+						//JOptionPane.showMessageDialog(vista, "Lo sentimos, ese alojamiento no está disponible en las fechas seleccionadas. Por favor, haga otra selección. Gracias. ", null, 0);
+						//}
 				
 					//(1º)Se guardan los datos seleccionados en el modelo
 					guardarDatosSeleccionadosTipoAloj();

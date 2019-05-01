@@ -220,7 +220,13 @@ public class Consultas {
     	return listaHabitacion;
     }
     
-    //no funciona
+  /**
+   * buscarHabitacionDisponiblel = busca las habitaciones disponibles para el hotel seleccionado en las fechas seleccionadas.
+   * @param fechaIda
+   * @param fechaVuelta
+   * @param codHotelSeleccionado
+   * @return
+   */
     public ArrayList<Dormitorio> buscarHabitacionDisponiblel(Date fechaIda, Date fechaVuelta, int codHotelSeleccionado) {
     	ArrayList<Dormitorio> listaHabDisp = new ArrayList<Dormitorio>(); 
     	Dormitorio habitacion;
@@ -267,6 +273,50 @@ public class Consultas {
     			conexion.desconectar();
     		}
     	return listaHabDisp;
+    }
+    
+    public boolean buscarSiAlojDisponible(Date fechaIda, Date fechaVuelta, int codAlojSeleccionado) {
+    	PreparedStatement stmt = null;
+		ResultSet result = null;
+    	int countCodaloj = -1;
+    	boolean disponible = false;
+    	
+    	//probar la selec
+    	String query = "SELECT count(Cod_alojamiento) FROM `reservas` WHERE Cod_alojamiento=? AND Cod_alojamiento NOT IN(SELECT Cod_alojamiento FROM `reservas` where Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
+    	try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			result = stmt.executeQuery();
+			
+			// crea objetos con los resultados y los añade a un arrayList
+			while (result.next()) {
+				countCodaloj = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { 
+				connection.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}     
+    	
+    	if(countCodaloj == 0) {
+    		disponible = true;
+    	}
+    	else if (countCodaloj > 0) {
+    		disponible = false;
+    	}
+    	
+    	return disponible;
     }
     
     

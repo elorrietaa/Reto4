@@ -35,7 +35,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	public PrincipalModelo modelo; 
 	public PrincipalControlador controlador;
 
-	private ArrayList<Hotel> listaHoteles;
+	private ArrayList<Alojamiento> listaHoteles;
 	public ArrayList<Dormitorio> listaDormitorios;
 
 	
@@ -128,20 +128,44 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
      * Método: mostrarHotelesEnJTable = muestra los hoteles que se han encontrado mediante el método BuscarHotelesPorCodigoCiudad en base al codCiudadSeleccionado por el usuario
      * @param codCiudadSeleccionada
      */
-    public void mostrarHotelesEnJTable(int codCiudadSeleccionada) {
-	  	// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
-			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarHotel.tab.getModel();
-			
-	  	//llena el arrayList con la lista de Hoteles
-	   	listaHoteles = consultas.BuscarHotelPorCodigoCiudad(codCiudadSeleccionada);
-		Object[] datos = new Object[2];
-		tablaHotel.setRowCount(0);
-		for(int i=0; i<listaHoteles.size();i++) {
-			datos[0] = listaHoteles.get(i).getNombre();
-			datos[1] = listaHoteles.get(i).getEstrellas();
-			tablaHotel.addRow(datos);
-		}
+    public void mostrarHotelesEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado) {
 	  	
+    	//***TABLA HOTELES es .tab
+    	if(codTipoAlojSeleccionado == 10) {
+	    	// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarHotel.tab.getModel();
+				
+		  	//llena el arrayList con la lista de Hoteles
+		   	listaHoteles = consultas.buscarAlojamientoPorCodigoCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+				   	
+		   	Object[] datos = new Object[2];
+			tablaHotel.setRowCount(0);
+			for(int i=0; i<listaHoteles.size();i++) {
+				
+				datos[0] = listaHoteles.get(i).getNombre();
+				datos[1] = ((Hotel) listaHoteles.get(i)).getEstrellas();
+			
+				tablaHotel.addRow(datos);
+			}
+    	}
+    	else if (codTipoAlojSeleccionado == 20 || codTipoAlojSeleccionado == 30) {
+		//***TABLA CASA O APARTAMENTO es .table
+		// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarHotel.table.getModel();
+					
+			  	//llena el arrayList con la lista de Hoteles
+			   	listaHoteles = consultas.buscarAlojamientoPorCodigoCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+			   	
+			   	Object[] datos1 = new Object[2];
+			   	tablaCasApart.setRowCount(0);
+				for(int i=0; i<listaHoteles.size();i++) {
+					
+					datos1[0] = listaHoteles.get(i).getNombre();
+					datos1[1] = (listaHoteles.get(i)).getPrecioAlojamiento();
+					
+					tablaCasApart.addRow(datos1);
+				}
+    	}
     }
 	
 	
@@ -282,9 +306,12 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			if (ciudad != null) {
 				int codCiudadSeleccionada = ciudad.getCodCiudad();
 				
+				TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
+				if (tiposAloj != null) {
+				int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 				//muestra los hoteles de la ciudad seleccionada en el JList
-				mostrarHotelesEnJTable(codCiudadSeleccionada);
-			
+				mostrarHotelesEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado);
+				}
 				
 			}
 		}

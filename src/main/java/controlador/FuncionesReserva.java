@@ -235,6 +235,36 @@ public class FuncionesReserva {
 		return tiposCamaHab;
 	}
 	
+	/**
+	 * Método: mostrarOcupacionHab = devuelve un int que contiene el número de ocupantes de la habitacion
+	 * @param listaCamas
+	 * @return
+	 */
+	public int mostrarOcupacionHab(ArrayList<Cama> listaCamas) {
+		System.out.println("****Ocupacion DE LA HABITACIÓN SELECCIONADA***");
+		int ocupacion = 0;
+		int numTipCam [] = new int [3];
+		
+		for (int i=0; listaCamas.size()>i; i++) {
+			if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("simple")) {
+				numTipCam[0] = numTipCam[0] +1;
+			}
+			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("matrimonio")) {
+				numTipCam[1] = numTipCam[1] + 1;
+			}
+			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("infantil")) {
+				numTipCam[2] = numTipCam[2] + 1;
+			}
+			System.out.println(listaCamas.get(i).getTipoCama().toString());
+		
+		}
+		//se rellena la variable ocupacion con el umero de ocupantes de las camas de la habitacion
+		ocupacion = numTipCam[0] * 1 + numTipCam[1] * 2 + numTipCam[2] *1;
+		System.out.println("ocupacion" + ocupacion);
+	
+		return ocupacion;
+	}
+	
 	/*
 	public String mostrarStringTiposCama(int [] numTipCam) {
 		String tiposCamaHab = "";

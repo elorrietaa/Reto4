@@ -27,8 +27,8 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
-		vista.detallesReserva.btnAtras.addActionListener(this);
-		vista.detallesReserva.btnContinuar.addActionListener(this);
+		vista.detallesReservaCasaApart.btnAtras.addActionListener(this);
+		vista.detallesReservaCasaApart.btnContinuar.addActionListener(this);
 	}
 	
 	

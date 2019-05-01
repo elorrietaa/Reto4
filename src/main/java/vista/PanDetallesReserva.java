@@ -48,17 +48,17 @@ public class PanDetallesReserva extends JPanel {
 		lblSuReserva = new JLabel("DETALLES DE SU RESERVA :");
 		lblSuReserva.setForeground(Color.BLACK);
 		lblSuReserva.setFont(new Font("Monospaced", Font.BOLD, 30));
-		lblSuReserva.setBounds(128, 48, 513, 39);
+		lblSuReserva.setBounds(23, 27, 513, 39);
 		add(lblSuReserva);
 		
 		lblDatosAlojamiento = new JLabel("Detalles de su alojamiento:");
 		lblDatosAlojamiento.setFont(new Font("Monospaced", Font.BOLD, 16));
-		lblDatosAlojamiento.setBounds(128, 106, 279, 23);
+		lblDatosAlojamiento.setBounds(23, 77, 279, 23);
 		add(lblDatosAlojamiento);
 		
 		lblDetallesHabitaciones = new JLabel("Detalles de sus habitaciones:");
 		lblDetallesHabitaciones.setFont(new Font("Monospaced", Font.BOLD, 16));
-		lblDetallesHabitaciones.setBounds(128, 278, 319, 23);
+		lblDetallesHabitaciones.setBounds(23, 275, 319, 23);
 		add(lblDetallesHabitaciones);
 		
 		btnContinuar = new JButton("Continuar");
@@ -71,19 +71,19 @@ public class PanDetallesReserva extends JPanel {
 		
 		lblPrecio = new JLabel("Precio TOTAL:");
 		lblPrecio.setFont(new Font("Monospaced", Font.BOLD, 25));
-		lblPrecio.setBounds(588, 469, 224, 34);
+		lblPrecio.setBounds(598, 573, 204, 34);
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();
 		tFPrecioReserva.setFont(new Font("Monospaced", Font.BOLD, 25));
 		tFPrecioReserva.setEditable(false);
-		tFPrecioReserva.setBounds(796, 469, 154, 34);
+		tFPrecioReserva.setBounds(822, 573, 128, 34);
 		add(tFPrecioReserva);
 		tFPrecioReserva.setColumns(10);
 		
 		textPDatosAlo = new JTextPane();
 		textPDatosAlo.setEditable(false);
-		textPDatosAlo.setBounds(538, 140, 427, 94);
+		textPDatosAlo.setBounds(452, 118, 427, 94);
 		add(textPDatosAlo);
 		
 		
@@ -126,14 +126,14 @@ public class PanDetallesReserva extends JPanel {
 		tabHot.getColumnModel().getColumn(1).setPreferredWidth(80);
 		
 		scrollPaneIda = new JScrollPane(tabHot);
-		scrollPaneIda.setBounds(128,140,399,94);
+		scrollPaneIda.setBounds(23,111,399,94);
 		add(scrollPaneIda);
 		
 		
 		// TABLA HABITACIONES SELECCIONADAS
 		tab = new JTable();
 		Object[][] datos = {};
-		String[] columnNames = {"Código habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche ","Precio total por habitación" };
+		String[] columnNames = {"Código habitación", "Habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche ","Precio total por habitación" };
 		tab.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
@@ -162,19 +162,20 @@ public class PanDetallesReserva extends JPanel {
 		tab.setRowHeight(50);
 		tab.setFocusable(false);
 		tab.setRowSelectionAllowed(true);
-		tab.getColumnModel().getColumn(0).setPreferredWidth(80);
-		tab.getColumnModel().getColumn(1).setPreferredWidth(80);
-		tab.getColumnModel().getColumn(2).setPreferredWidth(250);
-		tab.getColumnModel().getColumn(3).setPreferredWidth(120);
-		tab.getColumnModel().getColumn(4).setPreferredWidth(120);
+		tab.getColumnModel().getColumn(0).setPreferredWidth(60);
+		tab.getColumnModel().getColumn(1).setPreferredWidth(140);
+		tab.getColumnModel().getColumn(2).setPreferredWidth(60);
+		tab.getColumnModel().getColumn(3).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(4).setPreferredWidth(100);
+		tab.getColumnModel().getColumn(5).setPreferredWidth(100);
 		
 		scrollPaneIda = new JScrollPane(tab);
-		scrollPaneIda.setBounds(128,312,839,136);
+		scrollPaneIda.setBounds(23,309,942,216);
 		add(scrollPaneIda);
 		
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
 		lblNmeroDeNoches.setFont(new Font("Monospaced", Font.BOLD, 16));
-		lblNmeroDeNoches.setBounds(128, 245, 189, 19);
+		lblNmeroDeNoches.setBounds(23, 232, 189, 19);
 		add(lblNmeroDeNoches);
 		
 		textFieldNumNoches = new JTextField();
@@ -182,7 +183,7 @@ public class PanDetallesReserva extends JPanel {
 		textFieldNumNoches.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldNumNoches.setEditable(false);
 		textFieldNumNoches.setColumns(10);
-		textFieldNumNoches.setBounds(327, 247, 46, 20);
+		textFieldNumNoches.setBounds(222, 233, 46, 20);
 		add(textFieldNumNoches);
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");

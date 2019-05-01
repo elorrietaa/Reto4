@@ -202,6 +202,7 @@ public class Consultas {
     			habitacion = new Dormitorio(); 
     			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
     			//habitacion.setAlojamiento(hotel);
+    			habitacion.setNombreHabitacion(rs.getString("Nombre_habitacion"));
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setPrecioHabitacion(rs.getFloat("Precio_hab"));
@@ -232,7 +233,7 @@ public class Consultas {
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT Cod_habitacion, Tipo_Habitacion, Tamanio, Precio_hab FROM `habitaciones` WHERE Cod_alojamiento=? AND Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
+    	String query = "SELECT Cod_habitacion,Nombre_habitacion, Tipo_Habitacion, Tamanio, Precio_hab FROM `habitaciones` WHERE Cod_alojamiento=? AND Cod_habitacion NOT IN(SELECT habitaciones.Cod_habitacion FROM `habitaciones`, `reservas` where habitaciones.Cod_habitacion=reservas.Cod_habitacion AND habitaciones.Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
     	
     	try { 
     		// Abrimos una conexion
@@ -256,7 +257,7 @@ public class Consultas {
     		while (rs.next()) {
     			habitacion = new Dormitorio(); 
     			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
-    			//habitacion.setNombreHabitacion(rs.getInt("Nombre_habitacion"));
+    			habitacion.setNombreHabitacion(rs.getString("Nombre_habitacion"));
     			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setPrecioHabitacion(rs.getFloat("Precio_hab"));

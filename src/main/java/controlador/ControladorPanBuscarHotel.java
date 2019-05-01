@@ -264,13 +264,13 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
 		DefaultTableModel tablaHabs = (DefaultTableModel) vista.selHabitacion.tab.getModel();
 		
-		Object[] datos = new Object[4];
+		Object[] datos = new Object[5];
 		tablaHabs.setRowCount(0);
 		for(int i=0; i<listaDormitorios.size();i++) {
 			datos[0] = listaDormitorios.get(i).getCodHabitacion();
-			
+			datos[1] = listaDormitorios.get(i).getNombreHabitacion();
 			//se calcula el numero de camas que tiene la habitación en función del codigo habitación:
-			datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaDormitorios.get(i).getCodHabitacion());
+			datos[2] = modelo.consultas.buscarNumCamasPorCodHab(listaDormitorios.get(i).getCodHabitacion());
 			
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
@@ -280,9 +280,9 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			//modelo.habitacion.setNumTipCam(numTipCam);
 			//listaHabitaciones.add(modelo.habitacion);
 			
-			datos[2] = tiposCamaHab;
+			datos[3] = tiposCamaHab;
 			
-			datos[3] = (String.format("%.2f", listaDormitorios.get(i).getPrecioHabitacion())  + "€");
+			datos[4] = (String.format("%.2f", listaDormitorios.get(i).getPrecioHabitacion())  + "€");
 			tablaHabs.addRow(datos);
 		}
 	}

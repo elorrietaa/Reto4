@@ -89,6 +89,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		    	//metemos las habitaciones seleccionadas en un arrayList listaHabSeleccionadas
 		    	habitacion = new Dormitorio(); 
 				habitacion.setCodHabitacion(listaDormitorios.get(indHabsSel[i]).getCodHabitacion());
+				habitacion.setNombreHabitacion(listaDormitorios.get(indHabsSel[i]).getNombreHabitacion());
 				//habitacion.setAlojamiento(hotel);
 				habitacion.setTipoHabitacion(listaDormitorios.get(indHabsSel[i]).getTipoHabitacion());
 				habitacion.setTamanio(listaDormitorios.get(indHabsSel[i]).getTamanio());
@@ -147,19 +148,20 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 * @param tabla Tabla que se rellena con la informacion de la reserva
 	 */
 	public void mostrarDetallesHabsSelec( DefaultTableModel tabla) {
-		Object[] datos = new Object[5];
+		Object[] datos = new Object[6];
 	
 		tabla.setRowCount(0);
 		
 		for(int i=0; i<listaDormSeleccionados.size();i++) {
 			datos[0] = listaDormSeleccionados.get(i).getCodHabitacion();
-			datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaDormSeleccionados.get(i).getCodHabitacion());
+			datos[1] = listaDormSeleccionados.get(i).getNombreHabitacion();
+			datos[2] = modelo.consultas.buscarNumCamasPorCodHab(listaDormSeleccionados.get(i).getCodHabitacion());
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormSeleccionados.get(i).getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
-			datos[2] = tiposCamaHab;
-			datos[3] =  (String.format("%.2f", listaDormSeleccionados.get(i).getPrecioHabitacion()) + "€");
-			datos[4] =  (String.format("%.2f",modelo.listaReservas.get(i).getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches");
+			datos[3] = tiposCamaHab;
+			datos[4] =  (String.format("%.2f", listaDormSeleccionados.get(i).getPrecioHabitacion()) + "€");
+			datos[5] =  (String.format("%.2f",modelo.listaReservas.get(i).getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches");
 			tabla.addRow(datos);
 		}
 	}

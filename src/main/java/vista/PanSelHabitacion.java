@@ -51,7 +51,7 @@ public class PanSelHabitacion extends JPanel {
 		// TABLA HABITACIONES
 		tab = new JTable();
 		Object[][] datos = {};
-		String[] columnNames = {"Código de la habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche"};
+		String[] columnNames = {"Código","Habitación ", "Número de camas ", "Tipo de camas", "Precio 1 noche"};
 		tab.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
@@ -80,10 +80,11 @@ public class PanSelHabitacion extends JPanel {
 		tab.setRowHeight(50);
 		tab.setFocusable(false);
 		tab.setRowSelectionAllowed(true);
-		tab.getColumnModel().getColumn(0).setPreferredWidth(180);
-		tab.getColumnModel().getColumn(1).setPreferredWidth(180);
-		tab.getColumnModel().getColumn(2).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(0).setPreferredWidth(80);
+		tab.getColumnModel().getColumn(1).setPreferredWidth(250);
+		tab.getColumnModel().getColumn(2).setPreferredWidth(100);
 		tab.getColumnModel().getColumn(3).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(4).setPreferredWidth(180);
 		
 		scrollPaneIda = new JScrollPane(tab);
 		scrollPaneIda.setBounds(45,111,935,221);

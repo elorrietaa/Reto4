@@ -20,6 +20,7 @@ public class PrincipalControlador {
     public ControladorPanBuscarHotel controladorPanBuscarHotel;
     private ControladorPanSelHabitacion controladorPanSelHabitacion;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
+    private ContrPanDetReserCasaApart contrPanDetReserCasaApart;
     private ControladorPanPago controladorPanPago; 
     private ControladorPanVueltas controladorPanVueltas;
     private ControladorLogin controladorLogin;
@@ -51,6 +52,7 @@ public class PrincipalControlador {
     	vista.buscarHotel.setVisible(true);
     	vista.selHabitacion.setVisible(false);
     	vista.detallesReserva.setVisible(false);
+    	vista.detallesReservaCasaApart.setVisible(false);
     	vista.pago.setVisible(false);
     	vista.vueltas.setVisible(false);
     	vista.login.setVisible(false);
@@ -79,6 +81,11 @@ public class PrincipalControlador {
     	// añadimos listeners a los botones del panel 'controladorPanDetallesReserva'
     	this.controladorPanDetallesReserva = new ControladorPanDetallesReserva(vista, modelo);
     	this.controladorPanDetallesReserva.addListeners();
+    	
+    	// añadimos listeners a los botones del panel 'contrPanDetReserCasaApart'
+    	this.contrPanDetReserCasaApart = new ContrPanDetReserCasaApart(vista, modelo);
+    	this.contrPanDetReserCasaApart.addListeners();
+    	
     	
     	// añadimos listeners a los botones del panel 'controladorPanPago'
     	this.controladorPanPago = new ControladorPanPago(vista, modelo, this);

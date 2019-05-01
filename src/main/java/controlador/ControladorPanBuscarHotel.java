@@ -357,7 +357,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 					vista.selHabitacion.setVisible(false);
-					vista.detallesReserva.setVisible(true);
+					vista.detallesReservaCasaApart.setVisible(true);
 			
 				}
 				else {//si no ha seleccionado al menos una habitación aparecerá un aviso

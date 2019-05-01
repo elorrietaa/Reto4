@@ -59,7 +59,7 @@ public class FuncionesFicheroReserva {
 			writer.println("===== DATOS DE LA RESERVA: ===== " );
 			writer.println("Código habitación: " + modelo.listaReservas.get(pos).getHabitacion().getCodHabitacion());
 			writer.println("Tipo de habitación: " + modelo.listaReservas.get(pos).getHabitacion().getTipoHabitacion());
-			writer.println("Número de camas de la habitación: " + modelo.listaReservas.get(pos).getHabitacion().getNumCamas());
+			writer.println("Número de camas de la habitación: " + modelo.consultas.buscarNumCamasPorCodHab(modelo.hotel.getCodAlojamiento()));
 			
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.listaReservas.get(pos).getHabitacion().getCodHabitacion());

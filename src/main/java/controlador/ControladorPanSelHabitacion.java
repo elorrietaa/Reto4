@@ -153,7 +153,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		
 		for(int i=0; i<listaDormSeleccionados.size();i++) {
 			datos[0] = listaDormSeleccionados.get(i).getCodHabitacion();
-			datos[1] = listaDormSeleccionados.get(i).getNumCamas();
+			datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaDormSeleccionados.get(i).getCodHabitacion());
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormSeleccionados.get(i).getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);

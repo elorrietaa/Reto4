@@ -212,19 +212,19 @@ public class FuncionesReserva {
 	public void generarFicherosReservasHabitacionesSel() {
 		//guarda los datos de la reserva en en un fichero, 1 reserva por cada habitación. 
 		for(int i=0; modelo.listaReservas.size()>i; i++) {
-			modelo.funcionesReserva.imprimirReservaHabitacionesHotel(modelo, vista, i);
+			modelo.funcionesFichero.imprimirReservaHabitacionesHotel(modelo, vista, i);
 		}
 	}
 	
 	public void generarFicherosReservaCasa() {
 		//guarda los datos de la reserva en en un fichero
-		modelo.funcionesReserva.imprimirReservaFicheroCasa(modelo, vista);
+		modelo.funcionesFichero.imprimirReservaFicheroCasa(modelo, vista);
 		
 	}
 	
 	public void generarFicherosReservaApart() {
 		//guarda los datos de la reserva en en un fichero
-		modelo.funcionesReserva.imprimirReservaFicheroApart(modelo, vista);
+		modelo.funcionesFichero.imprimirReservaFicheroApart(modelo, vista);
 		
 	}
 	

@@ -122,13 +122,13 @@ public class FuncionesFicheroReserva {
 			writer.println("Nombre: " + modelo.cliente.getNombre()+ " Apellidos:" + modelo.cliente.getApellidos() + " DNI: " + modelo.cliente.getDni());
 			writer.println();
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
-			writer.println("Ciudad: " + modelo.casa.getUbicacion());
-			writer.println("Código del hotel: " + modelo.casa.getCodAlojamiento());
-			writer.println("Nombre del hotel: " + modelo.casa.getNombre());		
+			writer.println("Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion());
+			writer.println("Código del alojamiento: " + modelo.reserva.getAlojamiento().getCodAlojamiento());
+			writer.println("Nombre del alojamiento: " + modelo.reserva.getAlojamiento().getNombre());		
 			
 			writer.println();
 		
-			writer.println("Precio alojamiento: " + modelo.casa.getPrecioAlojamiento() + "€");
+			writer.println("Precio alojamiento: " + modelo.reserva.getAlojamiento().getPrecioAlojamiento() + "€");
 			writer.println();
 			writer.println("*************************************************************");
 			writer.println();
@@ -173,16 +173,16 @@ public class FuncionesFicheroReserva {
 			writer.println("Fecha salida: " +modelo.reserva.getFechaVuelta());
 			writer.println();
 			writer.println("=====DATOS DEL CLIENTE: ===== " );
-			writer.println("Nombre: " + modelo.cliente.getNombre()+ " Apellidos:" + modelo.cliente.getApellidos() + " DNI: " + modelo.cliente.getDni());
+			writer.println("Nombre1111: " + modelo.cliente.getNombre()+ " Apellidos:" + modelo.cliente.getApellidos() + " DNI: " + modelo.cliente.getDni());
 			writer.println();
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
-			writer.println("Ciudad: " + modelo.apartamento.getUbicacion());
-			writer.println("Código del hotel: " + modelo.apartamento.getCodAlojamiento());
-			writer.println("Nombre del hotel: " + modelo.apartamento.getNombre());		
+			writer.println("Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion());
+			writer.println("Código del apartamento: " + modelo.reserva.getAlojamiento().getCodAlojamiento());
+			writer.println("Nombre del hotel: " + modelo.reserva.getAlojamiento().getNombre());		
 			
 			writer.println();
 		
-			writer.println("Precio alojamiento: " + modelo.apartamento.getPrecioAlojamiento() + "€");
+			writer.println("Precio alojamiento: " + modelo.reserva.getAlojamiento().getPrecioAlojamiento() + "€");
 			writer.println();
 			writer.println("*************************************************************");
 			writer.println();

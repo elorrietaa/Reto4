@@ -277,10 +277,18 @@ public class ControladorPanPago implements ActionListener{
 		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 		
-	   
-	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
 		controlador.funcionesReserva.insertarReservasHabitacionesSel();
-		
+	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
+/*		//PARA HOTELES:
+		System.out.println("tipo aloj: pan pago" + modelo.tiposAloj.getCodTipoAlojamiento());
+		if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+			controlador.funcionesReserva.insertarReservasHabitacionesSel();
+		}
+		//PARA CASAS Y APARTAMENTOS:
+		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20 || modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
+			modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+		}
+*/		
 		//(3º)Genera un fichero con datos de la reserva, 1 fichero por cada reserva de cada habitación
 		controlador.funcionesReserva.generarFicherosReservasHabitacionesSel();
 		

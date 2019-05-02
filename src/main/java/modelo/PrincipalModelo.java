@@ -18,6 +18,7 @@ public class PrincipalModelo {
 	public Consultas consultas;
 	
 	public Ciudad ciudad;
+	public TipoAlojamiento tiposAloj;
 	public Alojamiento alojamiento;
 	public Hotel hotel;
 	public Casa casa;

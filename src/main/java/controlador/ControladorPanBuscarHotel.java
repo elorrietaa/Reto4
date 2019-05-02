@@ -61,7 +61,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	Date fechaActual = null;
 	int numTipCam [] = new int [3];
 	boolean continuar = false;
-
+	boolean disponible = false;
 	
 	/**
 	 * Constructor del controlador del panel de bienvenida
@@ -236,7 +236,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			modelo.casa = this.casa;
 			
 			//prueba:
-			System.out.println("Casa seleccionado: " + modelo.casa.getNombre() + "precio casa:" + modelo.casa.getPrecioAlojamiento());
+			System.out.println("Casa seleccionado: " + modelo.casa.getNombre() +"codigo aloj" + modelo.casa.getCodAlojamiento()+ "precio casa:" + modelo.casa.getPrecioAlojamiento());
 		}
 		
 		//SI SE SELECCIONA UN APARTAMENTO:
@@ -251,7 +251,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			modelo.apartamento = this.apartamento;
 			
 			//prueba:
-			System.out.println("Apartamento seleccionado: " + modelo.apartamento.getNombre());
+			System.out.println("Apartamento seleccionado: " + modelo.apartamento.getNombre()+"codigo aloj" + modelo.apartamento.getCodAlojamiento());
 		}
 	}
 	
@@ -364,15 +364,27 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			    //probamos que se haya seleccionado al menos una casa o apartamento
 					else if(tiposAloj.getCodTipoAlojamiento() == 20 || tiposAloj.getCodTipoAlojamiento() ==30) {
 				
-					//(0º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
-					//boolean disponible = modelo.consultas.buscarSiAlojDisponible();
+					//(0º)Se guardan los datos seleccionados en el modelo
+					guardarDatosSeleccionadosAlojamiento();
 					
-					//sin acabar
-						//Aviso al usuario si el alojamiento no esta disponible
-						/*if (disponible == false){
-						JOptionPane.showMessageDialog(vista, "Lo sentimos, ese alojamiento no está disponible en las fechas seleccionadas. Por favor, haga otra selección. Gracias. ", null, 0);
-						}*/
-				
+					//(0º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
+						
+					//PARA CASAS:
+						if (tiposAloj.getCodTipoAlojamiento() == 20) {
+							disponible = modelo.consultas.buscarSiAlojDisponible(modelo.fechaIda, modelo.fechaVuelta, modelo.casa.getCodAlojamiento() );
+						System.out.println("esta disponible" + disponible);
+						}
+						
+					//PARA APARTAMENTOS:
+						else if (tiposAloj.getCodTipoAlojamiento() == 30) {
+							disponible = modelo.consultas.buscarSiAlojDisponible(modelo.fechaIda, modelo.fechaVuelta, modelo.apartamento.getCodAlojamiento() );
+							System.out.println("esta disponible" + disponible);
+						}
+					
+	
+						
+						
+						
 					//(1º)Se guardan los datos seleccionados en el modelo
 						guardarDatosSeleccionadosAlojamiento();
 						
@@ -386,9 +398,18 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
 					actualizarPanDetallesReservaCasaAloj();
 					
+					
+					//Aviso al usuario si el alojamiento no esta disponible
+					if (disponible == false){
+					JOptionPane.showMessageDialog(vista, "Lo sentimos, ese alojamiento no está disponible en las fechas seleccionadas. Por favor, haga otra selección. Gracias. ", null, 0);
+					}
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
-					vista.buscarHotel.setVisible(false);
-					vista.detallesReservaCasaApart.setVisible(true);
+					
+					if(continuar && disponible != false) {
+						vista.buscarHotel.setVisible(false);
+						vista.detallesReservaCasaApart.setVisible(true);
+					}
+					
 				
 					}
 					else {

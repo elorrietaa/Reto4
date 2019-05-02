@@ -143,7 +143,7 @@ public class Consultas {
 				ps = connection.prepareStatement(query);
 				ps.setInt(1, codCiudadSeleccionada);
 				//en el futuro pasar por parámetro codTipoAlojSeleccionado
-				ps.setInt(2, codTipoAlojSeleccionado);
+				ps.setInt(2, 10);
 						
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				rs = ps.executeQuery();
@@ -172,7 +172,13 @@ public class Consultas {
 		return listaHoteles;
 		
     }
- public ArrayList<Casa> buscarCasaPorCodCiudad(int codCiudadSeleccionada) {
+    
+    /**
+     * Método buscarCasaPorCodCiudad = busca la lista de casas en función de la ciudad seleccionada por el usuario.
+     * @param codCiudadSeleccionada
+     * @return
+     */
+    public ArrayList<Casa> buscarCasaPorCodCiudad(int codCiudadSeleccionada) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -217,7 +223,12 @@ public class Consultas {
 		return listaCasas;
     }
  
- public ArrayList<Apartamento> buscarApartamentoPorCodCiudad(int codCiudadSeleccionada) {
+    /**
+     * Método buscarApartamentoPorCodCiudad = busca la lista de apartamentos en función de la ciudad seleccionada por el usuario.
+     * @param codCiudadSeleccionada
+     * @return
+     */
+    public ArrayList<Apartamento> buscarApartamentoPorCodCiudad(int codCiudadSeleccionada) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -234,7 +245,7 @@ public class Consultas {
 				ps = connection.prepareStatement(query);
 				ps.setInt(1, codCiudadSeleccionada);
 				//en el futuro pasar por parámetro codTipoAlojSeleccionado
-				ps.setInt(2, 20);
+				ps.setInt(2, 30);
 						
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				rs = ps.executeQuery();
@@ -261,9 +272,8 @@ public class Consultas {
 		
 		
 		return listaApartamentos;
- }
+    }
     
-  
     /**
      * Método buscarHabitacionPorCodigoHotel = busca las habitaciones del hotel seleccionado por el usuario.
      * @param hotel = contiene los datos del hotel seleccionado por el usuario.
@@ -406,24 +416,38 @@ public class Consultas {
     	return numCamas;
     }
     
+    /**
+     * Método buscarSiAlojDisponible = verifica si el alojamiento está disponible para las fechas seleccionadas.
+     * @param fechaIda
+     * @param fechaVuelta
+     * @param codAlojSeleccionado
+     * @return
+     */
     public boolean buscarSiAlojDisponible(Date fechaIda, Date fechaVuelta, int codAlojSeleccionado) {
-    	PreparedStatement stmt = null;
+    	PreparedStatement ps = null;
 		ResultSet result = null;
     	int countCodaloj = -1;
     	boolean disponible = false;
     	
     	//probar la selec
-    	String query = "SELECT count(Cod_alojamiento) FROM `reservas` WHERE Cod_alojamiento=? AND Cod_alojamiento NOT IN(SELECT Cod_alojamiento FROM `reservas` where Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?));";
+    	String query = "SELECT count(Cod_alojamiento) FROM `reservas` where Cod_alojamiento=? AND ((Fecha_entrada <= ? AND Fecha_salida >= ?) OR Fecha_salida BETWEEN ? AND ? OR Fecha_entrada BETWEEN ? AND ?);";
     	try {
 			
 			// abrimos una conexion
 			connection = conexion.conectar();
 			
 			// preparamos la consulta SQL a la base de datos
-			stmt = connection.prepareStatement(query);
+    		ps = connection.prepareStatement(query);
+    		ps.setInt(1, codAlojSeleccionado);
+    		ps.setDate(2, fechaIda);
+    		ps.setDate(3, fechaVuelta);
+    		ps.setDate(4, fechaIda);
+    		ps.setDate(5, fechaVuelta);
+    		ps.setDate(6, fechaIda);  
+    		ps.setDate(7, fechaVuelta);
 			
 			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
-			result = stmt.executeQuery();
+			result = ps.executeQuery();
 			
 			// crea objetos con los resultados y los añade a un arrayList
 			while (result.next()) {

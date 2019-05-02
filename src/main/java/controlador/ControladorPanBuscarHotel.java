@@ -359,6 +359,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					guardarDatosSeleccionadosTipoAloj();
 					
 					//(2º)Genera 1 reserva y la guarda en modelo.reserva
+					//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
 					controlador.funcionesReserva.guardarReservaAlojamiento();
 					
 					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
@@ -458,8 +459,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		Object[] datos1 = new Object[2];
 		
 		tablaDetCasApart.setRowCount(0);
-		datos1[0] = modelo.alojamiento.getNombre();
-		datos1[1] = modelo.alojamiento.getPrecioAlojamiento();
+		datos1[0] = modelo.casa.getNombre();
+		datos1[1] = modelo.casa.getPrecioAlojamiento();
 			
 		tablaDetCasApart.addRow(datos1);
 	

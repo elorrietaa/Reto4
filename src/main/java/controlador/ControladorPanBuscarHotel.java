@@ -76,6 +76,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	 */
     public void addListeners() {
     	vista.buscarHotel.cBCiudad.addActionListener(this);
+    	vista.buscarHotel.cBTipoAloj.addActionListener(this);
     	vista.buscarHotel.buttonContinuar.addActionListener(this);
     	vista.buscarHotel.btnInicioSesion.addActionListener(this);
     	vista.buscarHotel.btnRegistro.addActionListener(this);

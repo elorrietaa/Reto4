@@ -171,11 +171,14 @@ public class FuncionesReserva {
 		//muestra datos del alojamiento
 		vista.detallesReservaCasaApart.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre());
 		
+		//mostramos num de noches en la vista 
+		vista.detallesReservaCasaApart.textFieldNumNoches.setText(Integer.toString(modelo.numNoches));
+		
 		//muestra el PRECIO TOTAL DE LA RESERVA: 
 		calcularPrecioReservaCasApart(tiposAloj);
 		
 		//SE MUESTRA EL PRECIO TOTAL:
-	 // 	vista.detallesReservaCasaApart.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
+		vista.detallesReservaCasaApart.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
 	}
 	
 	

@@ -224,22 +224,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 		}
 		
 		
-//???????????????
-//guardar modelo.casa modelo.apartamento o modelo.alojamiento y ya esta?????????????
 		//SI SE SELECCIONA UNA CASA:
 		if(codTipoAlojSeleccionado == 20) {
 			//se guarda en filaAlojSeleccionado la posición seleccionada en la tabla
 			filaAlojSeleccionado = vista.buscarHotel.table.getSelectedRow(); 	
-			
-//HASTA AQUI BIEN			
-	    System.out.println("casa: fila aloj:" + filaAlojSeleccionado);
-//prueba	    
-	    
-	 
-	    for (int i=0; i<listaCasas.size(); i++) {
-	    	System.out.println(listaCasas.get(i).getNombre());
-	    }
-//prueba
+				
 	    //se guarda la casa seleccionado en la tabla
 			this.casa = (Casa) listaCasas.get(filaAlojSeleccionado);
 	    
@@ -247,7 +236,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			modelo.casa = this.casa;
 			
 			//prueba:
-			System.out.println("Casa seleccionado: " + modelo.casa.getNombre());
+			System.out.println("Casa seleccionado: " + modelo.casa.getNombre() + "precio casa:" + modelo.casa.getPrecioAlojamiento());
 		}
 		
 		//SI SE SELECCIONA UN APARTAMENTO:

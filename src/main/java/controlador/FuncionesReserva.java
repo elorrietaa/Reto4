@@ -216,6 +216,19 @@ public class FuncionesReserva {
 		}
 	}
 	
+	public void generarFicherosReservaCasa() {
+		//guarda los datos de la reserva en en un fichero
+		modelo.funcionesReserva.imprimirReservaFicheroCasa(modelo, vista);
+		
+	}
+	
+	public void generarFicherosReservaApart() {
+		//guarda los datos de la reserva en en un fichero
+		modelo.funcionesReserva.imprimirReservaFicheroApart(modelo, vista);
+		
+	}
+	
+	
 	/**
 	 * Método: mostrarTiposDeCamas = devuelve un String que contiene el número de camas de cada tipo que hay.
 	 * @param listaCamas

@@ -759,7 +759,7 @@ public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda,
 		ResultSet result = null;
 		int codReserva = 0; 
 		
-		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			

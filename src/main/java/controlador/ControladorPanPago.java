@@ -272,29 +272,39 @@ public class ControladorPanPago implements ActionListener{
 	public void FuncionContinuar() {
 		
 		//(1º) muestra detalles de las vueltas
-		sobra = modelo.funcionesPago.sobra(total, dinero); // Calcula el dinero que sobra para devolverselo al usuario
-		vista.vueltas.txtTotal.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el dinero total
-		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
-		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
+			sobra = modelo.funcionesPago.sobra(total, dinero); // Calcula el dinero que sobra para devolverselo al usuario
+			vista.vueltas.txtTotal.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el dinero total
+			vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
+			vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
+			
 		
-		controlador.funcionesReserva.insertarReservasHabitacionesSel();
 	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
-/*		//PARA HOTELES:
-		System.out.println("tipo aloj: pan pago" + modelo.tiposAloj.getCodTipoAlojamiento());
-		if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
-			controlador.funcionesReserva.insertarReservasHabitacionesSel();
-		}
-		//PARA CASAS Y APARTAMENTOS:
-		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20 || modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
-			modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
-		}
-*/		
+			//PARA HOTELES:
+			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
+				controlador.funcionesReserva.insertarReservasHabitacionesSel();
+			}
+			//PARA CASAS Y APARTAMENTOS:
+			else if (modelo.reserva.getAlojamiento() instanceof Casa || modelo.reserva.getAlojamiento() instanceof Apartamento) {
+				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+			}
+		
 		//(3º)Genera un fichero con datos de la reserva, 1 fichero por cada reserva de cada habitación
-		controlador.funcionesReserva.generarFicherosReservasHabitacionesSel();
+			//para HOTELES
+			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
+				controlador.funcionesReserva.generarFicherosReservasHabitacionesSel();
+			}
+			//PARA CASAS:
+			else if (modelo.reserva.getAlojamiento() instanceof Casa) {
+				controlador.funcionesReserva.generarFicherosReservaCasa();
+			}
+			//PARA APARTAMENTOS:
+			else if (modelo.reserva.getAlojamiento() instanceof Apartamento) {
+				controlador.funcionesReserva.generarFicherosReservaApart();
+			}
 		
 		//(4º) actualiza los paneles
-		vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
-		vista.pago.setVisible(false); // Pone el panel de pago en invisible
+			vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
+			vista.pago.setVisible(false); // Pone el panel de pago en invisible
 	}
 	/**
 	 * Funcion del boton de cancelar

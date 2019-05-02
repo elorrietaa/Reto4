@@ -125,14 +125,15 @@ public class Consultas {
     * @param codTipoAlojSeleccionado
     * @return
     */
-    public ArrayList<Alojamiento> buscarAlojamientoPorCodigoCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado) {
+    public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
-		ArrayList<Alojamiento> listaAlojamientos = new ArrayList<Alojamiento>(); 
+		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		
+			ArrayList<Hotel> listaHoteles = new ArrayList<Hotel>(); 
+			
 			Hotel hotel;
 			try {
 				// Abrimos una conexion
@@ -152,11 +153,56 @@ public class Consultas {
 					hotel = new Hotel();
 					hotel.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
 					hotel.setNombre(rs.getString("Nombre_alojamiento"));
-					hotel.setNumHabitaciones(rs.getInt("N_Habitaciones"));
+					//hotel.setNumHabitaciones(rs.getInt("N_Habitaciones"));
 					hotel.setUbicacion(rs.getString("Nombre_ubicacion"));
 					hotel.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					hotel.setEstrellas(rs.getInt("N_estrellas"));
-					listaAlojamientos.add(hotel);
+					listaHoteles.add(hotel);
+				}	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			} 
+			finally {
+				// cerramos la conexion
+				conexion.desconectar();
+			}
+	
+		
+		return listaHoteles;
+		
+    }
+ public ArrayList<Casa> buscarCasaPorCodCiudad(int codCiudadSeleccionada) {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		ArrayList<Casa> listaCasas = new ArrayList<Casa>(); 
+		
+			Casa casa;
+			try {
+				// Abrimos una conexion
+				connection = conexion.conectar();
+						
+				// preparamos la consulta SQL a la base de datos
+				ps = connection.prepareStatement(query);
+				ps.setInt(1, codCiudadSeleccionada);
+				//en el futuro pasar por parámetro codTipoAlojSeleccionado
+				ps.setInt(2, 20);
+						
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				rs = ps.executeQuery();
+						
+				// crea objetos Linea con los resultados y los añade a un arrayList
+				while (rs.next()) {
+					casa = new Casa();
+					casa.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
+					casa.setNombre(rs.getString("Nombre_alojamiento"));
+					casa.setUbicacion(rs.getString("Nombre_ubicacion"));
+					casa.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
+					
+					listaCasas.add(casa);
 				}	
 			} 
 			catch (SQLException e) {
@@ -168,8 +214,54 @@ public class Consultas {
 			}
 		
 		
-		return listaAlojamientos;
+		return listaCasas;
     }
+ 
+ public ArrayList<Apartamento> buscarApartamentoPorCodCiudad(int codCiudadSeleccionada) {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		ArrayList<Apartamento> listaApartamentos = new ArrayList<Apartamento>(); 
+		
+		Apartamento apartamento;
+			try {
+				// Abrimos una conexion
+				connection = conexion.conectar();
+						
+				// preparamos la consulta SQL a la base de datos
+				ps = connection.prepareStatement(query);
+				ps.setInt(1, codCiudadSeleccionada);
+				//en el futuro pasar por parámetro codTipoAlojSeleccionado
+				ps.setInt(2, 20);
+						
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				rs = ps.executeQuery();
+						
+				// crea objetos Linea con los resultados y los añade a un arrayList
+				while (rs.next()) {
+					apartamento = new Apartamento();
+					apartamento.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
+					apartamento.setNombre(rs.getString("Nombre_alojamiento"));
+					
+					apartamento.setUbicacion(rs.getString("Nombre_ubicacion"));
+					apartamento.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
+					
+					listaApartamentos.add(apartamento);
+				}	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			} 
+			finally {
+				// cerramos la conexion
+				conexion.desconectar();
+			}
+		
+		
+		return listaApartamentos;
+ }
     
   
     /**

@@ -178,6 +178,7 @@ public class FuncionesReserva {
 	   if(modelo.fechaIda.after(fechaDate1) && modelo.fechaVuelta.before(fechaDate2)) {
 		System.out.println("-------------------------------------->es tarifa estival");
 	    }
+<<<<<<< HEAD
 	   else 
 		   System.out.println("-------------------------------------->NO es tarifa estival");
 	    
@@ -185,6 +186,13 @@ public class FuncionesReserva {
 		System.out.println("2-------------------------------------->es tarifa estival");
 	   }	
 	    */
+=======
+	   
+	if(vista.buscarHotel.fechaIda.get(Calendar.MONTH) == Calendar.JUNE) {
+		System.out.println("2-------------------------------------->es tarifa estival");
+	   }	
+	     */
+>>>>>>> 440df23d3455606067265a4927e21757a362ce7b
 	    return precioTarifaAplicada;
 	}
 	

@@ -70,7 +70,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 	}
 	
 	public void funcionContinuar() {
-		ControladorLogin.panelOrigen = vista.detallesReserva;
+		ControladorLogin.panelOrigen = vista.detallesReservaCasaApart;
 		ControladorLogin.detalles = true;
 		vista.pago.total.setText(Float.toString(this.modelo.precioTotal) + " €");
 		vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal) + " €");

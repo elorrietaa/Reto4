@@ -1,6 +1,10 @@
 package controlador;
 
+//import java.sql.Date;
+import java.util.Date;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -18,8 +22,23 @@ public class FuncionesReserva {
 	JframePrincipal vista;
 	public float precioHabitacion;
 	public float precioReserva;
-
-	 
+	SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+    Date fechaDate1 = null;
+    Date fechaDate2 = null;
+/*
+	//int aino=2019;
+	//Date inicioEstival = new Date(1-06-aino);
+	String sInicioEstival = "2019-06-01" ;
+	Date finEstival = new Date(2019-10-01);
+	try {
+	    
+	    Date inicioEstival = sdf.parse(sInicioEstival);
+		
+	} 
+	catch(ParseException ex){
+	    ex.printStackTrace();
+	}
+*/	
 	/**
 	 * Constructor de la clase FuncionesPago
 	 * 
@@ -79,6 +98,9 @@ public class FuncionesReserva {
 			precioReserva = precioReserva + listaHabSeleccionadas.get(i).getPrecioHabitacion();
 		}
 		
+		//mira si es tarifa estival:
+		precioReserva = calcularPrecioPorTarifa(precioReserva);
+		
 		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();  
 		
@@ -133,18 +155,35 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
+	
 	public float calcularPrecioPorTarifa(float precioAloj) {
-	    float precioTarifaAplicada = 0;
+	    float precioTarifaAplicada = precioAloj;
 	    //
-	    
-	//    if() {
-		
-	   // }
+		System.out.println("1-------------------------------------->es tarifa estival");
+
+		String sInicioEstival = "2019-06-01" ;
+		String finEstival = "2019-10-01" ;
+	
+       
+        try {
+            fechaDate1 = formato.parse(sInicioEstival);
+            fechaDate2 = formato.parse(finEstival);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+		System.out.println(fechaDate1);
+		System.out.println(fechaDate2);
+	   if(modelo.fechaIda.after(fechaDate1) && modelo.fechaVuelta.before(fechaDate2)) {
+		System.out.println("-------------------------------------->es tarifa estival");
+	    }
+
+	   else 
+		   System.out.println("-------------------------------------->NO es tarifa estival");
 	    
 	    return precioTarifaAplicada;
 	}
-	
-	
 	
 	
 	

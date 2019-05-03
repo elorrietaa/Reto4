@@ -232,6 +232,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	    
 			//le pasa el hotel al modelo
 			modelo.hotel = this.hotel;
+			modelo.casa = null;
+			modelo.apartamento = null;
 			
 			//prueba:
 			System.out.println("Hotel seleccionado: " + modelo.hotel.getNombre() + "estrellas" + modelo.hotel.getEstrellas());
@@ -248,6 +250,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	    
 			//le pasa la casa al modelo
 			modelo.casa = this.casa;
+			modelo.hotel = null;
+			modelo.apartamento = null;
 			
 			//prueba:
 			System.out.println("Casa seleccionado: " + modelo.casa.getNombre() +"codigo aloj" + modelo.casa.getCodAlojamiento()+ "precio casa:" + modelo.casa.getPrecioAlojamiento());
@@ -263,6 +267,8 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			    
 			//le pasa el apartamento al modelo
 			modelo.apartamento = this.apartamento;
+			modelo.hotel = null;
+			modelo.casa = null;
 			
 			//prueba:
 			System.out.println("Apartamento seleccionado: " + modelo.apartamento.getNombre()+"codigo aloj" + modelo.apartamento.getCodAlojamiento()+ "piso" + modelo.apartamento.getPiso());
@@ -345,7 +351,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				    
 			//***SI SE SELECCIONA UN HOTEL:***
 					////probamos que se haya seleccionado al menos una habitación un HOTEL:
-					if (vista.buscarHotel.tab.getSelectedRowCount()!=0) {
+					if (tiposAloj.getCodTipoAlojamiento() == 10) {
 	 
 						//(3º) Guarda los datos seleecionados en el modelo
 						guardarDatosSeleccionadosAlojamiento();

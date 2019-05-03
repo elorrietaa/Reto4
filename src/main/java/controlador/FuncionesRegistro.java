@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import modelo.Cliente;
 import modelo.PrincipalModelo;
+import vista.JframePrincipal;
 
 /**
  * Esta clase se utiliza para validar el DNI del usuario y encriptar su contraseña
@@ -28,14 +29,16 @@ public class FuncionesRegistro {
 	
 	PrincipalModelo modelo;
 	PrincipalControlador controlador;
+	JframePrincipal vista;
 	/**
 	 * Contructor de la clase FuncionesRegistro
 	 * 
 	 * @param modelo Instancia del modelo para poder utilizarlo
 	 */
-	public FuncionesRegistro (PrincipalModelo modelo, PrincipalControlador controlador) {
+	public FuncionesRegistro (PrincipalModelo modelo, PrincipalControlador controlador, JframePrincipal vista) {
 		this.modelo = modelo;
 		this.controlador = controlador;
+		this.vista = vista;
 	}
 	/**
 	 * Metodo que se encarga de validar el DNI
@@ -149,6 +152,44 @@ public class FuncionesRegistro {
 		
 		return cliente;
 		
+	}
+	
+	public void ocultarBotones() {
+		vista.buscarHotel.btnInicioSesion.setVisible(false);
+		vista.buscarHotel.btnInicioSesion.setEnabled(false);
+		vista.buscarHotel.btnRegistro.setVisible(false);
+		vista.buscarHotel.btnRegistro.setEnabled(false);
+		vista.selHabitacion.btnInicioSesion.setVisible(false);
+		vista.selHabitacion.btnInicioSesion.setEnabled(false);
+		vista.selHabitacion.btnRegistro.setVisible(false);
+		vista.selHabitacion.btnRegistro.setEnabled(false);
+		vista.detallesReserva.btnInicioSesion.setVisible(false);
+		vista.detallesReserva.btnInicioSesion.setEnabled(false);
+		vista.detallesReserva.btnRegistro.setVisible(false);
+		vista.detallesReserva.btnRegistro.setEnabled(false);
+		vista.detallesReservaCasaApart.btnInicioSesion.setVisible(false);
+		vista.detallesReservaCasaApart.btnInicioSesion.setEnabled(false);
+		vista.detallesReservaCasaApart.btnRegistro.setVisible(false);
+		vista.detallesReservaCasaApart.btnRegistro.setEnabled(false);
+	}
+	
+	public void mostrarBotones() {
+		vista.buscarHotel.btnInicioSesion.setVisible(true);
+		vista.buscarHotel.btnInicioSesion.setEnabled(true);
+		vista.buscarHotel.btnRegistro.setVisible(true);
+		vista.buscarHotel.btnRegistro.setEnabled(true);
+		vista.selHabitacion.btnInicioSesion.setVisible(true);
+		vista.selHabitacion.btnInicioSesion.setEnabled(true);
+		vista.selHabitacion.btnRegistro.setVisible(true);
+		vista.selHabitacion.btnRegistro.setEnabled(true);
+		vista.detallesReserva.btnInicioSesion.setVisible(true);
+		vista.detallesReserva.btnInicioSesion.setEnabled(true);
+		vista.detallesReserva.btnRegistro.setVisible(true);
+		vista.detallesReserva.btnRegistro.setEnabled(true);
+		vista.detallesReservaCasaApart.btnInicioSesion.setVisible(true);
+		vista.detallesReservaCasaApart.btnInicioSesion.setEnabled(true);
+		vista.detallesReservaCasaApart.btnRegistro.setVisible(true);
+		vista.detallesReservaCasaApart.btnRegistro.setEnabled(true);
 	}
 
 }

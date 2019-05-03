@@ -147,6 +147,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 				
 		  	//llena el arrayList con la lista de Hoteles
 		   	listaHoteles = consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+		   	
+		   	vista.buscarHotel.panelHotel.setVisible(true);
+		   	vista.buscarHotel.panelHotel.setEnabled(true);
+		   	vista.buscarHotel.panelCasaApart.setVisible(false);
+		   	vista.buscarHotel.panelCasaApart.setEnabled(false);
 				   	
 		   	Object[] datos = new Object[2];
 			tablaHotel.setRowCount(0);
@@ -166,6 +171,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					
 			  	//llena el arrayList con la lista de casas
 				listaCasas = consultas.buscarCasaPorCodCiudad(codCiudadSeleccionada);
+				
+			   	vista.buscarHotel.panelHotel.setVisible(false);
+			   	vista.buscarHotel.panelHotel.setEnabled(false);
+			   	vista.buscarHotel.panelCasaApart.setVisible(true);
+			   	vista.buscarHotel.panelCasaApart.setEnabled(true);
 			   	
 			   	Object[] datos1 = new Object[2];
 			   	tablaCasApart.setRowCount(0);
@@ -183,6 +193,11 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
     					
     			  	//llena el arrayList con la lista de casas
     				listaApartamentos = consultas.buscarApartamentoPorCodCiudad(codCiudadSeleccionada);
+    				
+    				vista.buscarHotel.panelHotel.setVisible(false);
+    			   	vista.buscarHotel.panelHotel.setEnabled(false);
+    			   	vista.buscarHotel.panelCasaApart.setVisible(true);
+    			   	vista.buscarHotel.panelCasaApart.setEnabled(true);
     			   	
     			   	Object[] datos1 = new Object[2];
     			   	tablaCasApart.setRowCount(0);

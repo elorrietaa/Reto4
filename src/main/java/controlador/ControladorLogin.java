@@ -64,6 +64,7 @@ public class ControladorLogin implements ActionListener {
 				
 				vista.bienvenida.setVisible(true);
 				vista.login.setVisible(false);
+				controlador.funcionesRegistro.mostrarBotones();
 				reset();
 				break;
 				
@@ -86,26 +87,9 @@ public class ControladorLogin implements ActionListener {
 			
 				// mostramos la pantalla adecuada
 				if(modelo.cliente != null) { // Comprueba si hay un cliente.
-					// deshabilitar botones de login y registro en todos los paneles
-					vista.buscarHotel.btnInicioSesion.setVisible(false);
-					vista.buscarHotel.btnInicioSesion.setEnabled(false);
-					vista.buscarHotel.btnRegistro.setVisible(false);
-					vista.buscarHotel.btnRegistro.setEnabled(false);
-					vista.selHabitacion.btnInicioSesion.setVisible(false);
-					vista.selHabitacion.btnInicioSesion.setEnabled(false);
-					vista.selHabitacion.btnRegistro.setVisible(false);
-					vista.selHabitacion.btnRegistro.setEnabled(false);
-					vista.detallesReserva.btnInicioSesion.setVisible(false);
-					vista.detallesReserva.btnInicioSesion.setEnabled(false);
-					vista.detallesReserva.btnRegistro.setVisible(false);
-					vista.detallesReserva.btnRegistro.setEnabled(false);
-					vista.detallesReservaCasaApart.btnInicioSesion.setVisible(false);
-					vista.detallesReservaCasaApart.btnInicioSesion.setEnabled(false);
-					vista.detallesReservaCasaApart.btnRegistro.setVisible(false);
-					vista.detallesReservaCasaApart.btnRegistro.setEnabled(false);
 					
+					controlador.funcionesRegistro.ocultarBotones();
 					if(detalles == false) {
-						
 						// mostrar la pantalla adecuada
 						panelOrigen.setVisible(true);
 						vista.login.setVisible(false);
@@ -127,17 +111,14 @@ public class ControladorLogin implements ActionListener {
 	 * Metodo del boton de cancelar del panel de inicio de sesion
 	 */
 	public void reset() {
-		/*modelo.cliente = null;
-		modelo.billeteIda = null;
-		modelo.billeteVuelta = null;
-		modelo.linea = null;
-		modelo.paradaOrigen = null;
-		modelo.paradaDestino = null;
-		modelo.autobus = null;
+		modelo.cliente = null;
+		modelo.alojamiento = null;
+		modelo.apartamento = null;
+		modelo.cama = null;
+		modelo.casa = null;
+		modelo.ciudad = null;
+		modelo.reserva = null;
 		modelo.precioTotal = 0;
-		
-		vista.sel_billete.rbtnIda.setSelected(true);
-		vista.sel_billete.rbtnVuelta.setSelected(false);*/
 		
 		vista.login.userField.setText("");
 		vista.login.password.setText("");

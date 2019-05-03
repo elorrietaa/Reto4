@@ -63,6 +63,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.selHabitacion.btnCancelar.addActionListener(this);
 		vista.selHabitacion.btnInicioSesion.addActionListener(this);
 		vista.selHabitacion.btnRegistro.addActionListener(this);
 		vista.selHabitacion.btnAtras.addActionListener(this);
@@ -258,6 +259,12 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				vista.registro.setVisible(true);
 				vista.selHabitacion.setVisible(false);
 				break;
+			case "Cancelar":
+				vista.bienvenida.setVisible(true);
+				vista.selHabitacion.setVisible(false);
+				controlador.funcionesRegistro.mostrarBotones();
+				reset();
+				break;
 	
 		}
 		
@@ -267,8 +274,15 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 */
 	public void reset() {
 		modelo.cliente = null;
-		
+		modelo.cliente = null;
+		modelo.alojamiento = null;
+		modelo.apartamento = null;
+		modelo.cama = null;
+		modelo.casa = null;
+		modelo.ciudad = null;
+		modelo.reserva = null;
 		modelo.precioTotal = 0;
+		
 		vista.login.userField.setText("");
 		vista.login.password.setText("");
 		
@@ -279,6 +293,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		vista.registro.txtDni.setText("");
 		vista.registro.passwordField.setText("");
 		vista.registro.passwordField2.setText("");
+		vista.buscarHotel.cBCiudad.removeAllItems();
+		vista.buscarHotel.cBTipoAloj.removeAllItems();
 	}
 	
 }

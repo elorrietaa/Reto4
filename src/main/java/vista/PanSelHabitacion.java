@@ -91,22 +91,9 @@ public class PanSelHabitacion extends JPanel {
 		add(scrollPaneIda);
 		//Object[][] datosVuelta = {};
 		
-		/*
-		 * Botones
-		 */
-		/*
-		btnLogin = new JButton("Inicio Sesi\u00F3n");
-		FormatoDiseno.formatoBtnLogin(btnLogin);
-		add(btnLogin);
-		
-		btnRegistro = new JButton("Registro");
-		FormatoDiseno.formatoBtnRegistro(btnRegistro);
-		add(btnRegistro);
-		
 		btnCancelar = new JButton("Cancelar");
 		FormatoDiseno.formatoBtnCancelar(btnCancelar);
 		add(btnCancelar);
-		*/
 		
 		btnAtras = new JButton("Atr\u00E1s");
 		FormatoDiseno.formatoBtnAtras(btnAtras);

@@ -30,7 +30,7 @@ public class PanBuscarHotel extends JPanel {
 	 * Create the panel.
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
-		public JPanel panelOcultarHoteles;
+		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart;
     	public JButton buttonContinuar, btnRegistro, btnInicioSesion;
     	public JComboBox<Object> cBCiudad, cBTipoAloj; 
     	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha;
@@ -78,45 +78,11 @@ public class PanBuscarHotel extends JPanel {
 		labelHotel.setBounds(44, 119, 324, 23);
 		labelHotel.setFont(new Font("Dialog", Font.BOLD, 19));
 		add(labelHotel);
-		
-		// TABLA HOTELES
-				tab = new JTable();
 				Object[][] datos = {};
 				String[] columnNames = {"Nombre", "Estrellas"};
-				tab.setModel(new DefaultTableModel(datos,columnNames) {
-					private static final long serialVersionUID = 1L;
-					@SuppressWarnings("rawtypes")
-					Class[] columnTypes = new Class[] {
-						String.class, String.class, String.class, int.class, String.class, String.class, float.class
-					};
-					@SuppressWarnings({ "unchecked", "rawtypes" })
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
-					@Override
-				    public boolean isCellEditable(int row, int column) {
-				        return false;
-				    }
-				});
 				
 				DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 				centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-				
-				tab.setDefaultRenderer(String.class, centerRenderer);
-				tab.setDefaultRenderer(int.class, centerRenderer);
-				tab.setDefaultRenderer(float.class, centerRenderer);
-				tab.setFillsViewportHeight(true);
-				tab.setBackground(Color.WHITE);
-				tab.setBounds(45, 200, 834, 100);
-				tab.setRowHeight(50);
-				tab.setFocusable(false);
-				tab.setRowSelectionAllowed(true);
-				tab.getColumnModel().getColumn(0).setPreferredWidth(80);
-				tab.getColumnModel().getColumn(1).setPreferredWidth(80);
-				
-				scrollPaneIda = new JScrollPane(tab);
-				scrollPaneIda.setBounds(44,153,399,216);
-				add(scrollPaneIda);
 		
 		//FECHAS:
 		fechaIda = new JCalendar();
@@ -136,50 +102,98 @@ public class PanBuscarHotel extends JPanel {
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
-		
-		
-		
-		
-	
-		
-		// TABLA CASAS o APARTAMENTOS
-		table = new JTable();
 		Object[][] datos1 = {};
 		String[] columnNames1 = {"Nombre", "desde"};
 		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
 		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
-		add(table);
-		table.setModel(new DefaultTableModel(datos1,columnNames1) {
-			private static final long serialVersionUID = 1L;
-			@SuppressWarnings("rawtypes")
-			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, int.class, String.class, String.class, float.class
-			};
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-			@Override
-		    public boolean isCellEditable(int row, int column) {
-		        return false;
-		    }
-		});
 		
-		table.setDefaultRenderer(String.class, centerRenderer1);
-		table.setDefaultRenderer(int.class, centerRenderer1);
-		table.setDefaultRenderer(float.class, centerRenderer1);
-		table.setFillsViewportHeight(true);
-		table.setBackground(Color.WHITE);
-		table.setBounds(681, 83, 397, 189);
-		table.setRowHeight(50);
-		table.setFocusable(false);
-		table.setRowSelectionAllowed(true);
-		table.getColumnModel().getColumn(0).setPreferredWidth(80);
-		table.getColumnModel().getColumn(1).setPreferredWidth(80);
+		panelHotel = new JPanel();
+		panelHotel.setBounds(282, 167, 432, 235);
+		add(panelHotel);
+		panelHotel.setBackground(Color.WHITE);
+		panelHotel.setLayout(null);
 		
-		scrollPaneCasaApart = new JScrollPane(table);
-		scrollPaneCasaApart.setBounds(479,153,399,216);
-		add(scrollPaneCasaApart);
+		// TABLA HOTELES
+				tab = new JTable();
+				tab.setModel(new DefaultTableModel(datos,columnNames) {
+					private static final long serialVersionUID = 1L;
+					@SuppressWarnings("rawtypes")
+					Class[] columnTypes = new Class[] {
+						String.class, String.class, String.class, int.class, String.class, String.class, float.class
+					};
+					@SuppressWarnings({ "unchecked", "rawtypes" })
+					public Class getColumnClass(int columnIndex) {
+						return columnTypes[columnIndex];
+					}
+					@Override
+				    public boolean isCellEditable(int row, int column) {
+				        return false;
+				    }
+				});
+				
+				tab.setDefaultRenderer(String.class, centerRenderer);
+				tab.setDefaultRenderer(int.class, centerRenderer);
+				tab.setDefaultRenderer(float.class, centerRenderer);
+				tab.setFillsViewportHeight(true);
+				tab.setBackground(Color.WHITE);
+				tab.setBounds(45, 200, 397, 189);
+				tab.setRowHeight(50);
+				tab.setFocusable(false);
+				tab.setRowSelectionAllowed(true);
+				tab.getColumnModel().getColumn(0).setPreferredWidth(80);
+				tab.getColumnModel().getColumn(1).setPreferredWidth(80);
+				
+				scrollPaneIda = new JScrollPane(tab);
+				scrollPaneIda.setBounds(0, 0, 399, 216);
+				panelHotel.add(scrollPaneIda);
+				
+				panelCasaApart = new JPanel();
+				panelCasaApart.setBounds(282, 167, 432, 235);
+				add(panelCasaApart);
+				panelCasaApart.setBackground(Color.WHITE);
+				panelCasaApart.setLayout(null);
+				panelCasaApart.setVisible(false);
+				panelCasaApart.setEnabled(false);
+				
+				
+				
+				
+	
+				
+				// TABLA CASAS o APARTAMENTOS
+				table = new JTable();
+				add(table);
+				table.setModel(new DefaultTableModel(datos1,columnNames1) {
+					private static final long serialVersionUID = 1L;
+					@SuppressWarnings("rawtypes")
+					Class[] columnTypes = new Class[] {
+						String.class, String.class, String.class, int.class, String.class, String.class, float.class
+					};
+					@SuppressWarnings({ "unchecked", "rawtypes" })
+					public Class getColumnClass(int columnIndex) {
+						return columnTypes[columnIndex];
+					}
+					@Override
+				    public boolean isCellEditable(int row, int column) {
+				        return false;
+				    }
+				});
+				
+				table.setDefaultRenderer(String.class, centerRenderer1);
+				table.setDefaultRenderer(int.class, centerRenderer1);
+				table.setDefaultRenderer(float.class, centerRenderer1);
+				table.setFillsViewportHeight(true);
+				table.setBackground(Color.WHITE);
+				table.setBounds(681, 83, 397, 189);
+				table.setRowHeight(50);
+				table.setFocusable(false);
+				table.setRowSelectionAllowed(true);
+				table.getColumnModel().getColumn(0).setPreferredWidth(80);
+				table.getColumnModel().getColumn(1).setPreferredWidth(80);
+				
+				scrollPaneCasaApart = new JScrollPane(table);
+				scrollPaneCasaApart.setBounds(0, 0, 399, 216);
+				panelCasaApart.add(scrollPaneCasaApart);
 
 	}
 }

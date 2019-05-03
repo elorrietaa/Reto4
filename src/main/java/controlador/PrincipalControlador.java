@@ -40,7 +40,7 @@ public class PrincipalControlador {
 		this.vista = vista;
 		this.conexion = new Conexion();
 		this.funcionesPago = new FuncionesPago(modelo);
-		this.funcionesRegistro = new FuncionesRegistro(modelo, this);
+		this.funcionesRegistro = new FuncionesRegistro(modelo, this, vista);
 		this.funcionesReserva = new FuncionesReserva(modelo,vista,this);
 		this.funcionesValidaciones = new FuncionesValidaciones(modelo,vista,this);
     }

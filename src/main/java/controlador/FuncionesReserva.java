@@ -60,17 +60,17 @@ public class FuncionesReserva {
 	public float calcularPrecioReservaCasApart(TipoAlojamiento tiposAloj) {
 		float precioReserva=0;
 		
-		//(1º) el precio de la casa/apartamento
+		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA
 		if(tiposAloj.getCodTipoAlojamiento() == 20) {
-			precioReserva = precioReserva + modelo.casa.getPrecioAlojamiento();
+			precioReserva = precioReserva + calcularPrecioPorTarifa(modelo.casa.getPrecioAlojamiento());
 		}
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
 			precioReserva = precioReserva + modelo.apartamento.getPrecioAlojamiento();
 		}
-		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
-		int numNoches = calcularNochesReservadas();  
+		//(2º) calcular el precio 
+	//	int numNoches = calcularNochesReservadas();  
 		
-		precioReserva = precioReserva*numNoches;
+		//precioReserva = precioReserva*numNoches;
 		
 		//(3º)Redondeamos a 2 decimales
 		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
@@ -98,8 +98,6 @@ public class FuncionesReserva {
 			precioReserva = precioReserva + listaHabSeleccionadas.get(i).getPrecioHabitacion();
 		}
 		
-		//mira si es tarifa estival:
-		precioReserva = calcularPrecioPorTarifa(precioReserva);
 		
 		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();  
@@ -126,6 +124,7 @@ public class FuncionesReserva {
 	public float calcularPrecioHabXNoches( ArrayList<Dormitorio> listaHabSeleccionadas, int pos) {
 		float precioHabXnoches=0;
 		 DecimalFormat f = new DecimalFormat("##.00");
+		 
 		//(1º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();
 		
@@ -135,6 +134,10 @@ public class FuncionesReserva {
 		precioHabXnoches = Math.round(precioHabXnoches*100); //redondear a dos decimales
 		precioHabXnoches = precioHabXnoches/100;//redondear a dos decimales
 		
+/*
+		//CALCULA EL PRECIO DE LAS HABITACIONES EN FUNCIÓN DE LA TARIFA SELECCIONADA
+		 precioHabXnoches = calcularPrecioPorTarifa(listaHabSeleccionadas.get(pos).getPrecioHabitacion() );
+		*/		
 		return precioHabXnoches;
 	}
 	
@@ -156,18 +159,45 @@ public class FuncionesReserva {
 	}
 	
 	/**
-	 * Método calcularPrecioPorTarifa = calcula el precio en función de las fechas seleccionadas aplicando el precio de la tarifa normal o tarifa estival
+	 * Método calcularPrecioPorTarifa = calcula el precio en función de las fechas seleccionadas aplicando el precio de la tarifa normal o tarifa estival en función del número de noches normales y numero de noches en fechas de tarifa estival seleccionadas
 	 * @param precioAloj
+	 * @param NumNochesPorTarifa = es un array que contiene en su primera posición [0] el número de noches a las que se aplica la tarifa normal y en [1] el número de noches a las que se aplica la tarifa estival
 	 * @return
 	 */
+	
 	public float calcularPrecioPorTarifa(float precioAloj) {
+		 //El precio comienza siendo el del alojamiento.
+		
+		  
+		  System.out.println("precio aloj SIN APLICAR TARIFAS: " + precioAloj);
+		   
+		  int [] NumNochesPorTarifa = calcularNumNochesPorTarifa();
+		   
+		 //el precio precioTarifaAplicada = (noches tarifa normal * precioAloj) + (noches estivales * el precioAloj + un 12% el precio del alojamiento) 
+		  float precioTarifaNormal = (NumNochesPorTarifa[0] * precioAloj);
+		  float precioTarifaEstival = (float) (NumNochesPorTarifa[1] * (precioAloj * 1.12));
+		  float precioTarifaAplicada = precioTarifaNormal + precioTarifaEstival; 
+		  
+		  System.out.println("Número de noches tarifa normal: " + NumNochesPorTarifa[0] +  "precioTarifaNormal 1 noche: " +precioAloj+ "precioTarifaNormal "+ + NumNochesPorTarifa[0] +" noches: " +precioTarifaNormal);
+		  System.out.println("Número de noches tarifa estival: " + NumNochesPorTarifa[1] +" precioTarifaEstival 1 noche: " + (precioAloj * 1.12) +  "precioTarifaEstival " + NumNochesPorTarifa[1] +" noches: " +precioTarifaEstival);
+		  System.out.println(" precio final TarifaAplicada para "+NumNochesPorTarifa[0]+NumNochesPorTarifa[1] + " noches:" + precioTarifaAplicada);
+		   
+		   return precioTarifaAplicada;
+	}
+	
+	/**
+	 * Método calcularNumNochesPorTarifa = calcula el número de noches a las que se le aplica la tarifa normal y el número de noches a las que se aplica la tarifa estival
+	 * @return NumNochesPorTarifa = es un array que contiene en su primera posición [0] el número de noches a las que se aplica la tarifa normal y en [1] el número de noches a las que se aplica la tarifa estival
+	 */
+	public int [] calcularNumNochesPorTarifa() {
 	   //Declaración e inicialización de variables:
 	   int numNochesEstival=0;
 	   int numNochesNormal=0;
 	   int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
 	   int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
 	   
-	   float precioTarifaAplicada = precioAloj;
+	   int [] NumNochesPorTarifa = new int [2];
+	   
 	   definirInicioFinTarifaEstival();//Definimos el inicio y el fin de la tarifa estival
 	    
 	   //Se pueden dar 4 posibilidades en cuanto a la TARIFA ESTIVAL, porque la reserva máxima que se puede hacer es de 30 días, sino habría cuatro posibilidades.
@@ -177,6 +207,7 @@ public class FuncionesReserva {
 	   if(mesIda>=5 && mesVuelta <=8) {
 		   numNochesEstival = (int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
 			System.out.println("-------------------------------------->SI es tarifa estival" + " Num noches tarifa estival: " + numNochesEstival);
+			
 		    }
 	   
 	   //2º Posibilidad: Que la primera parte de la reserva seatarifa normal y la última tarifa estival. 
@@ -208,8 +239,13 @@ public class FuncionesReserva {
 			    }
 	   
 	   //pruebassss
-			   
-	    return precioTarifaAplicada;
+	
+	   //se rellena el array
+		NumNochesPorTarifa[0] = numNochesNormal;
+		NumNochesPorTarifa[1] = numNochesEstival;
+		System.out.println("--ARRAY --NumNochesPorTarifa---------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa estival: " + numNochesEstival + " Num noches tarifa no estival: " + numNochesNormal);
+
+	    return NumNochesPorTarifa;
 	}
 	
 	

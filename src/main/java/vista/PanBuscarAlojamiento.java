@@ -91,6 +91,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		add(fechaIda);
 		
 		fechaVuelta = new JCalendar();
+		fechaVuelta.getMonthChooser();
 		fechaVuelta.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
 		fechaVuelta.setBounds(530, 457, 184, 153);
 		add(fechaVuelta);

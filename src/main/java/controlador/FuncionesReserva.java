@@ -23,8 +23,8 @@ public class FuncionesReserva {
 	public float precioHabitacion;
 	public float precioReserva;
 	SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-    Date fechaDate1 = null;
-    Date fechaDate2 = null;
+    Date inicioEstival = null;
+    Date finEstival = null;
 /*
 	//int aino=2019;
 	//Date inicioEstival = new Date(1-06-aino);
@@ -161,36 +161,54 @@ public class FuncionesReserva {
 	 * @return
 	 */
 	public float calcularPrecioPorTarifa(float precioAloj) {
-	    float precioTarifaAplicada = precioAloj;
-	    //
-		System.out.println("1-------------------------------------->es tarifa estival");
-
-		String sInicioEstival = "2019-06-01" ;
-		String finEstival = "2019-10-01" ;
-	
-       
-        try {
-            fechaDate1 = formato.parse(sInicioEstival);
-            fechaDate2 = formato.parse(finEstival);
-        } 
-        catch (ParseException ex) 
-        {
-            System.out.println(ex);
-        }
-		System.out.println(fechaDate1);
-		System.out.println(fechaDate1);
-		System.out.println(fechaDate2);
-		
-		System.out.println("fecha ida:" + modelo.fechaIda);
-		System.out.println("mes fecha ida:" + vista.buscarHotel.fechaIda.getMonthChooser().getMonth());
-		
-	   if(modelo.fechaIda.after(fechaDate1) && modelo.fechaVuelta.before(fechaDate2)) {
-		System.out.println("-------------------------------------->es tarifa estival");
-	    }
-
-	   else 
-		   System.out.println("-------------------------------------->NO es tarifa estival");
+	   //Declaración e inicialización de variables:
+	   int numNochesEstival=0;
+	   int numNochesNormal=0;
+	   int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
+	   int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
+	   
+	   float precioTarifaAplicada = precioAloj;
+	   definirInicioFinTarifaEstival();//Definimos el inicio y el fin de la tarifa estival
 	    
+	   //Se pueden dar 4 posibilidades en cuanto a la TARIFA ESTIVAL, porque la reserva máxima que se puede hacer es de 30 días, sino habría cuatro posibilidades.
+	   		//Nota: los meses van de 0 a 11. 
+	   
+	   //1º Posibilidad: que toda la reserva esté en tarifa estival: mes entrada >= Junio y mes salida <= Septiembre
+	   if(mesIda>=5 && mesVuelta <=8) {
+		   numNochesEstival = (int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
+			System.out.println("-------------------------------------->SI es tarifa estival" + " Num noches tarifa estival: " + numNochesEstival);
+		    }
+	   
+	   //2º Posibilidad: Que la primera parte de la reserva seatarifa normal y la última tarifa estival. 
+	   else if (mesIda<5 && (mesVuelta>=5 && mesVuelta <=8)) {
+		   numNochesEstival =(int) ((inicioEstival.getTime()-modelo.fechaIda.getTime())/86400000)+1;
+		   numNochesNormal =(int) ((modelo.fechaVuelta.getTime()-inicioEstival.getTime())/86400000);
+		   System.out.println("-------------------------------------->Empieza NO estival y termina SI estival" + " Num noches tarifa estival: " + numNochesEstival + " Num noches tarifa no estival: " + numNochesNormal);
+	   }
+	   
+	   //3º Posibilidad: Que la primera parte de la reserva no sea tarifa estival y la última sea tarifa estival. 
+	   else if ((mesIda>=5 && mesIda <=8)&& (mesVuelta>8)) {
+		   numNochesEstival =(int) ((finEstival.getTime()-modelo.fechaIda.getTime())/86400000)+1;
+		   numNochesNormal =(int) ((modelo.fechaVuelta.getTime()-finEstival.getTime())/86400000);
+		   System.out.println("-------------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa estival: " + numNochesEstival + " Num noches tarifa no estival: " + numNochesNormal);
+	   }
+	 
+	   //pruebaaaas
+	   
+				System.out.println(inicioEstival);
+				System.out.println(inicioEstival);
+				System.out.println(finEstival);
+				
+				System.out.println("fecha ida:" + modelo.fechaIda);
+				System.out.println("mes fecha ida:" + vista.buscarHotel.fechaIda.getMonthChooser().getMonth());
+			
+				
+			   if(modelo.fechaIda.after(inicioEstival) && modelo.fechaVuelta.before(finEstival)) {
+				System.out.println("-------------------------------------->1es tarifa estival");
+			    }
+	   
+	   //pruebassss
+			   
 	    return precioTarifaAplicada;
 	}
 	
@@ -199,7 +217,23 @@ public class FuncionesReserva {
 	
 	
 	
-	
+	/**
+	 * Método definirInicioFinTarifaEstival = define la fecha deinicio y la fecha final de la tarifa estival
+	 */
+	private void definirInicioFinTarifaEstival() {
+		//Definimos el inicio y el fin de la tarifa estival
+		String sInicioEstival = "2019-06-01" ;
+		String sFinEstival = "2019-10-01" ;
+			try {
+				inicioEstival = formato.parse(sInicioEstival);
+		        finEstival = formato.parse(sFinEstival);
+		    } 
+		    catch (ParseException ex) 
+		    {
+		       System.out.println(ex);
+		    }
+	}
+
 	/**
 	 * Método: guardarReservaAlojamiento = Genera la reserva de la casa/alojamiento y la guarda en modelo.reserva
 	 */

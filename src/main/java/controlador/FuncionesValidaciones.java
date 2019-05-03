@@ -33,7 +33,7 @@ public class FuncionesValidaciones {
 	 * @param fechaVuelta = fecha salida del alojamiento
 	 * @return
 	 */
-	public boolean validarFechaEntradaNoNow(Date fechaIda, Date fechaVuelta) {
+	public boolean validarFechaEntradaYSalida(Date fechaIda, Date fechaVuelta) {
 		//mostramos fecha actual:
 		fechaActual = modelo.consultas.mostrarFechaActual();
 		System.out.println("*Fecha actual es:" + fechaActual);
@@ -53,6 +53,10 @@ public class FuncionesValidaciones {
 		}
 		else if(((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000) ==0 ) { //fecha entrada = fecha salida, noches reservas =0
 			JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe seleccionar al menos una noche para realizar una reserva. Gracias. ", null, 0);
+			return false;
+		}
+		else if(((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000) > 30 ) { // no se pueden realizar reservas de más de 30 días
+			JOptionPane.showMessageDialog(vista, "Lo sentimos. No es posible realizar reservas de más de 30 días. Gracias. ", null, 0);
 			return false;
 		}
 		else {

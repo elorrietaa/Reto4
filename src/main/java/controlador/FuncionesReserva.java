@@ -132,6 +132,21 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
+	public float calcularPrecioPorTarifa(float precioAloj) {
+	    float precioTarifaAplicada = 0;
+	    
+	    
+	    return precioTarifaAplicada;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Método: guardarReservaAlojamiento = Genera la reserva de la casa/alojamiento y la guarda en modelo.reserva
 	 */

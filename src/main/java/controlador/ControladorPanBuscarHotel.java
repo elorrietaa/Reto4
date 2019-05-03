@@ -326,7 +326,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
 					
 					//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
-					continuar = controlador.funcionesValidaciones.validarFechaEntradaNoNow(fechaIda, fechaVuelta);
+					continuar = controlador.funcionesValidaciones.validarFechaEntradaYSalida(fechaIda, fechaVuelta);
 				    
 			//***SI SE SELECCIONA UN HOTEL:***
 					////probamos que se haya seleccionado al menos una habitación un HOTEL:

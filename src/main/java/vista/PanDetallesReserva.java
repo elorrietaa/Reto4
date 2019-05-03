@@ -65,10 +65,6 @@ public class PanDetallesReserva extends JPanel {
 		btnContinuar.setBounds(861, 651, 89, 23);
 		add(btnContinuar);
 		
-		btnAtras = new JButton("Atras");
-		btnAtras.setBounds(78, 638, 89, 23);
-		add(btnAtras);
-		
 		lblPrecio = new JLabel("Precio TOTAL:");
 		lblPrecio.setFont(new Font("Monospaced", Font.BOLD, 25));
 		lblPrecio.setBounds(598, 573, 204, 34);
@@ -194,8 +190,12 @@ public class PanDetallesReserva extends JPanel {
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
 		
+		btnAtras = new JButton("Atras");
+		btnAtras.setBounds(78, 623, 89, 23);
+		add(btnAtras);
+		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(78, 672, 89, 23);
+		btnCancelar.setBounds(78, 657, 89, 23);
 		add(btnCancelar);
 
 	}

@@ -83,7 +83,7 @@ public class PrincipalControlador {
     	this.controladorPanDetallesReserva.addListeners();
     	
     	// añadimos listeners a los botones del panel 'contrPanDetReserCasaApart'
-    	this.contrPanDetReserCasaApart = new ContrPanDetReserCasaApart(vista, modelo);
+    	this.contrPanDetReserCasaApart = new ContrPanDetReserCasaApart(vista, modelo, this);
     	this.contrPanDetReserCasaApart.addListeners();
     	
     	

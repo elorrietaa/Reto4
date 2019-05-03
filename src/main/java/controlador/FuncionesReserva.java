@@ -155,7 +155,11 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
-	
+	/**
+	 * Método calcularPrecioPorTarifa = calcula el precio en función de las fechas seleccionadas aplicando el precio de la tarifa normal o tarifa estival
+	 * @param precioAloj
+	 * @return
+	 */
 	public float calcularPrecioPorTarifa(float precioAloj) {
 	    float precioTarifaAplicada = precioAloj;
 	    //

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import modelo.Cama;
+import modelo.Casa;
 import modelo.Dormitorio;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
@@ -62,10 +63,10 @@ public class FuncionesReserva {
 		
 		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA
 		if(tiposAloj.getCodTipoAlojamiento() == 20) {
-			precioReserva = precioReserva + calcularPrecioPorTarifa(modelo.casa.getPrecioAlojamiento());
+			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.casa.getPrecioAlojamiento());
 		}
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
-			precioReserva = precioReserva + modelo.apartamento.getPrecioAlojamiento();
+			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.apartamento.getPrecioAlojamiento());
 		}
 		//(2º) calcular el precio 
 	//	int numNoches = calcularNochesReservadas();  
@@ -165,23 +166,29 @@ public class FuncionesReserva {
 	 * @return
 	 */
 	
-	public float calcularPrecioPorTarifa(float precioAloj) {
-		 //El precio comienza siendo el del alojamiento.
-		
-		  
-		  System.out.println("precio aloj SIN APLICAR TARIFAS: " + precioAloj);
-		   
+	public float calcularPrecioPorTarifa(TipoAlojamiento tiposAloj, float precioAloj) {
+		 //Se rellena el array NumNochesPorTarifa
 		  int [] NumNochesPorTarifa = calcularNumNochesPorTarifa();
 		   
 		 //el precio precioTarifaAplicada = (noches tarifa normal * precioAloj) + (noches estivales * el precioAloj + un 12% el precio del alojamiento) 
 		  float precioTarifaNormal = (NumNochesPorTarifa[0] * precioAloj);
 		  float precioTarifaEstival = (float) (NumNochesPorTarifa[1] * (precioAloj * 1.12));
 		  float precioTarifaAplicada = precioTarifaNormal + precioTarifaEstival; 
+		  int numNoches = calcularNochesReservadas();  
 		  
-		  System.out.println("Número de noches tarifa normal: " + NumNochesPorTarifa[0] +  "precioTarifaNormal 1 noche: " +precioAloj+ "precioTarifaNormal "+ + NumNochesPorTarifa[0] +" noches: " +precioTarifaNormal);
-		  System.out.println("Número de noches tarifa estival: " + NumNochesPorTarifa[1] +" precioTarifaEstival 1 noche: " + (precioAloj * 1.12) +  "precioTarifaEstival " + NumNochesPorTarifa[1] +" noches: " +precioTarifaEstival);
-		  System.out.println(" precio final TarifaAplicada para "+NumNochesPorTarifa[0]+NumNochesPorTarifa[1] + " noches:" + precioTarifaAplicada);
-		   
+		 //muestra los detalles de la tarifa aplicada, el número de noches y el precio en detallesReservaCasaApart
+		  if(tiposAloj.getCodTipoAlojamiento() == 10) {
+			 
+			}
+		  else if(tiposAloj.getCodTipoAlojamiento() == 20 || tiposAloj.getCodTipoAlojamiento() == 30) {
+			  vista.detallesReservaCasaApart.textDetTarifa.setText((String) "ATENCIÓN: El precio de los alojamiento puede variar en función de las fechas seleccionadas." + "\n" + 
+						" A continuación se muestran los detalles de las tarifas aplicada a su selección: " + "\n" + 
+						"TARIFA NORMAL: Número de noches: " + NumNochesPorTarifa[0] +  " Precio 1 noche: " +precioAloj+ "€ Precio: "+ + NumNochesPorTarifa[0] +" noches: " +precioTarifaNormal +"€" + "\n" +
+						"TARIFA ESTIVAL: Número de noches: " + NumNochesPorTarifa[1] +" Precio 1 noche: " + (String.format("%.2f", (precioAloj * 1.12))) +  "€ Precio: " + NumNochesPorTarifa[1] +" noches: " +precioTarifaEstival +"€"+ "\n" +
+						"El precio final tras aplicar las tarifas para su reserva de "+ numNoches + " noches es de:" + precioTarifaAplicada +"€");
+	
+			}
+		
 		   return precioTarifaAplicada;
 	}
 	

@@ -160,6 +160,7 @@ public class FuncionesReserva {
 	 * @param precioAloj
 	 * @return
 	 */
+	@SuppressWarnings("deprecation")
 	public float calcularPrecioPorTarifa(float precioAloj) {
 	    float precioTarifaAplicada = precioAloj;
 	    //
@@ -179,6 +180,7 @@ public class FuncionesReserva {
         }
 		System.out.println(fechaDate1);
 		System.out.println(fechaDate2);
+		
 	   if(modelo.fechaIda.after(fechaDate1) && modelo.fechaVuelta.before(fechaDate2)) {
 		System.out.println("-------------------------------------->es tarifa estival");
 	    }

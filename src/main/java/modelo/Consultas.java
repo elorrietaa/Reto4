@@ -183,7 +183,7 @@ public class Consultas {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		ArrayList<Casa> listaCasas = new ArrayList<Casa>(); 
 		
 			Casa casa;
@@ -233,7 +233,7 @@ public class Consultas {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, Piso FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		ArrayList<Apartamento> listaApartamentos = new ArrayList<Apartamento>(); 
 		
 		Apartamento apartamento;
@@ -258,6 +258,7 @@ public class Consultas {
 					
 					apartamento.setUbicacion(rs.getString("Nombre_ubicacion"));
 					apartamento.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
+					apartamento.setPiso(rs.getInt("Piso"));
 					
 					listaApartamentos.add(apartamento);
 				}	

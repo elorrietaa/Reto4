@@ -250,7 +250,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			modelo.apartamento = this.apartamento;
 			
 			//prueba:
-			System.out.println("Apartamento seleccionado: " + modelo.apartamento.getNombre()+"codigo aloj" + modelo.apartamento.getCodAlojamiento());
+			System.out.println("Apartamento seleccionado: " + modelo.apartamento.getNombre()+"codigo aloj" + modelo.apartamento.getCodAlojamiento()+ "piso" + modelo.apartamento.getPiso());
 		}
 	}
 	
@@ -500,7 +500,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			
 			tablaDetCasApart.setRowCount(0);
 			datos1[0] = modelo.casa.getNombre();
-			datos1[1] = modelo.casa.getPrecioAlojamiento();
+			datos1[1] = modelo.casa.getPrecioAlojamiento() + "€";
 				
 			tablaDetCasApart.addRow(datos1);
  		}
@@ -511,7 +511,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
  			
  			tablaDetCasApart.setRowCount(0);
  			datos1[0] = modelo.apartamento.getNombre();
- 			datos1[1] = modelo.apartamento.getPrecioAlojamiento();
+ 			datos1[1] = modelo.apartamento.getPrecioAlojamiento() + "€";
  				
  			tablaDetCasApart.addRow(datos1);
  		}

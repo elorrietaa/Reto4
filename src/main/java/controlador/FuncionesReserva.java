@@ -2,6 +2,7 @@ package controlador;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import modelo.Cama;
 import modelo.Dormitorio;
@@ -134,7 +135,11 @@ public class FuncionesReserva {
 	
 	public float calcularPrecioPorTarifa(float precioAloj) {
 	    float precioTarifaAplicada = 0;
+	    //
 	    
+	//    if() {
+		
+	   // }
 	    
 	    return precioTarifaAplicada;
 	}

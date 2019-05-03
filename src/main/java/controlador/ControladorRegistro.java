@@ -226,6 +226,7 @@ public class ControladorRegistro implements ActionListener {
 		vista.registro.txtDni.setText("");
 		vista.registro.passwordField.setText("");
 		vista.registro.passwordField2.setText("");
+		
 		vista.buscarHotel.cBCiudad.removeAllItems();
 		vista.buscarHotel.cBTipoAloj.removeAllItems();
 	}

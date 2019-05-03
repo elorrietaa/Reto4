@@ -11,6 +11,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 
 	public JframePrincipal vista;
 	public PrincipalModelo modelo;
+	public PrincipalControlador controlador;
 	/**
 	 * Constructor del controlador de detalles
 	 * 
@@ -18,15 +19,17 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 	 * @param modelo Instancia del modelo para poder utilizarlo
 	 * @param conexion 
 	 */
-	public ContrPanDetReserCasaApart(JframePrincipal vista, PrincipalModelo modelo) {
+	public ContrPanDetReserCasaApart(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.vista = vista;
-		this.modelo = modelo;		
+		this.modelo = modelo;
+		this.controlador = controlador;
 	}
 	
 	/**
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.detallesReservaCasaApart.btnCancelar.addActionListener(this);
 		vista.detallesReservaCasaApart.btnInicioSesion.addActionListener(this);
 		vista.detallesReservaCasaApart.btnRegistro.addActionListener(this);
 		vista.detallesReservaCasaApart.btnAtras.addActionListener(this);
@@ -65,6 +68,13 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 				vista.registro.setVisible(true);
 				vista.detallesReservaCasaApart.setVisible(false);
 				break;
+				
+			case "Cancelar":
+				vista.bienvenida.setVisible(true);
+				vista.detallesReserva.setVisible(false);
+				controlador.funcionesRegistro.mostrarBotones();
+				reset();
+				break;
 			}
 		}
 	}
@@ -82,5 +92,30 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			vista.pago.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);
 		}
+	}
+	
+	public void reset() {
+		modelo.cliente = null;
+		modelo.alojamiento = null;
+		modelo.apartamento = null;
+		modelo.cama = null;
+		modelo.casa = null;
+		modelo.ciudad = null;
+		modelo.reserva = null;
+		modelo.precioTotal = 0;
+		
+		vista.login.userField.setText("");
+		vista.login.password.setText("");
+		
+		vista.registro.txtNombre.setText("");
+		vista.registro.txtApellidos.setText("");
+		vista.registro.rbtnMasc.setSelected(false);
+		vista.registro.rbtnFem.setSelected(false);
+		vista.registro.txtDni.setText("");
+		vista.registro.passwordField.setText("");
+		vista.registro.passwordField2.setText("");
+		
+		vista.buscarHotel.cBCiudad.removeAllItems();
+		vista.buscarHotel.cBTipoAloj.removeAllItems();
 	}
 }

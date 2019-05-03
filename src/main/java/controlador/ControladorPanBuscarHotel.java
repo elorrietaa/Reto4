@@ -354,28 +354,32 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 					if (tiposAloj.getCodTipoAlojamiento() == 10) {
 	 
 						//(3º) Guarda los datos seleecionados en el modelo
-						guardarDatosSeleccionadosAlojamiento();
+						if(vista.buscarHotel.tab.getSelectedRow() != -1) {
+							guardarDatosSeleccionadosAlojamiento();
 					
-						//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
-						listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
-						for(int i = 0; i < listaDormitorios.size(); i++) {
-							System.out.println(listaDormitorios.get(i).getCodHabitacion());
+							//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
+							listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
+							for(int i = 0; i < listaDormitorios.size(); i++) {
+								System.out.println(listaDormitorios.get(i).getCodHabitacion());
+							}
+							
+							//(4.1.) si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
+							if(listaDormitorios.size()==0) {
+								JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
+								continuar = false;
+							}
+							
+							//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
+							mostrarDetallesHabs();
+							
+							//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
+							if(continuar) {
+								vista.buscarHotel.setVisible(false);
+								vista.selHabitacion.setVisible(true);
+							}
 						}
-						
-						//(4.1.) si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
-						if(listaDormitorios.size()==0) {
-							JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
-							continuar = false;
-						}
-						
-						//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
-						mostrarDetallesHabs();
-						
-						//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
-						if(continuar) {
-							vista.buscarHotel.setVisible(false);
-							vista.selHabitacion.setVisible(true);
-						}
+						else
+							JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias.", null, 0);
 					}
 					
 			//***Si ha seleccionado una CASA O APARTAMENTO:***
@@ -384,57 +388,57 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 			    //probamos que se haya seleccionado al menos una casa o apartamento
 					else if(tiposAloj.getCodTipoAlojamiento() == 20 || tiposAloj.getCodTipoAlojamiento() ==30) {
 				
-					//(0º)Se guardan los datos seleccionados en el modelo
-					guardarDatosSeleccionadosAlojamiento();
-					
-					//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
+						//(0º)Se guardan los datos seleccionados en el modelo
+						if(vista.buscarHotel.table.getSelectedRow() != -1) {
+							guardarDatosSeleccionadosAlojamiento();
 						
-						//PARA CASAS:
-						if (tiposAloj.getCodTipoAlojamiento() == 20) {
-							disponible = modelo.consultas.buscarSiAlojDisponible(modelo.fechaIda, modelo.fechaVuelta, modelo.casa.getCodAlojamiento() );
-							System.out.println("esta disponible" + disponible);
+							//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
+							
+							//PARA CASAS:
+							if (tiposAloj.getCodTipoAlojamiento() == 20) {
+								disponible = modelo.consultas.buscarSiAlojDisponible(modelo.fechaIda, modelo.fechaVuelta, modelo.casa.getCodAlojamiento() );
+								System.out.println("esta disponible" + disponible);
+							}
+							
+							//PARA APARTAMENTOS:
+							else if (tiposAloj.getCodTipoAlojamiento() == 30) {
+								disponible = modelo.consultas.buscarSiAlojDisponible(modelo.fechaIda, modelo.fechaVuelta, modelo.apartamento.getCodAlojamiento() );
+								System.out.println("esta disponible" + disponible);
+							}
+						
+							//(0º)Se guardan los datos seleccionados en el modelo
+							
+							guardarDatosSeleccionadosAlojamiento();
+						
+							//(2º)Genera 1 reserva y la guarda en modelo.reserva
+							//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
+							//no se si habria que hacer 1 para casa y 1 para apartamento		
+							controlador.funcionesReserva.guardarReservaAlojamiento(tiposAloj);
+							
+							//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
+							controlador.funcionesReserva.mostrarDatosReservaCasaApart(tiposAloj);
+							
+							//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
+							actualizarPanDetallesReservaCasaAloj();
+							
+							
+							//Aviso al usuario si el alojamiento no esta disponible
+							if (disponible == false){
+								JOptionPane.showMessageDialog(vista, "Lo sentimos, ese alojamiento no está disponible en las fechas seleccionadas. Por favor, haga otra selección. Gracias. ", null, 0);
+							}
+							//(5º) actualiza el siguiente panel: Desaparece Panel de buscarHotel  y aparece panel de detalles reservaCasaAloj
+							//para que esto pase:
+							//continuar == true --> fecha introducida por el usuario tiene que ser válida.
+							//disponible != false -->alojamiento seleccionado tiene que estar disponible para las fechas seleccionadas.
+							if(continuar && disponible != false) {
+								vista.buscarHotel.setVisible(false);
+								vista.detallesReservaCasaApart.setVisible(true);
+							}
 						}
-						
-						//PARA APARTAMENTOS:
-						else if (tiposAloj.getCodTipoAlojamiento() == 30) {
-							disponible = modelo.consultas.buscarSiAlojDisponible(modelo.fechaIda, modelo.fechaVuelta, modelo.apartamento.getCodAlojamiento() );
-							System.out.println("esta disponible" + disponible);
+						else {
+							JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
 						}
-					
-					//(0º)Se guardan los datos seleccionados en el modelo
-						guardarDatosSeleccionadosAlojamiento();
-						
-					//(2º)Genera 1 reserva y la guarda en modelo.reserva
-					//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
-		//no se si habria que hacer 1 para casa y 1 para apartamento		
-					controlador.funcionesReserva.guardarReservaAlojamiento(tiposAloj);
-					
-					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
-					controlador.funcionesReserva.mostrarDatosReservaCasaApart(tiposAloj);
-					
-					//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
-					actualizarPanDetallesReservaCasaAloj();
-					
-					
-					//Aviso al usuario si el alojamiento no esta disponible
-					if (disponible == false){
-					JOptionPane.showMessageDialog(vista, "Lo sentimos, ese alojamiento no está disponible en las fechas seleccionadas. Por favor, haga otra selección. Gracias. ", null, 0);
 					}
-					//(5º) actualiza el siguiente panel: Desaparece Panel de buscarHotel  y aparece panel de detalles reservaCasaAloj
-					//para que esto pase:
-					//continuar == true --> fecha introducida por el usuario tiene que ser válida.
-					//disponible != false -->alojamiento seleccionado tiene que estar disponible para las fechas seleccionadas.
-					if(continuar && disponible != false) {
-						vista.buscarHotel.setVisible(false);
-						vista.detallesReservaCasaApart.setVisible(true);
-					}
-					
-				
-					}
-					else {
-						JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);
-					}
-						
 					break;
 				
 				case "Inicio Sesión":

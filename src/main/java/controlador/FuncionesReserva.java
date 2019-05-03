@@ -178,7 +178,12 @@ public class FuncionesReserva {
             System.out.println(ex);
         }
 		System.out.println(fechaDate1);
+		System.out.println(fechaDate1);
 		System.out.println(fechaDate2);
+		
+		System.out.println("fecha ida:" + modelo.fechaIda);
+		System.out.println("mes fecha ida:" + vista.buscarHotel.fechaIda.getMonthChooser().getMonth());
+		
 	   if(modelo.fechaIda.after(fechaDate1) && modelo.fechaVuelta.before(fechaDate2)) {
 		System.out.println("-------------------------------------->es tarifa estival");
 	    }

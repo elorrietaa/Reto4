@@ -85,6 +85,7 @@ public class PanBuscarHotel extends JPanel {
 		
 		//FECHAS:
 		fechaIda = new JCalendar();
+		fechaIda.getMonthChooser();
 		fechaIda.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
 		fechaIda.setBounds(314, 457, 184, 153);
 		add(fechaIda);

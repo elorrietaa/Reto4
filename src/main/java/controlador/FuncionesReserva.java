@@ -2,11 +2,13 @@ package controlador;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import modelo.Cama;
 import modelo.Dormitorio;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
+import modelo.TipoAlojamiento;
 import vista.JframePrincipal;
 
 public class FuncionesReserva {
@@ -36,13 +38,16 @@ public class FuncionesReserva {
 	 * 
 	 * @return Retorna el precio de la reserva 
 	 */
-	public float calcularPrecioReservaCasApart() {
+	public float calcularPrecioReservaCasApart(TipoAlojamiento tiposAloj) {
 		float precioReserva=0;
 		
 		//(1º) el precio de la casa/apartamento
-		
-		precioReserva = precioReserva + modelo.alojamiento.getPrecioAlojamiento();
-		
+		if(tiposAloj.getCodTipoAlojamiento() == 20) {
+			precioReserva = precioReserva + modelo.casa.getPrecioAlojamiento();
+		}
+		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
+			precioReserva = precioReserva + modelo.apartamento.getPrecioAlojamiento();
+		}
 		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();  
 		
@@ -128,10 +133,29 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
+	public float calcularPrecioPorTarifa(float precioAloj) {
+	    float precioTarifaAplicada = 0;
+	    //
+	    
+	//    if() {
+		
+	   // }
+	    
+	    return precioTarifaAplicada;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Método: guardarReservaAlojamiento = Genera la reserva de la casa/alojamiento y la guarda en modelo.reserva
 	 */
-	public void guardarReservaAlojamiento() {
+	public void guardarReservaAlojamiento(TipoAlojamiento tiposAloj) {
 		
 		//se calcula el codigo de reserva que corresponde a esta reserva
 		int codReserva= modelo.consultas.mostrarNumReservas();
@@ -142,12 +166,18 @@ public class FuncionesReserva {
 		modelo.reserva.setCodReserva(codReserva);
 		modelo.reserva.setCliente(modelo.cliente);
 		
-//DUDA???? modelo.alojamiento o modelo.casa modelo.apartamento??
-		modelo.reserva.setAlojamiento(modelo.alojamiento);
+		//se guarda el alojamiento en la reserva, diferenciando si es una casa o un apartamento
+		if(tiposAloj.getCodTipoAlojamiento() == 20) {
+			modelo.reserva.setAlojamiento(modelo.casa);
+		}
+		else if (tiposAloj.getCodTipoAlojamiento() == 30) {
+			modelo.reserva.setAlojamiento(modelo.apartamento);
+		}
+		
 		
 		modelo.reserva.setFechaIda(modelo.fechaIda);
 		modelo.reserva.setFechaVuelta(modelo.fechaVuelta);
-		modelo.reserva.setPrecioReserva(controlador.funcionesReserva.calcularPrecioReservaCasApart());
+		modelo.reserva.setPrecioReserva(calcularPrecioReservaCasApart(tiposAloj));
 			    
 		//probamos que la reserva se haya creado y rellenado correctamente
 		 System.out.println("------->La reserva de la casa o apartamento es: " +"Código reserva: " + modelo.reserva.getCodReserva() + "cod alojamiento reservado " +  modelo.reserva.getAlojamiento().getCodAlojamiento() + "precio reserva alojamiento: "+  modelo.reserva.getPrecioReserva());
@@ -157,15 +187,18 @@ public class FuncionesReserva {
 	/**
 	 * Método mostrarDatosReservacasaApart = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
-	public void mostrarDatosReservaCasaApart() {
+	public void mostrarDatosReservaCasaApart(TipoAlojamiento tiposAloj) {
 		//muestra datos del alojamiento
-		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
+		vista.detallesReservaCasaApart.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre());
+		
+		//mostramos num de noches en la vista 
+		vista.detallesReservaCasaApart.textFieldNumNoches.setText(Integer.toString(modelo.numNoches));
 		
 		//muestra el PRECIO TOTAL DE LA RESERVA: 
-		calcularPrecioReservaCasApart();
+		calcularPrecioReservaCasApart(tiposAloj);
 		
 		//SE MUESTRA EL PRECIO TOTAL:
-	 // 	vista.detallesReservaCasaApart.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
+		vista.detallesReservaCasaApart.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
 	}
 	
 	
@@ -199,9 +232,22 @@ public class FuncionesReserva {
 	public void generarFicherosReservasHabitacionesSel() {
 		//guarda los datos de la reserva en en un fichero, 1 reserva por cada habitación. 
 		for(int i=0; modelo.listaReservas.size()>i; i++) {
-			modelo.funcionesReserva.imprimirReservaHabitacionesHotel(modelo, vista, i);
+			modelo.funcionesFichero.imprimirReservaHabitacionesHotel(modelo, vista, i);
 		}
 	}
+	
+	public void generarFicherosReservaCasa() {
+		//guarda los datos de la reserva en en un fichero
+		modelo.funcionesFichero.imprimirReservaFicheroCasa(modelo, vista);
+		
+	}
+	
+	public void generarFicherosReservaApart() {
+		//guarda los datos de la reserva en en un fichero
+		modelo.funcionesFichero.imprimirReservaFicheroApart(modelo, vista);
+		
+	}
+	
 	
 	/**
 	 * Método: mostrarTiposDeCamas = devuelve un String que contiene el número de camas de cada tipo que hay.

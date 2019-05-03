@@ -62,11 +62,11 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 		vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal) + " €");
 		if(modelo.cliente == null) {
 			vista.login.setVisible(true);
-			vista.detallesReserva.setVisible(false);
+			vista.detallesReservaCasaApart.setVisible(false);
 		}
 		else {
 			vista.pago.setVisible(true);
-			vista.detallesReserva.setVisible(false);
+			vista.detallesReservaCasaApart.setVisible(false);
 		}
 	}
 }

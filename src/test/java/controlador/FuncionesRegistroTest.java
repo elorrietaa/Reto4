@@ -1,18 +1,20 @@
 package controlador;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
-import modelo.Cliente;
 import modelo.PrincipalModelo;
+import vista.JframePrincipal;
 
 public class FuncionesRegistroTest {
 
 
 	PrincipalModelo modelo = new PrincipalModelo();
+	JframePrincipal vista = new JframePrincipal();
 	PrincipalControlador controlador  = new PrincipalControlador(modelo, null);
-	FuncionesRegistro funcionesRegistro = new FuncionesRegistro(modelo, null);
+	FuncionesRegistro funcionesRegistro = new FuncionesRegistro(modelo, null,vista);
 	
 	@Test
 	public void testValidarDNI() {

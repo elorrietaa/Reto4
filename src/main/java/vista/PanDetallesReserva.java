@@ -27,7 +27,7 @@ public class PanDetallesReserva extends JPanel {
 	private static final long serialVersionUID = 1L;
 	public JTextField tFPrecioReserva, textFieldNumNoches;
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
-	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro;
+	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro, btnCancelar;
 	public JList<String> listDetalleReserva;
 	public JTextPane textPDatosAlo, textPaneDetHot;
 	
@@ -66,7 +66,7 @@ public class PanDetallesReserva extends JPanel {
 		add(btnContinuar);
 		
 		btnAtras = new JButton("Atras");
-		btnAtras.setBounds(128, 651, 89, 23);
+		btnAtras.setBounds(78, 638, 89, 23);
 		add(btnAtras);
 		
 		lblPrecio = new JLabel("Precio TOTAL:");
@@ -193,6 +193,10 @@ public class PanDetallesReserva extends JPanel {
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(78, 672, 89, 23);
+		add(btnCancelar);
 
 	}
 }

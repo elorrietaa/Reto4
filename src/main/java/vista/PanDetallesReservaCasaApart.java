@@ -83,7 +83,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		textPDatosAlo = new JTextPane();
 		textPDatosAlo.setEditable(false);
-		textPDatosAlo.setBounds(571, 24, 427, 94);
+		textPDatosAlo.setBounds(571, 24, 288, 94);
 		add(textPDatosAlo);
 		
 		

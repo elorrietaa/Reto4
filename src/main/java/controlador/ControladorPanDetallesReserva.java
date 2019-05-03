@@ -27,6 +27,8 @@ public class ControladorPanDetallesReserva implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.detallesReserva.btnInicioSesion.addActionListener(this);
+		vista.detallesReserva.btnRegistro.addActionListener(this);
 		vista.detallesReserva.btnAtras.addActionListener(this);
 		vista.detallesReserva.btnContinuar.addActionListener(this);
 	}
@@ -47,11 +49,22 @@ public class ControladorPanDetallesReserva implements ActionListener {
 			case "Atras":
 				vista.detallesReserva.setVisible(false);
 				vista.selHabitacion.setVisible(true);
-				
 				break;
 			
 			case "Continuar":
 				funcionContinuar();
+				break;
+			case "Inicio Sesión":
+				ControladorLogin.panelOrigen = vista.detallesReserva;
+				vista.login.setVisible(true);
+				vista.detallesReserva.setVisible(false);
+				break;
+			
+			case "Registro":
+				ControladorRegistro.panelOrigen = vista.detallesReserva;
+				vista.registro.setVisible(true);
+				vista.detallesReserva.setVisible(false);
+				break;
 			}
 		}
 	}

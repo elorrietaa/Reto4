@@ -63,6 +63,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.selHabitacion.btnInicioSesion.addActionListener(this);
+		vista.selHabitacion.btnRegistro.addActionListener(this);
 		vista.selHabitacion.btnAtras.addActionListener(this);
 		vista.selHabitacion.btnContinuar.addActionListener(this);
 	}
@@ -239,13 +241,23 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 					vista.selHabitacion.setVisible(false);
 					vista.detallesReserva.setVisible(true);
-			
 				}
 				else {//si no ha seleccionado al menos una habitación aparecerá un aviso
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione al menos una habitación para continuar. Gracias. ", null, 0);
 				}
-				
-			break;
+				break;
+			
+			case "Inicio Sesión":
+				ControladorLogin.panelOrigen = vista.selHabitacion;
+				vista.login.setVisible(true);
+				vista.selHabitacion.setVisible(false);
+				break;
+			
+			case "Registro":
+				ControladorRegistro.panelOrigen = vista.selHabitacion;
+				vista.registro.setVisible(true);
+				vista.selHabitacion.setVisible(false);
+				break;
 	
 		}
 		

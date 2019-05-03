@@ -27,6 +27,8 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.detallesReservaCasaApart.btnInicioSesion.addActionListener(this);
+		vista.detallesReservaCasaApart.btnRegistro.addActionListener(this);
 		vista.detallesReservaCasaApart.btnAtras.addActionListener(this);
 		vista.detallesReservaCasaApart.btnContinuar.addActionListener(this);
 	}
@@ -51,6 +53,18 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			
 			case "Continuar":
 				funcionContinuar();
+				break;
+			case "Inicio Sesión":
+				ControladorLogin.panelOrigen = vista.detallesReservaCasaApart;
+				vista.login.setVisible(true);
+				vista.detallesReservaCasaApart.setVisible(false);
+				break;
+			
+			case "Registro":
+				ControladorRegistro.panelOrigen = vista.detallesReservaCasaApart;
+				vista.registro.setVisible(true);
+				vista.detallesReservaCasaApart.setVisible(false);
+				break;
 			}
 		}
 	}

@@ -163,11 +163,11 @@ public class FuncionesReserva {
 	   if(modelo.fechaIda.after(inicioEstival) && modelo.fechaVuelta.before(finEstival)) {
 		System.out.println("2-------------------------------------->es tarifa estival");
 	    }
-	    */
+	   
 	if(vista.buscarHotel.fechaIda.get(Calendar.MONTH) == Calendar.JUNE) {
 		System.out.println("2-------------------------------------->es tarifa estival");
 	   }	
-	    
+	     */
 	    return precioTarifaAplicada;
 	}
 	

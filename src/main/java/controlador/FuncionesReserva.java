@@ -1,6 +1,10 @@
 package controlador;
 
+//import java.sql.Date;
+import java.util.Date;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -18,8 +22,21 @@ public class FuncionesReserva {
 	JframePrincipal vista;
 	public float precioHabitacion;
 	public float precioReserva;
-
-	 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+/*
+	//int aino=2019;
+	//Date inicioEstival = new Date(1-06-aino);
+	String sInicioEstival = "2019-06-01" ;
+	Date finEstival = new Date(2019-10-01);
+	try {
+	    
+	    Date inicioEstival = sdf.parse(sInicioEstival);
+		
+	} 
+	catch(ParseException ex){
+	    ex.printStackTrace();
+	}
+*/	
 	/**
 	 * Constructor de la clase FuncionesPago
 	 * 
@@ -79,6 +96,9 @@ public class FuncionesReserva {
 			precioReserva = precioReserva + listaHabSeleccionadas.get(i).getPrecioHabitacion();
 		}
 		
+		//mira si es tarifa estival:
+		precioReserva = calcularPrecioPorTarifa(precioReserva);
+		
 		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
 		int numNoches = calcularNochesReservadas();  
 		
@@ -133,13 +153,20 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
+	
 	public float calcularPrecioPorTarifa(float precioAloj) {
-	    float precioTarifaAplicada = 0;
+	    float precioTarifaAplicada = precioAloj;
 	    //
-	    
-	//    if() {
-		
-	   // }
+		System.out.println("1-------------------------------------->es tarifa estival");
+
+		/*
+	   if(modelo.fechaIda.after(inicioEstival) && modelo.fechaVuelta.before(finEstival)) {
+		System.out.println("2-------------------------------------->es tarifa estival");
+	    }
+	    */
+	if(vista.buscarHotel.fechaIda.get(Calendar.MONTH) == Calendar.JUNE) {
+		System.out.println("2-------------------------------------->es tarifa estival");
+	   }	
 	    
 	    return precioTarifaAplicada;
 	}

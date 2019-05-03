@@ -22,7 +22,9 @@ public class FuncionesReserva {
 	JframePrincipal vista;
 	public float precioHabitacion;
 	public float precioReserva;
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+    Date fechaDate1 = null;
+    Date fechaDate2 = null;
 /*
 	//int aino=2019;
 	//Date inicioEstival = new Date(1-06-aino);
@@ -159,19 +161,32 @@ public class FuncionesReserva {
 	    //
 		System.out.println("1-------------------------------------->es tarifa estival");
 
-		/*
-	   if(modelo.fechaIda.after(inicioEstival) && modelo.fechaVuelta.before(finEstival)) {
-		System.out.println("2-------------------------------------->es tarifa estival");
+		String sInicioEstival = "2019-06-01" ;
+		String finEstival = "2019-10-01" ;
+	
+       
+        try {
+            fechaDate1 = formato.parse(sInicioEstival);
+            fechaDate2 = formato.parse(finEstival);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+		System.out.println(fechaDate1);
+		System.out.println(fechaDate2);
+	   if(modelo.fechaIda.after(fechaDate1) && modelo.fechaVuelta.before(fechaDate2)) {
+		System.out.println("-------------------------------------->es tarifa estival");
 	    }
-	    */
-	if(vista.buscarHotel.fechaIda.get(Calendar.MONTH) == Calendar.JUNE) {
+	   else 
+		   System.out.println("-------------------------------------->NO es tarifa estival");
+	    
+/*	if(vista.buscarHotel.fechaIda.get(Calendar.MONTH) == Calendar.JUNE) {
 		System.out.println("2-------------------------------------->es tarifa estival");
 	   }	
-	    
+	    */
 	    return precioTarifaAplicada;
 	}
-	
-	
 	
 	
 	

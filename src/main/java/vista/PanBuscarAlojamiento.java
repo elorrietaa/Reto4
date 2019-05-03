@@ -20,7 +20,7 @@ import com.toedter.calendar.JCalendar;
  * @author alba
  *
  */
-public class PanBuscarHotel extends JPanel {
+public class PanBuscarAlojamiento extends JPanel {
 	/**
 	 * 
 	 */
@@ -41,7 +41,7 @@ public class PanBuscarHotel extends JPanel {
 
     	
     	
-	public PanBuscarHotel() {
+	public PanBuscarAlojamiento() {
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(0,0,1024,720);

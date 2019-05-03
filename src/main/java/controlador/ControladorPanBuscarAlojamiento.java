@@ -32,7 +32,7 @@ import vista.*;
  * @author IN1DM3B_09
  *
  */
-public class ControladorPanBuscarHotel implements ActionListener, PropertyChangeListener {
+public class ControladorPanBuscarAlojamiento implements ActionListener, PropertyChangeListener {
 	public JframePrincipal vista;
 	public PrincipalModelo modelo; 
 	public PrincipalControlador controlador;
@@ -67,7 +67,7 @@ public class ControladorPanBuscarHotel implements ActionListener, PropertyChange
 	* @param vista Instancia de la vista, para poder utilizarla
 	* @param modelo Instancia del modelo, para poder utilizarlo
 	*/
-	public ControladorPanBuscarHotel(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion, PrincipalControlador controlador) {
+	public ControladorPanBuscarAlojamiento(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion, PrincipalControlador controlador) {
 		this.vista = vista;
 		this.modelo = modelo;
 		this.consultas = new Consultas(conexion);

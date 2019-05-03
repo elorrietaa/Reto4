@@ -17,7 +17,7 @@ public class PrincipalControlador {
     
     private ControladorJframe controladorJframe;
     private ControladorPanBienvenida controladorPanBienvenida;
-    public ControladorPanBuscarHotel controladorPanBuscarHotel;
+    public ControladorPanBuscarAlojamiento controladorPanBuscarHotel;
     private ControladorPanSelHabitacion controladorPanSelHabitacion;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
     private ContrPanDetReserCasaApart contrPanDetReserCasaApart;
@@ -71,7 +71,7 @@ public class PrincipalControlador {
     	this.controladorPanBienvenida.addListeners();
     	
     	// añadimos listeners a los botones del panel 'controladorPanBuscarHotel'
-    	this.controladorPanBuscarHotel = new ControladorPanBuscarHotel(vista, modelo, conexion, this);
+    	this.controladorPanBuscarHotel = new ControladorPanBuscarAlojamiento(vista, modelo, conexion, this);
     	this.controladorPanBuscarHotel.addListeners();
     	
     	// añadimos listeners a los botones del panel 'controladorPanSelHabitacion;'

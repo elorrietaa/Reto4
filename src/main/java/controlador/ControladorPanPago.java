@@ -296,7 +296,6 @@ public class ControladorPanPago implements ActionListener{
 			//PARA CASAS:
 			else if (modelo.reserva.getAlojamiento() instanceof Casa) {
 				controlador.funcionesReserva.generarFicherosReservaCasa();
-			System.out.println("maaaaal");
 			}
 			//PARA APARTAMENTOS:
 			else if (modelo.reserva.getAlojamiento() instanceof Apartamento) {

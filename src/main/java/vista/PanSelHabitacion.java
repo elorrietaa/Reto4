@@ -19,7 +19,7 @@ public class PanSelHabitacion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
-	public JButton btnLogin,btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion;
+	public JButton btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion;
 	public JLabel lblIcono, lblTitulo, lblBilleteIda;
 	public JTable tab;
 	public JScrollPane scrollPaneIda;

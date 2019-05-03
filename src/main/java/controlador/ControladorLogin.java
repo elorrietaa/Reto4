@@ -86,19 +86,23 @@ public class ControladorLogin implements ActionListener {
 			
 				// mostramos la pantalla adecuada
 				if(modelo.cliente != null) { // Comprueba si hay un cliente.
-					/*// deshabilitar botones de login y registro en todos los paneles
-					vista.sel_billete.btnLogin.setVisible(false);
-					vista.sel_billete.btnLogin.setEnabled(false);
-					vista.sel_billete.btnRegistro.setVisible(false);
-					vista.sel_billete.btnRegistro.setEnabled(false);
-					vista.sel_fecha.btnLogin.setVisible(false);
-					vista.sel_fecha.btnLogin.setEnabled(false);
-					vista.sel_fecha.btnRegistro.setVisible(false);
-					vista.sel_fecha.btnRegistro.setEnabled(false);
-					vista.detalles_compra.btnLogin.setVisible(false);
-					vista.detalles_compra.btnLogin.setEnabled(false);
-					vista.detalles_compra.btnRegistro.setVisible(false);
-					vista.detalles_compra.btnRegistro.setEnabled(false);*/
+					// deshabilitar botones de login y registro en todos los paneles
+					vista.buscarHotel.btnInicioSesion.setVisible(false);
+					vista.buscarHotel.btnInicioSesion.setEnabled(false);
+					vista.buscarHotel.btnRegistro.setVisible(false);
+					vista.buscarHotel.btnRegistro.setEnabled(false);
+					vista.selHabitacion.btnInicioSesion.setVisible(false);
+					vista.selHabitacion.btnInicioSesion.setEnabled(false);
+					vista.selHabitacion.btnRegistro.setVisible(false);
+					vista.selHabitacion.btnRegistro.setEnabled(false);
+					vista.detallesReserva.btnInicioSesion.setVisible(false);
+					vista.detallesReserva.btnInicioSesion.setEnabled(false);
+					vista.detallesReserva.btnRegistro.setVisible(false);
+					vista.detallesReserva.btnRegistro.setEnabled(false);
+					vista.detallesReservaCasaApart.btnInicioSesion.setVisible(false);
+					vista.detallesReservaCasaApart.btnInicioSesion.setEnabled(false);
+					vista.detallesReservaCasaApart.btnRegistro.setVisible(false);
+					vista.detallesReservaCasaApart.btnRegistro.setEnabled(false);
 					
 					if(detalles == false) {
 						

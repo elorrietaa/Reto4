@@ -118,12 +118,13 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	    DefaultTableModel tablaHotel = (DefaultTableModel) vista.detallesReserva.tabHot.getModel();
 				
 		//llena la tabla con los datos del modelo.hotel (el hotel seleccionado)
-		Object[] datos = new Object[2];
+		Object[] datos = new Object[4];
 		
 		tablaHotel.setRowCount(0);
 			datos[0] = modelo.hotel.getNombre();
-			datos[1] = modelo.hotel.getEstrellas();
-			
+			datos[1] = modelo.hotel.getPrecioAlojamiento() +" € habitación/noche";
+			datos[2] = modelo.hotel.getEstrellas();
+			datos[3] = modelo.hotel.getDireccion();
 			tablaHotel.addRow(datos);
 	}
     

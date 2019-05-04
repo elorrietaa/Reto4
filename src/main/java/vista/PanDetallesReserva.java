@@ -79,7 +79,7 @@ public class PanDetallesReserva extends JPanel {
 		
 		textPDatosAlo = new JTextPane();
 		textPDatosAlo.setEditable(false);
-		textPDatosAlo.setBounds(452, 118, 427, 94);
+		textPDatosAlo.setBounds(483, 8, 319, 94);
 		add(textPDatosAlo);
 		
 		
@@ -89,7 +89,7 @@ public class PanDetallesReserva extends JPanel {
 		tabHot = new JTable();
 		tabHot.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		Object[][] datosHot = {};
-		String[] columnNamesHot = {"Nombre", "Estrellas"};
+		String[] columnNamesHot = {"Nombre", "Precio desde", "Estrellas", "Detalles"};
 		tabHot.setModel(new DefaultTableModel(datosHot,columnNamesHot) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
@@ -118,11 +118,13 @@ public class PanDetallesReserva extends JPanel {
 		tabHot.setRowHeight(50);
 		tabHot.setFocusable(false);
 		tabHot.setRowSelectionAllowed(true);
-		tabHot.getColumnModel().getColumn(0).setPreferredWidth(80);
-		tabHot.getColumnModel().getColumn(1).setPreferredWidth(80);
+		tabHot.getColumnModel().getColumn(0).setPreferredWidth(200);
+		tabHot.getColumnModel().getColumn(1).setPreferredWidth(150);
+		tabHot.getColumnModel().getColumn(2).setPreferredWidth(-20);
+		tabHot.getColumnModel().getColumn(3).setPreferredWidth(400);
 		
 		scrollPaneIda = new JScrollPane(tabHot);
-		scrollPaneIda.setBounds(23,111,399,94);
+		scrollPaneIda.setBounds(23,111,942,75);
 		add(scrollPaneIda);
 		
 		

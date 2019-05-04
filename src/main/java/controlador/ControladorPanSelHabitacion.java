@@ -78,8 +78,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		  //indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
 		    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
 		    
-		    //probar  aver si imprime lista habs
-		  listaDormitorios = consultas.buscarHabitacionPorCodigoHotel(hotel, modelo.hotel.getCodAlojamiento());
+		    //la lista de dormitorios DISPONIBLES que semuestra al usuario para que seleccione
+		  listaDormitorios = consultas.buscarHabitacionDisponiblel(modelo.fechaIda, modelo.fechaVuelta, modelo.hotel.getCodAlojamiento());
 		  
 		  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
 		  listaDormSeleccionados = new ArrayList<Dormitorio>(); 

@@ -58,7 +58,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		lblDetallesHabitaciones = new JLabel("Detalles de sus habitaciones:");
 		lblDetallesHabitaciones.setFont(new Font("Monospaced", Font.BOLD, 16));
-		lblDetallesHabitaciones.setBounds(128, 367, 319, 23);
+		lblDetallesHabitaciones.setBounds(128, 275, 319, 23);
 		add(lblDetallesHabitaciones);
 		
 		btnContinuar = new JButton("Continuar");
@@ -165,7 +165,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		tab.getColumnModel().getColumn(4).setPreferredWidth(120);
 		
 		scrollPaneIda = new JScrollPane(tab);
-		scrollPaneIda.setBounds(128,401,839,136);
+		scrollPaneIda.setBounds(128,309,839,136);
 		add(scrollPaneIda);
 		
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
@@ -199,7 +199,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		textDetTarifa = new JTextPane();
 		textDetTarifa.setEditable(false);
-		textDetTarifa.setBounds(128, 273, 769, 94);
+		textDetTarifa.setBounds(128, 456, 769, 94);
 		add(textDetTarifa);
 
 

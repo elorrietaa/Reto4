@@ -51,31 +51,31 @@ public class PanBuscarAlojamiento extends JPanel {
 		add(buttonContinuar);
 		
 		labelCiudad = new JLabel("Seleccione una ciudad :");
-		labelCiudad.setFont(new Font("Dialog", Font.BOLD, 20));
-		labelCiudad.setBounds(44, 37, 245, 25);
+		labelCiudad.setFont(new Font("Dialog", Font.BOLD, 18));
+		labelCiudad.setBounds(10, 8, 245, 25);
 		add(labelCiudad);
 		
 		cBCiudad = new JComboBox<Object>();
-		cBCiudad.setBounds(294, 42, 179, 20);
+		cBCiudad.setBounds(228, 13, 179, 20);
 		add(cBCiudad);
 		
 		lblTipoAloj = new JLabel("Seleccione un tipo de alojamiento:");
-		lblTipoAloj.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblTipoAloj.setBounds(44, 83, 348, 25);
+		lblTipoAloj.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblTipoAloj.setBounds(10, 44, 348, 25);
 		add(lblTipoAloj);
 		
 		cBTipoAloj = new JComboBox<Object>();
-		cBTipoAloj.setBounds(380, 89, 179, 20);
+		cBTipoAloj.setBounds(323, 44, 179, 20);
 		add(cBTipoAloj);
 		
 		labelFecha = new JLabel("Seleccione su fecha de llegada y su fecha de salida:");
-		labelFecha.setFont(new Font("Dialog", Font.BOLD, 20));
-		labelFecha.setBounds(40, 413, 645, 43);
+		labelFecha.setFont(new Font("Dialog", Font.BOLD, 18));
+		labelFecha.setBounds(44, 440, 465, 43);
 		add(labelFecha);
 		
 		labelHotel = new JLabel("Seleccione un alojamiento:");
-		labelHotel.setBounds(44, 119, 324, 23);
-		labelHotel.setFont(new Font("Dialog", Font.BOLD, 19));
+		labelHotel.setBounds(10, 137, 324, 23);
+		labelHotel.setFont(new Font("Dialog", Font.BOLD, 18));
 		add(labelHotel);
 				Object[][] datos = {};
 				String[] columnNames = {"Nombre", "Precio desde", "Estrellas", "Detalles"};
@@ -87,21 +87,21 @@ public class PanBuscarAlojamiento extends JPanel {
 		fechaIda = new JCalendar();
 		fechaIda.getMonthChooser();
 		fechaIda.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
-		fechaIda.setBounds(314, 457, 184, 153);
+		fechaIda.setBounds(69, 484, 184, 153);
 		add(fechaIda);
 		
 		fechaVuelta = new JCalendar();
 		fechaVuelta.getMonthChooser();
 		fechaVuelta.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
-		fechaVuelta.setBounds(530, 457, 184, 153);
+		fechaVuelta.setBounds(289, 484, 184, 153);
 		add(fechaVuelta);
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
-		btnInicioSesion.setBounds(869, 42, 105, 23);
+		btnInicioSesion.setBounds(870, 8, 121, 23);
 		add(btnInicioSesion);
 		
 		btnRegistro = new JButton("Registro");
-		btnRegistro.setBounds(869, 8, 105, 23);
+		btnRegistro.setBounds(771, 8, 89, 23);
 		add(btnRegistro);
 		Object[][] datos1 = {};
 		String[] columnNames1 = {"Nombre", "Precio desde", "Detalles"};
@@ -148,11 +148,11 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				
 				scrollPaneIda = new JScrollPane(tab);
-				scrollPaneIda.setBounds(68, 11, 969, 216);
+				scrollPaneIda.setBounds(35, 11, 984, 216);
 				panelHotel.add(scrollPaneIda);
 				
 				panelCasaApart = new JPanel();
-				panelCasaApart.setBounds(44, 161, 1000, 241);
+				panelCasaApart.setBounds(10, 161, 1034, 241);
 				add(panelCasaApart);
 				panelCasaApart.setBackground(Color.WHITE);
 				panelCasaApart.setLayout(null);

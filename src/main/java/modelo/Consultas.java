@@ -131,7 +131,7 @@ public class Consultas {
 		ResultSet rs = null;
 		
 
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		
 			ArrayList<Hotel> listaHoteles = new ArrayList<Hotel>(); 
 			

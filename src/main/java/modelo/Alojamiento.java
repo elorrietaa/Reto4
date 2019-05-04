@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class Alojamiento {
     protected int codAlojamiento;
     protected String nombre;
+    protected String direccion;
+    protected String telefono;
     protected ArrayList<Habitacion> listaHabitaciones;
     protected ArrayList<Dormitorio> listaHabSeleccionadas; 
 	protected int numHabitaciones;
@@ -27,13 +29,17 @@ public class Alojamiento {
     * Constructor del objeto Alojamiento: contiene la información referente al alojamiento. 
     * @param codAlojamiento = codigo alojamiento
     * @param nombre = nombre del alojamiento
+    * @param direcion = direccion del alojamiento
+    * @param telefono = telefono del alojamiento
     * @param numHabitaciones = número de habitaciones que tiene el alojamiento
     * @param ubicacion = Ciudad en la que se encuentra el alojamiento
     * @param precioAlojamiento = precio del alojamiento
     */
-    public Alojamiento(int codAlojamiento, String nombre, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad) {
+    public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad) {
 	this.codAlojamiento = codAlojamiento;
 	this.nombre = nombre;
+	this.direccion = direccion;
+	this.telefono = telefono;
 	this.numHabitaciones = numHabitaciones;
 	this.ubicacion = ubicacion;
 	this.precioAlojamiento = precioAlojamiento;
@@ -70,7 +76,22 @@ public class Alojamiento {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    /**
+    
+    
+    
+    public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	/**
      * Getter del número de habitaciones  = es un atributo del objeto Alojamiento
      * @return numHabitaciones
      */

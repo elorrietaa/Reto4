@@ -136,7 +136,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	/**
      * Método: mostrarHotelesEnJTable = muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
-     * @param codCiudadSeleccionada
+     * @param codCiudadSeleccionada 
      */
     public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado) {
 	  	
@@ -153,13 +153,14 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		   	vista.buscarHotel.panelCasaApart.setVisible(false);
 		   	vista.buscarHotel.panelCasaApart.setEnabled(false);
 				   	
-		   	Object[] datos = new Object[2];
+		   	Object[] datos = new Object[4];
 			tablaHotel.setRowCount(0);
 			for(int i=0; i<listaHoteles.size();i++) {
 				
 				datos[0] = listaHoteles.get(i).getNombre();
-				datos[1] = ((Hotel) listaHoteles.get(i)).getEstrellas();
-			
+				datos[1] = listaHoteles.get(i).getPrecioAlojamiento() + " €";
+				datos[2] = listaHoteles.get(i).getDireccion();
+				datos[3] = ((Hotel) listaHoteles.get(i)).getEstrellas();
 				tablaHotel.addRow(datos);
 			}
     	}
@@ -177,13 +178,13 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			   	vista.buscarHotel.panelCasaApart.setVisible(true);
 			   	vista.buscarHotel.panelCasaApart.setEnabled(true);
 			   	
-			   	Object[] datos1 = new Object[2];
+			   	Object[] datos1 = new Object[3];
 			   	tablaCasApart.setRowCount(0);
 				for(int i=0; i<listaCasas.size();i++) {
 					
 					datos1[0] = listaCasas.get(i).getNombre();
 					datos1[1] = (listaCasas.get(i)).getPrecioAlojamiento() + " €";
-					
+					datos1[2] = listaCasas.get(i).getDireccion();
 					tablaCasApart.addRow(datos1);
 				}
     	}
@@ -199,13 +200,13 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     			   	vista.buscarHotel.panelCasaApart.setVisible(true);
     			   	vista.buscarHotel.panelCasaApart.setEnabled(true);
     			   	
-    			   	Object[] datos1 = new Object[2];
+    			   	Object[] datos1 = new Object[3];
     			   	tablaCasApart.setRowCount(0);
     				for(int i=0; i<listaApartamentos.size();i++) {
     					
     					datos1[0] = listaApartamentos.get(i).getNombre();
     					datos1[1] = (listaApartamentos.get(i)).getPrecioAlojamiento() + " €";
-    					
+    					datos1[2] = listaApartamentos.get(i).getDireccion() + "   Piso: " + listaApartamentos.get(i).getPiso();
     					tablaCasApart.addRow(datos1);
     				}
         	}

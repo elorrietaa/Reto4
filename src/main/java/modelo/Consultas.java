@@ -25,7 +25,7 @@ public class Consultas {
 	 * @param conexion Clase encargada de la conexion a la base de datos
 	 */
 	public Consultas(Conexion conexion) {
-		this.conexion = conexion;
+		this.conexion = conexion; 
 		this.connection = null;
 	} 
 	 /****************************************************************************************************************
@@ -154,7 +154,8 @@ public class Consultas {
 					hotel = new Hotel();
 					hotel.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
 					hotel.setNombre(rs.getString("Nombre_alojamiento"));
-					//hotel.setNumHabitaciones(rs.getInt("N_Habitaciones"));
+					hotel.setDireccion(rs.getString("Direccion"));
+					hotel.setTelefono(rs.getString("Telefono"));
 					hotel.setUbicacion(rs.getString("Nombre_ubicacion"));
 					hotel.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					hotel.setEstrellas(rs.getInt("N_estrellas"));
@@ -206,6 +207,8 @@ public class Consultas {
 					casa = new Casa();
 					casa.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
 					casa.setNombre(rs.getString("Nombre_alojamiento"));
+					casa.setDireccion(rs.getString("Direccion"));
+					casa.setTelefono(rs.getString("Telefono"));
 					casa.setUbicacion(rs.getString("Nombre_ubicacion"));
 					casa.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					
@@ -256,7 +259,8 @@ public class Consultas {
 					apartamento = new Apartamento();
 					apartamento.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
 					apartamento.setNombre(rs.getString("Nombre_alojamiento"));
-					
+					apartamento.setDireccion(rs.getString("Direccion"));
+					apartamento.setTelefono(rs.getString("Telefono"));
 					apartamento.setUbicacion(rs.getString("Nombre_ubicacion"));
 					apartamento.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					apartamento.setPiso(rs.getInt("Piso"));

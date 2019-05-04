@@ -24,7 +24,7 @@ public class PanBuscarAlojamiento extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 	/**
 	 * Create the panel.
 	 */
@@ -78,7 +78,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		labelHotel.setFont(new Font("Dialog", Font.BOLD, 19));
 		add(labelHotel);
 				Object[][] datos = {};
-				String[] columnNames = {"Nombre", "Estrellas"};
+				String[] columnNames = {"Nombre", "Precio 1 habitación 1 noche desde", "Detalles", "Estrellas"};
 				
 				DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 				centerRenderer.setHorizontalAlignment( JLabel.CENTER );
@@ -104,12 +104,12 @@ public class PanBuscarAlojamiento extends JPanel {
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
 		Object[][] datos1 = {};
-		String[] columnNames1 = {"Nombre", "desde"};
+		String[] columnNames1 = {"Nombre", "Precio 1 noche desde", "Detalles"};
 		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
 		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
 		
 		panelHotel = new JPanel();
-		panelHotel.setBounds(282, 167, 432, 235);
+		panelHotel.setBounds(-23, 152, 1047, 250);
 		add(panelHotel);
 		panelHotel.setBackground(Color.WHITE);
 		panelHotel.setLayout(null);
@@ -141,15 +141,17 @@ public class PanBuscarAlojamiento extends JPanel {
 				tab.setRowHeight(50);
 				tab.setFocusable(false);
 				tab.setRowSelectionAllowed(true);
-				tab.getColumnModel().getColumn(0).setPreferredWidth(80);
-				tab.getColumnModel().getColumn(1).setPreferredWidth(80);
+				tab.getColumnModel().getColumn(0).setPreferredWidth(8);
+				tab.getColumnModel().getColumn(1).setPreferredWidth(20);
+				tab.getColumnModel().getColumn(2).setPreferredWidth(200);
+				tab.getColumnModel().getColumn(3).setPreferredWidth(10);
 				
 				scrollPaneIda = new JScrollPane(tab);
-				scrollPaneIda.setBounds(0, 0, 399, 216);
+				scrollPaneIda.setBounds(64, 11, 973, 216);
 				panelHotel.add(scrollPaneIda);
 				
 				panelCasaApart = new JPanel();
-				panelCasaApart.setBounds(282, 167, 432, 235);
+				panelCasaApart.setBounds(44, 161, 1000, 241);
 				add(panelCasaApart);
 				panelCasaApart.setBackground(Color.WHITE);
 				panelCasaApart.setLayout(null);
@@ -189,11 +191,12 @@ public class PanBuscarAlojamiento extends JPanel {
 				table.setRowHeight(50);
 				table.setFocusable(false);
 				table.setRowSelectionAllowed(true);
-				table.getColumnModel().getColumn(0).setPreferredWidth(80);
-				table.getColumnModel().getColumn(1).setPreferredWidth(80);
+				table.getColumnModel().getColumn(0).setPreferredWidth(40);
+				table.getColumnModel().getColumn(1).setPreferredWidth(10);
+				table.getColumnModel().getColumn(2).setPreferredWidth(170);
 				
 				scrollPaneCasaApart = new JScrollPane(table);
-				scrollPaneCasaApart.setBounds(0, 0, 399, 216);
+				scrollPaneCasaApart.setBounds(0, 0, 942, 216);
 				panelCasaApart.add(scrollPaneCasaApart);
 
 	}

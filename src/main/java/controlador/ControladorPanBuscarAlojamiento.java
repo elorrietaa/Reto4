@@ -451,23 +451,23 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	    //CASA
  		if (tiposAloj.getCodTipoAlojamiento() == 20) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
-			Object[] datos1 = new Object[2];
+			Object[] datos1 = new Object[3];
 			
 			tablaDetCasApart.setRowCount(0);
 			datos1[0] = modelo.casa.getNombre();
-			datos1[1] = modelo.casa.getPrecioAlojamiento() + "€";
-				
+			datos1[1] = modelo.casa.getPrecioAlojamiento() + " €/noche";
+			datos1[2] =modelo.casa.getDireccion();
 			tablaDetCasApart.addRow(datos1);
  		}
  		//APARTAMENTO
  		else if (tiposAloj.getCodTipoAlojamiento() == 30) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
- 			Object[] datos1 = new Object[2];
+ 			Object[] datos1 = new Object[3];
  			
  			tablaDetCasApart.setRowCount(0);
  			datos1[0] = modelo.apartamento.getNombre();
- 			datos1[1] = modelo.apartamento.getPrecioAlojamiento() + "€";
- 				
+ 			datos1[1] = modelo.apartamento.getPrecioAlojamiento() + " €/noche";
+ 			datos1[2] =modelo.apartamento.getDireccion() + "   Piso: " +modelo.apartamento.getPiso();
  			tablaDetCasApart.addRow(datos1);
  		}
 	

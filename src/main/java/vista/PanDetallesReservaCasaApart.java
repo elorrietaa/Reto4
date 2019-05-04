@@ -88,7 +88,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		// TABLA CASAS o APARTAMENTOS
 				table = new JTable();
 				Object[][] datos1 = {};
-				String[] columnNames1 = {"Nombre", "desde"};
+				String[] columnNames1 = {"Nombre", "Precio desde", "Detalles"};
 				DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
 				centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
 				add(table);
@@ -117,11 +117,12 @@ public class PanDetallesReservaCasaApart extends JPanel {
 				table.setRowHeight(50);
 				table.setFocusable(false);
 				table.setRowSelectionAllowed(true);
-				table.getColumnModel().getColumn(0).setPreferredWidth(80);
-				table.getColumnModel().getColumn(1).setPreferredWidth(80);
+				table.getColumnModel().getColumn(0).setPreferredWidth(10);
+				table.getColumnModel().getColumn(1).setPreferredWidth(10);
+				table.getColumnModel().getColumn(2).setPreferredWidth(250);
 				
 				scrollPaneCasaApart = new JScrollPane(table);
-				scrollPaneCasaApart.setBounds(128,140,294,94);
+				scrollPaneCasaApart.setBounds(128,140,839,94);
 				add(scrollPaneCasaApart);
 		
 		

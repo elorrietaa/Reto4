@@ -230,6 +230,9 @@ public class FuncionesReserva {
 		   numNochesNormal =(int) ((modelo.fechaVuelta.getTime()-finEstival.getTime())/86400000);
 		   System.out.println("-------------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa estival: " + numNochesEstival + " Num noches tarifa no estival: " + numNochesNormal);
 	   }
+	   else {
+		   numNochesNormal = (int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
+	   }
 	 
 	   //pruebaaaas
 	   

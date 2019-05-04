@@ -78,7 +78,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		labelHotel.setFont(new Font("Dialog", Font.BOLD, 19));
 		add(labelHotel);
 				Object[][] datos = {};
-				String[] columnNames = {"Nombre", "Precio 1 habitación 1 noche desde", "Detalles", "Estrellas"};
+				String[] columnNames = {"Nombre", "Precio desde", "Estrellas", "Detalles"};
 				
 				DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 				centerRenderer.setHorizontalAlignment( JLabel.CENTER );
@@ -104,7 +104,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
 		Object[][] datos1 = {};
-		String[] columnNames1 = {"Nombre", "Precio 1 noche desde", "Detalles"};
+		String[] columnNames1 = {"Nombre", "Precio desde", "Detalles"};
 		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
 		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
 		
@@ -141,13 +141,14 @@ public class PanBuscarAlojamiento extends JPanel {
 				tab.setRowHeight(50);
 				tab.setFocusable(false);
 				tab.setRowSelectionAllowed(true);
-				tab.getColumnModel().getColumn(0).setPreferredWidth(8);
-				tab.getColumnModel().getColumn(1).setPreferredWidth(20);
-				tab.getColumnModel().getColumn(2).setPreferredWidth(200);
-				tab.getColumnModel().getColumn(3).setPreferredWidth(10);
+				tab.getColumnModel().getColumn(0).setPreferredWidth(200);
+				tab.getColumnModel().getColumn(1).setPreferredWidth(150);
+				tab.getColumnModel().getColumn(2).setPreferredWidth(-20);
+				tab.getColumnModel().getColumn(3).setPreferredWidth(400);
+				
 				
 				scrollPaneIda = new JScrollPane(tab);
-				scrollPaneIda.setBounds(64, 11, 973, 216);
+				scrollPaneIda.setBounds(68, 11, 969, 216);
 				panelHotel.add(scrollPaneIda);
 				
 				panelCasaApart = new JPanel();
@@ -191,9 +192,9 @@ public class PanBuscarAlojamiento extends JPanel {
 				table.setRowHeight(50);
 				table.setFocusable(false);
 				table.setRowSelectionAllowed(true);
-				table.getColumnModel().getColumn(0).setPreferredWidth(40);
+				table.getColumnModel().getColumn(0).setPreferredWidth(10);
 				table.getColumnModel().getColumn(1).setPreferredWidth(10);
-				table.getColumnModel().getColumn(2).setPreferredWidth(170);
+				table.getColumnModel().getColumn(2).setPreferredWidth(250);
 				
 				scrollPaneCasaApart = new JScrollPane(table);
 				scrollPaneCasaApart.setBounds(0, 0, 942, 216);

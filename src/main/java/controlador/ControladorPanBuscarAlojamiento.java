@@ -158,9 +158,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			for(int i=0; i<listaHoteles.size();i++) {
 				
 				datos[0] = listaHoteles.get(i).getNombre();
-				datos[1] = listaHoteles.get(i).getPrecioAlojamiento() + " €";
-				datos[2] = listaHoteles.get(i).getDireccion();
-				datos[3] = ((Hotel) listaHoteles.get(i)).getEstrellas();
+				datos[1] = listaHoteles.get(i).getPrecioAlojamiento() + " € habitación/noche";
+				
+				datos[2] = ((Hotel) listaHoteles.get(i)).getEstrellas();
+				datos[3] = listaHoteles.get(i).getDireccion();
 				tablaHotel.addRow(datos);
 			}
     	}
@@ -183,7 +184,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				for(int i=0; i<listaCasas.size();i++) {
 					
 					datos1[0] = listaCasas.get(i).getNombre();
-					datos1[1] = (listaCasas.get(i)).getPrecioAlojamiento() + " €";
+					datos1[1] = (listaCasas.get(i)).getPrecioAlojamiento() + " €/noche";
 					datos1[2] = listaCasas.get(i).getDireccion();
 					tablaCasApart.addRow(datos1);
 				}
@@ -205,7 +206,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     				for(int i=0; i<listaApartamentos.size();i++) {
     					
     					datos1[0] = listaApartamentos.get(i).getNombre();
-    					datos1[1] = (listaApartamentos.get(i)).getPrecioAlojamiento() + " €";
+    					datos1[1] = (listaApartamentos.get(i)).getPrecioAlojamiento() + " €/noche";
     					datos1[2] = listaApartamentos.get(i).getDireccion() + "   Piso: " + listaApartamentos.get(i).getPiso();
     					tablaCasApart.addRow(datos1);
     				}

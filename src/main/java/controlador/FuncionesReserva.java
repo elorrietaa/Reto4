@@ -387,7 +387,10 @@ public class FuncionesReserva {
 		modelo.reserva.setCliente(modelo.cliente);
 		
 		//se guarda el alojamiento en la reserva, diferenciando si es una casa o un apartamento
-		if(tiposAloj.getCodTipoAlojamiento() == 20) {
+		if(tiposAloj.getCodTipoAlojamiento() == 10) {
+			modelo.reserva.setAlojamiento(modelo.hotel);
+		}
+		else if(tiposAloj.getCodTipoAlojamiento() == 20) {
 			modelo.reserva.setAlojamiento(modelo.casa);
 		}
 		else if (tiposAloj.getCodTipoAlojamiento() == 30) {

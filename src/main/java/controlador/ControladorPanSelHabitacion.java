@@ -113,6 +113,13 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 * Método: guardar1DormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
 	 */
 	public void guardar1DormSeleccionadosJTable() {
+		//indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
+	    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
+	    
+	    //la lista de dormitorios DISPONIBLES que semuestra al usuario para que seleccione
+	    listaDormitorios = consultas.buscarHabitacionDisponiblel(modelo.fechaIda, modelo.fechaVuelta, modelo.hotel.getCodAlojamiento());
+	  
+	    
 		//se guarda en filaDormSel la posición seleccionada en la tabla
 		  int filaDormSel = vista.selHabitacion.tab.getSelectedRow();
 			    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + filaDormSel);
@@ -250,7 +257,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					
 				//PARA MULTIPLES HABITACIONES:	
 				
-					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
+					/*				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
 					guardarDormSeleccionadosJTable();
 					guardar1DormSeleccionadosJTable();
 					
@@ -266,26 +273,27 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 					vista.selHabitacion.setVisible(false);
 					vista.detallesReserva.setVisible(true);
-				
-		/*			
+			*/			
+			
 				//PARA 1 SOLA HABITACION
 					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
 					guardar1DormSeleccionadosJTable();
 					
-					//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
-					guardarReservasHab();
+					//(2º)Genera 1 reserva y la guarda en modelo.reserva
+					//pasar por parámetro el tiposAloj para diferenciar entre hotel, casa y apartamento ¿? no se si es lo mas correcto	
+					controlador.funcionesReserva.guardarReservaAlojamiento(modelo.tiposAloj);
 					
 					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
-					controlador.funcionesReserva.mostrarDatosReserva(listaDormSeleccionados);
+					controlador.funcionesReserva.mostrarDatosReservaCasaApart(modelo.tiposAloj);
 					
 					//(4º) se actualiza la información del siguiente panel: PanDetallesReserva con la info del hotel seleccionado, las habitaciones seleccionadas y el precio Total de la reserva
-					actualizarPanDetallesReserva();
+					controlador.controladorPanBuscarHotel.actualizarPanDetallesReservaCasaAloj();
 					
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 					vista.selHabitacion.setVisible(false);
 					vista.detallesReservaCasaApart.setVisible(true);
 					
-		*/				
+				
 					
 				}
 				else {//si no ha seleccionado al menos una habitación aparecerá un aviso
@@ -341,5 +349,6 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		vista.buscarHotel.cBCiudad.removeAllItems();
 		vista.buscarHotel.cBTipoAloj.removeAllItems();
 	}
+
 	
 }

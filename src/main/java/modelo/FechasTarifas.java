@@ -13,8 +13,8 @@ public class FechasTarifas {
 	PrincipalControlador controlador;
 	JframePrincipal vista;
 
-	/**
-	 * Constructor de la clase FuncionesPago
+	/** 
+	 * Constructor de la clase FechasTarifas
 	 * 
 	 * @param modelo Instancia de la clase modelo para poder utilizarlo
 	 */
@@ -24,7 +24,7 @@ public class FechasTarifas {
 		this.vista = vista;
 	} 
 	
-	// CLASE FechasTarifas  VARIABLES Y ARRAYS que contienen datos relacionados con las tarifas
+	//DATOS DE LA TARIFA FESTIVOS: 
 	
 		//Declaración e inicialización de arrays y variables:
 		//Declaración e inicialización de los días festivos

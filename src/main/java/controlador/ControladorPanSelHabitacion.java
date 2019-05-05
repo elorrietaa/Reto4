@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import bbdd.Conexion;
+import modelo.Apartamento;
 import modelo.Cama;
 import modelo.Ciudad;
 import modelo.Consultas;
@@ -46,7 +47,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	float precioReserva =-1;
 	 
 
-	/**
+	/** 
 	 * Constructor del controlador de detalles
 	 * 
 	 * @param vista Instancia del main frame para poder utilizarlo
@@ -71,9 +72,9 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	}
 	
 	/**
-	 * Método: guardarDatosSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
+	 * Método: guardarDormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
 	 */
-	public void guardarDatosSeleccionadosJTable() {
+	public void guardarDormSeleccionadosJTable() {
 		   
 		  //indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
 		    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
@@ -105,6 +106,25 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		    for(int i=0; listaDormSeleccionados.size()>i; i++) {
 		    	System.out.println("------->Habitaciones seleccionadas: " +listaDormSeleccionados.get(i).getCodHabitacion() );
 		    }
+		
+		}
+	
+	/**
+	 * Método: guardar1DormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
+	 */
+	public void guardar1DormSeleccionadosJTable() {
+		//se guarda en filaDormSel la posición seleccionada en la tabla
+		  int filaDormSel = vista.selHabitacion.tab.getSelectedRow();
+			    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + filaDormSel);
+			//se guarda el apartamento seleccionado en la tabla
+			Dormitorio habitacion = (Dormitorio) listaDormitorios.get(filaDormSel);
+			
+			//le pasa el apartamento al modelo
+			modelo.habitacion = this.habitacion;
+		  
+			
+		//prueba:
+			System.out.println("^*^*^*habitacion hotel seleccionado: " + habitacion.getCodHabitacion() + habitacion.getNombreHabitacion());
 		
 		}
 	
@@ -227,9 +247,12 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				
 			    //probamos que se haya seleccionado al menos una habitación
 				if(vista.selHabitacion.tab.getSelectedRowCount()!=0) {
+					
+				//PARA MULTIPLES HABITACIONES:	
 				
 					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
-					guardarDatosSeleccionadosJTable();
+					guardarDormSeleccionadosJTable();
+					guardar1DormSeleccionadosJTable();
 					
 					//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
 					guardarReservasHab();
@@ -243,6 +266,27 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 					vista.selHabitacion.setVisible(false);
 					vista.detallesReserva.setVisible(true);
+				
+		/*			
+				//PARA 1 SOLA HABITACION
+					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
+					guardar1DormSeleccionadosJTable();
+					
+					//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
+					guardarReservasHab();
+					
+					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
+					controlador.funcionesReserva.mostrarDatosReserva(listaDormSeleccionados);
+					
+					//(4º) se actualiza la información del siguiente panel: PanDetallesReserva con la info del hotel seleccionado, las habitaciones seleccionadas y el precio Total de la reserva
+					actualizarPanDetallesReserva();
+					
+					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
+					vista.selHabitacion.setVisible(false);
+					vista.detallesReservaCasaApart.setVisible(true);
+					
+		*/				
+					
 				}
 				else {//si no ha seleccionado al menos una habitación aparecerá un aviso
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione al menos una habitación para continuar. Gracias. ", null, 0);

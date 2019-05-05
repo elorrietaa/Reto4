@@ -315,7 +315,7 @@ public class Consultas {
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setPrecioHabitacion(rs.getFloat("Precio_hab"));
     			listaHabitacion.add(habitacion);
-    		}
+    		} 
     				
     		} 
     	catch (SQLException e) {

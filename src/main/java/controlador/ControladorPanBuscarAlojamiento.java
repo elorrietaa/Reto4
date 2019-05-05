@@ -170,7 +170,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			}
     	}
     	
-    	//***TABLA CASA O APARTAMENTO es .table
+    	//***TABLA CASA O APARTAMENTO es .table 
     	else if (codTipoAlojSeleccionado == 20) {
 		// Mostrar los datos del alojamiento en tabla table
 				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarHotel.table.getModel();
@@ -452,8 +452,19 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	    DefaultTableModel tablaDetCasApart = (DefaultTableModel) vista.detallesReservaCasaApart.table.getModel();
 
+	  //CASA
+ 		if (tiposAloj.getCodTipoAlojamiento() == 10) {
+ 			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
+			Object[] datos1 = new Object[3];
+			
+			tablaDetCasApart.setRowCount(0);
+			datos1[0] = modelo.hotel.getNombre();
+			datos1[1] = modelo.hotel.getPrecioAlojamiento() + " €/noche";
+			datos1[2] =modelo.hotel.getDireccion() +  "   Estrellas: " +  modelo.hotel.getEstrellas();
+			tablaDetCasApart.addRow(datos1);
+ 		}
 	    //CASA
- 		if (tiposAloj.getCodTipoAlojamiento() == 20) {
+ 		else if (tiposAloj.getCodTipoAlojamiento() == 20) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
 			Object[] datos1 = new Object[3];
 			

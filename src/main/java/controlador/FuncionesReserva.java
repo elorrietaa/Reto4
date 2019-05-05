@@ -175,7 +175,7 @@ public class FuncionesReserva {
 		  float precioTarifaFestivo = (float) (NumNochesPorTarifa[2] * (suplementoFestivos));
 		  
 		  float precioTarifaAplicada = precioTarifaNormal + precioTarifaEstival + precioTarifaFestivo; 
-		  
+		   
 		  int numNoches = calcularNochesReservadas();  
 		  
 		 //muestra los detalles de la tarifa aplicada, el número de noches y el precio en detallesReservaCasaApart

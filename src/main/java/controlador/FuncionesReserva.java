@@ -212,7 +212,7 @@ public class FuncionesReserva {
 	   int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
 	   int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
 	   
-	   int [] NumNochesPorTarifa = new int [2];
+	   int [] NumNochesPorTarifa = new int [3];
 	   
 	   definirInicioFinTarifaEstival();//Definimos el inicio y el fin de la tarifa estival
 	    
@@ -247,12 +247,17 @@ public class FuncionesReserva {
 			   if(modelo.fechaIda.after(inicioEstival) && modelo.fechaVuelta.before(finEstival)) {
 				System.out.println("-------------------------------------->1es tarifa estival");
 			    }
+			   
+			   
+			   numNochesFestivos =  calcularNumNochesFestivos();
+			   
 	   //pruebassss
 	
 	   //se rellena el array
 		NumNochesPorTarifa[0] = numNochesNormal;
 		NumNochesPorTarifa[1] = numNochesEstival;
-		System.out.println("--ARRAY --NumNochesPorTarifa---------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa estival: " + numNochesEstival + " Num noches tarifa no estival: " + numNochesNormal);
+		NumNochesPorTarifa[2] = numNochesFestivos;
+		System.out.println("--ARRAY --NumNochesPorTarifa---------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa normal: " + NumNochesPorTarifa[0] + " Num noches tarifa estival: " + NumNochesPorTarifa[1] + "num noches festivo" + NumNochesPorTarifa[2]);
 
 	    return NumNochesPorTarifa;
 	}
@@ -274,12 +279,12 @@ public class FuncionesReserva {
 		// arrayDatosFestivos[2] = contiene el array nombreFestivos tipo String con el nombre de los festivos
 		Object [] arrayDatosFestivos = modelo.fechasTarifas.arrayDatosFestivos; 
 		
-		System.out.println("Probando arrayDatosFestivos");
 		
+	
 		for (int i=0; arrayDatosFestivos.length<i; i++ ) {
-			
+			System.out.println("--ARRAY -->--> Probando arrayDatosFestivos" + arrayDatosFestivos[0] + arrayDatosFestivos[1] + arrayDatosFestivos[2]);
 		}
-		
+		/*	
 		if( mesIda == 11 && mesVuelta == 0 ) { // si reserva la ida un mes antes y la vuelta un mes después del festivo es que ha reservado el festivo
 			 if(diaIda == 1 && mesIda == 0 || (diaIda >=1 && mesIda == 11) && ((diaVuelta >=1 && mesVuelta == 0)) ) {
 					
@@ -288,7 +293,7 @@ public class FuncionesReserva {
 		else if(diaIda == 1 && mesIda == 0 || (diaIda >=1 && mesIda == 11) && ((diaVuelta >=1 && mesVuelta == 0)) ) {
 			
 		}
-		
+		*/
 		return numNochesFestivos;
 	}
 	

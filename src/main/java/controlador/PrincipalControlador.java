@@ -45,7 +45,7 @@ public class PrincipalControlador {
 		this.funcionesRegistro = new FuncionesRegistro(modelo, this, vista);
 		this.funcionesReserva = new FuncionesReserva(modelo,vista,this);
 		this.funcionesValidaciones = new FuncionesValidaciones(modelo,vista,this);
-		this.fechasTarifas = new FechasTarifas(modelo,vista,this);
+		this.fechasTarifas = new FechasTarifas(modelo,vista,this); 
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz

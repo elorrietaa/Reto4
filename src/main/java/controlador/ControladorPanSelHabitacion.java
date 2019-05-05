@@ -124,14 +124,26 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		  int filaDormSel = vista.selHabitacion.tab.getSelectedRow();
 			    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + filaDormSel);
 			//se guarda el apartamento seleccionado en la tabla
-			Dormitorio habitacion = (Dormitorio) listaDormitorios.get(filaDormSel);
+			//Dormitorio habitacion = (Dormitorio) listaDormitorios.get(filaDormSel);
+			
+			//rellenamos la habitacion con los datos de la habitacion seleccionada (listaDormitorios.get(filaDormSel))
+			habitacion = new Dormitorio(); 
+			habitacion.setCodHabitacion(listaDormitorios.get(filaDormSel).getCodHabitacion());
+			habitacion.setNombreHabitacion(listaDormitorios.get(filaDormSel).getNombreHabitacion());
+			//habitacion.setAlojamiento(hotel);
+			habitacion.setTipoHabitacion(listaDormitorios.get(filaDormSel).getTipoHabitacion());
+			habitacion.setTamanio(listaDormitorios.get(filaDormSel).getTamanio());
+			habitacion.setNumCamas(listaDormitorios.get(filaDormSel).getNumCamas());
+			habitacion.setPrecioHabitacion(listaDormitorios.get(filaDormSel).getPrecioHabitacion());
+			
 			
 			//le pasa el apartamento al modelo
 			modelo.habitacion = this.habitacion;
 			
 			//prueba
 			System.out.println("Habitacion{{{{{{{{{{{{{{{ " + habitacion.getCodHabitacion());
-//FALLA	//	System.out.println("Habitacion{{{{{{{{{{{{{{{ " + modelo.habitacion.getCodHabitacion());
+//FALLA	//	
+			System.out.println("Habitacion{{{{{{{{{{{{{{{ " + modelo.habitacion.getCodHabitacion());
 		 
 		//Se muestran los detalles de las habitaciones seleccionadas en el JTable del panel detallesReserva
 			mostratDetallesHabHotelSel(habitacion);

@@ -273,16 +273,15 @@ public class FuncionesReserva {
 		int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
 		int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
 		
-		// arrayDatosFestivos contiene los datos de los festivos. 
-		// arrayDatosFestivos[0] = contiene el array diasFestivos tipo int  con los días festivos
-		// arrayDatosFestivos[1] = contiene el array mesesFestivos tipo int con los meses festivos
-		// arrayDatosFestivos[2] = contiene el array nombreFestivos tipo String con el nombre de los festivos
-		Object [] arrayDatosFestivos = modelo.fechasTarifas.arrayDatosFestivos; 
-		
-		
+		// NO VA // Object [] arrayDatosFestivos = modelo.fechasTarifas.arrayDatosFestivos; 
+		int [] diasFestivos = modelo.fechasTarifas.diasFestivos; // array con los días festivos
+		int [] mesesFestivos = modelo.fechasTarifas.mesesFestivos; // array con los meses festivos
+		String [] nombreFestivos = modelo.fechasTarifas.nombreFestivos; // array con el nombre de los festivos
 	
-		for (int i=0; arrayDatosFestivos.length<i; i++ ) {
-			System.out.println("--ARRAY -->--> Probando arrayDatosFestivos" + arrayDatosFestivos[0] + arrayDatosFestivos[1] + arrayDatosFestivos[2]);
+		for (int i=0; i<modelo.fechasTarifas.diasFestivos.length; i++ ) {
+			
+			//no va // System.out.println("--ARRAY -->--> Probando arrayDatosFestivos" +  arrayDatosFestivos[0] + arrayDatosFestivos[1] + arrayDatosFestivos[2]);
+			System.out.println("--ARRAY -->-->--> "+diasFestivos[i]+" - "+ mesesFestivos[i] +" - "+ nombreFestivos[i]);
 		}
 		/*	
 		if( mesIda == 11 && mesVuelta == 0 ) { // si reserva la ida un mes antes y la vuelta un mes después del festivo es que ha reservado el festivo

@@ -65,13 +65,13 @@ public class FechasTarifas {
 		final static String nombreFestivoNatividad = "Navidad";
 		
 		//Este array contiene los dias de los festivos
-		public final static int [] diasFestivos= {diaAnoNuevo, diaReyes, diaFiestaTrabajo, diaVigenMaria, diaHispanidad, diaTodosSantos, diaConstitucion, diaConcepcion, diaNatividad};
+		public final static int [] diasFestivos = {diaAnoNuevo, diaReyes, diaFiestaTrabajo, diaVigenMaria, diaHispanidad, diaTodosSantos, diaConstitucion, diaConcepcion, diaNatividad};
 		
 		//Este array contiene los meses de los festivos
-		public final static int [] mesesFestivos= {mesAnoNuevo,mesReyes,mesFiestaTrabajo,mesVigenMaria,mesHispanidad,mesTodosSantos,mesConstitucion,mesConcepcion,mesNatividad};	
+		public final static int [] mesesFestivos = {mesAnoNuevo,mesReyes,mesFiestaTrabajo,mesVigenMaria,mesHispanidad,mesTodosSantos,mesConstitucion,mesConcepcion,mesNatividad};	
 		
 		//Este array contiene los nombres de los festivos
-		public final static String [] nombreFestivos= {nombreFestivoAnoNuevo,nombreFestivoReyes,nombreFestivoTrabajo,nombreFestivoVigenMaria,nombreFestivoHispanidad,nombreFestivoTodosSantos, nombreFestivoConstitucion, nombreFestivoConcepcion, nombreFestivoNatividad};	
+		public final static String [] nombreFestivos = {nombreFestivoAnoNuevo,nombreFestivoReyes,nombreFestivoTrabajo,nombreFestivoVigenMaria,nombreFestivoHispanidad,nombreFestivoTodosSantos, nombreFestivoConstitucion, nombreFestivoConcepcion, nombreFestivoNatividad};	
 		
 		//Este array contiene los días festivos, los meses y el nombre del festivo.
 		public final static Object [] arrayDatosFestivos = {diasFestivos, mesesFestivos, nombreFestivos};

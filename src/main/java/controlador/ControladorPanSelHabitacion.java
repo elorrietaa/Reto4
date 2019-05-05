@@ -152,7 +152,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 			datos[3] = tiposCamaHab;
 			datos[4] =  (String.format("%.2f", habitacion.getPrecioHabitacion()) + "€");
-			datos[5] =  (String.format("%.2f", modelo.hotel.getPrecioAlojamiento()) + "€ / "+ modelo.numNoches+" noches");
+			datos[5] =  (String.format("%.2f", modelo.hotel.getPrecioAlojamiento()) + "€ / "+ controlador.funcionesReserva.calcularNochesReservadas() +" noches");
 			tablaDetCasApart.addRow(datos);
 		
 		}

@@ -782,6 +782,55 @@ public class Consultas {
 		}
 		
 	}
+	
+	 /**
+		 * Inserta los atributos de un objeto reserva en la base de datos
+		 * 
+		 * @param reserva Objeto reserva que se quiere introducir en la base de datos
+		 * 
+		 * @return Retorna el codigo de la reserva, generado de manera aleatoria
+		 */
+		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, String dni, Date fechaIda, Date fechaVuelta) {
+			
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			int codReserva = 0; 
+			
+			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+			try {
+				
+				// abrimos una conexion
+				connection = conexion.conectar();
+				
+				// preparamos la consulta INSERT
+				stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				
+				// añadimos los valores a insertar
+				stmt.setInt(1, reserva.getCodReserva());
+				stmt.setInt(2, reserva.getAlojamiento().getCodAlojamiento());
+				//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
+				//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
+				stmt.setInt(3,reserva.getHabitacion().getCodHabitacion());
+				stmt.setFloat(4, reserva.getPrecioReserva());
+				stmt.setString(5, dni);
+				stmt.setDate(6, fechaIda);
+				stmt.setDate(7, fechaVuelta);
+				
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				stmt.executeUpdate();
+				
+				/*result = stmt.getGeneratedKeys();
+				result.next();
+				codReserva = result.getInt(1);*/
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+			    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+			}
+			
+		}
 
 public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta) {
 		

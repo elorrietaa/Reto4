@@ -450,6 +450,15 @@ public class FuncionesReserva {
 	}
 	
 	/**
+	 * Método insertarReservaHabitacionSel = inserta en la base de datos la reserva de las habitacion seleccionada del hotel 
+	 */
+	public void insertarReservaHabitacionSel() {
+		
+		modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+		 
+	}
+	
+	/**
 	 * Método generarFicherosReservasHabitacionesSel = genera un fichero por cada habitación de hotel reservada.
 	 */
 	public void generarFicherosReservasHabitacionesSel() {
@@ -457,6 +466,11 @@ public class FuncionesReserva {
 		for(int i=0; modelo.listaReservas.size()>i; i++) {
 			modelo.funcionesFichero.imprimirReservaHabitacionesHotel(modelo, vista, i);
 		}
+	}
+	public void generarFicherosReserva1HabHotel() {
+		//guarda los datos de la reserva en en un fichero
+		modelo.funcionesFichero.imprimirReserva1HabHotel(modelo, vista);
+		
 	}
 	
 	public void generarFicherosReservaCasa() {

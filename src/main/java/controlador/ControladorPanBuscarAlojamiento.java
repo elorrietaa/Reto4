@@ -129,6 +129,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	public void guardarDatosSeleccionadosTipoAloj() {
 		//se guarda la ciudad seleccionada
 		this.tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
+		
+		//se pasa el tipo de alojamiento seleccionado al modelo
+		modelo.tiposAloj = this.tiposAloj;
+		
 		//Pruebas
 		System.out.println("***DATOS Tipo Alojamiento***:" + tiposAloj + "***DATOS Tipo Alojamiento***:" + tiposAloj.getCodTipoAlojamiento());
 	    

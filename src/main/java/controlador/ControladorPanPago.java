@@ -294,11 +294,11 @@ public class ControladorPanPago implements ActionListener{
 				controlador.funcionesReserva.generarFicherosReservasHabitacionesSel();
 			}
 			//PARA CASAS:
-			else if (modelo.reserva.getAlojamiento() instanceof Casa) {
+			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {
 				controlador.funcionesReserva.generarFicherosReservaCasa();
 			}
 			//PARA APARTAMENTOS:
-			else if (modelo.reserva.getAlojamiento() instanceof Apartamento) {
+			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
 				controlador.funcionesReserva.generarFicherosReservaApart();
 			}
 		

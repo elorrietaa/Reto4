@@ -53,7 +53,8 @@ public class FuncionesFicheroReserva {
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
 			writer.println("Ciudad: " + modelo.hotel.getUbicacion());
 			writer.println("Código del hotel: " + modelo.hotel.getCodAlojamiento());
-			writer.println("Nombre del hotel: " + modelo.hotel.getNombre());		
+			writer.println("Nombre del hotel: " + modelo.hotel.getNombre());	
+			writer.println("Dirección: " + modelo.hotel.getDireccion() + "   Teléfono: "+ modelo.hotel.getTelefono());	
 			writer.println("Número de estrellas: " + modelo.hotel.getEstrellas());
 			writer.println();
 			writer.println("===== DATOS DE LA RESERVA: ===== " );
@@ -125,7 +126,7 @@ public class FuncionesFicheroReserva {
 			writer.println("Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion());
 			writer.println("Código del alojamiento: " + modelo.reserva.getAlojamiento().getCodAlojamiento());
 			writer.println("Nombre del alojamiento: " + modelo.reserva.getAlojamiento().getNombre());		
-			
+			writer.println("Dirección: " + modelo.casa.getDireccion() + "   Teléfono: "+ modelo.casa.getTelefono());	
 			writer.println();
 		
 			writer.println("Precio alojamiento: " + modelo.reserva.getAlojamiento().getPrecioAlojamiento() + "€");
@@ -178,7 +179,8 @@ public class FuncionesFicheroReserva {
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
 			writer.println("Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion());
 			writer.println("Código del apartamento: " + modelo.reserva.getAlojamiento().getCodAlojamiento());
-			writer.println("Nombre del hotel: " + modelo.reserva.getAlojamiento().getNombre());		
+			writer.println("Nombre del apartamento: " + modelo.reserva.getAlojamiento().getNombre());		
+			writer.println("Dirección: " + modelo.apartamento.getDireccion() + " Piso: " +modelo.apartamento.getPiso() +"   Teléfono: "+ modelo.apartamento.getTelefono());	
 			
 			writer.println();
 		

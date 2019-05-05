@@ -462,6 +462,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			datos1[1] = modelo.hotel.getPrecioAlojamiento() + " €/noche";
 			datos1[2] =modelo.hotel.getDireccion() +  "   Estrellas: " +  modelo.hotel.getEstrellas();
 			tablaDetCasApart.addRow(datos1);
+			
+		//	mostrarDetallesHabSelec(tablaDetCasApart);
+			
  		}
 	    //CASA
  		else if (tiposAloj.getCodTipoAlojamiento() == 20) {
@@ -486,6 +489,28 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
  			tablaDetCasApart.addRow(datos1);
  		}
 	
+	}
+	
+	/**
+	 * Método: mostrarDetallesHabsSelec = muestra los detalles de las habitaciones seleccionadas, es decir, muestra el contenido del arrayList listaHabSeleccionadas
+	 * 
+	 * @param tabla Tabla que se rellena con la informacion de la reserva
+	 */
+	public void mostrarDetallesHabSelec( DefaultTableModel tablaDetCasApart) {
+		Object[] datos = new Object[6];
+	
+		tablaDetCasApart.setRowCount(0);
+			datos[0] = modelo.habitacion.getCodHabitacion();
+			datos[1] = modelo.habitacion.getNombreHabitacion();
+			datos[2] = modelo.consultas.buscarNumCamasPorCodHab( modelo.habitacion.getCodHabitacion());
+			//Mostrar detalles de las camas de la habitación seleccionada: 
+			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
+			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+			datos[3] = tiposCamaHab;
+			datos[4] =  (String.format("%.2f", modelo.habitacion.getPrecioHabitacion()) + "€");
+			datos[5] =  (String.format("%.2f",modelo.reserva.getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches");
+			tablaDetCasApart.addRow(datos);
+		
 	}
 
 //*****************MÉTODOS DEL BOTON CONTINUAR:******************************

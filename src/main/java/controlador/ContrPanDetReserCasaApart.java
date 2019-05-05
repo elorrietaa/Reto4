@@ -49,9 +49,16 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 			switch (botonPulsado) { 
 				
-			case "Atras":
+			case "Atras": 
+				if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+					vista.selHabitacion.setVisible(true);
+					vista.detallesReservaCasaApart.setVisible(false);
+				}
+				else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20 || modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
 				vista.buscarHotel.setVisible(true);
-				vista.detallesReservaCasaApart.setVisible(false);
+					vista.detallesReservaCasaApart.setVisible(false);
+				}
+				
 				break;
 			
 			case "Continuar":

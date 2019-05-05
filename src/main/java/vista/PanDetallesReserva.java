@@ -188,7 +188,7 @@ public class PanDetallesReserva extends JPanel {
 		btnInicioSesion.setBounds(869, 42, 105, 23);
 		add(btnInicioSesion);
 		
-		btnRegistro = new JButton("Registro");
+		btnRegistro = new JButton("Registro"); 
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
 		

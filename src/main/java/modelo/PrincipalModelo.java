@@ -27,8 +27,8 @@ public class PrincipalModelo {
 	public Cama cama;
 	public Reserva reserva;
 	public Cliente cliente;
+	public FechasTarifas fechasTarifas;
 
-	//public Cama cama;
 	//public PersonaAlojada personaAlojada;
 	
 	public FuncionesPago funcionesPago;
@@ -66,7 +66,7 @@ public class PrincipalModelo {
 		
 		funcionesPago = new FuncionesPago(this); 
 		funcionesFichero = new FuncionesFicheroReserva(this);
-		
+		fechasTarifas = new FechasTarifas(this, null, null);
 	
 		// guardamos el precio total de la reserva
 		precioTotal = 0;

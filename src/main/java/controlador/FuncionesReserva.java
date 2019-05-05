@@ -68,16 +68,14 @@ public class FuncionesReserva {
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.apartamento.getPrecioAlojamiento());
 		}
-		//(2º) calcular el precio 
-	//	int numNoches = calcularNochesReservadas();  
 		
-		//precioReserva = precioReserva*numNoches;
 		
-		//(3º)Redondeamos a 2 decimales
+		
+		//(2º)Redondeamos a 2 decimales
 		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
 		precioReserva = precioReserva/100;//redondear a dos decimales
 		
-		//(4º) metemos el precio total de la reserva en el modelo:
+		//(3º) metemos el precio total de la reserva en el modelo:
 		modelo.precioTotal = precioReserva;
 		System.out.println("EL PRECIO TOTAL DE LA RESERVA de la CASA/APARTAMENTO ES "+modelo.precioTotal);
 		
@@ -170,10 +168,11 @@ public class FuncionesReserva {
 		 //Se rellena el array NumNochesPorTarifa
 		  int [] NumNochesPorTarifa = calcularNumNochesPorTarifa();
 		   
-		 //el precio precioTarifaAplicada = (noches tarifa normal * precioAloj) + (noches estivales * el precioAloj + un 12% el precio del alojamiento) 
+		 //el precio precioTarifaAplicada = (noches tarifa normal * precioAloj) + (noches estivales * el precioAloj + un 12% el precio del alojamiento) + (noches festivos * el precioAloj y un 20% más)
 		  float precioTarifaNormal = (NumNochesPorTarifa[0] * precioAloj);
 		  float precioTarifaEstival = (float) (NumNochesPorTarifa[1] * (precioAloj * 1.12));
-		  float precioTarifaAplicada = precioTarifaNormal + precioTarifaEstival; 
+		  float precioTarifaFestivo = (float) (NumNochesPorTarifa[2] * (precioAloj * 1.20));
+		  float precioTarifaAplicada = precioTarifaNormal + precioTarifaEstival + precioTarifaFestivo; 
 		  int numNoches = calcularNochesReservadas();  
 		  
 		 //muestra los detalles de la tarifa aplicada, el número de noches y el precio en detallesReservaCasaApart
@@ -206,8 +205,10 @@ public class FuncionesReserva {
 	 */
 	public int [] calcularNumNochesPorTarifa() {
 	   //Declaración e inicialización de variables:
-	   int numNochesEstival=0;
 	   int numNochesNormal=0;
+	   int numNochesEstival=0;
+	   int numNochesFestivos=0;
+	   
 	   int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
 	   int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
 	   
@@ -243,19 +244,9 @@ public class FuncionesReserva {
 	   }
 	 
 	   //pruebaaaas
-	   
-				System.out.println(inicioEstival);
-				System.out.println(inicioEstival);
-				System.out.println(finEstival);
-				
-				System.out.println("fecha ida:" + modelo.fechaIda);
-				System.out.println("mes fecha ida:" + vista.buscarHotel.fechaIda.getMonthChooser().getMonth());
-			
-				
 			   if(modelo.fechaIda.after(inicioEstival) && modelo.fechaVuelta.before(finEstival)) {
 				System.out.println("-------------------------------------->1es tarifa estival");
 			    }
-	   
 	   //pruebassss
 	
 	   //se rellena el array
@@ -266,7 +257,40 @@ public class FuncionesReserva {
 	    return NumNochesPorTarifa;
 	}
 	
-	
+	/**
+	 * Método calcularNumNochesFestivos = calcula el número de noches a los que se le aplicará la tarifa festivo en las fechas seleccionadas por el usuario.
+	 * @return
+	 */
+	public int calcularNumNochesFestivos() {
+		int numNochesFestivos = 0;
+		int diaIda = vista.buscarHotel.fechaIda.getDayChooser().getDay();
+		int diaVuelta = vista.buscarHotel.fechaVuelta.getDayChooser().getDay();
+		int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
+		int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
+		
+		// arrayDatosFestivos contiene los datos de los festivos. 
+		// arrayDatosFestivos[0] = contiene el array diasFestivos tipo int  con los días festivos
+		// arrayDatosFestivos[1] = contiene el array mesesFestivos tipo int con los meses festivos
+		// arrayDatosFestivos[2] = contiene el array nombreFestivos tipo String con el nombre de los festivos
+		Object [] arrayDatosFestivos = modelo.fechasTarifas.arrayDatosFestivos; 
+		
+		System.out.println("Probando arrayDatosFestivos");
+		
+		for (int i=0; arrayDatosFestivos.length<i; i++ ) {
+			
+		}
+		
+		if( mesIda == 11 && mesVuelta == 0 ) { // si reserva la ida un mes antes y la vuelta un mes después del festivo es que ha reservado el festivo
+			 if(diaIda == 1 && mesIda == 0 || (diaIda >=1 && mesIda == 11) && ((diaVuelta >=1 && mesVuelta == 0)) ) {
+					
+				}
+		}
+		else if(diaIda == 1 && mesIda == 0 || (diaIda >=1 && mesIda == 11) && ((diaVuelta >=1 && mesVuelta == 0)) ) {
+			
+		}
+		
+		return numNochesFestivos;
+	}
 	
 	
 	

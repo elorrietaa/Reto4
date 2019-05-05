@@ -1,6 +1,7 @@
 package controlador;
 
 import bbdd.Conexion;
+import modelo.FechasTarifas;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
@@ -29,6 +30,7 @@ public class PrincipalControlador {
     public FuncionesRegistro funcionesRegistro;
     public FuncionesReserva funcionesReserva;
     public FuncionesValidaciones funcionesValidaciones;
+    public FechasTarifas fechasTarifas;
     
     /**
      * Constructor del PrincipalControlador
@@ -43,6 +45,7 @@ public class PrincipalControlador {
 		this.funcionesRegistro = new FuncionesRegistro(modelo, this, vista);
 		this.funcionesReserva = new FuncionesReserva(modelo,vista,this);
 		this.funcionesValidaciones = new FuncionesValidaciones(modelo,vista,this);
+		this.fechasTarifas = new FechasTarifas(modelo,vista,this);
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz

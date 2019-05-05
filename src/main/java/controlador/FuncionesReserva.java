@@ -166,12 +166,13 @@ public class FuncionesReserva {
 	
 	public float calcularPrecioPorTarifa(TipoAlojamiento tiposAloj, float precioAloj) {
 		 //Se rellena el array NumNochesPorTarifa
-		  int [] NumNochesPorTarifa = calcularNumNochesPorTarifa();
+		  int [] NumNochesPorTarifa = calcularNumNochesPorTarifa(precioAloj);
+		  float suplementoFestivos = calcularSuplementoFestivos(precioAloj);
 		   
 		 //el precio precioTarifaAplicada = (noches tarifa normal * precioAloj) + (noches estivales * el precioAloj + un 12% el precio del alojamiento) + (noches festivos * el precioAloj y un 20% más)
 		  float precioTarifaNormal = (NumNochesPorTarifa[0] * precioAloj);
 		  float precioTarifaEstival = (float) (NumNochesPorTarifa[1] * (precioAloj * 1.12));
-		  float precioTarifaFestivo = (float) (NumNochesPorTarifa[2] * (precioAloj * 1.20));
+		  float precioTarifaFestivo = (float) (NumNochesPorTarifa[2] * (suplementoFestivos));
 		  float precioTarifaAplicada = precioTarifaNormal + precioTarifaEstival + precioTarifaFestivo; 
 		  int numNoches = calcularNochesReservadas();  
 		  
@@ -187,6 +188,19 @@ public class FuncionesReserva {
 	}
 	
 	/**
+	 * Método calcularSuplementoFestivos = calcula el suplemento a pagar por el cliente que escoja tarifa de festivo. 
+	 * @param precioAloj
+	 * @return
+	 */
+	public float calcularSuplementoFestivos(float precioAloj) {
+		float suplementoFestivos =0;
+		
+		suplementoFestivos = (float) (precioAloj * 0.20);
+		
+		return suplementoFestivos;
+	}
+	
+	/**
 	 * Método mostrarDetTipoTarifaCasApart = se muestran en vista.detallesReservaCasaApart los detalles de la tarifa aplicada al precio.
 	 * @param NumNochesPorTarifa
 	 */
@@ -195,6 +209,9 @@ public class FuncionesReserva {
 					" A continuación se muestran los detalles de las tarifas aplicada a su selección: " + "\n" + 
 					"TARIFA NORMAL: Número de noches: " + NumNochesPorTarifa[0] +  " Precio 1 noche: " +precioAloj+ "€ Precio: "+ + NumNochesPorTarifa[0] +" noches: " +precioTarifaNormal +"€" + "\n" +
 					"TARIFA ESTIVAL: Número de noches: " + NumNochesPorTarifa[1] +" Precio 1 noche: " + (String.format("%.2f", (precioAloj * 1.12))) +  "€ Precio: " + NumNochesPorTarifa[1] +" noches: " +precioTarifaEstival +"€"+ "\n" +
+					 "\n" +
+					 "\n" +
+					 "\n" +
 					"El precio final tras aplicar las tarifas para su reserva de "+ numNoches + " noches es de:" + precioTarifaAplicada +"€");
 
 	}
@@ -203,7 +220,7 @@ public class FuncionesReserva {
 	 * Método calcularNumNochesPorTarifa = calcula el número de noches a las que se le aplica la tarifa normal y el número de noches a las que se aplica la tarifa estival
 	 * @return NumNochesPorTarifa = es un array que contiene en su primera posición [0] el número de noches a las que se aplica la tarifa normal y en [1] el número de noches a las que se aplica la tarifa estival
 	 */
-	public int [] calcularNumNochesPorTarifa() {
+	public int [] calcularNumNochesPorTarifa(float precioAloj) {
 	   //Declaración e inicialización de variables:
 	   int numNochesNormal=0;
 	   int numNochesEstival=0;
@@ -218,7 +235,7 @@ public class FuncionesReserva {
 	   definirInicioFinTarifaEstival();
 	   
 	 //calculamos el número de noche de festivos 
-	   numNochesFestivos =  calcularNumNochesFestivos(); 
+	   numNochesFestivos =  calcularNumNochesFestivos(precioAloj); 
 	   
 	   //Se pueden dar 4 posibilidades en cuanto a la TARIFA ESTIVAL, porque la reserva máxima que se puede hacer es de 30 días, sino habría cuatro posibilidades.
 	   		//Nota: los meses van de 0 a 11. 
@@ -270,7 +287,7 @@ public class FuncionesReserva {
 	 * Método calcularNumNochesFestivos = calcula el número de noches a los que se le aplicará la tarifa festivo en las fechas seleccionadas por el usuario.
 	 * @return
 	 */
-	public int calcularNumNochesFestivos() {
+	public int calcularNumNochesFestivos(float precioAloj) {
 		int numNochesFestivos = 0;
 		String nombreFestivosReser = "";
 		
@@ -321,7 +338,15 @@ public class FuncionesReserva {
 	
 		System.out.println("numNochesFestivos" + numNochesFestivos+ "nombreFestivosReser"+ nombreFestivosReser);
 		//FALTA se mete el nombreFestivosReser en el modelo.reserva  o se muestra en un jtext
+		
+		if(numNochesFestivos > 0) {
+			float suplementoFestivos = calcularSuplementoFestivos(precioAloj);
+			vista.detallesReservaCasaApart.textDetDestinos.setText((String) "Además, su reserva incluye "+ numNochesFestivos + " festivos:" + "\n" + 
+					nombreFestivosReser + "Suplemento por festivo: "+ (precioAloj * 0.20) +   "€" +"\n");
+
 	
+		}
+		 
 		return numNochesFestivos;
 	}
 	

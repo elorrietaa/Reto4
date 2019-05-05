@@ -497,7 +497,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 * @param tabla Tabla que se rellena con la informacion de la reserva
 	 */
 	public void mostrarDetallesHabSelec( DefaultTableModel tablaDetCasApart) {
-		Object[] datos = new Object[6];
+		Object[] datos = new Object[5];
 	
 		tablaDetCasApart.setRowCount(0);
 			datos[0] = modelo.habitacion.getCodHabitacion();
@@ -507,8 +507,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 			datos[3] = tiposCamaHab;
-			datos[4] =  (String.format("%.2f", modelo.habitacion.getPrecioHabitacion()) + "€");
-			datos[5] =  (String.format("%.2f", controlador.funcionesReserva.calcularPrecioReservaCasApart(modelo.tiposAloj)) + "€ / "+ modelo.numNoches+" noches");
+			datos[4] =  (String.format("%.2f", modelo.habitacion.getPrecioHabitacion()) + "€/1 noche");
+		//	datos[5] =  (String.format("%.2f", modelo.reserva.getPrecioReserva() + "€ / "+ modelo.numNoches+" noches");
 			tablaDetCasApart.addRow(datos);
 		
 	}

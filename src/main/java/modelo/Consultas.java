@@ -811,7 +811,7 @@ public class Consultas {
 				stmt.setInt(2, reserva.getAlojamiento().getCodAlojamiento());
 				//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
 				//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
-				stmt.setInt(3,reserva.getHabitacion().getCodHabitacion());
+				stmt.setInt(3, habitacion.getCodHabitacion());
 				stmt.setFloat(4, reserva.getPrecioReserva());
 				stmt.setString(5, dni);
 				stmt.setDate(6, fechaIda);

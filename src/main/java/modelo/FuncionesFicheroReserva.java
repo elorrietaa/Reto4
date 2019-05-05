@@ -52,7 +52,7 @@ public class FuncionesFicheroReserva {
 			writer.println();
 			writer.println("=====DATOS DEL ALOJAMIENTO: ===== " );
 			writer.println("Ciudad: " + modelo.hotel.getUbicacion());
-			writer.println("Código del hotel: " + modelo.hotel.getCodAlojamiento());
+			writer.println("Código del hotel: " + modelo.hotel.getCodAlojamiento()); 
 			writer.println("Nombre del hotel: " + modelo.hotel.getNombre());	
 			writer.println("Dirección: " + modelo.hotel.getDireccion() + "   Teléfono: "+ modelo.hotel.getTelefono());	
 			writer.println("Número de estrellas: " + modelo.hotel.getEstrellas());
@@ -130,9 +130,9 @@ public class FuncionesFicheroReserva {
 			writer.println("Número de estrellas: " + modelo.hotel.getEstrellas());
 			writer.println();
 			writer.println("===== DATOS DE LA RESERVA: ===== " );
-			writer.println("Código habitación: " + modelo.reserva.getHabitacion().getCodHabitacion());
-			writer.println("Nombre habitación: " + modelo.reserva.getHabitacion().getNombreHabitacion());
-			writer.println("Tipo de habitación: " + modelo.reserva.getHabitacion().getTipoHabitacion());
+			writer.println("Código habitación: " + modelo.habitacion.getCodHabitacion());
+			writer.println("Nombre habitación: " + modelo.habitacion.getNombreHabitacion());
+			writer.println("Tipo de habitación: " + modelo.habitacion.getTipoHabitacion());
 			writer.println("Número de camas de la habitación: " + modelo.consultas.buscarNumCamasPorCodHab(modelo.reserva.getHabitacion().getCodHabitacion()));
 			
 			//Mostrar detalles de las camas de la habitación seleccionada: 
@@ -140,7 +140,7 @@ public class FuncionesFicheroReserva {
 		
 			writer.println("Tipo de camas de la habitación: " + listaCamas.toString());
 			writer.println();
-			writer.println("Precio habitación: " + (String.format("%.2f",modelo.reserva.getHabitacion().getPrecioHabitacion()) + "€/ 1 noche"));
+			writer.println("Precio habitación: " + (String.format("%.2f",modelo.habitacion.getPrecioHabitacion()) + "€/ 1 noche"));
 			writer.println("Precio habitación: " + (String.format("%.2f",modelo.reserva.getPrecioReserva()) + "€/ "+ modelo.numNoches+" noches"));
 			writer.println();
 			writer.println("*************************************************************************************");

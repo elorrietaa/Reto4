@@ -62,13 +62,8 @@ public class FuncionesReserva {
 		float precioReserva=0;
 		
 		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA (y festivos)
-		if(tiposAloj.getCodTipoAlojamiento() == 10) {
-			
-	//seria esto peor no va
-			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.habitacion.getPrecioHabitacion());
-			
-		//	precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.hotel.getPrecioAlojamiento()); // el precio aloj lo coge del hotel ytiene que coger el de la habitacion!!!!!!!!!!!!!!!!!!!!!!!!!!
-			
+		if(tiposAloj.getCodTipoAlojamiento() == 10) {	
+			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.habitacion.getPrecioHabitacion()); //en este caso se coge el precio de la habitacion no del hotel	
 		}
 		else if(tiposAloj.getCodTipoAlojamiento() == 20) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.casa.getPrecioAlojamiento());
@@ -76,8 +71,6 @@ public class FuncionesReserva {
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.apartamento.getPrecioAlojamiento());
 		}
-		
-		
 		
 		//(2º)Redondeamos a 2 decimales
 		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales

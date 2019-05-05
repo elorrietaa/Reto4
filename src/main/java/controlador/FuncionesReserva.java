@@ -62,7 +62,10 @@ public class FuncionesReserva {
 		float precioReserva=0;
 		
 		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA (y festivos)
-		if(tiposAloj.getCodTipoAlojamiento() == 20) {
+		if(tiposAloj.getCodTipoAlojamiento() == 10) {
+			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.hotel.getPrecioAlojamiento());
+		}
+		else if(tiposAloj.getCodTipoAlojamiento() == 20) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.casa.getPrecioAlojamiento());
 		}
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
@@ -179,14 +182,10 @@ public class FuncionesReserva {
 		  int numNoches = calcularNochesReservadas();  
 		  
 		 //muestra los detalles de la tarifa aplicada, el número de noches y el precio en detallesReservaCasaApart
-		  if(tiposAloj.getCodTipoAlojamiento() == 10) {
-			 
-			}
-		  else if(tiposAloj.getCodTipoAlojamiento() == 20 || tiposAloj.getCodTipoAlojamiento() == 30) {
-			  mostrarDetTipoTarifaCasApart(NumNochesPorTarifa,  precioAloj, precioTarifaNormal, precioTarifaEstival, precioTarifaAplicada, numNoches);
-			}
+		  mostrarDetTipoTarifaCasApart(NumNochesPorTarifa,  precioAloj, precioTarifaNormal, precioTarifaEstival, precioTarifaAplicada, numNoches);
 		
-		   return precioTarifaAplicada;
+		
+		  return precioTarifaAplicada;
 	}
 	
 	/**

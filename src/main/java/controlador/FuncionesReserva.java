@@ -61,7 +61,7 @@ public class FuncionesReserva {
 	public float calcularPrecioReservaCasApart(TipoAlojamiento tiposAloj) {
 		float precioReserva=0;
 		
-		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA
+		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA (y festivos)
 		if(tiposAloj.getCodTipoAlojamiento() == 20) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.casa.getPrecioAlojamiento());
 		}
@@ -173,7 +173,9 @@ public class FuncionesReserva {
 		  float precioTarifaNormal = (NumNochesPorTarifa[0] * precioAloj);
 		  float precioTarifaEstival = (float) (NumNochesPorTarifa[1] * (precioAloj * 1.12));
 		  float precioTarifaFestivo = (float) (NumNochesPorTarifa[2] * (suplementoFestivos));
+		  
 		  float precioTarifaAplicada = precioTarifaNormal + precioTarifaEstival + precioTarifaFestivo; 
+		  
 		  int numNoches = calcularNochesReservadas();  
 		  
 		 //muestra los detalles de la tarifa aplicada, el número de noches y el precio en detallesReservaCasaApart
@@ -212,7 +214,7 @@ public class FuncionesReserva {
 					 "\n" +
 					 "\n" +
 					 "\n" +
-					"El precio final tras aplicar las tarifas para su reserva de "+ numNoches + " noches es de:" + precioTarifaAplicada +"€");
+					"El precio final tras aplicar las tarifas para su reserva de "+ numNoches + " noches es de: " + precioTarifaAplicada +"€");
 
 	}
 	

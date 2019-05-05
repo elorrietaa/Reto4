@@ -21,8 +21,8 @@ public class Hotel extends Alojamiento{
      * @param ubicacion = ciudad en la que se encuentra el hotel
      * @param estrellas = número de estrellas que tiene el hotel
      */
-    public Hotel(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones, String ubicacion, int estrellas, float precioAlojamiento, int popularidad) {
-    	super(codAlojamiento, nombre, direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad);
+    public Hotel(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones, int numHabDisponibles, String ubicacion, int estrellas, float precioAlojamiento, int popularidad) {
+    	super(codAlojamiento, nombre, direccion, telefono, numHabitaciones, numHabDisponibles, ubicacion, precioAlojamiento, popularidad);
 	this.estrellas=estrellas;
     }
 

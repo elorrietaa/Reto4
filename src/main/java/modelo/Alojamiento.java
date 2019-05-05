@@ -15,6 +15,7 @@ public class Alojamiento {
     protected ArrayList<Habitacion> listaHabitaciones;
     protected ArrayList<Dormitorio> listaHabSeleccionadas; 
 	protected int numHabitaciones;
+	protected int numHabDisponibles;
     protected String ubicacion;
     protected float precioAlojamiento;
     protected int popularidad;
@@ -41,6 +42,29 @@ public class Alojamiento {
 	this.direccion = direccion;
 	this.telefono = telefono;
 	this.numHabitaciones = numHabitaciones;
+	this.ubicacion = ubicacion;
+	this.precioAlojamiento = precioAlojamiento;
+	this.popularidad = popularidad;
+    }
+    
+   /**
+    * Constructor del objeto Alojamiento: contiene la información referente al alojamiento. con numHabDisponibles para hoteles
+    * @param codAlojamiento = codigo alojamiento
+    * @param nombre = nombre del alojamiento
+    * @param direcion = direccion del alojamiento
+    * @param telefono = telefono del alojamiento
+    * @param numHabitaciones = número de habitaciones que tiene el alojamiento
+    * @param numHabDisponibles = número de habitaciones disponibles que tiene el alojamiento
+    * @param ubicacion = Ciudad en la que se encuentra el alojamiento
+    * @param precioAlojamiento = precio del alojamiento
+    */
+    public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones,int numHabDisponibles, String ubicacion, float precioAlojamiento, int popularidad) {
+	this.codAlojamiento = codAlojamiento;
+	this.nombre = nombre;
+	this.direccion = direccion;
+	this.telefono = telefono;
+	this.numHabitaciones = numHabitaciones;
+	this.numHabDisponibles = numHabDisponibles;
 	this.ubicacion = ubicacion;
 	this.precioAlojamiento = precioAlojamiento;
 	this.popularidad = popularidad;
@@ -105,7 +129,16 @@ public class Alojamiento {
     public void setNumHabitaciones(int numHabitaciones) {
         this.numHabitaciones = numHabitaciones;
     }
-    /**
+    
+    
+    
+    public int getNumHabDisponibles() {
+		return numHabDisponibles;
+	}
+	public void setNumHabDisponibles(int numHabDisponibles) {
+		this.numHabDisponibles = numHabDisponibles;
+	}
+	/**
      * Getter de la ubicación = es un atributo de la clase Alojamiento , Después sera el nombre de la ciudad en la que está el alojamiento  
      * @return ubicacion
      */

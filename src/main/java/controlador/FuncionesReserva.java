@@ -272,6 +272,8 @@ public class FuncionesReserva {
 	 */
 	public int calcularNumNochesFestivos() {
 		int numNochesFestivos = 0;
+		String nombreFestivosReser = "";
+		
 		int diaIda = vista.buscarHotel.fechaIda.getDayChooser().getDay();
 		int diaVuelta = vista.buscarHotel.fechaVuelta.getDayChooser().getDay();
 		int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
@@ -293,26 +295,32 @@ public class FuncionesReserva {
 
 		for (int i=0; i<modelo.fechasTarifas.diasFestivos.length; i++ ) { //se recorren todos los festivos
 			// si reserva la ida el mes anterior al festivo y la vuelta un mes después del festivo, significa que ha reservado el festivo
-			if(diaIda == diasFestivos[i] && mesIda == mesesFestivos[i] || (mesIda == mesesFestivos[i]-1 || diaIda <=diasFestivos[i] && mesIda == mesesFestivos[i]) && (diaVuelta >=diasFestivos[i] && mesVuelta == mesesFestivos[i] || mesVuelta == mesesFestivos[i]+1) ) {
+			if(diaIda == diasFestivos[i] && mesIda == mesesFestivos[i] || (mesIda ==( mesesFestivos[i] - 1 ) || diaIda <=diasFestivos[i] && mesIda == mesesFestivos[i]) && (diaVuelta >=diasFestivos[i] && mesVuelta == mesesFestivos[i] || mesVuelta == ( mesesFestivos[i] + 1 )) ) {
 				numNochesFestivos = numNochesFestivos + 1; // si se comple la condición, se añade una noche al número de noches festivos
-					
+				nombreFestivosReser = nombreFestivosReser + " Día: "+ diasFestivos[i]+" - "+ " Mes: "+ ( mesesFestivos[i] + 1 ) +" - "+" Festivo: "+ nombreFestivos[i];	//se añade el nombre del festivo a nombreFestivosReser
 			}
 		}
 	
 		//Los festivos de los meses enero y diciembre se tratan aparte porque el for no los contempla.
 		if(diaIda == 1 && mesIda == 0 || ( mesIda == 11 && mesVuelta == 0)) { //FESTIVO AÑO NUEVO 1-01 .El mes de Enero (posición 0) es especial por ser el anterior el mes dic(posicion11)
 			numNochesFestivos = numNochesFestivos + 1; 
+			nombreFestivosReser = nombreFestivosReser + " Día: " + 1 + " - " + " Mes: "+ 1 +" - " + " Festivo: " + "Año Nuevo";
 		}
 		else if(diaIda == 6 && mesIda == 0 || (mesIda == 11 || diaIda <=6 && mesIda == 0) && (diaVuelta >=6 &&  mesVuelta == 0 || mesVuelta == 1) ) { //FESTIVO REYES  6-01 .El mes de Enero (posición 0) es especial por ser el anterior el mes dic(posicion11)
 			numNochesFestivos = numNochesFestivos + 1; 
+			nombreFestivosReser = nombreFestivosReser + " Día: " + 6 + " - " + " Mes: "+ 1 +" - " + " Festivo: " + "Día de Reyes";
 		}
-		else if(diaIda == 6 && mesIda == 11 || (mesIda == 10 || diaIda <=6 && mesIda == 11) && (diaVuelta >=6 && mesVuelta == 11 || mesVuelta == 0) ) { //FESTIVO DIA DE LA CONCEPCION 6-11 .El mes de diciembre (posición 11) es especial por ser el posterior al mes enero(posicion0)
+		else if(diaIda == 8 && mesIda == 11 || (mesIda == 10 || diaIda <=8 && mesIda == 11) && (diaVuelta >=8 && mesVuelta == 11 || mesVuelta == 0) ) { //FESTIVO DIA DE LA CONCEPCION 6-11 .El mes de diciembre (posición 11) es especial por ser el posterior al mes enero(posicion0)
 			numNochesFestivos = numNochesFestivos + 1; 
+			nombreFestivosReser = nombreFestivosReser + " Día: " + 8 + " - " + " Mes: "+ 12 +" - " + " Festivo: " + "La Inmaculada Concepción";
 		}
 		else if(diaIda == 25 && mesIda == 11 || (mesIda == 10 || diaIda <=25 && mesIda == 11) && (diaVuelta >=25 && mesVuelta == 11 || mesVuelta == 0) ) { //FESTIVO NAVIDAD 25-11 .El mes de diciembre (posición 11) es especial por ser el posterior al mes enero(posicion0)
 			numNochesFestivos = numNochesFestivos + 1; 
+			nombreFestivosReser = nombreFestivosReser + " Día: " + 25 + " - " + " Mes: "+ 12 +" - " + " Festivo: " + "Navidad";
 		}
 	
+		System.out.println("numNochesFestivos" + numNochesFestivos+ "nombreFestivosReser"+ nombreFestivosReser);
+		//FALTA se mete el nombreFestivosReser en el modelo.reserva  o se muestra en un jtext
 	
 		return numNochesFestivos;
 	}

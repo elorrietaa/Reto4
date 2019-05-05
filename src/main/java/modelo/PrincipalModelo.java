@@ -51,7 +51,7 @@ public class PrincipalModelo {
 		conexion = new Conexion();
 				
 		// Creamos un objeto Consultas que se encargara de hacer consultas a la BBDD
-		consultas = new Consultas(conexion);
+		consultas = new Consultas(conexion );
 		
 		//inicializamos nuestros objetos a null
 		ciudad = null;

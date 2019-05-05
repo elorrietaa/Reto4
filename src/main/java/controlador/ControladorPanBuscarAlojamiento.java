@@ -452,7 +452,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	    DefaultTableModel tablaDetCasApart = (DefaultTableModel) vista.detallesReservaCasaApart.table.getModel();
 
-	  //CASA
+	  //hotel
  		if (tiposAloj.getCodTipoAlojamiento() == 10) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
 			Object[] datos1 = new Object[3];
@@ -508,7 +508,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 			datos[3] = tiposCamaHab;
 			datos[4] =  (String.format("%.2f", modelo.habitacion.getPrecioHabitacion()) + "€");
-			datos[5] =  (String.format("%.2f",modelo.reserva.getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches");
+			datos[5] =  (String.format("%.2f", controlador.funcionesReserva.calcularPrecioReservaCasApart(modelo.tiposAloj)) + "€ / "+ modelo.numNoches+" noches");
 			tablaDetCasApart.addRow(datos);
 		
 	}

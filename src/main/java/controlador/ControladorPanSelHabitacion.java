@@ -128,6 +128,10 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 			//le pasa el apartamento al modelo
 			modelo.habitacion = this.habitacion;
+			
+			//prueba
+			System.out.println("Habitacion{{{{{{{{{{{{{{{ " + habitacion.getCodHabitacion());
+//FALLA	//	System.out.println("Habitacion{{{{{{{{{{{{{{{ " + modelo.habitacion.getCodHabitacion());
 		 
 		//Se muestran los detalles de las habitaciones seleccionadas en el JTable del panel detallesReserva
 			mostratDetallesHabHotelSel(habitacion);
@@ -300,6 +304,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
 					guardar1DormSeleccionadosJTable();
 					
+	//pruebas va mal				System.out.println("{{{{{{{{{{{{{{{{{{{{{Datos reserva:"+ modelo.reserva.getHabitacion().getCodHabitacion());
+				
 					//(2º)Genera 1 reserva y la guarda en modelo.reserva
 					//pasar por parámetro el tiposAloj para diferenciar entre hotel, casa y apartamento ¿? no se si es lo mas correcto	
 					controlador.funcionesReserva.guardarReservaAlojamiento(modelo.tiposAloj);

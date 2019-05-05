@@ -63,6 +63,7 @@ public class FuncionesReserva {
 		
 		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA (y festivos)
 		if(tiposAloj.getCodTipoAlojamiento() == 10) {
+			//precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.habitacion.getPrecioHabitacion());
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.hotel.getPrecioAlojamiento());
 		}
 		else if(tiposAloj.getCodTipoAlojamiento() == 20) {
@@ -389,6 +390,7 @@ public class FuncionesReserva {
 		if(tiposAloj.getCodTipoAlojamiento() == 10) {
 			modelo.reserva.setAlojamiento(modelo.hotel);
 			modelo.reserva.setHabitacion(modelo.habitacion);
+			
 		}
 		else if(tiposAloj.getCodTipoAlojamiento() == 20) {
 			modelo.reserva.setAlojamiento(modelo.casa);

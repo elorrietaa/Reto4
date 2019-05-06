@@ -438,9 +438,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.table.getModel();
 			
 		// Muestra los datos del Alojamiento seleccionado en un JTable
-		if (modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
-		    mostrarDatosAlojamientoJTable();
-		}
+		mostrarDatosAlojamientoJTable();
 			
 		// EN EL FUTURO. Muestra los datos de la o las habitaciones que tiene el alojamiento seleccinado 
 		//mostrarDetallesHabsSelec(tablaHabs);

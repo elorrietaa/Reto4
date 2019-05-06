@@ -230,7 +230,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 
           Object[] datos = new Object[3];
           tablaHabs.setRowCount(0);
-
           for(int i=0; i<listaDormitorios.size();i++) {
 
                  datos[0] = listaDormitorios.get(i).getNombreHabitacion();
@@ -393,16 +392,16 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					//(2º) Control de fechas: no se pueden hacer reservas anteriores a now() , ni reservas de 0 noches
 					continuar = controlador.funcionesValidaciones.validarFechaEntradaYSalida(fechaIda, fechaVuelta);
 				    
-						//***SI SE SELECCIONA UN HOTEL:***
-							if (tiposAloj.getCodTipoAlojamiento() == 10) {
-								continuarHotel();
-							}
+					//***SI SE SELECCIONA UN HOTEL:***
+					if (tiposAloj.getCodTipoAlojamiento() == 10) {
+						continuarHotel();
+					}
 						
-						//***Si ha seleccionado una CASA O APARTAMENTO:***
-							else if(tiposAloj.getCodTipoAlojamiento() == 20 || tiposAloj.getCodTipoAlojamiento() ==30) {
-								continuarCasaApart();
+					//***Si ha seleccionado una CASA O APARTAMENTO:***
+					else if(tiposAloj.getCodTipoAlojamiento() == 20 || tiposAloj.getCodTipoAlojamiento() ==30) {
+						continuarCasaApart();
 								
-						}
+					}
 					break;
 				
 				case "Inicio Sesión":

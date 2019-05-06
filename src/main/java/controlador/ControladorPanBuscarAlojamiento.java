@@ -91,6 +91,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * @param listaCiudades
      */
     public void mostrarCiudad() {
+    	vista.buscarHotel.cBCiudad.removeAllItems();
 		ArrayList<Ciudad> listaCiudades;
 		listaCiudades = consultas.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
@@ -104,6 +105,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * @param listaCiudades
      */
     public void mostrarTiposAloj() { 
+    	vista.buscarHotel.cBTipoAloj.removeAllItems();
     	ArrayList<TipoAlojamiento> listaTiposAlojamiento;
     	listaTiposAlojamiento = consultas.BuscarTiposAlojamiento();
 		for(int i=0; i<listaTiposAlojamiento.size();i++) {
@@ -438,9 +440,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.table.getModel();
 			
 		// Muestra los datos del Alojamiento seleccionado en un JTable
-		if (modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+		
 		    mostrarDatosAlojamientoJTable();
-		}
+		
 			
 		// EN EL FUTURO. Muestra los datos de la o las habitaciones que tiene el alojamiento seleccinado 
 		//mostrarDetallesHabsSelec(tablaHabs);

@@ -612,6 +612,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		
 			//(0º)Se guardan los datos seleccionados en el modelo
 			guardarDatosSeleccionadosAlojamiento();
+			
+			//se muestran los datos de las habitaciones de la casa/Apartamento
+			controlador.funcionesReserva.mostrarNumHabitaciones();
+			
 		
 			//(2º)Genera 1 reserva y la guarda en modelo.reserva
 			//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
@@ -624,6 +628,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
 			actualizarPanDetallesReservaCasaAloj();
 			mostrarDetallesHabsCasa();
+			
 			
 			//Aviso al usuario si el alojamiento no esta disponible
 			if (disponible == false){
@@ -664,4 +669,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		}
 	}
 	
+
+   
+
 }

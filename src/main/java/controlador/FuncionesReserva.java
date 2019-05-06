@@ -202,12 +202,12 @@ public class FuncionesReserva {
 	public void mostrarDetTipoTarifaCasApart(int [] NumNochesPorTarifa, float precioAloj, float precioTarifaNormal, float precioTarifaEstival, float precioTarifaAplicada, int numNoches) {
 		 vista.detallesReservaCasaApart.textDetTarifa.setText((String) "ATENCIÓN: El precio de los alojamiento puede variar en función de las fechas seleccionadas." + "\n" + 
 					" A continuación se muestran los detalles de las tarifas aplicada a su selección: " + "\n" + 
-					"TARIFA NORMAL: Número de noches: " + NumNochesPorTarifa[0] +  " Precio 1 noche: " +precioAloj+ "€ Precio: "+ + NumNochesPorTarifa[0] +" noches: " +precioTarifaNormal +"€" + "\n" +
-					"TARIFA ESTIVAL: Número de noches: " + NumNochesPorTarifa[1] +" Precio 1 noche: " + (String.format("%.2f", (precioAloj * 1.12))) +  "€ Precio: " + NumNochesPorTarifa[1] +" noches: " +precioTarifaEstival +"€"+ "\n" +
+					"TARIFA NORMAL: Número de noches: " + NumNochesPorTarifa[0] +  " Precio 1 noche: " +precioAloj+ "€ Precio: "+ + NumNochesPorTarifa[0] +" noches: " +(String.format("%.2f", precioTarifaNormal)) +"€" + "\n" +
+					"TARIFA ESTIVAL: Número de noches: " + NumNochesPorTarifa[1] +" Precio 1 noche: " + (String.format("%.2f", (precioAloj * 1.12))) +  "€ Precio: " + NumNochesPorTarifa[1] +" noches: " +(String.format("%.2f", precioTarifaEstival)) +"€"+ "\n" +
 					 "\n" +
 					 "\n" +
 					 "\n" +
-					"El precio final tras aplicar las tarifas para su reserva de "+ numNoches + " noches es de: " + precioTarifaAplicada +"€");
+					"El precio final tras aplicar las tarifas para su reserva de "+ numNoches + " noches es de: " + (String.format("%.2f", precioTarifaAplicada)) +"€");
 
 	}
 	

@@ -230,7 +230,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 
           Object[] datos = new Object[3];
           tablaHabs.setRowCount(0);
-
+          listaDormitorios = consultas.buscarHabitacionPorCodigoAlojamiento(casa, modelo.alojamiento.getCodAlojamiento());
           for(int i=0; i<listaDormitorios.size();i++) {
 
                  datos[0] = listaDormitorios.get(i).getNombreHabitacion();

@@ -21,6 +21,7 @@ import modelo.Casa;
 import modelo.Ciudad;
 import modelo.Consultas;
 import modelo.Dormitorio;
+import modelo.Habitacion;
 import modelo.Hotel;
 import modelo.PrincipalModelo;
 import modelo.Reserva;
@@ -41,6 +42,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	private ArrayList<Casa> listaCasas;
 	private ArrayList<Apartamento> listaApartamentos;
 	public ArrayList<Dormitorio> listaDormitorios;
+	public ArrayList<Habitacion> listaHabitaciones;
 
 	
 	Ciudad ciudad;
@@ -91,6 +93,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * @param listaCiudades
      */
     public void mostrarCiudad() {
+    	vista.buscarHotel.cBCiudad.removeAllItems();
 		ArrayList<Ciudad> listaCiudades;
 		listaCiudades = consultas.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
@@ -104,6 +107,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * @param listaCiudades
      */
     public void mostrarTiposAloj() { 
+    	vista.buscarHotel.cBTipoAloj.removeAllItems();
     	ArrayList<TipoAlojamiento> listaTiposAlojamiento;
     	listaTiposAlojamiento = consultas.BuscarTiposAlojamiento();
 		for(int i=0; i<listaTiposAlojamiento.size();i++) {
@@ -230,28 +234,32 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 
           Object[] datos = new Object[3];
           tablaHabs.setRowCount(0);
-          for(int i=0; i<listaDormitorios.size();i++) {
+          if(modelo.casa != null)
+        	  listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(casa, modelo.casa.getCodAlojamiento());
+          else
+        	  listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(apartamento, modelo.apartamento.getCodAlojamiento());
+          for(int i=0; i<listaHabitaciones.size();i++) {
+        	  System.out.println(listaHabitaciones.get(i).getTipoHabitacion());
+        	  datos[0] = listaHabitaciones.get(i).getTipoHabitacion();
+        	  
+        	  //se calcula el numero de camas que tiene la habitación en función del codigo habitación:
 
-                 datos[0] = listaDormitorios.get(i).getNombreHabitacion();
+        	  datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaHabitaciones.get(i).getCodHabitacion());
 
-                 //se calcula el numero de camas que tiene la habitación en función del codigo habitación:
+        	  //Mostrar detalles de las camas de la habitación seleccionada:
+        	  ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
+        	  String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 
-                 datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaDormitorios.get(i).getCodHabitacion());
+        	  //se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
 
-                 //Mostrar detalles de las camas de la habitación seleccionada:
-                 ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
-                 String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+        	  //modelo.habitacion.setTiposCamaHab(tiposCamaHab);
 
-                 //se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
+        	  //modelo.habitacion.setNumTipCam(numTipCam);
 
-                 //modelo.habitacion.setTiposCamaHab(tiposCamaHab);
-
-                 //modelo.habitacion.setNumTipCam(numTipCam);
-
-                 //listaHabitaciones.add(modelo.habitacion);
-
-                 datos[2] = tiposCamaHab;
-                 tablaHabs.addRow(datos);
+        	  //listaHabitaciones.add(modelo.habitacion);
+        	  
+        	  datos[2] = tiposCamaHab;
+        	  tablaHabs.addRow(datos);
           }
     }
 	
@@ -474,8 +482,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.table.getModel();
 			
 		// Muestra los datos del Alojamiento seleccionado en un JTable
-		mostrarDatosAlojamientoJTable();
-			
+		
+		    mostrarDatosAlojamientoJTable();
+	
 		// EN EL FUTURO. Muestra los datos de la o las habitaciones que tiene el alojamiento seleccinado 
 		//mostrarDetallesHabsSelec(tablaHabs);
 			

@@ -328,6 +328,53 @@ public class Consultas {
     	return listaHabitacion;
     }
     
+    /**
+     * Método buscarHabitacionPorCodigoAlojamiento = busca las habitaciones del hotel seleccionado por el usuario.
+     * @param hotel = contiene los datos del hotel seleccionado por el usuario.
+     * @param codHotelSeleccionado = es el código del hotel que el usuario ha seleccionado.
+     * @return
+     */
+    public ArrayList<Habitacion> buscarHabitacionPorCodigoAlojamiento(Alojamiento alojamiento, int codHotelSeleccionado) {
+    	ArrayList<Habitacion> listaHabitacion = new ArrayList<Habitacion>(); 
+    	Habitacion habitacion;
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	String query = "SELECT Cod_habitacion, Tipo_habitacion, Tamanio FROM `habitaciones`, `alojamiento` where habitaciones.Cod_alojamiento=alojamiento.Cod_alojamiento and alojamiento.Cod_alojamiento=?";
+    	
+    	try {
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    		ps.setInt(1, codHotelSeleccionado);
+    		
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    
+    		// crea objetos Linea con los resultados y los añade a un arrayList
+    		while (rs.next()) {
+    			habitacion = new Dormitorio(); 
+    			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
+    			//habitacion.setAlojamiento(hotel);
+    			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
+    			habitacion.setTamanio(rs.getFloat("Tamanio"));
+    			
+    			listaHabitacion.add(habitacion);
+    		} 
+    				
+    		} 
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    		} 
+    		finally {
+    			// cerramos la conexion
+    			conexion.desconectar();
+    		}
+    	return listaHabitacion;
+    }
+    
   /**
    * buscarHabitacionDisponiblel = busca las habitaciones disponibles para el hotel seleccionado en las fechas seleccionadas.
    * @param fechaIda
@@ -479,6 +526,8 @@ public class Consultas {
     	
     	return disponible;
     }
+    
+    
     
     
     public ArrayList<Cama> buscarCamaPorCodigoHabitacion(int codHabitacionSeleccionada) {

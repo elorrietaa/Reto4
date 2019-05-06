@@ -186,11 +186,7 @@ public class FuncionesReserva {
 		  return precioTarifaAplicada;
 	}
 	
-	/**
-	 * Método calcularSuplementoFestivos = calcula el suplemento a pagar por el cliente que escoja tarifa de festivo. 
-	 * @param precioAloj
-	 * @return
-	 */
+	
 	public float calcularSuplementoFestivos(float precioAloj) {
 		float suplementoFestivos =0;
 		
@@ -278,6 +274,7 @@ public class FuncionesReserva {
 		NumNochesPorTarifa[1] = numNochesEstival;
 		NumNochesPorTarifa[2] = numNochesFestivos;
 		System.out.println("--ARRAY --NumNochesPorTarifa---------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa normal: " + NumNochesPorTarifa[0] + " Num noches tarifa estival: " + NumNochesPorTarifa[1] + "num noches festivo" + NumNochesPorTarifa[2]);
+
 
 	    return NumNochesPorTarifa;
 	}

@@ -162,7 +162,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			for(int i=0; i<listaHoteles.size();i++) {
 				
 				datos[0] = listaHoteles.get(i).getNombre();
-				datos[1] = listaHoteles.get(i).getPrecioAlojamiento() + " € habitación/noche";
+				
+				datos[1] = consultas.buscarPrecioMinimoDeLaHabitacionDelHotel(listaHoteles.get(i).getCodAlojamiento()) + " € habitación/noche";
 				
 				datos[2] = ((Hotel) listaHoteles.get(i)).getEstrellas();
 				datos[3] = "Dirección: " + listaHoteles.get(i).getDireccion();

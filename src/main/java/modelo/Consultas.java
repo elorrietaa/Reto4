@@ -832,43 +832,81 @@ public class Consultas {
 			
 		}
 
-public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta) {
+		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta) {
 		
-		PreparedStatement stmt = null;
-		ResultSet result = null;
-		int codReserva = 0; 
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			int codReserva = 0; 
+			
+			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?)";
+	
+			try {
+				
+				// abrimos una conexion
+				connection = conexion.conectar();
+				
+				// preparamos la consulta INSERT
+				stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				
+				// añadimos los valores a insertar
+				stmt.setInt(1, reserva.getCodReserva());
+				stmt.setInt(2,reserva.getAlojamiento().getCodAlojamiento());
+				stmt.setFloat(3, reserva.getPrecioReserva());
+				stmt.setString(4, dni);
+				stmt.setDate(5, fechaIda);
+				stmt.setDate(6, fechaVuelta);
+				
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				stmt.executeUpdate();
+				
+				/*result = stmt.getGeneratedKeys();
+				result.next();
+				codReserva = result.getInt(1);*/
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+			    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+			}
 		
-		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?)";
-
-		try {
-			
-			// abrimos una conexion
-			connection = conexion.conectar();
-			
-			// preparamos la consulta INSERT
-			stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			
-			// añadimos los valores a insertar
-			stmt.setInt(1, reserva.getCodReserva());
-			stmt.setInt(2,reserva.getAlojamiento().getCodAlojamiento());
-			stmt.setFloat(3, reserva.getPrecioReserva());
-			stmt.setString(4, dni);
-			stmt.setDate(5, fechaIda);
-			stmt.setDate(6, fechaVuelta);
-			
-			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
-			stmt.executeUpdate();
-			
-			/*result = stmt.getGeneratedKeys();
-			result.next();
-			codReserva = result.getInt(1);*/
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-		    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
 		}
 		
-	}
+		public float buscarPrecioMinimoDeLaHabitacionDelHotel(int codAlojSeleccionado) {
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			float precioMinimoDeLaHabitacionDelHotel = 0;
+			
+			String query = "select ROUND(Min(Precio_hab),2) from `habitaciones`,`alojamiento` where habitaciones.Cod_alojamiento = alojamiento.Cod_alojamiento AND alojamiento.cod_alojamiento = ?";
+
+			try {
+				
+				// abrimos una conexion
+				connection = conexion.conectar();
+				
+				// preparamos la consulta SQL a la base de datos
+				stmt = connection.prepareStatement(query);
+				stmt.setInt(1, codAlojSeleccionado);
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				result = stmt.executeQuery();
+				
+				// crea objetos con los resultados y los añade a un arrayList
+				while (result.next()) {
+					precioMinimoDeLaHabitacionDelHotel = result.getFloat(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try { 
+					connection.close(); 
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}                 
+			
+			return precioMinimoDeLaHabitacionDelHotel;
+			
+		}
+
 
 }

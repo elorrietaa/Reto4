@@ -544,6 +544,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			if(continuar) {
 				vista.buscarHotel.setVisible(false);
 				vista.selHabitacion.setVisible(true);
+				vista.detallesReservaCasaApart.panelHoteles.setVisible(true);
+				vista.detallesReservaCasaApart.panelHoteles.setEnabled(true);
+				vista.detallesReservaCasaApart.panelCasaApart.setVisible(false);
+				vista.detallesReservaCasaApart.panelCasaApart.setEnabled(false);
 			}
 		}
 		else
@@ -588,6 +592,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			if(continuar && disponible != false) {
 				vista.buscarHotel.setVisible(false);
 				vista.detallesReservaCasaApart.setVisible(true);
+				vista.detallesReservaCasaApart.panelHoteles.setVisible(false);
+				vista.detallesReservaCasaApart.panelHoteles.setEnabled(false);
+				vista.detallesReservaCasaApart.panelCasaApart.setVisible(true);
+				vista.detallesReservaCasaApart.panelCasaApart.setEnabled(true);
 			}
 		}
 		else {

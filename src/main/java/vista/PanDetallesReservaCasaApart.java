@@ -90,8 +90,8 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		table = new JTable();
 		Object[][] datos1 = {};
 		String[] columnNames1 = {"Nombre", "Precio desde", "Detalles"};
-		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
-		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		add(table);
 		table.setModel(new DefaultTableModel(datos1,columnNames1) {
 			private static final long serialVersionUID = 1L;
@@ -109,9 +109,9 @@ public class PanDetallesReservaCasaApart extends JPanel {
 			}
 		});
 				
-		table.setDefaultRenderer(String.class, centerRenderer1);
-		table.setDefaultRenderer(int.class, centerRenderer1);
-		table.setDefaultRenderer(float.class, centerRenderer1);
+		table.setDefaultRenderer(String.class, centerRenderer);
+		table.setDefaultRenderer(int.class, centerRenderer);
+		table.setDefaultRenderer(float.class, centerRenderer);
 		table.setFillsViewportHeight(true);
 		table.setBackground(Color.WHITE);
 		table.setBounds(681, 83, 397, 189);
@@ -124,13 +124,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 				
 		scrollPaneCasaApart = new JScrollPane(table);
 		scrollPaneCasaApart.setBounds(121,78,839,94);
-		add(scrollPaneCasaApart);
-		Object[][] datos = {};
-		String[] columnNames = {"Código habitación", "Habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche " };
-				
-		DefaultTableCellRenderer centerRenderer2 = new DefaultTableCellRenderer();
-		centerRenderer2.setHorizontalAlignment( JLabel.CENTER );
-		
+		add(scrollPaneCasaApart);		
 			
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
 		lblNmeroDeNoches.setFont(new Font("Monospaced", Font.BOLD, 16));
@@ -177,7 +171,10 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		add(panelHoteles);
 		panelHoteles.setLayout(null);
 		
-		// TABLA DORMITORIOS SELECCIONADAS
+		Object[][] datos = {};
+		String[] columnNames = {"Código habitación", "Habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche " };
+		
+		// TABLA HABITACION HOTEL SELECCIONADA
 		tab = new JTable();
 		tab.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
@@ -195,9 +192,9 @@ public class PanDetallesReservaCasaApart extends JPanel {
 			}
 		});
 						
-		tab.setDefaultRenderer(String.class, centerRenderer2);
-		tab.setDefaultRenderer(int.class, centerRenderer2);
-		tab.setDefaultRenderer(float.class, centerRenderer2);
+		tab.setDefaultRenderer(String.class, centerRenderer);
+		tab.setDefaultRenderer(int.class, centerRenderer);
+		tab.setDefaultRenderer(float.class, centerRenderer);
 		tab.setFillsViewportHeight(true);
 		tab.setBackground(Color.WHITE);
 		tab.setBounds(45, 300, 934, 100);
@@ -223,9 +220,12 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		panelCasaApart.setVisible(false);
 		panelCasaApart.setEnabled(false);
 		
+		Object[][] datos2 = {};
+		String[] columnNames2 = {"Tipo de habitacion", "Número de camas", "Tipo de camas"};
+		
 		// TABLA DORMITORIOS SELECCIONADAS
 		tab2 = new JTable();
-		tab2.setModel(new DefaultTableModel(datos,columnNames) {
+		tab2.setModel(new DefaultTableModel(datos2,columnNames2) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
@@ -241,9 +241,9 @@ public class PanDetallesReservaCasaApart extends JPanel {
 			}
 		});
 						
-		tab2.setDefaultRenderer(String.class, centerRenderer2);
-		tab2.setDefaultRenderer(int.class, centerRenderer2);
-		tab2.setDefaultRenderer(float.class, centerRenderer2);
+		tab2.setDefaultRenderer(String.class, centerRenderer);
+		tab2.setDefaultRenderer(int.class, centerRenderer);
+		tab2.setDefaultRenderer(float.class, centerRenderer);
 		tab2.setFillsViewportHeight(true);
 		tab2.setBackground(Color.WHITE);
 		tab2.setBounds(45, 300, 934, 100);

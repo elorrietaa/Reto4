@@ -281,7 +281,7 @@ public class ControladorPanPago implements ActionListener{
 	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
 			//PARA HOTELES:
 			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
-				controlador.funcionesReserva.insertarReservasHabitacionesSel();
+				controlador.funcionesReserva.insertarReservaHabitacionSel();
 			}
 			//PARA CASAS Y APARTAMENTOS:
 			else if (modelo.reserva.getAlojamiento() instanceof Casa || modelo.reserva.getAlojamiento() instanceof Apartamento) {
@@ -290,15 +290,15 @@ public class ControladorPanPago implements ActionListener{
 		
 		//(3º)Genera un fichero con datos de la reserva, 1 fichero por cada reserva de cada habitación
 			//para HOTELES
-			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
-				controlador.funcionesReserva.generarFicherosReservasHabitacionesSel();
+			if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+				controlador.funcionesReserva.generarFicherosReserva1HabHotel();
 			}
 			//PARA CASAS:
-			else if (modelo.reserva.getAlojamiento() instanceof Casa) {
+			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {
 				controlador.funcionesReserva.generarFicherosReservaCasa();
 			}
 			//PARA APARTAMENTOS:
-			else if (modelo.reserva.getAlojamiento() instanceof Apartamento) {
+			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
 				controlador.funcionesReserva.generarFicherosReservaApart();
 			}
 		

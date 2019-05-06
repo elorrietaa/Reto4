@@ -13,7 +13,7 @@ public class JframePrincipal extends JFrame{
 	//atributos
 	public JFrame frame;
 	public PanBienvenida bienvenida;
-	public PanBuscarHotel buscarHotel;
+	public PanBuscarAlojamiento buscarHotel;
 	public PanSelHabitacion selHabitacion;
 	public PanDetallesReserva detallesReserva;
 	public PanDetallesReservaCasaApart detallesReservaCasaApart;
@@ -36,7 +36,7 @@ public class JframePrincipal extends JFrame{
 	private void inicializarPaneles() {
 		//try {
 		bienvenida = new PanBienvenida();
-		buscarHotel = new PanBuscarHotel();
+		buscarHotel = new PanBuscarAlojamiento();
 		selHabitacion = new PanSelHabitacion();
 		//}
 		/*catch(IOException e) {

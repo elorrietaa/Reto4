@@ -8,6 +8,8 @@ public class ApartamentoTest {
 
     protected int codAlojamiento=1;
     protected String nombre="Apartamento Bilbao";
+    protected String direccion = "Calle mayor";
+    protected String telefono = "666 666 666";
     protected int numHabitaciones=10;
     protected String ubicacion="BILBAO";
     protected float precioAlojamiento=(float) 12.2;
@@ -16,7 +18,7 @@ public class ApartamentoTest {
     protected float metrosCuadrados=(float) 68.2;
     protected int piso = 2;
     Apartamento apartamento = new Apartamento();
-    Apartamento apartamentoPrueba= new Apartamento(codAlojamiento, nombre, numHabitaciones, ubicacion, precioAlojamiento, popularidad, numBanos, metrosCuadrados, piso);
+    Apartamento apartamentoPrueba= new Apartamento(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad, numBanos, metrosCuadrados, piso);
   
     @Test
 	public void testConstuctor() {

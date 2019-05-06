@@ -25,7 +25,7 @@ public class Consultas {
 	 * @param conexion Clase encargada de la conexion a la base de datos
 	 */
 	public Consultas(Conexion conexion) {
-		this.conexion = conexion;
+		this.conexion = conexion; 
 		this.connection = null;
 	} 
 	 /****************************************************************************************************************
@@ -131,7 +131,7 @@ public class Consultas {
 		ResultSet rs = null;
 		
 
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, Nombre_ubicacion, Precio_alojamiento, N_estrellas FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		
 			ArrayList<Hotel> listaHoteles = new ArrayList<Hotel>(); 
 			
@@ -154,7 +154,8 @@ public class Consultas {
 					hotel = new Hotel();
 					hotel.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
 					hotel.setNombre(rs.getString("Nombre_alojamiento"));
-					//hotel.setNumHabitaciones(rs.getInt("N_Habitaciones"));
+					hotel.setDireccion(rs.getString("Direccion"));
+					hotel.setTelefono(rs.getString("Telefono"));
 					hotel.setUbicacion(rs.getString("Nombre_ubicacion"));
 					hotel.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					hotel.setEstrellas(rs.getInt("N_estrellas"));
@@ -184,7 +185,7 @@ public class Consultas {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		ArrayList<Casa> listaCasas = new ArrayList<Casa>(); 
 		
 			Casa casa;
@@ -206,6 +207,8 @@ public class Consultas {
 					casa = new Casa();
 					casa.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
 					casa.setNombre(rs.getString("Nombre_alojamiento"));
+					casa.setDireccion(rs.getString("Direccion"));
+					casa.setTelefono(rs.getString("Telefono"));
 					casa.setUbicacion(rs.getString("Nombre_ubicacion"));
 					casa.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					
@@ -234,7 +237,7 @@ public class Consultas {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT Cod_alojamiento, Nombre_alojamiento, N_habitaciones, Nombre_ubicacion, Precio_alojamiento, Piso FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		ArrayList<Apartamento> listaApartamentos = new ArrayList<Apartamento>(); 
 		
 		Apartamento apartamento;
@@ -256,7 +259,8 @@ public class Consultas {
 					apartamento = new Apartamento();
 					apartamento.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
 					apartamento.setNombre(rs.getString("Nombre_alojamiento"));
-					
+					apartamento.setDireccion(rs.getString("Direccion"));
+					apartamento.setTelefono(rs.getString("Telefono"));
 					apartamento.setUbicacion(rs.getString("Nombre_ubicacion"));
 					apartamento.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					apartamento.setPiso(rs.getInt("Piso"));
@@ -311,7 +315,7 @@ public class Consultas {
     			habitacion.setTamanio(rs.getFloat("Tamanio"));
     			habitacion.setPrecioHabitacion(rs.getFloat("Precio_hab"));
     			listaHabitacion.add(habitacion);
-    		}
+    		} 
     				
     		} 
     	catch (SQLException e) {
@@ -778,6 +782,55 @@ public class Consultas {
 		}
 		
 	}
+	
+	 /**
+		 * Inserta los atributos de un objeto reserva en la base de datos
+		 * 
+		 * @param reserva Objeto reserva que se quiere introducir en la base de datos
+		 * 
+		 * @return Retorna el codigo de la reserva, generado de manera aleatoria
+		 */
+		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, String dni, Date fechaIda, Date fechaVuelta) {
+			
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			int codReserva = 0; 
+			
+			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+			try {
+				
+				// abrimos una conexion
+				connection = conexion.conectar();
+				
+				// preparamos la consulta INSERT
+				stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				
+				// añadimos los valores a insertar
+				stmt.setInt(1, reserva.getCodReserva());
+				stmt.setInt(2, reserva.getAlojamiento().getCodAlojamiento());
+				//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
+				//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
+				stmt.setInt(3, habitacion.getCodHabitacion());
+				stmt.setFloat(4, reserva.getPrecioReserva());
+				stmt.setString(5, dni);
+				stmt.setDate(6, fechaIda);
+				stmt.setDate(7, fechaVuelta);
+				
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				stmt.executeUpdate();
+				
+				/*result = stmt.getGeneratedKeys();
+				result.next();
+				codReserva = result.getInt(1);*/
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+			    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+			}
+			
+		}
 
 public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta) {
 		

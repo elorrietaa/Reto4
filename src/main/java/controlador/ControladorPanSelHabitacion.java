@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import bbdd.Conexion;
+import modelo.Apartamento;
 import modelo.Cama;
 import modelo.Ciudad;
 import modelo.Consultas;
@@ -46,7 +47,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	float precioReserva =-1;
 	 
 
-	/**
+	/** 
 	 * Constructor del controlador de detalles
 	 * 
 	 * @param vista Instancia del main frame para poder utilizarlo
@@ -71,15 +72,15 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	}
 	
 	/**
-	 * Método: guardarDatosSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
+	 * Método: guardarDormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
 	 */
-	public void guardarDatosSeleccionadosJTable() {
+	public void guardarDormSeleccionadosJTable() {
 		   
 		  //indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
 		    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
 		    
-		    //probar  aver si imprime lista habs
-		  listaDormitorios = consultas.buscarHabitacionPorCodigoHotel(hotel, modelo.hotel.getCodAlojamiento());
+		    //la lista de dormitorios DISPONIBLES que semuestra al usuario para que seleccione
+		  listaDormitorios = consultas.buscarHabitacionDisponiblel(modelo.fechaIda, modelo.fechaVuelta, modelo.hotel.getCodAlojamiento());
 		  
 		  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
 		  listaDormSeleccionados = new ArrayList<Dormitorio>(); 
@@ -108,22 +109,86 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		
 		}
 	
+	/**
+	 * Método: guardar1DormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
+	 */
+	public void guardar1DormSeleccionadosJTable() {
+		//indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
+	    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
+	    
+	    //la lista de dormitorios DISPONIBLES que semuestra al usuario para que seleccione
+	    listaDormitorios = consultas.buscarHabitacionDisponiblel(modelo.fechaIda, modelo.fechaVuelta, modelo.hotel.getCodAlojamiento());
+	  
+	    
+		//se guarda en filaDormSel la posición seleccionada en la tabla
+		  int filaDormSel = vista.selHabitacion.tab.getSelectedRow();
+			    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + filaDormSel);
+			//se guarda el apartamento seleccionado en la tabla
+			//Dormitorio habitacion = (Dormitorio) listaDormitorios.get(filaDormSel);
+			
+			//rellenamos la habitacion con los datos de la habitacion seleccionada (listaDormitorios.get(filaDormSel))
+			habitacion = new Dormitorio(); 
+			habitacion.setCodHabitacion(listaDormitorios.get(filaDormSel).getCodHabitacion());
+			habitacion.setNombreHabitacion(listaDormitorios.get(filaDormSel).getNombreHabitacion());
+			//habitacion.setAlojamiento(hotel);
+			habitacion.setTipoHabitacion(listaDormitorios.get(filaDormSel).getTipoHabitacion());
+			habitacion.setTamanio(listaDormitorios.get(filaDormSel).getTamanio());
+			habitacion.setNumCamas(listaDormitorios.get(filaDormSel).getNumCamas());
+			habitacion.setPrecioHabitacion(listaDormitorios.get(filaDormSel).getPrecioHabitacion());
+			
+			
+			//le pasa el apartamento al modelo
+			modelo.habitacion = this.habitacion;
+			
+			//prueba
+			System.out.println("Habitacion{{{{{{{{{{{{{{{ " + habitacion.getCodHabitacion());
+//FALLA	//	
+			System.out.println("Habitacion{{{{{{{{{{{{{{{ " + modelo.habitacion.getCodHabitacion());
+		 
+		//Se muestran los detalles de las habitaciones seleccionadas en el JTable del panel detallesReserva
+			mostratDetallesHabHotelSel(habitacion);
+			
+		}
+	
+		/**
+		 * Método mostratDetallesHabHotelSel = Se muestran los detalles de las habitaciones seleccionadas en el JTable del panel detallesReserva
+		 */
+		public void mostratDetallesHabHotelSel(Dormitorio habitacion) {
+
+		 DefaultTableModel tablaDetCasApart = (DefaultTableModel) vista.detallesReservaCasaApart.tab.getModel();
+		 
+		Object[] datos = new Object[6];
+		
+		tablaDetCasApart.setRowCount(0);
+			datos[0] = habitacion.getCodHabitacion();
+			datos[1] = habitacion.getNombreHabitacion();
+			datos[2] = modelo.consultas.buscarNumCamasPorCodHab( habitacion.getCodHabitacion());
+			//Mostrar detalles de las camas de la habitación seleccionada: 
+			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(habitacion.getCodHabitacion());
+			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+			datos[3] = tiposCamaHab;
+			datos[4] =  (String.format("%.2f", habitacion.getPrecioHabitacion()) + "€");
+			datos[5] =  (String.format("%.2f", modelo.hotel.getPrecioAlojamiento()) + "€ / "+ controlador.funcionesReserva.calcularNochesReservadas() +" noches");
+			tablaDetCasApart.addRow(datos);
+		
+		}
 	
 	
 	/**
 	  * Método: mostrarHoteles = muestra los detalles del hotel seleccionado por el usuario en la pantalla PandetallesReserva 
 	  * @param codCiudadSeleccionada
 	  */
-	public void mostrarDatosHotelesJTable() {
+		public void mostrarDatosHotelesJTable() {
 	    DefaultTableModel tablaHotel = (DefaultTableModel) vista.detallesReserva.tabHot.getModel();
 				
 		//llena la tabla con los datos del modelo.hotel (el hotel seleccionado)
-		Object[] datos = new Object[2];
+		Object[] datos = new Object[4];
 		
 		tablaHotel.setRowCount(0);
 			datos[0] = modelo.hotel.getNombre();
-			datos[1] = modelo.hotel.getEstrellas();
-			
+			datos[1] = modelo.hotel.getPrecioAlojamiento() +" € habitación/noche";
+			datos[2] = modelo.hotel.getEstrellas();
+			datos[3] = modelo.hotel.getDireccion();
 			tablaHotel.addRow(datos);
 	}
     
@@ -166,7 +231,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			datos[4] =  (String.format("%.2f", listaDormSeleccionados.get(i).getPrecioHabitacion()) + "€");
 			datos[5] =  (String.format("%.2f",modelo.listaReservas.get(i).getPrecioReserva()) + "€ / "+ modelo.numNoches+" noches");
 			tabla.addRow(datos);
-		}
+		} 
 	}
 		
 	/**
@@ -226,9 +291,12 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				
 			    //probamos que se haya seleccionado al menos una habitación
 				if(vista.selHabitacion.tab.getSelectedRowCount()!=0) {
+					
+				//PARA MULTIPLES HABITACIONES:	
 				
-					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
-					guardarDatosSeleccionadosJTable();
+					/*				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
+					guardarDormSeleccionadosJTable();
+					guardar1DormSeleccionadosJTable();
 					
 					//(2º)Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
 					guardarReservasHab();
@@ -242,6 +310,31 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 					vista.selHabitacion.setVisible(false);
 					vista.detallesReserva.setVisible(true);
+			*/			
+			
+				//PARA 1 SOLA HABITACION
+					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
+					guardar1DormSeleccionadosJTable();
+					
+	//pruebas va mal				System.out.println("{{{{{{{{{{{{{{{{{{{{{Datos reserva:"+ modelo.reserva.getHabitacion().getCodHabitacion());
+				
+					//(2º)Genera 1 reserva y la guarda en modelo.reserva
+					//pasar por parámetro el tiposAloj para diferenciar entre hotel, casa y apartamento ¿? no se si es lo mas correcto	
+					controlador.funcionesReserva.guardarReservaAlojamiento(modelo.tiposAloj);
+					
+					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
+					
+					controlador.funcionesReserva.mostrarDatosReservaCasaApart(modelo.tiposAloj);
+					
+					//(4º) se actualiza la información del siguiente panel: PanDetallesReserva con la info del hotel seleccionado, las habitaciones seleccionadas y el precio Total de la reserva
+					controlador.controladorPanBuscarHotel.actualizarPanDetallesReservaCasaAloj();
+					
+					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
+					vista.selHabitacion.setVisible(false);
+					vista.detallesReservaCasaApart.setVisible(true);
+					
+				
+					
 				}
 				else {//si no ha seleccionado al menos una habitación aparecerá un aviso
 					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione al menos una habitación para continuar. Gracias. ", null, 0);
@@ -296,5 +389,6 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		vista.buscarHotel.cBCiudad.removeAllItems();
 		vista.buscarHotel.cBTipoAloj.removeAllItems();
 	}
+
 	
 }

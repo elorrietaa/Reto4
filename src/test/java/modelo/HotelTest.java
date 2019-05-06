@@ -9,12 +9,15 @@ import modelo.Hotel;
 public class HotelTest {
     protected int codAlojamiento=1;
     protected String nombre="HOTEL MELIA";
+    protected String direccion = "Calle mayor";
+    protected String telefono = "666 666 666";
     protected int numHabitaciones=10;
+    protected int numHabDisponibles=3;
     protected String ubicacion="BILBAO";
     protected float precioAlojamiento=(float) 12.2;
     protected int popularidad = 10;
     protected int estrellas=5;
-    Hotel hotelPrueba= new Hotel(codAlojamiento, nombre, numHabitaciones, ubicacion, estrellas, precioAlojamiento, popularidad);
+    Hotel hotelPrueba= new Hotel(codAlojamiento, nombre,direccion, telefono, numHabitaciones, numHabDisponibles, ubicacion, estrellas, precioAlojamiento, popularidad);
     Hotel hotel= new Hotel();
     
     @Test

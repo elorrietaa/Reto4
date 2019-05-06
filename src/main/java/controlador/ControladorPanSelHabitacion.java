@@ -112,7 +112,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	/**
 	 * Método: guardar1DormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
 	 */
-	public void guardar1DormSeleccionadosJTable() {
+	public void mostrar1DormSeleccionadosJTable() {
 		//indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
 	    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
 	    
@@ -142,7 +142,6 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 			//prueba
 			System.out.println("Habitacion{{{{{{{{{{{{{{{ " + habitacion.getCodHabitacion());
-//FALLA	//	
 			System.out.println("Habitacion{{{{{{{{{{{{{{{ " + modelo.habitacion.getCodHabitacion());
 		 
 		//Se muestran los detalles de las habitaciones seleccionadas en el JTable del panel detallesReserva
@@ -150,12 +149,13 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 		}
 	
+	
 		/**
 		 * Método mostratDetallesHabHotelSel = Se muestran los detalles de las habitaciones seleccionadas en el JTable del panel detallesReserva
 		 */
 		public void mostratDetallesHabHotelSel(Dormitorio habitacion) {
 
-		 DefaultTableModel tablaDetCasApart = (DefaultTableModel) vista.detallesReservaCasaApart.tab.getModel();
+		DefaultTableModel tablaDetCasApart = (DefaultTableModel) vista.detallesReservaCasaApart.tab.getModel();
 		 
 		Object[] datos = new Object[6];
 		
@@ -314,8 +314,9 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			
 				//PARA 1 SOLA HABITACION
 					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
-					guardar1DormSeleccionadosJTable();
-					
+				    	//mostrar los detalles de la hab seleccionada en JTable de panDetallesReserva
+				    	mostrar1DormSeleccionadosJTable();
+				    	
 	//pruebas va mal				System.out.println("{{{{{{{{{{{{{{{{{{{{{Datos reserva:"+ modelo.reserva.getHabitacion().getCodHabitacion());
 				
 					//(2º)Genera 1 reserva y la guarda en modelo.reserva
@@ -325,6 +326,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
 					
 					controlador.funcionesReserva.mostrarDatosReservaCasaApart(modelo.tiposAloj);
+					
+					
 					
 					//(4º) se actualiza la información del siguiente panel: PanDetallesReserva con la info del hotel seleccionado, las habitaciones seleccionadas y el precio Total de la reserva
 					controlador.controladorPanBuscarHotel.actualizarPanDetallesReservaCasaAloj();

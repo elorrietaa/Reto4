@@ -442,8 +442,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		// Muestra los datos del Alojamiento seleccionado en un JTable
 		
 		    mostrarDatosAlojamientoJTable();
-		
-			
+	
 		// EN EL FUTURO. Muestra los datos de la o las habitaciones que tiene el alojamiento seleccinado 
 		//mostrarDetallesHabsSelec(tablaHabs);
 			

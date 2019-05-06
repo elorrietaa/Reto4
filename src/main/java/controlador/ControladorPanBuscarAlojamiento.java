@@ -219,7 +219,44 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     				}
         	}
     }
-	
+    /**
+     * Método: mostrarDetallesHabs = se muestran los detalles de las habitaciones
+     * @param tabla Tabla que se rellena con la informacion de las habitaciones
+     */
+
+    public void mostrarDetallesHabsCasa() {
+
+          // Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+
+          DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.tab2.getModel();
+
+          Object[] datos = new Object[3];
+          tablaHabs.setRowCount(0);
+
+          for(int i=0; i<listaDormitorios.size();i++) {
+
+                 datos[0] = listaDormitorios.get(i).getNombreHabitacion();
+
+                 //se calcula el numero de camas que tiene la habitación en función del codigo habitación:
+
+                 datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaDormitorios.get(i).getCodHabitacion());
+
+                 //Mostrar detalles de las camas de la habitación seleccionada:
+                 ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
+                 String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+
+                 //se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
+
+                 //modelo.habitacion.setTiposCamaHab(tiposCamaHab);
+
+                 //modelo.habitacion.setNumTipCam(numTipCam);
+
+                 //listaHabitaciones.add(modelo.habitacion);
+
+                 datos[2] = tiposCamaHab;
+                 tablaHabs.addRow(datos);
+          }
+    }
 	
 	 /**
      * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
@@ -581,7 +618,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			
 			//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
 			actualizarPanDetallesReservaCasaAloj();
-			
+			mostrarDetallesHabsCasa();
 			
 			//Aviso al usuario si el alojamiento no esta disponible
 			if (disponible == false){

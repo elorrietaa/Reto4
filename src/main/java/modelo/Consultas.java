@@ -474,12 +474,12 @@ public class Consultas {
      * @param codHabitacion
      * @return
      */
-    public int buscarNumHabDeCadaTipo(String tipoHabitacion) {
+    public int buscarNumHabDeCadaTipo(int codAloj, String tipoHabitacion) {
     	int numCamas = -1;
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String query = "SELECT count(*) FROM `habitaciones`, `alojamiento` where habitaciones.Cod_alojamiento=alojamiento.Cod_alojamiento and alojamiento.Cod_alojamiento=2000 and habitaciones.Tipo_habitacion=?;";
+    	String query = "SELECT count(*) FROM `habitaciones`, `alojamiento` where habitaciones.Cod_alojamiento=alojamiento.Cod_alojamiento and alojamiento.Cod_alojamiento=? and habitaciones.Tipo_habitacion=?;";
     	
     	try { 
     		// Abrimos una conexion
@@ -487,7 +487,8 @@ public class Consultas {
     				
     		// preparamos la consulta SQL a la base de datos
     		ps = connection.prepareStatement(query);
-    		ps.setString(1, tipoHabitacion);
+    		ps.setInt(1, codAloj);
+    		ps.setString(2, tipoHabitacion);
     		
     		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
     		rs = ps.executeQuery();

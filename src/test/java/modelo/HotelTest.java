@@ -17,7 +17,10 @@ public class HotelTest {
     protected float precioAlojamiento=(float) 12.2;
     protected int popularidad = 10;
     protected int estrellas=5;
-    Hotel hotelPrueba= new Hotel(codAlojamiento, nombre,direccion, telefono, numHabitaciones, numHabDisponibles, ubicacion, estrellas, precioAlojamiento, popularidad);
+    protected String [] arrayNombreHabitaciones = {"DORMITORIO","BAÑO", "SALA","COMEDOR", "COCINA", "BALCON", "GARAJE"  };
+    protected int [] arrayNumHabitaciones = {2, 2, 1, 1, 1, 1, 1};
+    
+    Hotel hotelPrueba= new Hotel(codAlojamiento, nombre,direccion, telefono, numHabitaciones, numHabDisponibles, ubicacion, estrellas, precioAlojamiento, popularidad, arrayNombreHabitaciones, arrayNumHabitaciones);
     Hotel hotel= new Hotel();
     
     @Test

@@ -35,7 +35,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 		vista.detallesReservaCasaApart.btnAtras.addActionListener(this);
 		vista.detallesReservaCasaApart.btnContinuar.addActionListener(this);
 	}
-	
+	 
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -50,6 +50,10 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			switch (botonPulsado) { 
 				
 			case "Atras": 
+				//falta meter en un metrodo reset()
+				//Que se reseteen los datos del panel
+				vista.detallesReservaCasaApart.textFieldDetHabs.setText("");
+				
 				if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
 					vista.selHabitacion.setVisible(true);
 					vista.detallesReservaCasaApart.setVisible(false);

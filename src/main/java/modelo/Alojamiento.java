@@ -19,6 +19,8 @@ public class Alojamiento {
     protected String ubicacion;
     protected float precioAlojamiento;
     protected int popularidad;
+    protected String [] arrayNombreHabitaciones;
+    protected int [] arrayNumHabitaciones;
    
   /**
   * Constructor del objeto Alojamiento vacio.
@@ -35,8 +37,10 @@ public class Alojamiento {
     * @param numHabitaciones = número de habitaciones que tiene el alojamiento
     * @param ubicacion = Ciudad en la que se encuentra el alojamiento
     * @param precioAlojamiento = precio del alojamiento
+    * @param arrayNombreHabitaciones = contiene el nombre de los diferentes tipos de Habitaciones que hay
+    * @param arrayNumHabitaciones = contiene el numero de habitaciones de cada tipo que hay en el alojamiento
     */
-    public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad) {
+    public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad, String [] arrayNombreHabitaciones, int [] arrayNumHabitaciones ) {
 	this.codAlojamiento = codAlojamiento;
 	this.nombre = nombre;
 	this.direccion = direccion;
@@ -45,6 +49,8 @@ public class Alojamiento {
 	this.ubicacion = ubicacion;
 	this.precioAlojamiento = precioAlojamiento;
 	this.popularidad = popularidad;
+	this.arrayNombreHabitaciones = arrayNombreHabitaciones;
+	this.arrayNumHabitaciones = arrayNumHabitaciones;
     }
     
    /**
@@ -57,8 +63,10 @@ public class Alojamiento {
     * @param numHabDisponibles = número de habitaciones disponibles que tiene el alojamiento
     * @param ubicacion = Ciudad en la que se encuentra el alojamiento
     * @param precioAlojamiento = precio del alojamiento
+    * @param arrayNombreHabitaciones = contiene el nombre de los diferentes tipos de Habitaciones que hay
+    * @param arrayNumHabitaciones = contiene el numero de habitaciones de cada tipo que hay en el alojamiento
     */
-    public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones,int numHabDisponibles, String ubicacion, float precioAlojamiento, int popularidad) {
+    public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones,int numHabDisponibles, String ubicacion, float precioAlojamiento, int popularidad, String [] arrayNombreHabitaciones, int [] arrayNumHabitaciones) {
 	this.codAlojamiento = codAlojamiento;
 	this.nombre = nombre;
 	this.direccion = direccion;
@@ -68,6 +76,8 @@ public class Alojamiento {
 	this.ubicacion = ubicacion;
 	this.precioAlojamiento = precioAlojamiento;
 	this.popularidad = popularidad;
+	this.arrayNombreHabitaciones = arrayNombreHabitaciones;
+	this.arrayNumHabitaciones = arrayNumHabitaciones;
     }
 
     //get y set
@@ -182,5 +192,19 @@ public class Alojamiento {
 	public void setListaHabSeleccionadas(ArrayList<Dormitorio> listaHabSeleccionadas) {
 		this.listaHabSeleccionadas = listaHabSeleccionadas;
 	}
+	public String[] getArrayNombreHabitaciones() {
+		return arrayNombreHabitaciones;
+	}
+	public void setArrayNombreHabitaciones(String[] arrayNombreHabitaciones) {
+		this.arrayNombreHabitaciones = arrayNombreHabitaciones;
+	}
+	public int[] getArrayNumHabitaciones() {
+		return arrayNumHabitaciones;
+	}
+	public void setArrayNumHabitaciones(int[] arrayNumHabitaciones) {
+		this.arrayNumHabitaciones = arrayNumHabitaciones;
+	}
+	
+	
 }
 

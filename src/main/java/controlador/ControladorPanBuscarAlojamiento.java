@@ -614,9 +614,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			guardarDatosSeleccionadosAlojamiento();
 			
 			//se muestran los datos de las habitaciones de la casa/Apartamento
-			controlador.funcionesReserva.mostrarNumHabitaciones();
+			controlador.funcionesReserva.guardarNumHabTipoDeCasaApart();
 			
-		
+		 
 			//(2º)Genera 1 reserva y la guarda en modelo.reserva
 			//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
 			//no se si habria que hacer 1 para casa y 1 para apartamento		

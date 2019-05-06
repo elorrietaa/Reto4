@@ -399,6 +399,11 @@ public class FuncionesReserva {
 		//muestra datos del alojamiento
 		vista.detallesReservaCasaApart.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre());
 		
+		//muestra los detalles de las habitaciones del alojamiento: cuales tiene y cuantas
+		int [] arrayNumHabitaciones = guardarNumHabTipoDeCasaApart();
+	    
+		vista.detallesReservaCasaApart.textFieldDetHabs.setText((String) "Detalles de su alojamiento: " + arrayNumHabitaciones[0] + " dormitorios, " + arrayNumHabitaciones[1] + " baños, " + arrayNumHabitaciones[2] + " sala, "+ arrayNumHabitaciones[3]+ " comedor, "+arrayNumHabitaciones[4] + " cocina, " + arrayNumHabitaciones[5] +  " balcón y "+ arrayNumHabitaciones[6] + " garaje.");
+		
 		//mostramos num de noches en la vista 
 		vista.detallesReservaCasaApart.textFieldNumNoches.setText(Integer.toString(modelo.numNoches));
 		
@@ -503,10 +508,10 @@ public class FuncionesReserva {
 	}
 	
 	 /**
-     * El método mostrarNumHabitaciones = devielve un array arrayNumHabitaciones que contiene el número de habitaciones de cada tipo de habitacion.
+     * El método guardarNumHabTipoDeCasaApart = rellena un array arrayNumHabitaciones que contiene el número de habitaciones de cada tipo de habitacion y lo guarda en el modelo 
      * @return
      */
-    public void mostrarNumHabitaciones() {
+    public int [] guardarNumHabTipoDeCasaApart() {
     	String detallesHabs = "";
     	
     	int numDormitorios = 0;
@@ -524,21 +529,40 @@ public class FuncionesReserva {
     	//se muestra la lista de habitaciones en función de si es Casa o Apartamento
         if(modelo.casa != null) {
       	  listaHabitaciones = modelo.consultas.buscarHabitacionPorCodigoAlojamiento(modelo.casa, modelo.casa.getCodAlojamiento());
+      	 
+      	  for(int i=0; i<arrayNombreHabitaciones.length; i++) {
+          	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(modelo.casa.getCodAlojamiento(), arrayNombreHabitaciones[i]);
+  			System.out.println("1arrayNombreHabitaciones" + arrayNombreHabitaciones[i] + "-->" + arrayNumHabitaciones[i] );
+          }
+        
         }
         if(modelo.apartamento != null) {
       	  listaHabitaciones = modelo.consultas.buscarHabitacionPorCodigoAlojamiento(modelo.apartamento, modelo.apartamento.getCodAlojamiento());
-        }
-      	  
-        for(int i=0; i<arrayNombreHabitaciones.length; i++) {
-        	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(arrayNombreHabitaciones[i]);
-			System.out.println("1arrayNombreHabitaciones" + arrayNombreHabitaciones[i] + "-->" + arrayNumHabitaciones[i] );
-
+      	
+      	  for(int i=0; i<arrayNombreHabitaciones.length; i++) {
+         	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(modelo.casa.getCodAlojamiento(), arrayNombreHabitaciones[i]);
+ 			System.out.println("1arrayNombreHabitaciones" + arrayNombreHabitaciones[i] + "-->" + arrayNumHabitaciones[i] );
+          }
+        
         }
         
+        
+       
     	//metemos los arrays en el modelo
-    	
-    	
+    	// modelo.alojamiento.setArrayNombreHabitaciones(arrayNombreHabitaciones);
+    	// modelo.alojamiento.setArrayNumHabitaciones(arrayNumHabitaciones);
+ //MAL   System.out.println("DEEEEEEEEEEEEEEEEEEL MODELOOOOOOOOOOOOOOOOOOOO");
+   /* 	 	 for(int i=0; i<arrayNombreHabitaciones.length; i++) {
+         	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(arrayNombreHabitaciones[i]);
+ 			System.out.println("1arrayNombreHabitaciones" + modelo.alojamiento.getArrayNombreHabitaciones() + "-->" + modelo.alojamiento.getArrayNumHabitaciones() );
+
+         }
+         */
+        
+        return arrayNumHabitaciones;
     }
+    
+   
 	
 	/**
 	 * Método: mostrarOcupacionHab = devuelve un int que contiene el número de ocupantes de la habitacion

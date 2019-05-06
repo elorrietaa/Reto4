@@ -30,11 +30,12 @@ public class PanDetallesReservaCasaApart extends JPanel {
 	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro, btnCancelar;
 	public JList<String> listDetalleReserva;
 	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetDestinos;
+	public JPanel panelHoteles, panelCasaApart;
 	
 	
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
 	public JTable table, tab, tab2;
-	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
+	public JScrollPane scrollPaneIda, scrollPaneCasaApart, scrollPaneIda2;
 
 	
 	/**
@@ -86,90 +87,51 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		
 		// TABLA DETALLES HOTELES CASAS o APARTAMENTOS
-				table = new JTable();
-				Object[][] datos1 = {};
-				String[] columnNames1 = {"Nombre", "Precio desde", "Detalles"};
-				DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
-				centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
-				add(table);
-				table.setModel(new DefaultTableModel(datos1,columnNames1) {
-					private static final long serialVersionUID = 1L;
-					@SuppressWarnings("rawtypes")
-					Class[] columnTypes = new Class[] {
-						String.class, String.class, String.class, int.class, String.class, String.class, float.class
-					};
-					@SuppressWarnings({ "unchecked", "rawtypes" })
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
-					@Override
-				    public boolean isCellEditable(int row, int column) {
-				        return false;
-				    }
-				});
+		table = new JTable();
+		Object[][] datos1 = {};
+		String[] columnNames1 = {"Nombre", "Precio desde", "Detalles"};
+		DefaultTableCellRenderer centerRenderer1 = new DefaultTableCellRenderer();
+		centerRenderer1.setHorizontalAlignment( JLabel.CENTER );
+		add(table);
+		table.setModel(new DefaultTableModel(datos1,columnNames1) {
+			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, int.class, String.class, String.class, float.class
+			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
 				
-				table.setDefaultRenderer(String.class, centerRenderer1);
-				table.setDefaultRenderer(int.class, centerRenderer1);
-				table.setDefaultRenderer(float.class, centerRenderer1);
-				table.setFillsViewportHeight(true);
-				table.setBackground(Color.WHITE);
-				table.setBounds(681, 83, 397, 189);
-				table.setRowHeight(50);
-				table.setFocusable(false);
-				table.setRowSelectionAllowed(true);
-				table.getColumnModel().getColumn(0).setPreferredWidth(10);
-				table.getColumnModel().getColumn(1).setPreferredWidth(10);
-				table.getColumnModel().getColumn(2).setPreferredWidth(250);
+		table.setDefaultRenderer(String.class, centerRenderer1);
+		table.setDefaultRenderer(int.class, centerRenderer1);
+		table.setDefaultRenderer(float.class, centerRenderer1);
+		table.setFillsViewportHeight(true);
+		table.setBackground(Color.WHITE);
+		table.setBounds(681, 83, 397, 189);
+		table.setRowHeight(50);
+		table.setFocusable(false);
+		table.setRowSelectionAllowed(true);
+		table.getColumnModel().getColumn(0).setPreferredWidth(10);
+		table.getColumnModel().getColumn(1).setPreferredWidth(10);
+		table.getColumnModel().getColumn(2).setPreferredWidth(250);
 				
-				scrollPaneCasaApart = new JScrollPane(table);
-				scrollPaneCasaApart.setBounds(121,78,839,94);
-				add(scrollPaneCasaApart);
-
-				// TABLA DORMITORIOS SELECCIONADAS
-				tab = new JTable();
-				Object[][] datos = {};
-				String[] columnNames = {"Código habitación", "Habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche " };
-				tab.setModel(new DefaultTableModel(datos,columnNames) {
-					private static final long serialVersionUID = 1L;
-					@SuppressWarnings("rawtypes")
-					Class[] columnTypes = new Class[] {
-						String.class, String.class, String.class, int.class, String.class, String.class, float.class
-					};
-					@SuppressWarnings({ "unchecked", "rawtypes" })
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
-					@Override 
-				    public boolean isCellEditable(int row, int column) {
-				        return false;
-				    }
-				});
+		scrollPaneCasaApart = new JScrollPane(table);
+		scrollPaneCasaApart.setBounds(121,78,839,94);
+		add(scrollPaneCasaApart);
+		Object[][] datos = {};
+		String[] columnNames = {"Código habitación", "Habitación", "Número de camas ", "Tipo de camas", "Precio habitación 1 noche " };
 				
-				DefaultTableCellRenderer centerRenderer2 = new DefaultTableCellRenderer();
-				centerRenderer2.setHorizontalAlignment( JLabel.CENTER );
-				
-				tab.setDefaultRenderer(String.class, centerRenderer2);
-				tab.setDefaultRenderer(int.class, centerRenderer2);
-				tab.setDefaultRenderer(float.class, centerRenderer2);
-				tab.setFillsViewportHeight(true);
-				tab.setBackground(Color.WHITE);
-				tab.setBounds(45, 300, 934, 100);
-				tab.setRowHeight(50);
-				tab.setFocusable(false);
-				tab.setRowSelectionAllowed(true);
-				tab.getColumnModel().getColumn(0).setPreferredWidth(60);
-				tab.getColumnModel().getColumn(1).setPreferredWidth(140);
-				tab.getColumnModel().getColumn(2).setPreferredWidth(60);
-				tab.getColumnModel().getColumn(3).setPreferredWidth(180);
-				tab.getColumnModel().getColumn(4).setPreferredWidth(100);
+		DefaultTableCellRenderer centerRenderer2 = new DefaultTableCellRenderer();
+		centerRenderer2.setHorizontalAlignment( JLabel.CENTER );
+		
 			
-				
-				scrollPaneIda = new JScrollPane(tab);
-				scrollPaneIda.setBounds(128,309,839,136);
-				add(scrollPaneIda);
-		
-		
-				
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
 		lblNmeroDeNoches.setFont(new Font("Monospaced", Font.BOLD, 16));
 		lblNmeroDeNoches.setBounds(121, 183, 189, 19);
@@ -208,7 +170,95 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		textDetDestinos.setEditable(false);
 		textDetDestinos.setBounds(128, 523, 563, 39);
 		add(textDetDestinos);
+		
+		panelHoteles = new JPanel();
+		panelHoteles.setBackground(Color.WHITE);
+		panelHoteles.setBounds(121, 309, 839, 136);
+		add(panelHoteles);
+		panelHoteles.setLayout(null);
+		
+		// TABLA DORMITORIOS SELECCIONADAS
+		tab = new JTable();
+		tab.setModel(new DefaultTableModel(datos,columnNames) {
+			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, int.class, String.class, String.class, float.class
+			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			@Override 
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
+						
+		tab.setDefaultRenderer(String.class, centerRenderer2);
+		tab.setDefaultRenderer(int.class, centerRenderer2);
+		tab.setDefaultRenderer(float.class, centerRenderer2);
+		tab.setFillsViewportHeight(true);
+		tab.setBackground(Color.WHITE);
+		tab.setBounds(45, 300, 934, 100);
+		tab.setRowHeight(50);
+		tab.setFocusable(false);
+		tab.setRowSelectionAllowed(true);
+		tab.getColumnModel().getColumn(0).setPreferredWidth(60);
+		tab.getColumnModel().getColumn(1).setPreferredWidth(140);
+		tab.getColumnModel().getColumn(2).setPreferredWidth(60);
+		tab.getColumnModel().getColumn(3).setPreferredWidth(180);
+		tab.getColumnModel().getColumn(4).setPreferredWidth(100);
+						
+		scrollPaneIda = new JScrollPane(tab);
+		scrollPaneIda.setBounds(0, 0, 839, 136);
+		panelHoteles.add(scrollPaneIda);
 
+		
+		panelCasaApart = new JPanel();
+		panelCasaApart.setBackground(Color.WHITE);
+		panelCasaApart.setBounds(121, 309, 839, 136);
+		add(panelCasaApart);
+		panelCasaApart.setLayout(null);
+		panelCasaApart.setVisible(false);
+		panelCasaApart.setEnabled(false);
+		
+		// TABLA DORMITORIOS SELECCIONADAS
+		tab2 = new JTable();
+		tab2.setModel(new DefaultTableModel(datos,columnNames) {
+			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, int.class, String.class, String.class, float.class
+			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			@Override 
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
+						
+		tab2.setDefaultRenderer(String.class, centerRenderer2);
+		tab2.setDefaultRenderer(int.class, centerRenderer2);
+		tab2.setDefaultRenderer(float.class, centerRenderer2);
+		tab2.setFillsViewportHeight(true);
+		tab2.setBackground(Color.WHITE);
+		tab2.setBounds(45, 300, 934, 100);
+		tab2.setRowHeight(50);
+		tab2.setFocusable(false);
+		tab2.setRowSelectionAllowed(true);
+		tab2.getColumnModel().getColumn(0).setPreferredWidth(60);
+		tab2.getColumnModel().getColumn(1).setPreferredWidth(140);
+		tab2.getColumnModel().getColumn(2).setPreferredWidth(60);
+		tab2.getColumnModel().getColumn(3).setPreferredWidth(180);
+		tab2.getColumnModel().getColumn(4).setPreferredWidth(100);
+						
+		scrollPaneIda2 = new JScrollPane(tab2);
+		scrollPaneIda2.setBounds(0, 0, 839, 136);
+		panelCasaApart.add(scrollPaneIda2);
 
 	}
 }

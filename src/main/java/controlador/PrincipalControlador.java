@@ -30,6 +30,7 @@ public class PrincipalControlador {
     public FuncionesRegistro funcionesRegistro;
     public FuncionesReserva funcionesReserva;
     public FuncionesValidaciones funcionesValidaciones;
+    public FuncionesOrdenar funcionesOrdenar;
     public FechasTarifas fechasTarifas;
     public FuncionesBotones funcionesBotones;
     
@@ -48,6 +49,7 @@ public class PrincipalControlador {
 		this.funcionesValidaciones = new FuncionesValidaciones(modelo,vista,this);
 		this.fechasTarifas = new FechasTarifas(modelo,vista,this);
 		this.funcionesBotones = new FuncionesBotones(modelo, vista, this);
+		this.funcionesOrdenar = new FuncionesOrdenar(modelo, vista, this);
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz

@@ -160,7 +160,7 @@ public class ControladorPanPago implements ActionListener{
 				vista.detallesReservaCasaApart.setVisible(true);
 				vista.pago.setVisible(false);
 			    }
-			    	reset();
+			    	//reset();
 				break;
 				
 			//case "Cancelar":

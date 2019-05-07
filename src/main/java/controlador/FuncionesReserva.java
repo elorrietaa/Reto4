@@ -400,9 +400,7 @@ public class FuncionesReserva {
 		vista.detallesReservaCasaApart.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre());
 		
 		//muestra los detalles de las habitaciones del alojamiento: cuales tiene y cuantas
-		int [] arrayNumHabitaciones = guardarNumHabTipoDeCasaApart();
-	    
-		vista.detallesReservaCasaApart.textFieldDetHabs.setText((String) "Detalles de su alojamiento: " + arrayNumHabitaciones[0] + " dormitorios, " + arrayNumHabitaciones[1] + " baños, " + arrayNumHabitaciones[2] + " sala, "+ arrayNumHabitaciones[3]+ " comedor, "+arrayNumHabitaciones[4] + " cocina, " + arrayNumHabitaciones[5] +  " balcón y "+ arrayNumHabitaciones[6] + " garaje.");
+		mostrarDatosHabsReservaCasaApart();
 		
 		//mostramos num de noches en la vista 
 		vista.detallesReservaCasaApart.textFieldNumNoches.setText(Integer.toString(modelo.numNoches));
@@ -412,6 +410,26 @@ public class FuncionesReserva {
 		
 		//SE MUESTRA EL PRECIO TOTAL:
 		vista.detallesReservaCasaApart.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
+	}
+	
+	/**
+	 * Método mostrarDatosHabsReservaCasaApart = muestra los detalles de las habitaciones del alojamiento: cuales tiene y cuantas
+	 */
+	public void mostrarDatosHabsReservaCasaApart() {
+	  //muestra los detalles de las habitaciones del alojamiento: cuales tiene y cuantas
+	  int [] arrayNumHabitaciones = guardarNumHabTipoDeCasaApart();
+	  String [] arrayNombreHabitaciones = {" dormitorios, "," baños, ", " sala, "," comedor, ", " cocina, ", " balcon, ", " garaje."  };
+	  
+	  String textoDetHabs = " ";
+	  
+	  for (int i=0; i<arrayNumHabitaciones.length; i++) {
+	      if(arrayNumHabitaciones[i] > 0) {
+		  textoDetHabs = textoDetHabs + arrayNumHabitaciones[i] + " " + arrayNombreHabitaciones[i];
+	      }
+	  }
+	  		
+	  vista.detallesReservaCasaApart.textFieldDetHabs.setText((String) textoDetHabs);
+	  		
 	}
 	
 	

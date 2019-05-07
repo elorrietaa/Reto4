@@ -30,6 +30,7 @@ public class PrincipalControlador {
     public FuncionesRegistro funcionesRegistro;
     public FuncionesReserva funcionesReserva;
     public FuncionesValidaciones funcionesValidaciones;
+    public FuncionesOrdenar funcionesOrdenar;
     public FechasTarifas fechasTarifas;
     
     /**
@@ -45,6 +46,7 @@ public class PrincipalControlador {
 		this.funcionesRegistro = new FuncionesRegistro(modelo, this, vista);
 		this.funcionesReserva = new FuncionesReserva(modelo,vista,this);
 		this.funcionesValidaciones = new FuncionesValidaciones(modelo,vista,this);
+		this.funcionesOrdenar = new FuncionesOrdenar(modelo, vista, this);
 		this.fechasTarifas = new FechasTarifas(modelo,vista,this); 
     }
     /**

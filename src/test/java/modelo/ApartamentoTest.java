@@ -17,9 +17,12 @@ public class ApartamentoTest {
     protected int numBanos=2;
     protected float metrosCuadrados=(float) 68.2;
     protected int piso = 2;
+    protected String [] arrayNombreHabitaciones = {"DORMITORIO","BAÑO", "SALA","COMEDOR", "COCINA", "BALCON", "GARAJE"  };
+    protected int [] arrayNumHabitaciones = {2, 2, 1, 1, 1, 1, 1};
+    
     Apartamento apartamento = new Apartamento();
-    Apartamento apartamentoPrueba= new Apartamento(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad, numBanos, metrosCuadrados, piso);
-  
+    Apartamento apartamentoPrueba= new Apartamento(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad, numBanos, metrosCuadrados, piso, arrayNombreHabitaciones, arrayNumHabitaciones);
+   
     @Test
 	public void testConstuctor() {
 		assertEquals(codAlojamiento, apartamentoPrueba.getCodAlojamiento());

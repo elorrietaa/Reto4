@@ -16,8 +16,11 @@ public class CasaTest {
     protected int numBanos=2;
     protected float metrosCuadrados=(float) 68.2;
     protected int popularidad = 10;
+    protected String [] arrayNombreHabitaciones = {"DORMITORIO","BAÑO", "SALA","COMEDOR", "COCINA", "BALCON", "GARAJE"  };
+    protected int [] arrayNumHabitaciones = {2, 2, 1, 1, 1, 1, 1};
+    
     Casa casa = new Casa();
-    Casa casaPrueba= new Casa(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad, numBanos, metrosCuadrados);
+    Casa casaPrueba= new Casa(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad, numBanos, metrosCuadrados, arrayNombreHabitaciones, arrayNumHabitaciones);
   
     @Test
 	public void testConstuctor() {

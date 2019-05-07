@@ -25,17 +25,18 @@ public class PanDetallesReservaCasaApart extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public JTextField tFPrecioReserva, textFieldNumNoches;
+	public JTextField tFPrecioReserva, textFieldNumNoches, textFieldDetHabs;
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro, btnCancelar;
 	public JList<String> listDetalleReserva;
 	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetDestinos;
 	public JPanel panelHoteles, panelCasaApart;
-	
+	 
 	
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
 	public JTable table, tab, tab2;
 	public JScrollPane scrollPaneIda, scrollPaneCasaApart, scrollPaneIda2;
+
 
 	
 	/**
@@ -257,6 +258,14 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		scrollPaneIda2 = new JScrollPane(tab2);
 		scrollPaneIda2.setBounds(0, 0, 839, 136);
 		panelCasaApart.add(scrollPaneIda2);
+		
+		textFieldDetHabs = new JTextField();
+		textFieldDetHabs.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldDetHabs.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		textFieldDetHabs.setEditable(false);
+		textFieldDetHabs.setColumns(10);
+		textFieldDetHabs.setBounds(121, 253, 703, 34);
+		add(textFieldDetHabs);
 
 	}
 }

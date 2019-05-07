@@ -31,6 +31,7 @@ public class PrincipalControlador {
     public FuncionesReserva funcionesReserva;
     public FuncionesValidaciones funcionesValidaciones;
     public FechasTarifas fechasTarifas;
+    public FuncionesBotones funcionesBotones;
     
     /**
      * Constructor del PrincipalControlador
@@ -45,14 +46,15 @@ public class PrincipalControlador {
 		this.funcionesRegistro = new FuncionesRegistro(modelo, this, vista);
 		this.funcionesReserva = new FuncionesReserva(modelo,vista,this);
 		this.funcionesValidaciones = new FuncionesValidaciones(modelo,vista,this);
-		this.fechasTarifas = new FechasTarifas(modelo,vista,this); 
+		this.fechasTarifas = new FechasTarifas(modelo,vista,this);
+		this.funcionesBotones = new FuncionesBotones(modelo, vista, this);
     }
     /**
 	 * Esta funcion se encarga de inicializar la interfaz
 	 */
     public void inicializarVista() {
     	vista.setVisible(true);
-    	vista.buscarHotel.setVisible(true);
+    	vista.buscarAlojamiento.setVisible(true);
     	vista.selHabitacion.setVisible(false);
     	vista.detallesReserva.setVisible(false);
     	vista.detallesReservaCasaApart.setVisible(false);

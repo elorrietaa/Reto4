@@ -282,7 +282,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		
 			case "Atrás":
 	
-				vista.buscarHotel.setVisible(true);
+				vista.buscarAlojamiento.setVisible(true);
 				vista.selHabitacion.setVisible(false);
 				break;
 			
@@ -359,39 +359,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				vista.bienvenida.setVisible(true);
 				vista.selHabitacion.setVisible(false);
 				controlador.funcionesRegistro.mostrarBotones();
-				reset();
+				controlador.funcionesBotones.reset();
 				break;
-	
-		}
-		
+		}	
 	}
-	/**
-	 * Funciones del boton de clancelar
-	 */
-	public void reset() {
-		modelo.cliente = null;
-		modelo.cliente = null;
-		modelo.alojamiento = null;
-		modelo.apartamento = null;
-		modelo.cama = null;
-		modelo.casa = null;
-		modelo.ciudad = null;
-		modelo.reserva = null;
-		modelo.precioTotal = 0;
-		
-		vista.login.userField.setText("");
-		vista.login.password.setText("");
-		
-		vista.registro.txtNombre.setText("");
-		vista.registro.txtApellidos.setText("");
-		vista.registro.rbtnMasc.setSelected(false);
-		vista.registro.rbtnFem.setSelected(false);
-		vista.registro.txtDni.setText("");
-		vista.registro.passwordField.setText("");
-		vista.registro.passwordField2.setText("");
-		vista.buscarHotel.cBCiudad.removeAllItems();
-		vista.buscarHotel.cBTipoAloj.removeAllItems();
-	}
-
-	
 }

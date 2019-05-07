@@ -13,7 +13,7 @@ public class JframePrincipal extends JFrame{
 	//atributos
 	public JFrame frame;
 	public PanBienvenida bienvenida;
-	public PanBuscarAlojamiento buscarHotel;
+	public PanBuscarAlojamiento buscarAlojamiento;
 	public PanSelHabitacion selHabitacion;
 	public PanDetallesReserva detallesReserva;
 	public PanDetallesReservaCasaApart detallesReservaCasaApart;
@@ -36,7 +36,7 @@ public class JframePrincipal extends JFrame{
 	private void inicializarPaneles() {
 		//try {
 		bienvenida = new PanBienvenida();
-		buscarHotel = new PanBuscarAlojamiento();
+		buscarAlojamiento = new PanBuscarAlojamiento();
 		selHabitacion = new PanSelHabitacion();
 		//}
 		/*catch(IOException e) {
@@ -52,7 +52,7 @@ public class JframePrincipal extends JFrame{
 	
 	private void anadirPaneles() {
 		getContentPane().add(bienvenida);
-		getContentPane().add(buscarHotel);
+		getContentPane().add(buscarAlojamiento);
 		getContentPane().add(selHabitacion);
 		getContentPane().add(detallesReserva);
 		getContentPane().add(detallesReservaCasaApart);

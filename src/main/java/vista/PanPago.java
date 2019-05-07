@@ -17,6 +17,7 @@ public class PanPago extends JPanel {
 	public JTextField total, totalIntro, aPagar;
 	public JButton btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn50cen, btn20cen, btn10cen, btn5cen, btn2cen, btn1cen, btnAtras, btnContinuar;
 	public JLabel lblTotal, lblTotalIntroducido, lblAPagar;
+	public JButton btnCancelar;
 
 	/**
 	 * Create the panel.
@@ -123,6 +124,10 @@ public class PanPago extends JPanel {
 		btnContinuar.setBounds(713, 630, 89, 23);
 		add(btnContinuar);
 		btnContinuar.setEnabled(false);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(36, 664, 89, 23);
+		add(btnCancelar);
 		btnContinuar.setVisible(false);
 	}
 }

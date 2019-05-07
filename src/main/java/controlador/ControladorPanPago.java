@@ -25,7 +25,7 @@ public class ControladorPanPago implements ActionListener{
 	public float total = 0; // Total del importe que se debe pagar
 	public float dinero = 0; // Total del dinero que ha sido introdcido hasta al momento
 	private float falta = 0; // Total del dinero que falta por introducir
-	private float moneda = 0; // Guarda el valos de la ultima moneda o billete introducido
+	public float moneda = 0; // Guarda el valos de la ultima moneda o billete introducido
 	public String sobra = ""; // Cantidad minima de monedas que tiene que devolver
 	public float[] monedas; // Almacena el valor de las monedas y billetes que se van introducioendo para luego poder retarlos.
 	/**
@@ -63,7 +63,7 @@ public class ControladorPanPago implements ActionListener{
 		this.vista.pago.btn200.addActionListener(this);
 		
 		this.vista.pago.btnAtras.addActionListener(this);
-		//this.vista.pago.btnCancelar.addActionListener(this);
+		this.vista.pago.btnCancelar.addActionListener(this);
 		//this.vista.pago.btnCancelarPago.addActionListener(this);
 		this.vista.pago.btnContinuar.addActionListener(this);
 	}
@@ -152,14 +152,14 @@ public class ControladorPanPago implements ActionListener{
 			case "Atrás":
 				vista.detallesReserva.setVisible(true);
 				vista.pago.setVisible(false);
-				reset();
 				break;
 				
-			//case "Cancelar":
-				//vista.bienvenida.setVisible(true);
-				//vista.pago.setVisible(false);
-				//reset();
-				//break;
+			case "Cancelar":
+				vista.bienvenida.setVisible(true);
+				vista.pago.setVisible(false);
+				controlador.funcionesRegistro.mostrarBotones();
+				controlador.funcionesBotones.resetPago(this);
+				break;
 				
 			//case "Devolver":
 				//FuncionDevolver();
@@ -305,56 +305,5 @@ public class ControladorPanPago implements ActionListener{
 		//(4º) actualiza los paneles
 			vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
 			vista.pago.setVisible(false); // Pone el panel de pago en invisible
-	}
-	/**
-	 * Funcion del boton de cancelar
-	 */
-	public void reset() {
-		//	modelo.cliente = null;
-		//	modelo.billeteIda = null;
-		//	modelo.billeteVuelta = null;
-		//	modelo.linea = null;
-		//	modelo.paradaOrigen = null;
-		//	modelo.paradaDestino = null;
-		//	modelo.autobus = null;
-		//	modelo.precioTotal = 0;
-		
-		//	vista.sel_billete.rbtnIda.setSelected(true);
-		//	vista.sel_billete.rbtnVuelta.setSelected(false);
-		
-		//	vista.login.userField.setText("");
-		//	vista.login.password.setText("");
-		
-		//	vista.registro.txtNombre.setText("");
-		//	vista.registro.txtApellidos.setText("");
-		//	vista.registro.rbtnMasc.setSelected(false);
-		//	vista.registro.rbtnFem.setSelected(false);
-		//	vista.registro.txtDni.setText("");
-		//	vista.registro.passwordField.setText("");
-		//	vista.registro.passwordField2.setText("");
-		
-		this.introducido.setText("0 \u20AC");
-		this.restante.setText("0 \u20AC");
-		this.monedas = new float[0];
-		this.dinero = 0f;
-		
-		this.vista.pago.btn1cen.setEnabled(true); // Habilita todo los botones de dinero
-		this.vista.pago.btn2cen.setEnabled(true);
-		this.vista.pago.btn5cen.setEnabled(true);
-		this.vista.pago.btn10cen.setEnabled(true);
-		this.vista.pago.btn20cen.setEnabled(true);
-		this.vista.pago.btn50cen.setEnabled(true);
-		this.vista.pago.btn1.setEnabled(true);
-		this.vista.pago.btn2.setEnabled(true);
-		this.vista.pago.btn5.setEnabled(true);
-		this.vista.pago.btn10.setEnabled(true);
-		this.vista.pago.btn20.setEnabled(true);
-		this.vista.pago.btn50.setEnabled(true);
-		this.vista.pago.btn100.setEnabled(true);
-		this.vista.pago.btn200.setEnabled(true);
-		
-		this.vista.pago.btnContinuar.setVisible(false);
-		this.vista.pago.btnContinuar.setEnabled(false);
-		
 	}
 }

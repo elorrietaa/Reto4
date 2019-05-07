@@ -155,10 +155,10 @@ public class FuncionesRegistro {
 	}
 	
 	public void ocultarBotones() {
-		vista.buscarHotel.btnInicioSesion.setVisible(false);
-		vista.buscarHotel.btnInicioSesion.setEnabled(false);
-		vista.buscarHotel.btnRegistro.setVisible(false);
-		vista.buscarHotel.btnRegistro.setEnabled(false);
+		vista.buscarAlojamiento.btnInicioSesion.setVisible(false);
+		vista.buscarAlojamiento.btnInicioSesion.setEnabled(false);
+		vista.buscarAlojamiento.btnRegistro.setVisible(false);
+		vista.buscarAlojamiento.btnRegistro.setEnabled(false);
 		vista.selHabitacion.btnInicioSesion.setVisible(false);
 		vista.selHabitacion.btnInicioSesion.setEnabled(false);
 		vista.selHabitacion.btnRegistro.setVisible(false);
@@ -174,10 +174,10 @@ public class FuncionesRegistro {
 	}
 	
 	public void mostrarBotones() {
-		vista.buscarHotel.btnInicioSesion.setVisible(true);
-		vista.buscarHotel.btnInicioSesion.setEnabled(true);
-		vista.buscarHotel.btnRegistro.setVisible(true);
-		vista.buscarHotel.btnRegistro.setEnabled(true);
+		vista.buscarAlojamiento.btnInicioSesion.setVisible(true);
+		vista.buscarAlojamiento.btnInicioSesion.setEnabled(true);
+		vista.buscarAlojamiento.btnRegistro.setVisible(true);
+		vista.buscarAlojamiento.btnRegistro.setEnabled(true);
 		vista.selHabitacion.btnInicioSesion.setVisible(true);
 		vista.selHabitacion.btnInicioSesion.setEnabled(true);
 		vista.selHabitacion.btnRegistro.setVisible(true);

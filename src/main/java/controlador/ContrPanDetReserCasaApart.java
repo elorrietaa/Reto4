@@ -55,7 +55,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 					vista.detallesReservaCasaApart.setVisible(false);
 				}
 				else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20 || modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
-				vista.buscarHotel.setVisible(true);
+				vista.buscarAlojamiento.setVisible(true);
 					vista.detallesReservaCasaApart.setVisible(false);
 				}
 				
@@ -78,9 +78,9 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 				
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
-				vista.detallesReserva.setVisible(false);
+				vista.detallesReservaCasaApart.setVisible(false);
 				controlador.funcionesRegistro.mostrarBotones();
-				reset();
+				controlador.funcionesBotones.reset();
 				break;
 			}
 		}
@@ -99,30 +99,5 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			vista.pago.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);
 		}
-	}
-	
-	public void reset() {
-		modelo.cliente = null;
-		modelo.alojamiento = null;
-		modelo.apartamento = null;
-		modelo.cama = null;
-		modelo.casa = null;
-		modelo.ciudad = null;
-		modelo.reserva = null;
-		modelo.precioTotal = 0;
-		
-		vista.login.userField.setText("");
-		vista.login.password.setText("");
-		
-		vista.registro.txtNombre.setText("");
-		vista.registro.txtApellidos.setText("");
-		vista.registro.rbtnMasc.setSelected(false);
-		vista.registro.rbtnFem.setSelected(false);
-		vista.registro.txtDni.setText("");
-		vista.registro.passwordField.setText("");
-		vista.registro.passwordField2.setText("");
-		
-		vista.buscarHotel.cBCiudad.removeAllItems();
-		vista.buscarHotel.cBTipoAloj.removeAllItems();
 	}
 }

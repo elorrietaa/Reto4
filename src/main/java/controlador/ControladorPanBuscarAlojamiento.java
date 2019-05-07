@@ -79,13 +79,14 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 * Se crean los listeners del panel
 	 */
     public void addListeners() {
-    	vista.buscarHotel.cBCiudad.addActionListener(this);
-    	vista.buscarHotel.cBTipoAloj.addActionListener(this);
-    	vista.buscarHotel.buttonContinuar.addActionListener(this);
-    	vista.buscarHotel.btnInicioSesion.addActionListener(this);
-    	vista.buscarHotel.btnRegistro.addActionListener(this);
-    	vista.buscarHotel.fechaIda.addPropertyChangeListener(this);
-    	vista.buscarHotel.fechaVuelta.addPropertyChangeListener(this);
+    	vista.buscarAlojamiento.btnCancelar.addActionListener(this);
+    	vista.buscarAlojamiento.cBCiudad.addActionListener(this);
+    	vista.buscarAlojamiento.cBTipoAloj.addActionListener(this);
+    	vista.buscarAlojamiento.buttonContinuar.addActionListener(this);
+    	vista.buscarAlojamiento.btnInicioSesion.addActionListener(this);
+    	vista.buscarAlojamiento.btnRegistro.addActionListener(this);
+    	vista.buscarAlojamiento.fechaIda.addPropertyChangeListener(this);
+    	vista.buscarAlojamiento.fechaVuelta.addPropertyChangeListener(this);
     }
     
     /**
@@ -93,12 +94,12 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * @param listaCiudades
      */
     public void mostrarCiudad() {
-    	vista.buscarHotel.cBCiudad.removeAllItems();
+    	vista.buscarAlojamiento.cBCiudad.removeAllItems();
 		ArrayList<Ciudad> listaCiudades;
 		listaCiudades = consultas.BuscarCiudad();
 		for(int i=0; i<listaCiudades.size();i++) {
 		    ciudad=listaCiudades.get(i);
-		    vista.buscarHotel.cBCiudad.addItem(ciudad); 
+		    vista.buscarAlojamiento.cBCiudad.addItem(ciudad); 
 		}
     }
     
@@ -107,12 +108,12 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * @param listaCiudades
      */
     public void mostrarTiposAloj() { 
-    	vista.buscarHotel.cBTipoAloj.removeAllItems();
+    	vista.buscarAlojamiento.cBTipoAloj.removeAllItems();
     	ArrayList<TipoAlojamiento> listaTiposAlojamiento;
     	listaTiposAlojamiento = consultas.BuscarTiposAlojamiento();
 		for(int i=0; i<listaTiposAlojamiento.size();i++) {
 		    tiposAloj=listaTiposAlojamiento.get(i);
-		    vista.buscarHotel.cBTipoAloj.addItem(tiposAloj); 
+		    vista.buscarAlojamiento.cBTipoAloj.addItem(tiposAloj); 
 		}
     }
     
@@ -121,7 +122,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      */
 	public void guardarDatosSeleccionadosCiudad() {
 		//se guarda la ciudad seleccionada
-		this.ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+		this.ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
 		//Pruebas
 		System.out.println("***DATOS CIUDAD***:Ciudad:" + ciudad);
 	    
@@ -132,7 +133,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      */
 	public void guardarDatosSeleccionadosTipoAloj() {
 		//se guarda la ciudad seleccionada
-		this.tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
+		this.tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 		
 		//se pasa el tipo de alojamiento seleccionado al modelo
 		modelo.tiposAloj = this.tiposAloj;
@@ -151,15 +152,15 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     	//***TABLA HOTELES es .tab
     	if(codTipoAlojSeleccionado == 10) {
 	    	// Mostrar los datos del alojamiento en tabla tab
-			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarHotel.tab.getModel();
+			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarAlojamiento.tab.getModel();
 				
 		  	//llena el arrayList con la lista de Hoteles
 		   	listaHoteles = consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
 		   	
-		   	vista.buscarHotel.panelHotel.setVisible(true);
-		   	vista.buscarHotel.panelHotel.setEnabled(true);
-		   	vista.buscarHotel.panelCasaApart.setVisible(false);
-		   	vista.buscarHotel.panelCasaApart.setEnabled(false);
+		   	vista.buscarAlojamiento.panelHotel.setVisible(true);
+		   	vista.buscarAlojamiento.panelHotel.setEnabled(true);
+		   	vista.buscarAlojamiento.panelCasaApart.setVisible(false);
+		   	vista.buscarAlojamiento.panelCasaApart.setEnabled(false);
 				   	
 		   	Object[] datos = new Object[4];
 			tablaHotel.setRowCount(0);
@@ -178,15 +179,15 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     	//***TABLA CASA O APARTAMENTO es .table 
     	else if (codTipoAlojSeleccionado == 20) {
 		// Mostrar los datos del alojamiento en tabla table
-				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarHotel.table.getModel();
+				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarAlojamiento.table.getModel();
 					
 			  	//llena el arrayList con la lista de casas
 				listaCasas = consultas.buscarCasaPorCodCiudad(codCiudadSeleccionada);
 				
-			   	vista.buscarHotel.panelHotel.setVisible(false);
-			   	vista.buscarHotel.panelHotel.setEnabled(false);
-			   	vista.buscarHotel.panelCasaApart.setVisible(true);
-			   	vista.buscarHotel.panelCasaApart.setEnabled(true);
+			   	vista.buscarAlojamiento.panelHotel.setVisible(false);
+			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
+			   	vista.buscarAlojamiento.panelCasaApart.setVisible(true);
+			   	vista.buscarAlojamiento.panelCasaApart.setEnabled(true);
 			   	
 			   	Object[] datos1 = new Object[3];
 			   	tablaCasApart.setRowCount(0);
@@ -200,15 +201,15 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     	}
     	else if ( codTipoAlojSeleccionado == 30) {
     		// Mostrar los datos del alojamiento en tabla table
-    				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarHotel.table.getModel();
+    				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarAlojamiento.table.getModel();
     					
     			  	//llena el arrayList con la lista de casas
     				listaApartamentos = consultas.buscarApartamentoPorCodCiudad(codCiudadSeleccionada);
     				
-    				vista.buscarHotel.panelHotel.setVisible(false);
-    			   	vista.buscarHotel.panelHotel.setEnabled(false);
-    			   	vista.buscarHotel.panelCasaApart.setVisible(true);
-    			   	vista.buscarHotel.panelCasaApart.setEnabled(true);
+    				vista.buscarAlojamiento.panelHotel.setVisible(false);
+    			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
+    			   	vista.buscarAlojamiento.panelCasaApart.setVisible(true);
+    			   	vista.buscarAlojamiento.panelCasaApart.setEnabled(true);
     			   	
     			   	Object[] datos1 = new Object[3];
     			   	tablaCasApart.setRowCount(0);
@@ -225,42 +226,37 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * Método: mostrarDetallesHabs = se muestran los detalles de las habitaciones
      * @param tabla Tabla que se rellena con la informacion de las habitaciones
      */
-
     public void mostrarDetallesHabsCasa() {
-
-          // Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
-
-          DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.tab2.getModel();
-
-          Object[] datos = new Object[3];
-          tablaHabs.setRowCount(0);
-          if(modelo.casa != null)
-        	  listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(casa, modelo.casa.getCodAlojamiento());
-          else
-        	  listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(apartamento, modelo.apartamento.getCodAlojamiento());
-          for(int i=0; i<listaHabitaciones.size();i++) {
-        	  System.out.println(listaHabitaciones.get(i).getTipoHabitacion());
-        	  datos[0] = listaHabitaciones.get(i).getTipoHabitacion();
-        	  
-        	  //se calcula el numero de camas que tiene la habitación en función del codigo habitación:
-
-        	  datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaHabitaciones.get(i).getCodHabitacion());
-
-        	  //Mostrar detalles de las camas de la habitación seleccionada:
-        	  ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
-        	  String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
-
-        	  //se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
-
-        	  //modelo.habitacion.setTiposCamaHab(tiposCamaHab);
-
-        	  //modelo.habitacion.setNumTipCam(numTipCam);
-
-        	  //listaHabitaciones.add(modelo.habitacion);
-        	  
-        	  datos[2] = tiposCamaHab;
-        	  tablaHabs.addRow(datos);
-          }
+    	// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+    	
+    	DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.tab2.getModel();
+    	
+    	Object[] datos = new Object[3];
+    	tablaHabs.setRowCount(0);
+    	
+    	if(modelo.casa != null)
+    		listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(casa, modelo.casa.getCodAlojamiento());
+    	else
+    		listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(apartamento, modelo.apartamento.getCodAlojamiento());
+    	for(int i=0; i<listaHabitaciones.size();i++) {
+    		
+    		datos[0] = listaHabitaciones.get(i).getTipoHabitacion();
+    		//se calcula el numero de camas que tiene la habitación en función del codigo habitación:
+    		
+    		datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaHabitaciones.get(i).getCodHabitacion());
+    		
+    		//Mostrar detalles de las camas de la habitación seleccionada:
+    		
+    		ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
+    		String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+    		
+    		//se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
+    		//modelo.habitacion.setTiposCamaHab(tiposCamaHab);
+    		//modelo.habitacion.setNumTipCam(numTipCam);
+    		//listaHabitaciones.add(modelo.habitacion);
+    		
+    		datos[2] = tiposCamaHab;tablaHabs.addRow(datos);
+    	}
     }
 	
 	 /**
@@ -270,13 +266,13 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		int filaAlojSeleccionado; 
 		
 		//primero miramos que tipo de alojamiento ha seleccionado el usuario:
-		TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
+		TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 		int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 		
 		//SI SE SELECCIONA UN HOTEL:
 		if(codTipoAlojSeleccionado == 10) {
 			//se guarda en filaHotelsel la posición seleccionada en la tabla
-			filaAlojSeleccionado = vista.buscarHotel.tab.getSelectedRow(); 	 
+			filaAlojSeleccionado = vista.buscarAlojamiento.tab.getSelectedRow(); 	 
 	    
 			//se guarda el hotel seleccionado en la tabla
 			this.hotel = (Hotel) listaHoteles.get(filaAlojSeleccionado);
@@ -294,7 +290,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//SI SE SELECCIONA UNA CASA:
 		if(codTipoAlojSeleccionado == 20) {
 			//se guarda en filaAlojSeleccionado la posición seleccionada en la tabla
-			filaAlojSeleccionado = vista.buscarHotel.table.getSelectedRow(); 	
+			filaAlojSeleccionado = vista.buscarAlojamiento.table.getSelectedRow(); 	
 				
 	    //se guarda la casa seleccionado en la tabla
 			this.casa = (Casa) listaCasas.get(filaAlojSeleccionado);
@@ -311,7 +307,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//SI SE SELECCIONA UN APARTAMENTO:
 		if(codTipoAlojSeleccionado == 30) {
 			//se guarda en filaAlojSeleccionado la posición seleccionada en la tabla
-			filaAlojSeleccionado = vista.buscarHotel.table.getSelectedRow(); 	 
+			filaAlojSeleccionado = vista.buscarAlojamiento.table.getSelectedRow(); 	 
 			    
 			//se guarda el apartamento seleccionado en la tabla
 			this.apartamento = (Apartamento) listaApartamentos.get(filaAlojSeleccionado);
@@ -413,15 +409,22 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					break;
 				
 				case "Inicio Sesión":
-					ControladorLogin.panelOrigen = vista.buscarHotel;
+					ControladorLogin.panelOrigen = vista.buscarAlojamiento;
 					vista.login.setVisible(true);
-					vista.buscarHotel.setVisible(false);
+					vista.buscarAlojamiento.setVisible(false);
 					break;
 				
 				case "Registro":
-					ControladorRegistro.panelOrigen = vista.buscarHotel;
+					ControladorRegistro.panelOrigen = vista.buscarAlojamiento;
 					vista.registro.setVisible(true);
-					vista.buscarHotel.setVisible(false);
+					vista.buscarAlojamiento.setVisible(false);
+					break;
+					
+				case "Cancelar":
+					vista.bienvenida.setVisible(true);
+					vista.buscarAlojamiento.setVisible(false);
+					controlador.funcionesRegistro.mostrarBotones();
+					controlador.funcionesBotones.reset();
 					break;
 			}
 			
@@ -431,8 +434,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			actualizarFiltradoJComboBox(); //se actualiza el JTable del PanBuscarHotel con los datos seleccionados por el usuario
 			
 		}
-		
-		
 	}
 	
 	/**
@@ -440,12 +441,12 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 */
 	private void actualizarFiltradoJComboBox() {
 		// (1º) guarda la ciudad seleccionada
-			Ciudad ciudad = (Ciudad) vista.buscarHotel.cBCiudad.getSelectedItem();
+			Ciudad ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
 			if (ciudad != null) {
 				int codCiudadSeleccionada = ciudad.getCodCiudad();
 				
 				//(2º) guarda el tipo de alojamiento seleccionado
-				TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarHotel.cBTipoAloj.getSelectedItem();
+				TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 				if (tiposAloj != null) {
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 					
@@ -463,11 +464,11 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		// guardamos el nombre del boton pulsado
 		JCalendar botonPulsado = ((JCalendar) e.getSource());
 		
-		if (botonPulsado == vista.buscarHotel.fechaIda) {	
-			fechaIda = new Date(vista.buscarHotel.fechaIda.getDate().getTime());
+		if (botonPulsado == vista.buscarAlojamiento.fechaIda) {	
+			fechaIda = new Date(vista.buscarAlojamiento.fechaIda.getDate().getTime());
 			
 		} else {	
-			fechaVuelta = new Date(vista.buscarHotel.fechaVuelta.getDate().getTime());
+			fechaVuelta = new Date(vista.buscarAlojamiento.fechaVuelta.getDate().getTime());
 		}		
 	
 	}
@@ -566,7 +567,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 */
 	public void continuarHotel() {
 		//(3º) Guarda los datos seleecionados en el modelo
-		if(vista.buscarHotel.tab.getSelectedRow() != -1) {
+		if(vista.buscarAlojamiento.tab.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
 	
 			//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
@@ -586,7 +587,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			
 			//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
 			if(continuar) {
-				vista.buscarHotel.setVisible(false);
+				vista.buscarAlojamiento.setVisible(false);
 				vista.selHabitacion.setVisible(true);
 				vista.detallesReservaCasaApart.panelHoteles.setVisible(true);
 				vista.detallesReservaCasaApart.panelHoteles.setEnabled(true);
@@ -604,7 +605,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	public void continuarCasaApart() {
 
 		//(0º)Se guardan los datos seleccionados en el modelo
-		if(vista.buscarHotel.table.getSelectedRow() != -1) {
+		if(vista.buscarAlojamiento.table.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
 		
 			//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
@@ -634,7 +635,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			//continuar == true --> fecha introducida por el usuario tiene que ser válida.
 			//disponible != false -->alojamiento seleccionado tiene que estar disponible para las fechas seleccionadas.
 			if(continuar && disponible != false) {
-				vista.buscarHotel.setVisible(false);
+				vista.buscarAlojamiento.setVisible(false);
 				vista.detallesReservaCasaApart.setVisible(true);
 				vista.detallesReservaCasaApart.panelHoteles.setVisible(false);
 				vista.detallesReservaCasaApart.panelHoteles.setEnabled(false);
@@ -663,5 +664,4 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			System.out.println("esta disponible" + disponible);
 		}
 	}
-	
 }

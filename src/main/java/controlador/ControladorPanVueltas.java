@@ -43,6 +43,7 @@ public class ControladorPanVueltas implements ActionListener {
 				     {
 						JOptionPane.showMessageDialog(vista, "Reserva realizada con exito, muchas gracias.", null, 0);
 				     	vista.bienvenida.setVisible(true);
+				     	
 				     }
 				 };
 				

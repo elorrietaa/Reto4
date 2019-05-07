@@ -221,8 +221,8 @@ public class FuncionesReserva {
 	   int numNochesEstival=0;
 	   int numNochesFestivos=0;
 	   
-	   int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
-	   int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
+	   int mesIda = vista.buscarAlojamiento.fechaIda.getMonthChooser().getMonth();
+	   int mesVuelta = vista.buscarAlojamiento.fechaVuelta.getMonthChooser().getMonth();
 	   
 	   int [] NumNochesPorTarifa = new int [3];
 	   
@@ -287,10 +287,10 @@ public class FuncionesReserva {
 		int numNochesFestivos = 0;
 		String nombreFestivosReser = "";
 		
-		int diaIda = vista.buscarHotel.fechaIda.getDayChooser().getDay();
-		int diaVuelta = vista.buscarHotel.fechaVuelta.getDayChooser().getDay();
-		int mesIda = vista.buscarHotel.fechaIda.getMonthChooser().getMonth();
-		int mesVuelta = vista.buscarHotel.fechaVuelta.getMonthChooser().getMonth();
+		int diaIda = vista.buscarAlojamiento.fechaIda.getDayChooser().getDay();
+		int diaVuelta = vista.buscarAlojamiento.fechaVuelta.getDayChooser().getDay();
+		int mesIda = vista.buscarAlojamiento.fechaIda.getMonthChooser().getMonth();
+		int mesVuelta = vista.buscarAlojamiento.fechaVuelta.getMonthChooser().getMonth();
 		
 		// NO VA // Object [] arrayDatosFestivos = modelo.fechasTarifas.arrayDatosFestivos; 
 		int [] diasFestivos = modelo.fechasTarifas.diasFestivos; // array con los días festivos

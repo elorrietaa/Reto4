@@ -94,7 +94,6 @@ public class ControladorLogin implements ActionListener {
 						vista.login.setVisible(false);
 					}
 					else {
-						
 						// mostrar la pantalla adecuada
 						vista.pago.setVisible(true);
 						vista.login.setVisible(false);

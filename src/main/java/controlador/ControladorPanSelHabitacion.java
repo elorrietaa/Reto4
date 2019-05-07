@@ -358,7 +358,6 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
 				vista.selHabitacion.setVisible(false);
-				controlador.funcionesRegistro.mostrarBotones();
 				controlador.funcionesBotones.reset();
 				break;
 		}	

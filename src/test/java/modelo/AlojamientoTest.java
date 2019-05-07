@@ -16,9 +16,12 @@ public class AlojamientoTest {
     protected String ubicacion="BILBAO";
     protected float precioAlojamiento=(float) 12.2;
     protected int popularidad = 10;
-    Alojamiento alojamiento = new Alojamiento();
-    Alojamiento alojamientoPrueba= new Alojamiento(codAlojamiento, nombre,direccion, telefono, numHabitaciones, numHabDisponibles, ubicacion, precioAlojamiento, popularidad);
-    Alojamiento alojamientoPrueba2= new Alojamiento(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad);
+    protected String [] arrayNombreHabitaciones = {"DORMITORIO","BAÑO", "SALA","COMEDOR", "COCINA", "BALCON", "GARAJE"  };
+    protected int [] arrayNumHabitaciones = {2, 2, 1, 1, 1, 1, 1};
+    
+	Alojamiento alojamiento = new Alojamiento();
+    Alojamiento alojamientoPrueba= new Alojamiento(codAlojamiento, nombre,direccion, telefono, numHabitaciones, numHabDisponibles, ubicacion, precioAlojamiento, popularidad, arrayNombreHabitaciones, arrayNumHabitaciones);
+    Alojamiento alojamientoPrueba2= new Alojamiento(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad, arrayNombreHabitaciones, arrayNumHabitaciones);
   
     @Test
 	public void testConstuctor() {
@@ -30,6 +33,8 @@ public class AlojamientoTest {
 		assertEquals(numHabDisponibles, alojamientoPrueba.getNumHabDisponibles());
 		assertEquals(ubicacion, alojamientoPrueba.getUbicacion());
 		assertEquals(popularidad, alojamientoPrueba.getPopularidad());
+		assertArrayEquals(arrayNombreHabitaciones, alojamientoPrueba.getArrayNombreHabitaciones());
+		assertArrayEquals(arrayNumHabitaciones, alojamientoPrueba.getArrayNumHabitaciones());
 	}
     @Test
 	public void testConstuctor2() {
@@ -40,6 +45,9 @@ public class AlojamientoTest {
 		assertEquals(numHabitaciones, alojamientoPrueba2.getNumHabitaciones());
 		assertEquals(ubicacion, alojamientoPrueba2.getUbicacion());
 		assertEquals(popularidad, alojamientoPrueba2.getPopularidad());
+		assertArrayEquals(arrayNombreHabitaciones, alojamientoPrueba.getArrayNombreHabitaciones());
+		assertArrayEquals(arrayNumHabitaciones, alojamientoPrueba.getArrayNumHabitaciones());
+	
 	}
     @Test
 	public void testCodAlojamiento() {

@@ -19,8 +19,8 @@ public class Casa extends Alojamiento{
      * @param metrosCuadrados = metrosCuadrados de la Casa
      *  
      */
-    public Casa(int codAlojamiento, String nombre, String direccion, String telefono, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad, int numBanos, float metrosCuadrados ) {
-	super(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad);
+    public Casa(int codAlojamiento, String nombre, String direccion, String telefono, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad, int numBanos, float metrosCuadrados, String [] arrayNombreHabitaciones, int [] arrayNumHabitaciones ) {
+	super(codAlojamiento, nombre,direccion, telefono, numHabitaciones, ubicacion, precioAlojamiento, popularidad, arrayNombreHabitaciones, arrayNumHabitaciones);
 	this.numBanos = numBanos;
 	this.metrosCuadrados = metrosCuadrados;
     }

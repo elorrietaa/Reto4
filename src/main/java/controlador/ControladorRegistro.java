@@ -75,7 +75,6 @@ public class ControladorRegistro implements ActionListener {
 				
 				vista.bienvenida.setVisible(true);
 				vista.registro.setVisible(false);
-				controlador.funcionesRegistro.mostrarBotones();
 				controlador.funcionesBotones.reset();
 				break;
 				
@@ -87,12 +86,16 @@ public class ControladorRegistro implements ActionListener {
 				break;
 				
 			case "Registrarse":
- 
+				Date fechaActual = modelo.consultas.mostrarFechaActual();
 				if(validarDatos()) {
 					
 					if(modelo.consultas.buscarClientePorDNI(dni) != null) { // Comprueba si existe un usuario con el mismo DNI
 						JOptionPane.showMessageDialog(vista, "Ya existe un usuario con ese DNI " + this.dni, "Aviso", JOptionPane.WARNING_MESSAGE); // Si existe, muestra un mensaje de error
-					} else { // Si no, registra al cliente
+					} 
+					else if(((fechaActual.getTime()-fecha.getTime())/86400000) < 6570 ) { // no se pueden registrar menores
+						JOptionPane.showMessageDialog(vista, "Lo sentimos. Debe tener al menos 18 años para poder registrarse. Gracias. ", null, 0);
+						
+					}else { // Si no, registra al cliente
 						modelo.cliente = new Cliente(dni, nombre, apellidos, fecha, sexo, contrasena);
 						modelo.consultas.insertarCliente(modelo.cliente);
 					}

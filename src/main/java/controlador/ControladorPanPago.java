@@ -24,7 +24,7 @@ public class ControladorPanPago implements ActionListener{
 	private JTextField introducido, restante; // Instancia los label del dinero para poder cambiarlos en la interfaz
 	public float total = 0; // Total del importe que se debe pagar
 	public float dinero = 0; // Total del dinero que ha sido introdcido hasta al momento
-	private float falta = 0; // Total del dinero que falta por introducir
+	public float falta = 0; // Total del dinero que falta por introducir
 	public float moneda = 0; // Guarda el valos de la ultima moneda o billete introducido
 	public String sobra = ""; // Cantidad minima de monedas que tiene que devolver
 	public float[] monedas; // Almacena el valor de las monedas y billetes que se van introducioendo para luego poder retarlos.
@@ -150,14 +150,22 @@ public class ControladorPanPago implements ActionListener{
 				break;
 				
 			case "Atrás":
-				vista.detallesReserva.setVisible(true);
-				vista.pago.setVisible(false);
+			    
+			    if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+					vista.detallesReservaCasaApart.setVisible(true);
+					vista.pago.setVisible(false);
+					controlador.funcionesBotones.resetAtrasPago(this);
+			    }
+			    else {
+					vista.detallesReservaCasaApart.setVisible(true);
+					vista.pago.setVisible(false);
+					controlador.funcionesBotones.resetAtrasPago(this);
+			    }
 				break;
 				
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
 				vista.pago.setVisible(false);
-				controlador.funcionesRegistro.mostrarBotones();
 				controlador.funcionesBotones.resetPago(this);
 				break;
 				

@@ -25,6 +25,8 @@ public class FuncionesBotones {
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
 		
+		ControladorLogin.detalles = true;
+		
 		vista.login.userField.setText("");
 		vista.login.password.setText("");
 		
@@ -38,6 +40,8 @@ public class FuncionesBotones {
 		
 		vista.buscarAlojamiento.cBCiudad.removeAllItems();
 		vista.buscarAlojamiento.cBTipoAloj.removeAllItems();
+		
+		controlador.funcionesRegistro.mostrarBotones();
 	}
 	
 	public void resetPago(ControladorPanPago pago) {
@@ -49,6 +53,8 @@ public class FuncionesBotones {
 		modelo.ciudad = null;
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
+		
+		ControladorLogin.detalles = true;
 		
 		vista.login.userField.setText("");
 		vista.login.password.setText("");
@@ -84,5 +90,14 @@ public class FuncionesBotones {
 		vista.pago.btnContinuar.setVisible(false);
 		vista.pago.btnContinuar.setEnabled(false);
 		
+		controlador.funcionesRegistro.mostrarBotones();
+	}
+	
+	public void resetAtrasPago(ControladorPanPago pago) {
+		
+		pago.dinero = 0f;
+		vista.pago.totalIntro.setText(Float.toString(pago.dinero) + " €");
+		pago.falta = pago.total;
+		vista.pago.aPagar.setText(Float.toString(pago.falta) + " €");
 	}
 }

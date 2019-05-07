@@ -227,36 +227,40 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * @param tabla Tabla que se rellena con la informacion de las habitaciones
      */
     public void mostrarDetallesHabsCasa() {
-    	// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
-    	
-    	DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.tab2.getModel();
-    	
-    	Object[] datos = new Object[3];
-    	tablaHabs.setRowCount(0);
-    	
-    	if(modelo.casa != null)
-    		listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(casa, modelo.casa.getCodAlojamiento());
-    	else
-    		listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(apartamento, modelo.apartamento.getCodAlojamiento());
-    	for(int i=0; i<listaHabitaciones.size();i++) {
-    		
-    		datos[0] = listaHabitaciones.get(i).getTipoHabitacion();
-    		//se calcula el numero de camas que tiene la habitación en función del codigo habitación:
-    		
-    		datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaHabitaciones.get(i).getCodHabitacion());
-    		
-    		//Mostrar detalles de las camas de la habitación seleccionada:
-    		
-    		ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
-    		String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
-    		
-    		//se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
-    		//modelo.habitacion.setTiposCamaHab(tiposCamaHab);
-    		//modelo.habitacion.setNumTipCam(numTipCam);
-    		//listaHabitaciones.add(modelo.habitacion);
-    		
-    		datos[2] = tiposCamaHab;tablaHabs.addRow(datos);
-    	}
+
+
+          // Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
+          DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.tab2.getModel();
+
+          Object[] datos = new Object[3];
+          tablaHabs.setRowCount(0);
+          if(modelo.casa != null)
+        	  listaHabitaciones = consultas.buscarHabitacionDormitorioPorCodigoAlojamiento(casa, modelo.casa.getCodAlojamiento());
+          else
+        	  listaHabitaciones = consultas.buscarHabitacionDormitorioPorCodigoAlojamiento(apartamento, modelo.apartamento.getCodAlojamiento());
+          for(int i=0; i<listaHabitaciones.size();i++) {
+        	  
+        	  datos[0] = listaHabitaciones.get(i).getTipoHabitacion();
+        	  
+        	  //se calcula el numero de camas que tiene la habitación en función del codigo habitación:
+
+        	  datos[1] = modelo.consultas.buscarNumCamasPorCodHab(listaHabitaciones.get(i).getCodHabitacion());
+
+        	  //Mostrar detalles de las camas de la habitación seleccionada:
+        	  ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
+        	  String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+
+        	  //se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
+
+        	  //modelo.habitacion.setTiposCamaHab(tiposCamaHab);
+
+        	  //modelo.habitacion.setNumTipCam(numTipCam);
+
+        	  //listaHabitaciones.add(modelo.habitacion);
+        	  
+        	  datos[2] = tiposCamaHab;
+        	  tablaHabs.addRow(datos);
+          }
     }
 	
 	 /**
@@ -423,7 +427,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				case "Cancelar":
 					vista.bienvenida.setVisible(true);
 					vista.buscarAlojamiento.setVisible(false);
-					controlador.funcionesRegistro.mostrarBotones();
 					controlador.funcionesBotones.reset();
 					break;
 			}
@@ -613,7 +616,11 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		
 			//(0º)Se guardan los datos seleccionados en el modelo
 			guardarDatosSeleccionadosAlojamiento();
-		
+			
+			//se muestran los datos de las habitaciones de la casa/Apartamento
+			controlador.funcionesReserva.guardarNumHabTipoDeCasaApart();
+			
+		 
 			//(2º)Genera 1 reserva y la guarda en modelo.reserva
 			//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
 			//no se si habria que hacer 1 para casa y 1 para apartamento		
@@ -625,6 +632,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
 			actualizarPanDetallesReservaCasaAloj();
 			mostrarDetallesHabsCasa();
+			
 			
 			//Aviso al usuario si el alojamiento no esta disponible
 			if (disponible == false){

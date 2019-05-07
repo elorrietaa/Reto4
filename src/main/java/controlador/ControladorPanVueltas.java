@@ -13,12 +13,16 @@ import vista.JframePrincipal;
 
 public class ControladorPanVueltas implements ActionListener {
 	
-	public JframePrincipal vista;
-	public PrincipalModelo modelo;
+	private JframePrincipal vista;
+	private PrincipalModelo modelo;
+	private PrincipalControlador controlador;
+	private ControladorPanPago pago;
 	
-	public ControladorPanVueltas(JframePrincipal vista, PrincipalModelo modelo) {
+	public ControladorPanVueltas(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador, ControladorPanPago pago) {
 		this.vista = vista;
 		this.modelo = modelo;
+		this.controlador = controlador;
+		this.pago = pago;
 	}
 	
 	public void addListeners() {
@@ -34,21 +38,10 @@ public class ControladorPanVueltas implements ActionListener {
 		switch (botonPulsado) {
 		
 			case "Finalizar":
-				 Timer timer;
-				 timer = new Timer();
-				 TimerTask task = new TimerTask() {
-					 
-					 @Override
-				     public void run()
-				     {
-						JOptionPane.showMessageDialog(vista, "Reserva realizada con exito, muchas gracias.", null, 0);
-				     	vista.bienvenida.setVisible(true);
-				     	
-				     }
-				 };
-				
-				timer.schedule(task, 500);
-				//System.exit(0);
+				JOptionPane.showMessageDialog(vista, "Reserva realizada con exito, muchas gracias.", null, 0);
+				vista.bienvenida.setVisible(true);
+				vista.vueltas.setVisible(false);
+				controlador.funcionesBotones.resetPago(this.pago);
 				break;
 		}
 	}

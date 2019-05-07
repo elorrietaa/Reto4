@@ -97,7 +97,7 @@ public class PrincipalControlador {
     	this.controladorPanPago.addListeners();
     	
     	// añadimos listeners a los botones del panel 'controladorPanVueltas'
-    	this.controladorPanVueltas = new ControladorPanVueltas(vista, modelo);
+    	this.controladorPanVueltas = new ControladorPanVueltas(vista, modelo, this, controladorPanPago);
     	this.controladorPanVueltas.addListeners();
     	
     	// añadimos listeners a los botones del panel de log in

@@ -72,7 +72,6 @@ public class ControladorPanDetallesReserva implements ActionListener {
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
 				vista.detallesReserva.setVisible(false);
-				controlador.funcionesRegistro.mostrarBotones();
 				controlador.funcionesBotones.reset();
 				break;
 			}

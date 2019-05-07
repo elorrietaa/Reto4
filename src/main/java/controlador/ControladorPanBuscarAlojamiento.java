@@ -229,17 +229,17 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     public void mostrarDetallesHabsCasa() {
 
           // Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
-
+    		//BORRAR ESTO AL DESCARGAR
           DefaultTableModel tablaHabs = (DefaultTableModel) vista.detallesReservaCasaApart.tab2.getModel();
 
           Object[] datos = new Object[3];
           tablaHabs.setRowCount(0);
           if(modelo.casa != null)
-        	  listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(casa, modelo.casa.getCodAlojamiento());
+        	  listaHabitaciones = consultas.buscarHabitacionDormitorioPorCodigoAlojamiento(casa, modelo.casa.getCodAlojamiento());
           else
-        	  listaHabitaciones = consultas.buscarHabitacionPorCodigoAlojamiento(apartamento, modelo.apartamento.getCodAlojamiento());
+        	  listaHabitaciones = consultas.buscarHabitacionDormitorioPorCodigoAlojamiento(apartamento, modelo.apartamento.getCodAlojamiento());
           for(int i=0; i<listaHabitaciones.size();i++) {
-        	  System.out.println(listaHabitaciones.get(i).getTipoHabitacion());
+        	  
         	  datos[0] = listaHabitaciones.get(i).getTipoHabitacion();
         	  
         	  //se calcula el numero de camas que tiene la habitación en función del codigo habitación:

@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
+import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
 
 public class PanSelHabitacion extends JPanel {
 
@@ -34,18 +36,20 @@ public class PanSelHabitacion extends JPanel {
 		
 		// logo
 		lblIcono = new JLabel("");
+		lblIcono.setBounds(0, 0, 0, 0);
 		FormatoDiseno.formatoIcono(lblIcono);
 		add(lblIcono);
 		
 		lblTitulo = new JLabel("DETALLES DE BILLETE");
+		lblTitulo.setBounds(0, 0, 0, 0);
 		FormatoDiseno.formatoIcono(lblTitulo);
 		add(lblTitulo);		
 		
 		// label billete ida
 		lblBilleteIda = new JLabel("Seleccione una o varias habitaciones");
+		lblBilleteIda.setBounds(45, 60, 505, 40);
 		lblBilleteIda.setFont(new Font("Dialog", Font.BOLD, 22));
 		lblBilleteIda.setHorizontalAlignment(SwingConstants.LEFT);
-		lblBilleteIda.setBounds(45, 60, 505, 40);
 		add(lblBilleteIda);
 		
 		// TABLA HABITACIONES
@@ -87,19 +91,22 @@ public class PanSelHabitacion extends JPanel {
 		tab.getColumnModel().getColumn(4).setPreferredWidth(180);
 		
 		scrollPaneIda = new JScrollPane(tab);
-		scrollPaneIda.setBounds(45,111,935,221);
+		scrollPaneIda.setBounds(45, 111, 935, 221);
 		add(scrollPaneIda);
 		//Object[][] datosVuelta = {};
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(0, 0, 0, 0);
 		FormatoDiseno.formatoBtnCancelar(btnCancelar);
 		add(btnCancelar);
 		
 		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setBounds(0, 0, 0, 0);
 		FormatoDiseno.formatoBtnAtras(btnAtras);
 		add(btnAtras);
 		
 		btnContinuar = new JButton("Continuar");
+		btnContinuar.setBounds(0, 0, 0, 0);
 		FormatoDiseno.formatoBtnContinuar(btnContinuar);
 		add(btnContinuar);
 		
@@ -110,6 +117,7 @@ public class PanSelHabitacion extends JPanel {
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
-	
+		
+		JSpinner spinner2 = new JSpinner();
 	}
 }

@@ -375,6 +375,46 @@ public class Consultas {
     	return listaHabitacion;
     }
     
+    public ArrayList<Habitacion> buscarHabitacionDormitorioPorCodigoAlojamiento(Alojamiento alojamiento, int codHotelSeleccionado) {
+    	ArrayList<Habitacion> listaHabitacion = new ArrayList<Habitacion>(); 
+    	Habitacion habitacion;
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	String query = "SELECT Cod_habitacion, Tipo_habitacion, Tamanio FROM `habitaciones`, `alojamiento` where habitaciones.Cod_alojamiento=alojamiento.Cod_alojamiento and alojamiento.Cod_alojamiento=? AND habitaciones.Tipo_habitacion = 'DORMITORIO'";
+    	
+    	try {
+    		// Abrimos una conexion
+    		connection = conexion.conectar();
+    				
+    		// preparamos la consulta SQL a la base de datos
+    		ps = connection.prepareStatement(query);
+    		ps.setInt(1, codHotelSeleccionado);
+    		
+    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+    		rs = ps.executeQuery();
+    
+    		// crea objetos Linea con los resultados y los añade a un arrayList
+    		while (rs.next()) {
+    			habitacion = new Dormitorio(); 
+    			habitacion.setCodHabitacion(rs.getInt("Cod_habitacion"));
+    			//habitacion.setAlojamiento(hotel);
+    			habitacion.setTipoHabitacion(rs.getString("Tipo_Habitacion"));
+    			habitacion.setTamanio(rs.getFloat("Tamanio"));
+    			
+    			listaHabitacion.add(habitacion);
+    		} 
+    				
+    		} 
+    	catch (SQLException e) {
+    			e.printStackTrace();
+    		} 
+    		finally {
+    			// cerramos la conexion
+    			conexion.desconectar();
+    		}
+    	return listaHabitacion;
+    }
   /**
    * buscarHabitacionDisponiblel = busca las habitaciones disponibles para el hotel seleccionado en las fechas seleccionadas.
    * @param fechaIda

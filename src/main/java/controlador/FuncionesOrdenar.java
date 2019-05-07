@@ -1,5 +1,8 @@
 package controlador;
 
+import java.util.ArrayList;
+
+import modelo.Hotel;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 

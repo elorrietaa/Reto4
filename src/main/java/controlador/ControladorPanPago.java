@@ -150,9 +150,17 @@ public class ControladorPanPago implements ActionListener{
 				break;
 				
 			case "Atrás":
-				vista.detallesReserva.setVisible(true);
+			    
+			    if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+				vista.detallesReservaCasaApart.setVisible(true);
 				vista.pago.setVisible(false);
-				reset();
+				
+			    }
+			    else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20 || modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
+				vista.detallesReservaCasaApart.setVisible(true);
+				vista.pago.setVisible(false);
+			    }
+			    	reset();
 				break;
 				
 			//case "Cancelar":

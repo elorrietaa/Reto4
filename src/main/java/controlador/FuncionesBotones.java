@@ -25,7 +25,8 @@ public class FuncionesBotones {
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
 		
-		ControladorLogin.detalles = true;
+		ControladorLogin.detalles = false;
+		ControladorRegistro.detalles = false;
 		
 		vista.login.userField.setText("");
 		vista.login.password.setText("");
@@ -54,7 +55,8 @@ public class FuncionesBotones {
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
 		
-		ControladorLogin.detalles = true;
+		ControladorLogin.detalles = false;
+		ControladorRegistro.detalles = false;
 		
 		vista.login.userField.setText("");
 		vista.login.password.setText("");

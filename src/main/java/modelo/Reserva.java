@@ -15,7 +15,10 @@ public class Reserva {
     private Date fechaIda;
     private Date fechaVuelta;
     private float precioReserva;
-  //  private Date 
+    private Date fechaBases;
+    private Date horaBases;
+    private String detallesTarifa;
+    private String detallesFestivos;
     
     /**
      * Constructor vacio del objeto Reserva
@@ -29,7 +32,7 @@ public class Reserva {
      * @param alojamiento
      * @param precioReserva
      */
-    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Dormitorio habitacion, Date fechaIda, Date fechaVuelta,  float precioReserva) {
+    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Dormitorio habitacion, Date fechaIda, Date fechaVuelta,  float precioReserva, Date fechaBases, Date horaBases, String detallesTarifa, String detallesFestivos) {
 	this.codReserva = codReserva;
 	this.cliente = cliente;
 	this.alojamiento =alojamiento;
@@ -37,6 +40,10 @@ public class Reserva {
 	this.fechaIda = fechaIda;
 	this.fechaVuelta = fechaVuelta;
 	this.precioReserva = precioReserva;
+	this.fechaBases = fechaBases;
+	this.horaBases = horaBases;
+	this.detallesTarifa = detallesTarifa;
+	this.detallesFestivos = detallesFestivos;
     }
     
     /**
@@ -45,13 +52,17 @@ public class Reserva {
      * @param alojamiento
      * @param precioReserva
      */
-    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Date fechaIda, Date fechaVuelta,  float precioReserva) {
+    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Date fechaIda, Date fechaVuelta,  float precioReserva, Date fechaBases, Date horaBases, String detallesTarifa, String detallesFestivos) {
 	this.codReserva = codReserva;
 	this.cliente = cliente;
 	this.alojamiento =alojamiento;
 	this.fechaIda = fechaIda;
 	this.fechaVuelta = fechaVuelta;
 	this.precioReserva = precioReserva;
+	this.fechaBases = fechaBases;
+	this.horaBases = horaBases;
+	this.detallesTarifa = detallesTarifa;
+	this.detallesFestivos = detallesFestivos;
     }
     //get y set
     /**
@@ -132,6 +143,30 @@ public class Reserva {
 	}
 	public void setFechaVuelta(Date fechaVuelta) {
 	    this.fechaVuelta = fechaVuelta;
+	}
+	public Date getFechaBases() {
+		return fechaBases;
+	}
+	public void setFechaBases(Date fechaBases) {
+		this.fechaBases = fechaBases;
+	}
+	public Date getHoraBases() {
+		return horaBases;
+	}
+	public void setHoraBases(Date horaBases) {
+		this.horaBases = horaBases;
+	}
+	public String getDetallesTarifa() {
+		return detallesTarifa;
+	}
+	public void setDetallesTarifa(String detallesTarifa) {
+		this.detallesTarifa = detallesTarifa;
+	}
+	public String getDetallesFestivos() {
+		return detallesFestivos;
+	}
+	public void setDetallesFestivos(String detallesFestivos) {
+		this.detallesFestivos = detallesFestivos;
 	} 
     
     

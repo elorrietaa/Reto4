@@ -29,13 +29,14 @@ public class PanDetallesReservaCasaApart extends JPanel {
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro, btnCancelar;
 	public JList<String> listDetalleReserva;
-	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetFestivos;
+	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetFestivos, textDetPrecioFinal;
 	public JPanel panelHoteles, panelCasaApart;
 	 
 	
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
 	public JTable table, tab, tab2;
 	public JScrollPane scrollPaneIda, scrollPaneCasaApart, scrollPaneIda2;
+
 
 
 	
@@ -158,12 +159,12 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		textDetTarifa = new JTextPane();
 		textDetTarifa.setEditable(false);
-		textDetTarifa.setBounds(128, 456, 563, 151);
+		textDetTarifa.setBounds(121, 456, 563, 53);
 		add(textDetTarifa);
 		
 		textDetFestivos = new JTextPane();
 		textDetFestivos.setEditable(false);
-		textDetFestivos.setBounds(10, 521, 563, 39);
+		textDetFestivos.setBounds(121, 505, 563, 34);
 		add(textDetFestivos);
 		
 		panelHoteles = new JPanel();
@@ -266,6 +267,11 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		textFieldDetHabs.setColumns(10);
 		textFieldDetHabs.setBounds(121, 253, 703, 34);
 		add(textFieldDetHabs);
+		
+		textDetPrecioFinal = new JTextPane();
+		textDetPrecioFinal.setEditable(false);
+		textDetPrecioFinal.setBounds(121, 550, 563, 39);
+		add(textDetPrecioFinal);
 
 	}
 }

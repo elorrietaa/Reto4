@@ -131,7 +131,9 @@ public class Consultas {
 		ResultSet rs = null;
 		
 
-		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
+		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ";
+		//En el futuro poner la select ordenada por precio
+		//	String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ORDER BY Precio_alojamiento DESC";
 		
 			ArrayList<Hotel> listaHoteles = new ArrayList<Hotel>(); 
 			
@@ -1005,7 +1007,7 @@ public class Consultas {
 			ResultSet result = null;
 			float precioMinimoDeLaHabitacionDelHotel = 0;
 			
-			String query = "select ROUND(Min(Precio_hab),2) from `habitaciones`,`alojamiento` where habitaciones.Cod_alojamiento = alojamiento.Cod_alojamiento AND alojamiento.cod_alojamiento = ?";
+			String query = "select ROUND(Min(Precio_hab),2) from `habitaciones`,`alojamiento` where habitaciones.Cod_alojamiento = alojamiento.Cod_alojamiento AND alojamiento.cod_alojamiento = ? ";
 
 			try {
 				

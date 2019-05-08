@@ -159,12 +159,12 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		textDetTarifa = new JTextPane();
 		textDetTarifa.setEditable(false);
-		textDetTarifa.setBounds(121, 456, 563, 53);
+		textDetTarifa.setBounds(121, 456, 563, 67);
 		add(textDetTarifa);
 		
 		textDetFestivos = new JTextPane();
 		textDetFestivos.setEditable(false);
-		textDetFestivos.setBounds(121, 505, 563, 34);
+		textDetFestivos.setBounds(121, 520, 563, 34);
 		add(textDetFestivos);
 		
 		panelHoteles = new JPanel();
@@ -270,7 +270,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		textDetPrecioFinal = new JTextPane();
 		textDetPrecioFinal.setEditable(false);
-		textDetPrecioFinal.setBounds(121, 550, 563, 39);
+		textDetPrecioFinal.setBounds(121, 563, 563, 39);
 		add(textDetPrecioFinal);
 
 	}

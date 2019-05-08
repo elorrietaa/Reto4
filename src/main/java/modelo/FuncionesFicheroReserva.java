@@ -201,7 +201,7 @@ public class FuncionesFicheroReserva {
 			writer.println("Dirección: " + modelo.casa.getDireccion() + "   Teléfono: "+ modelo.casa.getTelefono());	
 			writer.println();
 		
-			writer.println("Precio alojamiento: " + modelo.reserva.getAlojamiento().getPrecioAlojamiento() + "€");
+			
 			writer.println();
 			writer.println("*************************************************************");
 			writer.println();
@@ -256,7 +256,7 @@ public class FuncionesFicheroReserva {
 			
 			writer.println();
 		
-			writer.println("Precio alojamiento: " + modelo.reserva.getAlojamiento().getPrecioAlojamiento() + "€");
+			
 			writer.println();
 			writer.println("*************************************************************");
 			writer.println();

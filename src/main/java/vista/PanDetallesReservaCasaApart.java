@@ -29,7 +29,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro, btnCancelar;
 	public JList<String> listDetalleReserva;
-	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetDestinos;
+	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetFestivos;
 	public JPanel panelHoteles, panelCasaApart;
 	 
 	
@@ -161,10 +161,10 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		textDetTarifa.setBounds(128, 456, 563, 151);
 		add(textDetTarifa);
 		
-		textDetDestinos = new JTextPane();
-		textDetDestinos.setEditable(false);
-		textDetDestinos.setBounds(128, 523, 563, 39);
-		add(textDetDestinos);
+		textDetFestivos = new JTextPane();
+		textDetFestivos.setEditable(false);
+		textDetFestivos.setBounds(10, 521, 563, 39);
+		add(textDetFestivos);
 		
 		panelHoteles = new JPanel();
 		panelHoteles.setBackground(Color.WHITE);

@@ -326,8 +326,8 @@ public class FuncionesReserva {
 		
 		if(numNochesFestivos > 0) {
 			float suplementoFestivos = calcularSuplementoFestivos(precioAloj);
-			vista.detallesReservaCasaApart.textDetDestinos.setText((String) "Además, su reserva incluye "+ numNochesFestivos + " festivos:" + "\n" + 
-					nombreFestivosReser + "Suplemento por festivo: "+ (precioAloj * 0.20) +   "€" +"\n");
+			vista.detallesReservaCasaApart.textDetFestivos.setText((String) "Además, su reserva incluye "+ numNochesFestivos + " festivos:" + "\n" + 
+					nombreFestivosReser + "Suplemento por festivo: "+ (String.format("%.2f", (precioAloj * 0.20)) +   "€" +"\n"));
 
 	
 		}
@@ -558,7 +558,7 @@ public class FuncionesReserva {
       	  listaHabitaciones = modelo.consultas.buscarHabitacionPorCodigoAlojamiento(modelo.apartamento, modelo.apartamento.getCodAlojamiento());
       	
       	  for(int i=0; i<arrayNombreHabitaciones.length; i++) {
-         	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(modelo.casa.getCodAlojamiento(), arrayNombreHabitaciones[i]);
+         	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(modelo.apartamento.getCodAlojamiento(), arrayNombreHabitaciones[i]);
  			System.out.println("1arrayNombreHabitaciones" + arrayNombreHabitaciones[i] + "-->" + arrayNumHabitaciones[i] );
           }
         

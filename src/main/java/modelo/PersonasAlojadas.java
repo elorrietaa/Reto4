@@ -3,7 +3,7 @@ package modelo;
 import java.sql.Date;
 
 /**
- * Este objeto se encarga de almacenar toda la informacion necesaria para registrar y logear a los clientes
+ * Este objeto se encarga de almacenar toda la informacion de las PersonasAlojadas
  */
 public class PersonasAlojadas extends Cliente{
 	

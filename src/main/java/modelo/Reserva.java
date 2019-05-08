@@ -15,6 +15,7 @@ public class Reserva {
     private Date fechaIda;
     private Date fechaVuelta;
     private float precioReserva;
+  //  private Date 
     
     /**
      * Constructor vacio del objeto Reserva

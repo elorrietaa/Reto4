@@ -11,7 +11,7 @@ import vista.JframePrincipal;
 public class PrincipalReto4 {  
 
     public static void main(String[] args) {
-    	
+   
     	//Declaración a inicialización de vista, modelo y controlador
     	JframePrincipal vista = new JframePrincipal();
 		PrincipalModelo modelo = new PrincipalModelo();

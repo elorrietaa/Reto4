@@ -351,6 +351,21 @@ public class FuncionesReserva {
 		    }
 	}
 
+	public void mostrarFechaYHoraActual() {
+		//se consulta la fehca y la hora actual en sql
+		Date fechaActual = modelo.consultas.mostrarFechaActual();
+		Date horaActual1 = modelo.consultas.mostrarHoraActual();
+		
+		//se le da formato a la hora
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		String horaActual = dateFormat.format(horaActual1);
+		
+		//prueba
+		System.out.println("*Fecha actual es:" + fechaActual);
+		System.out.println("*Hora actual es:" + horaActual);	
+	}
+
+	
 	/**
 	 * Método: guardarReservaAlojamiento = Genera la reserva de la casa/alojamiento y la guarda en modelo.reserva
 	 */

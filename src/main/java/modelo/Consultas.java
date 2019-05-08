@@ -783,7 +783,7 @@ public class Consultas {
     
     /****************************************************************************************************************
 	 * 
-	 * Metodos consultas fechas
+	 * Metodos consultas fecha y hora actual
 	 * 
 	 ****************************************************************************************************************/
     public Date mostrarFechaActual() {
@@ -821,6 +821,43 @@ public class Consultas {
 		}                 
 		
 		return fechaActual;
+	}
+    
+ public Date mostrarHoraActual() {
+		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		Date horaActual = null;
+		
+		String query = "SELECT DATE_FORMAT(NOW( ), \"%H:%i:%S\" );";
+
+		try {
+			
+			// abrimos una conexion
+			connection = conexion.conectar();
+			
+			// preparamos la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			result = stmt.executeQuery();
+			
+			// crea objetos con los resultados y los añade a un arrayList
+			while (result.next()) {
+				horaActual = result.getDate(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { 
+				connection.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}                 
+		
+		return horaActual;
 	}
     
     /****************************************************************************************************************

@@ -24,6 +24,21 @@ public class Cliente {
 	 * @param dni: Guarda el DNI del cliente
 	 * @param nombre: Guarda el nombre del cliente
 	 * @parma apellidos: Guarda los apellidos del cliente
+	
+	 */
+	public Cliente(String dni, String nombre, String apellidos) {
+		
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+	
+	}
+	/**
+	 * Constructor con parametros del objeto cliente
+	 * 
+	 * @param dni: Guarda el DNI del cliente
+	 * @param nombre: Guarda el nombre del cliente
+	 * @parma apellidos: Guarda los apellidos del cliente
 	 * @param fechaNacimiento: Guarda la fecha de nacimiento del cliente
 	 * @param sexo: Guarda el sexo del cliente, en forma de caracter
 	 * @param contrasena: Guarda la contraseña del cliente

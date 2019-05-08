@@ -294,7 +294,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					
 				//PARA MULTIPLES HABITACIONES:	
 				
-					/*				//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
+					/*//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
 					guardarDormSeleccionadosJTable();
 					guardar1DormSeleccionadosJTable();
 					
@@ -316,9 +316,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					//(1º)Se guardan los detalles de la (o las habitaciones seleecionadas)
 				    	//mostrar los detalles de la hab seleccionada en JTable de panDetallesReserva
 				    	mostrar1DormSeleccionadosJTable();
-				    	
-	//pruebas va mal				System.out.println("{{{{{{{{{{{{{{{{{{{{{Datos reserva:"+ modelo.reserva.getHabitacion().getCodHabitacion());
-				
+	
 					//(2º)Genera 1 reserva y la guarda en modelo.reserva
 					//pasar por parámetro el tiposAloj para diferenciar entre hotel, casa y apartamento ¿? no se si es lo mas correcto	
 					controlador.funcionesReserva.guardarReservaAlojamiento(modelo.tiposAloj);

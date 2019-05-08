@@ -512,7 +512,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			
 			tablaDetCasApart.setRowCount(0);
 			datos1[0] = modelo.hotel.getNombre();
-			datos1[1] = modelo.hotel.getPrecioAlojamiento() + " €/noche";
+			datos1[1] = " ";
 			datos1[2] =modelo.hotel.getDireccion() + "   Teléfono: " +  modelo.hotel.getTelefono() + "   Estrellas: " +  modelo.hotel.getEstrellas();
 			tablaDetCasApart.addRow(datos1);
 			
@@ -526,7 +526,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			
 			tablaDetCasApart.setRowCount(0);
 			datos1[0] = modelo.casa.getNombre();
-			datos1[1] = modelo.casa.getPrecioAlojamiento() + " €/noche";
+			datos1[1] =  " ";
 			datos1[2] =modelo.casa.getDireccion()+ "   Teléfono: " +  modelo.casa.getTelefono();
 			tablaDetCasApart.addRow(datos1);
  		}
@@ -537,7 +537,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
  			
  			tablaDetCasApart.setRowCount(0);
  			datos1[0] = modelo.apartamento.getNombre();
- 			datos1[1] = modelo.apartamento.getPrecioAlojamiento() + " €/noche";
+ 			datos1[1] =  " ";
  			datos1[2] =modelo.apartamento.getDireccion() + "   Piso: " +modelo.apartamento.getPiso() + "   Teléfono: " +  modelo.apartamento.getTelefono();
  			tablaDetCasApart.addRow(datos1);
  		}

@@ -17,7 +17,11 @@ public class ReservaTest {
     private Date fechaIda = new Date(31-01-2019);
     private Date fechaVuelta;
     private float precioReserva=(float) 88.29;
-    Reserva reservaPrueba = new Reserva(codReserva, cliente, alojamiento,habitacion, fechaIda, fechaVuelta, precioReserva);
+    private String detallesTarifa = "";
+    private String detallesFestivos = "";
+ /*   private Date fechaBases = new Date(09-05-2019);
+    private Date horaBases = new Date(12:41:35);
+    Reserva reservaPrueba = new Reserva(codReserva, cliente, alojamiento,habitacion, fechaIda, fechaVuelta, precioReserva, fechaBases,horaBases );
     Reserva reservaPrueba1 = new Reserva(codReserva, cliente, alojamiento, fechaIda, fechaVuelta, precioReserva);
     Reserva reserva = new Reserva(); 
     Cliente clienteNuevo = new Cliente();
@@ -123,4 +127,5 @@ public class ReservaTest {
 		reservaPrueba.setFechaVuelta(fechaVuelta);
 		assertNotEquals(0, reservaPrueba.getFechaVuelta());
 	}
+*/
 }

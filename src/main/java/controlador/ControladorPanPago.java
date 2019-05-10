@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -277,16 +279,37 @@ public class ControladorPanPago implements ActionListener{
 			vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 			vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 			
+		//Pruebas: muestra fecha y hora actual
+		controlador.funcionesReserva.mostrarFechaYHoraActual();
+		
+		//se consulta la fehca y la hora actual en sql
+				Date fechaActual = (modelo.consultas.mostrarFechaActual());
+				Date horaActual1 = modelo.consultas.mostrarHoraActual();
+				
+				//se le da formato a la hora
+				SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+				String horaActual = dateFormat.format(horaActual1);
+				
+				//meter en el modelo reserva
+				//modelo.reserva.setFechaBases((java.sql.Date) fechaActual); 	
+				//modelo.reserva.setHoraBases(horaActual); 	
+				
+				//prueba
+				System.out.println("Fecha actual" + fechaActual);
+				System.out.println("Hora actual" +horaActual);	
+		
+		
 		
 	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
 			//PARA HOTELES:
 			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
-				controlador.funcionesReserva.insertarReservaHabitacionSel();
+				//Para borrar // controlador.funcionesReserva.insertarReservaHabitacionSel();
+				modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, fechaActual,horaActual);
 				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 			//PARA CASAS Y APARTAMENTOS:
 			else if (modelo.reserva.getAlojamiento() instanceof Casa || modelo.reserva.getAlojamiento() instanceof Apartamento) {
-				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, fechaActual,horaActual);
 				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 		

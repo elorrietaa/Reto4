@@ -16,7 +16,7 @@ public class Reserva {
     private Date fechaVuelta;
     private float precioReserva;
     private Date fechaBases;
-    private Date horaBases;
+    private String horaBases;
     private String detallesTarifa;
     private String detallesFestivos;
     
@@ -32,7 +32,7 @@ public class Reserva {
      * @param alojamiento
      * @param precioReserva
      */
-    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Dormitorio habitacion, Date fechaIda, Date fechaVuelta,  float precioReserva, Date fechaBases, Date horaBases, String detallesTarifa, String detallesFestivos) {
+    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Dormitorio habitacion, Date fechaIda, Date fechaVuelta,  float precioReserva, Date fechaBases, String horaBases, String detallesTarifa, String detallesFestivos) {
 	this.codReserva = codReserva;
 	this.cliente = cliente;
 	this.alojamiento =alojamiento;
@@ -52,7 +52,7 @@ public class Reserva {
      * @param alojamiento
      * @param precioReserva
      */
-    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Date fechaIda, Date fechaVuelta,  float precioReserva, Date fechaBases, Date horaBases, String detallesTarifa, String detallesFestivos) {
+    public Reserva(int codReserva, Cliente cliente, Alojamiento alojamiento, Date fechaIda, Date fechaVuelta,  float precioReserva, Date fechaBases, String horaBases, String detallesTarifa, String detallesFestivos) {
 	this.codReserva = codReserva;
 	this.cliente = cliente;
 	this.alojamiento =alojamiento;
@@ -150,10 +150,10 @@ public class Reserva {
 	public void setFechaBases(Date fechaBases) {
 		this.fechaBases = fechaBases;
 	}
-	public Date getHoraBases() {
+	public String getHoraBases() {
 		return horaBases;
 	}
-	public void setHoraBases(Date horaBases) {
+	public void setHoraBases(String horaBases) {
 		this.horaBases = horaBases;
 	}
 	public String getDetallesTarifa() {

@@ -22,6 +22,7 @@ public class PrincipalControlador {
     private ControladorPanSelHabitacion controladorPanSelHabitacion;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
     private ContrPanDetReserCasaApart contrPanDetReserCasaApart;
+    private ControladorPanPersonasAloj controladorPanPersonasAloj;
     private ControladorPanPago controladorPanPago; 
     private ControladorPanVueltas controladorPanVueltas;
     private ControladorLogin controladorLogin;
@@ -102,6 +103,9 @@ public class PrincipalControlador {
     	this.contrPanDetReserCasaApart = new ContrPanDetReserCasaApart(vista, modelo, this);
     	this.contrPanDetReserCasaApart.addListeners();
     	
+    	// añadimos listeners a los botones del panel 'ControladorPanPersonasAloj'
+    	this.controladorPanPersonasAloj = new ControladorPanPersonasAloj(vista, modelo, conexion, this);
+    	this.controladorPanPersonasAloj.addListeners();
     	
     	// añadimos listeners a los botones del panel 'controladorPanPago'
     	this.controladorPanPago = new ControladorPanPago(vista, modelo, this);

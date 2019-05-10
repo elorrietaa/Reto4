@@ -16,16 +16,18 @@ import javax.swing.JList;
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 
 public class PanPersonasAlojadas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
-	public JButton btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion;
+	public JButton btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion, btnAnadirPersona, btnBorrar;
 	public JLabel lblIcono, lblTitulo, lblBtitulo;
 	public JTable tabPersonasAloj;
 	public JScrollPane scrollPaneIda;
-
+	public JTextField textFieldDNI, textFieldNombre, textFieldApellidos;
+	
 	public PanPersonasAlojadas() {
 		
 		// configuracion del panel
@@ -55,7 +57,7 @@ public class PanPersonasAlojadas extends JPanel {
 		// TABLA HABITACIONES
 		tabPersonasAloj = new JTable();
 		Object[][] datos = {};
-		String[] columnNames = {"Código","Habitación ", "Número de camas ", "Tipo de camas", "Precio 1 habitación 1 noche desde"};
+		String[] columnNames = {"DNI", "Nombre","Apellidos "};
 		tabPersonasAloj.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
@@ -85,13 +87,11 @@ public class PanPersonasAlojadas extends JPanel {
 		tabPersonasAloj.setFocusable(false);
 		tabPersonasAloj.setRowSelectionAllowed(true);
 		tabPersonasAloj.getColumnModel().getColumn(0).setPreferredWidth(80);
-		tabPersonasAloj.getColumnModel().getColumn(1).setPreferredWidth(250);
+		tabPersonasAloj.getColumnModel().getColumn(1).setPreferredWidth(100);
 		tabPersonasAloj.getColumnModel().getColumn(2).setPreferredWidth(100);
-		tabPersonasAloj.getColumnModel().getColumn(3).setPreferredWidth(180);
-		tabPersonasAloj.getColumnModel().getColumn(4).setPreferredWidth(180);
 		
 		scrollPaneIda = new JScrollPane(tabPersonasAloj);
-		scrollPaneIda.setBounds(45, 111, 935, 221);
+		scrollPaneIda.setBounds(45, 111, 613, 354);
 		add(scrollPaneIda);
 		//Object[][] datosVuelta = {};
 		
@@ -117,6 +117,41 @@ public class PanPersonasAlojadas extends JPanel {
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
+		
+		textFieldDNI = new JTextField();
+		textFieldDNI.setBounds(712, 141, 160, 20);
+		add(textFieldDNI);
+		textFieldDNI.setColumns(10);
+		
+		textFieldNombre = new JTextField();
+		textFieldNombre.setColumns(10);
+		textFieldNombre.setBounds(712, 193, 160, 20);
+		add(textFieldNombre);
+		
+		textFieldApellidos = new JTextField();
+		textFieldApellidos.setColumns(10);
+		textFieldApellidos.setBounds(712, 243, 160, 20);
+		add(textFieldApellidos);
+		
+		JLabel lblDNI = new JLabel("DNI:");
+		lblDNI.setBounds(712, 111, 99, 14);
+		add(lblDNI);
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(712, 172, 99, 14);
+		add(lblNombre);
+		
+		JLabel lblApellido = new JLabel("Apellidos:");
+		lblApellido.setBounds(712, 224, 99, 14);
+		add(lblApellido);
+		
+		btnAnadirPersona = new JButton("A\u00F1adir ");
+		btnAnadirPersona.setBounds(712, 291, 105, 23);
+		add(btnAnadirPersona);
+		
+		btnBorrar = new JButton("Borrar");
+		btnBorrar.setBounds(712, 330, 105, 23);
+		add(btnBorrar);
 		
 		JSpinner spinner2 = new JSpinner();
 	}

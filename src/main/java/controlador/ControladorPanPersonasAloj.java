@@ -29,10 +29,10 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	
 	Consultas consultas;
 	private Cliente personaAlojada;
-	public ArrayList<Cliente> listaPerAloj;
-	public ArrayList<Cliente> listaPerAlojActualizada;
-	public int numFilas;
-	public int filaPersonaSelec;
+	private ArrayList<Cliente> listaPerAloj = new ArrayList<Cliente>(); 
+	private ArrayList<Cliente> listaPerAlojActualizada;
+	private int numFilas;
+	private int filaPersonaSelec;
 	 
 
 	/** 
@@ -103,14 +103,12 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 * @param personasAlojada
 	 * @return
 	 */
-	public ArrayList<Cliente> guardarListaPersonasAlojadas(Cliente personasAlojada) {
-	    ArrayList<Cliente> listaPerAloj = new  ArrayList<Cliente>();
+	public void guardarListaPersonasAlojadas(Cliente personasAlojada) {
 	    
 	    //metemos el objeto que llega por parámetro en el arrayList
 	    listaPerAloj.add(personasAlojada);
 	     
 	    
-	    return listaPerAloj;
 
 	}
 	
@@ -118,7 +116,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	/**
 	 * Método mostrarListaPersonasAlojEnJTable = Se muestran los detalles de las las personas alojadas en el JTable del panel panPersonasAlojadas
 	 */
-	public void  mostrarListaPersonasAlojEnJTable(ArrayList<Cliente> listaPerAloj) {
+	public void  mostrarListaPersonasAlojEnJTable() {
 
 		DefaultTableModel tablaPersonasAlojadas = (DefaultTableModel) vista.panPersonasAlojadas.tabPersonasAloj.getModel();
 		 
@@ -187,10 +185,10 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    personaAlojada = guardarPersonaAlojada();
 			    
 			    //guarda las personas alojadas en la listaPersonasAlojadas
-			    listaPerAloj =  guardarListaPersonasAlojadas(personaAlojada);
+			    guardarListaPersonasAlojadas(personaAlojada);
 			    
 			    // muestra en el JTAble la lista con las personas alojadas introducidas por el usuario
-			    mostrarListaPersonasAlojEnJTable(listaPerAloj);
+			    mostrarListaPersonasAlojEnJTable();
 			    
 			    	break;
 			    	
@@ -202,7 +200,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    listaPerAlojActualizada = borrarPersonaSeleccionada(listaPerAloj, filaPersonaSelec);
 			    
 			    // muestra en el JTAble la listaPerAlojActualizada
-			    mostrarListaPersonasAlojEnJTable(listaPerAlojActualizada);
+			    mostrarListaPersonasAlojEnJTable();
 			   
 			    	break;  
 			    	

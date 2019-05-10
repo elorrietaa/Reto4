@@ -29,9 +29,10 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	
 	Consultas consultas;
 	private Cliente personaAlojada;
-	public ArrayList<Cliente> listaPerAloj;
-	public ArrayList<Cliente> listaPerAlojActualizada;
-	public int filaPersonaSelec;
+	private ArrayList<Cliente> listaPerAloj = new ArrayList<Cliente>(); 
+	private ArrayList<Cliente> listaPerAlojActualizada;
+	private int numFilas;
+	private int filaPersonaSelec = -1;
 	 
 
 	/** 
@@ -53,8 +54,6 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 */
 	public void addListeners() {
 		vista.panPersonasAlojadas.btnCancelar.addActionListener(this);
-		vista.panPersonasAlojadas.btnInicioSesion.addActionListener(this);
-		vista.panPersonasAlojadas.btnRegistro.addActionListener(this);
 		vista.panPersonasAlojadas.btnAtras.addActionListener(this);
 		vista.panPersonasAlojadas.btnContinuar.addActionListener(this);
 		vista.panPersonasAlojadas.btnAnadirPersona.addActionListener(this);
@@ -88,6 +87,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    personaAlojada.setDni(dniIntroducido);
 	    personaAlojada.setNombre(nombreIntroducido); 
 	    personaAlojada.setApellidos(apellidosIntroducido);
+	   
+	    //otra forma:
+	    // Cliente personaAlojada = new Cliente(dniIntroducido, nombreIntroducido, apellidosIntroducido );
 	    
 	    //pruebas
 	    System.out.println("2Persona Alojada introducida: " + personaAlojada.getDni() + personaAlojada.getNombre() + personaAlojada.getApellidos());
@@ -101,14 +103,12 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 * @param personasAlojada
 	 * @return
 	 */
-	public ArrayList<Cliente> guardarListaPersonasAlojadas(Cliente personasAlojada) {
-	    ArrayList<Cliente> listaPerAloj = new  ArrayList<Cliente>();
+	public void guardarListaPersonasAlojadas(Cliente personasAlojada) {
 	    
 	    //metemos el objeto que llega por parámetro en el arrayList
 	    listaPerAloj.add(personasAlojada);
 	     
 	    
-	    return listaPerAloj;
 
 	}
 	
@@ -116,7 +116,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	/**
 	 * Método mostrarListaPersonasAlojEnJTable = Se muestran los detalles de las las personas alojadas en el JTable del panel panPersonasAlojadas
 	 */
-	public void  mostrarListaPersonasAlojEnJTable(ArrayList<Cliente> listaPerAloj) {
+	public void  mostrarListaPersonasAlojEnJTable() {
 
 		DefaultTableModel tablaPersonasAlojadas = (DefaultTableModel) vista.panPersonasAlojadas.tabPersonasAloj.getModel();
 		 
@@ -185,10 +185,10 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    personaAlojada = guardarPersonaAlojada();
 			    
 			    //guarda las personas alojadas en la listaPersonasAlojadas
-			    listaPerAloj =  guardarListaPersonasAlojadas(personaAlojada);
+			    guardarListaPersonasAlojadas(personaAlojada);
 			    
 			    // muestra en el JTAble la lista con las personas alojadas introducidas por el usuario
-			    mostrarListaPersonasAlojEnJTable(listaPerAloj);
+			    mostrarListaPersonasAlojEnJTable();
 			    
 			    	break;
 			    	
@@ -196,15 +196,28 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    //se guarda la posición seleccionada en la tabla (la posición que se desea eliminar)
 			    filaPersonaSelec = mostrarIndicePersonaSeleccionada();
 			    
-			    //Se actualiza la listaPerAloj a listaPerAlojActualizada eliminando la fila seleccionada por el usuario
-			    listaPerAlojActualizada = borrarPersonaSeleccionada(listaPerAloj, filaPersonaSelec);
+			    //se comprueba que se haya seleccionado alguna fila
+			    if(filaPersonaSelec != -1) {
+				//Se actualiza la listaPerAloj a listaPerAlojActualizada eliminando la fila seleccionada por el usuario
+				listaPerAlojActualizada = borrarPersonaSeleccionada(listaPerAloj, filaPersonaSelec);
+				    
+				// muestra en el JTAble la listaPerAlojActualizada
+				mostrarListaPersonasAlojEnJTable();
+			    }
+			    else
+				JOptionPane.showMessageDialog(vista, "Debe seleccionar una fila. Gracias. ", null, 0);
 			    
-			    // muestra en el JTAble la listaPerAlojActualizada
-			    mostrarListaPersonasAlojEnJTable(listaPerAlojActualizada);
 			   
 			    	break;  
 			    	
 			case "Continuar":
+			    
+			    //Encriptar los datos
+			    encriptarDatos();
+			    
+			    
+			    //insertar datos en la BBDD en la tabla personas alojadas
+			    
 			    
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);
@@ -216,5 +229,26 @@ public class ControladorPanPersonasAloj implements ActionListener {
 				controlador.funcionesBotones.reset();
 				break;
 		}	
+	}
+	
+	public void encriptarDatos() {
+	    String dniEncriptado;
+	    String nombreEncriptado;
+	    String apellidosEncriptados;
+	    
+	    Cliente clienteEncriptado = new Cliente();
+	    
+	    for (int i=0; i<listaPerAlojActualizada.size(); i++) {
+		dniEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getDni());
+		nombreEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getNombre());
+		apellidosEncriptados = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getApellidos());
+		clienteEncriptado.setDni(dniEncriptado);
+		clienteEncriptado.setNombre(nombreEncriptado);
+		clienteEncriptado.setApellidos(apellidosEncriptados);
+	    }
+	    
+	    
+	    
+	    
 	}
 }

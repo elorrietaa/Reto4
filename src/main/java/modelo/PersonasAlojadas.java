@@ -15,6 +15,6 @@ public class PersonasAlojadas extends Cliente{
 	}
 	
 	public PersonasAlojadas(String dni, String nombre, String apellidos, Date fechaNacimiento) {
-		super(dni, nombre, apellidos, fechaNacimiento);
+		super(dni, nombre, apellidos);
 	}
 }

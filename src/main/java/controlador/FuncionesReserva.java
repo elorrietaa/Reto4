@@ -353,17 +353,22 @@ public class FuncionesReserva {
 
 	public void mostrarFechaYHoraActual() {
 		//se consulta la fehca y la hora actual en sql
-		Date fechaActual = modelo.consultas.mostrarFechaActual();
+		Date fechaActual = (modelo.consultas.mostrarFechaActual());
 		Date horaActual1 = modelo.consultas.mostrarHoraActual();
 		
 		//se le da formato a la hora
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 		String horaActual = dateFormat.format(horaActual1);
 		
+		//meter en el modelo reserva
+		//modelo.reserva.setFechaBases((java.sql.Date) fechaActual); 	
+		//modelo.reserva.setHoraBases(horaActual); 	
+		
 		//prueba
-		System.out.println("*Fecha actual es:" + fechaActual);
-		System.out.println("*Hora actual es:" + horaActual);	
+		System.out.println("Fecha actual" + fechaActual);
+		System.out.println("Hora actual" +horaActual);	
 	}
+	
 
 	
 	/**

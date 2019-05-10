@@ -118,5 +118,8 @@ public class FuncionesBotones {
 		this.vista.pago.btn50.setEnabled(true);
 		this.vista.pago.btn100.setEnabled(true);
 		this.vista.pago.btn200.setEnabled(true);
+		
+		this.vista.pago.btnContinuar.setVisible(false); // Desabilita el boton de continuar y lo hace invisible
+		this.vista.pago.btnContinuar.setEnabled(false);
 	}
 }

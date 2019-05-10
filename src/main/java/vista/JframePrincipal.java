@@ -17,6 +17,7 @@ public class JframePrincipal extends JFrame{
 	public PanSelHabitacion selHabitacion;
 	public PanDetallesReserva detallesReserva;
 	public PanDetallesReservaCasaApart detallesReservaCasaApart;
+	public PanPersonasAlojadas panPersonasAlojadas;
 	public PanPago pago;
 	public PanVueltas vueltas;
 	public PanLogin login;
@@ -40,6 +41,7 @@ public class JframePrincipal extends JFrame{
 		selHabitacion = new PanSelHabitacion();
 		detallesReserva = new PanDetallesReserva();
 		detallesReservaCasaApart = new PanDetallesReservaCasaApart();
+		panPersonasAlojadas = new PanPersonasAlojadas();
 		pago = new PanPago();
 		vueltas = new PanVueltas();
 		login = new PanLogin();
@@ -53,6 +55,7 @@ public class JframePrincipal extends JFrame{
 		getContentPane().add(selHabitacion);
 		getContentPane().add(detallesReserva);
 		getContentPane().add(detallesReservaCasaApart);
+		getContentPane().add(panPersonasAlojadas);
 		getContentPane().add(pago); 
 		getContentPane().add(vueltas);
 		getContentPane().add(login);

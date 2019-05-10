@@ -396,7 +396,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosTipoAloj();
 					guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
-					
 					//Pruebas: muestra fecha y hora actual
 					controlador.funcionesReserva.mostrarFechaYHoraActual();
 					
@@ -575,7 +574,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(3º) Guarda los datos seleecionados en el modelo
 		if(vista.buscarAlojamiento.tab.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-	
+			
 			//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
 			listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
 			for(int i = 0; i < listaDormitorios.size(); i++) {
@@ -590,7 +589,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			
 			//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
 			mostrarDetallesHabs();
-			
 			//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
 			if(continuar) {
 				vista.buscarAlojamiento.setVisible(false);

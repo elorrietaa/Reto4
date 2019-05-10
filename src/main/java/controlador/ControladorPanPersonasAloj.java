@@ -29,7 +29,8 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	Consultas consultas;
 	PersonasAlojadas personasAlojadas;
 	public ArrayList<PersonasAlojadas> listaPerAloj;
-	
+	public ArrayList<PersonasAlojadas> listaPerAlojActualizada;
+	public int filaPersonaSelec;
 	 
 
 	/** 
@@ -92,6 +93,11 @@ public class ControladorPanPersonasAloj implements ActionListener {
 
 	}
 	
+	/**
+	 * Método guardarListaPersonasAlojadas = guarda la persona añadida por el usuario en la lista listaPersonasAlojadas
+	 * @param personasAlojada
+	 * @return
+	 */
 	public ArrayList<PersonasAlojadas> guardarListaPersonasAlojadas(PersonasAlojadas personasAlojada) {
 	    ArrayList<PersonasAlojadas> listaPerAloj = new  ArrayList<PersonasAlojadas>();
 	    
@@ -124,6 +130,27 @@ public class ControladorPanPersonasAloj implements ActionListener {
 		} 
 	}
 	
+	/**
+	 * Método mostrarIndicePersonaSeleccionada = muestra el índice deleccionado por el usuario en la tablaPersonasAlojadas
+	 * @return
+	 */
+	public int mostrarIndicePersonaSeleccionada() {
+	    //se guarda en filaDormSel la posición seleccionada en la tabla
+	    int filaPersonaSelec = vista.panPersonasAlojadas.tabPersonasAloj.getSelectedRow();
+		
+	    return filaPersonaSelec;
+	}
+	
+	/**
+	 * Método borrarPersonaSeleccionada= recive el índice de la fila seleccionada por el usuario. Borra los datos que se encuentran en esa posición y devuelve la lista sin esa posición. 
+	 * @return
+	 */
+	public ArrayList<PersonasAlojadas> borrarPersonaSeleccionada(ArrayList<PersonasAlojadas> listaPerAloj, int filaPersonaSelec) {
+	    
+	    listaPerAloj.remove(filaPersonaSelec);
+	    
+	    return listaPerAloj;
+	}
 	
 	/**
 	 * Acciones de los distintos componentes del panel
@@ -158,7 +185,15 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    	break;
 			    	
 			case "Borrar":
+			    //se guarda la posición seleccionada en la tabla (la posición que se desea eliminar)
+			    filaPersonaSelec = mostrarIndicePersonaSeleccionada();
 			    
+			    //Se actualiza la listaPerAloj a listaPerAlojActualizada eliminando la fila seleccionada por el usuario
+			    listaPerAlojActualizada = borrarPersonaSeleccionada(listaPerAloj, filaPersonaSelec);
+			    
+			    // muestra en el JTAble la listaPerAlojActualizada
+			    mostrarListaPersonasAlojEnJTable(listaPerAlojActualizada);
+			   
 			    	break;  
 			    	
 			case "Continuar":
@@ -168,19 +203,19 @@ public class ControladorPanPersonasAloj implements ActionListener {
 				break;
 			
 			case "Inicio Sesión":
-				ControladorLogin.panelOrigen = vista.selHabitacion;
+				ControladorLogin.panelOrigen = vista.panPersonasAlojadas;
 				vista.login.setVisible(true);
-				vista.selHabitacion.setVisible(false);
+				vista.panPersonasAlojadas.setVisible(false);
 				break;
 			
 			case "Registro":
-				ControladorRegistro.panelOrigen = vista.selHabitacion;
+				ControladorRegistro.panelOrigen = vista.panPersonasAlojadas;
 				vista.registro.setVisible(true);
-				vista.selHabitacion.setVisible(false);
+				vista.panPersonasAlojadas.setVisible(false);
 				break;
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
-				vista.selHabitacion.setVisible(false);
+				vista.panPersonasAlojadas.setVisible(false);
 				controlador.funcionesBotones.reset();
 				break;
 		}	

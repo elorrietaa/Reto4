@@ -24,6 +24,7 @@ public class FuncionesBotones {
 		modelo.ciudad = null;
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
+		modelo.basesAceptadas = false;
 		
 		ControladorLogin.detalles = false;
 		ControladorRegistro.detalles = false;
@@ -54,6 +55,7 @@ public class FuncionesBotones {
 		modelo.ciudad = null;
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
+		modelo.basesAceptadas = false;
 		
 		ControladorLogin.detalles = false;
 		ControladorRegistro.detalles = false;

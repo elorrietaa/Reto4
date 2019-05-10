@@ -59,7 +59,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 					vista.detallesReservaCasaApart.setVisible(false);
 				}
 				else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20 || modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
-				vista.buscarAlojamiento.setVisible(true);
+					vista.buscarAlojamiento.setVisible(true);
 					vista.detallesReservaCasaApart.setVisible(false);
 				}
 				
@@ -98,8 +98,12 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			vista.login.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);
 		}
-		else {
+		else if(modelo.basesAceptadas == true){
 			vista.pago.setVisible(true);
+			vista.detallesReservaCasaApart.setVisible(false);
+		}
+		else {
+			vista.bases.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);
 		}
 	}

@@ -26,6 +26,7 @@ public class PrincipalControlador {
     private ControladorPanVueltas controladorPanVueltas;
     private ControladorLogin controladorLogin;
     private ControladorRegistro controladorRegistro;
+    private ControladorPanBases controladorBases;
     public FuncionesPago funcionesPago;
     public FuncionesRegistro funcionesRegistro;
     public FuncionesReserva funcionesReserva;
@@ -73,6 +74,7 @@ public class PrincipalControlador {
     	vista.vueltas.setVisible(false);
     	vista.login.setVisible(false);
     	vista.registro.setVisible(false);
+    	vista.bases.setVisible(false);
     }
     /**
 	 * Esta funcion de encarga de inicializar los botones
@@ -118,5 +120,9 @@ public class PrincipalControlador {
     	// añadimos listeners a los botones del panel de registro
     	this.controladorRegistro = new ControladorRegistro(vista, modelo, this);
     	this.controladorRegistro.addListeners();
+    	
+    	// añadimos listeners a los botones del panel de las bases legales
+    	this.controladorBases = new ControladorPanBases(vista, modelo, this);
+    	this.controladorBases.addListeners();
     }
 }

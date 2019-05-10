@@ -67,10 +67,12 @@ public class PrincipalControlador {
 	 */
     public void inicializarVista() {
     	vista.setVisible(true);
-    	vista.buscarAlojamiento.setVisible(true);
+    	vista.bienvenida.setVisible(true);
+    	vista.buscarAlojamiento.setVisible(false);
     	vista.selHabitacion.setVisible(false);
     	vista.detallesReserva.setVisible(false);
     	vista.detallesReservaCasaApart.setVisible(false);
+    	vista.panPersonasAlojadas.setVisible(false);
     	vista.pago.setVisible(false);
     	vista.vueltas.setVisible(false);
     	vista.login.setVisible(false);

@@ -103,5 +103,20 @@ public class FuncionesBotones {
 		vista.pago.totalIntro.setText(Float.toString(pago.dinero) + " €");
 		pago.falta = pago.total;
 		vista.pago.aPagar.setText(Float.toString(pago.falta) + " €");
+		
+		this.vista.pago.btn1cen.setEnabled(true); // Vuelve a habilitar los botones con el dinero
+		this.vista.pago.btn2cen.setEnabled(true);
+		this.vista.pago.btn5cen.setEnabled(true);
+		this.vista.pago.btn10cen.setEnabled(true);
+		this.vista.pago.btn20cen.setEnabled(true);
+		this.vista.pago.btn50cen.setEnabled(true);
+		this.vista.pago.btn1.setEnabled(true);
+		this.vista.pago.btn2.setEnabled(true);
+		this.vista.pago.btn5.setEnabled(true);
+		this.vista.pago.btn10.setEnabled(true);
+		this.vista.pago.btn20.setEnabled(true);
+		this.vista.pago.btn50.setEnabled(true);
+		this.vista.pago.btn100.setEnabled(true);
+		this.vista.pago.btn200.setEnabled(true);
 	}
 }

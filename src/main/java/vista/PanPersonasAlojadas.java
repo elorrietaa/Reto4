@@ -145,7 +145,7 @@ public class PanPersonasAlojadas extends JPanel {
 		lblApellido.setBounds(712, 224, 99, 14);
 		add(lblApellido);
 		
-		btnAnadirPersona = new JButton("A\u00F1adir ");
+		btnAnadirPersona = new JButton("A\u00F1adir");
 		btnAnadirPersona.setBounds(712, 291, 105, 23);
 		add(btnAnadirPersona);
 		

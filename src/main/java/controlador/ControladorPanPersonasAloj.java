@@ -31,6 +31,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	private Cliente personaAlojada;
 	public ArrayList<Cliente> listaPerAloj;
 	public ArrayList<Cliente> listaPerAlojActualizada;
+	public int numFilas;
 	public int filaPersonaSelec;
 	 
 
@@ -53,8 +54,6 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 */
 	public void addListeners() {
 		vista.panPersonasAlojadas.btnCancelar.addActionListener(this);
-		vista.panPersonasAlojadas.btnInicioSesion.addActionListener(this);
-		vista.panPersonasAlojadas.btnRegistro.addActionListener(this);
 		vista.panPersonasAlojadas.btnAtras.addActionListener(this);
 		vista.panPersonasAlojadas.btnContinuar.addActionListener(this);
 		vista.panPersonasAlojadas.btnAnadirPersona.addActionListener(this);
@@ -88,6 +87,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    personaAlojada.setDni(dniIntroducido);
 	    personaAlojada.setNombre(nombreIntroducido); 
 	    personaAlojada.setApellidos(apellidosIntroducido);
+	   
+	    //otra forma:
+	    // Cliente personaAlojada = new Cliente(dniIntroducido, nombreIntroducido, apellidosIntroducido );
 	    
 	    //pruebas
 	    System.out.println("2Persona Alojada introducida: " + personaAlojada.getDni() + personaAlojada.getNombre() + personaAlojada.getApellidos());

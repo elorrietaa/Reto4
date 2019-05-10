@@ -26,12 +26,10 @@ public class Cliente {
 	 * @parma apellidos: Guarda los apellidos del cliente
 	
 	 */
-	public Cliente(String dni, String nombre, String apellidos, Date fechaNacimiento) {
-		
+	public Cliente(String dni, String nombre, String apellidos) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.fechaNacimiento = fechaNacimiento;
 	
 	}
 	/**

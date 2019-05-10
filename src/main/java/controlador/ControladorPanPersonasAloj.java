@@ -211,16 +211,17 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			case "Continuar":
 			    
 			    //Encriptar los datos
-			    encriptarDatos();
-			    
+			   
 			    
 			    //insertar datos en la BBDD en la tabla personas alojadas
 			    
 			    
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);
+			    encriptarDatos();
 				break;
 
+			    
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
 				vista.panPersonasAlojadas.setVisible(false);

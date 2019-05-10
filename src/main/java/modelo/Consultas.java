@@ -910,13 +910,14 @@ public class Consultas {
 	 * 
 	 * @return Retorna el codigo de la reserva, generado de manera aleatoria
 	 */
+    /*
 	public void insertarReserva(ArrayList<Reserva> listaReservas, int pos, String dni, Date fechaIda, Date fechaVuelta) {
 		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
 		int codReserva = 0; 
 		
-		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida ,FechasBases, HoraBases) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			
@@ -944,14 +945,14 @@ public class Consultas {
 			result.next();
 			codReserva = result.getInt(1);*/
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-		    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
-		}
+	//	} catch (SQLException e) {
+		//	e.printStackTrace();
+		//} finally {
+		 //   try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+		//}
 		
-	}
-	
+	//} 
+	 
 	 /**
 		 * Inserta los atributos de un objeto reserva en la base de datos
 		 * 
@@ -959,13 +960,13 @@ public class Consultas {
 		 * 
 		 * @return Retorna el codigo de la reserva, generado de manera aleatoria
 		 */
-		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, String dni, Date fechaIda, Date fechaVuelta) {
+		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, String dni, Date fechaIda, Date fechaVuelta,Date fechaActual, String horaActual) {
 			
 			PreparedStatement stmt = null;
 			ResultSet result = null;
 			int codReserva = 0; 
 			
-			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			try {
 				
@@ -985,7 +986,8 @@ public class Consultas {
 				stmt.setString(5, dni);
 				stmt.setDate(6, fechaIda);
 				stmt.setDate(7, fechaVuelta);
-				
+				stmt.setDate(8, fechaActual);
+				stmt.setString(9, horaActual);
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				stmt.executeUpdate();
 				
@@ -1001,13 +1003,13 @@ public class Consultas {
 			
 		}
 
-		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta) {
+		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta, Date fechaActual,String horaActual) {
 		
 			PreparedStatement stmt = null;
 			ResultSet result = null;
 			int codReserva = 0; 
 			
-			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida) VALUES (?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	
 			try {
 				
@@ -1024,6 +1026,8 @@ public class Consultas {
 				stmt.setString(4, dni);
 				stmt.setDate(5, fechaIda);
 				stmt.setDate(6, fechaVuelta);
+				stmt.setDate(7, fechaActual);
+				stmt.setString(8, horaActual);
 				
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				stmt.executeUpdate();
@@ -1160,7 +1164,7 @@ public class Consultas {
 		    	PreparedStatement ps = null;
 		    	ResultSet rs = null;
 		    	
-		    	String query = "select DISTINCT c.Cod_promocional FROM `codigospromocionales`c,`reservas` r WHERE c.dni = r.dni AND c.Cod_alojamiento=? AND c.dni=?";
+		    	String query = "select Cod_promocional,DescuentoPorcentaje FROM `codigospromocionales` WHERE Cod_alojamiento=? AND dni=?";
 		    	
 		    	try {
 		    		// Abrimos una conexion

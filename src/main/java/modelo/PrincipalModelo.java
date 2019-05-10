@@ -41,6 +41,7 @@ public class PrincipalModelo {
 	public Date fechaVuelta;
 	public int numNoches;
 	public ArrayList<Reserva> listaReservas;
+	public boolean basesAceptadas;
 	
 	/**
 	 * Constructor de la clase PrincipalModelo
@@ -70,6 +71,9 @@ public class PrincipalModelo {
 	
 		// guardamos el precio total de la reserva
 		precioTotal = 0;
+		
+		// Hacemos que de manera inicial las bases legales no hayan sido aceptadas
+		basesAceptadas = false;
 		
 	}
 

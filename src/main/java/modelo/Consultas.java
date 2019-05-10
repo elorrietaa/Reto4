@@ -1,3 +1,4 @@
+
 package modelo;
 
 import java.sql.Connection;
@@ -1075,6 +1076,46 @@ public class Consultas {
 			return precioMinimoDeLaHabitacionDelHotel;
 			
 		}
-
-
+		 public ArrayList<CodigoPromocional> buscarCodigosPromocionalesPorDni(int codAlojamiento, String dni) {
+		    	ArrayList<CodigoPromocional> listacodigosPromocionales = new ArrayList<CodigoPromocional>(); 
+		    	CodigoPromocional codigoProm;
+		    	PreparedStatement ps = null;
+		    	ResultSet rs = null;
+		    	
+		    	String query = "select DISTINCT c.Cod_promocional FROM `codigospromocionales`c,`reservas` r WHERE c.dni = r.dni AND c.Cod_alojamiento=? AND c.dni=?";
+		    	
+		    	try {
+		    		// Abrimos una conexion
+		    		connection = conexion.conectar();
+		    				
+		    		// preparamos la consulta SQL a la base de datos
+		    		ps = connection.prepareStatement(query);
+		    		ps.setInt(1, codAlojamiento);
+		    		ps.setString(2, dni);
+		    		
+		    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+		    		rs = ps.executeQuery();
+		    
+		    		// crea objetos Linea con los resultados y los añade a un arrayList
+		    		while (rs.next()) {
+		    			codigoProm = new CodigoPromocional(); 
+		    			codigoProm.setCod_promocional(rs.getString("Cod_promocional"));
+		    			codigoProm.setCod_alojamiento(rs.getInt("Cod_alojamiento"));
+		    			codigoProm.setDni(rs.getString("Dni"));
+		    			codigoProm.setDescuento(rs.getFloat("DescuentoPorcentaje"));
+		    			
+		    			listacodigosPromocionales.add(codigoProm);
+		    		} 
+		    				
+		    		} 
+		    	catch (SQLException e) {
+		    			e.printStackTrace();
+		    		} 
+		    		finally {
+		    			// cerramos la conexion
+		    			conexion.desconectar();
+		    		}
+		    	System.out.println("SALE LA LISTA DE CODIGOS PROMOCIONALES");
+		    	return listacodigosPromocionales;
+		 }
 }

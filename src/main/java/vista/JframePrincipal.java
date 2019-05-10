@@ -22,6 +22,7 @@ public class JframePrincipal extends JFrame{
 	public PanVueltas vueltas;
 	public PanLogin login;
 	public PanRegistro registro;
+	public PanBasesLegales bases;
 
 	//constructor
 	public JframePrincipal() {
@@ -35,14 +36,9 @@ public class JframePrincipal extends JFrame{
 	}
 
 	private void inicializarPaneles() {
-		//try {
 		bienvenida = new PanBienvenida();
 		buscarAlojamiento = new PanBuscarAlojamiento();
 		selHabitacion = new PanSelHabitacion();
-		//}
-		/*catch(IOException e) {
-			e.printStackTrace();
-		}*/
 		detallesReserva = new PanDetallesReserva();
 		detallesReservaCasaApart = new PanDetallesReservaCasaApart();
 		panPersonasAlojadas = new PanPersonasAlojadas();
@@ -50,6 +46,7 @@ public class JframePrincipal extends JFrame{
 		vueltas = new PanVueltas();
 		login = new PanLogin();
 		registro = new PanRegistro();
+		bases = new PanBasesLegales();
 	}
 	
 	private void anadirPaneles() {
@@ -63,5 +60,6 @@ public class JframePrincipal extends JFrame{
 		getContentPane().add(vueltas);
 		getContentPane().add(login);
 		getContentPane().add(registro);
+		getContentPane().add(bases);
 	}
 }

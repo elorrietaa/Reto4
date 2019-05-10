@@ -109,11 +109,14 @@ public class ControladorRegistro implements ActionListener {
 							panelOrigen.setVisible(true);
 							vista.registro.setVisible(false);
 						}
-						else {
+						else if(modelo.basesAceptadas == true){
 							vista.pago.setVisible(true);
 							vista.registro.setVisible(false);
 						}
-					
+						else {
+							vista.bases.setVisible(true);
+							vista.registro.setVisible(false);
+						}
 					}
 					
 				}

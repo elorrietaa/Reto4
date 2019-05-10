@@ -87,8 +87,12 @@ public class ControladorPanDetallesReserva implements ActionListener {
 			vista.login.setVisible(true);
 			vista.detallesReserva.setVisible(false);
 		}
-		else {
+		else if(modelo.basesAceptadas == true){
 			vista.pago.setVisible(true);
+			vista.detallesReserva.setVisible(false);
+		}
+		else {
+			vista.bases.setVisible(true);
 			vista.detallesReserva.setVisible(false);
 		}
 	}

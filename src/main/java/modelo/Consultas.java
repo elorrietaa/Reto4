@@ -740,7 +740,7 @@ public class Consultas {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}                 
+		}
 		
 		return codReserva;
 	}
@@ -1038,6 +1038,84 @@ public class Consultas {
 			    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
 			}
 		
+		}
+		
+		public void insertarPersonasAlojadas(ArrayList<Cliente> lista, Reserva reserva) {
+			
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			int codPersona = 0; 
+			
+			String query = "INSERT INTO personasAlojadas (Cod_personaAlojada, Dni, Nombre, Apellidos, Cod_reserva) VALUES (?, ?, ?, ?, ?)";
+
+			try {
+				
+				// abrimos una conexion
+				connection = conexion.conectar();
+				
+				// preparamos la consulta INSERT
+				stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				for(int i = 0; i < lista.size(); i++) {
+					// añadimos los valores a insertar
+					codPersona = mostrarNumPersonasAlojadas() + 1;
+					stmt.setInt(1, codPersona);
+					stmt.setString(2, lista.get(i).getDni());
+					//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
+					//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
+					stmt.setString(3, lista.get(i).getNombre());
+					stmt.setString(4, lista.get(i).getApellidos());
+					stmt.setInt(5, reserva.getCodReserva());
+					
+					// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+					stmt.executeUpdate();
+				}
+				
+				/*result = stmt.getGeneratedKeys();
+				result.next();
+				codReserva = result.getInt(1);*/
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+			    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+			}
+		}
+		
+		public int mostrarNumPersonasAlojadas() {
+			
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			int personasAlojadas =0;
+			
+			String query = "SELECT count(*) FROM `personasalojadas`";
+
+			try {
+				
+				// abrimos una conexion
+				connection = conexion.conectar();
+				
+				// preparamos la consulta SQL a la base de datos
+				stmt = connection.prepareStatement(query);
+				
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				result = stmt.executeQuery();
+				
+				// mete en la variable el resultado obtenido en la select
+				while (result.next()) {
+					personasAlojadas = result.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try { 
+					connection.close(); 
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			return personasAlojadas;
 		}
 		
 		public float buscarPrecioMinimoDeLaHabitacionDelHotel(int codAlojSeleccionado) {

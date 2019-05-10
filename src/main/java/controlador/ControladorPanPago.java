@@ -282,10 +282,12 @@ public class ControladorPanPago implements ActionListener{
 			//PARA HOTELES:
 			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
 				controlador.funcionesReserva.insertarReservaHabitacionSel();
+				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 			//PARA CASAS Y APARTAMENTOS:
 			else if (modelo.reserva.getAlojamiento() instanceof Casa || modelo.reserva.getAlojamiento() instanceof Apartamento) {
 				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 		
 		//(3º)Genera un fichero con datos de la reserva, 1 fichero por cada reserva de cada habitación

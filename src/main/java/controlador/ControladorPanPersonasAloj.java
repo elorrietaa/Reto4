@@ -104,12 +104,8 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 * @return
 	 */
 	public void guardarListaPersonasAlojadas(Cliente personasAlojada) {
-	    
 	    //metemos el objeto que llega por parámetro en el arrayList
 	    listaPerAloj.add(personasAlojada);
-	     
-	    
-
 	}
 	
 	
@@ -187,6 +183,8 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    //guarda las personas alojadas en la listaPersonasAlojadas
 			    guardarListaPersonasAlojadas(personaAlojada);
 			    
+			    listaPerAlojActualizada = listaPerAloj;
+			    
 			    // muestra en el JTAble la lista con las personas alojadas introducidas por el usuario
 			    mostrarListaPersonasAlojEnJTable();
 			    
@@ -237,18 +235,19 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    String apellidosEncriptados;
 	    
 	    Cliente clienteEncriptado = new Cliente();
+	    ArrayList<Cliente> listaPersonasEncriptada = new ArrayList<Cliente>();
 	    
 	    for (int i=0; i<listaPerAlojActualizada.size(); i++) {
-		dniEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getDni());
-		nombreEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getNombre());
-		apellidosEncriptados = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getApellidos());
-		clienteEncriptado.setDni(dniEncriptado);
-		clienteEncriptado.setNombre(nombreEncriptado);
-		clienteEncriptado.setApellidos(apellidosEncriptados);
+			dniEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getDni());
+			nombreEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getNombre());
+			apellidosEncriptados = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getApellidos());
+			
+			clienteEncriptado.setDni(dniEncriptado);
+			clienteEncriptado.setNombre(nombreEncriptado);
+			clienteEncriptado.setApellidos(apellidosEncriptados);
+			
+			listaPersonasEncriptada.add(clienteEncriptado);
 	    }
-	    
-	    
-	    
-	    
+	    modelo.listaPersonasEncriptada = listaPersonasEncriptada;
 	}
 }

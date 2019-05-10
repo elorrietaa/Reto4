@@ -3,9 +3,11 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -73,113 +75,150 @@ public class ControladorPanPago implements ActionListener{
 	 * Metodo que contiene las acciones realizadas por cada uno de los listeners
 	 */
 	public void actionPerformed(ActionEvent e) {
-		
-		// guardamos el nombre del boton pulsado
-		String botonPulsado = ((JButton) e.getSource()).getActionCommand(); // Almacena el texto del boton para poder identificarlo posteriormente
-		float importe; // Almacena el importe que representa cada uno de los botones, para así poder realizar las operaciones con el dinero
-		
-		// comprobamos que boton se ha pulsado y ejecutamos sus acciones
-		switch (botonPulsado) {
-		
-			case "0,01 €":
-				importe = 0.01f;
-				FuncionBotonDinero(importe); // Llama a la funcion que realiza las operaciones con el importe de cada boton
-				break;
-				
-			case "0,02 €":
-				importe = 0.02f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "0,05 €":
-				importe = 0.05f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "0,1 €":
-				importe = 0.1f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "0,2 €":
-				importe = 0.2f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "0,5 €":
-				importe = 0.5f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "1 €":
-				importe = 1f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "2 €":
-				importe = 2f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "5 €":
-				importe = 5f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "10 €":
-				importe = 10f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "20 €":
-				importe = 20f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "50 €":
-				importe = 50f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "100 €":
-				importe = 100f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "200 €":
-				importe = 200f;
-				FuncionBotonDinero(importe);
-				break;
-				
-			case "Atrás":
-				vista.panPersonasAlojadas.setVisible(true);
-				vista.pago.setVisible(false);
-				controlador.funcionesBotones.resetAtrasPago(this);
-				break;
-				
-			case "Cancelar":
-				vista.bienvenida.setVisible(true);
-				vista.pago.setVisible(false);
-				controlador.funcionesBotones.resetPago(this);
-				break;
-				
-			//case "Devolver":
-				//FuncionDevolver();
-				//break;
-				
-			case "Continuar":
-				if(dinero >= total) {
-					FuncionContinuar();
-				}
-				else {
-					 JOptionPane.showMessageDialog(vista, "Lo sentimos. No puede continuar su compra hasta que abone el importe completo. Gracias. ", null, 0);
-					System.out.println("Le falta dinero por introducir");
-				}
-				
-				break;
-				
-		}
+        	Object sourceObject = e.getSource();
+        		
+        	if (sourceObject instanceof JButton) {
+        		// guardamos el nombre del boton pulsado
+        		String botonPulsado = ((JButton) e.getSource()).getActionCommand(); // Almacena el texto del boton para poder identificarlo posteriormente
+        		float importe; // Almacena el importe que representa cada uno de los botones, para así poder realizar las operaciones con el dinero
+        		
+        		// comprobamos que boton se ha pulsado y ejecutamos sus acciones
+        		switch (botonPulsado) {
+        		
+        			case "0,01 €":
+        				importe = 0.01f;
+        				FuncionBotonDinero(importe); // Llama a la funcion que realiza las operaciones con el importe de cada boton
+        				break;
+        				
+        			case "0,02 €":
+        				importe = 0.02f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "0,05 €":
+        				importe = 0.05f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "0,1 €":
+        				importe = 0.1f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "0,2 €":
+        				importe = 0.2f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "0,5 €":
+        				importe = 0.5f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "1 €":
+        				importe = 1f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "2 €":
+        				importe = 2f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "5 €":
+        				importe = 5f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "10 €":
+        				importe = 10f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "20 €":
+        				importe = 20f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "50 €":
+        				importe = 50f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "100 €":
+        				importe = 100f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "200 €":
+        				importe = 200f;
+        				FuncionBotonDinero(importe);
+        				break;
+        				
+        			case "Atrás":
+        				vista.panPersonasAlojadas.setVisible(true);
+        				vista.pago.setVisible(false);
+        				controlador.funcionesBotones.resetAtrasPago(this);
+        				break;
+        				
+        			case "Cancelar":
+        				vista.bienvenida.setVisible(true);
+        				vista.pago.setVisible(false);
+        				controlador.funcionesBotones.resetPago(this);
+        				break;
+        				
+        			case "Aplicar":
+        				
+        				break;
+        			case "No aplicar":
+        				
+        				break;
+        				
+        			//case "Devolver":
+        				//FuncionDevolver();
+        				//break;
+        				
+        			case "Continuar":
+        				if(dinero >= total) {
+        					FuncionContinuar();
+        				}
+        				else {
+        					 JOptionPane.showMessageDialog(vista, "Lo sentimos. No puede continuar su compra hasta que abone el importe completo. Gracias. ", null, 0);
+        					System.out.println("Le falta dinero por introducir");
+        				}
+        				
+        				break;
+        				
+        		}
+        	
+        	//JCOMBOBOX DE CIUDAD Y TIPO ALOJAMIENTO
+        	} else if (sourceObject instanceof JComboBox) {
+        		
+        		actualizarFiltradoJComboBox(); //se actualiza el JTable del PanBuscarHotel con los datos seleccionados por el usuario
+        		
+        	}
 	}
+	
+	
+	/**
+	 * Método actualizarFiltradoJComboBox = 
+	 */
+	private void actualizarFiltradoJComboBox() {
+	    
+	
+	   
+	    vista.pago.cBListaCupones.removeAllItems();
+	    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.reserva.getAlojamiento().getCodAlojamiento(), modelo.reserva.getCliente().getDni());	
+	 
+	    	
+			for(int i=0; i<listaCupones.size();i++) {
+			    cuponAloj=listaCupones.get(i);
+			    vista.buscarAlojamiento.cBTipoAloj.addItem(cuponAloj); 
+			}
+	    
+	}
+	
+	
 	/**
 	 * Realiza las operaciones con el importe de cada boton, tambien almacena las cantidades que se ban introduciendo, se calcula el dinero que fala por introducir o lo que sobra
 	 * 

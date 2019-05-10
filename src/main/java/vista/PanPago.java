@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.JComboBox;
 /**
  * Clase PanPago = contiene los elementos necesarios para formar el Panel en el que se muestran los detalles para realizar el pago.
  * @author alba
@@ -16,8 +17,9 @@ import java.awt.Font;
 public class PanPago extends JPanel {
 	public JTextField total, totalIntro, aPagar;
 	public JButton btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn50cen, btn20cen, btn10cen, btn5cen, btn2cen, btn1cen, btnAtras, btnContinuar;
-	public JLabel lblTotal, lblTotalIntroducido, lblAPagar;
-	public JButton btnCancelar;
+	public JLabel lblTotal, lblTotalIntroducido, lblAPagar, lbldeseaAplicarUn;
+	public JButton btnCancelar, btnAplicar, btnNoAplicar;
+	public JComboBox<Object> cBListaCupones;
 
 	/**
 	 * Create the panel.
@@ -128,6 +130,22 @@ public class PanPago extends JPanel {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(36, 664, 89, 23);
 		add(btnCancelar);
+		
+		cBListaCupones = new JComboBox<Object>();
+		cBListaCupones.setBounds(652, 88, 179, 20);
+		add(cBListaCupones);
+		
+		lbldeseaAplicarUn = new JLabel("\u00BFDesea aplicar un cup\u00F3n de descuento?");
+		lbldeseaAplicarUn.setBounds(652, 63, 221, 14);
+		add(lbldeseaAplicarUn);
+		
+		btnAplicar = new JButton("Aplicar");
+		btnAplicar.setBounds(851, 87, 89, 23);
+		add(btnAplicar);
+		
+		btnNoAplicar = new JButton("No aplicar");
+		btnNoAplicar.setBounds(851, 127, 89, 23);
+		add(btnNoAplicar);
 		btnContinuar.setVisible(false);
 	}
 }

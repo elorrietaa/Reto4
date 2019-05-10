@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 import bbdd.Conexion;
 import modelo.Ciudad;
+import modelo.Cliente;
 import modelo.Consultas;
 import modelo.PersonasAlojadas;
 import modelo.PrincipalModelo;
@@ -27,9 +28,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	public PrincipalModelo modelo; 
 	
 	Consultas consultas;
-	PersonasAlojadas personasAlojadas;
-	public ArrayList<PersonasAlojadas> listaPerAloj;
-	public ArrayList<PersonasAlojadas> listaPerAlojActualizada;
+	private Cliente personaAlojada;
+	public ArrayList<Cliente> listaPerAloj;
+	public ArrayList<Cliente> listaPerAlojActualizada;
 	public int filaPersonaSelec;
 	 
 
@@ -72,14 +73,16 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 * Método guardarPersonaAlojada = guarda los datos de la persona alojada introducidos por el usuario. 
 	 * @return
 	 */
-	public PersonasAlojadas guardarPersonaAlojada() {
-	    PersonasAlojadas personaAlojada = new PersonasAlojadas();
+	public Cliente guardarPersonaAlojada() {
+	    Cliente personaAlojada = new Cliente();
 	    
 	    //Se rellenan las variables de los datos introducidos con los datos introducidos en los JTextField
 	    String dniIntroducido = vista.panPersonasAlojadas.textFieldDNI.getText();
 	    String nombreIntroducido = vista.panPersonasAlojadas.textFieldNombre.getText();
 	    String apellidosIntroducido = vista.panPersonasAlojadas.textFieldApellidos.getText();
 	    
+	    //pruebas
+	    System.out.println("1Persona Alojada introducida: " + dniIntroducido + nombreIntroducido + apellidosIntroducido);
 	    
 	    //se introducen los datos introducidos por el usuario en el objeto personAlojada
 	    personaAlojada.setDni(dniIntroducido);
@@ -87,7 +90,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    personaAlojada.setApellidos(apellidosIntroducido);
 	    
 	    //pruebas
-	    System.out.println("Persona Alojada introducida: " + personaAlojada.getDni() + personaAlojada.getNombre() + personaAlojada.getApellidos());
+	    System.out.println("2Persona Alojada introducida: " + personaAlojada.getDni() + personaAlojada.getNombre() + personaAlojada.getApellidos());
 	    
 	    return personaAlojada;
 
@@ -98,8 +101,8 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 * @param personasAlojada
 	 * @return
 	 */
-	public ArrayList<PersonasAlojadas> guardarListaPersonasAlojadas(PersonasAlojadas personasAlojada) {
-	    ArrayList<PersonasAlojadas> listaPerAloj = new  ArrayList<PersonasAlojadas>();
+	public ArrayList<Cliente> guardarListaPersonasAlojadas(Cliente personasAlojada) {
+	    ArrayList<Cliente> listaPerAloj = new  ArrayList<Cliente>();
 	    
 	    //metemos el objeto que llega por parámetro en el arrayList
 	    listaPerAloj.add(personasAlojada);
@@ -113,7 +116,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	/**
 	 * Método mostrarListaPersonasAlojEnJTable = Se muestran los detalles de las las personas alojadas en el JTable del panel panPersonasAlojadas
 	 */
-	public void  mostrarListaPersonasAlojEnJTable(ArrayList<PersonasAlojadas> listaPerAloj) {
+	public void  mostrarListaPersonasAlojEnJTable(ArrayList<Cliente> listaPerAloj) {
 
 		DefaultTableModel tablaPersonasAlojadas = (DefaultTableModel) vista.panPersonasAlojadas.tabPersonasAloj.getModel();
 		 
@@ -145,7 +148,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	 * Método borrarPersonaSeleccionada= recive el índice de la fila seleccionada por el usuario. Borra los datos que se encuentran en esa posición y devuelve la lista sin esa posición. 
 	 * @return
 	 */
-	public ArrayList<PersonasAlojadas> borrarPersonaSeleccionada(ArrayList<PersonasAlojadas> listaPerAloj, int filaPersonaSelec) {
+	public ArrayList<Cliente> borrarPersonaSeleccionada(ArrayList<Cliente> listaPerAloj, int filaPersonaSelec) {
 	    
 	    listaPerAloj.remove(filaPersonaSelec);
 	    
@@ -179,10 +182,10 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    //validarDatosPersonasAloj();
 			    
 			    //se guardan los datos de la persona introducida por el usuario en el objeto PersonasAlojadas
-			    personasAlojadas = guardarPersonaAlojada();
+			    personaAlojada = guardarPersonaAlojada();
 			    
 			    //guarda las personas alojadas en la listaPersonasAlojadas
-			    listaPerAloj =  guardarListaPersonasAlojadas(personasAlojadas);
+			    listaPerAloj =  guardarListaPersonasAlojadas(personaAlojada);
 			    
 			    // muestra en el JTAble la lista con las personas alojadas introducidas por el usuario
 			    mostrarListaPersonasAlojEnJTable(listaPerAloj);

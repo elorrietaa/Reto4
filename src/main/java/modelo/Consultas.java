@@ -966,7 +966,7 @@ public class Consultas {
 			ResultSet result = null;
 			int codReserva = 0; 
 			
-			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, FechaBases, HoraBases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			try {
 				
@@ -986,8 +986,8 @@ public class Consultas {
 				stmt.setString(5, dni);
 				stmt.setDate(6, fechaIda);
 				stmt.setDate(7, fechaVuelta);
-				stmt.setDate(8, reserva.getFechaBases());
-				stmt.setDate(9, reserva.getHoraBases());
+				stmt.setDate(8, fechaActual);
+				stmt.setString(9, horaActual);
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				stmt.executeUpdate();
 				
@@ -1003,13 +1003,13 @@ public class Consultas {
 			
 		}
 
-		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta) {
+		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta, Date fechaActual,String horaActual) {
 		
 			PreparedStatement stmt = null;
 			ResultSet result = null;
 			int codReserva = 0; 
 			
-			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, FechaBases, HoraBases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	
 			try {
 				
@@ -1026,8 +1026,8 @@ public class Consultas {
 				stmt.setString(4, dni);
 				stmt.setDate(5, fechaIda);
 				stmt.setDate(6, fechaVuelta);
-				stmt.setDate(7, reserva.getFechaBases());
-				stmt.setDate(8, reserva.getHoraBases());
+				stmt.setDate(7, fechaActual);
+				stmt.setString(8, horaActual);
 				
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				stmt.executeUpdate();

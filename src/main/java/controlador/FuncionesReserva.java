@@ -476,12 +476,12 @@ public class FuncionesReserva {
 	/**
 	 * Método insertarReservaHabitacionSel = inserta en la base de datos la reserva de las habitacion seleccionada del hotel 
 	 */
-	public void insertarReservaHabitacionSel() {
+/*	public void insertarReservaHabitacionSel() {
 		
-		modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
+		modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta,fechaAcutual,horaActual);
 		 
 	}
-	
+*/	
 	/**
 	 * Método generarFicherosReservasHabitacionesSel = genera un fichero por cada habitación de hotel reservada.
 	 */

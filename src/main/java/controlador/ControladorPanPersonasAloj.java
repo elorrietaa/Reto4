@@ -213,16 +213,17 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			case "Continuar":
 			    
 			    //Encriptar los datos
-			    encriptarDatos();
-			    
+			   
 			    
 			    //insertar datos en la BBDD en la tabla personas alojadas
 			    
 			    
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);
+			    encriptarDatos();
 				break;
 
+			    
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
 				vista.panPersonasAlojadas.setVisible(false);
@@ -239,12 +240,12 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    Cliente clienteEncriptado = new Cliente();
 	    
 	    for (int i=0; i<listaPerAlojActualizada.size(); i++) {
-		dniEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getDni());
-		nombreEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getNombre());
-		apellidosEncriptados = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getApellidos());
-		clienteEncriptado.setDni(dniEncriptado);
-		clienteEncriptado.setNombre(nombreEncriptado);
-		clienteEncriptado.setApellidos(apellidosEncriptados);
+			dniEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getDni());
+			nombreEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getNombre());
+			apellidosEncriptados = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getApellidos());
+			clienteEncriptado.setDni(dniEncriptado);
+			clienteEncriptado.setNombre(nombreEncriptado);
+			clienteEncriptado.setApellidos(apellidosEncriptados);
 	    }
 	    
 	    

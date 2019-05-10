@@ -461,13 +461,13 @@ public class FuncionesReserva {
 	/**
 	 * Método insertarReservasHabitacionesSel = inserta en la base de datos las reservas de las habitaciones seleccionadas del hotel (inserta una reserva por cada habitación de hotel seleccionada)
 	 */
-	public void insertarReservasHabitacionesSel() {
+	/*public void insertarReservasHabitacionesSel() {
 		
 		for(int i=0; modelo.listaReservas.size()>i; i++) {
 			modelo.consultas.insertarReserva(modelo.listaReservas, i, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
 		}
 	}
-	
+	*/
 	/**
 	 * Método insertarReservaHabitacionSel = inserta en la base de datos la reserva de las habitacion seleccionada del hotel 
 	 */

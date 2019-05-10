@@ -32,7 +32,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	private ArrayList<Cliente> listaPerAloj = new ArrayList<Cliente>(); 
 	private ArrayList<Cliente> listaPerAlojActualizada;
 	private int numFilas;
-	private int filaPersonaSelec;
+	private int filaPersonaSelec = -1;
 	 
 
 	/** 
@@ -196,15 +196,28 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    //se guarda la posición seleccionada en la tabla (la posición que se desea eliminar)
 			    filaPersonaSelec = mostrarIndicePersonaSeleccionada();
 			    
-			    //Se actualiza la listaPerAloj a listaPerAlojActualizada eliminando la fila seleccionada por el usuario
-			    listaPerAlojActualizada = borrarPersonaSeleccionada(listaPerAloj, filaPersonaSelec);
+			    //se comprueba que se haya seleccionado alguna fila
+			    if(filaPersonaSelec != -1) {
+				//Se actualiza la listaPerAloj a listaPerAlojActualizada eliminando la fila seleccionada por el usuario
+				listaPerAlojActualizada = borrarPersonaSeleccionada(listaPerAloj, filaPersonaSelec);
+				    
+				// muestra en el JTAble la listaPerAlojActualizada
+				mostrarListaPersonasAlojEnJTable();
+			    }
+			    else
+				JOptionPane.showMessageDialog(vista, "Debe seleccionar una fila. Gracias. ", null, 0);
 			    
-			    // muestra en el JTAble la listaPerAlojActualizada
-			    mostrarListaPersonasAlojEnJTable();
 			   
 			    	break;  
 			    	
 			case "Continuar":
+			    
+			    //Encriptar los datos
+			    encriptarDatos();
+			    
+			    
+			    //insertar datos en la BBDD en la tabla personas alojadas
+			    
 			    
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);
@@ -216,5 +229,26 @@ public class ControladorPanPersonasAloj implements ActionListener {
 				controlador.funcionesBotones.reset();
 				break;
 		}	
+	}
+	
+	public void encriptarDatos() {
+	    String dniEncriptado;
+	    String nombreEncriptado;
+	    String apellidosEncriptados;
+	    
+	    Cliente clienteEncriptado = new Cliente();
+	    
+	    for (int i=0; i<listaPerAlojActualizada.size(); i++) {
+		dniEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getDni());
+		nombreEncriptado = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getNombre());
+		apellidosEncriptados = controlador.funcionesRegistro.encriptacion(listaPerAlojActualizada.get(i).getApellidos());
+		clienteEncriptado.setDni(dniEncriptado);
+		clienteEncriptado.setNombre(nombreEncriptado);
+		clienteEncriptado.setApellidos(apellidosEncriptados);
+	    }
+	    
+	    
+	    
+	    
 	}
 }

@@ -396,6 +396,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosTipoAloj();
 					guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
+					
 					//Pruebas: muestra fecha y hora actual
 					controlador.funcionesReserva.mostrarFechaYHoraActual();
 					

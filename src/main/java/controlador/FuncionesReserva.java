@@ -360,6 +360,8 @@ public class FuncionesReserva {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 		String horaActual = dateFormat.format(horaActual1);
 		
+		//meter en el modelo reserva
+		
 		//prueba
 		System.out.println("*Fecha actual es:" + fechaActual);
 		System.out.println("*Hora actual es:" + horaActual);	

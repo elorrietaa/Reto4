@@ -68,6 +68,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			case "Continuar":
 				funcionContinuar();
 				break;
+				
 			case "Inicio Sesión":
 				ControladorLogin.panelOrigen = vista.detallesReservaCasaApart;
 				vista.login.setVisible(true);
@@ -99,7 +100,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			vista.detallesReservaCasaApart.setVisible(false);
 		}
 		else if(modelo.basesAceptadas == true){
-			vista.pago.setVisible(true);
+			vista.panPersonasAlojadas.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);
 		}
 		else {

@@ -164,9 +164,14 @@ public class ControladorPanPersonasAloj implements ActionListener {
 		switch (botonPulsado) {
 		
 			case "Atrás":
-			    
-				vista.detallesReservaCasaApart.setVisible(true);
-				vista.panPersonasAlojadas.setVisible(false);
+				if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+					vista.detallesReservaCasaApart.setVisible(true);
+					vista.panPersonasAlojadas.setVisible(false);
+			    }
+			    else {
+					vista.detallesReservaCasaApart.setVisible(true);
+					vista.panPersonasAlojadas.setVisible(false);
+			    }
 				break;
 				
 			case "Añadir":
@@ -201,18 +206,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);
 				break;
-			
-			case "Inicio Sesión":
-				ControladorLogin.panelOrigen = vista.panPersonasAlojadas;
-				vista.login.setVisible(true);
-				vista.panPersonasAlojadas.setVisible(false);
-				break;
-			
-			case "Registro":
-				ControladorRegistro.panelOrigen = vista.panPersonasAlojadas;
-				vista.registro.setVisible(true);
-				vista.panPersonasAlojadas.setVisible(false);
-				break;
+
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
 				vista.panPersonasAlojadas.setVisible(false);

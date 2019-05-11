@@ -37,11 +37,18 @@ public class FuncionesCodigosPromo {
 		if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
 			 System.out.println("PROBANDO QUE PASE COD ALOJ Y DNI     " + modelo.hotel.getCodAlojamiento() + "-"+modelo.cliente.getDni());
 			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.hotel.getCodAlojamiento(), modelo.cliente.getDni());	
+			    System.out.println("listaCupones.size() == " + listaCupones.size());
+			    	if(listaCupones.size() == 0) {
+			    		vista.pago.cBListaCupones.addItem("No tiene usted cupones");
+			    	}
 			 
-					for(int i=0; i<listaCupones.size();i++) {
+			    	else {
+			    		for(int i=0; i<listaCupones.size();i++) {
 					    cuponAloj=listaCupones.get(i);
 					    vista.pago.cBListaCupones.addItem(cuponAloj);
-					}
+			    		}
+			    	}
+					
 		}
 		//PARA CASAS:
 		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {

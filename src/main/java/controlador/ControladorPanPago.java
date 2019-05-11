@@ -33,7 +33,7 @@ public class ControladorPanPago implements ActionListener{
 	public String sobra = ""; // Cantidad minima de monedas que tiene que devolver
 	public float[] monedas; // Almacena el valor de las monedas y billetes que se van introducioendo para luego poder retarlos.
 	
-	
+	private CodigoPromocional cuponAloj;
 	
 	/**
 	 * Constructor del controlador de pago
@@ -172,7 +172,20 @@ public class ControladorPanPago implements ActionListener{
         				break;
         				
         			case "Aplicar":
-        				
+        				// (1º) guarda el cógido promocional seleccionado
+        				 CodigoPromocional cuponAlojSeleccionado = (CodigoPromocional) vista.pago.cBListaCupones.getSelectedItem();
+        				 
+        				 //Si ha seleccionado algún código promocional, se guarda el descuento que se va a aplicar
+        				 if(cuponAlojSeleccionado != null) {
+        					 float descuentoAAplicar = cuponAlojSeleccionado.getDescuento();
+        					 System.out.println("El descuento que se va a aplicar es: " + descuentoAAplicar);
+        				 }
+        				 else {
+        					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el descuento que desee aplicar. Gracias. ", null, 0);
+        				 }
+        				 
+        				 //Se aplica el descuento al precio final
+        				 
         				break;
         			case "No aplicar":
         				
@@ -208,7 +221,9 @@ public class ControladorPanPago implements ActionListener{
 	 * Método actualizarFiltradoJComboBox = 
 	 */
 	private void actualizarFiltradoJComboBox() {
-	  
+		
+				
+						
 	}
 	
 	

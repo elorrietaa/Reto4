@@ -50,7 +50,7 @@ public class CodigoPromocional {
 	
 	
 	 public String toString() {
-	    	return this.cod_promocional + " - " + (this.descuento*100) + "%";
+	    	return "Cupón: " + this.cod_promocional + " - Descuento:" + (String.format("%.0f", (this.descuento*100))) + "%";
 	    }
 	
 }

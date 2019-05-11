@@ -73,7 +73,7 @@ public class ControladorPanPago implements ActionListener{
 		this.vista.pago.btnCancelar.addActionListener(this);
 		//this.vista.pago.btnCancelarPago.addActionListener(this);
 		this.vista.pago.btnContinuar.addActionListener(this);
-		this.vista.pago.cBListaCupones.addActionListener(this);
+		
 	}
 	/**
 	 * Metodo que contiene las acciones realizadas por cada uno de los listeners
@@ -171,25 +171,7 @@ public class ControladorPanPago implements ActionListener{
         				controlador.funcionesBotones.resetPago(this);
         				break;
         				
-        			case "Aplicar":
-        				// (1º) guarda el cógido promocional seleccionado
-        				 CodigoPromocional cuponAlojSeleccionado = (CodigoPromocional) vista.pago.cBListaCupones.getSelectedItem();
-        				 
-        				 //Si ha seleccionado algún código promocional, se guarda el descuento que se va a aplicar
-        				 if(cuponAlojSeleccionado != null) {
-        					 float descuentoAAplicar = cuponAlojSeleccionado.getDescuento();
-        					 System.out.println("El descuento que se va a aplicar es: " + descuentoAAplicar);
-        				 }
-        				 else {
-        					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el descuento que desee aplicar. Gracias. ", null, 0);
-        				 }
-        				 
-        				 //Se aplica el descuento al precio final
-        				 
-        				break;
-        			case "No aplicar":
-        				
-        				break;
+        		
         				
         			//case "Devolver":
         				//FuncionDevolver();

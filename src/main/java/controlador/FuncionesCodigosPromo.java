@@ -23,14 +23,14 @@ public class FuncionesCodigosPromo {
 	 * Método mostrarCuponesDescuento = muestra los cupones descuento (en función del clienteintroducido y del alojamiento seleccionado en el ComboBox del panel pago
 	 */
 	public void mostrarCuponesDescuento() {
-		vista.pago.cBListaCupones.removeAllItems();
+		vista.cupon.cBListaCupones.removeAllItems();
 	/*	//No funciona así, me dice nullPointerException
 		 System.out.println("PROBANDO QUE PASE COD ALOJ Y DNI" + modelo.alojamiento.getCodAlojamiento() + modelo.cliente.getDni());
 		    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.alojamiento.getCodAlojamiento(), modelo.cliente.getDni());	
 		 
 				for(int i=0; i<listaCupones.size();i++) {
 				    cuponAloj=listaCupones.get(i);
-				    vista.pago.cBListaCupones.addItem(cuponAloj);
+				    vista.cupon.cBListaCupones.addItem(cuponAloj);
 				}
 	*/	
 		//para HOTELES
@@ -39,13 +39,13 @@ public class FuncionesCodigosPromo {
 			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.hotel.getCodAlojamiento(), modelo.cliente.getDni());	
 			    System.out.println("listaCupones.size() == " + listaCupones.size());
 			    	if(listaCupones.size() == 0) {
-			    		vista.pago.cBListaCupones.addItem("No tiene usted cupones");
+			    		vista.cupon.cBListaCupones.addItem("No tiene usted cupones");
 			    	}
 			 
 			    	else {
 			    		for(int i=0; i<listaCupones.size();i++) {
 					    cuponAloj=listaCupones.get(i);
-					    vista.pago.cBListaCupones.addItem(cuponAloj);
+					    vista.cupon.cBListaCupones.addItem(cuponAloj);
 			    		}
 			    	}
 					
@@ -57,7 +57,7 @@ public class FuncionesCodigosPromo {
 			 
 					for(int i=0; i<listaCupones.size();i++) {
 					    cuponAloj=listaCupones.get(i);
-					    vista.pago.cBListaCupones.addItem(cuponAloj);
+					    vista.cupon.cBListaCupones.addItem(cuponAloj);
 					}
 		}
 		//PARA APARTAMENTOS:
@@ -67,7 +67,7 @@ public class FuncionesCodigosPromo {
 			 
 					for(int i=0; i<listaCupones.size();i++) {
 					    cuponAloj=listaCupones.get(i);
-					    vista.pago.cBListaCupones.addItem(cuponAloj);
+					    vista.cupon.cBListaCupones.addItem(cuponAloj);
 					}
 		}
 	   

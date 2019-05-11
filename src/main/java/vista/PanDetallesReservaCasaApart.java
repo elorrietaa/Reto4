@@ -36,6 +36,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
 	public JTable table, tab, tab2;
 	public JScrollPane scrollPaneIda, scrollPaneCasaApart, scrollPaneIda2;
+	
 
 
 
@@ -70,13 +71,13 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		lblPrecio = new JLabel("Precio TOTAL:");
 		lblPrecio.setFont(new Font("Monospaced", Font.BOLD, 22));
-		lblPrecio.setBounds(609, 613, 182, 34);
+		lblPrecio.setBounds(613, 600, 182, 34);
 		add(lblPrecio);
 		
 		tFPrecioReserva = new JTextField();
 		tFPrecioReserva.setFont(new Font("Monospaced", Font.BOLD, 25));
 		tFPrecioReserva.setEditable(false);
-		tFPrecioReserva.setBounds(796, 606, 154, 34);
+		tFPrecioReserva.setBounds(796, 599, 154, 34);
 		add(tFPrecioReserva);
 		tFPrecioReserva.setColumns(10);
 		

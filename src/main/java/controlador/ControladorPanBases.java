@@ -36,12 +36,12 @@ public class ControladorPanBases implements ActionListener{
 		
 			case "Aceptar":
 				if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
-					vista.detallesReservaCasaApart.setVisible(true);
+					vista.panPersonasAlojadas.setVisible(true);
 					vista.bases.setVisible(false);
 					modelo.basesAceptadas = true;
 				}
 				else {
-					vista.detallesReservaCasaApart.setVisible(true);
+					vista.panPersonasAlojadas.setVisible(true);
 					vista.bases.setVisible(false);
 					modelo.basesAceptadas = true;
 				}

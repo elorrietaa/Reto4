@@ -28,6 +28,8 @@ public class PrincipalControlador {
     private ControladorLogin controladorLogin;
     private ControladorRegistro controladorRegistro;
     private ControladorPanBases controladorBases;
+    private ControladorPanCuponDesc controladorCupon;
+    
     public FuncionesPago funcionesPago;
     public FuncionesRegistro funcionesRegistro;
     public FuncionesReserva funcionesReserva;
@@ -78,6 +80,7 @@ public class PrincipalControlador {
     	vista.login.setVisible(false);
     	vista.registro.setVisible(false);
     	vista.bases.setVisible(false);
+    	vista.cupon.setVisible(false);
     }
     /**
 	 * Esta funcion de encarga de inicializar los botones
@@ -130,5 +133,9 @@ public class PrincipalControlador {
     	// añadimos listeners a los botones del panel de las bases legales
     	this.controladorBases = new ControladorPanBases(vista, modelo, this);
     	this.controladorBases.addListeners();
+    	
+    	// añadimos listeners a los botones del panel de los cupones descuento
+    	this.controladorCupon = new ControladorPanCuponDesc(vista, modelo, this);
+    	this.controladorCupon.addListeners();
     }
 }

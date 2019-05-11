@@ -93,13 +93,13 @@ public class ControladorLogin implements ActionListener {
 						panelOrigen.setVisible(true);
 						vista.login.setVisible(false);
 					}
-					else if(modelo.basesAceptadas == true){
+				//	else if(modelo.basesAceptadas == true){
 						// mostrar la pantalla adecuada
-						vista.pago.setVisible(true);
-						vista.login.setVisible(false);
-					}
+					//	vista.pago.setVisible(true);
+					//	vista.login.setVisible(false);
+				//	}
 					else {
-						vista.bases.setVisible(true);
+						vista.cupon.setVisible(true);
 						vista.login.setVisible(false);
 					}
 					

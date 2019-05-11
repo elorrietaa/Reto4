@@ -215,8 +215,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    
 			    //insertar datos en la BBDD en la tabla personas alojadas
 			    
-			    //se carga el comboBox con los cuponesPromocionales en el panel pago
-			    controlador.funcionesCodigosPromo.mostrarCuponesDescuento();
+			    
 			    
 			    //Se oculta este panel y se muestra el siguiente
 			    vista.panPersonasAlojadas.setVisible(false);

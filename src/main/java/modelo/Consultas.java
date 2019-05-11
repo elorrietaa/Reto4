@@ -960,7 +960,7 @@ public class Consultas {
 		 * 
 		 * @return Retorna el codigo de la reserva, generado de manera aleatoria
 		 */
-		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, String dni, Date fechaIda, Date fechaVuelta,Date fechaActual, String horaActual) {
+		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, String dni, Date fechaIda, Date fechaVuelta,Date fechaActual, String horaActual, float precioTotal) {
 			
 			PreparedStatement stmt = null;
 			ResultSet result = null;
@@ -982,7 +982,7 @@ public class Consultas {
 				//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
 				//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
 				stmt.setInt(3, habitacion.getCodHabitacion());
-				stmt.setFloat(4, reserva.getPrecioReserva());
+				stmt.setFloat(4, precioTotal);
 				stmt.setString(5, dni);
 				stmt.setDate(6, fechaIda);
 				stmt.setDate(7, fechaVuelta);
@@ -1003,7 +1003,7 @@ public class Consultas {
 			
 		}
 
-		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta, Date fechaActual,String horaActual) {
+		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta, Date fechaActual,String horaActual, float precioTotal) {
 		
 			PreparedStatement stmt = null;
 			ResultSet result = null;
@@ -1022,7 +1022,7 @@ public class Consultas {
 				// añadimos los valores a insertar
 				stmt.setInt(1, reserva.getCodReserva());
 				stmt.setInt(2,reserva.getAlojamiento().getCodAlojamiento());
-				stmt.setFloat(3, reserva.getPrecioReserva());
+				stmt.setFloat(3, precioTotal);
 				stmt.setString(4, dni);
 				stmt.setDate(5, fechaIda);
 				stmt.setDate(6, fechaVuelta);

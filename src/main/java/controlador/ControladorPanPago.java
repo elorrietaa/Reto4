@@ -319,12 +319,12 @@ public class ControladorPanPago implements ActionListener{
 			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
 				//Para borrar // controlador.funcionesReserva.insertarReservaHabitacionSel();
 
-				modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date)fechaActual,horaActual);
+				modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date)fechaActual,horaActual, modelo.precioTotal);
 				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 			//PARA CASAS Y APARTAMENTOS:
 			else if (modelo.reserva.getAlojamiento() instanceof Casa || modelo.reserva.getAlojamiento() instanceof Apartamento) {
-				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date) fechaActual,horaActual);
+				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date) fechaActual,horaActual, modelo.precioTotal);
 				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 		

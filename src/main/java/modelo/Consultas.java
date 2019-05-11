@@ -1164,9 +1164,9 @@ public class Consultas {
 		    	PreparedStatement ps = null;
 		    	ResultSet rs = null;
 		    	
-		    	//String query = "select Cod_promocional, DescuentoPorcentaje FROM `codigospromocionales` WHERE dni=? AND codigospromocionales.Cod_alojamiento=?";
+		    	String query = "select Cod_promocional, DescuentoPorcentaje FROM `codigospromocionales` WHERE dni=? AND codigospromocionales.Cod_alojamiento=?";
 
-		    	String query = "select Cod_promocional, DescuentoPorcentaje FROM `codigospromocionales` ";
+		    	//String query = "select Cod_promocional, DescuentoPorcentaje FROM `codigospromocionales` ";
 		    			
 		    	
 		    	try {
@@ -1175,8 +1175,8 @@ public class Consultas {
 		    				
 		    		// preparamos la consulta SQL a la base de datos
 		    		ps = connection.prepareStatement(query);
-		    	//	ps.setString(1, dni);
-		    	//	ps.setInt(2, codAlojamiento);
+		    		ps.setString(1, dni);
+		    		ps.setInt(2, codAlojamiento);
 		    		
 		    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 		    		rs = ps.executeQuery();

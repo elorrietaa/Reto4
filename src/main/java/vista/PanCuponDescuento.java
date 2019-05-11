@@ -36,31 +36,31 @@ public class PanCuponDescuento extends JPanel {
 		add(btnAtras);
 		
 		JLabel label = new JLabel("\u00BFDesea aplicar un cup\u00F3n de descuento?");
-		label.setBounds(179, 248, 316, 14);
+		label.setBounds(121, 249, 316, 14);
 		add(label);
 		
 		cBListaCupones = new JComboBox<Object>();
-		cBListaCupones.setBounds(179, 304, 316, 20);
+		cBListaCupones.setBounds(121, 305, 316, 20);
 		add(cBListaCupones);
 		
 		tFPrecioSinDesc = new JTextField();
 		tFPrecioSinDesc.setEditable(false);
 		tFPrecioSinDesc.setColumns(10);
-		tFPrecioSinDesc.setBounds(619, 301, 86, 20);
+		tFPrecioSinDesc.setBounds(561, 302, 86, 20);
 		add(tFPrecioSinDesc);
 		
 		JLabel label_1 = new JLabel("Precio sin aplicar descuento:");
-		label_1.setBounds(619, 265, 146, 14);
+		label_1.setBounds(561, 266, 177, 14);
 		add(label_1);
 		
 		tFPrecioConDesc = new JTextField();
 		tFPrecioConDesc.setEditable(false);
 		tFPrecioConDesc.setColumns(10);
-		tFPrecioConDesc.setBounds(792, 302, 86, 20);
+		tFPrecioConDesc.setBounds(764, 302, 86, 20);
 		add(tFPrecioConDesc);
 		
 		JLabel label_2 = new JLabel("Precio aplicando descuento:");
-		label_2.setBounds(792, 266, 146, 14);
+		label_2.setBounds(764, 266, 192, 14);
 		add(label_2);
 		
 		JLabel lblSusDescuentos = new JLabel("Todos sus descuentos:");
@@ -72,7 +72,7 @@ public class PanCuponDescuento extends JPanel {
 		add(btnNOAplicar);
 		
 		lblDescuentosAplicablesPara = new JLabel("Descuentos aplicables para el alojamiento que ha seleccionado:");
-		lblDescuentosAplicablesPara.setBounds(179, 279, 316, 14);
+		lblDescuentosAplicablesPara.setBounds(121, 280, 379, 14);
 		add(lblDescuentosAplicablesPara);
 	}
 }

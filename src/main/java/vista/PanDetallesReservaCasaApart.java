@@ -122,8 +122,8 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		table.setFocusable(false);
 		table.setRowSelectionAllowed(true);
 		table.getColumnModel().getColumn(0).setPreferredWidth(10);
-		table.getColumnModel().getColumn(1).setPreferredWidth(10);
-		table.getColumnModel().getColumn(2).setPreferredWidth(250);
+		table.getColumnModel().getColumn(1).setPreferredWidth(5);
+		table.getColumnModel().getColumn(2).setPreferredWidth(260);
 				
 		scrollPaneCasaApart = new JScrollPane(table);
 		scrollPaneCasaApart.setBounds(121,78,839,94);

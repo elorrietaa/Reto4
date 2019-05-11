@@ -27,6 +27,7 @@ public class PanPersonasAlojadas extends JPanel {
 	public JTable tabPersonasAloj;
 	public JScrollPane scrollPaneIda;
 	public JTextField textFieldDNI, textFieldNombre, textFieldApellidos;
+	private JLabel label;
 	
 	public PanPersonasAlojadas() {
 		
@@ -119,18 +120,18 @@ public class PanPersonasAlojadas extends JPanel {
 		add(btnRegistro);
 		
 		textFieldDNI = new JTextField();
-		textFieldDNI.setBounds(712, 141, 160, 20);
+		textFieldDNI.setBounds(712, 155, 160, 20);
 		add(textFieldDNI);
 		textFieldDNI.setColumns(10);
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setColumns(10);
-		textFieldNombre.setBounds(712, 193, 160, 20);
+		textFieldNombre.setBounds(712, 207, 160, 20);
 		add(textFieldNombre);
 		
 		textFieldApellidos = new JTextField();
 		textFieldApellidos.setColumns(10);
-		textFieldApellidos.setBounds(712, 243, 160, 20);
+		textFieldApellidos.setBounds(712, 257, 160, 20);
 		add(textFieldApellidos);
 		
 		JLabel lblDNI = new JLabel("DNI:");
@@ -138,20 +139,25 @@ public class PanPersonasAlojadas extends JPanel {
 		add(lblDNI);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(712, 172, 99, 14);
+		lblNombre.setBounds(712, 186, 99, 14);
 		add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellidos:");
-		lblApellido.setBounds(712, 224, 99, 14);
+		lblApellido.setBounds(712, 238, 99, 14);
 		add(lblApellido);
 		
 		btnAnadirPersona = new JButton("A\u00F1adir");
-		btnAnadirPersona.setBounds(712, 291, 105, 23);
+		btnAnadirPersona.setBounds(712, 305, 105, 23);
 		add(btnAnadirPersona);
 		
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(712, 330, 105, 23);
+		btnBorrar.setBounds(712, 344, 105, 23);
 		add(btnBorrar);
+		
+		label = new JLabel("Ejemplo formato v\u00E1lido: 12345678A");
+		label.setForeground(Color.GRAY);
+		label.setBounds(712, 129, 215, 14);
+		add(label);
 		
 		JSpinner spinner2 = new JSpinner();
 	}

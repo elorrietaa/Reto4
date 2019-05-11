@@ -21,6 +21,7 @@ public class PanLogin extends JPanel {
 	public JTextField userField;
 	public JPasswordField password;
 	public JButton btnLogin,btnRegistro,btnCancelar, btnAtras;
+	private JLabel lblEjemploa;
 
 	/**
 	 * Create the panel.
@@ -40,7 +41,7 @@ public class PanLogin extends JPanel {
 		// label usuario
 		lblUsuario = new JLabel("Usuario (DNI)");
 		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
-		lblUsuario.setBounds(397, 283, 215, 25);
+		lblUsuario.setBounds(397, 264, 89, 25);
 		add(lblUsuario);
 		
 		// campo usuario
@@ -73,6 +74,11 @@ public class PanLogin extends JPanel {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.setBounds(178, 622, 65, 30);
 		add(btnAtras);
+		
+		lblEjemploa = new JLabel("Ejemplo formato v\u00E1lido: 12345678A");
+		lblEjemploa.setForeground(Color.GRAY);
+		lblEjemploa.setBounds(397, 289, 215, 14);
+		add(lblEjemploa);
 		
 	}
 }

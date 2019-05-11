@@ -47,7 +47,7 @@ public class FuncionesReserva {
 	 * 
 	 * @return Retorna el precio de la reserva 
 	 */
-	public float calcularPrecioReservaCasApart(TipoAlojamiento tiposAloj) {
+	public float calcularPrecioTotalFinalReserva(TipoAlojamiento tiposAloj) {
 		float precioReserva=0;
 		
 		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA (y festivos)
@@ -60,6 +60,8 @@ public class FuncionesReserva {
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.apartamento.getPrecioAlojamiento());
 		}
+		
+		//Aplicamos cupon descuento
 		
 		//(2º)Redondeamos a 2 decimales
 		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
@@ -401,7 +403,7 @@ public class FuncionesReserva {
 		
 		modelo.reserva.setFechaIda(modelo.fechaIda);
 		modelo.reserva.setFechaVuelta(modelo.fechaVuelta);
-		modelo.reserva.setPrecioReserva(calcularPrecioReservaCasApart(tiposAloj));
+		modelo.reserva.setPrecioReserva(calcularPrecioTotalFinalReserva(tiposAloj));
 			    
 		//probamos que la reserva se haya creado y rellenado correctamente
 		 System.out.println("------->La reserva de la casa o apartamento es: " +"Código reserva: " + modelo.reserva.getCodReserva() + "cod alojamiento reservado " +  modelo.reserva.getAlojamiento().getCodAlojamiento() + "precio reserva alojamiento: "+  modelo.reserva.getPrecioReserva());
@@ -422,7 +424,7 @@ public class FuncionesReserva {
 		vista.detallesReservaCasaApart.textFieldNumNoches.setText(Integer.toString(modelo.numNoches));
 		
 		//muestra el PRECIO TOTAL DE LA RESERVA: 
-		calcularPrecioReservaCasApart(tiposAloj);
+		calcularPrecioTotalFinalReserva(tiposAloj);
 		
 		//SE MUESTRA EL PRECIO TOTAL:
 		vista.detallesReservaCasaApart.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");

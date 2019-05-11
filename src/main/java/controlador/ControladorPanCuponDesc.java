@@ -8,8 +8,10 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import modelo.Ciudad;
 import modelo.CodigoPromocional;
 import modelo.PrincipalModelo;
+import modelo.TipoAlojamiento;
 import vista.JframePrincipal;
 
 public class ControladorPanCuponDesc implements ActionListener{
@@ -17,6 +19,8 @@ public class ControladorPanCuponDesc implements ActionListener{
 	private JframePrincipal vista;
 	private PrincipalModelo modelo;
 	private PrincipalControlador controlador;
+	
+	private CodigoPromocional cuponAloj;
 	
 	public ControladorPanCuponDesc(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.vista = vista;
@@ -80,7 +84,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 			//JCOMBOBOX DE CIUDAD Y TIPO ALOJAMIENTO
 		} else if (sourceObject instanceof JComboBox) {
 			
-			actualizarFiltradoJComboBox(); //se actualiza el JTable del PanBuscarHotel con los datos seleccionados por el usuario
+			actualizarJComboBox(); //se actualiza el JTable del PanBuscarHotel con los datos seleccionados por el usuario
 			
 		}
 	}
@@ -89,8 +93,19 @@ public class ControladorPanCuponDesc implements ActionListener{
 	/**
 	* Método actualizarFiltradoJComboBox = 
 	*/
-	private void actualizarFiltradoJComboBox() {
-	
+	private void actualizarJComboBox() {
+		// (1º) guarda la ciudad seleccionada
+			this.cuponAloj = (CodigoPromocional) vista.cupon.cBListaCupones.getSelectedItem();
+					if (cuponAloj != null) {
+						float descuentoSelec = cuponAloj.getDescuento();
+						System.out.println("EL descuento seleccionado es: " + descuentoSelec);
+						//se pasa el descuentoSeleccionado  al modelo
+						modelo.cuponSeleccionado = this.cuponAloj;		
+						System.out.println("EL descuento seleccionado es: " + modelo.cuponSeleccionado.getCod_promocional() + " del alojamiento " + modelo.cuponSeleccionado.getCod_alojamiento());
+					
+						//se actualiza el precioFinal con descuento aplicado:
+					
+					}
 			
 					
 	}

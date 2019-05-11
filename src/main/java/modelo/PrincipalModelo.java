@@ -28,6 +28,7 @@ public class PrincipalModelo {
 	public Reserva reserva;
 	public Cliente cliente;
 	public FechasTarifas fechasTarifas;
+	public CodigoPromocional cuponSeleccionado;
 
 	//public PersonaAlojada personaAlojada;
 	

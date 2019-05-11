@@ -44,6 +44,9 @@ public class FuncionesBotones {
 		vista.buscarAlojamiento.cBTipoAloj.removeAllItems();
 		
 		controlador.funcionesRegistro.mostrarBotones();
+		
+		vista.cupon.tFPrecioSinDesc.setText(""); 
+		vista.cupon.tFPrecioConDesc.setText("");
 	}
 	
 	public void resetPago(ControladorPanPago pago) {

@@ -72,5 +72,20 @@ public class FuncionesCodigosPromo {
 		}
 	   
 	}
+	
+	/**
+	 * Método calcularPrecioDescuentoaplicado = se calcula el precio del alojamiento aplicando el descuento del cupón seleccionado por el usuario.
+	 * @return
+	 */
+	public float calcularPrecioDescuentoaplicado() {
+		//calculamos el precio de la reserva aplicando el descuento seleccionado por el usuario.
+		float precioConDesc = (modelo.precioTotal - (modelo.precioTotal*modelo.cuponSeleccionado.getDescuento()));
+		
+		//Redondeamos a 2 decimales
+		precioConDesc = Math.round(precioConDesc*100); //redondear a dos decimales
+		precioConDesc = precioConDesc/100;//redondear a dos decimales
+		
+		return precioConDesc;
+	}
 
 }

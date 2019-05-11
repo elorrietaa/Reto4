@@ -288,6 +288,7 @@ public class ControladorPanPago implements ActionListener{
 		
 		//(1º) muestra detalles de las vueltas
 			sobra = modelo.funcionesPago.sobra(total, dinero); // Calcula el dinero que sobra para devolverselo al usuario
+						
 			vista.vueltas.txtTotal.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el dinero total
 			vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
 			vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante

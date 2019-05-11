@@ -237,7 +237,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	/**
 	 * Método: guardarReservasHab = Genera 1 o varias reservas y las guardar en en el ArrayList<Reserva> listaReservas
 	 */
-	public void guardarReservasHab() {
+/*	public void guardarReservasHab() {
 		
 		listaReservas = new ArrayList<Reserva>(); 
 			
@@ -268,7 +268,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 			 //guardamos el ArrayList listaReservas en el modelo
 			 modelo.listaReservas = this.listaReservas;	
 		}
-	
+*/	
 	/**
 	 * Acciones de los distintos componentes del panel
 	 */

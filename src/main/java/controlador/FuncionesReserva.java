@@ -60,9 +60,7 @@ public class FuncionesReserva {
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.apartamento.getPrecioAlojamiento());
 		}
-		
-		//Aplicamos cupon descuento
-		
+	
 		//(2º)Redondeamos a 2 decimales
 		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
 		precioReserva = precioReserva/100;//redondear a dos decimales
@@ -74,14 +72,14 @@ public class FuncionesReserva {
 		return precioReserva;
 	}
 	
-	/**
+/*	/**
 	 * Metodo para calcular el precio de la reserva del hotel
 	 * 
 	 * @param reserva Objeto con la informacion de la reserva
 	 * 
 	 * @return Retorna el precio de la reserva 
 	 */
-	public float calcularPrecioReservaHotel( ArrayList<Dormitorio> listaHabSeleccionadas) {
+	/*	public float calcularPrecioReservaHotel( ArrayList<Dormitorio> listaHabSeleccionadas) {
 		float precioReserva=0;
 		
 		//(1º) el precio total de la reserva será la suma de los precios de las habitaciones seleccionadas
@@ -112,7 +110,7 @@ public class FuncionesReserva {
 	 * @param pos = la posición que está recorriendo un for.
 	 * @return
 	 */
-	public float calcularPrecioHabXNoches( ArrayList<Dormitorio> listaHabSeleccionadas, int pos) {
+	/*	public float calcularPrecioHabXNoches( ArrayList<Dormitorio> listaHabSeleccionadas, int pos) {
 		float precioHabXnoches=0;
 		 DecimalFormat f = new DecimalFormat("##.00");
 		 
@@ -125,13 +123,13 @@ public class FuncionesReserva {
 		precioHabXnoches = Math.round(precioHabXnoches*100); //redondear a dos decimales
 		precioHabXnoches = precioHabXnoches/100;//redondear a dos decimales
 		
-/*
+		/*
 		//CALCULA EL PRECIO DE LAS HABITACIONES EN FUNCIÓN DE LA TARIFA SELECCIONADA
 		 precioHabXnoches = calcularPrecioPorTarifa(listaHabSeleccionadas.get(pos).getPrecioHabitacion() );
 		*/		
-		return precioHabXnoches;
+	/*		return precioHabXnoches;
 	}
-	
+*/
 	
 	/**
 	 * Método calcularNochesReservadas = calcula el número de noches reservadas por el usuario.
@@ -450,11 +448,11 @@ public class FuncionesReserva {
 	  		
 	}
 	
-	
+/*	
 	/**
 	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
-	public void mostrarDatosReserva(ArrayList<Dormitorio> listaHabSeleccionadas) {
+/*	public void mostrarDatosReserva(ArrayList<Dormitorio> listaHabSeleccionadas) {
 		//muestra datos del alojamiento
 		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
 		
@@ -464,7 +462,7 @@ public class FuncionesReserva {
 		//SE MUESTRA EL PRECIO TOTAL:
 	  	vista.detallesReserva.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
 	}
-	
+*/	
 	/**
 	 * Método insertarReservasHabitacionesSel = inserta en la base de datos las reservas de las habitaciones seleccionadas del hotel (inserta una reserva por cada habitación de hotel seleccionada)
 	 */

@@ -50,20 +50,39 @@ public class ControladorPanCuponDesc implements ActionListener{
 				// (1º) guarda el cógido promocional seleccionado
 				 CodigoPromocional cuponAlojSeleccionado = (CodigoPromocional) vista.cupon.cBListaCupones.getSelectedItem();
 				 
-				 //Si ha seleccionado algún código promocional, se guarda el descuento que se va a aplicar
+				 //Si ha seleccionado algún código promocional
 				 if(cuponAlojSeleccionado != null) {
-					 float descuentoAAplicar = cuponAlojSeleccionado.getDescuento();
-					 System.out.println("El descuento que se va a aplicar es: " + descuentoAAplicar);
+					 //el precioTotalSinCupon será el que hasta ahora estaba calculado (modelo.precioTotal)
+					 modelo.precioTotalSinCupon = this.modelo.precioTotal;
+					 
+					 //Y el precio total ahora será el precio aplicando el descuento del cupón:
+					 modelo.precioTotal = controlador.funcionesCodigosPromo.calcularPrecioDescuentoaplicado();
+					 System.out.println("PRECIOOO CON EL DESCUENTO APLICADOOO ES" + modelo.precioTotal );
+				
+					 vista.pago.total.setText(Float.toString(modelo.precioTotal) + " €");
+					 vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
+				 
 				 }
-				 else {
-					 JOptionPane.showMessageDialog(vista, "Por favor, seleccione el descuento que desee aplicar. Gracias. ", null, 0);
-				 }
+				 if(modelo.basesAceptadas == true){//si ha aceptado las bases va a PanPersonasAlojadas
+					
+					
+					vista.panPersonasAlojadas.setVisible(true);
+					vista.cupon.setVisible(false);
+				}
+				else {// y sino a panBases
+					vista.bases.setVisible(true);
+					vista.cupon.setVisible(false);
+				}
+				
 				 
 				 //Se aplica el descuento al precio final
 				
 				break;
 				
 			case "No deseo aplicar nungún descuento":
+				//no habrá ningún cupón de descuento seleccionado:
+				modelo.cuponSeleccionado =null;
+				
 				if(modelo.basesAceptadas == true){
 					vista.panPersonasAlojadas.setVisible(true);
 					vista.cupon.setVisible(false);
@@ -77,7 +96,10 @@ public class ControladorPanCuponDesc implements ActionListener{
 			case "Atras":
 					vista.detallesReservaCasaApart.setVisible(true);
 					vista.cupon.setVisible(false);
-					//reset??
+					//reset modelo.precioTotal??
+					controlador.funcionesBotones.reset();
+				//??	//el precio del modelo vuelve a ser el normal sin descuentos aplicados
+					
 				
 				break;
 			}
@@ -103,10 +125,14 @@ public class ControladorPanCuponDesc implements ActionListener{
 						modelo.cuponSeleccionado = this.cuponAloj;		
 						System.out.println("EL descuento seleccionado es: " + modelo.cuponSeleccionado.getCod_promocional() + " del alojamiento " + modelo.cuponSeleccionado.getCod_alojamiento());
 					
+						//se calcula el precio aplicando el descuento 
+						float precioConDesc = controlador.funcionesCodigosPromo.calcularPrecioDescuentoaplicado();
+						
 						//se actualiza el precioFinal con descuento aplicado:
-					
-					}
-			
-					
+						vista.cupon.tFPrecioSinDesc.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el precio total sin aplicar el descuento
+						vista.cupon.tFPrecioConDesc.setText(Float.toString(precioConDesc) + " €");
+					}			
 	}
+	
+	
 }

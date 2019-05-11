@@ -38,6 +38,7 @@ public class PrincipalModelo {
 	//public FuncionesBillete funcionesBillete;
   
 	public float precioTotal;
+	public float precioTotalSinCupon;
 	public Date fechaIda;
 	public Date fechaVuelta;
 	public int numNoches;

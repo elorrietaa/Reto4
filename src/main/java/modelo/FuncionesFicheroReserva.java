@@ -140,12 +140,16 @@ public class FuncionesFicheroReserva {
 		
 			writer.println("Tipo de camas de la habitación: " + listaCamas.toString());
 			writer.println();
-			writer.println("Precio habitación: " + (String.format("%.2f",modelo.habitacion.getPrecioHabitacion()) + "€/ 1 noche"));
-			writer.println("Precio habitación: " + (String.format("%.2f",modelo.reserva.getPrecioReserva()) + "€/ "+ modelo.numNoches+" noches"));
+			
+			writer.println("===== DATOS PRECIO: ===== " );
+			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
+			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
+			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
+	
 			writer.println();
 			writer.println("*************************************************************************************");
 			writer.println();
-			writer.println("PRECIO FINAL TOTAL de todas sus habitaciones reservadas para "+ modelo.numNoches +" noches: " + modelo.precioTotal + " €");
+			writer.println("PRECIO FINAL TOTAL de su reserva es: "+ modelo.numNoches +" noches: " + modelo.precioTotal + " €");
 			writer.println();
 			writer.println("*************************************************************************************");
 			writer.flush();
@@ -201,7 +205,11 @@ public class FuncionesFicheroReserva {
 			writer.println("Dirección: " + modelo.casa.getDireccion() + "   Teléfono: "+ modelo.casa.getTelefono());	
 			writer.println();
 		
-			
+			writer.println("===== DATOS PRECIO: ===== " );
+			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
+			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
+			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
+	
 			writer.println();
 			writer.println("*************************************************************");
 			writer.println();
@@ -255,7 +263,11 @@ public class FuncionesFicheroReserva {
 			writer.println("Dirección: " + modelo.apartamento.getDireccion() + " Piso: " +modelo.apartamento.getPiso() +"   Teléfono: "+ modelo.apartamento.getTelefono());	
 			
 			writer.println();
-		
+			writer.println("===== DATOS PRECIO: ===== " );
+			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
+			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
+			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
+	
 			
 			writer.println();
 			writer.println("*************************************************************");

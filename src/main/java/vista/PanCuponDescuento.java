@@ -18,8 +18,8 @@ import javax.swing.JTextField;
 public class PanCuponDescuento extends JPanel {
 	public JButton btnAplicar, btnAtras, btnNOAplicar;
 	public JComboBox<Object> cBListaCupones;
-	private JTextField textField;
-	private JTextField textField_1;
+	public JTextField tFPrecioSinDesc, tFPrecioConDesc;
+	
 	private JLabel lblDescuentosAplicablesPara;
 
 	public PanCuponDescuento() {
@@ -43,21 +43,21 @@ public class PanCuponDescuento extends JPanel {
 		cBListaCupones.setBounds(179, 304, 316, 20);
 		add(cBListaCupones);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBounds(619, 301, 86, 20);
-		add(textField);
+		tFPrecioSinDesc = new JTextField();
+		tFPrecioSinDesc.setEditable(false);
+		tFPrecioSinDesc.setColumns(10);
+		tFPrecioSinDesc.setBounds(619, 301, 86, 20);
+		add(tFPrecioSinDesc);
 		
 		JLabel label_1 = new JLabel("Precio sin aplicar descuento:");
 		label_1.setBounds(619, 265, 146, 14);
 		add(label_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(792, 302, 86, 20);
-		add(textField_1);
+		tFPrecioConDesc = new JTextField();
+		tFPrecioConDesc.setEditable(false);
+		tFPrecioConDesc.setColumns(10);
+		tFPrecioConDesc.setBounds(792, 302, 86, 20);
+		add(tFPrecioConDesc);
 		
 		JLabel label_2 = new JLabel("Precio aplicando descuento:");
 		label_2.setBounds(792, 266, 146, 14);

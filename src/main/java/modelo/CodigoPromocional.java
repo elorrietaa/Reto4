@@ -48,6 +48,8 @@ public class CodigoPromocional {
 		this.descuento = descuento;
 	}
 	
-	
+	 public String toString() {
+	    	return this.cod_promocional;
+	    }
 	
 }

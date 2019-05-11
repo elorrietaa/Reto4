@@ -32,6 +32,9 @@ public class ControladorPanPago implements ActionListener{
 	public float moneda = 0; // Guarda el valos de la ultima moneda o billete introducido
 	public String sobra = ""; // Cantidad minima de monedas que tiene que devolver
 	public float[] monedas; // Almacena el valor de las monedas y billetes que se van introducioendo para luego poder retarlos.
+	
+	
+	
 	/**
 	 * Constructor del controlador de pago
 	 * 
@@ -70,6 +73,7 @@ public class ControladorPanPago implements ActionListener{
 		this.vista.pago.btnCancelar.addActionListener(this);
 		//this.vista.pago.btnCancelarPago.addActionListener(this);
 		this.vista.pago.btnContinuar.addActionListener(this);
+		this.vista.pago.cBListaCupones.addActionListener(this);
 	}
 	/**
 	 * Metodo que contiene las acciones realizadas por cada uno de los listeners
@@ -204,19 +208,9 @@ public class ControladorPanPago implements ActionListener{
 	 * Método actualizarFiltradoJComboBox = 
 	 */
 	private void actualizarFiltradoJComboBox() {
-	    
-	
-	   
-	    vista.pago.cBListaCupones.removeAllItems();
-	    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.reserva.getAlojamiento().getCodAlojamiento(), modelo.reserva.getCliente().getDni());	
-	 
-	    	
-			for(int i=0; i<listaCupones.size();i++) {
-			    cuponAloj=listaCupones.get(i);
-			    vista.buscarAlojamiento.cBTipoAloj.addItem(cuponAloj); 
-			}
-	    
+	  
 	}
+	
 	
 	
 	/**

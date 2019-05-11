@@ -99,16 +99,12 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 			vista.login.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);
 		}
-		else if(modelo.basesAceptadas == true){
-			vista.panPersonasAlojadas.setVisible(true);
-			vista.detallesReservaCasaApart.setVisible(false);
-		}
-		else {
+		else
 			//se carga el comboBox con los cuponesPromocionales en el panel pago
 		    controlador.funcionesCodigosPromo.mostrarCuponesDescuento();
 			
 			vista.cupon.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);
-		}
+		
 	}
 }

@@ -35,7 +35,7 @@ public class PanCuponDescuento extends JPanel {
 		add(btnAtras);
 		
 		JLabel label = new JLabel("\u00BFDesea aplicar un cup\u00F3n de descuento?");
-		label.setBounds(179, 265, 221, 14);
+		label.setBounds(179, 265, 316, 14);
 		add(label);
 		
 		cBListaCupones = new JComboBox<Object>();

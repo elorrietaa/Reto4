@@ -99,6 +99,9 @@ public class ControladorLogin implements ActionListener {
 					//	vista.login.setVisible(false);
 				//	}
 					else {
+						//se carga el comboBox con los cuponesPromocionales en el panel pago
+					    controlador.funcionesCodigosPromo.mostrarCuponesDescuento();
+					    
 						vista.cupon.setVisible(true);
 						vista.login.setVisible(false);
 					}

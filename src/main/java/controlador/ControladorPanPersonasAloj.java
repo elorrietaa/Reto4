@@ -216,7 +216,6 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    //insertar datos en la BBDD en la tabla personas alojadas
 			    
 			    
-			    
 			    //Se oculta este panel y se muestra el siguiente
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);

@@ -17,9 +17,8 @@ import javax.swing.JComboBox;
 public class PanPago extends JPanel {
 	public JTextField total, totalIntro, aPagar;
 	public JButton btn200, btn100, btn50, btn20, btn10, btn5, btn2, btn1, btn50cen, btn20cen, btn10cen, btn5cen, btn2cen, btn1cen, btnAtras, btnContinuar;
-	public JLabel lblTotal, lblTotalIntroducido, lblAPagar, lbldeseaAplicarUn;
-	public JButton btnCancelar, btnAplicar, btnNoAplicar;
-	public JComboBox<Object> cBListaCupones;
+	public JLabel lblTotal, lblTotalIntroducido, lblAPagar;
+	public JButton btnCancelar;
 	private JTextField totalSindesc;
 	private JTextField totalCondesc;
 
@@ -133,40 +132,24 @@ public class PanPago extends JPanel {
 		btnCancelar.setBounds(36, 664, 89, 23);
 		add(btnCancelar);
 		
-		cBListaCupones = new JComboBox<Object>();
-		cBListaCupones.setBounds(53, 50, 316, 20);
-		add(cBListaCupones);
-		
-		lbldeseaAplicarUn = new JLabel("\u00BFDesea aplicar un cup\u00F3n de descuento?");
-		lbldeseaAplicarUn.setBounds(53, 25, 221, 14);
-		add(lbldeseaAplicarUn);
-		
-		btnAplicar = new JButton("Aplicar");
-		btnAplicar.setBounds(403, 49, 89, 23);
-		add(btnAplicar);
-		
-		btnNoAplicar = new JButton("No aplicar");
-		btnNoAplicar.setBounds(403, 92, 89, 23);
-		add(btnNoAplicar);
-		
 		totalSindesc = new JTextField();
 		totalSindesc.setEditable(false);
 		totalSindesc.setColumns(10);
-		totalSindesc.setBounds(601, 85, 86, 20);
+		totalSindesc.setBounds(312, 88, 86, 20);
 		add(totalSindesc);
 		
 		JLabel lblPrecioSinAplicar = new JLabel("Precio sin aplicar descuento:");
-		lblPrecioSinAplicar.setBounds(601, 49, 146, 14);
+		lblPrecioSinAplicar.setBounds(312, 52, 146, 14);
 		add(lblPrecioSinAplicar);
 		
 		totalCondesc = new JTextField();
 		totalCondesc.setEditable(false);
 		totalCondesc.setColumns(10);
-		totalCondesc.setBounds(774, 86, 86, 20);
+		totalCondesc.setBounds(485, 89, 86, 20);
 		add(totalCondesc);
 		
 		JLabel lblPrecioAplicandoDescuento = new JLabel("Precio aplicando descuento:");
-		lblPrecioAplicandoDescuento.setBounds(774, 50, 146, 14);
+		lblPrecioAplicandoDescuento.setBounds(485, 53, 146, 14);
 		add(lblPrecioAplicandoDescuento);
 		btnContinuar.setVisible(false);
 	}

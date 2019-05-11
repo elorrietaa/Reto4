@@ -20,14 +20,15 @@ public class PanCuponDescuento extends JPanel {
 	public JComboBox<Object> cBListaCupones;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JLabel lblDescuentosAplicablesPara;
 
 	public PanCuponDescuento() {
 		setBackground(Color.WHITE);
 		setBounds(0,0,1024,720);
 		setLayout(null);
 		
-		btnAplicar = new JButton("Aplicar");
-		btnAplicar.setBounds(831, 601, 89, 23);
+		btnAplicar = new JButton("Aplicar y continuar");
+		btnAplicar.setBounds(761, 601, 159, 23);
 		add(btnAplicar);
 		
 		btnAtras = new JButton("Atras");
@@ -35,7 +36,7 @@ public class PanCuponDescuento extends JPanel {
 		add(btnAtras);
 		
 		JLabel label = new JLabel("\u00BFDesea aplicar un cup\u00F3n de descuento?");
-		label.setBounds(179, 265, 316, 14);
+		label.setBounds(179, 248, 316, 14);
 		add(label);
 		
 		cBListaCupones = new JComboBox<Object>();
@@ -62,12 +63,16 @@ public class PanCuponDescuento extends JPanel {
 		label_2.setBounds(792, 266, 146, 14);
 		add(label_2);
 		
-		JLabel lblSusDescuentos = new JLabel("Sus descuentos:");
+		JLabel lblSusDescuentos = new JLabel("Todos sus descuentos:");
 		lblSusDescuentos.setBounds(179, 116, 221, 14);
 		add(lblSusDescuentos);
 		
-		btnNOAplicar = new JButton("No aplicar");
-		btnNOAplicar.setBounds(831, 632, 89, 23);
+		btnNOAplicar = new JButton("No deseo aplicar nung\u00FAn descuento");
+		btnNOAplicar.setBounds(645, 632, 275, 23);
 		add(btnNOAplicar);
+		
+		lblDescuentosAplicablesPara = new JLabel("Descuentos aplicables para el alojamiento que ha seleccionado:");
+		lblDescuentosAplicablesPara.setBounds(179, 279, 316, 14);
+		add(lblDescuentosAplicablesPara);
 	}
 }

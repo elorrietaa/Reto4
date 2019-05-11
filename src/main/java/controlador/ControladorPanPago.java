@@ -80,8 +80,7 @@ public class ControladorPanPago implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
         	Object sourceObject = e.getSource();
-        		
-        	if (sourceObject instanceof JButton) {
+        	
         		// guardamos el nombre del boton pulsado
         		String botonPulsado = ((JButton) e.getSource()).getActionCommand(); // Almacena el texto del boton para poder identificarlo posteriormente
         		float importe; // Almacena el importe que representa cada uno de los botones, para así poder realizar las operaciones con el dinero
@@ -187,26 +186,10 @@ public class ControladorPanPago implements ActionListener{
         				}
         				
         				break;
-        				
-        		}
-        	
-        	//JCOMBOBOX DE CIUDAD Y TIPO ALOJAMIENTO
-        	} else if (sourceObject instanceof JComboBox) {
-        		
-        		actualizarFiltradoJComboBox(); //se actualiza el JTable del PanBuscarHotel con los datos seleccionados por el usuario
-        		
+        		}	
         	}
-	}
-	
-	
-	/**
-	 * Método actualizarFiltradoJComboBox = 
-	 */
-	private void actualizarFiltradoJComboBox() {
-		
-				
-						
-	}
+        	
+    
 	
 	
 	

@@ -42,7 +42,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 		// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 		switch (botonPulsado) {
 		
-			case "Aplicar":
+			case "Aplicar y continuar":
 				// (1º) guarda el cógido promocional seleccionado
 				 CodigoPromocional cuponAlojSeleccionado = (CodigoPromocional) vista.cupon.cBListaCupones.getSelectedItem();
 				 
@@ -59,10 +59,15 @@ public class ControladorPanCuponDesc implements ActionListener{
 				
 				break;
 				
-			case "No aplicar":
-				
+			case "No deseo aplicar nungún descuento":
+				if(modelo.basesAceptadas == true){
+					vista.panPersonasAlojadas.setVisible(true);
+					vista.cupon.setVisible(false);
+				}
+				else {
 					vista.bases.setVisible(true);
 					vista.cupon.setVisible(false);
+				}
 				break;
 				
 			case "Atras":

@@ -63,9 +63,38 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	/**
 	 * Método validarDatosPersonasAloj = valida los datos introducidos por el usuario esten en un formato correcto
 	 */
-	public void validarDatosPersonasAloj() {
+	public boolean validarDatosPersonasAloj() {
 	  //Se rellenan las variables de los datos introducidos con los datos introducidos en los JTextField
+		//Se rellenan las variables de los datos introducidos con los datos introducidos en los JTextField
+	    String dniIntroducido = vista.panPersonasAlojadas.textFieldDNI.getText();
+	    String nombreIntroducido = vista.panPersonasAlojadas.textFieldNombre.getText();
+	    String apellidosIntroducido = vista.panPersonasAlojadas.textFieldApellidos.getText();
+	    
+		
+	    boolean dniValidado=controlador.funcionesRegistro.validarDNI(dniIntroducido);
+	    
+	    //comprobamos que el dni no esté vacio
+	    if(dniIntroducido.equals("")) {
+	    	JOptionPane.showMessageDialog(vista, "Por favor, rellene el campo 'DNI'.Gracias.", "Aviso", JOptionPane.WARNING_MESSAGE);
+			return false;
+	    }
+	    //comprobamos que el dni formato valido y exista
+	    else if(!dniValidado) {
+	    	JOptionPane.showMessageDialog(vista, "Lo sentimos, DNI introducido no está en un formato válido o no existe. Por favor, inténtelo de nuevo. Gracias. ", "Aviso", JOptionPane.WARNING_MESSAGE);
+	    	return false;
+	    }
+	    //comprobamos que el nombre no esté vacio
+	    if(nombreIntroducido.equals("")) {
+	    	JOptionPane.showMessageDialog(vista, "Por favor, rellene el campo 'Nombre'.Gracias.", "Aviso", JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+	    //comprobamos que el apellido no esté vacio
+	    if(apellidosIntroducido.equals("")) {
+	    	JOptionPane.showMessageDialog(vista, "Por favor, rellene el campo 'Apellidos'.Gracias.", "Aviso", JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
 	   
+	    return true;
 	}
 	
 	/**
@@ -175,18 +204,21 @@ public class ControladorPanPersonasAloj implements ActionListener {
 				
 			case "Añadir":
 			    //Se valida que los datos intorducidos por el usuario sean correctos.
-			    //validarDatosPersonasAloj();
+			    boolean anadirDatos = validarDatosPersonasAloj();
 			    
+			    if(anadirDatos) {
 			    //se guardan los datos de la persona introducida por el usuario en el objeto PersonasAlojadas
-			    personaAlojada = guardarPersonaAlojada();
+			    	personaAlojada = guardarPersonaAlojada();
+				    
+				    //guarda las personas alojadas en la listaPersonasAlojadas
+				    guardarListaPersonasAlojadas(personaAlojada);
+				    
+				    listaPerAlojActualizada = listaPerAloj;
+				    
+				    // muestra en el JTAble la lista con las personas alojadas introducidas por el usuario
+				    mostrarListaPersonasAlojEnJTable();
+			    }
 			    
-			    //guarda las personas alojadas en la listaPersonasAlojadas
-			    guardarListaPersonasAlojadas(personaAlojada);
-			    
-			    listaPerAlojActualizada = listaPerAloj;
-			    
-			    // muestra en el JTAble la lista con las personas alojadas introducidas por el usuario
-			    mostrarListaPersonasAlojEnJTable();
 			    
 			    	break;
 			    	

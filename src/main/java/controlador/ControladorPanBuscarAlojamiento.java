@@ -598,6 +598,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				vista.detallesReservaCasaApart.panelHoteles.setEnabled(true);
 				vista.detallesReservaCasaApart.panelCasaApart.setVisible(false);
 				vista.detallesReservaCasaApart.panelCasaApart.setEnabled(false);
+				
+				//mostrar el texto de las bases legales en el panBases
+				controlador.funcionesBasesLegales.mostrarBaseslegales();
+			    
 			}
 		}
 		else
@@ -651,6 +655,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				vista.detallesReservaCasaApart.panelHoteles.setEnabled(false);
 				vista.detallesReservaCasaApart.panelCasaApart.setVisible(true);
 				vista.detallesReservaCasaApart.panelCasaApart.setEnabled(true);
+				
+				//mostrar el texto de las bases legales en el panBases
+				controlador.funcionesBasesLegales.mostrarBaseslegales();
 			}
 		}
 		else {

@@ -28,6 +28,7 @@ public class PanBasesLegales extends JPanel {
 		add(scrollPane);
 		
 		txBases = new JTextPane();
+		txBases.setEditable(false);
 		scrollPane.setViewportView(txBases);
 		
 		JLabel lblBasesLegales = new JLabel("Bases legales");

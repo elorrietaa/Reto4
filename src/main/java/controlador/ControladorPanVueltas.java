@@ -38,7 +38,7 @@ public class ControladorPanVueltas implements ActionListener {
 		switch (botonPulsado) {
 		
 			case "Finalizar":
-				JOptionPane.showMessageDialog(vista, "Reserva realizada con exito, muchas gracias.", null, 0);
+				JOptionPane.showMessageDialog(vista, "Reserva realizada con exito, muchas gracias.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 				vista.bienvenida.setVisible(true);
 				vista.vueltas.setVisible(false);
 				controlador.funcionesBotones.resetPago(this.pago);

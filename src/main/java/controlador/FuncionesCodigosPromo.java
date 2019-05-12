@@ -38,39 +38,92 @@ public class FuncionesCodigosPromo {
 			 System.out.println("PROBANDO QUE PASE COD ALOJ Y DNI     " + modelo.hotel.getCodAlojamiento() + "-"+modelo.cliente.getDni());
 			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.hotel.getCodAlojamiento(), modelo.cliente.getDni());	
 			    System.out.println("listaCupones.size() == " + listaCupones.size());
-			    	if(listaCupones.size() == 0) {
-			    		vista.cupon.cBListaCupones.addItem("No tiene usted cupones");
-			    	}
+			    	
+			    //Si no tiene cupones aparece un mensaje en el ComboBox
+			    if(listaCupones.size() == 0) {
+			    	vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
+			    }
 			 
-			    	else {
-			    		for(int i=0; i<listaCupones.size();i++) {
-					    cuponAloj=listaCupones.get(i);
-					    vista.cupon.cBListaCupones.addItem(cuponAloj);
-			    		}
-			    	}
+			    //Si tiene cupones aplicables, aparece la lista de los cupones
+			    else {
+			   		for(int i=0; i<listaCupones.size();i++) {
+				    cuponAloj=listaCupones.get(i);
+				    vista.cupon.cBListaCupones.addItem(cuponAloj);
+			   		}
+			   	}
 					
 		}
 		//PARA CASAS:
 		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {
 			 System.out.println("PROBANDO QUE PASE COD ALOJ Y DNI" + modelo.casa.getCodAlojamiento() + modelo.cliente.getDni());
 			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.casa.getCodAlojamiento(), modelo.cliente.getDni());	
-			 
-					for(int i=0; i<listaCupones.size();i++) {
-					    cuponAloj=listaCupones.get(i);
-					    vista.cupon.cBListaCupones.addItem(cuponAloj);
-					}
+			  
+			    //Si no tiene cupones aparece un mensaje en el ComboBox
+			    if(listaCupones.size() == 0) {
+		    		vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
+		    	}
+		 
+			    //Si tiene cupones aplicables, aparece la lista de los cupones
+				for(int i=0; i<listaCupones.size();i++) {
+				    cuponAloj=listaCupones.get(i);
+					vista.cupon.cBListaCupones.addItem(cuponAloj);
+				}
+				
 		}
 		//PARA APARTAMENTOS:
 		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
 			 System.out.println("PROBANDO QUE PASE COD ALOJ Y DNI" + modelo.apartamento.getCodAlojamiento() + modelo.cliente.getDni());
 			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.apartamento.getCodAlojamiento(), modelo.cliente.getDni());	
-			 
-					for(int i=0; i<listaCupones.size();i++) {
-					    cuponAloj=listaCupones.get(i);
-					    vista.cupon.cBListaCupones.addItem(cuponAloj);
-					}
+			    
+			    //Si no tiene cupones aparece un mensaje en el ComboBox
+			    if(listaCupones.size() == 0) {
+		    		vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
+		    	}
+			    
+			    //Si tiene cupones aplicables, aparece la lista de los cupones
+				for(int i=0; i<listaCupones.size();i++) {
+				    cuponAloj=listaCupones.get(i);
+				    vista.cupon.cBListaCupones.addItem(cuponAloj);
+				}
 		}
 	   
+	}
+	
+	/**
+	 * Método comprobarSiTIeneCuponesDescuento 0 comprueba si tiene códigos disponibles, y devuelve un booleano
+	 */
+	public boolean comprobarSiTIeneCuponesDescuento() {
+		vista.cupon.cBListaCupones.removeAllItems();
+		boolean tieneCodigos = true;
+		//para HOTELES
+		if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.hotel.getCodAlojamiento(), modelo.cliente.getDni());	
+			  	
+			    if(listaCupones.size() == 0) {
+			    	return false;
+			    }
+			 		
+		}
+		//PARA CASAS:
+		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {
+			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.casa.getCodAlojamiento(), modelo.cliente.getDni());	
+			  
+			    if(listaCupones.size() == 0) {
+		    		return false;
+		    	}
+		 
+		}
+		//PARA APARTAMENTOS:
+		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
+			    ArrayList<CodigoPromocional> listaCupones = modelo.consultas.buscarCodigosPromocionalesPorDni(modelo.apartamento.getCodAlojamiento(), modelo.cliente.getDni());	
+			 
+			    //Si no tiene cupones 
+			    if(listaCupones.size() == 0) {
+		    		return false;
+		    	}
+			 
+		}
+	 return tieneCodigos;
 	}
 	
 	/**
@@ -78,8 +131,7 @@ public class FuncionesCodigosPromo {
 	 */
 	public void mostrarTodosCuponesDescuento() {
 		 String textoTodoscupones ="";
-
-			 System.out.println("PROBANDO QUE PASE COD ALOJ Y DNI     " + modelo.hotel.getCodAlojamiento() + "-"+modelo.cliente.getDni());
+		 
 			    ArrayList<CodigoPromocional> listaTodosCupones = modelo.consultas.buscarCodigosPromocionalesSoloPorDni(modelo.cliente.getDni());	
 			    System.out.println("listaCupones.size() == " + listaTodosCupones.size());
 			    	if(listaTodosCupones.size() == 0) {

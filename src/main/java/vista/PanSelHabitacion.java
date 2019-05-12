@@ -55,7 +55,7 @@ public class PanSelHabitacion extends JPanel {
 		// TABLA HABITACIONES
 		tab = new JTable();
 		Object[][] datos = {};
-		String[] columnNames = {"Código","Habitación ", "Número de camas ", "Tipo de camas", "Precio 1 habitación 1 noche desde"};
+		String[] columnNames = {"Código","Habitación ", "Número de camas ", "Tipo de camas", "Precio desde"};
 		tab.setModel(new DefaultTableModel(datos,columnNames) {
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")

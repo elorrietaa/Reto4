@@ -41,7 +41,7 @@ public class PanCuponDescuento extends JPanel {
 		add(label);
 		
 		cBListaCupones = new JComboBox<Object>();
-		cBListaCupones.setBounds(121, 305, 316, 20);
+		cBListaCupones.setBounds(121, 305, 379, 20);
 		add(cBListaCupones);
 		
 		tFPrecioSinDesc = new JTextField();
@@ -68,7 +68,7 @@ public class PanCuponDescuento extends JPanel {
 		lblSusDescuentos.setBounds(121, 11, 221, 14);
 		add(lblSusDescuentos);
 		
-		btnNOAplicar = new JButton("No deseo aplicar nung\u00FAn descuento");
+		btnNOAplicar = new JButton("No aplicar ning\u00FAn descuento");
 		btnNOAplicar.setBounds(645, 632, 275, 23);
 		add(btnNOAplicar);
 		

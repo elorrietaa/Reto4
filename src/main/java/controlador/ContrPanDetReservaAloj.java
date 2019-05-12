@@ -102,6 +102,7 @@ public class ContrPanDetReservaAloj implements ActionListener {
 		
 		else {
 			//se carga el comboBox con los cuponesPromocionales en el panel pago
+			controlador.funcionesCodigosPromo.mostrarTodosCuponesDescuento();
 		    controlador.funcionesCodigosPromo.mostrarCuponesDescuento();
 			
 			vista.cupon.setVisible(true);

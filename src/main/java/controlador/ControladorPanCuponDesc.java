@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -47,8 +48,20 @@ public class ControladorPanCuponDesc implements ActionListener{
 		switch (botonPulsado) {
 		
 			case "Aplicar y continuar":
-				// (1º) guarda el cógido promocional seleccionado
+				
+				// 1º comprueba si tiene cógidos disponibles: 
+				boolean tieneCodigos = controlador.funcionesCodigosPromo.comprobarSiTIeneCuponesDescuento();
+				
+				 //Si no tiene cupones aparece un mensaje en el ComboBox
+				if(!tieneCodigos) {
+					//si no tiene cupones, mensaje que pulse el boton de no aplicar ningun descuento
+					 JOptionPane.showMessageDialog(vista, "Lo sentimos, no tiene cupones aplicables a este alojamiento. Gracias. ", null, 0);
+					
+				}
+		
+				// 2º guarda el cógido promocional seleccionado
 				 CodigoPromocional cuponAlojSeleccionado = (CodigoPromocional) vista.cupon.cBListaCupones.getSelectedItem();
+				 System.out.println(cuponAlojSeleccionado);
 				 
 				 //Si ha seleccionado algún código promocional
 				 if(cuponAlojSeleccionado != null) {
@@ -63,23 +76,23 @@ public class ControladorPanCuponDesc implements ActionListener{
 					 vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 				 
 				 }
+				 
 				 if(modelo.basesAceptadas == true){//si ha aceptado las bases va a PanPersonasAlojadas
-					
-					
 					vista.panPersonasAlojadas.setVisible(true);
 					vista.cupon.setVisible(false);
-				}
-				else {// y sino a panBases
+				 }
+				
+				 else {// y sino a panBases
 					vista.bases.setVisible(true);
 					vista.cupon.setVisible(false);
-				}
+				 }
 				
 				 
 				 //Se aplica el descuento al precio final
 				
 				break;
 				
-			case "No deseo aplicar nungún descuento":
+			case "No aplicar ningún descuento":
 				//no habrá ningún cupón de descuento seleccionado:
 				modelo.cuponSeleccionado =null;
 				
@@ -116,6 +129,25 @@ public class ControladorPanCuponDesc implements ActionListener{
 	* Método actualizarFiltradoJComboBox = 
 	*/
 	private void actualizarJComboBox() {
+		
+		//AQUI FALTARÍA CONTROLAR QUE NO SEA NULL
+		//INTENTO ESTO PERO FALLA
+		
+/*		boolean tieneCodigos = controlador.funcionesCodigosPromo.comprobarSiTIeneCuponesDescuento();
+		
+		if(!tieneCodigos) {
+			vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
+			//IMPORTANTE!!! PARA EVITAR ERRORES!! se vuelve a calcular el precio total de la reserva  si el usuario retrocede hacia atrás
+			//muestra el PRECIO TOTAL DE LA RESERVA: 
+			controlador.funcionesReserva.calcularPrecioTotalFinalReserva(controlador.controladorPanBuscarHotel.tiposAloj);
+			//se actualiza el precioFinal con descuento aplicado:
+			vista.cupon.tFPrecioSinDesc.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el precio total sin aplicar el descuento
+			vista.cupon.tFPrecioConDesc.setText("--.--" + " €");
+			
+		}
+
+	*/	
+		
 		// (1º) guarda la ciudad seleccionada
 			this.cuponAloj = (CodigoPromocional) vista.cupon.cBListaCupones.getSelectedItem();
 					if (cuponAloj != null) {
@@ -134,8 +166,13 @@ public class ControladorPanCuponDesc implements ActionListener{
 						//se actualiza el precioFinal con descuento aplicado:
 						vista.cupon.tFPrecioSinDesc.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el precio total sin aplicar el descuento
 						vista.cupon.tFPrecioConDesc.setText(Float.toString(precioConDesc) + " €");
-				}	
+					}	
+							
 	}
-	
-	
+
+		
+					
 }
+	
+	
+

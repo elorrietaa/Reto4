@@ -372,7 +372,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			
 			datos[3] = tiposCamaHab;
 			
-			datos[4] = (String.format("%.2f", listaDormitorios.get(i).getPrecioHabitacion())  + "€");
+			datos[4] = (String.format("%.2f", listaDormitorios.get(i).getPrecioHabitacion())  + " € habitación/noche");
 			tablaHabs.addRow(datos);
 		}
 	}

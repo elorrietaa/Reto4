@@ -143,7 +143,7 @@ public class FuncionesFicheroReserva {
 			
 			writer.println("===== DATOS PRECIO: ===== " );
 			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
-			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
+	//		writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
 			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
 	
 			writer.println();
@@ -207,7 +207,8 @@ public class FuncionesFicheroReserva {
 		
 			writer.println("===== DATOS PRECIO: ===== " );
 			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
-			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
+		//da error si no tiene codigos promocionales
+		//	writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
 			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
 	
 			writer.println();
@@ -265,7 +266,7 @@ public class FuncionesFicheroReserva {
 			writer.println();
 			writer.println("===== DATOS PRECIO: ===== " );
 			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
-			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
+		//	writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
 			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
 	
 			

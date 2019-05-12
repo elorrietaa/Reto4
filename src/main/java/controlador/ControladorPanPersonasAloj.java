@@ -242,10 +242,16 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    	
 			case "Continuar":
 			    
+				//si no se ha insertado ninguna persona alojada, muestra mensaje
+				 if(listaPerAloj.size() == 0) {
+				    	JOptionPane.showMessageDialog(vista, "Por favor, introduzca los datos de las personas alojadas. Gracias.", "Aviso", JOptionPane.WARNING_MESSAGE);
+						
+				    }
+				
 			    //Encriptar los datos
 			    encriptarDatos();
 			    
-			    //insertar datos en la BBDD en la tabla personas alojadas
+			  
 			    
 			    
 			    

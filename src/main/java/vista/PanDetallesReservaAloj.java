@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author alba
  *
  */
-public class PanDetallesReservaCasaApart extends JPanel {
+public class PanDetallesReservaAloj extends JPanel {
 	/**
 	 * 
 	 */
@@ -44,7 +44,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanDetallesReservaCasaApart() {
+	public PanDetallesReservaAloj() {
 		setBackground(Color.WHITE);
 		setBounds(0,0,1024,720);
 		setLayout(null);
@@ -83,7 +83,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		
 		textPDatosAlo = new JTextPane();
 		textPDatosAlo.setEditable(false);
-		textPDatosAlo.setBounds(563, -2, 279, 74);
+		textPDatosAlo.setBounds(563, -2, 279, 89);
 		add(textPDatosAlo);
 		
 		
@@ -126,7 +126,7 @@ public class PanDetallesReservaCasaApart extends JPanel {
 		table.getColumnModel().getColumn(2).setPreferredWidth(260);
 				
 		scrollPaneCasaApart = new JScrollPane(table);
-		scrollPaneCasaApart.setBounds(121,78,839,94);
+		scrollPaneCasaApart.setBounds(121,98,839,74);
 		add(scrollPaneCasaApart);		
 			
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");

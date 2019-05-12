@@ -323,7 +323,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					
 					//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
 					
-					controlador.funcionesReserva.mostrarDatosReservaCasaApart(modelo.tiposAloj);
+					controlador.funcionesReserva.mostrarDatosReservaAloj(modelo.tiposAloj);
 					
 					
 					

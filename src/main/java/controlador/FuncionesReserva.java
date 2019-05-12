@@ -411,9 +411,10 @@ public class FuncionesReserva {
 	/**
 	 * Método mostrarDatosReservacasaApart = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
 	 */
-	public void mostrarDatosReservaCasaApart(TipoAlojamiento tiposAloj) {
+	public void mostrarDatosReservaAloj(TipoAlojamiento tiposAloj) {
 		//muestra datos del alojamiento
-		vista.detallesReservaCasaApart.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre());
+		vista.detallesReservaCasaApart.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del alojamiento: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() +
+				"\n" + "Nombre del alojamiento: " +modelo.reserva.getAlojamiento().getNombre()+ "\n" + "Dirección: " + modelo.reserva.getAlojamiento().getDireccion() + "   " + "Teléfono: " + modelo.reserva.getAlojamiento().getTelefono());
 		
 		//muestra los detalles de las habitaciones del alojamiento: cuales tiene y cuantas
 		mostrarDatosHabsReservaCasaApart();

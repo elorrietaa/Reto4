@@ -21,7 +21,7 @@ public class PrincipalControlador {
     public ControladorPanBuscarAlojamiento controladorPanBuscarHotel;
     private ControladorPanSelHabitacion controladorPanSelHabitacion;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
-    private ContrPanDetReserCasaApart contrPanDetReserCasaApart;
+    private ContrPanDetReservaAloj contrPanDetReserCasaApart;
     private ControladorPanPersonasAloj controladorPanPersonasAloj;
     private ControladorPanPago controladorPanPago; 
     private ControladorPanVueltas controladorPanVueltas;
@@ -107,7 +107,7 @@ public class PrincipalControlador {
     	this.controladorPanDetallesReserva.addListeners();
     	
     	// añadimos listeners a los botones del panel 'contrPanDetReserCasaApart'
-    	this.contrPanDetReserCasaApart = new ContrPanDetReserCasaApart(vista, modelo, this);
+    	this.contrPanDetReserCasaApart = new ContrPanDetReservaAloj(vista, modelo, this);
     	this.contrPanDetReserCasaApart.addListeners();
     	
     	// añadimos listeners a los botones del panel 'ControladorPanPersonasAloj'

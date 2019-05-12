@@ -633,7 +633,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			controlador.funcionesReserva.guardarReservaAlojamiento(tiposAloj);
 			
 			//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
-			controlador.funcionesReserva.mostrarDatosReservaCasaApart(tiposAloj);
+			controlador.funcionesReserva.mostrarDatosReservaAloj(tiposAloj);
 			
 			//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
 			actualizarPanDetallesReservaCasaAloj();

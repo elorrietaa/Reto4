@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
-public class ContrPanDetReserCasaApart implements ActionListener {
+public class ContrPanDetReservaAloj implements ActionListener {
 
 	public JframePrincipal vista;
 	public PrincipalModelo modelo;
@@ -19,7 +19,7 @@ public class ContrPanDetReserCasaApart implements ActionListener {
 	 * @param modelo Instancia del modelo para poder utilizarlo
 	 * @param conexion 
 	 */
-	public ContrPanDetReserCasaApart(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
+	public ContrPanDetReservaAloj(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.vista = vista;
 		this.modelo = modelo;
 		this.controlador = controlador;

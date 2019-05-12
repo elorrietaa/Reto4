@@ -508,12 +508,18 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	  //hotel
  		if (tiposAloj.getCodTipoAlojamiento() == 10) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
-			Object[] datos1 = new Object[3];
+			Object[] datos1 = new Object[8];
 			
 			tablaDetCasApart.setRowCount(0);
-			datos1[0] = modelo.hotel.getNombre();
+			datos1[0] = " ";
 			datos1[1] = " ";
-			datos1[2] =modelo.hotel.getDireccion() + "   Teléfono: " +  modelo.hotel.getTelefono() + "   Estrellas: " +  modelo.hotel.getEstrellas();
+			datos1[2] =" ";
+			datos1[3] =" ";
+			datos1[4] =" ";
+			datos1[5] =" ";
+			datos1[6] =" ";
+			datos1[7] =" ";
+			
 			tablaDetCasApart.addRow(datos1);
 			
 		//	mostrarDetallesHabSelec(tablaDetCasApart);
@@ -522,23 +528,33 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	    //CASA
  		else if (tiposAloj.getCodTipoAlojamiento() == 20) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
-			Object[] datos1 = new Object[3];
+			Object[] datos1 = new Object[8];
 			
 			tablaDetCasApart.setRowCount(0);
-			datos1[0] = modelo.casa.getNombre();
-			datos1[1] =  " ";
-			datos1[2] =modelo.casa.getDireccion()+ "   Teléfono: " +  modelo.casa.getTelefono();
+			datos1[0] = " ";
+			datos1[1] = " ";
+			datos1[2] =" ";
+			datos1[3] =" ";
+			datos1[4] =" ";
+			datos1[5] =" ";
+			datos1[6] =" ";
+			datos1[7] =" ";
 			tablaDetCasApart.addRow(datos1);
  		}
  		//APARTAMENTO
  		else if (tiposAloj.getCodTipoAlojamiento() == 30) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
- 			Object[] datos1 = new Object[3];
+ 			Object[] datos1 = new Object[8];
  			
  			tablaDetCasApart.setRowCount(0);
- 			datos1[0] = modelo.apartamento.getNombre();
- 			datos1[1] =  " ";
- 			datos1[2] =modelo.apartamento.getDireccion() + "   Piso: " +modelo.apartamento.getPiso() + "   Teléfono: " +  modelo.apartamento.getTelefono();
+ 			datos1[0] = " ";
+			datos1[1] = " ";
+			datos1[2] =" ";
+			datos1[3] =" ";
+			datos1[4] =" ";
+			datos1[5] =" ";
+			datos1[6] =" ";
+			datos1[7] =" ";
  			tablaDetCasApart.addRow(datos1);
  		}
 	

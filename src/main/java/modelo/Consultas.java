@@ -1203,4 +1203,49 @@ public class Consultas {
 		    	System.out.println("SALE LA LISTA DE CODIGOS PROMOCIONALES");
 		    	return listacodigosPromocionales;
 		 }
+		 
+		 public ArrayList<CodigoPromocional> buscarCodigosPromocionalesSoloPorDni( String dni) {
+		    	ArrayList<CodigoPromocional> listacodigosPromocionales = new ArrayList<CodigoPromocional>(); 
+		    	CodigoPromocional codigoProm;
+		    	PreparedStatement ps = null;
+		    	ResultSet rs = null;
+		    	
+		    	String query = "select * FROM `codigospromocionales` WHERE dni=?";
+
+		    	//String query = "select Cod_promocional, DescuentoPorcentaje FROM `codigospromocionales` ";
+		    			
+		    	
+		    	try {
+		    		// Abrimos una conexion
+		    		connection = conexion.conectar();
+		    				
+		    		// preparamos la consulta SQL a la base de datos
+		    		ps = connection.prepareStatement(query);
+		    		ps.setString(1, dni);
+		    		
+		    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+		    		rs = ps.executeQuery();
+		    
+		    		// crea objetos Linea con los resultados y los añade a un arrayList
+		    		while (rs.next()) {
+		    			codigoProm = new CodigoPromocional(); 
+		    			codigoProm.setCod_promocional(rs.getString("Cod_promocional"));
+		    			codigoProm.setCod_alojamiento(rs.getInt("Cod_alojamiento"));
+		    			codigoProm.setDni(rs.getString("Dni"));
+		    			codigoProm.setDescuento(rs.getFloat("DescuentoPorcentaje"));
+		    			
+		    			listacodigosPromocionales.add(codigoProm);
+		    		} 
+		    				
+		    		} 
+		    	catch (SQLException e) {
+		    			e.printStackTrace();
+		    		} 
+		    		finally {
+		    			// cerramos la conexion
+		    			conexion.desconectar();
+		    		}
+		    	System.out.println("SALE LA LISTA DE CODIGOS PROMOCIONALES");
+		    	return listacodigosPromocionales;
+		 }
 }

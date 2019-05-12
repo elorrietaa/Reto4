@@ -74,6 +74,31 @@ public class FuncionesCodigosPromo {
 	}
 	
 	/**
+	 * Método mostrarTodosCuponesDescuento = muestra los cupones descuento del usuario que ha iniciado sesión
+	 */
+	public void mostrarTodosCuponesDescuento() {
+		 String textoTodoscupones ="";
+
+			 System.out.println("PROBANDO QUE PASE COD ALOJ Y DNI     " + modelo.hotel.getCodAlojamiento() + "-"+modelo.cliente.getDni());
+			    ArrayList<CodigoPromocional> listaTodosCupones = modelo.consultas.buscarCodigosPromocionalesSoloPorDni(modelo.cliente.getDni());	
+			    System.out.println("listaCupones.size() == " + listaTodosCupones.size());
+			    	if(listaTodosCupones.size() == 0) {
+			    		 vista.cupon.textPTodosCupones.setText("No tiene usted cupones");
+			    	}
+			 
+			    	else {//se leen todos los cupones
+			    		for(int i=0; i<listaTodosCupones.size();i++) {
+			    			textoTodoscupones  = textoTodoscupones + "Cupón: " + listaTodosCupones.get(i).getCod_promocional() + " - Descuento:" + (String.format("%.0f", (listaTodosCupones.get(i).getDescuento()*100))) + "%" + "\n" ;
+					   
+			    		}
+			    		System.out.println(textoTodoscupones);
+			    		//Se muestra en el panel de codigos promocionales todos los codigos que tiene el usuario
+			    		 vista.cupon.textPTodosCupones.setText(textoTodoscupones);
+			    	}
+		
+	}
+	
+	/**
 	 * Método calcularPrecioDescuentoaplicado = se calcula el precio del alojamiento aplicando el descuento del cupón seleccionado por el usuario.
 	 * @return
 	 */

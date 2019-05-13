@@ -61,6 +61,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 					 System.out.println("PRECIOOO CON EL DESCUENTO APLICADOOO ES" + modelo.precioTotal );
 				
 					 vista.pago.total.setText(Float.toString(modelo.precioTotal) + " €");
+					 vista.pago.totalIntro.setText("0.0 €");
 					 vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 				 
 					 //guardo en el modelo el cupon seleccionado por el usuario
@@ -88,6 +89,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 				if(modelo.precioTotalSinCupon != 0)
 					modelo.precioTotal = modelo.precioTotalSinCupon;
 				vista.pago.total.setText(Float.toString(modelo.precioTotal) + " €");
+				vista.pago.totalIntro.setText("0.0 €");
 				vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 				
 				if(modelo.basesAceptadas == true){

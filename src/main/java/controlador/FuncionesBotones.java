@@ -119,7 +119,7 @@ public class FuncionesBotones {
 		pago.dinero = 0f;
 		vista.pago.totalIntro.setText(Float.toString(pago.dinero) + " €");
 		pago.falta = pago.total;
-		vista.pago.aPagar.setText(Float.toString(pago.falta) + " €");
+		vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 		
 		this.vista.pago.btn1cen.setEnabled(true); // Vuelve a habilitar los botones con el dinero
 		this.vista.pago.btn2cen.setEnabled(true);

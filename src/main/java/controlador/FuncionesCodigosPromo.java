@@ -41,7 +41,15 @@ public class FuncionesCodigosPromo {
 			    	
 			    //Si no tiene cupones aparece un mensaje en el ComboBox
 			    if(listaCupones.size() == 0) {
-			    	vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
+			    	vista.cupon.lblNoCupones.setVisible(true);
+			    	vista.cupon.cBListaCupones.setVisible(false);
+			    	vista.cupon.cBListaCupones.setEnabled(false);
+			    	vista.cupon.lblPrecioConDesc.setVisible(false);
+			    	vista.cupon.lblPrecioSinDesc.setVisible(false);
+			    	vista.cupon.tFPrecioConDesc.setVisible(false);
+			    	vista.cupon.tFPrecioSinDesc.setVisible(false);
+			    	vista.cupon.btnAplicar.setEnabled(false);
+			    	//vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
 			    }
 			 
 			    //Si tiene cupones aplicables, aparece la lista de los cupones
@@ -60,7 +68,15 @@ public class FuncionesCodigosPromo {
 			  
 			    //Si no tiene cupones aparece un mensaje en el ComboBox
 			    if(listaCupones.size() == 0) {
-		    		vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
+			    	vista.cupon.lblNoCupones.setVisible(true);
+			    	vista.cupon.cBListaCupones.setVisible(false);
+			    	vista.cupon.cBListaCupones.setEnabled(false);
+			    	vista.cupon.lblPrecioConDesc.setVisible(false);
+			    	vista.cupon.lblPrecioSinDesc.setVisible(false);
+			    	vista.cupon.tFPrecioConDesc.setVisible(false);
+			    	vista.cupon.tFPrecioSinDesc.setVisible(false);
+			    	vista.cupon.btnAplicar.setEnabled(false);
+			    	//vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
 		    	}
 		 
 			    //Si tiene cupones aplicables, aparece la lista de los cupones
@@ -77,7 +93,15 @@ public class FuncionesCodigosPromo {
 			    
 			    //Si no tiene cupones aparece un mensaje en el ComboBox
 			    if(listaCupones.size() == 0) {
-		    		vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
+			    	vista.cupon.lblNoCupones.setVisible(true);
+			    	vista.cupon.cBListaCupones.setVisible(false);
+			    	vista.cupon.cBListaCupones.setEnabled(false);
+			    	vista.cupon.lblPrecioConDesc.setVisible(false);
+			    	vista.cupon.lblPrecioSinDesc.setVisible(false);
+			    	vista.cupon.tFPrecioConDesc.setVisible(false);
+			    	vista.cupon.tFPrecioSinDesc.setVisible(false);
+			    	vista.cupon.btnAplicar.setEnabled(false);
+			    	//vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
 		    	}
 			    
 			    //Si tiene cupones aplicables, aparece la lista de los cupones
@@ -155,9 +179,13 @@ public class FuncionesCodigosPromo {
 	 * @return
 	 */
 	public float calcularPrecioDescuentoaplicado() {
-		//calculamos el precio de la reserva aplicando el descuento seleccionado por el usuario.
-		float precioConDesc = (modelo.precioTotal - (modelo.precioTotal*modelo.cuponSeleccionado.getDescuento()));
 		
+		float precioConDesc;
+		//calculamos el precio de la reserva aplicando el descuento seleccionado por el usuario.
+		if(modelo.precioTotalSinCupon == 0)
+			precioConDesc = (modelo.precioTotal - (modelo.precioTotal*modelo.cuponSeleccionado.getDescuento()));
+		else
+			precioConDesc = (modelo.precioTotalSinCupon - (modelo.precioTotalSinCupon*modelo.cuponSeleccionado.getDescuento()));
 		//Redondeamos a 2 decimales
 		precioConDesc = Math.round(precioConDesc*100); //redondear a dos decimales
 		precioConDesc = precioConDesc/100;//redondear a dos decimales

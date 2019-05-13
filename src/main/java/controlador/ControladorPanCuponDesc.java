@@ -53,7 +53,8 @@ public class ControladorPanCuponDesc implements ActionListener{
 				 //Si ha seleccionado algún código promocional
 				 if(cuponAlojSeleccionado != null) {
 					 //el precioTotalSinCupon será el que hasta ahora estaba calculado (modelo.precioTotal)
-					 modelo.precioTotalSinCupon = this.modelo.precioTotal;
+					 if(modelo.precioTotalSinCupon == 0)
+					 	modelo.precioTotalSinCupon = this.modelo.precioTotal;
 					 
 					 //Y el precio total ahora será el precio aplicando el descuento del cupón:
 					 modelo.precioTotal = controlador.funcionesCodigosPromo.calcularPrecioDescuentoaplicado();
@@ -81,7 +82,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 				
 				break;
 				
-			case "No deseo aplicar nungún descuento":
+			case "No aplicar ningún descuento":
 				//no habrá ningún cupón de descuento seleccionado:
 				modelo.cuponSeleccionado =null;
 				
@@ -98,8 +99,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 			case "Atras":
 					vista.detallesReservaCasaApart.setVisible(true);
 					vista.cupon.setVisible(false);
-					
-				
+
 				break;
 			}
 			//JCOMBOBOX DE CIUDAD Y TIPO ALOJAMIENTO

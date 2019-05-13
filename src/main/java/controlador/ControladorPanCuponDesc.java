@@ -84,8 +84,9 @@ public class ControladorPanCuponDesc implements ActionListener{
 				
 			case "No aplicar ningún descuento":
 				//no habrá ningún cupón de descuento seleccionado:
-				modelo.cuponSeleccionado =null;
-				modelo.precioTotal = modelo.precioTotalSinCupon;
+				modelo.cuponSeleccionado = null;
+				if(modelo.precioTotalSinCupon != 0)
+					modelo.precioTotal = modelo.precioTotalSinCupon;
 				vista.pago.total.setText(Float.toString(modelo.precioTotal) + " €");
 				vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 				

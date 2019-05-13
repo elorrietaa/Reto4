@@ -29,6 +29,7 @@ public class ContrPanDetReservaAloj implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.detallesReservaCasaApart.btnCerrarSesion.addActionListener(this);
 		vista.detallesReservaCasaApart.btnCancelar.addActionListener(this);
 		vista.detallesReservaCasaApart.btnInicioSesion.addActionListener(this);
 		vista.detallesReservaCasaApart.btnRegistro.addActionListener(this);
@@ -85,6 +86,9 @@ public class ContrPanDetReservaAloj implements ActionListener {
 				vista.bienvenida.setVisible(true);
 				vista.detallesReservaCasaApart.setVisible(false);
 				controlador.funcionesBotones.reset();
+				break;
+			case "Cerrar Sesión":
+				controlador.funcionesBotones.cerrarSesion();
 				break;
 			}
 		}

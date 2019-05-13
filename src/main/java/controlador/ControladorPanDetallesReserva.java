@@ -29,6 +29,7 @@ public class ControladorPanDetallesReserva implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.detallesReserva.btnCerrarSesion.addActionListener(this);
 		vista.detallesReserva.btnCancelar.addActionListener(this);
 		vista.detallesReserva.btnInicioSesion.addActionListener(this);
 		vista.detallesReserva.btnRegistro.addActionListener(this);
@@ -73,6 +74,9 @@ public class ControladorPanDetallesReserva implements ActionListener {
 				vista.bienvenida.setVisible(true);
 				vista.detallesReserva.setVisible(false);
 				controlador.funcionesBotones.reset();
+				break;
+			case "Cerrar Sesión":
+				controlador.funcionesBotones.cerrarSesion();
 				break;
 			}
 		}

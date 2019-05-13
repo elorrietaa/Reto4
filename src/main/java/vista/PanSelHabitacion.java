@@ -21,7 +21,7 @@ public class PanSelHabitacion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
-	public JButton btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion;
+	public JButton btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion, btnCerrarSesion;
 	public JLabel lblIcono, lblTitulo, lblBilleteIda;
 	public JTable tab;
 	public JScrollPane scrollPaneIda;
@@ -117,6 +117,12 @@ public class PanSelHabitacion extends JPanel {
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
 		add(btnRegistro);
+		
+		btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
+		btnCerrarSesion.setBounds(870, 26, 121, 23);
+		add(btnCerrarSesion);
+		btnCerrarSesion.setVisible(false);
+		btnCerrarSesion.setEnabled(false);
 		
 		JSpinner spinner2 = new JSpinner();
 	}

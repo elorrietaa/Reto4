@@ -22,6 +22,7 @@ public class PanPersonasAlojadas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
+	public DefaultTableModel modeloTabla;
 	public JButton btnRegistro,btnContinuar,btnAtras,btnCancelar, btnInicioSesion, btnAnadirPersona, btnBorrar;
 	public JLabel lblIcono, lblTitulo, lblBtitulo;
 	public JTable tabPersonasAloj;
@@ -59,7 +60,7 @@ public class PanPersonasAlojadas extends JPanel {
 		tabPersonasAloj = new JTable();
 		Object[][] datos = {};
 		String[] columnNames = {"DNI", "Nombre","Apellidos "};
-		tabPersonasAloj.setModel(new DefaultTableModel(datos,columnNames) {
+		modeloTabla = (new DefaultTableModel(datos,columnNames){
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
@@ -74,7 +75,7 @@ public class PanPersonasAlojadas extends JPanel {
 		        return false;
 		    }
 		});
-		
+		tabPersonasAloj.setModel(modeloTabla);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		
@@ -110,14 +111,6 @@ public class PanPersonasAlojadas extends JPanel {
 		btnContinuar.setBounds(0, 0, 0, 0);
 		FormatoDiseno.formatoBtnContinuar(btnContinuar);
 		add(btnContinuar);
-		
-		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
-		btnInicioSesion.setBounds(869, 42, 105, 23);
-		add(btnInicioSesion);
-		
-		btnRegistro = new JButton("Registro");
-		btnRegistro.setBounds(869, 8, 105, 23);
-		add(btnRegistro);
 		
 		textFieldDNI = new JTextField();
 		textFieldDNI.setBounds(712, 155, 160, 20);

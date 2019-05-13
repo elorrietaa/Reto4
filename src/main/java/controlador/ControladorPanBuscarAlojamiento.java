@@ -79,6 +79,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 * Se crean los listeners del panel
 	 */
     public void addListeners() {
+    	vista.buscarAlojamiento.btnCerrarSesion.addActionListener(this);
     	vista.buscarAlojamiento.btnCancelar.addActionListener(this);
     	vista.buscarAlojamiento.cBCiudad.addActionListener(this);
     	vista.buscarAlojamiento.cBTipoAloj.addActionListener(this);
@@ -431,6 +432,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					vista.bienvenida.setVisible(true);
 					vista.buscarAlojamiento.setVisible(false);
 					controlador.funcionesBotones.reset();
+					break;
+				case "Cerrar Sesión":
+					controlador.funcionesBotones.cerrarSesion();
 					break;
 			}
 			

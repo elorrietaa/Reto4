@@ -107,7 +107,10 @@ public class ContrPanDetReservaAloj implements ActionListener {
 		else {
 			//se carga el comboBox con los cuponesPromocionales en el panel pago
 			controlador.funcionesCodigosPromo.mostrarTodosCuponesDescuento();
-		    controlador.funcionesCodigosPromo.mostrarCuponesDescuento();
+			controlador.funcionesCodigosPromo.mostrarCuponesDescuento();
+			
+			// muestra el número de personas que pueden alojarse en el alojamiento teniendo en cuenta el número y el tipo de camas que tienen las habitaciones del alojamiento
+			controlador.funcionesPersonasAlojadas.mostrarPersonasAlojadas();
 			
 			vista.cupon.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);

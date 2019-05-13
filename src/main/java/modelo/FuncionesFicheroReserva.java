@@ -141,15 +141,13 @@ public class FuncionesFicheroReserva {
 			writer.println("Tipo de camas de la habitación: " + listaCamas.toString());
 			writer.println();
 			
-			writer.println("===== DATOS PRECIO: ===== " );
-			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
-			
 			//Si tiene cupones descuento aparecen los datos
 			if(modelo.cuponAplicado!=null) {
+			writer.println("===== DATOS PRECIO: ===== " );
 			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
-			}
-
+			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
 			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
+			}
 	
 			writer.println();
 			writer.println("*************************************************************************************");
@@ -210,14 +208,13 @@ public class FuncionesFicheroReserva {
 			writer.println("Dirección: " + modelo.casa.getDireccion() + "   Teléfono: "+ modelo.casa.getTelefono());	
 			writer.println();
 		
-			writer.println("===== DATOS PRECIO: ===== " );
-			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
 			//Si tiene cupones descuento aparecen los datos
 			if(modelo.cuponAplicado!=null) {
+			writer.println("===== DATOS PRECIO: ===== " );
 			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
-			}
+			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
 			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
-	
+			}
 			writer.println();
 			writer.println("*************************************************************");
 			writer.println();
@@ -271,15 +268,13 @@ public class FuncionesFicheroReserva {
 			writer.println("Dirección: " + modelo.apartamento.getDireccion() + " Piso: " +modelo.apartamento.getPiso() +"   Teléfono: "+ modelo.apartamento.getTelefono());	
 			
 			writer.println();
-			writer.println("===== DATOS PRECIO: ===== " );
-			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
-			
 			//Si tiene cupones descuento aparecen los datos
 			if(modelo.cuponAplicado!=null) {
+			writer.println("===== DATOS PRECIO: ===== " );
 			writer.println("Descuentos aplicados:" + modelo.cuponSeleccionado.getCod_promocional() + " - Descuento:" + (String.format("%.0f", (modelo.cuponSeleccionado.getDescuento()*100))) + "%");
-			}
+			writer.println("Precio sin aplicar descuento: " + modelo.precioTotalSinCupon + " €");
 			writer.println("Precio aplicando descuento: " + modelo.precioTotal + " €");
-	
+			}
 			
 			writer.println();
 			writer.println("*************************************************************");

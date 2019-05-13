@@ -366,6 +366,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+			
+			//sacamos el dato de ocupacion
+			int ocupacion = controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
+			
 			//se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
 			//modelo.habitacion.setTiposCamaHab(tiposCamaHab); 
 			//modelo.habitacion.setNumTipCam(numTipCam);
@@ -579,6 +583,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			//Mostrar detalles de las camas de la habitación seleccionada: 
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(modelo.habitacion.getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
+			
 			datos[3] = tiposCamaHab;
 			datos[4] =  (String.format("%.2f", modelo.habitacion.getPrecioHabitacion()) + "€/1 noche");
 		//	datos[5] =  (String.format("%.2f", modelo.reserva.getPrecioReserva() + "€ / "+ modelo.numNoches+" noches");

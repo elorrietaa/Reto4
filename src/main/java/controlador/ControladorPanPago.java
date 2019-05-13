@@ -162,6 +162,8 @@ public class ControladorPanPago implements ActionListener{
         				vista.panPersonasAlojadas.setVisible(true);
         				vista.pago.setVisible(false);
         				controlador.funcionesBotones.resetAtrasPago(this);
+        				//si retrocede en el pago el cupon aplicado se resetea a null
+        				modelo.cuponAplicado = null;
         				break;
         				
         			case "Cancelar":
@@ -342,7 +344,13 @@ public class ControladorPanPago implements ActionListener{
 				controlador.funcionesReserva.generarFicherosReservaApart();
 			}
 		
-		//(4º) actualiza los paneles
+		//(4º) Si ha utilizado un cupón lo elimina de la bbdd
+			if(modelo.cuponAplicado!=null) {
+			    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
+			}
+			
+			
+		//(5º) actualiza los paneles
 			vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
 			vista.pago.setVisible(false); // Pone el panel de pago en invisible
 	}

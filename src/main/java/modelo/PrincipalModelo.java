@@ -39,6 +39,8 @@ public class PrincipalModelo {
   
 	public float precioTotal;
 	public float precioTotalSinCupon;
+	public String cuponAplicado = null;
+	
 	public Date fechaIda;
 	public Date fechaVuelta;
 	public int numNoches;

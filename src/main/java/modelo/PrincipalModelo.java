@@ -74,6 +74,7 @@ public class PrincipalModelo {
 	
 		// guardamos el precio total de la reserva
 		precioTotal = 0;
+		precioTotalSinCupon = 0;
 		
 		// Hacemos que de manera inicial las bases legales no hayan sido aceptadas
 		basesAceptadas = false;

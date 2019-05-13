@@ -247,23 +247,11 @@ public class ControladorPanPersonasAloj implements ActionListener {
 				    	JOptionPane.showMessageDialog(vista, "Por favor, introduzca los datos de las personas alojadas. Gracias.", "Aviso", JOptionPane.WARNING_MESSAGE);
 						
 				    }
-				
 			    //Encriptar los datos
 			    encriptarDatos();
-			    
-			  
-			    
-			    
-			    
-			    
-			    
 			    //Se oculta este panel y se muestra el siguiente
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);
-			   
-			    
-			    
-			    
 				break;
 
 			    

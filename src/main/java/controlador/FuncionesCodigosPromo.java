@@ -49,7 +49,6 @@ public class FuncionesCodigosPromo {
 			    	vista.cupon.tFPrecioConDesc.setVisible(false);
 			    	vista.cupon.tFPrecioSinDesc.setVisible(false);
 			    	vista.cupon.btnAplicar.setEnabled(false);
-			    	//vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
 			    }
 			 
 			    //Si tiene cupones aplicables, aparece la lista de los cupones
@@ -57,6 +56,15 @@ public class FuncionesCodigosPromo {
 			   		for(int i=0; i<listaCupones.size();i++) {
 				    cuponAloj=listaCupones.get(i);
 				    vista.cupon.cBListaCupones.addItem(cuponAloj);
+				    
+				    vista.cupon.lblNoCupones.setVisible(false);
+			    	vista.cupon.cBListaCupones.setVisible(true);
+			    	vista.cupon.cBListaCupones.setEnabled(true);
+			    	vista.cupon.lblPrecioConDesc.setVisible(true);
+			    	vista.cupon.lblPrecioSinDesc.setVisible(true);
+			    	vista.cupon.tFPrecioConDesc.setVisible(true);
+			    	vista.cupon.tFPrecioSinDesc.setVisible(true);
+			    	vista.cupon.btnAplicar.setEnabled(true);
 			   		}
 			   	}
 					
@@ -76,13 +84,21 @@ public class FuncionesCodigosPromo {
 			    	vista.cupon.tFPrecioConDesc.setVisible(false);
 			    	vista.cupon.tFPrecioSinDesc.setVisible(false);
 			    	vista.cupon.btnAplicar.setEnabled(false);
-			    	//vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
 		    	}
 		 
 			    //Si tiene cupones aplicables, aparece la lista de los cupones
 				for(int i=0; i<listaCupones.size();i++) {
 				    cuponAloj=listaCupones.get(i);
 					vista.cupon.cBListaCupones.addItem(cuponAloj);
+					
+					vista.cupon.lblNoCupones.setVisible(false);
+				    vista.cupon.cBListaCupones.setVisible(true);
+				    vista.cupon.cBListaCupones.setEnabled(true);
+				    vista.cupon.lblPrecioConDesc.setVisible(true);
+				    vista.cupon.lblPrecioSinDesc.setVisible(true);
+				    vista.cupon.tFPrecioConDesc.setVisible(true);
+				    vista.cupon.tFPrecioSinDesc.setVisible(true);
+				    vista.cupon.btnAplicar.setEnabled(true);
 				}
 				
 		}
@@ -101,13 +117,21 @@ public class FuncionesCodigosPromo {
 			    	vista.cupon.tFPrecioConDesc.setVisible(false);
 			    	vista.cupon.tFPrecioSinDesc.setVisible(false);
 			    	vista.cupon.btnAplicar.setEnabled(false);
-			    	//vista.cupon.cBListaCupones.addItem("No tiene usted cupones aplicables a este alojamiento");
 		    	}
 			    
 			    //Si tiene cupones aplicables, aparece la lista de los cupones
 				for(int i=0; i<listaCupones.size();i++) {
 				    cuponAloj=listaCupones.get(i);
 				    vista.cupon.cBListaCupones.addItem(cuponAloj);
+				    
+				    vista.cupon.lblNoCupones.setVisible(false);
+			    	vista.cupon.cBListaCupones.setVisible(true);
+			    	vista.cupon.cBListaCupones.setEnabled(true);
+			    	vista.cupon.lblPrecioConDesc.setVisible(true);
+			    	vista.cupon.lblPrecioSinDesc.setVisible(true);
+			    	vista.cupon.tFPrecioConDesc.setVisible(true);
+			    	vista.cupon.tFPrecioSinDesc.setVisible(true);
+			    	vista.cupon.btnAplicar.setEnabled(true);
 				}
 		}
 	   

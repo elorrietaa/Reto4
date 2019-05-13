@@ -62,6 +62,8 @@ public class ControladorPanCuponDesc implements ActionListener{
 					 vista.pago.total.setText(Float.toString(modelo.precioTotal) + " €");
 					 vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 				 
+					 //guardo en el modelo el cupon seleccionado por el usuario
+					 modelo.cuponAplicado=cuponAlojSeleccionado.getCod_promocional();
 				 }
 				 if(modelo.basesAceptadas == true){//si ha aceptado las bases va a PanPersonasAlojadas
 					
@@ -97,7 +99,6 @@ public class ControladorPanCuponDesc implements ActionListener{
 					vista.detallesReservaCasaApart.setVisible(true);
 					vista.cupon.setVisible(false);
 					
-					
 				
 				break;
 			}
@@ -114,6 +115,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 	* Método actualizarFiltradoJComboBox = 
 	*/
 	private void actualizarJComboBox() {
+	    float precioConDesc =0;
 		// (1º) guarda la ciudad seleccionada
 			this.cuponAloj = (CodigoPromocional) vista.cupon.cBListaCupones.getSelectedItem();
 					if (cuponAloj != null) {
@@ -124,13 +126,14 @@ public class ControladorPanCuponDesc implements ActionListener{
 						System.out.println("EL descuento seleccionado es: " + modelo.cuponSeleccionado.getCod_promocional() + " del alojamiento " + modelo.cuponSeleccionado.getCod_alojamiento());
 					
 						//se calcula el precio aplicando el descuento 
-						float precioConDesc = controlador.funcionesCodigosPromo.calcularPrecioDescuentoaplicado();
+						precioConDesc = controlador.funcionesCodigosPromo.calcularPrecioDescuentoaplicado();
 						
 					//IMPORTANTE!!! PARA EVITAR ERRORES!! se vuelve a calcular el precio total de la reserva  si el usuario retrocede hacia atrás
 						//muestra el PRECIO TOTAL DE LA RESERVA: 
 						controlador.funcionesReserva.calcularPrecioTotalFinalReserva(controlador.controladorPanBuscarHotel.tiposAloj);
 						//se actualiza el precioFinal con descuento aplicado:
 						vista.cupon.tFPrecioSinDesc.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el precio total sin aplicar el descuento
+						
 						vista.cupon.tFPrecioConDesc.setText(Float.toString(precioConDesc) + " €");
 				}	
 	}

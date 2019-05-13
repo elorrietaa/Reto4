@@ -1248,4 +1248,36 @@ public class Consultas {
 		    	System.out.println("SALE LA LISTA DE CODIGOS PROMOCIONALES");
 		    	return listacodigosPromocionales;
 		 }
+		 
+		 public void eliminarCodigoPromocionalAplicado( String codPromocionalSeleccionado) {
+		    
+		    	PreparedStatement ps = null;
+		    	
+		    	
+		    	String query = "DELETE FROM `codigospromocionales` WHERE `Cod_promocional`=?";
+
+		
+		    	try {
+		    		// Abrimos una conexion
+		    		connection = conexion.conectar();
+		    				
+		    		// preparamos la consulta SQL a la base de datos
+		    		ps = connection.prepareStatement(query);
+		    		ps.setString(1, codPromocionalSeleccionado);
+		    		
+		    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+		    		ps.execute();
+		    
+		    				
+		    		} 
+		    	catch (SQLException e) {
+		    			e.printStackTrace();
+		    		} 
+		    		finally {
+		    			// cerramos la conexion
+		    			conexion.desconectar();
+		    		}
+		    	System.out.println("Cupón "+ codPromocionalSeleccionado + " eliminado correctamente");
+		    	
+		 }
 }

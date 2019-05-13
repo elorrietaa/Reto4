@@ -111,7 +111,7 @@ public class ContrPanDetReservaAloj implements ActionListener {
 			controlador.funcionesCodigosPromo.mostrarCuponesDescuento();
 			
 			// muestra el número de personas que pueden alojarse en el alojamiento teniendo en cuenta el número y el tipo de camas que tienen las habitaciones del alojamiento
-			controlador.funcionesPersonasAlojadas.mostrarPersonasAlojadas();
+			//controlador.funcionesPersonasAlojadas.mostrarPersonasAlojadas();
 			
 			vista.cupon.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);

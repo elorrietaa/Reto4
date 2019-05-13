@@ -1,5 +1,6 @@
 package App;
 
+
 import controlador.PrincipalControlador;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;

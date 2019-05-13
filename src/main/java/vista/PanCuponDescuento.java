@@ -20,7 +20,7 @@ public class PanCuponDescuento extends JPanel {
 	public JComboBox<Object> cBListaCupones;
 	public JTextField tFPrecioSinDesc, tFPrecioConDesc;
 	public JTextPane textPTodosCupones;
-	private JLabel lblDescuentosAplicablesPara;
+	public JLabel lblDescuentosAplicablesPara, lblNoCupones, lblPrecioSinDesc, lblPrecioConDesc;
 	private JTextPane textPane;
 
 	public PanCuponDescuento() {
@@ -50,9 +50,9 @@ public class PanCuponDescuento extends JPanel {
 		tFPrecioSinDesc.setBounds(561, 302, 86, 20);
 		add(tFPrecioSinDesc);
 		
-		JLabel label_1 = new JLabel("Precio sin aplicar descuento:");
-		label_1.setBounds(561, 266, 177, 14);
-		add(label_1);
+		lblPrecioSinDesc = new JLabel("Precio sin aplicar descuento:");
+		lblPrecioSinDesc.setBounds(561, 266, 177, 14);
+		add(lblPrecioSinDesc);
 		
 		tFPrecioConDesc = new JTextField();
 		tFPrecioConDesc.setEditable(false);
@@ -60,9 +60,9 @@ public class PanCuponDescuento extends JPanel {
 		tFPrecioConDesc.setBounds(764, 302, 86, 20);
 		add(tFPrecioConDesc);
 		
-		JLabel label_2 = new JLabel("Precio aplicando descuento:");
-		label_2.setBounds(764, 266, 192, 14);
-		add(label_2);
+		lblPrecioConDesc = new JLabel("Precio aplicando descuento:");
+		lblPrecioConDesc.setBounds(764, 266, 192, 14);
+		add(lblPrecioConDesc);
 		
 		JLabel lblSusDescuentos = new JLabel("Todos sus descuentos:");
 		lblSusDescuentos.setBounds(121, 11, 221, 14);
@@ -84,8 +84,9 @@ public class PanCuponDescuento extends JPanel {
 		textPTodosCupones.setEditable(false);
 		scrollPane.setViewportView(textPTodosCupones);
 		
-	
-		
-		
+		lblNoCupones = new JLabel("No tiene usted cupones aplicables a este alojamiento");
+		lblNoCupones.setBounds(121, 305, 379, 20);
+		add(lblNoCupones);
+		lblNoCupones.setVisible(false);
 	}
 }

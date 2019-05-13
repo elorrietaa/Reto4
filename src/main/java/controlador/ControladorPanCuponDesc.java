@@ -80,7 +80,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 				
 				break;
 				
-			case "No deseo aplicar nungún descuento":
+			case "No aplicar ningún descuento":
 				//no habrá ningún cupón de descuento seleccionado:
 				modelo.cuponSeleccionado =null;
 				

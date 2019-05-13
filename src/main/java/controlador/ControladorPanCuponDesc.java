@@ -87,10 +87,12 @@ public class ControladorPanCuponDesc implements ActionListener{
 				if(modelo.basesAceptadas == true){
 					vista.panPersonasAlojadas.setVisible(true);
 					vista.cupon.setVisible(false);
+					modelo.precioTotal = modelo.precioTotalSinCupon;
 				}
 				else {
 					vista.bases.setVisible(true);
 					vista.cupon.setVisible(false);
+					modelo.precioTotal = modelo.precioTotalSinCupon;
 				}
 				break;
 				

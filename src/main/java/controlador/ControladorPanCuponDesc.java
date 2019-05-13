@@ -109,8 +109,6 @@ public class ControladorPanCuponDesc implements ActionListener{
 			case "Atras":
 					vista.detallesReservaCasaApart.setVisible(true);
 					vista.cupon.setVisible(false);
-					//reset modelo.precioTotal??
-					controlador.funcionesBotones.reset();
 				//??	//el precio del modelo vuelve a ser el normal sin descuentos aplicados
 					
 				

@@ -65,7 +65,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 					 vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 				 
 					 //guardo en el modelo el cupon seleccionado por el usuario
-					 modelo.cuponAplicado=cuponAlojSeleccionado.getCod_promocional();
+				//	 modelo.cuponAplicado=cuponAlojSeleccionado.getCod_promocional();
 				 }
 				 if(modelo.basesAceptadas == true){//si ha aceptado las bases va a PanPersonasAlojadas
 					

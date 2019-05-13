@@ -622,10 +622,12 @@ public class FuncionesReserva {
 			System.out.println(listaCamas.get(i).getTipoCama().toString());
 		
 		}
-		//se rellena la variable ocupacion con el umero de ocupantes de las camas de la habitacion
+		//se rellena la variable ocupacion con el numero de ocupantes de las camas de la habitacion
 		ocupacion = numTipCam[0] * 1 + numTipCam[1] * 2 + numTipCam[2] *1;
 		System.out.println("-->--->--->--->--->--->ocupacion" + ocupacion);
-	
+		//modelo.ocupacionFinal=ocupacion;
+		//System.out.println("-->--->--->--->--->--->ocupacion en el modelo" + modelo.ocupacionFinal);
+		
 		return ocupacion;
 	}
 	

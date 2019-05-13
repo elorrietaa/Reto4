@@ -43,6 +43,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	public ArrayList<Apartamento> listaApartamentos;
 	public ArrayList<Dormitorio> listaDormitorios;
 	public ArrayList<Habitacion> listaHabitaciones;
+	
+	public int ocupacion=0;
 
 	
 	Ciudad ciudad;
@@ -250,6 +252,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
         	  ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaHabitaciones.get(i).getCodHabitacion());
         	  String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 
+        	//sacamos el dato de ocupacion
+		ocupacion = ocupacion + controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
+        	  
         	  //se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
 
         	  //modelo.habitacion.setTiposCamaHab(tiposCamaHab);
@@ -366,8 +371,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
 			String tiposCamaHab = controlador.funcionesReserva.mostrarTiposDeCamas(listaCamas);
 			
-			//sacamos el dato de ocupacion
-			int ocupacion = controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
+			//sacamos el dato de ocupacion(aqui saca el de todas las habs)
+			//int ocupacion = controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
 			
 			//se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
 			//modelo.habitacion.setTiposCamaHab(tiposCamaHab); 

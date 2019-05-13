@@ -40,6 +40,7 @@ public class PrincipalModelo {
 	public float precioTotal;
 	public float precioTotalSinCupon;
 	public String cuponAplicado = null;
+	public int ocupacionFinal;
 	
 	public Date fechaIda;
 	public Date fechaVuelta;

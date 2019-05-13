@@ -25,11 +25,11 @@ public class FuncionesPersonasAlojadas {
 	 */
 	public void mostrarPersonasAlojadas() {
 	    int ocupacion = 0;
-	    ArrayList<Dormitorio> listaDormitorios = modelo.consultas.buscarHabitacionDisponiblel(modelo.fechaIda, modelo.fechaVuelta, modelo.hotel.getCodAlojamiento());
+	    ArrayList<Habitacion> listaDormitorios = modelo.consultas.buscarHabitacionPorCodigoAlojamiento(modelo.alojamiento, modelo.alojamiento.getCodAlojamiento());
 	          for(int i=0; i<listaDormitorios.size();i++) {
 	               ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
 	        
-	               ocupacion = controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
+	               ocupacion = ocupacion + controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
 	          }
 	          System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!El número de personas que se pueden alojar en el alojamiento es: " + ocupacion);
 	}

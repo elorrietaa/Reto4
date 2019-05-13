@@ -30,7 +30,7 @@ public class PanBuscarAlojamiento extends JPanel {
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart;
-    	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar;
+    	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion;
     	public JComboBox<Object> cBCiudad, cBTipoAloj; 
     	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha;
     	public JCalendar fechaIda, fechaVuelta;
@@ -205,6 +205,12 @@ public class PanBuscarAlojamiento extends JPanel {
 				btnCancelar = new JButton("Cancelar");
 				btnCancelar.setBounds(44, 663, 89, 23);
 				add(btnCancelar);
+				
+				btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
+				btnCerrarSesion.setBounds(870, 26, 121, 23);
+				add(btnCerrarSesion);
+				btnCerrarSesion.setVisible(false);
+				btnCerrarSesion.setEnabled(false);
 
 	}
 }

@@ -29,6 +29,7 @@ public class ContrPanDetReservaAloj implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.detallesReservaCasaApart.btnCerrarSesion.addActionListener(this);
 		vista.detallesReservaCasaApart.btnCancelar.addActionListener(this);
 		vista.detallesReservaCasaApart.btnInicioSesion.addActionListener(this);
 		vista.detallesReservaCasaApart.btnRegistro.addActionListener(this);
@@ -86,6 +87,9 @@ public class ContrPanDetReservaAloj implements ActionListener {
 				vista.detallesReservaCasaApart.setVisible(false);
 				controlador.funcionesBotones.reset();
 				break;
+			case "Cerrar Sesión":
+				controlador.funcionesBotones.cerrarSesion();
+				break;
 			}
 		}
 	}
@@ -93,8 +97,9 @@ public class ContrPanDetReservaAloj implements ActionListener {
 	public void funcionContinuar() {
 		ControladorLogin.panelOrigen = vista.detallesReservaCasaApart;
 		ControladorLogin.detalles = true;
-		vista.pago.total.setText(Float.toString(modelo.precioTotal) + " €");
-		vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
+		//vista.pago.total.setText(Float.toString(modelo.precioTotal) + " €");
+		//vista.pago.totalIntro.setText("0.0 €");
+		//vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 		if(modelo.cliente == null) {
 			vista.login.setVisible(true);
 			vista.detallesReservaCasaApart.setVisible(false);

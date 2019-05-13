@@ -31,6 +31,7 @@ public class PanRegistro extends JPanel {
 	
 	public PanRegistro() {
 		
+		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(0,0,1024,720);
 		

@@ -24,6 +24,7 @@ public class FuncionesBotones {
 		modelo.ciudad = null;
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
+		modelo.precioTotalSinCupon = 0;
 		modelo.basesAceptadas = false;
 		
 		ControladorLogin.detalles = false;
@@ -47,6 +48,12 @@ public class FuncionesBotones {
 		
 		vista.cupon.tFPrecioSinDesc.setText(""); 
 		vista.cupon.tFPrecioConDesc.setText("");
+		
+		vista.panPersonasAlojadas.modeloTabla.setRowCount(0);
+		
+		vista.panPersonasAlojadas.textFieldApellidos.setText("");
+		vista.panPersonasAlojadas.textFieldDNI.setText("");
+		vista.panPersonasAlojadas.textFieldNombre.setText("");
 	}
 	
 	public void resetPago(ControladorPanPago pago) {
@@ -58,6 +65,7 @@ public class FuncionesBotones {
 		modelo.ciudad = null;
 		modelo.reserva = null;
 		modelo.precioTotal = 0;
+		modelo.precioTotalSinCupon = 0;
 		modelo.basesAceptadas = false;
 		
 		ControladorLogin.detalles = false;
@@ -98,6 +106,12 @@ public class FuncionesBotones {
 		vista.pago.btnContinuar.setEnabled(false);
 		
 		controlador.funcionesRegistro.mostrarBotones();
+		
+		vista.panPersonasAlojadas.modeloTabla.setRowCount(0);
+		
+		vista.panPersonasAlojadas.textFieldApellidos.setText("");
+		vista.panPersonasAlojadas.textFieldDNI.setText("");
+		vista.panPersonasAlojadas.textFieldNombre.setText("");
 	}
 	
 	public void resetAtrasPago(ControladorPanPago pago) {
@@ -105,7 +119,7 @@ public class FuncionesBotones {
 		pago.dinero = 0f;
 		vista.pago.totalIntro.setText(Float.toString(pago.dinero) + " €");
 		pago.falta = pago.total;
-		vista.pago.aPagar.setText(Float.toString(pago.falta) + " €");
+		vista.pago.aPagar.setText(Float.toString(modelo.precioTotal) + " €");
 		
 		this.vista.pago.btn1cen.setEnabled(true); // Vuelve a habilitar los botones con el dinero
 		this.vista.pago.btn2cen.setEnabled(true);
@@ -124,5 +138,23 @@ public class FuncionesBotones {
 		
 		this.vista.pago.btnContinuar.setVisible(false); // Desabilita el boton de continuar y lo hace invisible
 		this.vista.pago.btnContinuar.setEnabled(false);
+	}
+	
+	public void cerrarSesion() {
+		controlador.funcionesRegistro.mostrarBotones();
+		modelo.cliente = null;
+		ControladorLogin.detalles = false;
+		ControladorRegistro.detalles = false;
+		
+		vista.login.userField.setText("");
+		vista.login.password.setText("");
+		
+		vista.registro.txtNombre.setText("");
+		vista.registro.txtApellidos.setText("");
+		vista.registro.rbtnMasc.setSelected(false);
+		vista.registro.rbtnFem.setSelected(false);
+		vista.registro.txtDni.setText("");
+		vista.registro.passwordField.setText("");
+		vista.registro.passwordField2.setText("");
 	}
 }

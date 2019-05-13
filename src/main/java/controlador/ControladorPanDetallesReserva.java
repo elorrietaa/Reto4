@@ -29,6 +29,7 @@ public class ControladorPanDetallesReserva implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.detallesReserva.btnCerrarSesion.addActionListener(this);
 		vista.detallesReserva.btnCancelar.addActionListener(this);
 		vista.detallesReserva.btnInicioSesion.addActionListener(this);
 		vista.detallesReserva.btnRegistro.addActionListener(this);
@@ -74,6 +75,9 @@ public class ControladorPanDetallesReserva implements ActionListener {
 				vista.detallesReserva.setVisible(false);
 				controlador.funcionesBotones.reset();
 				break;
+			case "Cerrar Sesión":
+				controlador.funcionesBotones.cerrarSesion();
+				break;
 			}
 		}
 	}
@@ -81,8 +85,9 @@ public class ControladorPanDetallesReserva implements ActionListener {
 	public void funcionContinuar() {
 		ControladorLogin.panelOrigen = vista.detallesReserva;
 		ControladorLogin.detalles = true;
-		vista.pago.total.setText(Float.toString(this.modelo.precioTotal) + " €");
-		vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal) + " €");
+		//vista.pago.total.setText(Float.toString(this.modelo.precioTotal) + " €");
+		//vista.pago.totalIntro.setText("0.0 €");
+		//vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal) + " €");
 		if(modelo.cliente == null) {
 			vista.login.setVisible(true);
 			vista.detallesReserva.setVisible(false);

@@ -24,7 +24,7 @@ public class PanPago extends JPanel {
 	 * Create the panel.
 	 */
 	public PanPago() {
-		setBackground(Color.WHITE); 
+		setBackground(Color.WHITE);
 		setBounds(0, 0, 1024, 720);
 		setLayout(null);
 		

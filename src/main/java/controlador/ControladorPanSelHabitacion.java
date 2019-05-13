@@ -64,6 +64,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 * Creacion de los listeners para los distintos elementos del panel
 	 */
 	public void addListeners() {
+		vista.selHabitacion.btnCerrarSesion.addActionListener(this);
 		vista.selHabitacion.btnCancelar.addActionListener(this);
 		vista.selHabitacion.btnInicioSesion.addActionListener(this);
 		vista.selHabitacion.btnRegistro.addActionListener(this);
@@ -357,6 +358,9 @@ public class ControladorPanSelHabitacion implements ActionListener {
 				vista.bienvenida.setVisible(true);
 				vista.selHabitacion.setVisible(false);
 				controlador.funcionesBotones.reset();
+				break;
+			case "Cerrar Sesión":
+				controlador.funcionesBotones.cerrarSesion();
 				break;
 		}	
 	}

@@ -171,6 +171,15 @@ public class FuncionesRegistro {
 		vista.detallesReservaCasaApart.btnInicioSesion.setEnabled(false);
 		vista.detallesReservaCasaApart.btnRegistro.setVisible(false);
 		vista.detallesReservaCasaApart.btnRegistro.setEnabled(false);
+		vista.buscarAlojamiento.btnCerrarSesion.setVisible(true);
+		vista.buscarAlojamiento.btnCerrarSesion.setEnabled(true);
+		vista.selHabitacion.btnCerrarSesion.setVisible(true);
+		vista.selHabitacion.btnCerrarSesion.setEnabled(true);
+		vista.detallesReserva.btnCerrarSesion.setVisible(true);
+		vista.detallesReserva.btnCerrarSesion.setEnabled(true);
+		vista.detallesReservaCasaApart.btnCerrarSesion.setVisible(true);
+		vista.detallesReservaCasaApart.btnCerrarSesion.setEnabled(true);
+		
 	}
 	
 	public void mostrarBotones() {
@@ -190,6 +199,14 @@ public class FuncionesRegistro {
 		vista.detallesReservaCasaApart.btnInicioSesion.setEnabled(true);
 		vista.detallesReservaCasaApart.btnRegistro.setVisible(true);
 		vista.detallesReservaCasaApart.btnRegistro.setEnabled(true);
+		vista.buscarAlojamiento.btnCerrarSesion.setVisible(false);
+		vista.buscarAlojamiento.btnCerrarSesion.setEnabled(false);
+		vista.selHabitacion.btnCerrarSesion.setVisible(false);
+		vista.selHabitacion.btnCerrarSesion.setEnabled(false);
+		vista.detallesReserva.btnCerrarSesion.setVisible(false);
+		vista.detallesReserva.btnCerrarSesion.setEnabled(false);
+		vista.detallesReservaCasaApart.btnCerrarSesion.setVisible(false);
+		vista.detallesReservaCasaApart.btnCerrarSesion.setEnabled(false);
 	}
 
 }

@@ -70,9 +70,10 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    String nombreIntroducido = vista.panPersonasAlojadas.textFieldNombre.getText();
 	    String apellidosIntroducido = vista.panPersonasAlojadas.textFieldApellidos.getText();
 	    
+	    
 		
 	    boolean dniValidado=controlador.funcionesRegistro.validarDNI(dniIntroducido);
-	    
+	   
 	    //comprobamos que el dni no esté vacio
 	    if(dniIntroducido.equals("")) {
 	    	JOptionPane.showMessageDialog(vista, "Por favor, rellene el campo 'DNI'.Gracias.", "Aviso", JOptionPane.WARNING_MESSAGE);
@@ -93,6 +94,19 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    	JOptionPane.showMessageDialog(vista, "Por favor, rellene el campo 'Apellidos'.Gracias.", "Aviso", JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
+	    
+	    //comprueba que  los dnis no se repitan
+	    if(listaPerAloj.size() >0 ) 
+	    {
+	   	   for(int i=0;i<listaPerAloj.size();i++)
+	   	   {
+	   		   if(dniIntroducido.equals(listaPerAloj.get(i).getDni()));
+	   		   {
+	   			JOptionPane.showMessageDialog(vista, "Ciudado, Hay un DNI repetido.", "Aviso", JOptionPane.WARNING_MESSAGE);
+	   			return false;
+	   		   } 
+	   	   }
+	   	}
 	   
 	    return true;
 	}

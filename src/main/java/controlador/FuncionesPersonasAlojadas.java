@@ -33,5 +33,6 @@ public class FuncionesPersonasAlojadas {
 	          }
 	          System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!El número de personas que se pueden alojar en el alojamiento es: " + ocupacion);
 	}
+	
 
 }

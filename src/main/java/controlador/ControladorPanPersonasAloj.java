@@ -63,6 +63,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	/**
 	 * Método validarDatosPersonasAloj = valida los datos introducidos por el usuario esten en un formato correcto
 	 */
+	@SuppressWarnings("unused")
 	public boolean validarDatosPersonasAloj() {
 	  //Se rellenan las variables de los datos introducidos con los datos introducidos en los JTextField
 		//Se rellenan las variables de los datos introducidos con los datos introducidos en los JTextField
@@ -96,17 +97,18 @@ public class ControladorPanPersonasAloj implements ActionListener {
 		}
 	    
 	    //comprueba que  los dnis no se repitan
-	    if(listaPerAloj.size() >0 ) 
-	    {
+	    
 	   	   for(int i=0;i<listaPerAloj.size();i++)
 	   	   {
-	   		   if(dniIntroducido.equals(listaPerAloj.get(i).getDni()));
+	   	       System.out.println(dniIntroducido+"=?"+listaPerAloj.get(i).getDni());
+	   		   if(dniIntroducido.equals(listaPerAloj.get(i).getDni().toString()));
 	   		   {
 	   			JOptionPane.showMessageDialog(vista, "Ciudado, Hay un DNI repetido.", "Aviso", JOptionPane.WARNING_MESSAGE);
 	   			return false;
 	   		   } 
+	   		
 	   	   }
-	   	}
+	   
 	   
 	    return true;
 	}

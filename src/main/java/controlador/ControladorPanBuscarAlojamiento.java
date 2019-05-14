@@ -14,18 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JCalendar;
 
 import bbdd.*;
-import modelo.Alojamiento;
-import modelo.Apartamento;
-import modelo.Cama;
-import modelo.Casa;
-import modelo.Ciudad;
-import modelo.Consultas;
-import modelo.Dormitorio;
-import modelo.Habitacion;
-import modelo.Hotel;
-import modelo.PrincipalModelo;
-import modelo.Reserva;
-import modelo.TipoAlojamiento;
+import modelo.*;
 import vista.*;
 
 /**
@@ -445,6 +434,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				case "Cerrar Sesión":
 					controlador.funcionesBotones.cerrarSesion();
 					break;
+				case "Contratar servicios adicionales":
+					vista.buscarAlojamiento.panelServicios.setVisible(true);
+					vista.buscarAlojamiento.btnServicios.setVisible(false);
+					vista.buscarAlojamiento.btnServicios.setEnabled(false);
 			}
 			
 		//JCOMBOBOX DE CIUDAD Y TIPO ALOJAMIENTO

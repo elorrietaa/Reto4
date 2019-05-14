@@ -35,6 +35,7 @@ public class PrincipalControlador {
     public FuncionesReserva funcionesReserva;
     public FuncionesValidaciones funcionesValidaciones;
     public FuncionesOrdenar funcionesOrdenar;
+    public FuncionesServicios funcionesServicios;
     
     public FuncionesBasesLegales funcionesBasesLegales;
     public FuncionesCodigosPromo funcionesCodigosPromo;
@@ -62,6 +63,7 @@ public class PrincipalControlador {
 		this.funcionesBasesLegales = new FuncionesBasesLegales(modelo, vista, this);
 		this.funcionesCodigosPromo = new FuncionesCodigosPromo(modelo, vista, this);
 		this.funcionesPersonasAlojadas = new FuncionesPersonasAlojadas(modelo, vista, this);
+		this.funcionesServicios = new 
 		
     }
     /**

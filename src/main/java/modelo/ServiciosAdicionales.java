@@ -23,100 +23,68 @@ public class ServiciosAdicionales {
 	private boolean gimnasioSeleccionado;
 	private boolean parkingSeleccionado;
 	
-	public boolean isWifi() {
-		return wifi;
+	public ServiciosAdicionales(boolean wifi, boolean aire, boolean piscina, boolean spa, boolean gimnasio, boolean parking, float precioWifi, float precioAire, float precioPiscina, float precioSpa, float precioGimnasio, float precioParking) {
+		this.wifi = wifi;
+		this.aire = aire;
+		this.piscina = piscina;
+		this.spa = spa;
+		this.gimnasio = gimnasio;
+		this.parking = parking;
+		
+		this.precioWifi = precioWifi;
+		this.precioAire = precioAire;
+		this.precioPiscina = precioPiscina;
+		this.precioSpa = precioSpa;
+		this.precioGimnasio = precioGimnasio;
+		this.precioParking = precioParking;
 	}
 	
-	public void setWifi(boolean wifi) {
-		this.wifi = wifi;
+	public boolean isWifi() {
+		return wifi;
 	}
 	
 	public boolean isAire() {
 		return aire;
 	}
 	
-	public void setAire(boolean aire) {
-		this.aire = aire;
-	}
-	
 	public boolean isPiscina() {
 		return piscina;
-	}
-	
-	public void setPiscina(boolean piscina) {
-		this.piscina = piscina;
 	}
 	
 	public boolean isSpa() {
 		return spa;
 	}
 	
-	public void setSpa(boolean spa) {
-		this.spa = spa;
-	}
-	
 	public boolean isGimnasio() {
 		return gimnasio;
-	}
-	
-	public void setGimnasio(boolean gimnasio) {
-		this.gimnasio = gimnasio;
 	}
 	
 	public boolean isParking() {
 		return parking;
 	}
 	
-	public void setParking(boolean parking) {
-		this.parking = parking;
-	}
-	
 	public float getPrecioWifi() {
 		return precioWifi;
-	}
-	
-	public void setPrecioWifi(float precioWifi) {
-		this.precioWifi = precioWifi;
 	}
 	
 	public float getPrecioAire() {
 		return precioAire;
 	}
 	
-	public void setPrecioAire(float precioAire) {
-		this.precioAire = precioAire;
-	}
-	
 	public float getPrecioPiscina() {
 		return precioPiscina;
-	}
-	
-	public void setPrecioPiscina(float precioPiscina) {
-		this.precioPiscina = precioPiscina;
 	}
 	
 	public float getPrecioSpa() {
 		return precioSpa;
 	}
 	
-	public void setPrecioSpa(float precioSpa) {
-		this.precioSpa = precioSpa;
-	}
-	
 	public float getPrecioGimnasio() {
 		return precioGimnasio;
 	}
 	
-	public void setPrecioGimnasio(float precioGimnasio) {
-		this.precioGimnasio = precioGimnasio;
-	}
-	
 	public float getPrecioParking() {
 		return precioParking;
-	}
-	
-	public void setPrecioParking(float precioParking) {
-		this.precioParking = precioParking;
 	}
 	
 	public boolean isWifiSeleccionado() {

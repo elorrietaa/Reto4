@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JCalendar;
+import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -29,11 +31,12 @@ public class PanBuscarAlojamiento extends JPanel {
 	 * Create the panel.
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
-		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart;
-    	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion;
+		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
+    	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer;
     	public JComboBox<Object> cBCiudad, cBTipoAloj; 
-    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha;
+    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha, labelServicios, labelServicio;
     	public JCalendar fechaIda, fechaVuelta;
+    	public JCheckBox checkWifi, checkSpa, checkAire, checkPiscina, checkGimnasio, checkParking;
     	
     	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
     	public JTable tab, table;
@@ -42,7 +45,7 @@ public class PanBuscarAlojamiento extends JPanel {
     	
     	
 	public PanBuscarAlojamiento() {
-		setBackground(Color.WHITE);
+		setBackground(Color.GRAY);
 		setLayout(null);
 		setBounds(0,0,1024,720);
 		
@@ -211,6 +214,60 @@ public class PanBuscarAlojamiento extends JPanel {
 				add(btnCerrarSesion);
 				btnCerrarSesion.setVisible(false);
 				btnCerrarSesion.setEnabled(false);
+				
+				btnServicios = new JButton("Contratar servicios adicionales");
+				btnServicios.setBounds(612, 553, 275, 23);
+				add(btnServicios);
+				
+				panelServicios = new JPanel();
+				panelServicios.setBounds(506, 484, 485, 153);
+				add(panelServicios);
+				panelServicios.setLayout(null);
+				panelServicios.setVisible(false);
+				
+				btnContratar = new JButton("Contratar");
+				btnContratar.setBounds(386, 119, 89, 23);
+				panelServicios.add(btnContratar);
+				
+				btnCancelarSer = new JButton(" Cancelar ");
+				btnCancelarSer.setBounds(10, 119, 89, 23);
+				panelServicios.add(btnCancelarSer);
+				
+				checkWifi = new JCheckBox("WiFi");
+				checkWifi.setBounds(96, 19, 97, 23);
+				panelServicios.add(checkWifi);
+				
+				checkSpa = new JCheckBox("Spa");
+				checkSpa.setBounds(277, 19, 97, 23);
+				panelServicios.add(checkSpa);
+				
+				checkAire = new JCheckBox("Aire Acondicionado");
+				checkAire.setBounds(96, 45, 134, 23);
+				panelServicios.add(checkAire);
+				
+				checkPiscina = new JCheckBox("Piscina");
+				checkPiscina.setBounds(96, 71, 97, 23);
+				panelServicios.add(checkPiscina);
+				
+				checkGimnasio = new JCheckBox("Gimnasio");
+				checkGimnasio.setBounds(277, 45, 97, 23);
+				panelServicios.add(checkGimnasio);
+				
+				checkParking = new JCheckBox("Parking");
+				checkParking.setBounds(277, 71, 97, 23);
+				panelServicios.add(checkParking);
+				
+				labelServicios = new JLabel("Servicios contratados correctamente");
+				labelServicios.setHorizontalAlignment(SwingConstants.CENTER);
+				labelServicios.setBounds(150, 123, 189, 14);
+				panelServicios.add(labelServicios);
+				labelServicios.setVisible(false);
+				
+				labelServicio = new JLabel("Servicio contratado correctamente");
+				labelServicio.setHorizontalAlignment(SwingConstants.CENTER);
+				labelServicio.setBounds(150, 123, 189, 14);
+				panelServicios.add(labelServicio);
+				labelServicio.setVisible(false);
 
 	}
 }

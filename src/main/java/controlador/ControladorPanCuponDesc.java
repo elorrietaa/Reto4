@@ -136,7 +136,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 						
 					//IMPORTANTE!!! PARA EVITAR ERRORES!! se vuelve a calcular el precio total de la reserva  si el usuario retrocede hacia atrás
 						//muestra el PRECIO TOTAL DE LA RESERVA: 
-						controlador.funcionesReserva.calcularPrecioTotalFinalReserva(controlador.controladorPanBuscarHotel.tiposAloj);
+						controlador.funcionesReserva.calcularPrecioTotalFinalReserva(controlador.controladorPanBuscarAlojamiento.tiposAloj);
 						//se actualiza el precioFinal con descuento aplicado:
 						vista.cupon.tFPrecioSinDesc.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el precio total sin aplicar el descuento
 						

@@ -2,6 +2,8 @@ package modelo;
 
 public class ServiciosAdicionales {
 	
+	private int codAlojamiento;
+	
 	private boolean wifi;
 	private boolean aire;
 	private boolean piscina;
@@ -25,7 +27,9 @@ public class ServiciosAdicionales {
 	private boolean gimnasioSeleccionado;
 	private boolean parkingSeleccionado;
 	
-	public ServiciosAdicionales(int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking, int restaurante, int bar) {
+	public ServiciosAdicionales(int codAlojamiento, int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking, int restaurante, int bar) {
+		this.codAlojamiento = codAlojamiento;
+		
 		this.wifi = comprobarBoolean(wifi);
 		this.aire = comprobarBoolean(aire);
 		this.piscina = comprobarBoolean(piscina);
@@ -137,6 +141,10 @@ public class ServiciosAdicionales {
 	
 	public void setParkingSeleccionado(boolean parkingSeleccionado) {
 		this.parkingSeleccionado = parkingSeleccionado;
+	}
+	
+	public int getCodAlojamiento() {
+		return this.codAlojamiento;
 	}
 	
 	public boolean comprobarBoolean(int num) {

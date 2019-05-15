@@ -329,7 +329,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 					
 					
 					//(4º) se actualiza la información del siguiente panel: PanDetallesReserva con la info del hotel seleccionado, las habitaciones seleccionadas y el precio Total de la reserva
-					controlador.controladorPanBuscarHotel.actualizarPanDetallesReservaCasaAloj();
+					controlador.controladorPanBuscarAlojamiento.actualizarPanDetallesReservaCasaAloj();
 					
 					//(5º) actualiza el siguiente panel: Desaparece Panel de Seleccionar habitacion  y aparece panel de detalles reserva
 					vista.selHabitacion.setVisible(false);

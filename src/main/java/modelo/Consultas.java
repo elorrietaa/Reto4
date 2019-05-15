@@ -1280,4 +1280,48 @@ public class Consultas {
 		    	System.out.println("Cupón "+ codPromocionalSeleccionado + " eliminado correctamente");
 		    	
 		 }
+		 public ServiciosAdicionales buscarServiciosAdicionales(int codAlojamiento) {
+			 
+			 	PreparedStatement ps = null;
+		    	ResultSet rs = null;
+		    	ServiciosAdicionales sA = null;
+		    	String query = "select Wifi,Precio_Wifi,Aire,Precio_aire,"
+		    			+ " Piscina, Precio_piscina, Spa, Precio_spa,"
+		    			+ " Gimnasio, Precio_gimnasio, Parking, Precio_parking,"
+		    			+ " Restaurante, Bar FROM `servicios` WHERE cod_alojamiento=?";
+
+		    	//String query = "select Cod_promocional, DescuentoPorcentaje FROM `codigospromocionales` ";
+		    			
+		    	
+		    	try {
+		    		// Abrimos una conexion
+		    		connection = conexion.conectar();
+		    				
+		    		// preparamos la consulta SQL a la base de datos
+		    		ps = connection.prepareStatement(query);
+		    		ps.setInt(1, codAlojamiento);
+		    		
+		    		// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+		    		rs = ps.executeQuery();
+		    
+		    		// crea objetos Linea con los resultados y los añade a un arrayList
+		    			sA = new ServiciosAdicionales(rs.getInt("Wifi"),rs.getFloat("Precio_Wifi"),rs.getInt("Aire"),rs.getFloat("Precio_aire"),rs.getInt("Piscina"),rs.getFloat("Precio_piscina"),
+		    					rs.getInt("Spa"),rs.getFloat("Precio_spa"),rs.getInt("Gimnasio"),rs.getFloat("Precio_gimnasio"),rs.getInt("Parking"),rs.getFloat("Precio_parking"),rs.getInt("Restaurante"),
+		    					rs.getInt("Bar")); 
+		    			
+		    
+		    				
+		    		} 
+		    	catch (SQLException e) {
+		    			e.printStackTrace();
+		    		} 
+		    		finally {
+		    			// cerramos la conexion
+		    			conexion.desconectar();
+		    		}
+		    	System.out.println("SALE LA LISTA DE SERVICIOS");
+		    	
+			 return sA;
+			 
+		 }
 }

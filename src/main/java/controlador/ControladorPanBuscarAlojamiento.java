@@ -70,6 +70,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 * Se crean los listeners del panel
 	 */
     public void addListeners() {
+    	vista.buscarAlojamiento.btnServicios.addActionListener(this);
     	vista.buscarAlojamiento.btnCerrarSesion.addActionListener(this);
     	vista.buscarAlojamiento.btnCancelar.addActionListener(this);
     	vista.buscarAlojamiento.cBCiudad.addActionListener(this);
@@ -435,9 +436,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					controlador.funcionesBotones.cerrarSesion();
 					break;
 				case "Contratar servicios adicionales":
-					vista.buscarAlojamiento.panelServicios.setVisible(true);
-					vista.buscarAlojamiento.btnServicios.setVisible(false);
-					vista.buscarAlojamiento.btnServicios.setEnabled(false);
+					controlador.funcionesServicios.activarPanel();
+					break;
 			}
 			
 		//JCOMBOBOX DE CIUDAD Y TIPO ALOJAMIENTO

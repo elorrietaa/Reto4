@@ -45,7 +45,7 @@ public class PanBuscarAlojamiento extends JPanel {
     	
     	
 	public PanBuscarAlojamiento() {
-		setBackground(Color.GRAY);
+		setBackground(Color.WHITE);
 		setLayout(null);
 		setBounds(0,0,1024,720);
 		
@@ -220,6 +220,7 @@ public class PanBuscarAlojamiento extends JPanel {
 				add(btnServicios);
 				
 				panelServicios = new JPanel();
+				panelServicios.setBackground(Color.WHITE);
 				panelServicios.setBounds(506, 484, 485, 153);
 				add(panelServicios);
 				panelServicios.setLayout(null);
@@ -230,30 +231,36 @@ public class PanBuscarAlojamiento extends JPanel {
 				panelServicios.add(btnContratar);
 				
 				btnCancelarSer = new JButton(" Cancelar ");
-				btnCancelarSer.setBounds(10, 119, 89, 23);
+				btnCancelarSer.setBounds(10, 119, 110, 23);
 				panelServicios.add(btnCancelarSer);
 				
 				checkWifi = new JCheckBox("WiFi");
+				checkWifi.setBackground(Color.WHITE);
 				checkWifi.setBounds(96, 19, 97, 23);
 				panelServicios.add(checkWifi);
 				
 				checkSpa = new JCheckBox("Spa");
+				checkSpa.setBackground(Color.WHITE);
 				checkSpa.setBounds(277, 19, 97, 23);
 				panelServicios.add(checkSpa);
 				
 				checkAire = new JCheckBox("Aire Acondicionado");
-				checkAire.setBounds(96, 45, 134, 23);
+				checkAire.setBackground(Color.WHITE);
+				checkAire.setBounds(96, 45, 167, 23);
 				panelServicios.add(checkAire);
 				
 				checkPiscina = new JCheckBox("Piscina");
+				checkPiscina.setBackground(Color.WHITE);
 				checkPiscina.setBounds(96, 71, 97, 23);
 				panelServicios.add(checkPiscina);
 				
 				checkGimnasio = new JCheckBox("Gimnasio");
+				checkGimnasio.setBackground(Color.WHITE);
 				checkGimnasio.setBounds(277, 45, 97, 23);
 				panelServicios.add(checkGimnasio);
 				
 				checkParking = new JCheckBox("Parking");
+				checkParking.setBackground(Color.WHITE);
 				checkParking.setBounds(277, 71, 97, 23);
 				panelServicios.add(checkParking);
 				

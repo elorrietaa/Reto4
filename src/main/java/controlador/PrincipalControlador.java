@@ -29,6 +29,7 @@ public class PrincipalControlador {
     private ControladorRegistro controladorRegistro;
     private ControladorPanBases controladorBases;
     private ControladorPanCuponDesc controladorCupon;
+    private ControladorPanServiciosAdicionales controladorServicios;
     
     public FuncionesPago funcionesPago;
     public FuncionesRegistro funcionesRegistro;
@@ -63,7 +64,7 @@ public class PrincipalControlador {
 		this.funcionesBasesLegales = new FuncionesBasesLegales(modelo, vista, this);
 		this.funcionesCodigosPromo = new FuncionesCodigosPromo(modelo, vista, this);
 		this.funcionesPersonasAlojadas = new FuncionesPersonasAlojadas(modelo, vista, this);
-		this.funcionesServicios = new 
+		this.funcionesServicios = new FuncionesServicios(modelo, vista);
 		
     }
     /**
@@ -139,5 +140,9 @@ public class PrincipalControlador {
     	// añadimos listeners a los botones del panel de los cupones descuento
     	this.controladorCupon = new ControladorPanCuponDesc(vista, modelo, this);
     	this.controladorCupon.addListeners();
+    	
+    	// añadimos listeners a los botones del panel de seleccion de servicios adicionales
+    	this.controladorServicios = new ControladorPanServiciosAdicionales(vista, modelo);
+    	this.controladorServicios.addListeners();
     }
 }

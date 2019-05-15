@@ -8,6 +8,8 @@ public class ServiciosAdicionales {
 	private boolean spa;
 	private boolean gimnasio;
 	private boolean parking;
+	private boolean restaurante;
+	private boolean bar;
 	
 	private float precioWifi;
 	private float precioAire;
@@ -23,13 +25,15 @@ public class ServiciosAdicionales {
 	private boolean gimnasioSeleccionado;
 	private boolean parkingSeleccionado;
 	
-	public ServiciosAdicionales(int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking) {
+	public ServiciosAdicionales(int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking, int restaurante, int bar) {
 		this.wifi = comprobarBoolean(wifi);
 		this.aire = comprobarBoolean(aire);
 		this.piscina = comprobarBoolean(piscina);
 		this.spa = comprobarBoolean(spa);
 		this.gimnasio = comprobarBoolean(gimnasio);
 		this.parking = comprobarBoolean(parking);
+		this.restaurante = comprobarBoolean(restaurante);
+		this.bar = comprobarBoolean(bar);
 		
 		this.precioWifi = precioWifi;
 		this.precioAire = precioAire;

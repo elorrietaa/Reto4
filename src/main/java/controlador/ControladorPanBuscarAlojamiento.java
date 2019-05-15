@@ -437,6 +437,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					break;
 				case "Contratar servicios adicionales":
 					controlador.funcionesServicios.activarPanel();
+					controlador.funcionesServicios.comprobarServicios();
 					break;
 			}
 			

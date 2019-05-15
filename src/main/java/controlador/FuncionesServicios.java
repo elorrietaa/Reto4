@@ -10,6 +10,8 @@ public class FuncionesServicios {
 	private JframePrincipal vista;
 	private PrincipalModelo modelo;
 	
+	public ServiciosAdicionales servicios;
+	
 	public FuncionesServicios(PrincipalModelo modelo, JframePrincipal vista) {
 		this.vista = vista;
 		this.modelo = modelo;
@@ -24,5 +26,9 @@ public class FuncionesServicios {
 		else {
 			JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para poder ver sus servicios disponibles. Gracias.", null, 0);
 		}
+	}
+	
+	public void comprobarServicios() {
+		
 	}
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import bbdd.Conexion;
 import controlador.FuncionesPago;
+import controlador.FuncionesServicios;
 
 /**
  * Clase PrincipalModelo:
@@ -29,6 +30,7 @@ public class PrincipalModelo {
 	public Cliente cliente;
 	public FechasTarifas fechasTarifas;
 	public CodigoPromocional cuponSeleccionado;
+	public ServiciosAdicionales servicios;
 
 	//public PersonaAlojada personaAlojada;
 	
@@ -68,6 +70,7 @@ public class PrincipalModelo {
 		cama = null;
 		reserva = null;
 		cliente = null;
+		servicios = null;
 		
 		// Creamos objetos con las funciones generales del programa
 		

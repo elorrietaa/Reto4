@@ -54,6 +54,10 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldApellidos.setText("");
 		vista.panPersonasAlojadas.textFieldDNI.setText("");
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
+		
+		vista.buscarAlojamiento.panelServicios.setVisible(false);
+		vista.buscarAlojamiento.btnServicios.setVisible(true);
+		vista.buscarAlojamiento.btnServicios.setEnabled(true);
 	}
 	
 	public void resetPago(ControladorPanPago pago) {

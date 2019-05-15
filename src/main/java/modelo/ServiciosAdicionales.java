@@ -23,13 +23,13 @@ public class ServiciosAdicionales {
 	private boolean gimnasioSeleccionado;
 	private boolean parkingSeleccionado;
 	
-	public ServiciosAdicionales(boolean wifi, boolean aire, boolean piscina, boolean spa, boolean gimnasio, boolean parking, float precioWifi, float precioAire, float precioPiscina, float precioSpa, float precioGimnasio, float precioParking) {
-		this.wifi = wifi;
-		this.aire = aire;
-		this.piscina = piscina;
-		this.spa = spa;
-		this.gimnasio = gimnasio;
-		this.parking = parking;
+	public ServiciosAdicionales(int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking) {
+		this.wifi = comprobarBoolean(wifi);
+		this.aire = comprobarBoolean(aire);
+		this.piscina = comprobarBoolean(piscina);
+		this.spa = comprobarBoolean(spa);
+		this.gimnasio = comprobarBoolean(gimnasio);
+		this.parking = comprobarBoolean(parking);
 		
 		this.precioWifi = precioWifi;
 		this.precioAire = precioAire;
@@ -133,5 +133,12 @@ public class ServiciosAdicionales {
 	
 	public void setParkingSeleccionado(boolean parkingSeleccionado) {
 		this.parkingSeleccionado = parkingSeleccionado;
+	}
+	
+	public boolean comprobarBoolean(int num) {
+		if(num == 1)
+			return true;
+		else
+			return false;
 	}
 }

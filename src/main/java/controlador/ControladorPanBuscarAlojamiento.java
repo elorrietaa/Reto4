@@ -166,8 +166,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				datos[3] = "Dirección: " + listaHoteles.get(i).getDireccion();
 				tablaHotel.addRow(datos);
 			
-			System.out.println("DATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS POPULARIDAD hotel" + listaHoteles.get(i).getPopularidad());
+			System.out.println("DATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS POPULARIDAD hotel " +listaHoteles.get(i).getNombre() + " - "+ listaHoteles.get(i).getPopularidad());
 			}
+			controlador.funcionesOrdenar.ordernarAlojamientosPopularidad(listaHoteles);
 			
 			
     	}

@@ -70,7 +70,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 * Se crean los listeners del panel
 	 */
     public void addListeners() {
-    	vista.buscarAlojamiento.btnServicios.addActionListener(this);
     	vista.buscarAlojamiento.btnCerrarSesion.addActionListener(this);
     	vista.buscarAlojamiento.btnCancelar.addActionListener(this);
     	vista.buscarAlojamiento.cBCiudad.addActionListener(this);
@@ -268,6 +267,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//primero miramos que tipo de alojamiento ha seleccionado el usuario:
 		TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 		int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
+		this.tiposAloj = tiposAloj;
 		
 		//SI SE SELECCIONA UN HOTEL:
 		if(codTipoAlojSeleccionado == 10) {
@@ -434,10 +434,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					break;
 				case "Cerrar Sesión":
 					controlador.funcionesBotones.cerrarSesion();
-					break;
-				case "Contratar servicios adicionales":
-					controlador.funcionesServicios.activarPanel();
-					controlador.funcionesServicios.comprobarServicios();
 					break;
 			}
 			
@@ -640,49 +636,49 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(0º)Se guardan los datos seleccionados en el modelo
 		if(vista.buscarAlojamiento.table.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-		
-			//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
-			validarCasaApartDisponible();
-		
-			//(0º)Se guardan los datos seleccionados en el modelo
-			guardarDatosSeleccionadosAlojamiento();
+			if()
+				//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
+				validarCasaApartDisponible();
 			
-			//se muestran los datos de las habitaciones de la casa/Apartamento
-			controlador.funcionesReserva.guardarNumHabTipoDeCasaApart();
-			
-		 
-			//(2º)Genera 1 reserva y la guarda en modelo.reserva
-			//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
-			//no se si habria que hacer 1 para casa y 1 para apartamento		
-			controlador.funcionesReserva.guardarReservaAlojamiento(tiposAloj);
-			
-			//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
-			controlador.funcionesReserva.mostrarDatosReservaAloj(tiposAloj);
-			
-			//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
-			actualizarPanDetallesReservaCasaAloj();
-			mostrarDetallesHabsCasa();
-			
-			
-			//Aviso al usuario si el alojamiento no esta disponible
-			if (disponible == false){
-				JOptionPane.showMessageDialog(vista, "Lo sentimos, ese alojamiento no está disponible en las fechas seleccionadas. Por favor, haga otra selección. Gracias. ", null, 0);
-			}
-			//(5º) actualiza el siguiente panel: Desaparece Panel de buscarHotel  y aparece panel de detalles reservaCasaAloj
-			//para que esto pase:
-			//continuar == true --> fecha introducida por el usuario tiene que ser válida.
-			//disponible != false -->alojamiento seleccionado tiene que estar disponible para las fechas seleccionadas.
-			if(continuar && disponible != false) {
-				vista.buscarAlojamiento.setVisible(false);
-				vista.detallesReservaCasaApart.setVisible(true);
-				vista.detallesReservaCasaApart.panelHoteles.setVisible(false);
-				vista.detallesReservaCasaApart.panelHoteles.setEnabled(false);
-				vista.detallesReservaCasaApart.panelCasaApart.setVisible(true);
-				vista.detallesReservaCasaApart.panelCasaApart.setEnabled(true);
+				//(0º)Se guardan los datos seleccionados en el modelo
+				guardarDatosSeleccionadosAlojamiento();
 				
-				//mostrar el texto de las bases legales en el panBases
-				controlador.funcionesBasesLegales.mostrarBaseslegales();
-			}
+				//se muestran los datos de las habitaciones de la casa/Apartamento
+				controlador.funcionesReserva.guardarNumHabTipoDeCasaApart();
+				
+			 
+				//(2º)Genera 1 reserva y la guarda en modelo.reserva
+				//pasar por parámetro el tiposAloj para diferenciar entre casa y apartamento
+				//no se si habria que hacer 1 para casa y 1 para apartamento		
+				controlador.funcionesReserva.guardarReservaAlojamiento(tiposAloj);
+				
+				//(3º) se muestran en la siguiente pantalla los detalles de la reserva y el precio TOTAL de la reserva
+				controlador.funcionesReserva.mostrarDatosReservaAloj(tiposAloj);
+				
+				//(4º) se actualiza la información del siguiente panel: PanDetallesReservaCasaApart con la info del alojamiento seleccionado y el precio Total de la reserva
+				actualizarPanDetallesReservaCasaAloj();
+				mostrarDetallesHabsCasa();
+				
+				
+				//Aviso al usuario si el alojamiento no esta disponible
+				if (disponible == false){
+					JOptionPane.showMessageDialog(vista, "Lo sentimos, ese alojamiento no está disponible en las fechas seleccionadas. Por favor, haga otra selección. Gracias. ", null, 0);
+				}
+				//(5º) actualiza el siguiente panel: Desaparece Panel de buscarHotel  y aparece panel de detalles reservaCasaAloj
+				//para que esto pase:
+				//continuar == true --> fecha introducida por el usuario tiene que ser válida.
+				//disponible != false -->alojamiento seleccionado tiene que estar disponible para las fechas seleccionadas.
+				if(continuar && disponible != false) {
+					vista.buscarAlojamiento.setVisible(false);
+					vista.detallesReservaCasaApart.setVisible(true);
+					vista.detallesReservaCasaApart.panelHoteles.setVisible(false);
+					vista.detallesReservaCasaApart.panelHoteles.setEnabled(false);
+					vista.detallesReservaCasaApart.panelCasaApart.setVisible(true);
+					vista.detallesReservaCasaApart.panelCasaApart.setEnabled(true);
+					
+					//mostrar el texto de las bases legales en el panBases
+					controlador.funcionesBasesLegales.mostrarBaseslegales();
+				}
 		}
 		else {
 			JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);

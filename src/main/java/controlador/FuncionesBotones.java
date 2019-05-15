@@ -55,9 +55,7 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldDNI.setText("");
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
 		
-		vista.buscarAlojamiento.panelServicios.setVisible(false);
-		vista.buscarAlojamiento.btnServicios.setVisible(true);
-		vista.buscarAlojamiento.btnServicios.setEnabled(true);
+		resetServicios();
 	}
 	
 	public void resetPago(ControladorPanPago pago) {
@@ -117,9 +115,7 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldDNI.setText("");
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
 		
-		vista.buscarAlojamiento.panelServicios.setVisible(false);
-		vista.buscarAlojamiento.btnServicios.setVisible(true);
-		vista.buscarAlojamiento.btnServicios.setEnabled(true);
+		resetServicios();
 	}
 	
 	public void resetAtrasPago(ControladorPanPago pago) {
@@ -164,5 +160,24 @@ public class FuncionesBotones {
 		vista.registro.txtDni.setText("");
 		vista.registro.passwordField.setText("");
 		vista.registro.passwordField2.setText("");
+	}
+	
+	public void resetServicios() {
+		modelo.servicios = null;
+		
+		vista.buscarAlojamiento.panelServicios.setVisible(false);
+		vista.buscarAlojamiento.btnServicios.setVisible(true);
+		vista.buscarAlojamiento.btnServicios.setEnabled(true);
+		vista.buscarAlojamiento.btnActualizar.setVisible(false);
+		vista.buscarAlojamiento.btnActualizar.setEnabled(false);
+		
+		vista.buscarAlojamiento.checkWifi.setSelected(false);
+		vista.buscarAlojamiento.checkAire.setSelected(false);
+		vista.buscarAlojamiento.checkGimnasio.setSelected(false);
+		vista.buscarAlojamiento.checkParking.setSelected(false);
+		vista.buscarAlojamiento.checkPiscina.setSelected(false);
+		vista.buscarAlojamiento.checkSpa.setSelected(false);
+		
+		vista.buscarAlojamiento.labelServicios.setVisible(false);
 	}
 }

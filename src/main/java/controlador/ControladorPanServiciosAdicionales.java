@@ -12,15 +12,19 @@ public class ControladorPanServiciosAdicionales implements ActionListener {
 	
 	private JframePrincipal vista;
 	private PrincipalModelo modelo;
+	private PrincipalControlador controlador;
 	
 	private ServiciosAdicionales servicios;
 
-	public ControladorPanServiciosAdicionales(JframePrincipal vista, PrincipalModelo modelo) {
+	public ControladorPanServiciosAdicionales(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.vista = vista;
 		this.modelo = modelo;
+		this.controlador = controlador;
 	}
 	
 	public void addListeners() {
+		vista.buscarAlojamiento.btnServicios.addActionListener(this);
+		vista.buscarAlojamiento.btnActualizar.addActionListener(this);
 		vista.buscarAlojamiento.btnContratar.addActionListener(this);
 		vista.buscarAlojamiento.btnCancelarSer.addActionListener(this);
 	}
@@ -35,9 +39,22 @@ public class ControladorPanServiciosAdicionales implements ActionListener {
 			
 			switch(botonPulsado) {
 			case "Contratar":
-				
+				controlador.funcionesServicios.contratarServicios();
 				break;
 			case " Cancelar ":
+				controlador.funcionesBotones.resetServicios();
+				break;
+			case "Contratar servicios adicionales":
+				controlador.funcionesServicios.activarPanel(controlador);
+				break;
+			case "Actualizar servicios":
+				controlador.funcionesServicios.activarPanel(controlador);
+				vista.buscarAlojamiento.checkWifi.setSelected(false);
+				vista.buscarAlojamiento.checkAire.setSelected(false);
+				vista.buscarAlojamiento.checkGimnasio.setSelected(false);
+				vista.buscarAlojamiento.checkParking.setSelected(false);
+				vista.buscarAlojamiento.checkPiscina.setSelected(false);
+				vista.buscarAlojamiento.checkSpa.setSelected(false);
 				break;
 			}
 		}

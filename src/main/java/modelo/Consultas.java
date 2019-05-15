@@ -1305,13 +1305,10 @@ public class Consultas {
 		    		rs = ps.executeQuery();
 		    
 		    		// crea objetos Linea con los resultados y los añade a un arrayList
-		    			sA = new ServiciosAdicionales(rs.getInt("Wifi"),rs.getFloat("Precio_Wifi"),rs.getInt("Aire"),rs.getFloat("Precio_aire"),rs.getInt("Piscina"),rs.getFloat("Precio_piscina"),
-		    					rs.getInt("Spa"),rs.getFloat("Precio_spa"),rs.getInt("Gimnasio"),rs.getFloat("Precio_gimnasio"),rs.getInt("Parking"),rs.getFloat("Precio_parking"),rs.getInt("Restaurante"),
-		    					rs.getInt("Bar")); 
-		    			
-		    
-		    				
-		    		} 
+		    		while (rs.next()) {
+		    			sA = new ServiciosAdicionales(codAlojamiento, rs.getInt("Wifi"),rs.getFloat("Precio_Wifi"),rs.getInt("Aire"),rs.getFloat("Precio_aire"),rs.getInt("Piscina"),rs.getFloat("Precio_piscina"),rs.getInt("Spa"),rs.getFloat("Precio_spa"),rs.getInt("Gimnasio"),rs.getFloat("Precio_gimnasio"),rs.getInt("Parking"),rs.getFloat("Precio_parking"),rs.getInt("Restaurante"),rs.getInt("Bar")); 
+		    		}
+		    	} 
 		    	catch (SQLException e) {
 		    			e.printStackTrace();
 		    		} 

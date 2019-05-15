@@ -18,7 +18,7 @@ public class PrincipalControlador {
     
     private ControladorJframe controladorJframe;
     private ControladorPanBienvenida controladorPanBienvenida;
-    public ControladorPanBuscarAlojamiento controladorPanBuscarHotel;
+    public ControladorPanBuscarAlojamiento controladorPanBuscarAlojamiento;
     private ControladorPanSelHabitacion controladorPanSelHabitacion;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
     private ContrPanDetReservaAloj contrPanDetReserCasaApart;
@@ -64,6 +64,7 @@ public class PrincipalControlador {
 		this.funcionesBasesLegales = new FuncionesBasesLegales(modelo, vista, this);
 		this.funcionesCodigosPromo = new FuncionesCodigosPromo(modelo, vista, this);
 		this.funcionesPersonasAlojadas = new FuncionesPersonasAlojadas(modelo, vista, this);
+		this.funcionesServicios = new FuncionesServicios(modelo, vista);
 		
     }
     /**
@@ -97,8 +98,8 @@ public class PrincipalControlador {
     	this.controladorPanBienvenida.addListeners();
     	
     	// añadimos listeners a los botones del panel 'controladorPanBuscarHotel'
-    	this.controladorPanBuscarHotel = new ControladorPanBuscarAlojamiento(vista, modelo, conexion, this);
-    	this.controladorPanBuscarHotel.addListeners();
+    	this.controladorPanBuscarAlojamiento = new ControladorPanBuscarAlojamiento(vista, modelo, conexion, this);
+    	this.controladorPanBuscarAlojamiento.addListeners();
     	
     	// añadimos listeners a los botones del panel 'controladorPanSelHabitacion;'
     	this.controladorPanSelHabitacion = new ControladorPanSelHabitacion(vista, modelo, conexion, this);
@@ -141,7 +142,7 @@ public class PrincipalControlador {
     	this.controladorCupon.addListeners();
     	
     	// añadimos listeners a los botones del panel de seleccion de servicios adicionales
-    	this.controladorServicios = new ControladorPanServiciosAdicionales(vista, modelo);
+    	this.controladorServicios = new ControladorPanServiciosAdicionales(vista, modelo, this);
     	this.controladorServicios.addListeners();
     }
 }

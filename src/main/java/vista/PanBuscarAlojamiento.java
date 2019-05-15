@@ -32,9 +32,9 @@ public class PanBuscarAlojamiento extends JPanel {
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
-    	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer;
+    	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer, btnActualizar;
     	public JComboBox<Object> cBCiudad, cBTipoAloj; 
-    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha, labelServicios, labelServicio;
+    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha, labelServicios;
     	public JCalendar fechaIda, fechaVuelta;
     	public JCheckBox checkWifi, checkSpa, checkAire, checkPiscina, checkGimnasio, checkParking;
     	
@@ -266,16 +266,15 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				labelServicios = new JLabel("Servicios contratados correctamente");
 				labelServicios.setHorizontalAlignment(SwingConstants.CENTER);
-				labelServicios.setBounds(150, 123, 189, 14);
+				labelServicios.setBounds(141, 123, 215, 14);
 				panelServicios.add(labelServicios);
 				labelServicios.setVisible(false);
 				
-				labelServicio = new JLabel("Servicio contratado correctamente");
-				labelServicio.setHorizontalAlignment(SwingConstants.CENTER);
-				labelServicio.setBounds(150, 123, 189, 14);
-				panelServicios.add(labelServicio);
-				labelServicio.setVisible(false);
-
+				btnActualizar = new JButton("Actualizar servicios");
+				btnActualizar.setBounds(632, 453, 215, 23);
+				add(btnActualizar);
+				btnActualizar.setVisible(false);
+				btnActualizar.setEnabled(false);
 	}
 }
 

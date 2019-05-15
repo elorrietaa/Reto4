@@ -98,7 +98,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	    
 	    //comprueba que  los dnis no se repitan
 	    
-	   	   for(int i=0;i<listaPerAloj.size();i++)
+	  /* 	   for(int i=0;i<listaPerAloj.size();i++)
 	   	   {
 	   	       System.out.println(dniIntroducido+"=?"+listaPerAloj.get(i).getDni());
 	   		   if(dniIntroducido.equals(listaPerAloj.get(i).getDni().toString()));
@@ -108,7 +108,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	   		   } 
 	   		
 	   	   }
-	   
+	   */
 	   
 	    return true;
 	}

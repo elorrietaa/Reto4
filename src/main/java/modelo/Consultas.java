@@ -161,6 +161,9 @@ public class Consultas {
 					hotel.setTelefono(rs.getString("Telefono"));
 					hotel.setUbicacion(rs.getString("Nombre_ubicacion"));
 					hotel.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
+					//se rellena la popularidad del alojamiento
+					hotel.setPopularidad(mostrarNumReservasDeUnAlojamiento(hotel.codAlojamiento));
+					
 					hotel.setEstrellas(rs.getInt("N_estrellas"));
 					listaHoteles.add(hotel);
 				}	
@@ -214,7 +217,8 @@ public class Consultas {
 					casa.setTelefono(rs.getString("Telefono"));
 					casa.setUbicacion(rs.getString("Nombre_ubicacion"));
 					casa.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
-					
+					//se rellena la popularidad del alojamiento
+					casa.setPopularidad(mostrarNumReservasDeUnAlojamiento(casa.codAlojamiento));
 					listaCasas.add(casa);
 				}	
 			} 
@@ -267,6 +271,8 @@ public class Consultas {
 					apartamento.setUbicacion(rs.getString("Nombre_ubicacion"));
 					apartamento.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
 					apartamento.setPiso(rs.getInt("Piso"));
+					//se rellena la popularidad del alojamiento
+					apartamento.setPopularidad(mostrarNumReservasDeUnAlojamiento(apartamento.codAlojamiento));
 					
 					listaApartamentos.add(apartamento);
 				}	
@@ -781,6 +787,45 @@ public class Consultas {
 		
 		return codReserva;
 	}
+    
+    public int mostrarNumReservasDeUnAlojamiento(int codAloj ) {
+		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		int ocupacion=0;
+		
+		String query = "SELECT count(*) FROM `reservas`,`alojamiento`  WHERE reservas.Cod_alojamiento=alojamiento.Cod_alojamiento and alojamiento.Cod_alojamiento=?";
+
+		try {
+			
+		    // abrimos una conexion
+		 	connection = conexion.conectar();
+		 			
+		 	// preparamos la consulta SQL a la base de datos
+		 	stmt = connection.prepareStatement(query);
+		 	stmt.setInt(1, codAloj);
+			
+			// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+			result = stmt.executeQuery();
+			
+			// crea objetos con los resultados y los añade a un arrayList
+			while (result.next()) {
+			    ocupacion = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { 
+				connection.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}                 
+		
+		return ocupacion;
+	}
+
     
     /****************************************************************************************************************
 	 * 

@@ -165,7 +165,11 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				datos[2] = ((Hotel) listaHoteles.get(i)).getEstrellas();
 				datos[3] = "Dirección: " + listaHoteles.get(i).getDireccion();
 				tablaHotel.addRow(datos);
+			
+			System.out.println("DATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS POPULARIDAD hotel" + listaHoteles.get(i).getPopularidad());
 			}
+			
+			
     	}
     	
     	//***TABLA CASA O APARTAMENTO es .table 
@@ -189,6 +193,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					datos1[1] = (listaCasas.get(i)).getPrecioAlojamiento() + " €/noche";
 					datos1[2] = "Dirección: " +listaCasas.get(i).getDireccion();
 					tablaCasApart.addRow(datos1);
+					
+				System.out.println("DATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS POPULARIDAD casa" + listaCasas.get(i).getPopularidad());
 				}
     	}
     	else if ( codTipoAlojSeleccionado == 30) {
@@ -211,6 +217,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     					datos1[1] = (listaApartamentos.get(i)).getPrecioAlojamiento() + " €/noche";
     					datos1[2] = "Dirección: " +listaApartamentos.get(i).getDireccion() + "   Piso: " + listaApartamentos.get(i).getPiso();
     					tablaCasApart.addRow(datos1);
+    					
+    				System.out.println("DATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS POPULARIDAD apartamento" + listaApartamentos.get(i).getPopularidad());
     				}
         	}
     }

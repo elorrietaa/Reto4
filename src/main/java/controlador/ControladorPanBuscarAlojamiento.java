@@ -35,11 +35,16 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	public int ocupacion=0;
 
+	//variables para la seleccion realizada por el usuario 
+	int codCiudadSeleccionada;
+	int codTipoAlojSeleccionado;
+	String ordenarPor;
+	String ascDesc;
+	int[]arrayFiltrosSelec;
 	
 	Ciudad ciudad;
 	TipoAlojamiento tiposAloj;
-	String ordenarPor;
-	String ascDesc;
+	
 	
 	Alojamiento alojamiento;
 	Hotel hotel;
@@ -72,6 +77,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 * Se crean los listeners del panel
 	 */
     public void addListeners() {
+    	vista.buscarAlojamiento.btnAplicarFiltros.addActionListener(this);
     	vista.buscarAlojamiento.btnCerrarSesion.addActionListener(this);
     	vista.buscarAlojamiento.btnCancelar.addActionListener(this);
     	vista.buscarAlojamiento.cBCiudad.addActionListener(this);
@@ -201,7 +207,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * Método: mostrarHotelesEnJTable = muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
      * @param codCiudadSeleccionada 
      */
-    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
+    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc, int[] arrayFiltrosSelec) {
 	  	
     	//***TABLA HOTELES es .tab
     	if(codTipoAlojSeleccionado == 10) {
@@ -506,11 +512,18 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					break;
 					
 				case "Aplicar filtros":
-					//Se resetean todos los combobox a no seleccionados
+					//se guardan los filtros seleccionados por el usuario
+					
+					arrayFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
 					
 					//se hace la buscqueda de listaAlojamientos en función de los filtros seleccionados
+					//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
+					mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc, arrayFiltrosSelec);
 					
 					//Se muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
+					
+					//Se resetean todos los combobox a no seleccionados
+					//controlador.funcionesOrdenar.resetearFiltrosServicios();
 					
 					break;
 			}
@@ -543,10 +556,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 						ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
 							
 						//(4º) guarda los filtros que ha seleccionado el usuario
-							
+						arrayFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
 						
 						//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
-						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc, arrayFiltrosSelec );
 					
 			
 				

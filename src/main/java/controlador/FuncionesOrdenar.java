@@ -75,10 +75,48 @@ public class FuncionesOrdenar {
 		   return listaHotelesOrdPopuDes;
 		}
 		
+	/**
+	 * Método resetearFiltrosServicios
+	 */
+	public void resetearFiltrosServicios() {
+		
+	}
 	
 	public int[] rellenarArrayFiltrosSeleccionados() {
-		int[]arrayFiltrosSelec = new int[8];
+		//se inicializa el array en 0, lo que significa que no hay ningún servicio seleccionado por el usuario
+		int[]arrayFiltrosSelec = {0,0,0,0,0,0,0,0};
 		
+		//si el combobox está seleccionado, se cambia el 0 por 1	
+		if(vista.buscarAlojamiento.chckbxWifiSel.isSelected()) {
+			arrayFiltrosSelec[0]=1;
+		}
+		if(vista.buscarAlojamiento.chckbxAireSel.isSelected()) {
+			arrayFiltrosSelec[1]=1;
+		}
+		if(vista.buscarAlojamiento.chckbxPiscinaSel.isSelected()) {
+			arrayFiltrosSelec[2]=1;
+		}
+		if(vista.buscarAlojamiento.chckbxSpaSel.isSelected()) {
+			arrayFiltrosSelec[3]=1;
+		}
+		if(vista.buscarAlojamiento.chckbxGimSel.isSelected()) {
+			arrayFiltrosSelec[4]=1;
+		}
+		if(vista.buscarAlojamiento.chckbxParkingsel.isSelected()) {
+			arrayFiltrosSelec[5]=1;
+		}
+		if(vista.buscarAlojamiento.chckbxRestSel.isSelected()) {
+			arrayFiltrosSelec[6]=1;
+		}
+		if(vista.buscarAlojamiento.chckbxBarSel.isSelected()) {
+			arrayFiltrosSelec[7]=1;
+		}
+		
+		//prueba
+		System.out.println("^*^*^*^*^* FILTROS SELECCIONADOS ^*^^*^*^*^*^*^*");
+		for(int i=0; i<arrayFiltrosSelec.length; i++) {
+			System.out.println(arrayFiltrosSelec[i]);
+		}
 		
 		return arrayFiltrosSelec;
 	}

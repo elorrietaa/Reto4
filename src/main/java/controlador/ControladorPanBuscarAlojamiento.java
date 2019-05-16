@@ -209,6 +209,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarAlojamiento.tab.getModel();
 				
 		  	//llena el arrayList con la lista de Hoteles ordnador por popularidad asce
+			
 		   	listaHoteles = controlador.funcionesOrdenar.ordenarListaHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		   	
 		   	vista.buscarAlojamiento.panelHotel.setVisible(true);
@@ -222,7 +223,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				
 				datos[0] = listaHoteles.get(i).getNombre();
 				//esto mostraria el preico min de la habitacuion
-				datos[1] = consultas.buscarPrecioMinimoDeLaHabitacionDelHotel(listaHoteles.get(i).getCodAlojamiento()) + " € habitación/noche";
+				datos[1] = listaHoteles.get(i).getPrecioAlojamiento() + " € habitación/noche";
 				//datos[1] = listaHoteles.get(i).getCodAlojamiento() + " € habitación/noche";
 				datos[2] = ((Hotel) listaHoteles.get(i)).getEstrellas();
 				datos[3] = "Dirección: " + listaHoteles.get(i).getDireccion();

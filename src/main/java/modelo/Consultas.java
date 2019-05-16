@@ -126,13 +126,22 @@ public class Consultas {
     * @param codTipoAlojSeleccionado
     * @return
     */
-    public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado) {
+    public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		String query = null;
 		
+		if(ordenarPor == "Precio" && ascDesc == "Ascendente") {
+			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by Precio_alojamiento asc ";
+		}
+		else if(ordenarPor == "Precio" && ascDesc == "Descendente") {
+			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by Precio_alojamiento desc ";
+		}
+		else {
+			query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ";
 
-		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ";
+		}
 		//En el futuro poner la select ordenada por precio
 		//	String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ORDER BY Precio_alojamiento DESC";
 		
@@ -143,6 +152,7 @@ public class Consultas {
 				// Abrimos una conexion
 				connection = conexion.conectar();
 						
+			
 				// preparamos la consulta SQL a la base de datos
 				ps = connection.prepareStatement(query);
 				ps.setInt(1, codCiudadSeleccionada);

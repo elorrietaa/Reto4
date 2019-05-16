@@ -27,14 +27,18 @@ public class FuncionesOrdenar {
 	 * @return
 	 */
 	public ArrayList<Hotel> ordenarListaHoteles(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
-	   ArrayList<Hotel> listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+	   ArrayList<Hotel> listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 	
 	   //(1º) ordenar por POPULARIDAD DESC: ordena el arraylist de la lista de Hoteles en orden descendente
 	   if(ordenarPor == "Popularidad") {
-		    listaHotelesOrdenada = ordenarListaHotelesPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado, ascDesc);
+		    listaHotelesOrdenada = ordenarListaHotelesPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado,ordenarPor,  ascDesc);
 	   }
-	  
-	  
+	   if(ordenarPor == "Precio") {
+		    listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+	   }
+	   if(ordenarPor == "Estrellas") {
+		    listaHotelesOrdenada = ordenarListaHotelesPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado,ordenarPor,  ascDesc);
+	   }
 
 	   for(int i=0; i<listaHotelesOrdenada.size();i++) {
 			 
@@ -44,8 +48,15 @@ public class FuncionesOrdenar {
 	    return listaHotelesOrdenada;
 	}
 	
-	public ArrayList<Hotel> ordenarListaHotelesPopularidad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ascDesc) {
-		   ArrayList<Hotel> listaHotelesOrdPopuDes = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+	/**
+	 * Método ordenarListaHotelesPopularidad = ordena la lista de hoteles por popularidad ascendente o descendente en función de la seleción realizada por el usuario
+	 * @param codCiudadSeleccionada
+	 * @param codTipoAlojSeleccionado
+	 * @param ascDesc
+	 * @return
+	 */
+	public ArrayList<Hotel> ordenarListaHotelesPopularidad(int codCiudadSeleccionada, int codTipoAlojSeleccionado,String ordenarPor, String ascDesc) {
+		   ArrayList<Hotel> listaHotelesOrdPopuDes = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		
 		   //(1º) ordenar por POPULARIDAD DESC
 		   if(ascDesc == "Descendente") {
@@ -56,18 +67,13 @@ public class FuncionesOrdenar {
 			   Collections.reverse(listaHotelesOrdPopuDes);
 		   }
 		  
-		   //(1º) ordenar por POPULARIDAD Ascendente
+		   //(2º) ordenar por POPULARIDAD Ascendente
 		   else if(ascDesc == "Ascendente") {
 			    //ordena el arraylist de la lista de Hoteles en orden ascendente
 			   listaHotelesOrdPopuDes.sort(Comparator.comparing(Hotel::getPopularidad).thenComparing(Hotel::getPopularidad));
 			   
 		   }
-
-		   for(int i=0; i<listaHotelesOrdPopuDes.size();i++) {
-				 
-				     System.out.println("LISTA ALOJAMIENTOS ORDENADOS POR POPULARIDAD "+ascDesc +": "+listaHotelesOrdPopuDes.get(i).getNombre() + " - "+ listaHotelesOrdPopuDes.get(i).getPopularidad());
-		   }
-		 
+		   
 		   return listaHotelesOrdPopuDes;
 		}
 		

@@ -74,6 +74,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     	vista.buscarAlojamiento.btnCancelar.addActionListener(this);
     	vista.buscarAlojamiento.cBCiudad.addActionListener(this);
     	vista.buscarAlojamiento.cBTipoAloj.addActionListener(this);
+	vista.buscarAlojamiento.cbOrdenar.addActionListener(this);
+    	vista.buscarAlojamiento.cBAscDesc.addActionListener(this);
     	vista.buscarAlojamiento.buttonContinuar.addActionListener(this);
     	vista.buscarAlojamiento.btnInicioSesion.addActionListener(this);
     	vista.buscarAlojamiento.btnRegistro.addActionListener(this);
@@ -106,6 +108,32 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		for(int i=0; i<listaTiposAlojamiento.size();i++) {
 		    tiposAloj=listaTiposAlojamiento.get(i);
 		    vista.buscarAlojamiento.cBTipoAloj.addItem(tiposAloj); 
+		}
+    }
+    
+    /**
+     * Método: mostrarOpcionesParaOrdenar = muestra las opciones en base a las que se puede ordenar la búsqueda 
+     * @param listaCiudades
+     */
+    public void mostrarOpcionesParaOrdenar() {
+    	vista.buscarAlojamiento.cbOrdenar.removeAllItems();
+		String [] arrayOpcionesOrdenar = {"Popularidad", "Precio", "Estrellas"};
+		
+		for(int i=0; i<arrayOpcionesOrdenar.length;i++) {
+		    vista.buscarAlojamiento.cbOrdenar.addItem(arrayOpcionesOrdenar[i].toString()); 
+		}
+    }
+    
+    /**
+     * Método: mostrarOpcionesParaOrdenar = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
+     * @param listaCiudades
+     */
+    public void mostrarOpcionesAscDesc() {
+    	vista.buscarAlojamiento.cBAscDesc.removeAllItems();
+		String [] arrayOpcionesAscDesc = {"Ascendente", "Descendente"};
+		
+		for(int i=0; i<arrayOpcionesAscDesc.length;i++) {
+		    vista.buscarAlojamiento.cBAscDesc.addItem(arrayOpcionesAscDesc[i].toString()); 
 		}
     }
     
@@ -468,12 +496,22 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				if (tiposAloj != null) {
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 					
-				//(3º) muestra los alojamientos de la ciudad y el tipoAloj seleccionados por el usuario en el JTable
+				//(3º) guarda el dato por el que se va a ordenar y si se ordena asc/desc
+				
+				String opcionSeleccionada = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
+				
+					
+				//(4º) guarda los filtros que ha seleccionado el usuario
+					
+				
+				//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 				mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado);
+				
+				
 				}			
-			}
+			
 	}
-	
+	}
 	/**
 	 * Listener de la fecha
 	 */
@@ -604,33 +642,37 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(3º) Guarda los datos seleecionados en el modelo
 		if(vista.buscarAlojamiento.tab.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-			
-			//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
-			listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
-			for(int i = 0; i < listaDormitorios.size(); i++) {
-				System.out.println(listaDormitorios.get(i).getCodHabitacion());
-			}
-			
-			//(4.1.) si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
-			if(listaDormitorios.size()==0) {
-				JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
-				continuar = false;
-			}
-			
-			//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
-			mostrarDetallesHabs();
-			//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
-			if(continuar) {
-				vista.buscarAlojamiento.setVisible(false);
-				vista.selHabitacion.setVisible(true);
-				vista.detallesReservaCasaApart.panelHoteles.setVisible(true);
-				vista.detallesReservaCasaApart.panelHoteles.setEnabled(true);
-				vista.detallesReservaCasaApart.panelCasaApart.setVisible(false);
-				vista.detallesReservaCasaApart.panelCasaApart.setEnabled(false);
+			if(controlador.funcionesServicios.comprobarServicioGuardado()) {
+				//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
+				listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
+				for(int i = 0; i < listaDormitorios.size(); i++) {
+					System.out.println(listaDormitorios.get(i).getCodHabitacion());
+				}
 				
-				//mostrar el texto de las bases legales en el panBases
-				controlador.funcionesBasesLegales.mostrarBaseslegales();
-			    
+				//(4.1.) si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
+				if(listaDormitorios.size()==0) {
+					JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
+					continuar = false;
+				}
+				
+				//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
+				mostrarDetallesHabs();
+				//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
+				if(continuar) {
+					vista.buscarAlojamiento.setVisible(false);
+					vista.selHabitacion.setVisible(true);
+					vista.detallesReservaCasaApart.panelHoteles.setVisible(true);
+					vista.detallesReservaCasaApart.panelHoteles.setEnabled(true);
+					vista.detallesReservaCasaApart.panelCasaApart.setVisible(false);
+					vista.detallesReservaCasaApart.panelCasaApart.setEnabled(false);
+					
+					//mostrar el texto de las bases legales en el panBases
+					controlador.funcionesBasesLegales.mostrarBaseslegales();
+				    
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(vista, "Por favor, guarde los servicios seleccionados para el alojamiento actual o cancele su seleccion de servicios. Gracias", null, 0);
 			}
 		}
 		else
@@ -645,7 +687,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(0º)Se guardan los datos seleccionados en el modelo
 		if(vista.buscarAlojamiento.table.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-			if()
+			if(controlador.funcionesServicios.comprobarServicioGuardado()) {
+
 				//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
 				validarCasaApartDisponible();
 			
@@ -688,6 +731,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					//mostrar el texto de las bases legales en el panBases
 					controlador.funcionesBasesLegales.mostrarBaseslegales();
 				}
+			}
+			else {
+				JOptionPane.showMessageDialog(vista, "Por favor, guarde los servicios seleccionados para el alojamiento actual o cancele su seleccion de servicios. Gracias", null, 0);
+			}
 		}
 		else {
 			JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);

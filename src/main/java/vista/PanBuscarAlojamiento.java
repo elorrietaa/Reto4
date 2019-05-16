@@ -1,22 +1,23 @@
 
 package vista;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JComboBox;
+import java.util.Date;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JCalendar;
-import javax.swing.JCheckBox;
-import javax.swing.SwingConstants;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -33,7 +34,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
     	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer, btnActualizar;
-    	public JComboBox<Object> cBCiudad, cBTipoAloj; 
+    	public JComboBox<Object> cBCiudad, cBTipoAloj, cbOrdenar, cBAscDesc; 
     	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha, labelServicios;
     	public JCalendar fechaIda, fechaVuelta;
     	public JCheckBox checkWifi, checkSpa, checkAire, checkPiscina, checkGimnasio, checkParking;
@@ -41,7 +42,12 @@ public class PanBuscarAlojamiento extends JPanel {
     	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
     	public JTable tab, table;
     	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
+<<<<<<< HEAD
+    
 
+=======
+    	public Date min1;
+>>>>>>> 1b4cbc0740fe24f57719c974cd0356fa42be59a3
     	
     	
 	public PanBuscarAlojamiento() {
@@ -87,11 +93,13 @@ public class PanBuscarAlojamiento extends JPanel {
 				centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		
 		//FECHAS:
+		min1 = new Date();		
 		fechaIda = new JCalendar();
 		fechaIda.getDayChooser();
 		fechaIda.getMonthChooser();
 		fechaIda.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
 		fechaIda.setBounds(69, 484, 184, 153);
+		fechaIda.setMinSelectableDate(min1);
 		add(fechaIda);
 		
 		fechaVuelta = new JCalendar();
@@ -99,6 +107,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		fechaVuelta.getMonthChooser();
 		fechaVuelta.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
 		fechaVuelta.setBounds(289, 484, 184, 153);
+		fechaVuelta.setMinSelectableDate(min1);
 		add(fechaVuelta);
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
@@ -275,6 +284,24 @@ public class PanBuscarAlojamiento extends JPanel {
 				add(btnActualizar);
 				btnActualizar.setVisible(false);
 				btnActualizar.setEnabled(false);
+				
+				JLabel lblOrdenarPor = new JLabel("Ordenar por:");
+				lblOrdenarPor.setFont(new Font("Dialog", Font.BOLD, 18));
+				lblOrdenarPor.setBounds(10, 75, 348, 25);
+				add(lblOrdenarPor);
+				
+				JLabel lblFiltrarPor = new JLabel("Filtrar por:");
+				lblFiltrarPor.setFont(new Font("Dialog", Font.BOLD, 18));
+				lblFiltrarPor.setBounds(10, 105, 348, 25);
+				add(lblFiltrarPor);
+				
+				cbOrdenar = new JComboBox<Object>();
+				cbOrdenar.setBounds(129, 75, 179, 20);
+				add(cbOrdenar);
+				
+				cBAscDesc = new JComboBox<Object>();
+				cBAscDesc.setBounds(323, 75, 179, 20);
+				add(cBAscDesc);
 	}
 }
 

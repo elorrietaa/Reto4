@@ -26,5 +26,7 @@ public class ControladorPanBienvenida implements ActionListener{
 		
 		this.controlador.controladorPanBuscarAlojamiento.mostrarCiudad();  
 		this.controlador.controladorPanBuscarAlojamiento.mostrarTiposAloj();; 
+		this.controlador.controladorPanBuscarAlojamiento.mostrarOpcionesParaOrdenar();
+		this.controlador.controladorPanBuscarAlojamiento.mostrarOpcionesAscDesc();
 	}
 }

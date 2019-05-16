@@ -74,6 +74,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     	vista.buscarAlojamiento.btnCancelar.addActionListener(this);
     	vista.buscarAlojamiento.cBCiudad.addActionListener(this);
     	vista.buscarAlojamiento.cBTipoAloj.addActionListener(this);
+	vista.buscarAlojamiento.cbOrdenar.addActionListener(this);
+    	vista.buscarAlojamiento.cBAscDesc.addActionListener(this);
     	vista.buscarAlojamiento.buttonContinuar.addActionListener(this);
     	vista.buscarAlojamiento.btnInicioSesion.addActionListener(this);
     	vista.buscarAlojamiento.btnRegistro.addActionListener(this);
@@ -106,6 +108,32 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		for(int i=0; i<listaTiposAlojamiento.size();i++) {
 		    tiposAloj=listaTiposAlojamiento.get(i);
 		    vista.buscarAlojamiento.cBTipoAloj.addItem(tiposAloj); 
+		}
+    }
+    
+    /**
+     * Método: mostrarOpcionesParaOrdenar = muestra las opciones en base a las que se puede ordenar la búsqueda 
+     * @param listaCiudades
+     */
+    public void mostrarOpcionesParaOrdenar() {
+    	vista.buscarAlojamiento.cbOrdenar.removeAllItems();
+		String [] arrayOpcionesOrdenar = {"Popularidad", "Precio", "Estrellas"};
+		
+		for(int i=0; i<arrayOpcionesOrdenar.length;i++) {
+		    vista.buscarAlojamiento.cbOrdenar.addItem(arrayOpcionesOrdenar[i].toString()); 
+		}
+    }
+    
+    /**
+     * Método: mostrarOpcionesParaOrdenar = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
+     * @param listaCiudades
+     */
+    public void mostrarOpcionesAscDesc() {
+    	vista.buscarAlojamiento.cBAscDesc.removeAllItems();
+		String [] arrayOpcionesAscDesc = {"Ascendente", "Descendente"};
+		
+		for(int i=0; i<arrayOpcionesAscDesc.length;i++) {
+		    vista.buscarAlojamiento.cBAscDesc.addItem(arrayOpcionesAscDesc[i].toString()); 
 		}
     }
     
@@ -467,17 +495,22 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				if (tiposAloj != null) {
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 					
-				//(3º) guarda el dato por el ue se va a ordenar y si se ordena asc/desc
+				//(3º) guarda el dato por el que se va a ordenar y si se ordena asc/desc
+				
+				String opcionSeleccionada = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
+				
 					
 				//(4º) guarda los filtros que ha seleccionado el usuario
 					
 				
 				//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 				mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado);
+				
+				
 				}			
-			}
+			
 	}
-	
+	}
 	/**
 	 * Listener de la fecha
 	 */

@@ -33,7 +33,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
     	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer, btnActualizar;
-    	public JComboBox<Object> cBCiudad, cBTipoAloj; 
+    	public JComboBox<Object> cBCiudad, cBTipoAloj, cbOrdenar, cBAscDesc; 
     	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha, labelServicios;
     	public JCalendar fechaIda, fechaVuelta;
     	public JCheckBox checkWifi, checkSpa, checkAire, checkPiscina, checkGimnasio, checkParking;
@@ -41,6 +41,7 @@ public class PanBuscarAlojamiento extends JPanel {
     	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
     	public JTable tab, table;
     	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
+    
 
     	
     	
@@ -275,6 +276,24 @@ public class PanBuscarAlojamiento extends JPanel {
 				add(btnActualizar);
 				btnActualizar.setVisible(false);
 				btnActualizar.setEnabled(false);
+				
+				JLabel lblOrdenarPor = new JLabel("Ordenar por:");
+				lblOrdenarPor.setFont(new Font("Dialog", Font.BOLD, 18));
+				lblOrdenarPor.setBounds(10, 75, 348, 25);
+				add(lblOrdenarPor);
+				
+				JLabel lblFiltrarPor = new JLabel("Filtrar por:");
+				lblFiltrarPor.setFont(new Font("Dialog", Font.BOLD, 18));
+				lblFiltrarPor.setBounds(10, 105, 348, 25);
+				add(lblFiltrarPor);
+				
+				cbOrdenar = new JComboBox<Object>();
+				cbOrdenar.setBounds(129, 75, 179, 20);
+				add(cbOrdenar);
+				
+				cBAscDesc = new JComboBox<Object>();
+				cBAscDesc.setBounds(323, 75, 179, 20);
+				add(cBAscDesc);
 	}
 }
 

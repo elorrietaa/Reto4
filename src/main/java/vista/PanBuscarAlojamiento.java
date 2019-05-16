@@ -1,22 +1,23 @@
 
 package vista;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JComboBox;
+import java.util.Date;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JCalendar;
-import javax.swing.JCheckBox;
-import javax.swing.SwingConstants;
 /**
  * Clase PanBuscarHotel: contiene los elementos necesarios para formar el Panel en el que se realiza la búsqueda del alojamiento
  * @author alba
@@ -41,8 +42,12 @@ public class PanBuscarAlojamiento extends JPanel {
     	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
     	public JTable tab, table;
     	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
+<<<<<<< HEAD
     
 
+=======
+    	public Date min1;
+>>>>>>> 1b4cbc0740fe24f57719c974cd0356fa42be59a3
     	
     	
 	public PanBuscarAlojamiento() {
@@ -88,11 +93,13 @@ public class PanBuscarAlojamiento extends JPanel {
 				centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		
 		//FECHAS:
+		min1 = new Date();		
 		fechaIda = new JCalendar();
 		fechaIda.getDayChooser();
 		fechaIda.getMonthChooser();
 		fechaIda.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
 		fechaIda.setBounds(69, 484, 184, 153);
+		fechaIda.setMinSelectableDate(min1);
 		add(fechaIda);
 		
 		fechaVuelta = new JCalendar();
@@ -100,6 +107,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		fechaVuelta.getMonthChooser();
 		fechaVuelta.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
 		fechaVuelta.setBounds(289, 484, 184, 153);
+		fechaVuelta.setMinSelectableDate(min1);
 		add(fechaVuelta);
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");

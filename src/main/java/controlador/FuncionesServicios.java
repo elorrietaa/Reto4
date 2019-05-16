@@ -102,4 +102,20 @@ public class FuncionesServicios {
 		
 		vista.buscarAlojamiento.labelServicios.setVisible(true);
 	}
+	
+	public boolean comprobarServicioGuardado() {
+		int codTipoAloj = controlador.controladorPanBuscarAlojamiento.tiposAloj.getCodTipoAlojamiento();
+		if(modelo.servicios != null) {
+			if(modelo.hotel != null && modelo.hotel.getCodAlojamiento() == modelo.servicios.getCodAlojamiento())
+				return true;
+			else if(modelo.casa != null && modelo.casa.getCodAlojamiento() == modelo.servicios.getCodAlojamiento())
+				return true;
+			else if(modelo.apartamento != null && modelo.apartamento.getCodAlojamiento() == modelo.servicios.getCodAlojamiento())
+				return true;
+			else
+				return false;
+		}
+		else
+			return true;
+	}
 }

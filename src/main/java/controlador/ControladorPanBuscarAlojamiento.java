@@ -641,33 +641,37 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(3º) Guarda los datos seleecionados en el modelo
 		if(vista.buscarAlojamiento.tab.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-			
-			//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
-			listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
-			for(int i = 0; i < listaDormitorios.size(); i++) {
-				System.out.println(listaDormitorios.get(i).getCodHabitacion());
-			}
-			
-			//(4.1.) si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
-			if(listaDormitorios.size()==0) {
-				JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
-				continuar = false;
-			}
-			
-			//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
-			mostrarDetallesHabs();
-			//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
-			if(continuar) {
-				vista.buscarAlojamiento.setVisible(false);
-				vista.selHabitacion.setVisible(true);
-				vista.detallesReservaCasaApart.panelHoteles.setVisible(true);
-				vista.detallesReservaCasaApart.panelHoteles.setEnabled(true);
-				vista.detallesReservaCasaApart.panelCasaApart.setVisible(false);
-				vista.detallesReservaCasaApart.panelCasaApart.setEnabled(false);
+			if(controlador.funcionesServicios.comprobarServicioGuardado()) {
+				//(4º) muestra en el siguiente panel las habitaciones en funcion del hotel seleccionado por el usuario
+				listaDormitorios = consultas.buscarHabitacionDisponiblel(fechaIda, fechaVuelta, hotel.getCodAlojamiento());
+				for(int i = 0; i < listaDormitorios.size(); i++) {
+					System.out.println(listaDormitorios.get(i).getCodHabitacion());
+				}
 				
-				//mostrar el texto de las bases legales en el panBases
-				controlador.funcionesBasesLegales.mostrarBaseslegales();
-			    
+				//(4.1.) si no hay habitaciones disponibles, muestra un mensaje por pantalla: 
+				if(listaDormitorios.size()==0) {
+					JOptionPane.showMessageDialog(vista, "Lo sentimos, no existen habitaciones disponibles para ese alojamiento en las fechas elegidas. Por favor, realice otra selección. Gracias. ", null, 0);
+					continuar = false;
+				}
+				
+				//(5º)MOSTRAR HABITACIONES Y CAMAS EN JTABLE: MÉTODO buscarCamaPorCodigoHabitacion EXISTE EN CONSULTAS
+				mostrarDetallesHabs();
+				//(6º) Actualiza el siguiente panel, si se cumplen las validaciones.
+				if(continuar) {
+					vista.buscarAlojamiento.setVisible(false);
+					vista.selHabitacion.setVisible(true);
+					vista.detallesReservaCasaApart.panelHoteles.setVisible(true);
+					vista.detallesReservaCasaApart.panelHoteles.setEnabled(true);
+					vista.detallesReservaCasaApart.panelCasaApart.setVisible(false);
+					vista.detallesReservaCasaApart.panelCasaApart.setEnabled(false);
+					
+					//mostrar el texto de las bases legales en el panBases
+					controlador.funcionesBasesLegales.mostrarBaseslegales();
+				    
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(vista, "Por favor, guarde los servicios seleccionados para el alojamiento actual o cancele su seleccion de servicios. Gracias", null, 0);
 			}
 		}
 		else
@@ -682,7 +686,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(0º)Se guardan los datos seleccionados en el modelo
 		if(vista.buscarAlojamiento.table.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-			//if(this.)
+			if(controlador.funcionesServicios.comprobarServicioGuardado()) {
+
 				//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
 				validarCasaApartDisponible();
 			
@@ -725,6 +730,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					//mostrar el texto de las bases legales en el panBases
 					controlador.funcionesBasesLegales.mostrarBaseslegales();
 				}
+			}
+			else {
+				JOptionPane.showMessageDialog(vista, "Por favor, guarde los servicios seleccionados para el alojamiento actual o cancele su seleccion de servicios. Gracias", null, 0);
+			}
 		}
 		else {
 			JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para continuar. Gracias. ", null, 0);

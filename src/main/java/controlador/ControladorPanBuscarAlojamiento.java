@@ -644,7 +644,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(0º)Se guardan los datos seleccionados en el modelo
 		if(vista.buscarAlojamiento.table.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-			if()
+			//if()
 				//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
 				validarCasaApartDisponible();
 			

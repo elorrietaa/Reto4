@@ -1,5 +1,8 @@
 package controlador;
 
+import java.util.ArrayList;
+
+import modelo.Hotel;
 import modelo.PrincipalModelo;
 import vista.JframePrincipal;
 
@@ -15,6 +18,23 @@ public class FuncionesOrdenar {
 		this.vista = vista;
 	} 
 	
-	
+	public ArrayList<Hotel> ordernarAlojamientosPopularidad(ArrayList<Hotel> listaHoteles) {
+	   ArrayList<Hotel> listaHotelesOrdPopuDes = listaHoteles;
+	   //añadimos una primera posicion vacia al arraylist
+	   listaHotelesOrdPopuDes.set(0, new Hotel());    
+	   int comodinPopu=0;
+	  
+	   for(int i=0; i<listaHotelesOrdPopuDes.size();i++) {
+	       if(listaHotelesOrdPopuDes.get(i+1).getPopularidad()>=listaHotelesOrdPopuDes.get(i).getPopularidad()) {
+		  
+	       }
+	       
+	     
+	   }
+	    
+	   
+	   
+	    return listaHotelesOrdPopuDes;
+	}
 
 }

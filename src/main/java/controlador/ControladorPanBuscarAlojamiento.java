@@ -143,6 +143,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	public void guardarDatosSeleccionadosCiudad() {
 		//se guarda la ciudad seleccionada
 		this.ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
+		modelo.ciudad=this.ciudad;
 		//Pruebas
 		System.out.println("***DATOS CIUDAD***:Ciudad:" + ciudad);
 	    
@@ -174,8 +175,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	    	// Mostrar los datos del alojamiento en tabla tab
 			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarAlojamiento.tab.getModel();
 				
-		  	//llena el arrayList con la lista de Hoteles
-		   	listaHoteles = consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+		  	//llena el arrayList con la lista de Hoteles ordnador por popularidad asce
+		   	listaHoteles = controlador.funcionesOrdenar.ordernarAlojamientosPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado);
 		   	
 		   	vista.buscarAlojamiento.panelHotel.setVisible(true);
 		   	vista.buscarAlojamiento.panelHotel.setEnabled(true);
@@ -196,7 +197,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			
 			System.out.println("DATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS POPULARIDAD hotel " +listaHoteles.get(i).getNombre() + " - "+ listaHoteles.get(i).getPopularidad());
 			}
-			controlador.funcionesOrdenar.ordernarAlojamientosPopularidad(listaHoteles);
+			controlador.funcionesOrdenar.ordernarAlojamientosPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado);
 			
 			
     	}

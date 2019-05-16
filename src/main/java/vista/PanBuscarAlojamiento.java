@@ -42,13 +42,8 @@ public class PanBuscarAlojamiento extends JPanel {
     	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
     	public JTable tab, table;
     	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
-<<<<<<< HEAD
-    
-
-=======
     	public Date min1;
->>>>>>> 1b4cbc0740fe24f57719c974cd0356fa42be59a3
-    	
+  	
     	
 	public PanBuscarAlojamiento() {
 		setBackground(Color.WHITE);

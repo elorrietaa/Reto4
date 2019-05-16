@@ -20,28 +20,9 @@ public class FuncionesOrdenar {
 		this.vista = vista;
 	} 
 	
-	public ArrayList<Hotel> ordernarAlojamientosPopularidad(ArrayList<Hotel> listaHoteles) {
-	   ArrayList<Hotel> listaHotelesOrdPopuDes = listaHoteles;
-	  
-	/*   for(int i=0; i<listaHotelesOrdPopuDes.size();i++) {
-		  if(i<=listaHotelesOrdPopuDes.size()) {
-			  int posicionAnterior = listaHotelesOrdPopuDes.get(i).getPopularidad();
-			   int posicionPosterior = listaHotelesOrdPopuDes.get(i+1).getPopularidad();
-			   
-			   //si la popularidad de la posición i (posicion anterior) < i+1 (posición posterior), 
-		       if(posicionAnterior<posicionPosterior) {
-		    	   listaHotelesOrdPopuDes.add(i, listaHotelesOrdPopuDes.get(i+1));//se pasa el contenido de la posición posterior(i+1) a la posición anterior (i)
-		    	 
-		    	   //ahora la posición posterior (i+1) está en i y la anterior en i+1, y estaría en i+2 la posición posterior que no hemos eliminado, la eliminamos:
-		    	  listaHotelesOrdPopuDes.remove(i+2);
-		    	   
-		       }
-		    
-		     System.out.println("LISTA ALOJAMIENTOS ORDENADOS POR POPULARIDAD " + listaHotelesOrdPopuDes.get(i).getPopularidad());
-		  }
-		   
-	   }
-	   */
+	public ArrayList<Hotel> ordernarAlojamientosPopularidad(int codCiudadSeleccionada, int codTipoAlojSeleccionado) {
+	   ArrayList<Hotel> listaHotelesOrdPopuDes = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+	
 	   //ordena el arraylist de la lista de Hoteles en orden ascendente
 	   listaHotelesOrdPopuDes.sort(Comparator.comparing(Hotel::getPopularidad).thenComparing(Hotel::getPopularidad));
 	   //ordena el arraylist de la lista de Hoteles en orden descendente:

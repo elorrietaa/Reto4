@@ -9,29 +9,38 @@ public class FuncionesServicios {
 	
 	private JframePrincipal vista;
 	private PrincipalModelo modelo;
+	private PrincipalControlador controlador;
 	
 	public ServiciosAdicionales servicios;
 	
-	public FuncionesServicios(PrincipalModelo modelo, JframePrincipal vista) {
+	public FuncionesServicios(PrincipalModelo modelo, JframePrincipal vista, PrincipalControlador controlador) {
 		this.vista = vista;
 		this.modelo = modelo;
+		this.controlador = controlador;
 	}
 		
-	public void activarPanel(PrincipalControlador controlador) {
-		if(vista.buscarAlojamiento.tab.getSelectedRow() != -1) {
-			vista.buscarAlojamiento.panelServicios.setVisible(true);
-			vista.buscarAlojamiento.btnServicios.setVisible(false);
-			vista.buscarAlojamiento.btnServicios.setEnabled(false);
-			vista.buscarAlojamiento.btnActualizar.setVisible(true);
-			vista.buscarAlojamiento.btnActualizar.setEnabled(true);
-			cargarServicios(controlador);
+	public void activarPanel() {
+		if(vista.buscarAlojamiento.panelHotel.isVisible() == true) {
+			if(vista.buscarAlojamiento.tab.getSelectedRow() != -1)
+				cargarServicios();
+			else
+				JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para poder ver sus servicios disponibles. Gracias.", null, 0);
 		}
 		else {
-			JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para poder ver sus servicios disponibles. Gracias.", null, 0);
+			if(vista.buscarAlojamiento.table.getSelectedRow() != -1)
+				cargarServicios();
+			else
+				JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para poder ver sus servicios disponibles. Gracias.", null, 0);
 		}
 	}
 	
-	public void cargarServicios(PrincipalControlador controlador) {
+	public void cargarServicios() {
+		vista.buscarAlojamiento.panelServicios.setVisible(true);
+		vista.buscarAlojamiento.btnServicios.setVisible(false);
+		vista.buscarAlojamiento.btnServicios.setEnabled(false);
+		vista.buscarAlojamiento.btnActualizar.setVisible(true);
+		vista.buscarAlojamiento.btnActualizar.setEnabled(true);
+		
 		controlador.controladorPanBuscarAlojamiento.guardarDatosSeleccionadosAlojamiento();
 		int codTipoAloj = controlador.controladorPanBuscarAlojamiento.tiposAloj.getCodTipoAlojamiento();
 		int codAlojamiento = 0;

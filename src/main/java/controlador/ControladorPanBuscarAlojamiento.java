@@ -467,7 +467,12 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				if (tiposAloj != null) {
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 					
-				//(3º) muestra los alojamientos de la ciudad y el tipoAloj seleccionados por el usuario en el JTable
+				//(3º) guarda el dato por el ue se va a ordenar y si se ordena asc/desc
+					
+				//(4º) guarda los filtros que ha seleccionado el usuario
+					
+				
+				//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 				mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado);
 				}			
 			}
@@ -644,7 +649,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//(0º)Se guardan los datos seleccionados en el modelo
 		if(vista.buscarAlojamiento.table.getSelectedRow() != -1) {
 			guardarDatosSeleccionadosAlojamiento();
-			//if()
+		
+			//if(this.)
+
 				//(1º) se compueba la disponibilidad del alojamiento para las fechas seleccionadas.
 				validarCasaApartDisponible();
 			

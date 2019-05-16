@@ -38,6 +38,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	Ciudad ciudad;
 	TipoAlojamiento tiposAloj;
+	String ordenarPor;
+	String ascDesc;
 	
 	Alojamiento alojamiento;
 	Hotel hotel;
@@ -130,7 +132,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      */
     public void mostrarOpcionesAscDesc() {
     	vista.buscarAlojamiento.cBAscDesc.removeAllItems();
-		String [] arrayOpcionesAscDesc = {"Ascendente", "Descendente"};
+		String [] arrayOpcionesAscDesc = {"Descendente", "Ascendente"};
 		
 		for(int i=0; i<arrayOpcionesAscDesc.length;i++) {
 		    vista.buscarAlojamiento.cBAscDesc.addItem(arrayOpcionesAscDesc[i].toString()); 
@@ -165,10 +167,41 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	}
 	
 	/**
+	 * Método guardarDatosSeleccionadosOrdenarPor = guarda los datos seleccionados por el usuario en los objetos.
+	 */
+	private void guardarDatosSeleccionadosOrdenarPor() {
+		//se guarda la ciudad seleccionada
+		this.ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
+				
+		//se pasa el tipo de alojamiento seleccionado al modelo
+		//modelo.ordenarPor = this.ordenarPor;
+				
+		//Pruebas
+		System.out.println("***DATOS ordenarPor***:" + ordenarPor + "***DATOS ordenarPor***:" + ordenarPor.toString());
+	}
+	
+	/**
+	 * Método guardarDatosSeleccionadosAscDesc = guarda los datos seleccionados por el usuario en los objetos.
+	 */
+	private void guardarDatosSeleccionadosAscDesc() {
+		//se guarda la ciudad seleccionada
+		this.ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
+						
+		//se pasa el tipo de alojamiento seleccionado al modelo
+		//modelo.ordenarPor = this.ordenarPor;
+						
+		//Pruebas
+		System.out.println("***DATOS ordenarPor***:" + ascDesc + "***DATOS ordenarPor***:" + ascDesc.toString());
+		
+	}
+	
+	
+	
+	/**
      * Método: mostrarHotelesEnJTable = muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
      * @param codCiudadSeleccionada 
      */
-    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado) {
+    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	  	
     	//***TABLA HOTELES es .tab
     	if(codTipoAlojSeleccionado == 10) {
@@ -176,7 +209,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarAlojamiento.tab.getModel();
 				
 		  	//llena el arrayList con la lista de Hoteles ordnador por popularidad asce
-		   	listaHoteles = controlador.funcionesOrdenar.ordernarAlojamientosPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado);
+		   	listaHoteles = controlador.funcionesOrdenar.ordenarListaHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		   	
 		   	vista.buscarAlojamiento.panelHotel.setVisible(true);
 		   	vista.buscarAlojamiento.panelHotel.setEnabled(true);
@@ -194,12 +227,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				datos[2] = ((Hotel) listaHoteles.get(i)).getEstrellas();
 				datos[3] = "Dirección: " + listaHoteles.get(i).getDireccion();
 				tablaHotel.addRow(datos);
-			
-			System.out.println("DATOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS POPULARIDAD hotel " +listaHoteles.get(i).getNombre() + " - "+ listaHoteles.get(i).getPopularidad());
-			}
-			controlador.funcionesOrdenar.ordernarAlojamientosPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado);
-			
-			
+			}	
     	}
     	
     	//***TABLA CASA O APARTAMENTO es .table 
@@ -433,6 +461,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				    //(1º) Guarda los datos seleecionados en el modelo
 					guardarDatosSeleccionadosCiudad();
 					guardarDatosSeleccionadosTipoAloj();
+					guardarDatosSeleccionadosOrdenarPor();
+					guardarDatosSeleccionadosAscDesc();
 					guardarDatosSeleccionadosFechas(); //guarda los datos en el modelo, no en modelo.reserva
 					
 					//Pruebas: muestra fecha y hora actual
@@ -483,6 +513,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		}
 	}
 	
+
 	/**
 	 * Método actualizarFiltradoJComboBox = actualiza la información del Jtable dependiendo de los valores escogidos por el usuario en losJComboBox
 	 */
@@ -497,17 +528,17 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				if (tiposAloj != null) {
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
 					
-				//(3º) guarda el dato por el que se va a ordenar y si se ordena asc/desc
-				
-				String opcionSeleccionada = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
-				
+					//(3º) guarda el dato por el que se va a ordenar y si se ordena asc/desc
+						ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
+						ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
+							
+						//(4º) guarda los filtros que ha seleccionado el usuario
+							
+						
+						//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
+						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 					
-				//(4º) guarda los filtros que ha seleccionado el usuario
-					
-				
-				//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
-				mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado);
-				
+			
 				
 				}			
 			

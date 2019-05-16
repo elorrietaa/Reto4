@@ -33,12 +33,10 @@ public class FuncionesOrdenar {
 	   if(ordenarPor == "Popularidad") {
 		    listaHotelesOrdenada = ordenarListaHotelesPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado,ordenarPor,  ascDesc);
 	   }
-	   if(ordenarPor == "Precio") {
+	   if(ordenarPor == "Precio" || ordenarPor == "Estrellas") {
 		    listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 	   }
-	   if(ordenarPor == "Estrellas") {
-		    listaHotelesOrdenada = ordenarListaHotelesPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado,ordenarPor,  ascDesc);
-	   }
+	   
 
 	   for(int i=0; i<listaHotelesOrdenada.size();i++) {
 			 

@@ -138,6 +138,12 @@ public class Consultas {
 		else if(ordenarPor == "Precio" && ascDesc == "Descendente") {
 			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by Precio_alojamiento desc ";
 		}
+		else if(ordenarPor == "Estrellas" && ascDesc == "Ascendente") {
+			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by N_estrellas asc ";
+		}
+		else if(ordenarPor == "Estrellas" && ascDesc == "Descendente") {
+			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by N_estrellas desc ";
+		}
 		else {
 			query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ";
 

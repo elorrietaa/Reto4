@@ -76,5 +76,12 @@ public class FuncionesOrdenar {
 		}
 		
 	
+	public int[] rellenarArrayFiltrosSeleccionados() {
+		int[]arrayFiltrosSelec = new int[8];
+		
+		
+		return arrayFiltrosSelec;
+	}
+	
 }
 

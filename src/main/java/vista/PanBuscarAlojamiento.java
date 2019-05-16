@@ -33,16 +33,18 @@ public class PanBuscarAlojamiento extends JPanel {
 	 */
 		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
 		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
-    	public JButton buttonContinuar, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer, btnActualizar;
+    	public JButton buttonContinuar,btnAplicarFiltros, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer, btnActualizar;
     	public JComboBox<Object> cBCiudad, cBTipoAloj, cbOrdenar, cBAscDesc; 
     	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha, labelServicios;
     	public JCalendar fechaIda, fechaVuelta;
+    	public JCheckBox chckbxWifiSel, chckbxAireSel, chckbxPiscinaSel, chckbxSpaSel, chckbxGimSel, chckbxParkingsel, chckbxRestSel, chckbxBarSel;
     	public JCheckBox checkWifi, checkSpa, checkAire, checkPiscina, checkGimnasio, checkParking;
     	
     	public DefaultListModel<Object> modelo = new DefaultListModel<Object>();
     	public JTable tab, table;
     	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
     	public Date min1;
+    
   	
     	
 	public PanBuscarAlojamiento() {
@@ -297,6 +299,50 @@ public class PanBuscarAlojamiento extends JPanel {
 				cBAscDesc = new JComboBox<Object>();
 				cBAscDesc.setBounds(323, 75, 179, 20);
 				add(cBAscDesc);
+				
+				chckbxWifiSel = new JCheckBox("Wifi");
+				chckbxWifiSel.setBackground(Color.WHITE);
+				chckbxWifiSel.setBounds(103, 107, 49, 23);
+				add(chckbxWifiSel);
+				
+				chckbxAireSel = new JCheckBox("Aire acondicionado");
+				chckbxAireSel.setBackground(Color.WHITE);
+				chckbxAireSel.setBounds(151, 107, 139, 23);
+				add(chckbxAireSel);
+				
+				chckbxPiscinaSel = new JCheckBox("Piscina");
+				chckbxPiscinaSel.setBackground(Color.WHITE);
+				chckbxPiscinaSel.setBounds(289, 107, 76, 23);
+				add(chckbxPiscinaSel);
+				
+				chckbxSpaSel = new JCheckBox("Spa");
+				chckbxSpaSel.setBackground(Color.WHITE);
+				chckbxSpaSel.setBounds(367, 109, 56, 23);
+				add(chckbxSpaSel);
+				
+				chckbxGimSel = new JCheckBox("Gimnasio");
+				chckbxGimSel.setBackground(Color.WHITE);
+				chckbxGimSel.setBounds(425, 109, 84, 23);
+				add(chckbxGimSel);
+				
+				chckbxParkingsel = new JCheckBox("Parking");
+				chckbxParkingsel.setBackground(Color.WHITE);
+				chckbxParkingsel.setBounds(517, 109, 73, 23);
+				add(chckbxParkingsel);
+				
+				chckbxRestSel = new JCheckBox("Restaurante");
+				chckbxRestSel.setBackground(Color.WHITE);
+				chckbxRestSel.setBounds(592, 109, 106, 23);
+				add(chckbxRestSel);
+				
+				chckbxBarSel = new JCheckBox("Bar");
+				chckbxBarSel.setBackground(Color.WHITE);
+				chckbxBarSel.setBounds(700, 109, 56, 23);
+				add(chckbxBarSel);
+				
+				btnAplicarFiltros  = new JButton("Aplicar filtros");
+				btnAplicarFiltros.setBounds(762, 109, 125, 23);
+				add(btnAplicarFiltros);
 	}
 }
 

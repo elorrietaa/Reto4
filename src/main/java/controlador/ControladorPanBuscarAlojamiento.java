@@ -504,6 +504,15 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				case "Cerrar Sesión":
 					controlador.funcionesBotones.cerrarSesion();
 					break;
+					
+				case "Aplicar filtros":
+					//Se resetean todos los combobox a no seleccionados
+					
+					//se hace la buscqueda de listaAlojamientos en función de los filtros seleccionados
+					
+					//Se muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
+					
+					break;
 			}
 			
 		//JCOMBOBOX DE CIUDAD Y TIPO ALOJAMIENTO

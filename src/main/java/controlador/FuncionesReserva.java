@@ -62,6 +62,7 @@ public class FuncionesReserva {
 		}
 		//Sumamos el precio de los servicios que ha seleccionado el cliente
 		precioReserva = precioReserva + modelo.precioServicios;
+		vista.detallesReservaCasaApart.textPaneDetServAdic.setText("Precio servicios adicionales: " + modelo.precioServicios + " €");
 		
 		//(2º)Redondeamos a 2 decimales
 		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales

@@ -292,7 +292,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		textPaneDetServAdic = new JTextPane();
 		textPaneDetServAdic.setEditable(false);
-		textPaneDetServAdic.setBounds(121, 600, 563, 23);
+		textPaneDetServAdic.setBounds(121, 600, 462, 23);
 		add(textPaneDetServAdic);
 
 	}

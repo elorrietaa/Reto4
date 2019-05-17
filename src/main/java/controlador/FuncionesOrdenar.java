@@ -34,7 +34,8 @@ public class FuncionesOrdenar {
 		    listaHotelesOrdenada = ordenarListaHotelesPopularidad(codCiudadSeleccionada, codTipoAlojSeleccionado,ordenarPor,  ascDesc);
 	   }
 	   if(ordenarPor == "Precio" || ordenarPor == "Estrellas") {
-		    listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+		    //listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+		   listaHotelesOrdenada = crearQuerisAplicarFiltros(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 	   }
 	   
 
@@ -54,7 +55,7 @@ public class FuncionesOrdenar {
 	 * @return
 	 */
 	public ArrayList<Hotel> ordenarListaHotelesPopularidad(int codCiudadSeleccionada, int codTipoAlojSeleccionado,String ordenarPor, String ascDesc) {
-		   ArrayList<Hotel> listaHotelesOrdPopuDes = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+		   ArrayList<Hotel> listaHotelesOrdPopuDes = crearQuerisAplicarFiltros(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		
 		   //(1º) ordenar por POPULARIDAD DESC
 		   if(ascDesc == "Descendente") {
@@ -129,6 +130,7 @@ public class FuncionesOrdenar {
 	public ArrayList<Hotel> crearQuerisAplicarFiltros(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	    String query = "";
 	    String serviciosSelec = rellenarArrayFiltrosSeleccionados();
+	    ArrayList<Hotel> listaHoteles;
 	    
 	    if(ordenarPor == "Precio" && ascDesc == "Ascendente") {
 			query = "select * from `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec + "order by Precio_alojamiento asc";
@@ -146,7 +148,9 @@ public class FuncionesOrdenar {
 			query = "SELECT * FROM `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec;
 
 		}
-	    return modelo.consultas.buscarHotelPorCodCiudad2(codCiudadSeleccionada, codTipoAlojSeleccionado, query);
+	    listaHoteles = modelo.consultas.buscarHotelPorCodCiudad2(codCiudadSeleccionada, codTipoAlojSeleccionado, query);
+	    
+	    return listaHoteles;
 	}
 	
 }

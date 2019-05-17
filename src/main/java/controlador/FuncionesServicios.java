@@ -101,6 +101,7 @@ public class FuncionesServicios {
 		modelo.servicios = this.servicios;
 		
 		vista.buscarAlojamiento.labelServicios.setVisible(true);
+		calcularPrecioServicios();
 	}
 	
 	public boolean comprobarServicioGuardado() {
@@ -117,5 +118,23 @@ public class FuncionesServicios {
 		}
 		else
 			return true;
+	}
+	
+	public void calcularPrecioServicios() {
+		float precio = 0;
+		if(servicios.isWifiSeleccionado())
+			precio = precio + servicios.getPrecioWifi();
+		if(servicios.isAireSeleccionado())
+			precio = precio + servicios.getPrecioAire();
+		if(servicios.isGimnasioSeleccionado())
+			precio = precio + servicios.getPrecioGimnasio();
+		if(servicios.isParkingSeleccionado())
+			precio = precio + servicios.getPrecioParking();
+		if(servicios.isPiscinaSeleccionada())
+			precio = precio + servicios.getPrecioPiscina();
+		if(servicios.isSpaSeleccionado())
+			precio = precio + servicios.getPrecioSpa();
+		
+		modelo.precioServicios = precio;
 	}
 }

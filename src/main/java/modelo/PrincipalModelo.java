@@ -41,6 +41,7 @@ public class PrincipalModelo {
   
 	public float precioTotal;
 	public float precioTotalSinCupon;
+	public float precioServicios;
 	public String cuponAplicado = null;
 	public int ocupacionFinal;
 	
@@ -81,6 +82,7 @@ public class PrincipalModelo {
 		// guardamos el precio total de la reserva
 		precioTotal = 0;
 		precioTotalSinCupon = 0;
+		precioServicios = 0;
 		
 		// Hacemos que de manera inicial las bases legales no hayan sido aceptadas
 		basesAceptadas = false;

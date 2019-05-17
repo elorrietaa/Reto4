@@ -92,7 +92,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		// TABLA DETALLES HOTELES CASAS o APARTAMENTOS
 		table = new JTable();
 		Object[][] datos1 = {};
-		String[] columnNames1 = {"Wifi", "Aire", "Piscina", "Spa", "Gimnasio", "Parking", "Restaurante", "Bar"};
+		String[] columnNames1 = {"Wifi", "Aire", "Piscina", "Spa", "Gimnasio", "Parking"};
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		add(table);
@@ -127,8 +127,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		table.getColumnModel().getColumn(3).setPreferredWidth(5);
 		table.getColumnModel().getColumn(4).setPreferredWidth(10);
 		table.getColumnModel().getColumn(5).setPreferredWidth(5);
-		table.getColumnModel().getColumn(6).setPreferredWidth(10);
-		table.getColumnModel().getColumn(7).setPreferredWidth(5);
+		
 				
 		scrollPaneCasaApart = new JScrollPane(table);
 		scrollPaneCasaApart.setBounds(121,98,839,74);

@@ -82,43 +82,53 @@ public class FuncionesOrdenar {
 		
 	}
 	
-	public int[] rellenarArrayFiltrosSeleccionados() {
-		//se inicializa el array en 0, lo que significa que no hay ningún servicio seleccionado por el usuario
-		int[]arrayFiltrosSelec = {0,0,0,0,0,0,0,0};
+	/**
+	 * Método rellenarArrayFiltrosSeleccionados = devuelve un Strin en el que aparecen los filtros seleccionados
+	 * @return
+	 */
+	public String rellenarArrayFiltrosSeleccionados() {
+		String serviciosSelec = "";
 		
 		//si el combobox está seleccionado, se cambia el 0 por 1	
 		if(vista.buscarAlojamiento.chckbxWifiSel.isSelected()) {
-			arrayFiltrosSelec[0]=1;
+		    serviciosSelec = serviciosSelec + "and Wifi=1";
 		}
 		if(vista.buscarAlojamiento.chckbxAireSel.isSelected()) {
-			arrayFiltrosSelec[1]=1;
+		    serviciosSelec = serviciosSelec + "and  Aire=1";
 		}
 		if(vista.buscarAlojamiento.chckbxPiscinaSel.isSelected()) {
-			arrayFiltrosSelec[2]=1;
+		    serviciosSelec = serviciosSelec + "and  Piscina=1";
 		}
 		if(vista.buscarAlojamiento.chckbxSpaSel.isSelected()) {
-			arrayFiltrosSelec[3]=1;
+		    serviciosSelec = serviciosSelec + "and Spa=1";
 		}
 		if(vista.buscarAlojamiento.chckbxGimSel.isSelected()) {
-			arrayFiltrosSelec[4]=1;
+		    serviciosSelec = serviciosSelec + "and Gimnasio=1";
 		}
 		if(vista.buscarAlojamiento.chckbxParkingsel.isSelected()) {
-			arrayFiltrosSelec[5]=1;
+		    serviciosSelec = serviciosSelec + "and Parking=1";
 		}
 		if(vista.buscarAlojamiento.chckbxRestSel.isSelected()) {
-			arrayFiltrosSelec[6]=1;
+		    serviciosSelec = serviciosSelec + "and Restaurante =1";
 		}
 		if(vista.buscarAlojamiento.chckbxBarSel.isSelected()) {
-			arrayFiltrosSelec[7]=1;
+		    serviciosSelec = serviciosSelec + "and Bar=1";
 		}
 		
 		//prueba
 		System.out.println("^*^*^*^*^* FILTROS SELECCIONADOS ^*^^*^*^*^*^*^*");
-		for(int i=0; i<arrayFiltrosSelec.length; i++) {
-			System.out.println(arrayFiltrosSelec[i]);
-		}
 		
-		return arrayFiltrosSelec;
+		return serviciosSelec;
+	}
+	
+	/**
+	 * Método crearQuerisAplicarFiltros = se crean las querys para las busquedas de alojamiento aplicando los filtros seleccionados por el usuario
+	 * @return
+	 */
+	public String crearQuerisAplicarFiltros() {
+	    String queryFiltro = "";
+	    
+	    return queryFiltro;
 	}
 	
 }

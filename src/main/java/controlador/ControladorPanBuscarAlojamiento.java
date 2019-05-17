@@ -40,7 +40,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	int codTipoAlojSeleccionado;
 	String ordenarPor;
 	String ascDesc;
-	int[]arrayFiltrosSelec;
+	String stringFiltrosSelec;
 	
 	Ciudad ciudad;
 	TipoAlojamiento tiposAloj;
@@ -207,7 +207,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * Método: mostrarHotelesEnJTable = muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
      * @param codCiudadSeleccionada 
      */
-    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc, int[] arrayFiltrosSelec) {
+    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	  	
     	//***TABLA HOTELES es .tab
     	if(codTipoAlojSeleccionado == 10) {
@@ -514,11 +514,11 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				case "Aplicar filtros":
 					//se guardan los filtros seleccionados por el usuario
 					
-					arrayFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
+				    	stringFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
 					
 					//se hace la buscqueda de listaAlojamientos en función de los filtros seleccionados
 					//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
-					mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc, arrayFiltrosSelec);
+					mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 					
 					//Se muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 					
@@ -556,10 +556,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 						ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
 							
 						//(4º) guarda los filtros que ha seleccionado el usuario
-						arrayFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
+						stringFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
 						
 						//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
-						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc, arrayFiltrosSelec );
+						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 					
 			
 				

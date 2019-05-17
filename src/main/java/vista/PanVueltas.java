@@ -59,6 +59,7 @@ public class PanVueltas extends JPanel {
 		
 		btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.setBounds(415, 519, 89, 23);
+		FormatoDiseno.formatoBtn(btnFinalizar);
 		add(btnFinalizar);
 	}
 }

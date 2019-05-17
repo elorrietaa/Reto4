@@ -67,6 +67,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		btnContinuar = new JButton("Continuar");
 		btnContinuar.setBounds(861, 651, 89, 23);
+		FormatoDiseno.formatoBtn(btnContinuar);
 		add(btnContinuar);
 		
 		lblPrecio = new JLabel("Precio TOTAL:");
@@ -149,18 +150,22 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
 		btnInicioSesion.setBounds(869, 42, 105, 23);
+		FormatoDiseno.formatoBtn(btnInicioSesion);
 		add(btnInicioSesion);
 		
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
+		FormatoDiseno.formatoBtn(btnRegistro);
 		add(btnRegistro);
 		
 		btnAtras = new JButton("Atras");
 		btnAtras.setBounds(78, 623, 89, 23);
+		FormatoDiseno.formatoBtn(btnAtras);
 		add(btnAtras);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(78, 657, 89, 23);
+		FormatoDiseno.formatoBtn(btnCancelar);
 		add(btnCancelar);
 		
 		textDetTarifa = new JTextPane();
@@ -281,6 +286,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
 		btnCerrarSesion.setBounds(870, 26, 121, 23);
+		FormatoDiseno.formatoBtn(btnCerrarSesion);
 		add(btnCerrarSesion);
 		btnCerrarSesion.setVisible(false);
 		btnCerrarSesion.setEnabled(false);

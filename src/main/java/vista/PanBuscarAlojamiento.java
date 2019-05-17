@@ -54,6 +54,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		
 		buttonContinuar = new JButton("Continuar");
 		buttonContinuar.setBounds(708, 663, 89, 23);
+		FormatoDiseno.formatoBtn(buttonContinuar);
 		add(buttonContinuar);
 		
 		labelCiudad = new JLabel("Seleccione una ciudad :");
@@ -109,10 +110,12 @@ public class PanBuscarAlojamiento extends JPanel {
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
 		btnInicioSesion.setBounds(870, 8, 121, 23);
+		FormatoDiseno.formatoBtn(btnInicioSesion);
 		add(btnInicioSesion);
 		
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(771, 8, 89, 23);
+		FormatoDiseno.formatoBtn(btnRegistro);
 		add(btnRegistro);
 		Object[][] datos1 = {};
 		String[] columnNames1 = {"Nombre", "Precio desde", "Detalles"};
@@ -213,16 +216,19 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				btnCancelar = new JButton("Cancelar");
 				btnCancelar.setBounds(44, 663, 89, 23);
+				FormatoDiseno.formatoBtn(btnCancelar);
 				add(btnCancelar);
 				
 				btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
 				btnCerrarSesion.setBounds(870, 26, 121, 23);
+				FormatoDiseno.formatoBtn(btnCerrarSesion);
 				add(btnCerrarSesion);
 				btnCerrarSesion.setVisible(false);
 				btnCerrarSesion.setEnabled(false);
 				
 				btnServicios = new JButton("Contratar servicios adicionales");
 				btnServicios.setBounds(612, 553, 275, 23);
+				FormatoDiseno.formatoBtn(btnServicios);
 				add(btnServicios);
 				
 				panelServicios = new JPanel();
@@ -234,10 +240,12 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				btnContratar = new JButton("Contratar");
 				btnContratar.setBounds(386, 119, 89, 23);
+				FormatoDiseno.formatoBtn(btnContratar);
 				panelServicios.add(btnContratar);
 				
 				btnCancelarSer = new JButton(" Cancelar ");
 				btnCancelarSer.setBounds(10, 119, 110, 23);
+				FormatoDiseno.formatoBtn(btnCancelarSer);
 				panelServicios.add(btnCancelarSer);
 				
 				checkWifi = new JCheckBox("WiFi");
@@ -278,6 +286,7 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				btnActualizar = new JButton("Actualizar servicios");
 				btnActualizar.setBounds(632, 453, 215, 23);
+				FormatoDiseno.formatoBtn(btnActualizar);
 				add(btnActualizar);
 				btnActualizar.setVisible(false);
 				btnActualizar.setEnabled(false);
@@ -342,6 +351,7 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				btnAplicarFiltros  = new JButton("Aplicar filtros");
 				btnAplicarFiltros.setBounds(762, 109, 125, 23);
+				FormatoDiseno.formatoBtn(btnAplicarFiltros);
 				add(btnAplicarFiltros);
 	}
 }

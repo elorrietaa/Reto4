@@ -27,7 +27,7 @@ public class FuncionesOrdenar {
 	 * @return
 	 */
 	public ArrayList<Hotel> ordenarListaHoteles(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
-	   ArrayList<Hotel> listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+	   ArrayList<Hotel> listaHotelesOrdenada = crearQuerisAplicarFiltros(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 	
 	   //(1º) ordenar por POPULARIDAD DESC: ordena el arraylist de la lista de Hoteles en orden descendente
 	   if(ordenarPor == "Popularidad") {
@@ -148,7 +148,7 @@ public class FuncionesOrdenar {
 			query = "SELECT * FROM `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec;
 
 		}
-	    listaHoteles = modelo.consultas.buscarHotelPorCodCiudad2(codCiudadSeleccionada, codTipoAlojSeleccionado, query);
+	    listaHoteles = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, query);
 	    
 	    return listaHoteles;
 	}

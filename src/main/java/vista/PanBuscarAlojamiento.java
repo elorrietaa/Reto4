@@ -242,7 +242,7 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				checkWifi = new JCheckBox("WiFi");
 				checkWifi.setBackground(Color.WHITE);
-				checkWifi.setBounds(96, 19, 97, 23);
+				checkWifi.setBounds(96, 19, 179, 23);
 				panelServicios.add(checkWifi);
 				
 				checkSpa = new JCheckBox("Spa");
@@ -252,7 +252,7 @@ public class PanBuscarAlojamiento extends JPanel {
 				
 				checkAire = new JCheckBox("Aire Acondicionado");
 				checkAire.setBackground(Color.WHITE);
-				checkAire.setBounds(96, 45, 167, 23);
+				checkAire.setBounds(96, 45, 179, 23);
 				panelServicios.add(checkAire);
 				
 				checkPiscina = new JCheckBox("Piscina");

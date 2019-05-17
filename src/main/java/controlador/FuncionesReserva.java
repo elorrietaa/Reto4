@@ -60,7 +60,9 @@ public class FuncionesReserva {
 		else if(tiposAloj.getCodTipoAlojamiento() == 30) {
 			precioReserva = precioReserva + calcularPrecioPorTarifa(tiposAloj, modelo.apartamento.getPrecioAlojamiento());
 		}
-	
+		//Sumamos el precio de los servicios que ha seleccionado el cliente
+		precioReserva = precioReserva + modelo.precioServicios;
+		
 		//(2º)Redondeamos a 2 decimales
 		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
 		precioReserva = precioReserva/100;//redondear a dos decimales

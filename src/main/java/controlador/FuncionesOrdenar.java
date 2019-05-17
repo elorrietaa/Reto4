@@ -91,28 +91,28 @@ public class FuncionesOrdenar {
 		
 		//si el combobox está seleccionado, se cambia el 0 por 1	
 		if(vista.buscarAlojamiento.chckbxWifiSel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and Wifi=1";
+		    serviciosSelec = serviciosSelec + "and Wifi = 1 ";
 		}
 		if(vista.buscarAlojamiento.chckbxAireSel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and  Aire=1";
+		    serviciosSelec = serviciosSelec + "and Aire = 1 ";
 		}
 		if(vista.buscarAlojamiento.chckbxPiscinaSel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and  Piscina=1";
+		    serviciosSelec = serviciosSelec + "and Piscina = 1 ";
 		}
 		if(vista.buscarAlojamiento.chckbxSpaSel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and Spa=1";
+		    serviciosSelec = serviciosSelec + "and Spa = 1 ";
 		}
 		if(vista.buscarAlojamiento.chckbxGimSel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and Gimnasio=1";
+		    serviciosSelec = serviciosSelec + "and Gimnasio = 1 ";
 		}
 		if(vista.buscarAlojamiento.chckbxParkingsel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and Parking=1";
+		    serviciosSelec = serviciosSelec + "and Parking = 1 ";
 		}
 		if(vista.buscarAlojamiento.chckbxRestSel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and Restaurante =1";
+		    serviciosSelec = serviciosSelec + "and Restaurante = 1 ";
 		}
 		if(vista.buscarAlojamiento.chckbxBarSel.isSelected()) {
-		    serviciosSelec = serviciosSelec + "and Bar=1";
+		    serviciosSelec = serviciosSelec + "and Bar = 1 ";
 		}
 		
 		//prueba
@@ -123,12 +123,30 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método crearQuerisAplicarFiltros = se crean las querys para las busquedas de alojamiento aplicando los filtros seleccionados por el usuario
+	 * @return 
 	 * @return
 	 */
-	public String crearQuerisAplicarFiltros() {
-	    String queryFiltro = "";
+	public ArrayList<Hotel> crearQuerisAplicarFiltros(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
+	    String query = "";
+	    String serviciosSelec = rellenarArrayFiltrosSeleccionados();
 	    
-	    return queryFiltro;
+	    if(ordenarPor == "Precio" && ascDesc == "Ascendente") {
+			query = "select * from `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec + "order by Precio_alojamiento asc";
+		}
+		else if(ordenarPor == "Precio" && ascDesc == "Descendente") {
+			query = "select * from `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec + "order by Precio_alojamiento desc";
+		}
+		else if(ordenarPor == "Estrellas" && ascDesc == "Ascendente") {
+			query = "select * from `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec + "order by N_estrellas asc";
+		}
+		else if(ordenarPor == "Estrellas" && ascDesc == "Descendente") {
+			query = "select * from `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec + "order by N_estrellas desc";
+		}
+		else {
+			query = "SELECT * FROM `vistaAlojamientos` where Cod_ubicacion = ? and Cod_tipo = ? " + serviciosSelec;
+
+		}
+	    return modelo.consultas.buscarHotelPorCodCiudad2(codCiudadSeleccionada, codTipoAlojSeleccionado, query);
 	}
 	
 }

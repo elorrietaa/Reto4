@@ -98,18 +98,18 @@ public class PanPersonasAlojadas extends JPanel {
 		//Object[][] datosVuelta = {};
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(0, 0, 0, 0);
-		FormatoDiseno.formatoBtnCancelar(btnCancelar);
+		btnCancelar.setBounds(45, 653, 105, 23);
+		FormatoDiseno.formatoBtn(btnCancelar);
 		add(btnCancelar);
 		
 		btnAtras = new JButton("Atr\u00E1s");
-		btnAtras.setBounds(0, 0, 0, 0);
-		FormatoDiseno.formatoBtnAtras(btnAtras);
+		btnAtras.setBounds(45, 598, 105, 23);
+		FormatoDiseno.formatoBtn(btnAtras);
 		add(btnAtras);
 		
 		btnContinuar = new JButton("Continuar");
-		btnContinuar.setBounds(0, 0, 0, 0);
-		FormatoDiseno.formatoBtnContinuar(btnContinuar);
+		btnContinuar.setBounds(712, 653, 105, 23);
+		FormatoDiseno.formatoBtn(btnContinuar);
 		add(btnContinuar);
 		
 		textFieldDNI = new JTextField();
@@ -118,13 +118,13 @@ public class PanPersonasAlojadas extends JPanel {
 		textFieldDNI.setColumns(10);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setColumns(10);
 		textFieldNombre.setBounds(712, 207, 160, 20);
+		textFieldNombre.setColumns(10);
 		add(textFieldNombre);
 		
 		textFieldApellidos = new JTextField();
-		textFieldApellidos.setColumns(10);
 		textFieldApellidos.setBounds(712, 257, 160, 20);
+		textFieldApellidos.setColumns(10);
 		add(textFieldApellidos);
 		
 		JLabel lblDNI = new JLabel("DNI:");
@@ -141,15 +141,18 @@ public class PanPersonasAlojadas extends JPanel {
 		
 		btnAnadirPersona = new JButton("A\u00F1adir");
 		btnAnadirPersona.setBounds(712, 305, 105, 23);
+		FormatoDiseno.formatoBtn(btnAnadirPersona);
 		add(btnAnadirPersona);
 		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setBounds(712, 344, 105, 23);
+		FormatoDiseno.formatoBtn(btnBorrar);
 		add(btnBorrar);
 		
 		label = new JLabel("Ejemplo formato v\u00E1lido: 12345678A");
-		label.setForeground(Color.GRAY);
 		label.setBounds(712, 129, 215, 14);
+		label.setForeground(Color.GRAY);
+		
 		add(label);
 		
 		JSpinner spinner2 = new JSpinner();

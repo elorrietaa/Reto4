@@ -29,11 +29,13 @@ public class PanCuponDescuento extends JPanel {
 		setLayout(null);
 		
 		btnAplicar = new JButton("Aplicar y continuar");
-		btnAplicar.setBounds(761, 601, 159, 23);
+		btnAplicar.setBounds(728, 601, 192, 23);
+		FormatoDiseno.formatoBtn(btnAplicar);
 		add(btnAplicar);
 		
 		btnAtras = new JButton("Atras");
 		btnAtras.setBounds(103, 601, 89, 23);
+		FormatoDiseno.formatoBtn(btnAtras);
 		add(btnAtras);
 		
 		JLabel label = new JLabel("\u00BFDesea aplicar un cup\u00F3n de descuento?");
@@ -70,6 +72,7 @@ public class PanCuponDescuento extends JPanel {
 		
 		btnNOAplicar = new JButton("No aplicar ning\u00FAn descuento");
 		btnNOAplicar.setBounds(645, 632, 275, 23);
+		FormatoDiseno.formatoBtn(btnNOAplicar);
 		add(btnNOAplicar);
 		
 		lblDescuentosAplicablesPara = new JLabel("Descuentos aplicables para el alojamiento que ha seleccionado:");

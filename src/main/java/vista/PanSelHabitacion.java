@@ -112,14 +112,17 @@ public class PanSelHabitacion extends JPanel {
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
 		btnInicioSesion.setBounds(869, 42, 105, 23);
+		FormatoDiseno.formatoBtn(btnInicioSesion);
 		add(btnInicioSesion);
 		
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(869, 8, 105, 23);
+		FormatoDiseno.formatoBtn(btnRegistro);
 		add(btnRegistro);
 		
 		btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
 		btnCerrarSesion.setBounds(870, 26, 121, 23);
+		FormatoDiseno.formatoBtn(btnCerrarSesion);
 		add(btnCerrarSesion);
 		btnCerrarSesion.setVisible(false);
 		btnCerrarSesion.setEnabled(false);

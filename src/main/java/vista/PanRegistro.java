@@ -37,18 +37,22 @@ public class PanRegistro extends JPanel {
 		
 		btnLogin = new JButton("Inicio Sesi\u00F3n");
 		btnLogin.setBounds(859, 38, 97, 20);
+		FormatoDiseno.formatoBtn(btnLogin);
 		add(btnLogin);
 		
 		btnRegistro = new JButton("Registrarse");
 		btnRegistro.setBounds(452, 537, 120, 40);
+		FormatoDiseno.formatoBtn(btnRegistro);
 		add(btnRegistro);
 		
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.setBounds(164, 653, 77, 20);
+		FormatoDiseno.formatoBtn(btnAtras);
 		add(btnAtras);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(59, 653, 77, 20);
+		FormatoDiseno.formatoBtn(btnCancelar);
 		add(btnCancelar); 
 
 		lblNombre = new JLabel("Nombre");

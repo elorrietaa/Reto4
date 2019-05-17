@@ -667,14 +667,42 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			Object[] datos1 = new Object[8];
 			
 			tablaDetCasApart.setRowCount(0);
-			datos1[0] = " ";
-			datos1[1] = " ";
-			datos1[2] =" ";
-			datos1[3] =" ";
-			datos1[4] =" ";
-			datos1[5] =" ";
-			datos1[6] =" ";
-			datos1[7] =" ";
+			if(vista.buscarAlojamiento.checkWifi.isSelected()){
+			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
+			}
+			else
+			    datos1[0] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkAire.isSelected()){
+			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
+			}
+			else
+			datos1[1] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
+			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
+			}
+			else
+			datos1[2] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkSpa.isSelected()){
+			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
+			}
+			else
+			datos1[3] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
+			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
+			}
+			else
+			datos1[4] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkParking.isSelected()){
+			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
+			}
+			else
+			datos1[5] ="00.00 €";
+					
 			tablaDetCasApart.addRow(datos1);
  		}
  		//APARTAMENTO
@@ -683,14 +711,42 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
  			Object[] datos1 = new Object[8];
  			
  			tablaDetCasApart.setRowCount(0);
- 			datos1[0] = " ";
-			datos1[1] = " ";
-			datos1[2] =" ";
-			datos1[3] =" ";
-			datos1[4] =" ";
-			datos1[5] =" ";
-			datos1[6] =" ";
-			datos1[7] =" ";
+ 			if(vista.buscarAlojamiento.checkWifi.isSelected()){
+			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
+			}
+			else
+			    datos1[0] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkAire.isSelected()){
+			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
+			}
+			else
+			datos1[1] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
+			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
+			}
+			else
+			datos1[2] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkSpa.isSelected()){
+			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
+			}
+			else
+			datos1[3] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
+			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
+			}
+			else
+			datos1[4] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkParking.isSelected()){
+			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
+			}
+			else
+			datos1[5] ="00.00 €";
+					
  			tablaDetCasApart.addRow(datos1);
  		}
 	

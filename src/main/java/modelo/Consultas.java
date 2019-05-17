@@ -197,6 +197,61 @@ public class Consultas {
 		
     }
     
+    public ArrayList<Hotel> buscarHotelPorCodCiudad2(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String query) {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//En el futuro poner la select ordenada por precio
+		
+		
+			ArrayList<Hotel> listaHoteles = new ArrayList<Hotel>(); 
+			
+			Hotel hotel;
+			try {
+				// Abrimos una conexion
+				connection = conexion.conectar();
+						
+			
+				// preparamos la consulta SQL a la base de datos
+				ps = connection.prepareStatement(query);
+				ps.setInt(1, codCiudadSeleccionada);
+				//en el futuro pasar por parámetro codTipoAlojSeleccionado
+				ps.setInt(2, 10);
+				
+				System.out.println(query);
+						
+				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+				rs = ps.executeQuery();
+						
+				// crea objetos Linea con los resultados y los añade a un arrayList
+				while (rs.next()) {
+					hotel = new Hotel();
+					hotel.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
+					hotel.setNombre(rs.getString("Nombre_alojamiento"));
+					hotel.setDireccion(rs.getString("Direccion"));
+					hotel.setTelefono(rs.getString("Telefono"));
+					hotel.setUbicacion(rs.getString("Nombre_ubicacion"));
+					hotel.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
+					//se rellena la popularidad del alojamiento
+					hotel.setPopularidad(mostrarNumReservasDeUnAlojamiento(hotel.codAlojamiento));
+					
+					hotel.setEstrellas(rs.getInt("N_estrellas"));
+					listaHoteles.add(hotel);
+				}	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			} 
+			finally {
+				// cerramos la conexion
+				conexion.desconectar();
+			}
+	
+		
+		return listaHoteles;
+		
+    }
+    
     /**
      * Método buscarCasaPorCodCiudad = busca la lista de casas en función de la ciudad seleccionada por el usuario.
      * @param codCiudadSeleccionada

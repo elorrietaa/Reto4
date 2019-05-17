@@ -207,7 +207,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
      * Método: mostrarHotelesEnJTable = muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
      * @param codCiudadSeleccionada 
      */
-    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
+    public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc, int boton) {
 	  	
     	//***TABLA HOTELES es .tab
     	if(codTipoAlojSeleccionado == 10) {
@@ -215,8 +215,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarAlojamiento.tab.getModel();
 				
 		  	//llena el arrayList con la lista de Hoteles ordnador por popularidad asce
-			
-		   	listaHoteles = controlador.funcionesOrdenar.ordenarListaHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+			if(boton != 1)
+				listaHoteles = controlador.funcionesOrdenar.ordenarListaHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		   	
 		   	vista.buscarAlojamiento.panelHotel.setVisible(true);
 		   	vista.buscarAlojamiento.panelHotel.setEnabled(true);
@@ -514,11 +514,11 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				case "Aplicar filtros":
 					//se guardan los filtros seleccionados por el usuario
 					
-				    	stringFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
+					//this.listaHoteles = controlador.funcionesOrdenar.crearQuerisAplicarFiltros(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 					
 					//se hace la buscqueda de listaAlojamientos en función de los filtros seleccionados
 					//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
-					mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+					mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc, 1);
 					
 					//Se muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 					
@@ -559,7 +559,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 						stringFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
 						
 						//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
-						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc, 0);
 					
 			
 				
@@ -613,17 +613,48 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	  //hotel
  		if (tiposAloj.getCodTipoAlojamiento() == 10) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
-			Object[] datos1 = new Object[8];
+			Object[] datos1 = new Object[6];
 			
+			//si selecciona los servicios adicionales se le muestra el precio
 			tablaDetCasApart.setRowCount(0);
-			datos1[0] = " ";
-			datos1[1] = " ";
-			datos1[2] =" ";
-			datos1[3] =" ";
-			datos1[4] =" ";
-			datos1[5] =" ";
-			datos1[6] =" ";
-			datos1[7] =" ";
+			
+			if(vista.buscarAlojamiento.checkWifi.isSelected()){
+			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
+			}
+			else
+			    datos1[0] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkAire.isSelected()){
+			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
+			}
+			else
+			datos1[1] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
+			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
+			}
+			else
+			datos1[2] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkSpa.isSelected()){
+			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
+			}
+			else
+			datos1[3] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
+			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
+			}
+			else
+			datos1[4] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkParking.isSelected()){
+			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
+			}
+			else
+			datos1[5] ="00.00 €";
+					
+			
 			
 			tablaDetCasApart.addRow(datos1);
 			
@@ -636,14 +667,42 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			Object[] datos1 = new Object[8];
 			
 			tablaDetCasApart.setRowCount(0);
-			datos1[0] = " ";
-			datos1[1] = " ";
-			datos1[2] =" ";
-			datos1[3] =" ";
-			datos1[4] =" ";
-			datos1[5] =" ";
-			datos1[6] =" ";
-			datos1[7] =" ";
+			if(vista.buscarAlojamiento.checkWifi.isSelected()){
+			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
+			}
+			else
+			    datos1[0] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkAire.isSelected()){
+			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
+			}
+			else
+			datos1[1] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
+			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
+			}
+			else
+			datos1[2] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkSpa.isSelected()){
+			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
+			}
+			else
+			datos1[3] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
+			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
+			}
+			else
+			datos1[4] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkParking.isSelected()){
+			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
+			}
+			else
+			datos1[5] ="00.00 €";
+					
 			tablaDetCasApart.addRow(datos1);
  		}
  		//APARTAMENTO
@@ -652,14 +711,42 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
  			Object[] datos1 = new Object[8];
  			
  			tablaDetCasApart.setRowCount(0);
- 			datos1[0] = " ";
-			datos1[1] = " ";
-			datos1[2] =" ";
-			datos1[3] =" ";
-			datos1[4] =" ";
-			datos1[5] =" ";
-			datos1[6] =" ";
-			datos1[7] =" ";
+ 			if(vista.buscarAlojamiento.checkWifi.isSelected()){
+			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
+			}
+			else
+			    datos1[0] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkAire.isSelected()){
+			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
+			}
+			else
+			datos1[1] = "00.00 €";
+			
+			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
+			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
+			}
+			else
+			datos1[2] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkSpa.isSelected()){
+			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
+			}
+			else
+			datos1[3] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
+			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
+			}
+			else
+			datos1[4] ="00.00 €";
+			
+			if(vista.buscarAlojamiento.checkParking.isSelected()){
+			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
+			}
+			else
+			datos1[5] ="00.00 €";
+					
  			tablaDetCasApart.addRow(datos1);
  		}
 	

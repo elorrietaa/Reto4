@@ -39,10 +39,12 @@ public class PanBasesLegales extends JPanel {
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(818, 601, 89, 23);
+		FormatoDiseno.formatoBtn(btnAceptar);
 		add(btnAceptar);
 		
 		btnDeclinar = new JButton("Declinar");
 		btnDeclinar.setBounds(103, 601, 89, 23);
+		FormatoDiseno.formatoBtn(btnDeclinar);
 		add(btnDeclinar);
 	}
 }

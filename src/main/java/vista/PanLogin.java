@@ -36,6 +36,7 @@ public class PanLogin extends JPanel {
 		// boton registarse
 		btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(875, 30, 81, 25);
+		FormatoDiseno.formatoBtn(btnRegistro);
 		add(btnRegistro);
 		
 		// label usuario
@@ -64,15 +65,18 @@ public class PanLogin extends JPanel {
 		// boton de iniciar sesion
 		btnLogin = new JButton("Iniciar Sesi\u00F3n");
 		btnLogin.setBounds(452, 441, 120, 40);
+		FormatoDiseno.formatoBtn(btnLogin);
 		add(btnLogin);
 		
 		// boton cancelar
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(74, 622, 75, 30);
+		btnCancelar.setBounds(74, 622, 89, 30);
+		FormatoDiseno.formatoBtn(btnCancelar);
 		add(btnCancelar);
 		
 		btnAtras = new JButton("Atr\u00E1s");
-		btnAtras.setBounds(178, 622, 65, 30);
+		btnAtras.setBounds(218, 622, 89, 30);
+		FormatoDiseno.formatoBtn(btnAtras);
 		add(btnAtras);
 		
 		lblEjemploa = new JLabel("Ejemplo formato v\u00E1lido: 12345678A");

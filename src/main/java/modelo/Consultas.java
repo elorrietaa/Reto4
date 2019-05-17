@@ -126,7 +126,7 @@ public class Consultas {
     * @param codTipoAlojSeleccionado
     * @return
     */
-    public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
+    /*public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -195,9 +195,9 @@ public class Consultas {
 		
 		return listaHoteles;
 		
-    }
+    }*/
     
-    public ArrayList<Hotel> buscarHotelPorCodCiudad2(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String query) {
+    public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String query) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;

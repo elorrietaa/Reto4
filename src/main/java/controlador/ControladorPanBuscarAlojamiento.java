@@ -213,7 +213,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			DefaultTableModel tablaHotel = (DefaultTableModel) vista.buscarAlojamiento.tab.getModel();
 				
 		  	//llena el arrayList con la lista de Hoteles ordnador por popularidad asce
-			listaHoteles = controlador.funcionesOrdenar.crearQuerisAplicarFiltros(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
+			listaHoteles = controlador.funcionesOrdenar.ordenarListaHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		   	
 		   	vista.buscarAlojamiento.panelHotel.setVisible(true);
 		   	vista.buscarAlojamiento.panelHotel.setEnabled(true);

@@ -29,7 +29,7 @@ public class PanDetallesReservaAloj extends JPanel {
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro, btnCancelar, btnCerrarSesion;
 	public JList<String> listDetalleReserva;
-	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetFestivos, textDetPrecioFinal;
+	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetFestivos, textDetPrecioFinal, textPaneDetServAdic;
 	public JPanel panelHoteles, panelCasaApart;
 	 
 	
@@ -92,7 +92,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		// TABLA DETALLES HOTELES CASAS o APARTAMENTOS
 		table = new JTable();
 		Object[][] datos1 = {};
-		String[] columnNames1 = {"Wifi", "Aire", "Piscina", "Spa", "Gimnasio", "Parking", "Restaurante", "Bar"};
+		String[] columnNames1 = {"Wifi", "Aire", "Piscina", "Spa", "Gimnasio", "Parking"};
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		add(table);
@@ -276,7 +276,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		textDetPrecioFinal = new JTextPane();
 		textDetPrecioFinal.setEditable(false);
-		textDetPrecioFinal.setBounds(121, 563, 563, 39);
+		textDetPrecioFinal.setBounds(121, 563, 563, 28);
 		add(textDetPrecioFinal);
 		
 		btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
@@ -284,6 +284,11 @@ public class PanDetallesReservaAloj extends JPanel {
 		add(btnCerrarSesion);
 		btnCerrarSesion.setVisible(false);
 		btnCerrarSesion.setEnabled(false);
+		
+		textPaneDetServAdic = new JTextPane();
+		textPaneDetServAdic.setEditable(false);
+		textPaneDetServAdic.setBounds(121, 600, 563, 23);
+		add(textPaneDetServAdic);
 
 	}
 }

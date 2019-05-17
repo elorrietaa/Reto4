@@ -127,8 +127,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		table.getColumnModel().getColumn(3).setPreferredWidth(5);
 		table.getColumnModel().getColumn(4).setPreferredWidth(10);
 		table.getColumnModel().getColumn(5).setPreferredWidth(5);
-		table.getColumnModel().getColumn(6).setPreferredWidth(10);
-		table.getColumnModel().getColumn(7).setPreferredWidth(5);
+
 				
 		scrollPaneCasaApart = new JScrollPane(table);
 		scrollPaneCasaApart.setBounds(121,98,839,74);

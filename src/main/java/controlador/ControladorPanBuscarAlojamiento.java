@@ -541,14 +541,15 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 */
 	private void actualizarFiltradoJComboBox() {
 		// (1º) guarda la ciudad seleccionada
-			Ciudad ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
+			ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
 			if (ciudad != null) {
 				int codCiudadSeleccionada = ciudad.getCodCiudad();
 				
 				//(2º) guarda el tipo de alojamiento seleccionado
-				TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
+				tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 				if (tiposAloj != null) {
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
+					
 					
 					//(3º) guarda el dato por el que se va a ordenar y si se ordena asc/desc
 						ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
@@ -743,6 +744,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			else
 			datos1[5] ="00.00 €";
 					
+			
  			tablaDetCasApart.addRow(datos1);
  		}
 	

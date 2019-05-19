@@ -240,7 +240,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarAlojamiento.table.getModel();
 					
 			  	//llena el arrayList con la lista de casas
-				listaCasas = consultas.buscarCasaPorCodCiudad(codCiudadSeleccionada);
+				listaCasas = controlador.funcionesOrdenar.ordenarListaCasas(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 				
 			   	vista.buscarAlojamiento.panelHotel.setVisible(false);
 			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
@@ -264,7 +264,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarAlojamiento.table.getModel();
     					
     			  	//llena el arrayList con la lista de casas
-    				listaApartamentos = consultas.buscarApartamentoPorCodCiudad(codCiudadSeleccionada);
+    				listaApartamentos = controlador.funcionesOrdenar.ordenarListaApartamentos(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
     				
     				vista.buscarAlojamiento.panelHotel.setVisible(false);
     			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
@@ -510,13 +510,14 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					
 				case "Aplicar filtros":
 					//se hace la buscqueda de listaAlojamientos en función de los filtros seleccionados
-					//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario
 					ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
 					ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
 					Ciudad ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
 					int codCiudadSeleccionada = ciudad.getCodCiudad();
 					TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
+					
+					//muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario
 					mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 					
 					//Se muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
@@ -555,10 +556,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 						ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
 						ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
 							
-						//(4º) guarda los filtros que ha seleccionado el usuario
-						//stringFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
 						
-						//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
+						//(4º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 				}			
 			

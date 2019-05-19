@@ -15,6 +15,9 @@ public class FuncionesBasesLegales {
 		this.vista = vista;
 	} 
 	
+	/**
+	 * Método mostrarBaseslegales = se muestran en el textField del panelbasesLegales las bases legales
+	 */
 	public void mostrarBaseslegales() {
 		vista.bases.txBases.setText("BOLETÍN OFICIAL DEL ESTADO"+ "\n" + 
 				"LEGISLACIÓN CONSOLIDADA"+

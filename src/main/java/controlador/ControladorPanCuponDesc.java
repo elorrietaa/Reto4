@@ -28,6 +28,9 @@ public class ControladorPanCuponDesc implements ActionListener{
 		this.controlador = controlador;
 	}
 	
+	/**
+	 * Se crean los listeners del panel
+	 */
 	public void addListeners() {
 		this.vista.cupon.btnAplicar.addActionListener(this);
 		this.vista.cupon.btnAtras.addActionListener(this);
@@ -36,6 +39,9 @@ public class ControladorPanCuponDesc implements ActionListener{
 		this.vista.cupon.cBListaCupones.addActionListener(this);
 	}
 	
+	/**
+	 * Acción de los distintos listeners
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object sourceObject = e.getSource();
 		
@@ -118,7 +124,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 
 
 	/**
-	* Método actualizarFiltradoJComboBox = 
+	* Método actualizarFiltradoJComboBox = se actualizan los datos del cBlistaCupones
 	*/
 	private void actualizarJComboBox() {
 	    float precioConDesc =0;

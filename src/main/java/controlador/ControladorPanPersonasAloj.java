@@ -279,6 +279,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 		}	
 	}
 	
+	/**
+	 * Método encriptarDatos = encripta los datos de las personasAlojadas introducidas por el usuario
+	 */
 	public void encriptarDatos() {
 	    String dniEncriptado;
 	    String nombreEncriptado;

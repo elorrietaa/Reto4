@@ -16,10 +16,16 @@ public class ControladorPanBienvenida implements ActionListener{
 		this.controlador = controlador;
 	}
 	
+	/**
+	 * Se crean los listeners del panel
+	 */
 	public void addListeners() {
 		vista.bienvenida.btnContinuar.addActionListener(this);
 	}
 	
+	 /**
+	 * Acción de los distintos listeners
+	 */
 	public void actionPerformed(ActionEvent e) {
 		vista.buscarAlojamiento.setVisible(true);
 		vista.bienvenida.setVisible(false);

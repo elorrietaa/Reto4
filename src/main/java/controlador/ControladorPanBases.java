@@ -22,11 +22,17 @@ public class ControladorPanBases implements ActionListener{
 		this.controlador = controlador;
 	}
 	
+	/**
+	 * Se crean los listeners del panel
+	 */
 	public void addListeners() {
 		this.vista.bases.btnAceptar.addActionListener(this);
 		this.vista.bases.btnDeclinar.addActionListener(this);
 	}
 	
+	 /**
+	 * Acción de los distintos listeners
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// guardamos el nombre del boton pulsado
 		String botonPulsado = ((JButton) e.getSource()).getActionCommand(); // Almacena el texto del boton para poder identificarlo posteriormente

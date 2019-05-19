@@ -20,19 +20,5 @@ public class FuncionesPersonasAlojadas {
 		this.vista = vista;
 	} 
 	
-	/**
-	 * Método mostrarPersonasAlojadas = muestra el número de personas que pueden alojarse en el alojamiento teniendo en cuenta el número y el tipo de camas que tienen las habitaciones del alojamiento
-	 */
-	/*	public void mostrarPersonasAlojadas() {
-	    int ocupacion = 0;
-	    ArrayList<Habitacion> listaDormitorios = modelo.consultas.buscarHabitacionPorCodigoAlojamiento(modelo.alojamiento, modelo.alojamiento.getCodAlojamiento());
-	          for(int i=0; i<listaDormitorios.size();i++) {
-	               ArrayList<Cama> listaCamas = modelo.consultas.buscarCamaPorCodigoHabitacion(listaDormitorios.get(i).getCodHabitacion());
-	        
-	               ocupacion = ocupacion + controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
-	          }
-	          System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!El número de personas que se pueden alojar en el alojamiento es: " + ocupacion);
-	}
-	*/
 
 }

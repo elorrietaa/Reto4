@@ -24,7 +24,7 @@ public class FuncionesOrdenar {
 
 	/**
 	 * Método rellenarArrayFiltrosSeleccionados = devuelve un Strin en el que aparecen los filtros seleccionados
-	 * @return
+	 * @return serviciosSelec = devuelve un String que contiene una cadena de caracteres con los servicios seleccionados
 	 */
 	public String rellenarArrayFiltrosSeleccionados() {
 		String serviciosSelec = "";
@@ -64,9 +64,9 @@ public class FuncionesOrdenar {
 //HOTELES
 	/**
 	 * Método ordenarListaHoteles = devuelve en el arrayList listaHotelesOrdenada, la lista de hoteles ordenada en función de los parámetros seleccionados por el usuario
-	 * @param codCiudadSeleccionada
-	 * @param codTipoAlojSeleccionado
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @return listaHotelesOrdenada = devuelve la lista de hoteles ordenados en función de los parámetros que se le han pasado
 	 */
 	public ArrayList<Hotel> ordenarListaHoteles(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	   ArrayList<Hotel> listaHotelesOrdenada = crearQuerisFiltrosHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
@@ -91,10 +91,10 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método ordenarListaHotelesPopularidad = ordena la lista de hoteles por popularidad ascendente o descendente en función de la seleción realizada por el usuario
-	 * @param codCiudadSeleccionada
-	 * @param codTipoAlojSeleccionado
-	 * @param ascDesc
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Hotel> ordenarListaHotelesPopularidad(int codCiudadSeleccionada, int codTipoAlojSeleccionado,String ordenarPor, String ascDesc) {
 		   ArrayList<Hotel> listaHotelesOrdPopuDes = crearQuerisFiltrosHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
@@ -121,8 +121,10 @@ public class FuncionesOrdenar {
 
 	/**
 	 * Método crearQuerisAplicarFiltros = se crean las querys para las busquedas de alojamiento aplicando los filtros seleccionados por el usuario
-	 * @return 
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Hotel> crearQuerisFiltrosHoteles(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	    String query = "";
@@ -154,9 +156,10 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método ordenarListaCasas = devuelve en el arrayList listaCasasOrdenada, la lista de casas ordenadas en función de los parámetros seleccionados por el usuario
-	 * @param codCiudadSeleccionada
-	 * @param codTipoAlojSeleccionado
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Casa> ordenarListaCasas(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	   ArrayList<Casa> listaCasaesOrdenada = crearQuerisFiltrosCasas(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
@@ -181,10 +184,10 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método ordenarListaCasasPopularidad = ordena la lista de c por popularidad ascendente o descendente en función de la seleción realizada por el usuario
-	 * @param codCiudadSeleccionada
-	 * @param codTipoAlojSeleccionado
-	 * @param ascDesc
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Casa> ordenarListaCasasPopularidad(int codCiudadSeleccionada, int codTipoAlojSeleccionado,String ordenarPor, String ascDesc) {
 		   ArrayList<Casa> listaCasasOrdPopuDes = crearQuerisFiltrosCasas(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
@@ -211,8 +214,10 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método crearQuerisFiltrosCasas = se crean las querys para las busquedas de alojamiento aplicando los filtros seleccionados por el usuario
-	 * @return 
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Casa> crearQuerisFiltrosCasas(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	    String query = "";
@@ -244,9 +249,10 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método ordenarListaApartamentos = devuelve en el arrayList ordenarListaApartamentos, la lista de casas ordenadas en función de los parámetros seleccionados por el usuario
-	 * @param codCiudadSeleccionada
-	 * @param codTipoAlojSeleccionado
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Apartamento> ordenarListaApartamentos(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	   ArrayList<Apartamento> listaApartamentosOrdenados = crearQuerisFiltrosApartamentos(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
@@ -271,10 +277,10 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método ordenarListaApartamentosPopularidad = ordena la lista de apartamentos por popularidad ascendente o descendente en función de la seleción realizada por el usuario
-	 * @param codCiudadSeleccionada
-	 * @param codTipoAlojSeleccionado
-	 * @param ascDesc
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Apartamento> ordenarListaApartamentosPopularidad(int codCiudadSeleccionada, int codTipoAlojSeleccionado,String ordenarPor, String ascDesc) {
 		   ArrayList<Apartamento> listaCasasOrdPopuDes = crearQuerisFiltrosApartamentos(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
@@ -301,8 +307,10 @@ public class FuncionesOrdenar {
 	
 	/**
 	 * Método crearQuerisFiltrosApartamentos = se crean las querys para las busquedas de alojamiento aplicando los filtros seleccionados por el usuario
-	 * @return 
-	 * @return
+	 * @param codCiudadSeleccionada = se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado = Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
+	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
 	public ArrayList<Apartamento> crearQuerisFiltrosApartamentos(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	    String query = "";

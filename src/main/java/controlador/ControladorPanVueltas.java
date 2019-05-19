@@ -25,10 +25,16 @@ public class ControladorPanVueltas implements ActionListener {
 		this.pago = pago;
 	}
 	
+	/**
+	 * Se crean los listeners del panel
+	 */
 	public void addListeners() {
 		vista.vueltas.btnFinalizar.addActionListener(this);
 	}
 	
+	/**
+	 * Acción de los distintos listeners
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		// guardamos el nombre del boton pulsado

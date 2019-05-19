@@ -22,6 +22,9 @@ public class ControladorPanServiciosAdicionales implements ActionListener {
 		this.controlador = controlador;
 	}
 	
+	/**
+	 * Se crean los listeners del panel
+	 */
 	public void addListeners() {
 		vista.buscarAlojamiento.btnServicios.addActionListener(this);
 		vista.buscarAlojamiento.btnActualizar.addActionListener(this);
@@ -29,6 +32,9 @@ public class ControladorPanServiciosAdicionales implements ActionListener {
 		vista.buscarAlojamiento.btnCancelarSer.addActionListener(this);
 	}
 	
+	/**
+	 * Acción de los distintos listeners
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		Object sourceObject = e.getSource();

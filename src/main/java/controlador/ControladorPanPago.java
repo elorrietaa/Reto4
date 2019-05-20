@@ -314,8 +314,10 @@ public class ControladorPanPago implements ActionListener{
 				System.out.println("Fecha actual" + fechaActual);
 				System.out.println("Hora actual" +horaActual);	
 		
-		if(modelo.servicios != null)
+		if(modelo.servicios != null) {
 			modelo.servicios.setCodServiciosContratados(modelo.consultas.conseguirCodServicios());
+			modelo.consultas.insertarServiciosContratados(modelo.servicios);
+		}
 		
 	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
 			//PARA HOTELES:

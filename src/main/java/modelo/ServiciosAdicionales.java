@@ -30,7 +30,7 @@ public class ServiciosAdicionales {
 	private boolean parkingSeleccionado;
 	
 	public ServiciosAdicionales(int codServicios ,int codAlojamiento, int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking, int restaurante, int bar) {
-		this.setCodServicios(codServicios);
+		this.codServicios = codServicios;
 		this.codAlojamiento = codAlojamiento;
 		
 		this.wifi = comprobarBoolean(wifi);
@@ -162,14 +162,10 @@ public class ServiciosAdicionales {
 	}
 
 	public void setCodServiciosContratados(int codServiciosContratados) {
-		this.codServiciosContratados = codServiciosContratados;
+		this.codServiciosContratados = codServiciosContratados + 1;
 	}
 
 	public int getCodServicios() {
 		return codServicios;
-	}
-
-	public void setCodServicios(int codServicios) {
-		this.codServicios = codServicios;
 	}
 }

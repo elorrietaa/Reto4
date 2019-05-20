@@ -22,7 +22,7 @@ public class PrincipalControlador {
     private ControladorPanSelHabitacion controladorPanSelHabitacion;
     private ControladorPanDetallesReserva controladorPanDetallesReserva;
     private ContrPanDetReservaAloj contrPanDetReserCasaApart;
-    private ControladorPanPersonasAloj controladorPanPersonasAloj;
+    public ControladorPanPersonasAloj controladorPanPersonasAloj;
     private ControladorPanPago controladorPanPago; 
     private ControladorPanVueltas controladorPanVueltas;
     private ControladorLogin controladorLogin;

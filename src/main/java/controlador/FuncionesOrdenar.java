@@ -80,7 +80,14 @@ public class FuncionesOrdenar {
 	 * Método resetearFiltrosServicios
 	 */
 	public void resetearFiltrosServicios() {
-		
+		vista.buscarAlojamiento.chckbxWifiSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxAireSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxPiscinaSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxSpaSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxGimSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxParkingsel.setSelected(false);
+		vista.buscarAlojamiento.chckbxRestSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxBarSel.setSelected(false);
 	}
 	
 	/**

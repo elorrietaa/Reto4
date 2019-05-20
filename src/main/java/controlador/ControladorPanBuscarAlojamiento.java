@@ -522,8 +522,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					//Se muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 					
 					//Se resetean todos los combobox a no seleccionados
-					//controlador.funcionesOrdenar.resetearFiltrosServicios();
-					
+					controlador.funcionesOrdenar.resetearFiltrosServicios();
 					break;
 			}
 			

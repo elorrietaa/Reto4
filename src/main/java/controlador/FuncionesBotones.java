@@ -55,6 +55,8 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldDNI.setText("");
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
 		
+		controlador.funcionesOrdenar.resetearFiltrosServicios();
+		
 		resetServicios();
 	}
 	
@@ -114,6 +116,8 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldApellidos.setText("");
 		vista.panPersonasAlojadas.textFieldDNI.setText("");
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
+		
+		controlador.funcionesOrdenar.resetearFiltrosServicios();
 		
 		resetServicios();
 	}

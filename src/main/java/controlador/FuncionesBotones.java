@@ -58,6 +58,7 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldDNI.setText("");
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
 		
+		controlador.controladorPanPersonasAloj.resetearListaPersAloj();
 		controlador.funcionesOrdenar.resetearFiltrosServicios();
 		
 		resetServicios();
@@ -127,6 +128,8 @@ public class FuncionesBotones {
 		controlador.funcionesOrdenar.resetearFiltrosServicios();
 		
 		resetServicios();
+		
+		controlador.controladorPanPersonasAloj.resetearListaPersAloj();
 	}
 	
 	/**
@@ -156,6 +159,8 @@ public class FuncionesBotones {
 		
 		this.vista.pago.btnContinuar.setVisible(false); // Desabilita el boton de continuar y lo hace invisible
 		this.vista.pago.btnContinuar.setEnabled(false);
+		
+		
 	}
 	
 	/**
@@ -201,4 +206,5 @@ public class FuncionesBotones {
 		
 		vista.buscarAlojamiento.labelServicios.setVisible(false);
 	}
+	
 }

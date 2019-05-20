@@ -73,7 +73,7 @@ public class ControladorLogin implements ActionListener {
 				vista.login.setVisible(false);
 				ControladorRegistro.panelOrigen = panelOrigen;
 				break;
-				
+			
 			case "Iniciar Sesión":
 				
 				// recogemos los datos ingresados por el usuario

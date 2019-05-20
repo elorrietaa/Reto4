@@ -209,10 +209,16 @@ public class ControladorPanPersonasAloj implements ActionListener {
 		
 			case "Atrás":
 				if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+				    
+				    //resetear listaPersonasAlojadas
+				    resetearListaPersAloj();
+				    
 					vista.detallesReservaCasaApart.setVisible(true);
 					vista.panPersonasAlojadas.setVisible(false);
 			    }
 			    else {
+				 //resetear listaPersonasAlojadas
+				    resetearListaPersAloj();
 					vista.detallesReservaCasaApart.setVisible(true);
 					vista.panPersonasAlojadas.setVisible(false);
 			    }
@@ -265,6 +271,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 				    }
 			    //Encriptar los datos
 			    encriptarDatos();
+			    
 			    //Se oculta este panel y se muestra el siguiente
 			    vista.panPersonasAlojadas.setVisible(false);
 			    vista.pago.setVisible(true);
@@ -302,5 +309,15 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			listaPersonasEncriptada.add(clienteEncriptado);
 	    }
 	    modelo.listaPersonasEncriptada = listaPersonasEncriptada;
+	}
+	
+	public void resetearListaPersAloj() {
+	  //se resetea la lista de personas alojadas
+	    
+	    listaPerAloj.clear();
+	 
+	    
+	    // muestra en el JTAble la listaPerAlojActualizada, es decir, borrada
+		mostrarListaPersonasAlojEnJTable();
 	}
 }

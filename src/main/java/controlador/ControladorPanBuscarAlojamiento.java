@@ -201,6 +201,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	/**
      * Método: mostrarHotelesEnJTable = muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
      * @param codCiudadSeleccionada 
+     * @param codTipoAlojSeleccionado
+     * @param ordenarPor
+     * @param ascDesc
      */
     public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	  	
@@ -283,7 +286,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     }
     /**
      * Método: mostrarDetallesHabs = se muestran los detalles de las habitaciones
-     * @param tabla Tabla que se rellena con la informacion de las habitaciones
+     * 
+     * Lo primero que hace es llamar de la base de datos y coge las habitaciones por codigo alojamiento y lo guarda en el arraylist listaHabitaciones
+     * tabla Tabla que se rellena con la informacion de las habitaciones
      */
     public void mostrarDetallesHabsCasa() {
 
@@ -319,6 +324,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	 /**
      * Método: guardarDatosSeleccionados = guarda los datos seleccionados por el usuario en los objetos.
+     * Este método guarda el tipo de alojamiento que ha seleccionado el usuario (hotel , casa o apartamento).
      */
 	public void guardarDatosSeleccionadosAlojamiento() {
 		int filaAlojSeleccionado; 
@@ -384,6 +390,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 
 	/**
 	 * Método: guardarDatosSeleccionadosFechas = guarda las fechas seleccionadas en el JCalendar en el modelo.
+	 * 
 	 */
 	public void guardarDatosSeleccionadosFechas() {
 	    	if (fechaIda == null) {
@@ -403,7 +410,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	/**
 	 * Método: mostrarDetallesHabs = se muestran los detalles de las habitaciones
-	 * @param tabla Tabla que se rellena con la informacion de las habitaciones
+	 * tabla Tabla que se rellena con la informacion de las habitaciones
 	 */
 	public void mostrarDetallesHabs() {
 		// Mostrar los datos de las habitaciones en tabla de la siguiente pantalla: PanSelHabitacion
@@ -527,6 +534,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 
 	/**
 	 * Método actualizarFiltradoJComboBox = actualiza la información del Jtable dependiendo de los valores escogidos por el usuario en losJComboBox
+	 * Además de actualizar la información de los JcomboBox guarda en las variables lo que ha escogido el usuario.
 	 */
 	private void actualizarFiltradoJComboBox() {
 		// (1º) guarda la ciudad seleccionada
@@ -553,6 +561,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	}
 	/**
 	 * Listener de la fecha
+	 * Este método guarda la fecha que ha cogido el usuario 
 	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
@@ -588,7 +597,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	/**
 	  * Método: mostrarDatosAlojamientoJTable = muestra los detalles del alojamiento seleccionado por el usuario en la pantalla PandetallesReserva 
-	  * 
+	  * Este método muestra en la PandetallesReserva un JTable con los servicios adicionales y sus precios. 
 	  */
 	public void mostrarDatosAlojamientoJTable() {
 	
@@ -666,6 +675,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	/**
 	 * Método continuarHotel = contiene los métodos a los que se llama cuando el usuario le da al botón continuar del panelBuscarHotel y ha seleccionado un Hotel.
+	 * Este metodo guarda en el alojamiento el hotel, la lista de dormitorios y muestra los detalles de las habitaciones. 
 	 */
 	public void continuarHotel() {
 		//(3º) Guarda los datos seleecionados en el modelo
@@ -709,8 +719,12 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	}
 	
 	/**
+	 *
 	 * Método continuarCasaApart = contiene los métodos a los que se llama cuando el usuario le da al botón continuar del panelBuscarHotel y ha seleccionado una Casa o un Apartamento.
+	 * Valida la disponibilidad de casas y apartamentos. 
+	 * Este metodo guarda en el alojamiento los datos de casas y alojamiento dependiendo de que ha seleccionado el usuario.
 	 */
+	
 	public void continuarCasaApart() {
 
 		//(0º)Se guardan los datos seleccionados en el modelo

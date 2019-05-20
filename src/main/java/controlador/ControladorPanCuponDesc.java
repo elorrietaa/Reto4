@@ -41,6 +41,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 	
 	/**
 	 * Acción de los distintos listeners
+	 * Si el usuario le da al boton aplicar y continuar , al precio del alojamiento se le aplica el cupon seleccionado  y pasa a la pantalla de las bases legales. 
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object sourceObject = e.getSource();
@@ -125,6 +126,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 
 	/**
 	* Método actualizarFiltradoJComboBox = se actualizan los datos del cBlistaCupones
+	* Este método actualiza los jcombobox segun lo que seleccionado.
 	*/
 	private void actualizarJComboBox() {
 	    float precioConDesc =0;

@@ -191,6 +191,8 @@ public class FuncionesBotones {
 		modelo.servicios = null;
 		modelo.precioServicios = 0;
 		
+		vista.buscarAlojamiento.lblMensajeActualizar.setVisible(false);
+		vista.buscarAlojamiento.lblMensajeContratar.setVisible(false);
 		vista.buscarAlojamiento.panelServicios.setVisible(false);
 		vista.buscarAlojamiento.btnServicios.setVisible(true);
 		vista.buscarAlojamiento.btnServicios.setEnabled(true);

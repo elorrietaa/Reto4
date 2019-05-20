@@ -211,7 +211,15 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				
 		  	//llena el arrayList con la lista de Hoteles ordnador por popularidad asce
 			listaHoteles = controlador.funcionesOrdenar.ordenarListaHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
-		   	
+			
+			//si no hay hoteles que cumplan con los filtros seleccionados, aparece mensaje en el panel:
+			if(listaHoteles.size()==0) {
+			    vista.buscarAlojamiento.lblLoSentimosNo.setVisible(true);
+			}
+			if(listaHoteles.size()>0) {
+			    vista.buscarAlojamiento.lblLoSentimosNo.setVisible(false);
+			}
+			
 		   	vista.buscarAlojamiento.panelHotel.setVisible(true);
 		   	vista.buscarAlojamiento.panelHotel.setEnabled(true);
 		   	vista.buscarAlojamiento.panelCasaApart.setVisible(false);
@@ -239,6 +247,14 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			  	//llena el arrayList con la lista de casas
 				listaCasas = controlador.funcionesOrdenar.ordenarListaCasas(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 				
+				//si no hay hoteles que cumplan con los filtros seleccionados, aparece mensaje en el panel:
+				if(listaCasas.size()==0) {
+				    vista.buscarAlojamiento.lblLoSentimosNo.setVisible(true);
+				}
+				if(listaCasas.size()>0) {
+				    vista.buscarAlojamiento.lblLoSentimosNo.setVisible(false);
+				}
+				
 			   	vista.buscarAlojamiento.panelHotel.setVisible(false);
 			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
 			   	vista.buscarAlojamiento.panelCasaApart.setVisible(true);
@@ -262,7 +278,13 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     					
     			  	//llena el arrayList con la lista de casas
     				listaApartamentos = controlador.funcionesOrdenar.ordenarListaApartamentos(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
-    				
+    				//si no hay apartamentos que cumplan con los filtros seleccionados, aparece mensaje en el panel:
+				if(listaApartamentos.size()==0) {
+				    vista.buscarAlojamiento.lblLoSentimosNo.setVisible(true);
+				}
+				if(listaApartamentos.size()>0) {
+				    vista.buscarAlojamiento.lblLoSentimosNo.setVisible(false);
+				}
     				vista.buscarAlojamiento.panelHotel.setVisible(false);
     			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
     			   	vista.buscarAlojamiento.panelCasaApart.setVisible(true);

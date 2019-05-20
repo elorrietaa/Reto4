@@ -31,11 +31,11 @@ public class PanBuscarAlojamiento extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-		public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();//BORRAR
-		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
+	public DefaultListModel<Object> modeloHotel = new DefaultListModel<Object>();
+	public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
     	public JButton buttonContinuar,btnAplicarFiltros, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer, btnActualizar;
     	public JComboBox<Object> cBCiudad, cBTipoAloj, cbOrdenar, cBAscDesc; 
-    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelServicios, lblMensajeContratar, lblMensajeActualizar;
+    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelServicios, lblMensajeContratar, lblMensajeActualizar, lblLoSentimosNo, lblNewLabel,lblFechaDeSalida ;
     	public JCalendar fechaIda, fechaVuelta;
     	public JCheckBox chckbxWifiSel, chckbxAireSel, chckbxPiscinaSel, chckbxSpaSel, chckbxGimSel, chckbxParkingsel, chckbxRestSel, chckbxBarSel;
     	public JCheckBox checkWifi, checkSpa, checkAire, checkPiscina, checkGimnasio, checkParking;
@@ -44,9 +44,6 @@ public class PanBuscarAlojamiento extends JPanel {
     	public JTable tab, table;
     	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
     	public Date min1;
-    	private JLabel lblNewLabel;
-    	private JLabel lblFechaDeSalida;
-    
     	
 	public PanBuscarAlojamiento() {
 		setBackground(Color.WHITE);
@@ -351,11 +348,13 @@ public class PanBuscarAlojamiento extends JPanel {
 				add(btnAplicarFiltros);
 				
 				lblMensajeContratar = new JLabel("No olvide pulsar \"Contratar\" o los servicios adicionales no se a\u00F1adir\u00E1n a su compra.");
-				lblMensajeContratar.setBounds(486, 638, 495, 14);
+				lblMensajeContratar.setForeground(Color.RED);
+				lblMensajeContratar.setBounds(457, 638, 524, 14);
 				add(lblMensajeContratar);
 				lblMensajeContratar.setVisible(false);
 				
 				lblMensajeActualizar = new JLabel("Por favor, pulse \"Actualizar servicios\" para ver los servicios del alojamiento seleccionado.");
+				lblMensajeActualizar.setForeground(Color.RED);
 				lblMensajeActualizar.setBounds(457, 426, 534, 14);
 				add(lblMensajeActualizar);
 				
@@ -368,6 +367,12 @@ public class PanBuscarAlojamiento extends JPanel {
 				lblFechaDeSalida.setFont(new Font("Dialog", Font.BOLD, 18));
 				lblFechaDeSalida.setBounds(257, 453, 157, 23);
 				add(lblFechaDeSalida);
+				
+				lblLoSentimosNo = new JLabel("Lo sentimos, no hay alojamientos que cumplan con sus criterios de b\u00FAsqueda.");
+				lblLoSentimosNo.setForeground(Color.RED);
+				lblLoSentimosNo.setBounds(257, 137, 734, 14);
+				add(lblLoSentimosNo);
+				lblLoSentimosNo.setVisible(false);
 				lblMensajeActualizar.setVisible(false);
 	}
 }

@@ -336,8 +336,9 @@ public class ControladorPanPago implements ActionListener{
 				controlador.funcionesReserva.generarFicherosReserva1HabHotel();
 				
 				// Si ha utilizado un cupón lo elimina de la bbdd
-				if(modelo.cuponAplicado!=null) {
-				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
+			
+				if(modelo.cuponSeleccionado.getCod_promocional()!=null) {
+				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
 				}
 				
 			}
@@ -346,8 +347,8 @@ public class ControladorPanPago implements ActionListener{
 				controlador.funcionesReserva.generarFicherosReservaCasa();
 				
 				// Si ha utilizado un cupón lo elimina de la bbdd
-				if(modelo.cuponAplicado!=null) {
-				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
+				if(modelo.cuponSeleccionado.getCod_promocional()!=null) {
+				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
 				}
 				
 			}
@@ -356,8 +357,8 @@ public class ControladorPanPago implements ActionListener{
 				controlador.funcionesReserva.generarFicherosReservaApart();
 				
 				// Si ha utilizado un cupón lo elimina de la bbdd
-				if(modelo.cuponAplicado!=null) {
-				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
+				if(modelo.cuponSeleccionado.getCod_promocional()!=null) {
+				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
 				}
 				
 			}

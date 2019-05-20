@@ -593,145 +593,51 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	public void mostrarDatosAlojamientoJTable() {
 	
 	    DefaultTableModel tablaDetCasApart = (DefaultTableModel) vista.detallesReservaCasaApart.table.getModel();
-
-	  //hotel
- 		if (tiposAloj.getCodTipoAlojamiento() == 10) {
- 			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
-			Object[] datos1 = new Object[6];
+	    
+ 		//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
+		Object[] datos1 = new Object[6];
 			
-			//si selecciona los servicios adicionales se le muestra el precio
-			tablaDetCasApart.setRowCount(0);
-			
-			if(vista.buscarAlojamiento.checkWifi.isSelected()){
-			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
-			}
-			else
-			    datos1[0] = "00.00 €";
-			
-			if(vista.buscarAlojamiento.checkAire.isSelected()){
-			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
-			}
-			else
+		//si selecciona los servicios adicionales se le muestra el precio
+		tablaDetCasApart.setRowCount(0);
+		
+		if(modelo.servicios != null && modelo.servicios.isWifiSeleccionado()){
+			datos1[0] = modelo.servicios.getPrecioWifi() + " €";
+		}
+		else
+			datos1[0] = "00.00 €";
+		
+		if(modelo.servicios != null && modelo.servicios.isAireSeleccionado()){
+			datos1[1] = modelo.servicios.getPrecioAire() + " €";
+		}
+		else
 			datos1[1] = "00.00 €";
 			
-			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
-			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
-			}
-			else
+		if(modelo.servicios != null && modelo.servicios.isPiscinaSeleccionada()){
+			datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
+		}
+		else
 			datos1[2] ="00.00 €";
 			
-			if(vista.buscarAlojamiento.checkSpa.isSelected()){
-			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
-			}
-			else
+		if(modelo.servicios != null && modelo.servicios.isSpaSeleccionado()){
+			datos1[3] = modelo.servicios.getPrecioSpa() + " €";
+		}
+		else
 			datos1[3] ="00.00 €";
 			
-			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
-			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
-			}
-			else
+		if(modelo.servicios != null && modelo.servicios.isGimnasioSeleccionado()){
+			datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
+		}
+		else
 			datos1[4] ="00.00 €";
 			
-			if(vista.buscarAlojamiento.checkParking.isSelected()){
-			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
-			}
-			else
+		if(modelo.servicios != null && modelo.servicios.isParkingSeleccionado()){
+			datos1[5] = modelo.servicios.getPrecioParking() + " €";
+		}
+		else
 			datos1[5] ="00.00 €";
 			
-			tablaDetCasApart.addRow(datos1);
- 		}
- 		
-	    //CASA
- 		else if (tiposAloj.getCodTipoAlojamiento() == 20) {
- 			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
-			Object[] datos1 = new Object[8];
-			
-			tablaDetCasApart.setRowCount(0);
-			if(vista.buscarAlojamiento.checkWifi.isSelected()){
-			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
-			}
-			else
-			    datos1[0] = "00.00 €";
-			
-			if(vista.buscarAlojamiento.checkAire.isSelected()){
-			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
-			}
-			else
-			datos1[1] = "00.00 €";
-			
-			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
-			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
-			}
-			else
-			datos1[2] ="00.00 €";
-			
-			if(vista.buscarAlojamiento.checkSpa.isSelected()){
-			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
-			}
-			else
-			datos1[3] ="00.00 €";
-			
-			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
-			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
-			}
-			else
-			datos1[4] ="00.00 €";
-			
-			if(vista.buscarAlojamiento.checkParking.isSelected()){
-			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
-			}
-			else
-			datos1[5] ="00.00 €";
-					
-			tablaDetCasApart.addRow(datos1);
- 		}
- 		
- 		//APARTAMENTO
- 		else if (tiposAloj.getCodTipoAlojamiento() == 30) {
- 			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
- 			Object[] datos1 = new Object[8];
- 			
- 			tablaDetCasApart.setRowCount(0);
- 			if(vista.buscarAlojamiento.checkWifi.isSelected()){
-			    datos1[0] = modelo.servicios.getPrecioWifi() + " €";
-			}
-			else
-			    datos1[0] = "00.00 €";
-			
-			if(vista.buscarAlojamiento.checkAire.isSelected()){
-			    datos1[1] = modelo.servicios.getPrecioAire() + " €";
-			}
-			else
-			datos1[1] = "00.00 €";
-			
-			if(vista.buscarAlojamiento.checkPiscina.isSelected()){
-			    datos1[2] = modelo.servicios.getPrecioPiscina() + " €";
-			}
-			else
-			datos1[2] ="00.00 €";
-			
-			if(vista.buscarAlojamiento.checkSpa.isSelected()){
-			    datos1[3] = modelo.servicios.getPrecioSpa() + " €";
-			}
-			else
-			datos1[3] ="00.00 €";
-			
-			if(vista.buscarAlojamiento.checkGimnasio.isSelected()){
-			    datos1[4] = modelo.servicios.getPrecioGimnasio() + " €";
-			}
-			else
-			datos1[4] ="00.00 €";
-			
-			if(vista.buscarAlojamiento.checkParking.isSelected()){
-			    datos1[5] = modelo.servicios.getPrecioParking() + " €";
-			}
-			else
-			datos1[5] ="00.00 €";
-			
- 			tablaDetCasApart.addRow(datos1);
- 		}
-	
-	}
+		tablaDetCasApart.addRow(datos1);
+ 	}
 	
 	/**
 	 * Método: mostrarDetallesHabsSelec = muestra los detalles de las habitaciones seleccionadas, es decir, muestra el contenido del arrayList listaHabSeleccionadas

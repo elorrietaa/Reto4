@@ -184,6 +184,7 @@ public class FuncionesBotones {
 	 */
 	public void resetServicios() {
 		modelo.servicios = null;
+		modelo.precioServicios = 0;
 		
 		vista.buscarAlojamiento.panelServicios.setVisible(false);
 		vista.buscarAlojamiento.btnServicios.setVisible(true);

@@ -126,6 +126,17 @@ public class FuncionesOrdenar {
 	 * @param ascDesc = se le pasa la selección del usuario (ascendente o descendente9 que será cómo desea ordenar la lista de alojamientos
 	 * @return listaHotelesOrdPopuDes = lista de alojamientos ordenados en función de la selección realizada por el usuario
 	 */
+	public void resetearFiltrosServicios() {
+		vista.buscarAlojamiento.chckbxWifiSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxAireSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxPiscinaSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxSpaSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxGimSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxParkingsel.setSelected(false);
+		vista.buscarAlojamiento.chckbxRestSel.setSelected(false);
+		vista.buscarAlojamiento.chckbxBarSel.setSelected(false);
+	}
+
 	public ArrayList<Hotel> crearQuerisFiltrosHoteles(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	    String query = "";
 	    String serviciosSelec = rellenarArrayFiltrosSeleccionados();

@@ -59,6 +59,7 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
 		
 		controlador.controladorPanPersonasAloj.resetearListaPersAloj();
+		controlador.funcionesOrdenar.resetearFiltrosServicios();
 		
 		resetServicios();
 	}
@@ -124,6 +125,8 @@ public class FuncionesBotones {
 		vista.panPersonasAlojadas.textFieldDNI.setText("");
 		vista.panPersonasAlojadas.textFieldNombre.setText("");
 		
+		controlador.funcionesOrdenar.resetearFiltrosServicios();
+		
 		resetServicios();
 		
 		controlador.controladorPanPersonasAloj.resetearListaPersAloj();
@@ -186,6 +189,7 @@ public class FuncionesBotones {
 	 */
 	public void resetServicios() {
 		modelo.servicios = null;
+		modelo.precioServicios = 0;
 		
 		vista.buscarAlojamiento.panelServicios.setVisible(false);
 		vista.buscarAlojamiento.btnServicios.setVisible(true);

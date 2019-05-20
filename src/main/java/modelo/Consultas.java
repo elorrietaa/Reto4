@@ -1475,7 +1475,7 @@ public class Consultas {
 				ResultSet result = null;
 				int codServicios=0;
 				
-				String query = "SELECT count(*) FROM `serviciosseleccionados`";
+				String query = "SELECT count(*) FROM `servicioscontratados`";
 
 				try {
 					

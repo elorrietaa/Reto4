@@ -35,7 +35,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		public JPanel panelOcultarHoteles, panelHotel, panelCasaApart, panelServicios;
     	public JButton buttonContinuar,btnAplicarFiltros, btnRegistro, btnInicioSesion, btnCancelar, btnCerrarSesion, btnServicios, btnContratar, btnCancelarSer, btnActualizar;
     	public JComboBox<Object> cBCiudad, cBTipoAloj, cbOrdenar, cBAscDesc; 
-    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelFecha, labelServicios;
+    	public JLabel labelHotel, labelCiudad,lblTipoAloj, labelServicios, lblMensajeContratar, lblMensajeActualizar;
     	public JCalendar fechaIda, fechaVuelta;
     	public JCheckBox chckbxWifiSel, chckbxAireSel, chckbxPiscinaSel, chckbxSpaSel, chckbxGimSel, chckbxParkingsel, chckbxRestSel, chckbxBarSel;
     	public JCheckBox checkWifi, checkSpa, checkAire, checkPiscina, checkGimnasio, checkParking;
@@ -44,8 +44,9 @@ public class PanBuscarAlojamiento extends JPanel {
     	public JTable tab, table;
     	public JScrollPane scrollPaneIda, scrollPaneCasaApart;
     	public Date min1;
+    	private JLabel lblNewLabel;
+    	private JLabel lblFechaDeSalida;
     
-  	
     	
 	public PanBuscarAlojamiento() {
 		setBackground(Color.WHITE);
@@ -75,11 +76,6 @@ public class PanBuscarAlojamiento extends JPanel {
 		cBTipoAloj.setBounds(323, 44, 179, 20);
 		add(cBTipoAloj);
 		
-		labelFecha = new JLabel("Seleccione su fecha de llegada y su fecha de salida:");
-		labelFecha.setFont(new Font("Dialog", Font.BOLD, 18));
-		labelFecha.setBounds(44, 440, 465, 43);
-		add(labelFecha);
-		
 		labelHotel = new JLabel("Seleccione un alojamiento:");
 		labelHotel.setBounds(10, 137, 324, 23);
 		labelHotel.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -96,7 +92,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		fechaIda.getDayChooser();
 		fechaIda.getMonthChooser();
 		fechaIda.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
-		fechaIda.setBounds(69, 484, 184, 153);
+		fechaIda.setBounds(10, 484, 184, 153);
 		fechaIda.setMinSelectableDate(min1);
 		add(fechaIda);
 		
@@ -104,7 +100,7 @@ public class PanBuscarAlojamiento extends JPanel {
 		fechaVuelta.getDayChooser();
 		fechaVuelta.getMonthChooser();
 		fechaVuelta.getDayChooser().getDayPanel().setBackground(new Color(255, 255, 255));
-		fechaVuelta.setBounds(289, 484, 184, 153);
+		fechaVuelta.setBounds(246, 484, 184, 153);
 		fechaVuelta.setMinSelectableDate(min1);
 		add(fechaVuelta);
 		
@@ -215,7 +211,7 @@ public class PanBuscarAlojamiento extends JPanel {
 				panelCasaApart.add(scrollPaneCasaApart);
 				
 				btnCancelar = new JButton("Cancelar");
-				btnCancelar.setBounds(44, 663, 89, 23);
+				btnCancelar.setBounds(23, 663, 89, 23);
 				FormatoDiseno.formatoBtn(btnCancelar);
 				add(btnCancelar);
 				
@@ -353,6 +349,26 @@ public class PanBuscarAlojamiento extends JPanel {
 				btnAplicarFiltros.setBounds(762, 109, 125, 23);
 				FormatoDiseno.formatoBtn(btnAplicarFiltros);
 				add(btnAplicarFiltros);
+				
+				lblMensajeContratar = new JLabel("No olvide pulsar \"Contratar\" o los servicios adicionales no se a\u00F1adir\u00E1n a su compra.");
+				lblMensajeContratar.setBounds(486, 638, 495, 14);
+				add(lblMensajeContratar);
+				lblMensajeContratar.setVisible(false);
+				
+				lblMensajeActualizar = new JLabel("Por favor, pulse \"Actualizar servicios\" para ver los servicios del alojamiento seleccionado.");
+				lblMensajeActualizar.setBounds(457, 426, 534, 14);
+				add(lblMensajeActualizar);
+				
+				lblNewLabel = new JLabel("Fecha de llegada:");
+				lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 18));
+				lblNewLabel.setBounds(20, 453, 157, 23);
+				add(lblNewLabel);
+				
+				lblFechaDeSalida = new JLabel("Fecha de salida:");
+				lblFechaDeSalida.setFont(new Font("Dialog", Font.BOLD, 18));
+				lblFechaDeSalida.setBounds(257, 453, 157, 23);
+				add(lblFechaDeSalida);
+				lblMensajeActualizar.setVisible(false);
 	}
 }
 

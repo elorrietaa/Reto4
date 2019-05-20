@@ -1037,14 +1037,17 @@ public class Consultas {
 		 * 
 		 * @return Retorna el codigo de la reserva, generado de manera aleatoria
 		 */
-		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, String dni, Date fechaIda, Date fechaVuelta,Date fechaActual, String horaActual, float precioTotal) {
+		public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, ServiciosAdicionales servicios, String dni, Date fechaIda, Date fechaVuelta,Date fechaActual, String horaActual, float precioTotal) {
 			
 			PreparedStatement stmt = null;
 			ResultSet result = null;
 			int codReserva = 0; 
+			String query;
 			
-			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento,Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+			if(servicios != null)
+				query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Cod_habitacion, Cod_serviciosCon , Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			else
+				query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Cod_habitacion, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			try {
 				
 				// abrimos una conexion
@@ -1059,12 +1062,23 @@ public class Consultas {
 				//puede haber varias habitaciones, se le pasará por parámetro a insertarReserva un pos i. 
 				//insertarReserva estará dentro de un for (int i; listaHabSeleccionadas.size(); i++), así se insertatrán las reservas de todas lashabitaciones seleecionadas.
 				stmt.setInt(3, habitacion.getCodHabitacion());
-				stmt.setFloat(4, precioTotal);
-				stmt.setString(5, dni);
-				stmt.setDate(6, fechaIda);
-				stmt.setDate(7, fechaVuelta);
-				stmt.setDate(8, fechaActual);
-				stmt.setString(9, horaActual);
+				if(servicios != null) {
+					stmt.setInt(4, servicios.getCodServiciosContratados());
+					stmt.setFloat(5, precioTotal);
+					stmt.setString(6, dni);
+					stmt.setDate(7, fechaIda);
+					stmt.setDate(8, fechaVuelta);
+					stmt.setDate(9, fechaActual);
+					stmt.setString(10, horaActual);
+				}
+				else {
+					stmt.setFloat(4, precioTotal);
+					stmt.setString(5, dni);
+					stmt.setDate(6, fechaIda);
+					stmt.setDate(7, fechaVuelta);
+					stmt.setDate(8, fechaActual);
+					stmt.setString(9, horaActual);
+				}
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				stmt.executeUpdate();
 				
@@ -1090,13 +1104,17 @@ public class Consultas {
 		 * @param horaActual
 		 * @param precioTotal
 		 */
-		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta, Date fechaActual,String horaActual, float precioTotal) {
+		public void insertarReservaCasaApart(Reserva reserva, ServiciosAdicionales servicios, String dni, Date fechaIda, Date fechaVuelta, Date fechaActual,String horaActual, float precioTotal) {
 		
 			PreparedStatement stmt = null;
 			ResultSet result = null;
-			int codReserva = 0; 
+			int codReserva = 0;
+			String query;
 			
-			String query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			if(servicios != null)
+				query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Cod_serviciosCon Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			else
+				query = "INSERT INTO reservas (Cod_reserva, Cod_alojamiento, Precio_reserva, Dni, Fecha_entrada, Fecha_salida, Fecha_aceptabases, Hora_aceptabases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	
 			try {
 				
@@ -1109,12 +1127,23 @@ public class Consultas {
 				// añadimos los valores a insertar
 				stmt.setInt(1, reserva.getCodReserva());
 				stmt.setInt(2,reserva.getAlojamiento().getCodAlojamiento());
-				stmt.setFloat(3, precioTotal);
-				stmt.setString(4, dni);
-				stmt.setDate(5, fechaIda);
-				stmt.setDate(6, fechaVuelta);
-				stmt.setDate(7, fechaActual);
-				stmt.setString(8, horaActual);
+				if(servicios != null) {
+					stmt.setInt(3, servicios.getCodServiciosContratados());
+					stmt.setFloat(4, precioTotal);
+					stmt.setString(5, dni);
+					stmt.setDate(6, fechaIda);
+					stmt.setDate(7, fechaVuelta);
+					stmt.setDate(8, fechaActual);
+					stmt.setString(9, horaActual);
+				}
+				else {
+					stmt.setFloat(3, precioTotal);
+					stmt.setString(4, dni);
+					stmt.setDate(5, fechaIda);
+					stmt.setDate(6, fechaVuelta);
+					stmt.setDate(7, fechaActual);
+					stmt.setString(8, horaActual);
+				}
 				
 				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
 				stmt.executeUpdate();
@@ -1394,7 +1423,6 @@ public class Consultas {
 		    			// cerramos la conexion
 		    			conexion.desconectar();
 		    		}
-		    	System.out.println("Cupón "+ codPromocionalSeleccionado + " eliminado correctamente");
 		    	
 		 }
 		 
@@ -1408,7 +1436,7 @@ public class Consultas {
 			 	PreparedStatement ps = null;
 		    	ResultSet rs = null;
 		    	ServiciosAdicionales sA = null;
-		    	String query = "select Wifi,Precio_Wifi,Aire,Precio_aire,"
+		    	String query = "select Cod_servicio,Wifi,Precio_Wifi,Aire,Precio_aire,"
 		    			+ " Piscina, Precio_piscina, Spa, Precio_spa,"
 		    			+ " Gimnasio, Precio_gimnasio, Parking, Precio_parking,"
 		    			+ " Restaurante, Bar FROM `servicios` WHERE cod_alojamiento=?";
@@ -1426,7 +1454,7 @@ public class Consultas {
 		    
 		    		// crea objetos Linea con los resultados y los añade a un arrayList
 		    		while (rs.next()) {
-		    			sA = new ServiciosAdicionales(codAlojamiento, rs.getInt("Wifi"),rs.getFloat("Precio_Wifi"),rs.getInt("Aire"),rs.getFloat("Precio_aire"),rs.getInt("Piscina"),rs.getFloat("Precio_piscina"),rs.getInt("Spa"),rs.getFloat("Precio_spa"),rs.getInt("Gimnasio"),rs.getFloat("Precio_gimnasio"),rs.getInt("Parking"),rs.getFloat("Precio_parking"),rs.getInt("Restaurante"),rs.getInt("Bar")); 
+		    			sA = new ServiciosAdicionales(rs.getInt("Cod_servicio"), codAlojamiento, rs.getInt("Wifi"),rs.getFloat("Precio_Wifi"),rs.getInt("Aire"),rs.getFloat("Precio_aire"),rs.getInt("Piscina"),rs.getFloat("Precio_piscina"),rs.getInt("Spa"),rs.getFloat("Precio_spa"),rs.getInt("Gimnasio"),rs.getFloat("Precio_gimnasio"),rs.getInt("Parking"),rs.getFloat("Precio_parking"),rs.getInt("Restaurante"),rs.getInt("Bar")); 
 		    		}
 		    	} 
 		    	catch (SQLException e) {
@@ -1436,9 +1464,82 @@ public class Consultas {
 		    			// cerramos la conexion
 		    			conexion.desconectar();
 		    		}
-		    	System.out.println("SALE LA LISTA DE SERVICIOS");
 		    	
 			 return sA;
 			 
 		 }
+		 
+		 public int conseguirCodServicios() {
+				
+				PreparedStatement stmt = null;
+				ResultSet result = null;
+				int codServicios=0;
+				
+				String query = "SELECT count(*) FROM `serviciosseleccionados`";
+
+				try {
+					
+					// abrimos una conexion
+					connection = conexion.conectar();
+					
+					// preparamos la consulta SQL a la base de datos
+					stmt = connection.prepareStatement(query);
+					
+					// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+					result = stmt.executeQuery();
+					
+					// mete en la variable el resultado obtenido en la select
+					while (result.next()) {
+						codServicios = result.getInt(1);
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try { 
+						connection.close(); 
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+				return codServicios;
+			}
+		 public void insertarServiciosContratados(ServiciosAdicionales servicios) {
+				
+				PreparedStatement stmt = null;
+				ResultSet result = null;
+				int codReserva = 0;
+				String query;
+				
+				query = "INSERT INTO servicioscontratados (Cod_serviciosCon, Cod_servicio, Wifi, Aire, Piscina, Spa, Gimnasio, Parking) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				
+				try {
+					
+					// abrimos una conexion
+					connection = conexion.conectar();
+					
+					// preparamos la consulta INSERT
+					stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+					
+					// añadimos los valores a insertar
+					stmt.setInt(1, servicios.getCodServiciosContratados());
+					stmt.setInt(2, servicios.getCodServicios());
+					stmt.setBoolean(3, servicios.isWifiSeleccionado());
+					stmt.setBoolean(4, servicios.isAireSeleccionado());
+					stmt.setBoolean(5, servicios.isPiscinaSeleccionada());
+					stmt.setBoolean(6, servicios.isSpaSeleccionado());
+					stmt.setBoolean(7, servicios.isGimnasioSeleccionado());
+					stmt.setBoolean(8, servicios.isParkingSeleccionado());
+					
+					// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
+					stmt.executeUpdate();
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+				    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+				}
+			
+			}
 }

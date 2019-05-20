@@ -334,22 +334,35 @@ public class ControladorPanPago implements ActionListener{
 			//para HOTELES
 			if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
 				controlador.funcionesReserva.generarFicherosReserva1HabHotel();
+				
+				// Si ha utilizado un cupón lo elimina de la bbdd
+				if(modelo.cuponAplicado!=null) {
+				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
+				}
+				
 			}
 			//PARA CASAS:
 			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {
 				controlador.funcionesReserva.generarFicherosReservaCasa();
+				
+				// Si ha utilizado un cupón lo elimina de la bbdd
+				if(modelo.cuponAplicado!=null) {
+				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
+				}
+				
 			}
 			//PARA APARTAMENTOS:
 			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
 				controlador.funcionesReserva.generarFicherosReservaApart();
+				
+				// Si ha utilizado un cupón lo elimina de la bbdd
+				if(modelo.cuponAplicado!=null) {
+				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
+				}
+				
 			}
 		
-		//(4º) Si ha utilizado un cupón lo elimina de la bbdd
-			if(modelo.cuponAplicado!=null) {
-			    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponAplicado);
-			}
-			
-			
+		
 		//(5º) actualiza los paneles
 			vista.vueltas.setVisible(true); // Pone el panel fin de pago visible
 			vista.pago.setVisible(false); // Pone el panel de pago en invisible

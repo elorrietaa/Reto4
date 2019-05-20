@@ -15,6 +15,9 @@ public class FuncionesBotones {
 		this.controlador = controlador;
 	}
 	
+	/**
+	 * Método reset = en este método se resetean los valores a null o " ".
+	 */
 	public void reset() {
 		modelo.cliente = null;
 		modelo.alojamiento = null;
@@ -60,6 +63,10 @@ public class FuncionesBotones {
 		resetServicios();
 	}
 	
+	/**
+	 * Método resetPago = en este método se resetean los valores del pago
+	 * @param pago
+	 */
 	public void resetPago(ControladorPanPago pago) {
 		modelo.cliente = null;
 		modelo.alojamiento = null;
@@ -122,8 +129,11 @@ public class FuncionesBotones {
 		resetServicios();
 	}
 	
-	public void resetAtrasPago(ControladorPanPago pago) {
-		
+	/**
+	 * Método resetAtrasPago = se utiliza este método para resetear los valores de pago cuando el usuario pulse el boton atrás en el panel de pago.
+	 * @param pago
+	 */
+	public void resetAtrasPago(ControladorPanPago pago) {	
 		pago.dinero = 0f;
 		vista.pago.totalIntro.setText(Float.toString(pago.dinero) + " €");
 		pago.falta = pago.total;
@@ -148,6 +158,9 @@ public class FuncionesBotones {
 		this.vista.pago.btnContinuar.setEnabled(false);
 	}
 	
+	/**
+	 * Método cerrarSesion = se resetean los valores necesarios para cuando el usuario pulsa cerrar sesión.
+	 */
 	public void cerrarSesion() {
 		controlador.funcionesRegistro.mostrarBotones();
 		modelo.cliente = null;
@@ -166,6 +179,9 @@ public class FuncionesBotones {
 		vista.registro.passwordField2.setText("");
 	}
 	
+	/**
+	 * Método resetServicios = se resetean los servicios en el panel d ebuscar alojamiento.
+	 */
 	public void resetServicios() {
 		modelo.servicios = null;
 		

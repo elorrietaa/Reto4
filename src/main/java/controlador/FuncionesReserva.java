@@ -495,22 +495,29 @@ public class FuncionesReserva {
 			modelo.funcionesFichero.imprimirReservaHabitacionesHotel(modelo, vista, i);
 		}
 	}
+	
+	/**
+	 * Método generarFicherosReservasHabitacionesSel = genera un fichero para la habitación de hotel reservada.
+	 */
 	public void generarFicherosReserva1HabHotel() {
 		//guarda los datos de la reserva en en un fichero
 		modelo.funcionesFichero.imprimirReserva1HabHotel(modelo, vista);
-		
 	}
 	
+	/**
+	 * Método generarFicherosReservaCasa = guarda los datos de la reserva en en un fichero
+	 */
 	public void generarFicherosReservaCasa() {
 		//guarda los datos de la reserva en en un fichero
 		modelo.funcionesFichero.imprimirReservaFicheroCasa(modelo, vista);
-		
 	}
 	
+	/**
+	 * Método generarFicherosReservaApart = guarda los datos de la reserva en en un fichero
+	 */
 	public void generarFicherosReservaApart() {
 		//guarda los datos de la reserva en en un fichero
-		modelo.funcionesFichero.imprimirReservaFicheroApart(modelo, vista);
-		
+		modelo.funcionesFichero.imprimirReservaFicheroApart(modelo, vista);	
 	}
 	
 	
@@ -581,27 +588,11 @@ public class FuncionesReserva {
          	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(modelo.apartamento.getCodAlojamiento(), arrayNombreHabitaciones[i]);
  			System.out.println("1arrayNombreHabitaciones" + arrayNombreHabitaciones[i] + "-->" + arrayNumHabitaciones[i] );
           }
-        
         }
-        
-        
-       
-    	//metemos los arrays en el modelo
-    	// modelo.alojamiento.setArrayNombreHabitaciones(arrayNombreHabitaciones);
-    	// modelo.alojamiento.setArrayNumHabitaciones(arrayNumHabitaciones);
- //MAL   System.out.println("DEEEEEEEEEEEEEEEEEEL MODELOOOOOOOOOOOOOOOOOOOO");
-   /* 	 	 for(int i=0; i<arrayNombreHabitaciones.length; i++) {
-         	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(arrayNombreHabitaciones[i]);
- 			System.out.println("1arrayNombreHabitaciones" + modelo.alojamiento.getArrayNombreHabitaciones() + "-->" + modelo.alojamiento.getArrayNumHabitaciones() );
-
-         }
-         */
         
         return arrayNumHabitaciones;
     }
     
-   
-	
 	/**
 	 * Método: mostrarOcupacionHab = devuelve un int que contiene el número de ocupantes de la habitacion
 	 * @param listaCamas
@@ -634,15 +625,4 @@ public class FuncionesReserva {
 		return ocupacion;
 	}
 	
-	/*
-	public String mostrarStringTiposCama(int [] numTipCam) {
-		String tiposCamaHab = "";
-		for (int i=0; numTipCam.length>i; i++) {
-			tiposCamaHab = numTipCam[0] + " camas simples, " + numTipCam[1] + " camas de matrimonio y " + numTipCam[2] + " cunas o camas infantiles.";
-		}
-		System.out.println(tiposCamaHab);
-		
-		return tiposCamaHab;
-	}
-	*/
 }

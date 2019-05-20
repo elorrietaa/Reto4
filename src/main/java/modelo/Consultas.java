@@ -126,76 +126,6 @@ public class Consultas {
     * @param codTipoAlojSeleccionado
     * @return
     */
-    /*public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
-		
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		String query = null;
-		
-		if(ordenarPor == "Precio" && ascDesc == "Ascendente") {
-			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by Precio_alojamiento asc ";
-		}
-		else if(ordenarPor == "Precio" && ascDesc == "Descendente") {
-			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by Precio_alojamiento desc ";
-		}
-		else if(ordenarPor == "Estrellas" && ascDesc == "Ascendente") {
-			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by N_estrellas asc ";
-		}
-		else if(ordenarPor == "Estrellas" && ascDesc == "Descendente") {
-			query = "select * from vistaAlojamientos where Cod_ubicacion = ? and Cod_tipo = ? order by N_estrellas desc ";
-		}
-		else {
-			query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ";
-
-		}
-		//En el futuro poner la select ordenada por precio
-		//	String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ? ORDER BY Precio_alojamiento DESC";
-		
-			ArrayList<Hotel> listaHoteles = new ArrayList<Hotel>(); 
-			
-			Hotel hotel;
-			try {
-				// Abrimos una conexion
-				connection = conexion.conectar();
-						
-			
-				// preparamos la consulta SQL a la base de datos
-				ps = connection.prepareStatement(query);
-				ps.setInt(1, codCiudadSeleccionada);
-				//en el futuro pasar por parámetro codTipoAlojSeleccionado
-				ps.setInt(2, 10);
-						
-				// Ejecuta la consulta y guarda los resultados en un objeto ResultSet   
-				rs = ps.executeQuery();
-						
-				// crea objetos Linea con los resultados y los añade a un arrayList
-				while (rs.next()) {
-					hotel = new Hotel();
-					hotel.setCodAlojamiento(rs.getInt("Cod_alojamiento"));
-					hotel.setNombre(rs.getString("Nombre_alojamiento"));
-					hotel.setDireccion(rs.getString("Direccion"));
-					hotel.setTelefono(rs.getString("Telefono"));
-					hotel.setUbicacion(rs.getString("Nombre_ubicacion"));
-					hotel.setPrecioAlojamiento(rs.getFloat("Precio_alojamiento"));
-					//se rellena la popularidad del alojamiento
-					hotel.setPopularidad(mostrarNumReservasDeUnAlojamiento(hotel.codAlojamiento));
-					
-					hotel.setEstrellas(rs.getInt("N_estrellas"));
-					listaHoteles.add(hotel);
-				}	
-			} 
-			catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			finally {
-				// cerramos la conexion
-				conexion.desconectar();
-			}
-	
-		
-		return listaHoteles;
-		
-    }*/
     
     public ArrayList<Hotel> buscarHotelPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String query) {
 		
@@ -257,12 +187,12 @@ public class Consultas {
      * @param codCiudadSeleccionada
      * @return
      */
-    public ArrayList<Casa> buscarCasaPorCodCiudad(int codCiudadSeleccionada) {
+    
+    public ArrayList<Casa> buscarCasaPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String query) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		ArrayList<Casa> listaCasas = new ArrayList<Casa>(); 
 		
 			Casa casa;
@@ -304,18 +234,17 @@ public class Consultas {
 		
 		return listaCasas;
     }
- 
+  
     /**
      * Método buscarApartamentoPorCodCiudad = busca la lista de apartamentos en función de la ciudad seleccionada por el usuario.
      * @param codCiudadSeleccionada
      * @return
      */
-    public ArrayList<Apartamento> buscarApartamentoPorCodCiudad(int codCiudadSeleccionada) {
+    public ArrayList<Apartamento> buscarApartamentoPorCodCiudad(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String query) {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT * FROM `alojamiento`, `ciudad` where ciudad.Cod_ubicacion=alojamiento.Cod_ubicacion and alojamiento.Cod_ubicacion = ? and alojamiento.Cod_tipo = ?";
 		ArrayList<Apartamento> listaApartamentos = new ArrayList<Apartamento>(); 
 		
 		Apartamento apartamento;
@@ -455,6 +384,12 @@ public class Consultas {
     	return listaHabitacion;
     }
     
+    /**
+     * Método buscarHabitacionDormitorioPorCodigoAlojamiento = busca los dormitorios de un alojamiento por e código de alojamiento seleccionado. Devuelve un arrayList con la lista de dormitorios.
+     * @param alojamiento
+     * @param codHotelSeleccionado
+     * @return
+     */
     public ArrayList<Habitacion> buscarHabitacionDormitorioPorCodigoAlojamiento(Alojamiento alojamiento, int codHotelSeleccionado) {
     	ArrayList<Habitacion> listaHabitacion = new ArrayList<Habitacion>(); 
     	Habitacion habitacion;
@@ -495,6 +430,7 @@ public class Consultas {
     		}
     	return listaHabitacion;
     }
+    
   /**
    * buscarHabitacionDisponiblel = busca las habitaciones disponibles para el hotel seleccionado en las fechas seleccionadas.
    * @param fechaIda
@@ -687,9 +623,11 @@ public class Consultas {
     	return disponible;
     }
     
-    
-    
-    
+    /**
+     * Método buscarCamaPorCodigoHabitacion = devuelve un arrayList que contiene las camas en función del codigo de habitacion que se le pasa por parámetro.
+     * @param codHabitacionSeleccionada
+     * @return
+     */
     public ArrayList<Cama> buscarCamaPorCodigoHabitacion(int codHabitacionSeleccionada) {
     	ArrayList<Cama> listaCamas = new ArrayList<Cama>(); 
     	Cama cama;
@@ -733,7 +671,11 @@ public class Consultas {
    	 * Metodos de consultas referentes al cliente
    	 * 
    	 ****************************************************************************************************************/
-   	
+   	/**
+   	 * Método buscarClientePorDNI = devuelve los datos del Cliente en función del DNI que se le pasa por parámetro.
+   	 * @param dni
+   	 * @return
+   	 */
     public Cliente buscarClientePorDNI(String dni) {
 		
 		Cliente cliente = null;
@@ -784,7 +726,10 @@ public class Consultas {
    	 * Metodos de consultas referentes a la reserva
    	 * 
    	 ****************************************************************************************************************/
-   	
+   	/**
+   	 * Método mostrarNumReservas = devuelve un int que contiene el número de reservas registradas en la BBDD
+   	 * @return
+   	 */
     public int mostrarNumReservas() {
 		
 		PreparedStatement stmt = null;
@@ -822,6 +767,10 @@ public class Consultas {
 		return codReserva;
 	}
     
+    /**
+     * Método mostrarNumReservasConProcedimiento = devuelve un int que contiene el número de reservas registradas en la BBDD mediante un procedimiento
+     * @return
+     */
     public int mostrarNumReservasConProcedimiento() {
 		
 		PreparedStatement stmt = null;
@@ -859,6 +808,11 @@ public class Consultas {
 		return codReserva;
 	}
     
+    /**
+     * Método mostrarNumReservasDeUnAlojamiento = devuelve un int que contiene el número de reservas registradas en la BBDD para un alojamiento determinado
+     * @param codAloj
+     * @return
+     */
     public int mostrarNumReservasDeUnAlojamiento(int codAloj ) {
 		
 		PreparedStatement stmt = null;
@@ -903,6 +857,10 @@ public class Consultas {
 	 * Metodos consultas fecha y hora actual
 	 * 
 	 ****************************************************************************************************************/
+    /**
+     * Método mostrarFechaActual = devuelve la fecha actual (tipo Date)
+     * @return
+     */
     public Date mostrarFechaActual() {
 		
 		PreparedStatement stmt = null;
@@ -939,8 +897,11 @@ public class Consultas {
 		
 		return fechaActual;
 	}
-    
- public Date mostrarHoraActual() {
+    /**
+     * Método mostrarHoraActual = devuelve la hora actual
+     * @return
+     */
+    public Date mostrarHoraActual() {
 		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -1119,6 +1080,16 @@ public class Consultas {
 			
 		}
 
+		/**
+		 * Método insertarReservaCasaApart = inserta los atributos del objeto reserva en la BBDD
+		 * @param reserva
+		 * @param dni
+		 * @param fechaIda
+		 * @param fechaVuelta
+		 * @param fechaActual
+		 * @param horaActual
+		 * @param precioTotal
+		 */
 		public void insertarReservaCasaApart(Reserva reserva, String dni, Date fechaIda, Date fechaVuelta, Date fechaActual,String horaActual, float precioTotal) {
 		
 			PreparedStatement stmt = null;
@@ -1160,6 +1131,11 @@ public class Consultas {
 		
 		}
 		
+		/**
+		 * Método insertarPersonasAlojadas = inserta la lista de persnas alojadas ( con los datos encriptados) en la BBDD
+		 * @param lista = el método recive la lista de personas Alojadas
+		 * @param reserva = el método recive el objeto reserva
+		 */
 		public void insertarPersonasAlojadas(ArrayList<Cliente> lista, Reserva reserva) {
 			
 			PreparedStatement stmt = null;
@@ -1201,6 +1177,10 @@ public class Consultas {
 			}
 		}
 		
+		/**
+		 * Método mostrarNumPersonasAlojadas = devuelve el número de personas alojadas
+		 * @return
+		 */
 		public int mostrarNumPersonasAlojadas() {
 			
 			PreparedStatement stmt = null;
@@ -1238,6 +1218,11 @@ public class Consultas {
 			return personasAlojadas;
 		}
 		
+		/**
+		 * Método buscarPrecioMinimoDeLaHabitacionDelHotel = devuelve el menor precio que tiene una habitación en un hotel
+		 * @param codAlojSeleccionado = se pasa por parámetro el código del alojamiento seleccionado por el usuario
+		 * @return precioMinimo = se devuelve el precio mínimo (más bajo) que tiene una habitacion de ese alojamiento.
+		 */
 		public float buscarPrecioMinimoDeLaHabitacionDelHotel(int codAlojSeleccionado) {
 			PreparedStatement stmt = null;
 			ResultSet result = null;
@@ -1274,6 +1259,13 @@ public class Consultas {
 			return precioMinimoDeLaHabitacionDelHotel;
 			
 		}
+		
+		/**
+		 * Método buscarCodigosPromocionalesPorDni = se buscan los códigos promocionales que posee un cliente determinado para un alojamiento determinado
+		 * @param codAlojamiento = Se le pasa por parámetro el código del alojamiento, para que compruebe los códigos que tiene ese alojamiento
+		 * @param dni = se le pasa por parámetro el DNI del cliente, para que compruebe si el cliente tiene códigos promocionales.
+		 * @return listacodigosPromocionales = se devuelve una lista de códigos promocionales de ese cliente para ese alojamiento
+		 */
 		 public ArrayList<CodigoPromocional> buscarCodigosPromocionalesPorDni(int codAlojamiento, String dni) {
 		    	ArrayList<CodigoPromocional> listacodigosPromocionales = new ArrayList<CodigoPromocional>(); 
 		    	CodigoPromocional codigoProm;
@@ -1319,7 +1311,12 @@ public class Consultas {
 		    	System.out.println("SALE LA LISTA DE CODIGOS PROMOCIONALES");
 		    	return listacodigosPromocionales;
 		 }
-		 
+
+		 /**
+		 * Método buscarCodigosPromocionalesSoloPorDni = se buscan todos los códigos promocionales que posee un cliente determinado 
+		 * @param dni = se le pasa por parámetro el DNI del cliente, para que compruebe si el cliente tiene códigos promocionales.
+		 * @return listacodigosPromocionales = se devuelve una lista de todos códigos promocionales de ese cliente
+		 */
 		 public ArrayList<CodigoPromocional> buscarCodigosPromocionalesSoloPorDni( String dni) {
 		    	ArrayList<CodigoPromocional> listacodigosPromocionales = new ArrayList<CodigoPromocional>(); 
 		    	CodigoPromocional codigoProm;
@@ -1365,6 +1362,10 @@ public class Consultas {
 		    	return listacodigosPromocionales;
 		 }
 		 
+		 /**
+		  * Método eliminarCodigoPromocionalAplicado = se elimina el código promocional que se ha aplicado de la BBDD
+		  * @param codPromocionalSeleccionado = se pasa por parámetro el código pormocional seleccionado por el usuario
+		  */
 		 public void eliminarCodigoPromocionalAplicado( String codPromocionalSeleccionado) {
 		    
 		    	PreparedStatement ps = null;
@@ -1396,6 +1397,12 @@ public class Consultas {
 		    	System.out.println("Cupón "+ codPromocionalSeleccionado + " eliminado correctamente");
 		    	
 		 }
+		 
+		 /**
+		  * Método buscarServiciosAdicionales = se muestran los servicios adicionales de un alojamiento
+		  * @param codAlojamiento = Se le pasa por parámetro el código del alojamiento
+		  * @return sA= devuelve un objeto sA del tipo ServiciosAdicionales.
+		  */
 		 public ServiciosAdicionales buscarServiciosAdicionales(int codAlojamiento) {
 			 
 			 	PreparedStatement ps = null;
@@ -1405,9 +1412,6 @@ public class Consultas {
 		    			+ " Piscina, Precio_piscina, Spa, Precio_spa,"
 		    			+ " Gimnasio, Precio_gimnasio, Parking, Precio_parking,"
 		    			+ " Restaurante, Bar FROM `servicios` WHERE cod_alojamiento=?";
-
-		    	//String query = "select Cod_promocional, DescuentoPorcentaje FROM `codigospromocionales` ";
-		    			
 		    	
 		    	try {
 		    		// Abrimos una conexion

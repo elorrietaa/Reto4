@@ -43,7 +43,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	Ciudad ciudad;
 	TipoAlojamiento tiposAloj;
 	
-	
 	Alojamiento alojamiento;
 	Hotel hotel;
 	Casa casa;
@@ -71,6 +70,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		this.consultas = new Consultas(conexion);
 		this.controlador = controlador;
     }
+	
     /**
 	 * Se crean los listeners del panel
 	 */
@@ -177,9 +177,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 		//se guarda la ciudad seleccionada
 		this.ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
 				
-		//se pasa el tipo de alojamiento seleccionado al modelo
-		//modelo.ordenarPor = this.ordenarPor;
-				
 		//Pruebas
 		System.out.println("***DATOS ordenarPor***:" + ordenarPor + "***DATOS ordenarPor***:" + ordenarPor.toString());
 	}
@@ -240,7 +237,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarAlojamiento.table.getModel();
 					
 			  	//llena el arrayList con la lista de casas
-				listaCasas = consultas.buscarCasaPorCodCiudad(codCiudadSeleccionada);
+				listaCasas = controlador.funcionesOrdenar.ordenarListaCasas(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 				
 			   	vista.buscarAlojamiento.panelHotel.setVisible(false);
 			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
@@ -264,7 +261,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     				DefaultTableModel tablaCasApart = (DefaultTableModel) vista.buscarAlojamiento.table.getModel();
     					
     			  	//llena el arrayList con la lista de casas
-    				listaApartamentos = consultas.buscarApartamentoPorCodCiudad(codCiudadSeleccionada);
+    				listaApartamentos = controlador.funcionesOrdenar.ordenarListaApartamentos(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
     				
     				vista.buscarAlojamiento.panelHotel.setVisible(false);
     			   	vista.buscarAlojamiento.panelHotel.setEnabled(false);
@@ -314,14 +311,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 
         	//sacamos el dato de ocupacion
         	  ocupacion = ocupacion + controlador.funcionesReserva.mostrarOcupacionHab(listaCamas);
-        	  
-        	  //se añaden tiposCamaHab y numTipCam al objeto habitación del modelo
-
-        	  //modelo.habitacion.setTiposCamaHab(tiposCamaHab);
-
-        	  //modelo.habitacion.setNumTipCam(numTipCam);
-
-        	  //listaHabitaciones.add(modelo.habitacion);
         	  
         	  datos[2] = tiposCamaHab;
         	  tablaHabs.addRow(datos);
@@ -510,13 +499,14 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					
 				case "Aplicar filtros":
 					//se hace la buscqueda de listaAlojamientos en función de los filtros seleccionados
-					//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario
 					ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
 					ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
 					Ciudad ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
 					int codCiudadSeleccionada = ciudad.getCodCiudad();
 					TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
+					
+					//muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario
 					mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 					
 					//Se muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
@@ -540,23 +530,22 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 */
 	private void actualizarFiltradoJComboBox() {
 		// (1º) guarda la ciudad seleccionada
-			Ciudad ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
+			ciudad = (Ciudad) vista.buscarAlojamiento.cBCiudad.getSelectedItem();
 			if (ciudad != null) {
 				int codCiudadSeleccionada = ciudad.getCodCiudad();
 				
 				//(2º) guarda el tipo de alojamiento seleccionado
-				TipoAlojamiento tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
+				tiposAloj = (TipoAlojamiento) vista.buscarAlojamiento.cBTipoAloj.getSelectedItem();
 				if (tiposAloj != null) {
 					int codTipoAlojSeleccionado = tiposAloj.getCodTipoAlojamiento();
+					
 					
 					//(3º) guarda el dato por el que se va a ordenar y si se ordena asc/desc
 						ordenarPor = (String) vista.buscarAlojamiento.cbOrdenar.getSelectedItem();
 						ascDesc = (String) vista.buscarAlojamiento.cBAscDesc.getSelectedItem();
 							
-						//(4º) guarda los filtros que ha seleccionado el usuario
-						//stringFiltrosSelec = controlador.funcionesOrdenar.rellenarArrayFiltrosSeleccionados();
 						
-						//(5º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
+						//(4º) muestra en el JTable los alojamientos filtrados con las selecciones elegidas por el usuario 
 						mostrarAlojamientosEnJTable(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 				}			
 			
@@ -648,14 +637,10 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			}
 			else
 			datos1[5] ="00.00 €";
-					
-			
 			
 			tablaDetCasApart.addRow(datos1);
-			
-		//	mostrarDetallesHabSelec(tablaDetCasApart);
-			
  		}
+ 		
 	    //CASA
  		else if (tiposAloj.getCodTipoAlojamiento() == 20) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
@@ -700,6 +685,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					
 			tablaDetCasApart.addRow(datos1);
  		}
+ 		
  		//APARTAMENTO
  		else if (tiposAloj.getCodTipoAlojamiento() == 30) {
  			//llena la tabla con los datos del modelo.casa (la alojamiento seleccionada)
@@ -741,7 +727,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 			}
 			else
 			datos1[5] ="00.00 €";
-					
+			
  			tablaDetCasApart.addRow(datos1);
  		}
 	
@@ -805,9 +791,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 					
 					//mostrar el texto de las bases legales en el panBases
 					controlador.funcionesBasesLegales.mostrarBaseslegales();
-				    
 				}
 			}
+			
 			else {
 				JOptionPane.showMessageDialog(vista, "Por favor, guarde los servicios seleccionados para el alojamiento actual o cancele su seleccion de servicios. Gracias", null, 0);
 			}

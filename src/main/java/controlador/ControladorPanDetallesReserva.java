@@ -37,7 +37,9 @@ public class ControladorPanDetallesReserva implements ActionListener {
 		vista.detallesReserva.btnContinuar.addActionListener(this);
 	}
 	
-	
+	/**
+	 * Acción de los distintos listeners
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -82,20 +84,24 @@ public class ControladorPanDetallesReserva implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Método funcionContinuar = contiene los métodos que se ejecutarán cuando el usuario pulse al botón continuar
+	 */
 	public void funcionContinuar() {
 		ControladorLogin.panelOrigen = vista.detallesReserva;
 		ControladorLogin.detalles = true;
-		//vista.pago.total.setText(Float.toString(this.modelo.precioTotal) + " €");
-		//vista.pago.totalIntro.setText("0.0 €");
-		//vista.pago.aPagar.setText(Float.toString(this.modelo.precioTotal) + " €");
+		
+		//Si no se ha iniciado sesión, es decir, si el cliente es null, cuando se pulse el botón continuar se irá al panel PanDetallesReservaAloj
 		if(modelo.cliente == null) {
 			vista.login.setVisible(true);
 			vista.detallesReserva.setVisible(false);
 		}
+		////Si no se han aceptado las bases, es decir, si el basesAceptadas es null, cuando se pulse el botón continuar se irá al panel PanBasesLegales
 		else if(modelo.basesAceptadas == true){
 			vista.pago.setVisible(true);
 			vista.detallesReserva.setVisible(false);
 		}
+		//sino, se irá al panel PanDetallesReserva
 		else {
 			vista.bases.setVisible(true);
 			vista.detallesReserva.setVisible(false);

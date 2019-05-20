@@ -40,6 +40,8 @@ public class FuncionesServicios {
 		vista.buscarAlojamiento.btnServicios.setEnabled(false);
 		vista.buscarAlojamiento.btnActualizar.setVisible(true);
 		vista.buscarAlojamiento.btnActualizar.setEnabled(true);
+		vista.buscarAlojamiento.lblMensajeActualizar.setVisible(true);
+		vista.buscarAlojamiento.lblMensajeContratar.setVisible(true);
 		
 		controlador.controladorPanBuscarAlojamiento.guardarDatosSeleccionadosAlojamiento();
 		int codTipoAloj = controlador.controladorPanBuscarAlojamiento.tiposAloj.getCodTipoAlojamiento();

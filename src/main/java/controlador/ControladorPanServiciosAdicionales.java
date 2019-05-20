@@ -49,13 +49,10 @@ public class ControladorPanServiciosAdicionales implements ActionListener {
 				break;
 			case " Cancelar ":
 				controlador.funcionesBotones.resetServicios();
-				vista.buscarAlojamiento.lblMensajeActualizar.setVisible(false);
-				vista.buscarAlojamiento.lblMensajeContratar.setVisible(false);
 				break;
 			case "Contratar servicios adicionales":
 				controlador.funcionesServicios.activarPanel();
-				vista.buscarAlojamiento.lblMensajeActualizar.setVisible(true);
-				vista.buscarAlojamiento.lblMensajeContratar.setVisible(true);
+				
 				break;
 			case "Actualizar servicios":
 				controlador.funcionesServicios.activarPanel();

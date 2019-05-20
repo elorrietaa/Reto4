@@ -52,6 +52,7 @@ public class ControladorPanServiciosAdicionales implements ActionListener {
 				break;
 			case "Contratar servicios adicionales":
 				controlador.funcionesServicios.activarPanel();
+				
 				break;
 			case "Actualizar servicios":
 				controlador.funcionesServicios.activarPanel();

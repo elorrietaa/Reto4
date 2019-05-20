@@ -3,6 +3,8 @@ package modelo;
 public class ServiciosAdicionales {
 	
 	private int codAlojamiento;
+	private int codServicios;
+	private int codServiciosContratados;
 	
 	private boolean wifi;
 	private boolean aire;
@@ -27,7 +29,8 @@ public class ServiciosAdicionales {
 	private boolean gimnasioSeleccionado;
 	private boolean parkingSeleccionado;
 	
-	public ServiciosAdicionales(int codAlojamiento, int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking, int restaurante, int bar) {
+	public ServiciosAdicionales(int codServicios ,int codAlojamiento, int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking, int restaurante, int bar) {
+		this.setCodServicios(codServicios);
 		this.codAlojamiento = codAlojamiento;
 		
 		this.wifi = comprobarBoolean(wifi);
@@ -152,5 +155,21 @@ public class ServiciosAdicionales {
 			return true;
 		else
 			return false;
+	}
+
+	public int getCodServiciosContratados() {
+		return codServiciosContratados;
+	}
+
+	public void setCodServiciosContratados(int codServiciosContratados) {
+		this.codServiciosContratados = codServiciosContratados;
+	}
+
+	public int getCodServicios() {
+		return codServicios;
+	}
+
+	public void setCodServicios(int codServicios) {
+		this.codServicios = codServicios;
 	}
 }

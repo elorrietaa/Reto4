@@ -29,7 +29,7 @@ public class PanDetallesReservaAloj extends JPanel {
 	public JLabel lblSuReserva, lblDatosAlojamiento,lblDetallesHabitaciones, lblPrecio;
 	public JButton btnContinuar, btnAtras, btnInicioSesion, btnRegistro, btnCancelar, btnCerrarSesion;
 	public JList<String> listDetalleReserva;
-	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetFestivos, textDetPrecioFinal, textPaneDetServAdic;
+	public JTextPane textPDatosAlo, textPaneDetHot, textDetTarifa, textDetFestivos, textDetPrecioFinal, textPaneDetServAdic, textPaneNombreAloj;
 	public JPanel panelHoteles, panelCasaApart;
 	 
 	
@@ -50,19 +50,21 @@ public class PanDetallesReservaAloj extends JPanel {
 		setLayout(null);
 		 
 		lblSuReserva = new JLabel("DETALLES DE SU RESERVA :");
-		lblSuReserva.setForeground(Color.BLACK);
-		lblSuReserva.setFont(new Font("Monospaced", Font.BOLD, 30));
-		lblSuReserva.setBounds(121, -2, 513, 39);
+		lblSuReserva.setForeground(Color.BLUE);
+		lblSuReserva.setFont(new Font("Monospaced", Font.BOLD, 20));
+		lblSuReserva.setBounds(121, -6, 299, 39);
 		add(lblSuReserva);
 		
-		lblDatosAlojamiento = new JLabel("Detalles de su alojamiento:");
-		lblDatosAlojamiento.setFont(new Font("Monospaced", Font.BOLD, 16));
-		lblDatosAlojamiento.setBounds(121, 44, 279, 23);
+		lblDatosAlojamiento = new JLabel("Detalles alojamiento:");
+		lblDatosAlojamiento.setForeground(Color.BLUE);
+		lblDatosAlojamiento.setFont(new Font("Monospaced", Font.BOLD, 13));
+		lblDatosAlojamiento.setBounds(121, 25, 279, 23);
 		add(lblDatosAlojamiento);
 		
-		lblDetallesHabitaciones = new JLabel("Detalles de sus habitaciones:");
-		lblDetallesHabitaciones.setFont(new Font("Monospaced", Font.BOLD, 16));
-		lblDetallesHabitaciones.setBounds(121, 213, 319, 23);
+		lblDetallesHabitaciones = new JLabel("Detalles habitaciones:");
+		lblDetallesHabitaciones.setForeground(Color.BLUE);
+		lblDetallesHabitaciones.setFont(new Font("Monospaced", Font.BOLD, 13));
+		lblDetallesHabitaciones.setBounds(121, 120, 319, 23);
 		add(lblDetallesHabitaciones);
 		
 		btnContinuar = new JButton("Continuar");
@@ -84,7 +86,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		textPDatosAlo = new JTextPane();
 		textPDatosAlo.setEditable(false);
-		textPDatosAlo.setBounds(563, -2, 279, 89);
+		textPDatosAlo.setBounds(121, 70, 716, 47);
 		add(textPDatosAlo);
 		
 		
@@ -130,12 +132,12 @@ public class PanDetallesReservaAloj extends JPanel {
 		table.getColumnModel().getColumn(5).setPreferredWidth(5);
 				
 		scrollPaneCasaApart = new JScrollPane(table);
-		scrollPaneCasaApart.setBounds(121,98,839,74);
+		scrollPaneCasaApart.setBounds(121,358,839,74);
 		add(scrollPaneCasaApart);		
 			
 		JLabel lblNmeroDeNoches = new JLabel("N\u00FAmero de noches: ");
-		lblNmeroDeNoches.setFont(new Font("Monospaced", Font.BOLD, 16));
-		lblNmeroDeNoches.setBounds(121, 183, 189, 19);
+		lblNmeroDeNoches.setFont(new Font("Monospaced", Font.BOLD, 12));
+		lblNmeroDeNoches.setBounds(449, 7, 189, 19);
 		add(lblNmeroDeNoches);
 		
 		textFieldNumNoches = new JTextField();
@@ -143,7 +145,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		textFieldNumNoches.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldNumNoches.setEditable(false);
 		textFieldNumNoches.setColumns(10);
-		textFieldNumNoches.setBounds(300, 183, 46, 20);
+		textFieldNumNoches.setBounds(586, 7, 46, 20);
 		add(textFieldNumNoches);
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
@@ -168,17 +170,17 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		textDetTarifa = new JTextPane();
 		textDetTarifa.setEditable(false);
-		textDetTarifa.setBounds(121, 456, 563, 67);
+		textDetTarifa.setBounds(121, 471, 563, 67);
 		add(textDetTarifa);
 		
 		textDetFestivos = new JTextPane();
 		textDetFestivos.setEditable(false);
-		textDetFestivos.setBounds(121, 520, 563, 34);
+		textDetFestivos.setBounds(121, 539, 563, 34);
 		add(textDetFestivos);
 		
 		panelHoteles = new JPanel();
 		panelHoteles.setBackground(Color.WHITE);
-		panelHoteles.setBounds(121, 309, 839, 136);
+		panelHoteles.setBounds(121, 202, 839, 136);
 		add(panelHoteles);
 		panelHoteles.setLayout(null);
 		
@@ -225,7 +227,7 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		panelCasaApart = new JPanel();
 		panelCasaApart.setBackground(Color.WHITE);
-		panelCasaApart.setBounds(121, 309, 839, 136);
+		panelCasaApart.setBounds(121, 202, 839, 136);
 		add(panelCasaApart);
 		panelCasaApart.setLayout(null);
 		panelCasaApart.setVisible(false);
@@ -274,12 +276,12 @@ public class PanDetallesReservaAloj extends JPanel {
 		textFieldDetHabs.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textFieldDetHabs.setEditable(false);
 		textFieldDetHabs.setColumns(10);
-		textFieldDetHabs.setBounds(121, 253, 703, 34);
+		textFieldDetHabs.setBounds(121, 148, 839, 34);
 		add(textFieldDetHabs);
 		
 		textDetPrecioFinal = new JTextPane();
 		textDetPrecioFinal.setEditable(false);
-		textDetPrecioFinal.setBounds(121, 563, 563, 28);
+		textDetPrecioFinal.setBounds(121, 584, 563, 28);
 		add(textDetPrecioFinal);
 		
 		btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
@@ -291,8 +293,27 @@ public class PanDetallesReservaAloj extends JPanel {
 		
 		textPaneDetServAdic = new JTextPane();
 		textPaneDetServAdic.setEditable(false);
-		textPaneDetServAdic.setBounds(121, 600, 462, 23);
+		textPaneDetServAdic.setBounds(121, 429, 839, 23);
 		add(textPaneDetServAdic);
+		
+		textPaneNombreAloj = new JTextPane();
+		textPaneNombreAloj.setFont(new Font("Tahoma", Font.BOLD, 13));
+		textPaneNombreAloj.setForeground(Color.BLACK);
+		textPaneNombreAloj.setEditable(false);
+		textPaneNombreAloj.setBounds(121, 44, 319, 23);
+		add(textPaneNombreAloj);
+		
+		JLabel lblDetallesServiciosAdicionales = new JLabel("Detalles servicios adicionales:");
+		lblDetallesServiciosAdicionales.setForeground(Color.BLUE);
+		lblDetallesServiciosAdicionales.setFont(new Font("Monospaced", Font.BOLD, 13));
+		lblDetallesServiciosAdicionales.setBounds(121, 337, 319, 23);
+		add(lblDetallesServiciosAdicionales);
+		
+		JLabel lblDetallesTarifa = new JLabel("Detalles tarifa:");
+		lblDetallesTarifa.setForeground(Color.BLUE);
+		lblDetallesTarifa.setFont(new Font("Monospaced", Font.BOLD, 13));
+		lblDetallesTarifa.setBounds(121, 443, 319, 36);
+		add(lblDetallesTarifa);
 
 	}
 }

@@ -289,44 +289,45 @@ public class ControladorPanPago implements ActionListener{
 	public void FuncionContinuar() {
 		
 		//(1º) muestra detalles de las vueltas
-			sobra = modelo.funcionesPago.sobra(total, dinero); // Calcula el dinero que sobra para devolverselo al usuario
+		sobra = modelo.funcionesPago.sobra(total, dinero); // Calcula el dinero que sobra para devolverselo al usuario
 						
-			vista.vueltas.txtTotal.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el dinero total
-			vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
-			vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
+		vista.vueltas.txtTotal.setText(Float.toString(modelo.precioTotal) + " €"); // Muesta el dinero total
+		vista.vueltas.txtTotalIntro.setText(Float.toString(dinero) + " €"); // Muestra el dinero introducido
+		vista.vueltas.PanelVueltas.setText(sobra); // Muestra el dinero sobrante
 			
 		//Pruebas: muestra fecha y hora actual
 		controlador.funcionesReserva.mostrarFechaYHoraActual();
 		
 		//se consulta la fehca y la hora actual en sql
-				Date fechaActual = (modelo.consultas.mostrarFechaActual());
-				Date horaActual1 = modelo.consultas.mostrarHoraActual();
+		Date fechaActual = (modelo.consultas.mostrarFechaActual());
+		Date horaActual1 = modelo.consultas.mostrarHoraActual();
 				
-				//se le da formato a la hora
-				SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-				String horaActual = dateFormat.format(horaActual1);
+		//se le da formato a la hora
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		String horaActual = dateFormat.format(horaActual1);
 				
-				//meter en el modelo reserva
-				//modelo.reserva.setFechaBases((java.sql.Date) fechaActual); 	
-				//modelo.reserva.setHoraBases(horaActual); 	
+		//meter en el modelo reserva
+		//modelo.reserva.setFechaBases((java.sql.Date) fechaActual); 	
+		//modelo.reserva.setHoraBases(horaActual); 	
 				
-				//prueba
+		//prueba
 				System.out.println("Fecha actual" + fechaActual);
 				System.out.println("Hora actual" +horaActual);	
 		
-		
+		if(modelo.servicios != null)
+			modelo.servicios.setCodServiciosContratados(modelo.consultas.conseguirCodServicios());
 		
 	    //(2º) Insertar la reserva o reservas en BBDD: 1 reserva por cada habitacioón
 			//PARA HOTELES:
 			if(modelo.reserva.getAlojamiento() instanceof Hotel) {
 				//Para borrar // controlador.funcionesReserva.insertarReservaHabitacionSel();
 
-				modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date)fechaActual,horaActual, modelo.precioTotal);
+				modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.servicios, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date)fechaActual,horaActual, modelo.precioTotal);
 				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 			//PARA CASAS Y APARTAMENTOS:
 			else if (modelo.reserva.getAlojamiento() instanceof Casa || modelo.reserva.getAlojamiento() instanceof Apartamento) {
-				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date) fechaActual,horaActual, modelo.precioTotal);
+				modelo.consultas.insertarReservaCasaApart(modelo.reserva, modelo.servicios, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta, (java.sql.Date) fechaActual,horaActual, modelo.precioTotal);
 				modelo.consultas.insertarPersonasAlojadas(modelo.listaPersonasEncriptada, modelo.reserva);
 			}
 		

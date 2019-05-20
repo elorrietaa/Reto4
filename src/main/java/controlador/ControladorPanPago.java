@@ -335,35 +335,21 @@ public class ControladorPanPago implements ActionListener{
 			//para HOTELES
 			if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
 				controlador.funcionesReserva.generarFicherosReserva1HabHotel();
-				
-				// Si ha utilizado un cupón lo elimina de la bbdd
-			
-				if(modelo.cuponSeleccionado.getCod_promocional()!=null) {
-				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
-				}
-				
 			}
 			//PARA CASAS:
 			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {
 				controlador.funcionesReserva.generarFicherosReservaCasa();
-				
-				// Si ha utilizado un cupón lo elimina de la bbdd
-				if(modelo.cuponSeleccionado.getCod_promocional()!=null) {
-				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
-				}
-				
 			}
 			//PARA APARTAMENTOS:
 			else if (modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
 				controlador.funcionesReserva.generarFicherosReservaApart();
-				
-				// Si ha utilizado un cupón lo elimina de la bbdd
-				if(modelo.cuponSeleccionado.getCod_promocional()!=null) {
-				    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
-				}
-				
 			}
 		
+		//eliminar los cupones si se han aplicado cupones
+			System.out.println("preciooooconcupon" +modelo.precioTotal + "precioooosincupon" + modelo.precioTotalSinCupon);
+			if(modelo.precioTotal != modelo.precioTotalSinCupon) {
+			    controlador.funcionesCodigosPromo.eliminarCodigosPromocionales();
+			}
 		
 		//(5º) actualiza los paneles
 			vista.vueltas.setVisible(true); // Pone el panel fin de pago visible

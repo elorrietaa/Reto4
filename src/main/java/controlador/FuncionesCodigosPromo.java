@@ -217,4 +217,27 @@ public class FuncionesCodigosPromo {
 		return precioConDesc;
 	}
 
+	public void eliminarCodigosPromocionales() {
+	  //para HOTELES
+		if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
+			
+		    // Si ha utilizado un cupón lo elimina de la bbdd
+		    modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
+			
+		}
+		//PARA CASAS:
+		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 20) {
+			
+			// Si ha utilizado un cupón lo elimina de la bbdd
+			 modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
+	
+		}
+		//PARA APARTAMENTOS:
+		else if (modelo.tiposAloj.getCodTipoAlojamiento() == 30) {
+			
+			// Si ha utilizado un cupón lo elimina de la bbdd
+			modelo.consultas.eliminarCodigoPromocionalAplicado(modelo.cuponSeleccionado.getCod_promocional());
+			
+		}
+	}
 }

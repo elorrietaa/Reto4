@@ -1045,9 +1045,15 @@ public class Consultas {
 
     /**
      * Inserta los atributos de un objeto reserva en la base de datos
-     * 
-     * @param reserva Objeto reserva que se quiere introducir en la base de datos
-     * @return Retorna el codigo de la reserva, generado de manera aleatoria
+     * @param reserva contiene los detalles de la Reserva
+     * @param habitacion contiene los detalles de la habitacion
+     * @param servicios contiene los detalles de los servicios seleccionados
+     * @param dni contiene el dni del uusario
+     * @param fechaIda contiene la fecha de entrada
+     * @param fechaVuelta contiene la fecha de salida
+     * @param fechaActual 
+     * @param horaActual
+     * @param precioTotal
      */
     public void insertar1Reserva(Reserva reserva, Dormitorio habitacion, ServiciosAdicionales servicios, String dni,
 	    Date fechaIda, Date fechaVuelta, Date fechaActual, String horaActual, float precioTotal) {

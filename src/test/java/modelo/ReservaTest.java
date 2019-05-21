@@ -7,6 +7,7 @@ import java.sql.Date;
 import org.junit.Test;
 
 public class ReservaTest {
+  /*
     private int codReserva=1;
     protected String [] arrayNombreHabitaciones = {"DORMITORIO","BAÑO", "SALA","COMEDOR", "COCINA", "BALCON", "GARAJE"  };
     protected int [] arrayNumHabitaciones = {2, 2, 1, 1, 1, 1, 1};
@@ -19,7 +20,7 @@ public class ReservaTest {
     private float precioReserva=(float) 88.29;
     private String detallesTarifa = "";
     private String detallesFestivos = "";
- /*   private Date fechaBases = new Date(09-05-2019);
+    private Date fechaBases = new Date(09-05-2019);
     private Date horaBases = new Date(12:41:35);
     Reserva reservaPrueba = new Reserva(codReserva, cliente, alojamiento,habitacion, fechaIda, fechaVuelta, precioReserva, fechaBases,horaBases );
     Reserva reservaPrueba1 = new Reserva(codReserva, cliente, alojamiento, fechaIda, fechaVuelta, precioReserva);

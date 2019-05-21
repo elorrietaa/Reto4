@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author IN1DM3B_09
  *
  */
-public class Alojamiento {
+public abstract class Alojamiento {
     protected int codAlojamiento;
     protected String nombre;
     protected String direccion;

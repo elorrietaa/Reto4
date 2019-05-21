@@ -24,6 +24,94 @@ public class HotelTest {
     Hotel hotel= new Hotel();
     
     @Test
+	public void testConstuctorHotel() {
+		assertEquals(codAlojamiento, hotelPrueba.getCodAlojamiento());
+		assertEquals(nombre, hotelPrueba.getNombre());
+		assertEquals(direccion, hotelPrueba.getDireccion());
+		assertEquals(telefono, hotelPrueba.getTelefono());
+		assertEquals(numHabitaciones, hotelPrueba.getNumHabitaciones());
+		assertEquals(numHabDisponibles, hotelPrueba.getNumHabDisponibles());
+		assertEquals(ubicacion, hotelPrueba.getUbicacion());
+		assertEquals(popularidad, hotelPrueba.getPopularidad());
+		assertArrayEquals(arrayNombreHabitaciones, hotelPrueba.getArrayNombreHabitaciones());
+		assertArrayEquals(arrayNumHabitaciones, hotelPrueba.getArrayNumHabitaciones());
+	}
+    
+    @Test
+	public void testCodAlojamiento() {
+	hotelPrueba.setCodAlojamiento(codAlojamiento); 
+		assertEquals(codAlojamiento,hotelPrueba.getCodAlojamiento());
+	}
+    @Test
+   	public void testNombre() {
+	hotelPrueba.setNombre(nombre);
+   		assertEquals(nombre,hotelPrueba.getNombre());
+   	} 
+    @Test
+   	public void testDireccion() {
+	hotelPrueba.setDireccion(direccion);
+   		assertEquals(direccion, hotelPrueba.getDireccion());
+   	} 
+    @Test
+   	public void testTelefono() {
+	hotelPrueba.setTelefono(telefono);
+   		assertEquals(telefono, hotelPrueba.getTelefono());
+   	} 
+    @Test
+	public void testNumHabitaciones() {
+	hotelPrueba.setNumHabitaciones(numHabitaciones);
+		assertEquals(numHabitaciones,hotelPrueba.getNumHabitaciones());
+	}
+    @Test
+  	public void testNumHabitacionesDisp() {
+	hotelPrueba.setNumHabDisponibles(numHabDisponibles);
+  		assertEquals(numHabDisponibles,hotelPrueba.getNumHabDisponibles());
+  	}
+    @Test
+   	public void testUbicacion() {
+	hotelPrueba.setUbicacion(ubicacion);
+   		assertEquals(ubicacion,hotelPrueba.getUbicacion());
+   	}
+    @Test
+	public void testPrecioAlojamiento() {
+	hotelPrueba.setPrecioAlojamiento(precioAlojamiento);
+		assertEquals(precioAlojamiento,hotelPrueba.getPrecioAlojamiento(),0.2);
+	}
+    
+    @Test
+	public void testConstuctorMal() {
+		assertNotEquals(4, hotelPrueba.getCodAlojamiento());
+		assertNotEquals("k", hotelPrueba.getNombre());
+		assertNotEquals(9, hotelPrueba.getNumHabitaciones());
+		assertNotEquals("k", hotelPrueba.getUbicacion());
+	}
+    @Test
+	public void testCodAlojamientoMal() {
+	hotelPrueba.setCodAlojamiento(codAlojamiento); 
+		assertNotEquals(5,hotelPrueba.getCodAlojamiento());
+	}
+    @Test
+   	public void testNombreMal() {
+	hotelPrueba.setNombre(nombre);
+   		assertNotEquals("k",hotelPrueba.getNombre());
+   	} 
+    @Test
+	public void testNumHabitacionesMal() {
+	hotelPrueba.setNumHabitaciones(numHabitaciones);
+		assertNotEquals(8,hotelPrueba.getNumHabitaciones());
+	}
+    @Test
+   	public void testUbicacionMal() {
+	hotelPrueba.setUbicacion(ubicacion);
+   		assertNotEquals("k",hotelPrueba.getUbicacion());
+   	}
+    @Test
+	public void testPrecioAlojamientoMal() {
+	hotelPrueba.setPrecioAlojamiento(precioAlojamiento);
+		assertNotEquals(0,hotelPrueba.getPrecioAlojamiento(),0.2);
+	}
+    
+    @Test
    	public void testEstrellas() {
 	hotelPrueba.setEstrellas(estrellas);
    		assertEquals(estrellas,hotelPrueba.getEstrellas());

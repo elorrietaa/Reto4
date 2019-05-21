@@ -44,6 +44,7 @@ public class PrincipalModelo {
 	public float precioServicios;
 	public String cuponAplicado = null;
 	public int ocupacionFinal;
+	public boolean eliminaCupon = true;
 	
 	public Date fechaIda;
 	public Date fechaVuelta;

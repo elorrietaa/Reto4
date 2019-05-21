@@ -21,6 +21,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 	private PrincipalControlador controlador;
 	
 	private CodigoPromocional cuponAloj;
+	 
 	
 	public ControladorPanCuponDesc(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.vista = vista;
@@ -54,6 +55,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 		switch (botonPulsado) {
 		
 			case "Aplicar y continuar":
+			    	modelo.eliminaCupon = true;
 				// (1º) guarda el cógido promocional seleccionado
 				 CodigoPromocional cuponAlojSeleccionado = (CodigoPromocional) vista.cupon.cBListaCupones.getSelectedItem();
 				 
@@ -92,6 +94,7 @@ public class ControladorPanCuponDesc implements ActionListener{
 				
 			case "No aplicar ningún descuento":
 				//no habrá ningún cupón de descuento seleccionado:
+			    	modelo.eliminaCupon = false;
 				modelo.cuponSeleccionado = null;
 				if(modelo.precioTotalSinCupon != 0)
 					modelo.precioTotal = modelo.precioTotalSinCupon;

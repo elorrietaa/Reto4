@@ -349,7 +349,7 @@ public class ControladorPanPago implements ActionListener{
 		
 		//eliminar los cupones si se han aplicado cupones
 			System.out.println("preciooooconcupon" +modelo.precioTotal + "precioooosincupon" + modelo.precioTotalSinCupon);
-			if(modelo.precioTotal != modelo.precioTotalSinCupon) {
+			if(modelo.eliminaCupon) {
 			    controlador.funcionesCodigosPromo.eliminarCodigosPromocionales();
 			}
 		

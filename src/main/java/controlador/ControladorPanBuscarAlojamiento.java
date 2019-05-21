@@ -89,9 +89,9 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     	vista.buscarAlojamiento.fechaVuelta.addPropertyChangeListener(this);
     }
     
+   
     /**
      * Método: mostrarCiudad = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
-     * @param listaCiudades
      */
     public void mostrarCiudad() {
     	vista.buscarAlojamiento.cBCiudad.removeAllItems();
@@ -105,7 +105,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     
     /**
      * Método: mostrarTiposAloj = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
-     * @param listaCiudades
      */
     public void mostrarTiposAloj() { 
     	vista.buscarAlojamiento.cBTipoAloj.removeAllItems();

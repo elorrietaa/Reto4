@@ -32,7 +32,7 @@ public abstract class Alojamiento {
     * Constructor del objeto Alojamiento: contiene la información referente al alojamiento. 
     * @param codAlojamiento codigo alojamiento
     * @param nombre nombre del alojamiento
-    * @param direcion direccion del alojamiento
+    * @param direccion direccion del alojamiento
     * @param telefono telefono del alojamiento
     * @param numHabitaciones número de habitaciones que tiene el alojamiento
     * @param ubicacion Ciudad en la que se encuentra el alojamiento

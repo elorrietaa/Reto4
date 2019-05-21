@@ -91,13 +91,13 @@ public class FuncionesReserva {
 		return numNoches;
 	}
 	
+
 	/**
 	 * Método calcularPrecioPorTarifa = calcula el precio en función de las fechas seleccionadas aplicando el precio de la tarifa normal o tarifa estival en función del número de noches normales y numero de noches en fechas de tarifa estival seleccionadas
-	 * @param precioAloj
-	 * @param NumNochesPorTarifa = es un array que contiene en su primera posición [0] el número de noches a las que se aplica la tarifa normal y en [1] el número de noches a las que se aplica la tarifa estival
-	 * @return precioTarifaAplicada
+	 * @param tiposAloj contiene el tipo de alojamiento
+	 * @param precioAloj contiene el precio de alojamiento
+	 * @return
 	 */
-	
 	public float calcularPrecioPorTarifa(TipoAlojamiento tiposAloj, float precioAloj) {
 		 //Se rellena el array NumNochesPorTarifa
 		  int [] NumNochesPorTarifa = calcularNumNochesPorTarifa(precioAloj);
@@ -121,7 +121,7 @@ public class FuncionesReserva {
 	
 	/**
 	 * Método calcularSuplementoFestivos = calcula el precio del alojamiento teniendo en cuenta los suplementos festivos.
-	 * @param precioAloj
+	 * @param precioAloj contiene el precio de alojamiento
 	 * @return
 	 */
 	public float calcularSuplementoFestivos(float precioAloj) {
@@ -132,9 +132,15 @@ public class FuncionesReserva {
 		return suplementoFestivos;
 	}
 	
+	
 	/**
 	 * Método mostrarDetTipoTarifaCasApart = se muestran en vista.detallesReservaCasaApart los detalles de la tarifa aplicada al precio.
-	 * @param NumNochesPorTarifa
+	 * @param NumNochesPorTarifa contiene el numero de noches de cada tarifa
+	 * @param precioAloj contiene el precio del alojamiento
+	 * @param precioTarifaNormal contiene el precio de la tarifa normal
+	 * @param precioTarifaEstival contiene le precio de la tarifa estival
+	 * @param precioTarifaAplicada contiene el precio de la tarifa aplicada
+	 * @param numNoches contiene el número d enoches total de la reserva
 	 */
 	public void mostrarDetTipoTarifaCasApart(int [] NumNochesPorTarifa, float precioAloj, float precioTarifaNormal, float precioTarifaEstival, float precioTarifaAplicada, int numNoches) {
 		 vista.detallesReservaCasaApart.textDetTarifa.setText((String) "ATENCIÓN: El precio de los alojamiento puede variar en función de las fechas seleccionadas." + "\n" + 

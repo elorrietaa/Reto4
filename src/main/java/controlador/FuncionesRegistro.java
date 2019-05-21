@@ -12,19 +12,16 @@ import vista.JframePrincipal;
  * 
  * @author Mikel
  * 
- * @param letraMayuscula: Almacena la letra el DNI en mayuscula para poder comprobarla
- * @param numero: Guarda los numeros del DNI
- * @param dni2: Almacena solo los numeros del DNI para poder comprobarlos
- * @param numerosUnoNueve: Guarda los numero del 0 al nueve para poder comprobarlos
- * @param ContraseñaEncriptar: Es la contraseña que se va a encriptar
- * @param contraseñaGenerada: Es la contraseña una vez encriptada
- * @param md: Instancia de MessageDigest, se utiliza para separar la contraseña en fragmentos para poder encriptarla
- * @param bytes: Array que almacena los distintros trozos separados de la contraseña con MessageDigest transformados en bytes
- * @param sb: Instancia de StringBuilder, se utiliza para volver a unir las diferentes partes de la contrasela vez encriptada
- *
- * @return false: Retorna si el DNI ha dado error en la validacion
- * @return true: Reotrna si la validacion del DNI ha sido exitosa
- */
+ * @param letraMayuscula Almacena la letra el DNI en mayuscula para poder comprobarla
+ * @param numero Guarda los numeros del DNI
+ * @param dni2 Almacena solo los numeros del DNI para poder comprobarlos
+ * @param numerosUnoNueve Guarda los numero del 0 al nueve para poder comprobarlos
+ * @param ContraseñaEncriptar Es la contraseña que se va a encriptar
+ * @param contraseñaGenerada Es la contraseña una vez encriptada
+ * @param md Instancia de MessageDigest, se utiliza para separar la contraseña en fragmentos para poder encriptarla
+ * @param bytes Array que almacena los distintros trozos separados de la contraseña con MessageDigest transformados en bytes
+ * @param sb Instancia de StringBuilder, se utiliza para volver a unir las diferentes partes de la contrasela vez encriptada
+*/
 public class FuncionesRegistro {
 	
 	PrincipalModelo modelo;
@@ -131,10 +128,8 @@ public class FuncionesRegistro {
     }
 	/**
 	 * Metodo que comprueba si el usuario existe a la hora de iniciar sesion
-	 * 
 	 * @param usuario DNI del usuario que se quiere comprobar
 	 * @param contrasena Contraseña del usuario que se quiere comprobar
-	 * 
 	 * @return Retorna un objeto cliente con los datos del usuario
 	 */
 	public Cliente comprobarInicio(String usuario, String contrasena) {

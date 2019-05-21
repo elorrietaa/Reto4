@@ -18,9 +18,9 @@ public class Habitacion {
 	}
 	/**
 	 * Constructor clase Habitacion
-	 * @param codHabitacion
-	 * @param tipoHabitacion
-	 * @param tamanio
+	 * @param codHabitacion contiene el codigo de la habitacion seleccionada
+	 * @param tipoHabitacion contiene el tipo de habitacion 
+	 * @param tamanio contiene el tamanio de la habitacion
 	 */
 	public Habitacion(int codHabitacion, String tipoHabitacion, float tamanio) {
 		this.codHabitacion = codHabitacion;

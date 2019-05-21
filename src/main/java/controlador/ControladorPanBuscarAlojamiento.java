@@ -118,7 +118,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     
     /**
      * Método: mostrarOpcionesParaOrdenar = muestra las opciones en base a las que se puede ordenar la búsqueda 
-     * @param listaCiudades
      */
     public void mostrarOpcionesParaOrdenar() {
     	vista.buscarAlojamiento.cbOrdenar.removeAllItems();
@@ -131,7 +130,6 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
     
     /**
      * Método: mostrarOpcionesParaOrdenar = muestra las ciudades que se han buscado en el método BuscarCiudad (en la BBDD)
-     * @param listaCiudades
      */
     public void mostrarOpcionesAscDesc() {
     	vista.buscarAlojamiento.cBAscDesc.removeAllItems();
@@ -672,7 +670,7 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	/**
 	 * Método: mostrarDetallesHabsSelec = muestra los detalles de las habitaciones seleccionadas, es decir, muestra el contenido del arrayList listaHabSeleccionadas
 	 * 
-	 * @param tabla Tabla que se rellena con la informacion de la reserva
+	 * @param tablaDetCasApart Tabla que se rellena con la informacion de la reserva
 	 */
 	public void mostrarDetallesHabSelec( DefaultTableModel tablaDetCasApart) {
 		Object[] datos = new Object[5];

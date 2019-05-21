@@ -92,28 +92,7 @@ public class FuncionesReserva {
 
 		return numNoches;
 	}
-<<<<<<< HEAD
-
-	/**
-	 * Método calcularPrecioPorTarifa, calcula el precio en función de las fechas seleccionadas aplicando el precio de la tarifa normal o tarifa estival en
-	 * función del número de noches normales y numero de noches en fechas de tarifa estival seleccionadas
-	 * 
-	 * @param precioAloj Variable que almacena el precio del alojamiento
-	 * @param NumNochesPorTarifa es un array que contiene en su primera posición [0] el número de noches a las que se aplica la tarifa normal y en [1] el número de noches a las que se
-	 * aplica la tarifa estival
-	 * @return precioTarifaAplicada
-	 */
-
-=======
 	
-
-	/**
-	 * Método calcularPrecioPorTarifa = calcula el precio en función de las fechas seleccionadas aplicando el precio de la tarifa normal o tarifa estival en función del número de noches normales y numero de noches en fechas de tarifa estival seleccionadas
-	 * @param tiposAloj contiene el tipo de alojamiento
-	 * @param precioAloj contiene el precio de alojamiento
-	 * @return
-	 */
->>>>>>> 0cd3c89507e4c8064c6dcf177922511e113ccde5
 	public float calcularPrecioPorTarifa(TipoAlojamiento tiposAloj, float precioAloj) {
 		// Se rellena el array NumNochesPorTarifa
 		int[] NumNochesPorTarifa = calcularNumNochesPorTarifa(precioAloj);
@@ -138,17 +117,7 @@ public class FuncionesReserva {
 		return precioTarifaAplicada;
 	}
 
-	/**
-<<<<<<< HEAD
-	 * Método calcularSuplementoFestivos calcula el precio del alojamiento teniendo en cuenta los suplementos festivos.
-	 * 
-	 * @param precioAloj Variable que almacena el precio del alojamiento
-=======
-	 * Método calcularSuplementoFestivos = calcula el precio del alojamiento teniendo en cuenta los suplementos festivos.
-	 * @param precioAloj contiene el precio de alojamiento
->>>>>>> 0cd3c89507e4c8064c6dcf177922511e113ccde5
-	 * @return
-	 */
+
 	public float calcularSuplementoFestivos(float precioAloj) {
 		float suplementoFestivos = 0;
 
@@ -156,14 +125,7 @@ public class FuncionesReserva {
 
 		return suplementoFestivos;
 	}
-<<<<<<< HEAD
 
-	/**
-	 * Método mostrarDetTipoTarifaCasApart se muestran en vista.detallesReservaCasaApart los detalles de la tarifa aplicada al precio.
-	 * 
-	 * @param NumNochesPorTarifa Variable que almacena el numero de noches que se aplica a cada tarifa
-=======
-	
 	
 	/**
 	 * Método mostrarDetTipoTarifaCasApart = se muestran en vista.detallesReservaCasaApart los detalles de la tarifa aplicada al precio.
@@ -173,7 +135,6 @@ public class FuncionesReserva {
 	 * @param precioTarifaEstival contiene le precio de la tarifa estival
 	 * @param precioTarifaAplicada contiene el precio de la tarifa aplicada
 	 * @param numNoches contiene el número d enoches total de la reserva
->>>>>>> 0cd3c89507e4c8064c6dcf177922511e113ccde5
 	 */
 	public void mostrarDetTipoTarifaCasApart(int[] NumNochesPorTarifa, float precioAloj, float precioTarifaNormal,
 			float precioTarifaEstival, float precioTarifaAplicada, int numNoches) {

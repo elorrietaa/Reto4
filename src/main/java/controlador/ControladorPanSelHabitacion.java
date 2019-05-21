@@ -74,42 +74,11 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 	/**
 	 * Método: guardarDormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
+	 * 
 	 */
-	public void guardarDormSeleccionadosJTable() {
-		   
-		  //indHabsSel es un array que contiene el índice (la posición) de las habitaciones seleccionadas en el JTable
-		    indHabsSel = vista.selHabitacion.tab.getSelectedRows();
-		    
-		    //la lista de dormitorios DISPONIBLES que semuestra al usuario para que seleccione
-		  listaDormitorios = consultas.buscarHabitacionDisponiblel(modelo.fechaIda, modelo.fechaVuelta, modelo.hotel.getCodAlojamiento());
-		  
-		  //creamos un arrayList listaHabSeleccionadas que va a contener las habitaciones seleccionadas
-		  listaDormSeleccionados = new ArrayList<Dormitorio>(); 
-		    //hacemos un arrayList que contenga las habitaciones de los indices seleccionados:
-		    for(int i=0; indHabsSel.length>i; i++) {
-		    	System.out.println("------->índice de las habitaciones selec en el JTable: " + indHabsSel[i]);
-		    	//prueba
-		    	System.out.println("Código de las habitaciones seleecionadas: " + listaDormitorios.get(indHabsSel[i]).getCodHabitacion());
-		    	
-		    	//metemos las habitaciones seleccionadas en un arrayList listaHabSeleccionadas
-		    	habitacion = new Dormitorio(); 
-				habitacion.setCodHabitacion(listaDormitorios.get(indHabsSel[i]).getCodHabitacion());
-				habitacion.setNombreHabitacion(listaDormitorios.get(indHabsSel[i]).getNombreHabitacion());
-				//habitacion.setAlojamiento(hotel);
-				habitacion.setTipoHabitacion(listaDormitorios.get(indHabsSel[i]).getTipoHabitacion());
-				habitacion.setTamanio(listaDormitorios.get(indHabsSel[i]).getTamanio());
-				habitacion.setNumCamas(listaDormitorios.get(indHabsSel[i]).getNumCamas());
-				habitacion.setPrecioHabitacion(listaDormitorios.get(indHabsSel[i]).getPrecioHabitacion());
-				listaDormSeleccionados.add(habitacion);
-		    }
-		    
-		    //probamos que listaHabSeleccionadas se haya creado y rellenado correctamente:
-		    for(int i=0; listaDormSeleccionados.size()>i; i++) {
-		    	System.out.println("------->Habitaciones seleccionadas: " +listaDormSeleccionados.get(i).getCodHabitacion() );
-		    }
-		
-		}
 	
+
+	 
 	/**
 	 * Método: guardar1DormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
 	 */

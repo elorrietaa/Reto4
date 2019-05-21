@@ -34,22 +34,22 @@ public class ServiciosAdicionales {
 	/**
 	 * Constructor de la calse ServiciosAdicionales, recibe por parametro el resultado de diversas consultas a la base de datos
 	 * 
-	 * @param codServicios = Codigo que identifica una seleccion concreta de servicios hecha por un usuario para un alojamiento
-	 * @param codAlojamiento = Codigo que referencia el alojamiento para el cual se han seleccionado los servicios
-	 * @param wifi = Variable que indica si el alojamiento tiene WiFi disponible
-	 * @param precioWifi = Variable que indica el precio del WiFi en el alojamiento seleccionado
-	 * @param aire = Variable que indica si el alojamiento tiene aire acondicionado disponible
-	 * @param precioAire = Variable que indica el precio del aire acondicionado en el alojamiento seleccionado
-	 * @param piscina = Variable que indica si el alojamiento tiene piscina
-	 * @param precioPiscina = Variable que indica el precio por utilizar la piscina en el alojamiento seleccionado
-	 * @param spa = Variable que indica si el alojamiento cuenta con un spa
-	 * @param precioSpa = Variable que indica el precio por utilizar el spa en el alojamiento seleccionado
-	 * @param gimnasio = Variable que indica si el alojamiento cuenta con un gimnasio
-	 * @param precioGimnasio = Variable que indica el precio por utilizar el gimnasio del alojamiento seleccinado
-	 * @param parking = Variable que indica si el alojamiento dispone de un parking
-	 * @param precioParking = Variable que indica el precio por utilizar el parking del alojamieto seleccionado
-	 * @param restaurante = Variable que indica si el alojamiento dispone de un restaurante
-	 * @param bar = Variable que indica si el alojamiento dispone de un bar
+	 * @param codServicios Codigo que identifica una seleccion concreta de servicios hecha por un usuario para un alojamiento
+	 * @param codAlojamiento Codigo que referencia el alojamiento para el cual se han seleccionado los servicios
+	 * @param wifi Variable que indica si el alojamiento tiene WiFi disponible
+	 * @param precioWifi Variable que indica el precio del WiFi en el alojamiento seleccionado
+	 * @param aire Variable que indica si el alojamiento tiene aire acondicionado disponible
+	 * @param precioAire Variable que indica el precio del aire acondicionado en el alojamiento seleccionado
+	 * @param piscina Variable que indica si el alojamiento tiene piscina
+	 * @param precioPiscina Variable que indica el precio por utilizar la piscina en el alojamiento seleccionado
+	 * @param spa Variable que indica si el alojamiento cuenta con un spa
+	 * @param precioSpa Variable que indica el precio por utilizar el spa en el alojamiento seleccionado
+	 * @param gimnasio Variable que indica si el alojamiento cuenta con un gimnasio
+	 * @param precioGimnasio Variable que indica el precio por utilizar el gimnasio del alojamiento seleccinado
+	 * @param parking Variable que indica si el alojamiento dispone de un parking
+	 * @param precioParking Variable que indica el precio por utilizar el parking del alojamieto seleccionado
+	 * @param restaurante Variable que indica si el alojamiento dispone de un restaurante
+	 * @param bar Variable que indica si el alojamiento dispone de un bar
 	 */
 	public ServiciosAdicionales(int codServicios ,int codAlojamiento, int wifi, float precioWifi, int aire, float precioAire, int piscina, float precioPiscina, int spa, float precioSpa, int gimnasio, float precioGimnasio, int parking, float precioParking, int restaurante, int bar) {
 		this.codServicios = codServicios;
@@ -178,7 +178,7 @@ public class ServiciosAdicionales {
 	/**
 	 * Metodo que sirve para guardar la seleccion del servicio WiFi por parte del usuario
 	 * 
-	 * @param wifiSeleccionado = Establece si el wifi ha sido o no seleccionado por el usuario
+	 * @param wifiSeleccionado Establece si el wifi ha sido o no seleccionado por el usuario
 	 */
 	public void setWifiSeleccionado(boolean wifiSeleccionado) {
 		this.wifiSeleccionado = wifiSeleccionado;
@@ -194,7 +194,7 @@ public class ServiciosAdicionales {
 	/**
 	 * Metodo que sirve para guardar la seleccion del servicio aire acondicionado por parte del usuario
 	 * 
-	 * @param aireSeleccionado = Establece si el aire acondicionado ha sido o no seleccionado por el usuario
+	 * @param aireSeleccionado Establece si el aire acondicionado ha sido o no seleccionado por el usuario
 	 */
 	public void setAireSeleccionado(boolean aireSeleccionado) {
 		this.aireSeleccionado = aireSeleccionado;
@@ -210,7 +210,7 @@ public class ServiciosAdicionales {
 	/**
 	 * Metodo que sirve para guardar la seleccion del servicio piscina por parte del usuario
 	 * 
-	 * @param piscinaSeleccionada = Establece si el servicio de piscina ha sido o no seleccionado por el usuario
+	 * @param piscinaSeleccionada Establece si el servicio de piscina ha sido o no seleccionado por el usuario
 	 */
 	public void setPiscinaSeleccionada(boolean piscinaSeleccionada) {
 		this.piscinaSeleccionada = piscinaSeleccionada;
@@ -226,7 +226,7 @@ public class ServiciosAdicionales {
 	/**
 	 * Metodo que sirve para guardar la seleccion del servicio spa por parte del usuario
 	 * 
-	 * @param spaSeleccionado = Establece si el servicio de spa ha sido o no seleccionado por el usuario
+	 * @param spaSeleccionado Establece si el servicio de spa ha sido o no seleccionado por el usuario
 	 */
 	public void setSpaSeleccionado(boolean spaSeleccionado) {
 		this.spaSeleccionado = spaSeleccionado;
@@ -242,7 +242,7 @@ public class ServiciosAdicionales {
 	/**
 	 * Metodo que sirve para guardar la seleccion del servicio gimnasio por parte del usuario
 	 * 
-	 * @param gimnasioSeleccionado = Establece si el servicio de gimnasio ha sido o no seleccionado por el usuario
+	 * @param gimnasioSeleccionado Establece si el servicio de gimnasio ha sido o no seleccionado por el usuario
 	 */
 	public void setGimnasioSeleccionado(boolean gimnasioSeleccionado) {
 		this.gimnasioSeleccionado = gimnasioSeleccionado;
@@ -258,7 +258,7 @@ public class ServiciosAdicionales {
 	/**
 	 * Metodo que sirve para guardar la seleccion del servicio parking por parte del usuario
 	 * 
-	 * @param parkingSeleccionado = Establece si el servicio de parking ha sido o no seleccionado por el usuario
+	 * @param parkingSeleccionado Establece si el servicio de parking ha sido o no seleccionado por el usuario
 	 */
 	public void setParkingSeleccionado(boolean parkingSeleccionado) {
 		this.parkingSeleccionado = parkingSeleccionado;
@@ -275,7 +275,7 @@ public class ServiciosAdicionales {
 	 * Metodo utilizado para interpretar los resultados del select de servicios, ya que en lugar de un booleano, devuelve 1 o 0 dependiendo de si es true o false, este metodo comprueba el numero y devuelve
 	 * el resultado en forma de booleano
 	 * 
-	 * @param num = Numero que se quiere comprobar
+	 * @param num Numero que se quiere comprobar
 	 * @return Retorna true si el numero introducido es 1 y false si el numero introducido es 0
 	 */
 	public boolean comprobarBoolean(int num) {
@@ -296,7 +296,7 @@ public class ServiciosAdicionales {
 	 * Metodo utilizado para establecer un codigo identificador a la lista de servicios contratados por el usuario actual, mediente una consulta a la base de datos, recibe la cantidad de entradas
 	 * que hay en la tabla de servicios contratados en la base de datos, a la cual le suma 1, lo que seirve como codigo identificados para una contratacion concreta
 	 * 
-	 * @param codServiciosContratados = Codigo que una seleccion de servicios a contratar concreta
+	 * @param codServiciosContratados Codigo que una seleccion de servicios a contratar concreta
 	 */
 	public void setCodServiciosContratados(int codServiciosContratados) {
 		this.codServiciosContratados = codServiciosContratados + 1;

@@ -30,15 +30,15 @@ public abstract class Alojamiento {
    }
    /**
     * Constructor del objeto Alojamiento: contiene la información referente al alojamiento. 
-    * @param codAlojamiento = codigo alojamiento
-    * @param nombre = nombre del alojamiento
-    * @param direcion = direccion del alojamiento
-    * @param telefono = telefono del alojamiento
-    * @param numHabitaciones = número de habitaciones que tiene el alojamiento
-    * @param ubicacion = Ciudad en la que se encuentra el alojamiento
-    * @param precioAlojamiento = precio del alojamiento
-    * @param arrayNombreHabitaciones = contiene el nombre de los diferentes tipos de Habitaciones que hay
-    * @param arrayNumHabitaciones = contiene el numero de habitaciones de cada tipo que hay en el alojamiento
+    * @param codAlojamiento codigo alojamiento
+    * @param nombre nombre del alojamiento
+    * @param direcion direccion del alojamiento
+    * @param telefono telefono del alojamiento
+    * @param numHabitaciones número de habitaciones que tiene el alojamiento
+    * @param ubicacion Ciudad en la que se encuentra el alojamiento
+    * @param precioAlojamiento precio del alojamiento
+    * @param arrayNombreHabitaciones contiene el nombre de los diferentes tipos de Habitaciones que hay
+    * @param arrayNumHabitaciones contiene el numero de habitaciones de cada tipo que hay en el alojamiento
     */
     public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad, String [] arrayNombreHabitaciones, int [] arrayNumHabitaciones ) {
 	this.codAlojamiento = codAlojamiento;
@@ -55,16 +55,17 @@ public abstract class Alojamiento {
     
    /**
     * Constructor del objeto Alojamiento: contiene la información referente al alojamiento. con numHabDisponibles para hoteles
-    * @param codAlojamiento = codigo alojamiento
-    * @param nombre = nombre del alojamiento
-    * @param direcion = direccion del alojamiento
-    * @param telefono = telefono del alojamiento
-    * @param numHabitaciones = número de habitaciones que tiene el alojamiento
-    * @param numHabDisponibles = número de habitaciones disponibles que tiene el alojamiento
-    * @param ubicacion = Ciudad en la que se encuentra el alojamiento
-    * @param precioAlojamiento = precio del alojamiento
-    * @param arrayNombreHabitaciones = contiene el nombre de los diferentes tipos de Habitaciones que hay
-    * @param arrayNumHabitaciones = contiene el numero de habitaciones de cada tipo que hay en el alojamiento
+    * @param codAlojamiento codigo alojamiento
+    * @param nombre nombre del alojamiento
+    * @param direccion direccion del alojamiento
+    * @param telefono telefono del alojamiento
+    * @param numHabitaciones número de habitaciones que tiene el alojamiento
+    * @param numHabDisponibles número de habitaciones disponibles que tiene el alojamiento
+    * @param ubicacion Ciudad en la que se encuentra el alojamiento
+    * @param precioAlojamiento precio del alojamiento
+    * @param popularidad contiene informacion de la popularidad del alojamiento
+    * @param arrayNombreHabitaciones contiene el nombre de los diferentes tipos de Habitaciones que hay
+    * @param arrayNumHabitaciones contiene el numero de habitaciones de cada tipo que hay en el alojamiento
     */
     public Alojamiento(int codAlojamiento, String nombre,String direccion, String telefono, int numHabitaciones,int numHabDisponibles, String ubicacion, float precioAlojamiento, int popularidad, String [] arrayNombreHabitaciones, int [] arrayNumHabitaciones) {
 	this.codAlojamiento = codAlojamiento;
@@ -84,28 +85,28 @@ public abstract class Alojamiento {
     
     /**
      * Getter del códigoAlojamiento = es un atributo de la clase Alojamiento
-     * @return codAlojamiento
+     * @return codAlojamiento = es un atributo de la clase Alojamiento
      */
     public int getCodAlojamiento() {
         return codAlojamiento;
     }
     /**
      * Setter del codAlojamiento
-     * @param codAlojamiento
+     * @param codAlojamiento = es un atributo de la clase Alojamiento
      */
     public void setCodAlojamiento(int codAlojamiento) {
         this.codAlojamiento = codAlojamiento;
     }
     /**
      * Getter del nombre de alojamiento = es un atributo del objeto Alojamiento
-     * @return nombre
+     * @return nombre = es un atributo de la clase Alojamiento
      */
     public String getNombre() {
         return nombre;
     }
     /**
      * Setter del nombre
-     * @param nombre
+     * @param nombre =es un atributo de la clase Alojamiento
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -127,14 +128,14 @@ public abstract class Alojamiento {
 	}
 	/**
      * Getter del número de habitaciones  = es un atributo del objeto Alojamiento
-     * @return numHabitaciones
+     * @return numHabitaciones =es un atributo de la clase Alojamiento
      */
     public int getNumHabitaciones() {
         return numHabitaciones;
     }
     /**
      * Setter del número de habitaciones
-     * @param numHabitaciones
+     * @param numHabitaciones =es un atributo de la clase Alojamiento
      */
     public void setNumHabitaciones(int numHabitaciones) {
         this.numHabitaciones = numHabitaciones;
@@ -150,28 +151,28 @@ public abstract class Alojamiento {
 	}
 	/**
      * Getter de la ubicación = es un atributo de la clase Alojamiento , Después sera el nombre de la ciudad en la que está el alojamiento  
-     * @return ubicacion
+     * @return ubicacion = es un atributo de la clase Alojamiento
      */
     public String getUbicacion() {
         return ubicacion;
     }
     /**
      * Setter de la ubicación
-     * @param ubicacion
+     * @param ubicacion = es un atributo de la clase Alojamiento
      */
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
     /**
      * Getter del Precio Alojamiento = es un atributo del objeto Alojamiento
-     * @return precioAlojamiento
+     * @return precioAlojamiento = es un atributo de la clase Alojamiento
      */
     public float getPrecioAlojamiento() {
         return precioAlojamiento;
     }
     /**
      * Setter del PrecioAlojamiento
-     * @param precioAlojamiento
+     * @param precioAlojamiento = es un atributo de la clase Alojamiento
      */
     public void setPrecioAlojamiento(float precioAlojamiento) {
         this.precioAlojamiento = precioAlojamiento;
@@ -184,10 +185,7 @@ public abstract class Alojamiento {
 	public void setPopularidad(int popularidad) {
 		this.popularidad = popularidad;
 	}
-	/**
-     * Getter del arrayList listaHabitaciones
-     * @return
-     */
+
    
 	public void setListaHabSeleccionadas(ArrayList<Dormitorio> listaHabSeleccionadas) {
 		this.listaHabSeleccionadas = listaHabSeleccionadas;

@@ -11,12 +11,12 @@ public class Casa extends Alojamiento{
     }
     /**
      * constructor del objeto Casa
-     * @param codAlojamiento =código de la Casa
-     * @param nombre = nombre de la Casa
-     * @param numHabitaciones = número de habitaciones de la Casa
-     * @param ubicacion = ciudad en la que se encuentra la Casa
-     * @param numBanos = número de baños de la Casa
-     * @param metrosCuadrados = metrosCuadrados de la Casa
+     * @param codAlojamiento código de la Casa
+     * @param nombre nombre de la Casa
+     * @param numHabitaciones número de habitaciones de la Casa
+     * @param ubicacion ciudad en la que se encuentra la Casa
+     * @param numBanos número de baños de la Casa
+     * @param metrosCuadrados metrosCuadrados de la Casa
      *  
      */
     public Casa(int codAlojamiento, String nombre, String direccion, String telefono, int numHabitaciones, String ubicacion, float precioAlojamiento, int popularidad, int numBanos, float metrosCuadrados, String [] arrayNombreHabitaciones, int [] arrayNumHabitaciones ) {

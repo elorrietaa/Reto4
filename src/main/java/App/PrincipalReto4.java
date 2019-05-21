@@ -9,7 +9,7 @@ import vista.JframePrincipal;
  * @author alba
  *
  */
-public class PrincipalReto4 {  
+public class PrincipalReto4 {   
     public static void main(String[] args) {
     	//Declaración a inicialización de vista, modelo y controlador
     	JframePrincipal vista = new JframePrincipal();
@@ -21,4 +21,4 @@ public class PrincipalReto4 {
     }  
 
 }  
- 
+  

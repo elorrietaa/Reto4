@@ -48,7 +48,7 @@ public class FuncionesReserva {
 	 * @return Retorna el precio de la reserva 
 	 */
 	public float calcularPrecioTotalFinalReserva(TipoAlojamiento tiposAloj) {
-		float precioReserva=0;
+		float precioReserva=0; 
 		
 		//(1º) el precio de la casa/apartamento en función del NÚMERO DE NOCHES seleccionadas por el usuario Y DE LA TARIFA (y festivos)
 		if(tiposAloj.getCodTipoAlojamiento() == 10) {	
@@ -178,7 +178,11 @@ public class FuncionesReserva {
 		  return precioTarifaAplicada;
 	}
 	
-	
+	/**
+	 * Método calcularSuplementoFestivos = calcula el precio del alojamiento teniendo en cuenta los suplementos festivos.
+	 * @param precioAloj
+	 * @return
+	 */
 	public float calcularSuplementoFestivos(float precioAloj) {
 		float suplementoFestivos =0;
 		

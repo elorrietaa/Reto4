@@ -16,5 +16,9 @@
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Reto4BBDD"/>
 	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-all-1.8.4.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-core-2.24.0.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-core-2.7.22.jar"/>
+	<classpathentry kind="lib" path="lib/powermock-mockito-release-full-1.5.4-full.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

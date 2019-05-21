@@ -43,7 +43,7 @@ public class FuncionesReserva {
 	/**
 	 * Metodo para calcular el precio de la reserva del hotel
 	 * 
-	 * @param reserva Objeto con la informacion de la reserva
+	 * @param tiposAloj Variable que guarda el tipo de alojamieto seleccionado
 	 * 
 	 * @return Retorna el precio de la reserva
 	 */
@@ -98,8 +98,7 @@ public class FuncionesReserva {
 	 * función del número de noches normales y numero de noches en fechas de tarifa estival seleccionadas
 	 * 
 	 * @param precioAloj Variable que almacena el precio del alojamiento
-	 * @param NumNochesPorTarifa es un array que contiene en su primera posición [0] el número de noches a las que se aplica la tarifa normal y en [1] el número de noches a las que se
-	 * aplica la tarifa estival
+	 * @param tiposAloj Variable que guarda el tipo de alojamiento que se ha seleccionado
 	 * @return precioTarifaAplicada
 	 */
 	public float calcularPrecioPorTarifa(TipoAlojamiento tiposAloj, float precioAloj) {
@@ -120,8 +119,7 @@ public class FuncionesReserva {
 
 		// muestra los detalles de la tarifa aplicada, el número de noches y el precio
 		// en detallesReservaCasaApart
-		mostrarDetTipoTarifaCasApart(NumNochesPorTarifa, precioAloj, precioTarifaNormal, precioTarifaEstival,
-				precioTarifaAplicada, numNoches);
+		mostrarDetTipoTarifaCasApart(NumNochesPorTarifa, precioAloj, precioTarifaNormal, precioTarifaEstival, precioTarifaAplicada, numNoches);
 
 		return precioTarifaAplicada;
 	}

@@ -128,7 +128,6 @@ public class FuncionesReserva {
 	 * Método calcularSuplementoFestivos calcula el precio del alojamiento teniendo en cuenta los suplementos festivos.
 	 * 
 	 * @param precioAloj Variable que almacena el precio del alojamiento
-	 * Método calcularSuplementoFestivos = calcula el precio del alojamiento teniendo en cuenta los suplementos festivos.
 	 * @return suplementoFestivos
 	 */
 	public float calcularSuplementoFestivos(float precioAloj) {

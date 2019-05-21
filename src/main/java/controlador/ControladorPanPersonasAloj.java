@@ -115,7 +115,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	
 	/**
 	 * Método guardarPersonaAlojada = guarda los datos de la persona alojada introducidos por el usuario. 
-	 * @return
+	 * @return personaAlojada 
 	 */
 	public Cliente guardarPersonaAlojada() {
 	    Cliente personaAlojada = new Cliente();
@@ -146,7 +146,6 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	/**
 	 * Método guardarListaPersonasAlojadas = guarda la persona añadida por el usuario en la lista listaPersonasAlojadas
 	 * @param personasAlojada
-	 * @return
 	 */
 	public void guardarListaPersonasAlojadas(Cliente personasAlojada) {
 	    //metemos el objeto que llega por parámetro en el arrayList
@@ -176,7 +175,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	
 	/**
 	 * Método mostrarIndicePersonaSeleccionada = muestra el índice deleccionado por el usuario en la tablaPersonasAlojadas
-	 * @return
+	 * @return filaPersonaSelec
 	 */
 	public int mostrarIndicePersonaSeleccionada() {
 	    //se guarda en filaDormSel la posición seleccionada en la tabla
@@ -206,7 +205,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 		
 		// comprobamos que boton se ha pulsado y ejecutamos sus acciones
 		switch (botonPulsado) {
-		
+			/**
+			* El boton atrás resetea todo el panelPersnonasAloj
+			*/
 			case "Atrás":
 				if(modelo.tiposAloj.getCodTipoAlojamiento() == 10) {
 				    
@@ -223,7 +224,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 					vista.panPersonasAlojadas.setVisible(false);
 			    }
 				break;
-				
+			/**
+			* El boton Añadir, añade al Jtable una fila , validando antes el dni
+			*/
 			case "Añadir":
 			    //Se valida que los datos intorducidos por el usuario sean correctos.
 			    boolean anadirDatos = validarDatosPersonasAloj();
@@ -243,7 +246,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    
 			    
 			    	break;
-			    	
+			/**
+			 * El boton Borrar , quita la persona del Jtable .    	
+			 */
 			case "Borrar":
 			    //se guarda la posición seleccionada en la tabla (la posición que se desea eliminar)
 			    filaPersonaSelec = mostrarIndicePersonaSeleccionada();
@@ -261,7 +266,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    
 			   
 			    	break;  
-			    	
+			/**
+			 * El boton continuar encripta los datos de las personasAlojadas y pasa a la  siguiente pantalla    	
+			 */
 			case "Continuar":
 			    
 				//si no se ha insertado ninguna persona alojada, muestra mensaje
@@ -277,7 +284,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
 			    vista.pago.setVisible(true);
 				break;
 
-			    
+			/**
+			 * El boton cancelar borra todos los datos y vuelve al principio    
+			 */
 			case "Cancelar":
 				vista.bienvenida.setVisible(true);
 				vista.panPersonasAlojadas.setVisible(false);

@@ -15,7 +15,7 @@ public class Hotel extends Alojamiento{
   
 	/**
      * constructor del objeto Hotel
-     * @param codAlojamiento =código del hotel
+     * @param codAlojamiento = código del hotel
      * @param nombre = nombre del hotel
      * @param numHabitaciones = número de habitaciones del hotel
      * @param ubicacion = ciudad en la que se encuentra el hotel

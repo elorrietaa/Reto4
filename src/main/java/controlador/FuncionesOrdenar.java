@@ -55,8 +55,6 @@ public class FuncionesOrdenar {
 		    serviciosSelec = serviciosSelec + "and Bar = 1 ";
 		}
 		
-		//prueba
-		System.out.println("^*^*^*^*^* FILTROS SELECCIONADOS ^*^^*^*^*^*^*^*");
 		
 		return serviciosSelec;
 	}
@@ -80,12 +78,6 @@ public class FuncionesOrdenar {
 		   listaHotelesOrdenada = crearQuerisFiltrosHoteles(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 	   }
 	   
-
-	   for(int i=0; i<listaHotelesOrdenada.size();i++) {
-			 
-			     System.out.println("LISTA ALOJAMIENTOS ORDENADOS POR ***la opcion seleccionada por el usuario* " +listaHotelesOrdenada.get(i).getNombre() + " - "+ listaHotelesOrdenada.get(i).getPopularidad());
-			  }
-	 
 	    return listaHotelesOrdenada;
 	}
 	
@@ -136,7 +128,14 @@ public class FuncionesOrdenar {
 		vista.buscarAlojamiento.chckbxRestSel.setSelected(false);
 		vista.buscarAlojamiento.chckbxBarSel.setSelected(false);
 	}
-
+	/**
+	 * Este metodo construye una query o otra dependiendo lo que ha seleccionado el usuario.
+	 * @param codCiudadSeleccionada
+	 * @param codTipoAlojSeleccionado
+	 * @param ordenarPor
+	 * @param ascDesc
+	 * @return listaHoteles.
+	 */
 	public ArrayList<Hotel> crearQuerisFiltrosHoteles(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	    String query = "";
 	    String serviciosSelec = rellenarArrayFiltrosSeleccionados();
@@ -183,12 +182,6 @@ public class FuncionesOrdenar {
 		    //listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		   listaCasaesOrdenada = crearQuerisFiltrosCasas(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 	   }
-	   
-
-	   for(int i=0; i<listaCasaesOrdenada.size();i++) {
-			 
-			     System.out.println("LISTA ALOJAMIENTOS ORDENADOS POR ***la opcion seleccionada por el usuario* " +listaCasaesOrdenada.get(i).getNombre() + " - "+ listaCasaesOrdenada.get(i).getPopularidad());
-			  }
 	 
 	    return listaCasaesOrdenada;
 	}
@@ -276,12 +269,6 @@ public class FuncionesOrdenar {
 		    //listaHotelesOrdenada = modelo.consultas.buscarHotelPorCodCiudad(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 		   listaApartamentosOrdenados = crearQuerisFiltrosApartamentos(codCiudadSeleccionada, codTipoAlojSeleccionado, ordenarPor, ascDesc);
 	   }
-	   
-
-	   for(int i=0; i<listaApartamentosOrdenados.size();i++) {
-			 
-			     System.out.println("LISTA ALOJAMIENTOS ORDENADOS POR ***la opcion seleccionada por el usuario* " +listaApartamentosOrdenados.get(i).getNombre() + " - "+ listaApartamentosOrdenados.get(i).getPopularidad());
-			  }
 	 
 	    return listaApartamentosOrdenados;
 	}

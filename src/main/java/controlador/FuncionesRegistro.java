@@ -153,7 +153,9 @@ public class FuncionesRegistro {
 		return cliente;
 		
 	}
-	
+	/**
+	 * Este método oculta los botones
+	 */
 	public void ocultarBotones() {
 		vista.buscarAlojamiento.btnInicioSesion.setVisible(false);
 		vista.buscarAlojamiento.btnInicioSesion.setEnabled(false);
@@ -181,7 +183,9 @@ public class FuncionesRegistro {
 		vista.detallesReservaCasaApart.btnCerrarSesion.setEnabled(true);
 		
 	}
-	
+	/**
+	 * Este método muestra lo Botones y oculta otros.
+	 */
 	public void mostrarBotones() {
 		vista.buscarAlojamiento.btnInicioSesion.setVisible(true);
 		vista.buscarAlojamiento.btnInicioSesion.setEnabled(true);

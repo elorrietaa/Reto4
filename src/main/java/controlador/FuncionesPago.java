@@ -22,7 +22,7 @@ public class FuncionesPago {
 	 * 
 	 * @param arrayRedimensionar Es el array que se desea redimensionar, se le para como parametro a la funcion
 	 * 
-	 * @return Devuelve el array una vez ha sido redimensionado y se ha copiado el contenido del array que se queria redimensionar
+	 * @return arrayRedimensionado. Devuelve el array una vez ha sido redimensionado y se ha copiado el contenido del array que se queria redimensionar
 	 */
 	public static float[] redimensionarArrayMayor(float[] arrayRedimensionar) {
 		int tamano = arrayRedimensionar.length + 1;
@@ -37,7 +37,7 @@ public class FuncionesPago {
 	 * 
 	 * @param arrayRedimensionar Es el array que se desea redimensionar, se le para como parametro a la funcion
 	 * 
-	 * @return Devuelve el array una vez ha sido redimensionado y se ha copiado el contenido del array que se queria redimensionar
+	 * @return arrayRedimensionado. Devuelve el array una vez ha sido redimensionado y se ha copiado el contenido del array que se queria redimensionar
 	 */
 	public float[] redimensionarArrayMenor(float[] arrayRedimensionar) {
 		int tamano = arrayRedimensionar.length - 1;
@@ -53,7 +53,7 @@ public class FuncionesPago {
 	 * @param total Dinero total que se debe introducir
 	 * @param dinero Dinero que se ha introducido hasta el momento
 	 * 
-	 * @return Retorna el dinero que falta por introducir
+	 * @return falta.Retorna el dinero que falta por introducir.
 	 */
 	public float falta(float total, float dinero){	
 		
@@ -72,7 +72,7 @@ public class FuncionesPago {
 	 * @param total Dinero total que se debe introducir
 	 * @param dinero Dinero total que se ha introducido
 	 * 
-	 * @return Retorna el menor numero de monedas que se deben retornar
+	 * @return devolver.Retorna el menor numero de monedas que se deben retornar
 	 */
 	public String sobra(float total, float dinero){
 		float sobra = 0f;

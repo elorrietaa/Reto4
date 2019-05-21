@@ -70,79 +70,20 @@ public class FuncionesReserva {
 		
 		//(3º) metemos el precio total de la reserva en el modelo:
 		modelo.precioTotal = precioReserva;
-		System.out.println("EL PRECIO TOTAL DE LA RESERVA de la CASA/APARTAMENTO ES "+modelo.precioTotal);
 		
 		return precioReserva;
 	}
 	
-/*	/**
-	 * Metodo para calcular el precio de la reserva del hotel
-	 * 
-	 * @param reserva Objeto con la informacion de la reserva
-	 * 
-	 * @return Retorna el precio de la reserva 
-	 */
-	/*	public float calcularPrecioReservaHotel( ArrayList<Dormitorio> listaHabSeleccionadas) {
-		float precioReserva=0;
-		
-		//(1º) el precio total de la reserva será la suma de los precios de las habitaciones seleccionadas
-		for(int i=0; i<listaHabSeleccionadas.size();i++) {
-			precioReserva = precioReserva + listaHabSeleccionadas.get(i).getPrecioHabitacion();
-		}
-		
-		
-		//(2º) calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
-		int numNoches = calcularNochesReservadas();  
-		
-		precioReserva = precioReserva*numNoches;
-		
-		//(3º)Redondeamos a 2 decimales
-		precioReserva = Math.round(precioReserva*100); //redondear a dos decimales
-		precioReserva = precioReserva/100;//redondear a dos decimales
-		
-		//(4º) metemos el precio total de la reserva en el modelo:
-		modelo.precioTotal = precioReserva;
-		System.out.println("EL PRECIO TOTAL DE LA RESERVA DE TODAS LAS HABS DEL HOTEL ES calcularPrecioReservaHotel "+modelo.precioTotal);
-		
-		return precioReserva;
-	}
-	
-	/** 
-	 * Método calcularPrecioHabXNoches = calcula el precio de una habitación por el número de noches que se desea reservar
-	 * @param listaHabSeleccionadas = se le pasa la lista con la shabitaciones seleccionadas
-	 * @param pos = la posición que está recorriendo un for.
-	 * @return
-	 */
-	/*	public float calcularPrecioHabXNoches( ArrayList<Dormitorio> listaHabSeleccionadas, int pos) {
-		float precioHabXnoches=0;
-		 DecimalFormat f = new DecimalFormat("##.00");
-		 
-		//(1º) Calcular el precio en función del NÚMERO DE NOCHES seleccionadas por el usuario.
-		int numNoches = calcularNochesReservadas();
-		
-		//calcular el precio de la habitacion x noches.
-		precioHabXnoches = listaHabSeleccionadas.get(pos).getPrecioHabitacion() * numNoches;
-		
-		precioHabXnoches = Math.round(precioHabXnoches*100); //redondear a dos decimales
-		precioHabXnoches = precioHabXnoches/100;//redondear a dos decimales
-		
-		/*
-		//CALCULA EL PRECIO DE LAS HABITACIONES EN FUNCIÓN DE LA TARIFA SELECCIONADA
-		 precioHabXnoches = calcularPrecioPorTarifa(listaHabSeleccionadas.get(pos).getPrecioHabitacion() );
-		*/		
-	/*		return precioHabXnoches;
-	}
-*/
 	
 	/**
 	 * Método calcularNochesReservadas = calcula el número de noches reservadas por el usuario.
+	 * @return numNoches.
 	 */
 	public int calcularNochesReservadas() { 
 		int numNoches=(int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
 		 
 		//metemos el número de noches en el modelo:
 		modelo.numNoches = numNoches;
-		System.out.println("Noches reservadas:  "+modelo.numNoches);
 		
 		//mostramos num de noches en la vista 
 		vista.detallesReserva.textFieldNumNoches.setText(Integer.toString(modelo.numNoches));
@@ -154,7 +95,7 @@ public class FuncionesReserva {
 	 * Método calcularPrecioPorTarifa = calcula el precio en función de las fechas seleccionadas aplicando el precio de la tarifa normal o tarifa estival en función del número de noches normales y numero de noches en fechas de tarifa estival seleccionadas
 	 * @param precioAloj
 	 * @param NumNochesPorTarifa = es un array que contiene en su primera posición [0] el número de noches a las que se aplica la tarifa normal y en [1] el número de noches a las que se aplica la tarifa estival
-	 * @return
+	 * @return precioTarifaAplicada
 	 */
 	
 	public float calcularPrecioPorTarifa(TipoAlojamiento tiposAloj, float precioAloj) {
@@ -225,51 +166,37 @@ public class FuncionesReserva {
 	   
 	   //1º Posibilidad: que toda la reserva esté en tarifa estival: mes entrada >= Junio y mes salida <= Septiembre
 	   if(mesIda>=5 && mesVuelta <=8) {
-		   numNochesEstival = (int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
-			System.out.println("-------------------------------------->SI es tarifa estival" + " Num noches tarifa estival: " + numNochesEstival);
-			
+		   numNochesEstival = (int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);			
 		    }
 	   
 	   //2º Posibilidad: Que la primera parte de la reserva seatarifa normal y la última tarifa estival. 
 	   else if (mesIda<5 && (mesVuelta>=5 && mesVuelta <=8)) {
 		   numNochesEstival =(int) ((inicioEstival.getTime()-modelo.fechaIda.getTime())/86400000)+1;
-		   numNochesNormal =(int) ((modelo.fechaVuelta.getTime()-inicioEstival.getTime())/86400000);
-		   System.out.println("-------------------------------------->Empieza NO estival y termina SI estival" + " Num noches tarifa estival: " + numNochesEstival + " Num noches tarifa no estival: " + numNochesNormal);
-	   }
+		   numNochesNormal =(int) ((modelo.fechaVuelta.getTime()-inicioEstival.getTime())/86400000);	   }
 	   
 	   //3º Posibilidad: Que la primera parte de la reserva no sea tarifa estival y la última sea tarifa estival. 
 	   else if ((mesIda>=5 && mesIda <=8)&& (mesVuelta>8)) {
 		   numNochesEstival =(int) ((finEstival.getTime()-modelo.fechaIda.getTime())/86400000)+1;
 		   numNochesNormal =(int) ((modelo.fechaVuelta.getTime()-finEstival.getTime())/86400000);
-		   System.out.println("-------------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa estival: " + numNochesEstival + " Num noches tarifa no estival: " + numNochesNormal);
 	   }
 	   else {
 		   numNochesNormal = (int) ((modelo.fechaVuelta.getTime()-modelo.fechaIda.getTime())/86400000);
 	   }
 	 
-	   //pruebaaaas
-			   if(modelo.fechaIda.after(inicioEstival) && modelo.fechaVuelta.before(finEstival)) {
-				System.out.println("-------------------------------------->1es tarifa estival");
-			    }
-			   
-			   
-			  
-			   
-	   //pruebassss
 	
 	   //se rellena el array
 		NumNochesPorTarifa[0] = numNochesNormal;
 		NumNochesPorTarifa[1] = numNochesEstival;
 		NumNochesPorTarifa[2] = numNochesFestivos;
-		System.out.println("--ARRAY --NumNochesPorTarifa---------------------------------->Empieza Si estival y termina No estival" + " Num noches tarifa normal: " + NumNochesPorTarifa[0] + " Num noches tarifa estival: " + NumNochesPorTarifa[1] + "num noches festivo" + NumNochesPorTarifa[2]);
-
+	
 
 	    return NumNochesPorTarifa;
 	}
 	
 	/**
 	 * Método calcularNumNochesFestivos = calcula el número de noches a los que se le aplicará la tarifa festivo en las fechas seleccionadas por el usuario.
-	 * @return
+	 * @param precioAloj = es el precio de alojamiento sin servicios.
+	 * @return numNochesFestivos
 	 */
 	public int calcularNumNochesFestivos(float precioAloj) {
 		int numNochesFestivos = 0;
@@ -285,12 +212,6 @@ public class FuncionesReserva {
 		int [] mesesFestivos = modelo.fechasTarifas.mesesFestivos; // array con los meses festivos
 		String [] nombreFestivos = modelo.fechasTarifas.nombreFestivos; // array con el nombre de los festivos
 	
-		for (int i=0; i<modelo.fechasTarifas.diasFestivos.length; i++ ) {
-			
-			//no va // System.out.println("--ARRAY -->--> Probando arrayDatosFestivos" +  arrayDatosFestivos[0] + arrayDatosFestivos[1] + arrayDatosFestivos[2]);
-			System.out.println("--ARRAY -->-->--> "+diasFestivos[i]+" - "+ mesesFestivos[i] +" - "+ nombreFestivos[i]);
-		}
-		
 		//Teniendo en cuenta que las reservas que se pueden realizar son máximo de 30 días
 		// EXPLICACIÓN FÓRMULA: El festivo está en el rango de fechas seleccionadas si:  La fechaIdaSeleccionada coincide con fechafestivo || (mesSeleccionado == mes anterior al mes festivo || mesSeleccionado == mesFestivo) && (mesSeleccionado == mes festivo || mesSeleccionado == mes siguiente al mesFestivo)
 
@@ -319,16 +240,12 @@ public class FuncionesReserva {
 			numNochesFestivos = numNochesFestivos + 1; 
 			nombreFestivosReser = nombreFestivosReser + " Día: " + 25 + " - " + " Mes: "+ 12 +" - " + " Festivo: " + "Navidad";
 		}
-	
-		System.out.println("numNochesFestivos" + numNochesFestivos+ "nombreFestivosReser"+ nombreFestivosReser);
 		//FALTA se mete el nombreFestivosReser en el modelo.reserva  o se muestra en un jtext
 		
 		if(numNochesFestivos > 0) {
 			float suplementoFestivos = calcularSuplementoFestivos(precioAloj);
 			vista.detallesReservaCasaApart.textDetFestivos.setText((String) "Además, su reserva incluye "+ numNochesFestivos + " festivos:" + "\n" + 
 					nombreFestivosReser + "Suplemento por festivo: "+ (String.format("%.2f", (precioAloj * 0.20)) +   "€" +"\n"));
-
-	
 		}
 		 
 		return numNochesFestivos;
@@ -363,19 +280,13 @@ public class FuncionesReserva {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 		String horaActual = dateFormat.format(horaActual1);
 		
-		//meter en el modelo reserva
-		//modelo.reserva.setFechaBases((java.sql.Date) fechaActual); 	
-		//modelo.reserva.setHoraBases(horaActual); 	
-		
-		//prueba
-		System.out.println("Fecha actual" + fechaActual);
-		System.out.println("Hora actual" +horaActual);	
 	}
 	
 
 	
 	/**
 	 * Método: guardarReservaAlojamiento = Genera la reserva de la casa/alojamiento y la guarda en modelo.reserva
+	 * @param tiposAloj = es el tipo de alojamiento(hotel,casa,apartamento).
 	 */
 	public void guardarReservaAlojamiento(TipoAlojamiento tiposAloj) {
 		
@@ -406,13 +317,11 @@ public class FuncionesReserva {
 		modelo.reserva.setFechaVuelta(modelo.fechaVuelta);
 		modelo.reserva.setPrecioReserva(calcularPrecioTotalFinalReserva(tiposAloj));
 			    
-		//probamos que la reserva se haya creado y rellenado correctamente
-		 System.out.println("------->La reserva de la casa o apartamento es: " +"Código reserva: " + modelo.reserva.getCodReserva() + "cod alojamiento reservado " +  modelo.reserva.getAlojamiento().getCodAlojamiento() + "precio reserva alojamiento: "+  modelo.reserva.getPrecioReserva());
-		
 		}
 
 	/**
-	 * Método mostrarDatosReservacasaApart = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
+	 * Método mostrarDatosReservacasaApart = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario.
+	 * @param tiposAloj. 
 	 */
 	public void mostrarDatosReservaAloj(TipoAlojamiento tiposAloj) {
 	    	//muestra el nombre del alojamiento
@@ -454,41 +363,7 @@ public class FuncionesReserva {
 	  vista.detallesReservaCasaApart.textFieldDetHabs.setText((String) textoDetHabs);
 	  		
 	}
-	
-/*	
-	/**
-	 * Método mostrarDatosReserva = muestra los datos de la reserva. Los datos de la reserva son aquellos datos seleccionados por el usuario. 
-	 */
-/*	public void mostrarDatosReserva(ArrayList<Dormitorio> listaHabSeleccionadas) {
-		//muestra datos del alojamiento
-		vista.detallesReserva.textPDatosAlo.setText((String) "Ciudad: " + modelo.reserva.getAlojamiento().getUbicacion() + "\n" + "Código del hotel: "+ modelo.reserva.getAlojamiento().getCodAlojamiento() + "\n" + "Hotel: " +modelo.reserva.getAlojamiento().getNombre()+"\n" + "Número de estrellas:" + modelo.hotel.getEstrellas() );
-		
-		//muestra el PRECIO TOTAL DE LA RESERVA: 
-		calcularPrecioReservaHotel(listaHabSeleccionadas);
-		
-		//SE MUESTRA EL PRECIO TOTAL:
-	  	vista.detallesReserva.tFPrecioReserva.setText((String.format("%.2f", modelo.precioTotal))+ " €");
-	}
-*/	
-	/**
-	 * Método insertarReservasHabitacionesSel = inserta en la base de datos las reservas de las habitaciones seleccionadas del hotel (inserta una reserva por cada habitación de hotel seleccionada)
-	 */
-	/*public void insertarReservasHabitacionesSel() {
-		
-		for(int i=0; modelo.listaReservas.size()>i; i++) {
-			modelo.consultas.insertarReserva(modelo.listaReservas, i, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta);
-		}
-	}
-	*/
-	/**
-	 * Método insertarReservaHabitacionSel = inserta en la base de datos la reserva de las habitacion seleccionada del hotel 
-	 */
-/*	public void insertarReservaHabitacionSel() {
-		
-		modelo.consultas.insertar1Reserva(modelo.reserva, modelo.habitacion, modelo.cliente.getDni(), modelo.fechaIda, modelo.fechaVuelta,fechaAcutual,horaActual);
-		 
-	}
-*/	
+
 	/**
 	 * Método generarFicherosReservasHabitacionesSel = genera un fichero por cada habitación de hotel reservada.
 	 */
@@ -527,7 +402,7 @@ public class FuncionesReserva {
 	/**
 	 * Método: mostrarTiposDeCamas = devuelve un String que contiene el número de camas de cada tipo que hay.
 	 * @param listaCamas
-	 * @return
+	 * @return tiposCamaHab
 	 */
 	public String mostrarTiposDeCamas(ArrayList<Cama> listaCamas) {
 		String tiposCamaHab = "";
@@ -548,16 +423,13 @@ public class FuncionesReserva {
 		}
 		//se rellena el String con los tipos de cama 
 		tiposCamaHab = numTipCam[0] + " simple, " + numTipCam[1] + " matrimonio y " + numTipCam[2] + " infantil.";
-		System.out.println("Tipos de cama dela habitacion" + tiposCamaHab);
-		
-	
 		
 		return tiposCamaHab;
 	}
 	
 	 /**
      * El método guardarNumHabTipoDeCasaApart = rellena un array arrayNumHabitaciones que contiene el número de habitaciones de cada tipo de habitacion y lo guarda en el modelo 
-     * @return
+     * @return arrayNumHabitaciones
      */
     public int [] guardarNumHabTipoDeCasaApart() {
     	String detallesHabs = "";
@@ -580,7 +452,6 @@ public class FuncionesReserva {
       	 
       	  for(int i=0; i<arrayNombreHabitaciones.length; i++) {
           	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(modelo.casa.getCodAlojamiento(), arrayNombreHabitaciones[i]);
-  			System.out.println("1arrayNombreHabitaciones" + arrayNombreHabitaciones[i] + "-->" + arrayNumHabitaciones[i] );
           }
         
         }
@@ -589,7 +460,6 @@ public class FuncionesReserva {
       	
       	  for(int i=0; i<arrayNombreHabitaciones.length; i++) {
          	arrayNumHabitaciones[i] = modelo.consultas.buscarNumHabDeCadaTipo(modelo.apartamento.getCodAlojamiento(), arrayNombreHabitaciones[i]);
- 			System.out.println("1arrayNombreHabitaciones" + arrayNombreHabitaciones[i] + "-->" + arrayNumHabitaciones[i] );
           }
         }
         
@@ -599,10 +469,9 @@ public class FuncionesReserva {
 	/**
 	 * Método: mostrarOcupacionHab = devuelve un int que contiene el número de ocupantes de la habitacion
 	 * @param listaCamas
-	 * @return
+	 * @return ocupacion.
 	 */
 	public int mostrarOcupacionHab(ArrayList<Cama> listaCamas) {
-		System.out.println("****Ocupacion DE LA HABITACIÓN SELECCIONADA***");
 		int ocupacion = 0;
 		int numTipCam [] = new int [3];
 		
@@ -616,14 +485,10 @@ public class FuncionesReserva {
 			else if(listaCamas.get(i).getTipoCama().toString().equalsIgnoreCase("infantil")) {
 				numTipCam[2] = numTipCam[2] + 1;
 			}
-			System.out.println(listaCamas.get(i).getTipoCama().toString());
 		
 		}
 		//se rellena la variable ocupacion con el numero de ocupantes de las camas de la habitacion
 		ocupacion = numTipCam[0] * 1 + numTipCam[1] * 2 + numTipCam[2] *1;
-		System.out.println("-->--->--->--->--->--->ocupacion" + ocupacion);
-		//modelo.ocupacionFinal=ocupacion;
-		//System.out.println("-->--->--->--->--->--->ocupacion en el modelo" + modelo.ocupacionFinal);
 		
 		return ocupacion;
 	}

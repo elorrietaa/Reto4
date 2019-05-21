@@ -12,13 +12,20 @@ public class FuncionesServicios {
 	private PrincipalControlador controlador;
 	
 	public ServiciosAdicionales servicios;
-	
+	/**
+	 * Este es el constructor de funcionesServicios, al cual le pasamos el modelo,vista y controlador.
+	 * @param modelo
+	 * @param vista
+	 * @param controlador
+	 */
 	public FuncionesServicios(PrincipalModelo modelo, JframePrincipal vista, PrincipalControlador controlador) {
 		this.vista = vista;
 		this.modelo = modelo;
 		this.controlador = controlador;
 	}
-		
+	/**
+	 * Este método activa el panel de los servicios adicionales si el usuario ha seleccionado algun alojamiento 	
+	 */
 	public void activarPanel() {
 		if(vista.buscarAlojamiento.panelHotel.isVisible() == true) {
 			if(vista.buscarAlojamiento.tab.getSelectedRow() != -1)
@@ -33,7 +40,10 @@ public class FuncionesServicios {
 				JOptionPane.showMessageDialog(vista, "Por favor, seleccione un alojamiento para poder ver sus servicios disponibles. Gracias.", null, 0);
 		}
 	}
-	
+	/**
+	 * Este metodo hace visible los todos los componentes del panel servicios adicionales.
+	 * Además llama al metodo de comprobarServicios.
+	 */
 	public void cargarServicios() {
 		vista.buscarAlojamiento.panelServicios.setVisible(true);
 		vista.buscarAlojamiento.btnServicios.setVisible(false);
@@ -59,7 +69,9 @@ public class FuncionesServicios {
 		this.servicios = modelo.consultas.buscarServiciosAdicionales(codAlojamiento);
 		comprobarServicios();
 	}
-	
+	/**
+	 * Este método comprueba si los servicios estan en el alojamiento escogido.
+	 */
 	public void comprobarServicios() {
 		if(this.servicios.isWifi() == true)
 			vista.buscarAlojamiento.checkWifi.setEnabled(true);
@@ -91,7 +103,9 @@ public class FuncionesServicios {
 		else
 			vista.buscarAlojamiento.checkParking.setEnabled(false);
 	}
-	
+	/**
+	 * Este metodo mira que servicios estan seleccionados y llama al metodo que calcula el precio de los servicios.
+	 */
 	public void contratarServicios() {
 		servicios.setWifiSeleccionado(vista.buscarAlojamiento.checkWifi.isSelected());
 		servicios.setAireSeleccionado(vista.buscarAlojamiento.checkAire.isSelected());
@@ -105,7 +119,10 @@ public class FuncionesServicios {
 		vista.buscarAlojamiento.labelServicios.setVisible(true);
 		calcularPrecioServicios();
 	}
-	
+	/**
+	 * Este metodo comprueba se el servicio esta guardado
+	 * @return true/false
+	 */
 	public boolean comprobarServicioGuardado() {
 		int codTipoAloj = controlador.controladorPanBuscarAlojamiento.tiposAloj.getCodTipoAlojamiento();
 		if(modelo.servicios != null) {
@@ -121,7 +138,9 @@ public class FuncionesServicios {
 		else
 			return true;
 	}
-	
+	/**
+	 * Este metodo calcula el precio de los servicios adicinales.
+	 */
 	public void calcularPrecioServicios() {
 		float precio = 0;
 		if(servicios.isWifiSeleccionado())

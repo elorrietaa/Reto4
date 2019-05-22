@@ -1,17 +1,17 @@
 package modelo;
 
 public class Cama {
-    //atributos
+    // atributos
     private int codCama;
     private String tipoCama;
-    
+
     /**
      * Constructor vacio:
      */
     public Cama() {
-	
+
     }
-    
+
     /*
      * Constructor Cama
      */
@@ -22,25 +22,23 @@ public class Cama {
     }
 
     public int getCodCama() {
-        return codCama;
+	return codCama;
     }
 
     public void setCodCama(int codCama) {
-        this.codCama = codCama;
+	this.codCama = codCama;
     }
 
     public String getTipoCama() {
-        return tipoCama;
+	return tipoCama;
     }
 
     public void setTipoCama(String tipoCama) {
-        this.tipoCama = tipoCama;
+	this.tipoCama = tipoCama;
     }
-    
-   public String toString() {
-       return tipoCama;
-   }
 
-  
-   
+    public String toString() {
+	return tipoCama;
+    }
+
 }

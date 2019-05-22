@@ -781,7 +781,7 @@ public class Consultas {
 	ResultSet result = null;
 	int codReserva = 0;
 
-	String query = "SELECT count(*) FROM `reservas`";
+	String query = "CALL contarReservas()`";
 
 	try {
 
@@ -1045,13 +1045,14 @@ public class Consultas {
 
     /**
      * Inserta los atributos de un objeto reserva en la base de datos
-     * @param reserva contiene los detalles de la Reserva
-     * @param habitacion contiene los detalles de la habitacion
-     * @param servicios contiene los detalles de los servicios seleccionados
-     * @param dni contiene el dni del uusario
-     * @param fechaIda contiene la fecha de entrada
+     * 
+     * @param reserva     contiene los detalles de la Reserva
+     * @param habitacion  contiene los detalles de la habitacion
+     * @param servicios   contiene los detalles de los servicios seleccionados
+     * @param dni         contiene el dni del uusario
+     * @param fechaIda    contiene la fecha de entrada
      * @param fechaVuelta contiene la fecha de salida
-     * @param fechaActual 
+     * @param fechaActual
      * @param horaActual
      * @param precioTotal
      */
@@ -1247,6 +1248,11 @@ public class Consultas {
 	}
     }
 
+    /*
+     * *****************************************************************************
+     * Métodos consultas reservas
+     * *****************************************************************************
+     */
     /**
      * Método mostrarNumPersonasAlojadas = devuelve el número de personas alojadas
      * 

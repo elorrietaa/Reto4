@@ -37,12 +37,13 @@ public class ControladorPanPersonasAloj implements ActionListener {
     /**
      * Constructor del controlador de detalles
      * 
-     * @param vista Instancia del main frame para poder utilizarlo
-     * @param modelo Instancia del modelo para poder utilizarlo
-     * @param conexion Instancia de la conexion a la base de datos
+     * @param vista       Instancia del main frame para poder utilizarlo
+     * @param modelo      Instancia del modelo para poder utilizarlo
+     * @param conexion    Instancia de la conexion a la base de datos
      * @param controlador Instancia del controlador
      */
-    public ControladorPanPersonasAloj(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion, PrincipalControlador controlador) {
+    public ControladorPanPersonasAloj(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion,
+	    PrincipalControlador controlador) {
 	this.vista = vista;
 	this.modelo = modelo;
 	this.consultas = new Consultas(conexion);
@@ -105,7 +106,7 @@ public class ControladorPanPersonasAloj implements ActionListener {
 	// comprueba que los dnis no se repitan
 	for (int i = 0; i < listaPerAloj.size(); i++) {
 	    System.out.println(dniIntroducido + "=?" + listaPerAloj.get(i).getDni());
-	    if (dniIntroducido.equals(listaPerAloj.get(i).getDni())){
+	    if (dniIntroducido.equals(listaPerAloj.get(i).getDni())) {
 		JOptionPane.showMessageDialog(vista, "Ciudado, Hay un DNI repetido.", "Aviso",
 			JOptionPane.WARNING_MESSAGE);
 		return false;
@@ -154,9 +155,11 @@ public class ControladorPanPersonasAloj implements ActionListener {
     }
 
     /**
-     * Método guardarListaPersonasAlojadas guarda la persona añadida por el usuario en la lista listaPersonasAlojadas
+     * Método guardarListaPersonasAlojadas guarda la persona añadida por el usuario
+     * en la lista listaPersonasAlojadas
      * 
-     * @param personasAlojada Objeto cliente con la informacion de las personas alojadas
+     * @param personasAlojada Objeto cliente con la informacion de las personas
+     *                        alojadas
      */
     public void guardarListaPersonasAlojadas(Cliente personasAlojada) {
 	// metemos el objeto que llega por parámetro en el arrayList
@@ -199,7 +202,9 @@ public class ControladorPanPersonasAloj implements ActionListener {
     }
 
     /**
-     * Método borrarPersonaSeleccionada= recive el índice de la fila seleccionada por el usuario. Borra los datos que se encuentran en esa posición y devuelve la lista sin esa posición.
+     * Método borrarPersonaSeleccionada= recive el índice de la fila seleccionada
+     * por el usuario. Borra los datos que se encuentran en esa posición y devuelve
+     * la lista sin esa posición.
      * 
      * @return Retorbna un array list de tipo cliente con las personas alojadas
      */

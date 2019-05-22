@@ -14,37 +14,37 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanBasesLegales extends JPanel {
-	
-	public JTextPane txBases;
-	public JButton btnAceptar, btnDeclinar;
 
-	public PanBasesLegales() {
-		setBackground(Color.WHITE);
-		setBounds(0,0,1024,720);
-		setLayout(null);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(103, 72, 804, 495);
-		add(scrollPane);
-		
-		txBases = new JTextPane();
-		txBases.setEditable(false);
-		scrollPane.setViewportView(txBases);
-		
-		JLabel lblBasesLegales = new JLabel("Bases legales");
-		lblBasesLegales.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBasesLegales.setFont(new Font("Tahoma", Font.BOLD, 27));
-		lblBasesLegales.setBounds(333, 11, 316, 51);
-		add(lblBasesLegales);
-		
-		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(818, 601, 89, 23);
-		FormatoDiseno.formatoBtn(btnAceptar);
-		add(btnAceptar);
-		
-		btnDeclinar = new JButton("Declinar");
-		btnDeclinar.setBounds(103, 601, 89, 23);
-		FormatoDiseno.formatoBtn(btnDeclinar);
-		add(btnDeclinar);
-	}
+    public JTextPane txBases;
+    public JButton btnAceptar, btnDeclinar;
+
+    public PanBasesLegales() {
+	setBackground(Color.WHITE);
+	setBounds(0, 0, 1024, 720);
+	setLayout(null);
+
+	JScrollPane scrollPane = new JScrollPane();
+	scrollPane.setBounds(103, 72, 804, 495);
+	add(scrollPane);
+
+	txBases = new JTextPane();
+	txBases.setEditable(false);
+	scrollPane.setViewportView(txBases);
+
+	JLabel lblBasesLegales = new JLabel("Bases legales");
+	lblBasesLegales.setHorizontalAlignment(SwingConstants.CENTER);
+	lblBasesLegales.setFont(new Font("Tahoma", Font.BOLD, 27));
+	lblBasesLegales.setBounds(333, 11, 316, 51);
+	add(lblBasesLegales);
+
+	btnAceptar = new JButton("Aceptar");
+	btnAceptar.setBounds(818, 601, 89, 23);
+	FormatoDiseno.formatoBtn(btnAceptar);
+	add(btnAceptar);
+
+	btnDeclinar = new JButton("Declinar");
+	btnDeclinar.setBounds(103, 601, 89, 23);
+	FormatoDiseno.formatoBtn(btnDeclinar);
+	add(btnDeclinar);
+    }
 }

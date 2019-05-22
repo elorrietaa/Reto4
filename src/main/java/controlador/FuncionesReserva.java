@@ -137,7 +137,7 @@ public class FuncionesReserva {
 
 		return suplementoFestivos;
 	}
-
+	
 	/**
 	 * Método mostrarDetTipoTarifaCasApart se muestran en vista.detallesReservaCasaApart los detalles de la tarifa aplicada al precio.
 	 * 

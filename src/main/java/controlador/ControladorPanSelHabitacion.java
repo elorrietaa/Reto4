@@ -52,6 +52,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	 * 
 	 * @param vista Instancia del main frame para poder utilizarlo
 	 * @param modelo Instancia del modelo para poder utilizarlo
+	 * @param conexion Instancia de la conexion para los malditos teses
+	 * @param controlador Instancia del controlador para poder utilizarlo
 	 */
 	public ControladorPanSelHabitacion(JframePrincipal vista, PrincipalModelo modelo,Conexion conexion, PrincipalControlador controlador ) {
 		this.vista = vista;
@@ -71,14 +73,6 @@ public class ControladorPanSelHabitacion implements ActionListener {
 		vista.selHabitacion.btnAtras.addActionListener(this);
 		vista.selHabitacion.btnContinuar.addActionListener(this);
 	}
-	
-	/**
-	 * Método: guardarDormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
-	 * 
-	 */
-	
-
-	 
 	/**
 	 * Método: guardar1DormSeleccionadosJTable = se gudardan en el ArrayList listaHabSeleccionadas los datos de las habitaciones seleccionadas.
 	 */
@@ -122,6 +116,8 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 		/**
 		 * Método mostratDetallesHabHotelSel = Se muestran los detalles de las habitaciones seleccionadas en el JTable del panel detallesReserva
+		 * 
+		 * @param habitacion Objeto dormitorion con la informacion de las habitaciones del hotel seleccionado
 		 */
 		public void mostratDetallesHabHotelSel(Dormitorio habitacion) {
 
@@ -145,8 +141,7 @@ public class ControladorPanSelHabitacion implements ActionListener {
 	
 	
 	/**
-	  * Método: mostrarHoteles = muestra los detalles del hotel seleccionado por el usuario en la pantalla PandetallesReserva 
-	  * @param codCiudadSeleccionada
+	  * Método: mostrarHoteles muestra los detalles del hotel seleccionado por el usuario en la pantalla PandetallesReserva
 	  */
 		public void mostrarDatosHotelesJTable() {
 	    DefaultTableModel tablaHotel = (DefaultTableModel) vista.detallesReserva.tabHot.getModel();

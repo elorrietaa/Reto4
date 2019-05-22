@@ -65,8 +65,9 @@ public class FuncionesBotones {
 	}
 	
 	/**
-	 * Método resetPago = en este método se resetean los valores del pago
-	 * @param pago
+	 * Método resetPago en este método se resetean los valores del pago
+	 * 
+	 * @param pago Instancia del controlador de pago para poder acceder a sus elementos
 	 */
 	public void resetPago(ControladorPanPago pago) {
 		modelo.cliente = null;
@@ -134,7 +135,8 @@ public class FuncionesBotones {
 	
 	/**
 	 * Método resetAtrasPago = se utiliza este método para resetear los valores de pago cuando el usuario pulse el boton atrás en el panel de pago.
-	 * @param pago
+	 * 
+	 * @param pago Instancia del controaldor del panel de pago para poder acceder a sus elementos
 	 */
 	public void resetAtrasPago(ControladorPanPago pago) {	
 		pago.dinero = 0f;

@@ -1,0 +1,4 @@
+host: localhost
+bd: reto4
+username: grupo4
+password: grupo4

@@ -17,7 +17,7 @@ public class ControladorPanDetallesReserva implements ActionListener {
 	 * 
 	 * @param vista Instancia del main frame para poder utilizarlo
 	 * @param modelo Instancia del modelo para poder utilizarlo
-	 * @param conexion 
+	 * @param controlador Instancia del controlador para poder utilizarlo
 	 */
 	public ControladorPanDetallesReserva(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) {
 		this.vista = vista;

@@ -10,17 +10,6 @@ import vista.JframePrincipal;
 /**
  * Esta clase se utiliza para validar el DNI del usuario y encriptar su contraseña
  * 
- * @author Mikel
- * 
- * @param letraMayuscula Almacena la letra el DNI en mayuscula para poder comprobarla
- * @param numero Guarda los numeros del DNI
- * @param dni2 Almacena solo los numeros del DNI para poder comprobarlos
- * @param numerosUnoNueve Guarda los numero del 0 al nueve para poder comprobarlos
- * @param ContraseñaEncriptar Es la contraseña que se va a encriptar
- * @param contraseñaGenerada Es la contraseña una vez encriptada
- * @param md Instancia de MessageDigest, se utiliza para separar la contraseña en fragmentos para poder encriptarla
- * @param bytes Array que almacena los distintros trozos separados de la contraseña con MessageDigest transformados en bytes
- * @param sb Instancia de StringBuilder, se utiliza para volver a unir las diferentes partes de la contrasela vez encriptada
 */
 public class FuncionesRegistro {
 	

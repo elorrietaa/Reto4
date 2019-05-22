@@ -63,6 +63,8 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	 * Constructor del controlador del panel de bienvenida
 	* @param vista Instancia de la vista, para poder utilizarla
 	* @param modelo Instancia del modelo, para poder utilizarlo
+	* @param consultas Insatancia de la calse consultas
+	* @param controlador Instancia del controlador, para poder utilizarlo
 	*/
 	public ControladorPanBuscarAlojamiento(JframePrincipal vista, PrincipalModelo modelo, Conexion conexion, PrincipalControlador controlador) {
 		this.vista = vista;
@@ -196,11 +198,12 @@ public class ControladorPanBuscarAlojamiento implements ActionListener, Property
 	
 	
 	/**
-     * Método: mostrarHotelesEnJTable = muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
-     * @param codCiudadSeleccionada 
-     * @param codTipoAlojSeleccionado
-     * @param ordenarPor
-     * @param ascDesc
+     * Método: mostrarHotelesEnJTable muestra los alojamientos que se han encontrado mediante el método buscarAlojamientoPorCodigoCiudad en base al codCiudadSeleccionado y codTipoAlojSeleccionado por el usuario
+     * 
+     * @param codCiudadSeleccionada se pasa el código de la ciudad seleccionada por el usuario por parámetro
+	 * @param codTipoAlojSeleccionado Se le pasa el código del tipo de alojamiento seleccionado por el usuario por parámetro
+	 * @param ordenarPor Criterio de busqueda indicado por el usuario
+	 * @param ascDesc se le pasa la selección del usuario (ascendente o descendente) que será cómo desea ordenar la lista de alojamientos
      */
     public void mostrarAlojamientosEnJTable(int codCiudadSeleccionada, int codTipoAlojSeleccionado, String ordenarPor, String ascDesc) {
 	  	

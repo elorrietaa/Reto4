@@ -38,6 +38,7 @@ public class ControladorRegistro implements ActionListener {
 	 * 
 	 * @param vista: Guarda el objeto vista para poder utilizar los distintos elementos de la interfaz
 	 * @param modelo: Guarda el objeto modelo para poder acceder a los metodos del modelo
+	 * @param controlador Instancia del controlador para poder acceder a los distindos elementos del controlador
 	 */
 	public ControladorRegistro(JframePrincipal vista, PrincipalModelo modelo, PrincipalControlador controlador) { // Constructor
 		this.vista = vista;

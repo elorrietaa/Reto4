@@ -139,6 +139,8 @@ public class FuncionesCodigosPromo {
 	
 	/**
 	 * Método comprobarSiTIeneCuponesDescuento 0 comprueba si tiene códigos disponibles, y devuelve un booleano
+	 * 
+	 * @return Retorna true o false si tiene codigos o no respectibamente
 	 */
 	public boolean comprobarSiTIeneCuponesDescuento() {
 		vista.cupon.cBListaCupones.removeAllItems();
@@ -200,7 +202,8 @@ public class FuncionesCodigosPromo {
 	
 	/**
 	 * Método calcularPrecioDescuentoaplicado = se calcula el precio del alojamiento aplicando el descuento del cupón seleccionado por el usuario.
-	 * @return
+	 * 
+	 * @return Retorna el precio de la reserva con el descuento aplicado
 	 */
 	public float calcularPrecioDescuentoaplicado() {
 		
